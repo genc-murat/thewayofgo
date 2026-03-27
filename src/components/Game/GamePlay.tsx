@@ -34,9 +34,10 @@ export function GamePlay() {
       aiThinkingRef.current = true;
       setIsThinking(true);
       const timer = setTimeout(async () => {
-        await aiMove();
+        const result = await aiMove();
         aiThinkingRef.current = false;
         setIsThinking(false);
+        if (result?.game_over) setShowScore(true);
         const history = await getMoveHistory();
         setMoveHistory(history);
       }, 500);

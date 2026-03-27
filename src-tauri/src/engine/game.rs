@@ -228,13 +228,23 @@ impl GoGame {
     }
 
     pub fn pass(&mut self) -> MoveResult {
+        let player_passing = self.current_player;
         self.passes_in_a_row += 1;
         self.move_number += 1;
         self.current_player = self.current_player.opposite();
 
         let game_over = self.passes_in_a_row >= 2;
 
-        let player_before_pass = self.current_player.opposite();
+        self.move_history.push(MoveRecord {
+            move_type: MoveType::Pass,
+            x: None,
+            y: None,
+            captured_stones: vec![],
+            player: player_passing,
+            board_snapshot: self.board.clone(),
+            black_captures: self.black_captures,
+            white_captures: self.white_captures,
+        });
 
         if game_over {
             self.game_over = true;
@@ -248,17 +258,6 @@ impl GoGame {
                 score: Some(score),
             };
         }
-
-        self.move_history.push(MoveRecord {
-            move_type: MoveType::Pass,
-            x: None,
-            y: None,
-            captured_stones: vec![],
-            player: player_before_pass,
-            board_snapshot: self.board.clone(),
-            black_captures: self.black_captures,
-            white_captures: self.white_captures,
-        });
 
         MoveResult {
             success: true,
@@ -284,7 +283,7 @@ impl GoGame {
 
         match last_move_record.move_type {
             MoveType::Pass => {
-                self.passes_in_a_row -= 1;
+                self.passes_in_a_row = self.passes_in_a_row.saturating_sub(1);
                 self.current_player = last_move_record.player;
                 self.game_over = false;
             }
