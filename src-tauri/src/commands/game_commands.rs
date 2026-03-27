@@ -26,9 +26,9 @@ pub struct GameStateResponse {
 }
 
 #[tauri::command]
-pub fn create_game(state: State<AppState>, size: u8) -> Result<GameStateResponse, String> {
+pub fn create_game(state: State<AppState>, size: u8, komi: Option<f32>) -> Result<GameStateResponse, String> {
     let board_size = BoardSize::from_u8(size)?;
-    let game = GoGame::new(board_size);
+    let game = GoGame::new(board_size, komi.unwrap_or(6.5));
     let game_state = game.get_game_state();
 
     let mut guard = state.game.lock().map_err(|e| e.to_string())?;
@@ -117,7 +117,7 @@ pub async fn ai_get_move(state: State<'_, AppState>) -> Result<Option<Point>, St
         let game_guard = game_mutex.lock().map_err(|e: std::sync::PoisonError<_>| e.to_string())?;
         let game = game_guard.as_ref().ok_or("No active game")?;
 
-        let ai_guard = ai_mutex.lock().map_err(|e: std::sync::PoisonError<_>| e.to_string())?;
+        let mut ai_guard = ai_mutex.lock().map_err(|e: std::sync::PoisonError<_>| e.to_string())?;
         Ok::<Option<Point>, String>(ai_guard.get_move(game))
     });
     handle.join().map_err(|e| format!("AI thread panicked: {:?}", e))?
@@ -132,7 +132,7 @@ pub async fn ai_place_stone(state: State<'_, AppState>) -> Result<GameStateRespo
             let game_guard = game_mutex.lock().map_err(|e: std::sync::PoisonError<_>| e.to_string())?;
             let game = game_guard.as_ref().ok_or("No active game")?;
 
-            let ai_guard = ai_mutex.lock().map_err(|e: std::sync::PoisonError<_>| e.to_string())?;
+            let mut ai_guard = ai_mutex.lock().map_err(|e: std::sync::PoisonError<_>| e.to_string())?;
             ai_guard.get_move(game)
         };
 

@@ -34,6 +34,7 @@ export function GamePlay() {
   const [validMoves, setValidMoves] = useState<Point[]>([]);
   const [recentGames, setRecentGames] = useState<SavedGame[]>([]);
   const [lastMoveAnalysis, setLastMoveAnalysis] = useState<string | null>(null);
+  const [selectedKomi, setSelectedKomi] = useState(6.5);
   const aiThinkingRef = useRef(false);
 
   // Load recent games on mount
@@ -161,7 +162,7 @@ export function GamePlay() {
             { size: 13, label: '13x13', desc: 'Orta', color: 'border-blue-500/30' },
             { size: 19, label: '19x19', desc: 'Uzman', color: 'border-purple-500/30' },
           ].map((opt) => (
-            <button key={opt.size} onClick={() => startAiGame(opt.size, aiDifficulty, aiStyle)}
+            <button key={opt.size} onClick={() => startAiGame(opt.size, aiDifficulty, aiStyle, selectedKomi)}
               className={`glass rounded-2xl p-6 text-center card-hover border ${opt.color} min-w-[120px]`}>
               <div className="text-3xl font-bold mb-1">{opt.label}</div>
               <div className="text-xs text-text-secondary">{opt.desc}</div>
@@ -211,6 +212,23 @@ export function GamePlay() {
               </button>
             ))}
           </div>
+        </div>
+
+        <div className="glass rounded-2xl p-6">
+          <p className="text-sm text-text-secondary mb-3 font-medium text-center">Komi</p>
+          <div className="flex gap-2 justify-center">
+            {[5.5, 6.5, 7.5].map((k) => (
+              <button key={k} onClick={() => setSelectedKomi(k)}
+                className={`w-16 h-12 rounded-xl font-bold text-sm transition-all ${
+                  selectedKomi === k
+                    ? 'gradient-accent text-bg-primary shadow-lg glow-accent-sm scale-105'
+                    : 'glass text-text-secondary hover:text-text-primary card-hover'
+                }`}>
+                {k}
+              </button>
+            ))}
+          </div>
+          <p className="text-[10px] text-text-secondary text-center mt-2">Beyaz taşa eklenen puan</p>
         </div>
 
         {/* Recent games */}

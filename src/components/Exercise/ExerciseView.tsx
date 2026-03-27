@@ -1,8 +1,9 @@
 import { useState, useCallback, useMemo, useEffect } from 'react';
 import { useAppStore } from '../../stores/appStore';
 import { Board } from '../Board';
-import type { BoardSize, StoneColor, Highlight } from '../../types';
+import type { BoardSize, Highlight } from '../../types';
 import { getAdaptiveDifficulty, getTypeDisplayName, type DifficultyRecommendation } from '../../utils/adaptiveDifficulty';
+import { createBoardFromStones } from '../../utils/boardUtils';
 
 const EXERCISE_CATALOG = [
   { id: 'e1-1-1', level: 1, module: 1, title: 'İlk Hamle', type: 'Doğru Hamle', difficulty: 1 },
@@ -543,12 +544,4 @@ function ExercisePlayer() {
   );
 }
 
-function createBoardFromStones(stones: { x: number; y: number; color: string }[], size: number): (StoneColor | null)[][] {
-  const board: (StoneColor | null)[][] = Array(size).fill(null).map(() => Array(size).fill(null));
-  for (const stone of stones) {
-    if (stone.x >= 0 && stone.x < size && stone.y >= 0 && stone.y < size) {
-      board[stone.y][stone.x] = stone.color as StoneColor;
-    }
-  }
-  return board;
-}
+

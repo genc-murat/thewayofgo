@@ -71,7 +71,6 @@ pub struct StepResult {
 }
 
 #[tauri::command]
-#[specta::specta]
 pub fn validate_exercise_move(
     exercise_json: String,
     x: u8,
@@ -113,7 +112,6 @@ pub fn validate_exercise_move(
 }
 
 #[tauri::command]
-#[specta::specta]
 pub fn validate_multi_step_move(
     exercise_json: String,
     step_index: usize,

@@ -1,5 +1,4 @@
 use rand::seq::SliceRandom;
-use rand::Rng;
 use rand::RngExt;
 
 use crate::ai::styles::{get_style_weights, StyleWeights};
@@ -7,6 +6,7 @@ use crate::engine::game::GoGame;
 use crate::engine::types::{AIDifficulty, AIStyle, Point, StoneColor};
 
 const EXPLORATION_CONSTANT: f64 = 1.414;
+const RAVE_K: f64 = 2000.0;
 
 struct MCTSNode {
     move_x: u8,
@@ -16,10 +16,13 @@ struct MCTSNode {
     wins: f64,
     children: Vec<MCTSNode>,
     untried_moves: Vec<(u8, u8)>,
+    board_hash: u64,
+    rave_visits: u32,
+    rave_wins: f64,
 }
 
 impl MCTSNode {
-    fn new(x: u8, y: u8, untried_moves: Vec<(u8, u8)>) -> Self {
+    fn new(x: u8, y: u8, untried_moves: Vec<(u8, u8)>, board_hash: u64) -> Self {
         MCTSNode {
             move_x: x,
             move_y: y,
@@ -28,10 +31,13 @@ impl MCTSNode {
             wins: 0.0,
             children: Vec::new(),
             untried_moves,
+            board_hash,
+            rave_visits: 0,
+            rave_wins: 0.0,
         }
     }
 
-    fn new_pass(untried_moves: Vec<(u8, u8)>) -> Self {
+    fn new_pass(untried_moves: Vec<(u8, u8)>, board_hash: u64) -> Self {
         MCTSNode {
             move_x: 0,
             move_y: 0,
@@ -40,17 +46,28 @@ impl MCTSNode {
             wins: 0.0,
             children: Vec::new(),
             untried_moves,
+            board_hash,
+            rave_visits: 0,
+            rave_wins: 0.0,
         }
     }
 
-    fn uct_value(&self, parent_visits: u32) -> f64 {
+    fn rave_uct_value(&self, parent_visits: u32) -> f64 {
         if self.visits == 0 {
             return f64::INFINITY;
         }
         let exploit = self.wins / self.visits as f64;
         let explore =
             EXPLORATION_CONSTANT * ((parent_visits as f64).ln() / self.visits as f64).sqrt();
-        exploit + explore
+
+        if self.rave_visits > 0 {
+            let q_rave = self.rave_wins / self.rave_visits as f64;
+            let beta = (RAVE_K / (3.0 * self.visits as f64 + RAVE_K)).sqrt();
+            let rave_exploit = (1.0 - beta) * exploit + beta * q_rave;
+            rave_exploit + explore
+        } else {
+            exploit + explore
+        }
     }
 
     fn best_child_uct(&self) -> Option<usize> {
@@ -58,8 +75,8 @@ impl MCTSNode {
             .iter()
             .enumerate()
             .max_by(|(_, a), (_, b)| {
-                a.uct_value(self.visits)
-                    .partial_cmp(&b.uct_value(self.visits))
+                a.rave_uct_value(self.visits)
+                    .partial_cmp(&b.rave_uct_value(self.visits))
                     .unwrap_or(std::cmp::Ordering::Equal)
             })
             .map(|(i, _)| i)
@@ -73,6 +90,7 @@ impl MCTSNode {
 fn select_most_visited(root_children: &[MCTSNode]) -> Option<(u8, u8)> {
     root_children
         .iter()
+        .filter(|n| !n.is_pass)
         .max_by_key(|n| n.visits)
         .map(|n| (n.move_x, n.move_y))
 }
@@ -80,6 +98,7 @@ fn select_most_visited(root_children: &[MCTSNode]) -> Option<(u8, u8)> {
 pub struct MCTSAi {
     difficulty: AIDifficulty,
     style_weights: StyleWeights,
+    root: Option<MCTSNode>,
 }
 
 impl MCTSAi {
@@ -88,6 +107,7 @@ impl MCTSAi {
         MCTSAi {
             difficulty,
             style_weights,
+            root: None,
         }
     }
 
@@ -99,7 +119,7 @@ impl MCTSAi {
         self.difficulty.level
     }
 
-    pub fn get_move(&self, game: &GoGame) -> Option<Point> {
+    pub fn get_move(&mut self, game: &GoGame) -> Option<Point> {
         let valid_moves = game.get_valid_moves();
         if valid_moves.is_empty() {
             return None;
@@ -107,6 +127,20 @@ impl MCTSAi {
 
         if self.difficulty.level == 1 || self.difficulty.simulations == 0 {
             return self.heuristic_move(game, &valid_moves);
+        }
+
+        // Try to reuse tree: find matching child in current root
+        let current_hash = game.board_hash();
+        if let Some(old_root) = self.root.take() {
+            // Look for matching child
+            let matched = old_root
+                .children
+                .into_iter()
+                .find(|c| c.board_hash == current_hash);
+            if let Some(child) = matched {
+                self.root = Some(child);
+            }
+            // If no match, root is discarded (None)
         }
 
         self.mcts_search(game)
@@ -161,14 +195,12 @@ impl MCTSAi {
                     score += 2.0;
                 }
 
-                // Proximity scoring for aggressive/defensive styles
                 if w.proximity_weight != 0.0 {
                     let proximity =
                         compute_proximity_score(game, m.x, m.y, current_player, board_size);
                     score += w.proximity_weight * proximity;
                 }
 
-                // Territory weight for defensive/educational styles
                 if w.territory_weight != 0.0 {
                     let territory =
                         compute_territory_score(game, m.x, m.y, current_player, board_size);
@@ -208,7 +240,7 @@ impl MCTSAi {
         Some(valid_moves[scored[pick_idx].0].clone())
     }
 
-    fn mcts_search(&self, game: &GoGame) -> Option<Point> {
+    fn mcts_search(&mut self, game: &GoGame) -> Option<Point> {
         let valid_moves = game.get_valid_moves();
         if valid_moves.is_empty() {
             return None;
@@ -216,31 +248,67 @@ impl MCTSAi {
 
         let move_coords: Vec<(u8, u8)> = valid_moves.iter().map(|m| (m.x, m.y)).collect();
 
-        let mut root_children: Vec<MCTSNode> = move_coords
-            .iter()
-            .enumerate()
-            .map(|(i, &(x, y))| {
-                let untried: Vec<(u8, u8)> = move_coords
-                    .iter()
-                    .enumerate()
-                    .filter(|(j, _)| *j != i)
-                    .map(|(_, &c)| c)
-                    .collect();
-                let mut rng = rand::rng();
-                let mut untried = untried;
-                untried.shuffle(&mut rng);
-                MCTSNode::new(x, y, untried)
-            })
-            .collect();
+        // Use existing root children if available (tree reuse), otherwise create new
+        let mut root_children = if let Some(root) = self.root.take() {
+            // Filter out children whose moves are no longer valid and add any missing valid moves
+            let existing_coords: std::collections::HashSet<(u8, u8)> = root
+                .children
+                .iter()
+                .filter(|c| !c.is_pass)
+                .map(|c| (c.move_x, c.move_y))
+                .collect();
 
-        let pass_untried: Vec<(u8, u8)> = move_coords.clone();
-        root_children.push(MCTSNode::new_pass(pass_untried));
+            let mut children = root.children;
+            // Add missing moves
+            let mut rng = rand::rng();
+            for &(x, y) in &move_coords {
+                if !existing_coords.contains(&(x, y)) {
+                    let untried: Vec<(u8, u8)> = move_coords
+                        .iter()
+                        .filter(|&&c| c != (x, y))
+                        .copied()
+                        .collect();
+                    let mut untried = untried;
+                    untried.shuffle(&mut rng);
+                    let hash = game.board_hash();
+                    children.push(MCTSNode::new(x, y, untried, hash));
+                }
+            }
+            // Remove pass node if exists and add fresh one
+            children.retain(|c| !c.is_pass);
+            let pass_untried: Vec<(u8, u8)> = move_coords.clone();
+            children.push(MCTSNode::new_pass(pass_untried, game.board_hash()));
+
+            children
+        } else {
+            let mut rng = rand::rng();
+            let mut root_children: Vec<MCTSNode> = move_coords
+                .iter()
+                .enumerate()
+                .map(|(i, &(x, y))| {
+                    let untried: Vec<(u8, u8)> = move_coords
+                        .iter()
+                        .enumerate()
+                        .filter(|(j, _)| *j != i)
+                        .map(|(_, &c)| c)
+                        .collect();
+                    let mut untried = untried;
+                    untried.shuffle(&mut rng);
+                    MCTSNode::new(x, y, untried, game.board_hash())
+                })
+                .collect();
+
+            let pass_untried: Vec<(u8, u8)> = move_coords.clone();
+            root_children.push(MCTSNode::new_pass(pass_untried, game.board_hash()));
+            root_children
+        };
 
         let simulations = self.difficulty.simulations;
         let current_player = game.current_player();
         let use_heavy_playout = self.difficulty.level >= 4;
         let mut rng = rand::rng();
 
+        // Track moves played per simulation for RAVE updates
         for _ in 0..simulations {
             let mut sim_game = game.clone_for_simulation();
 
@@ -250,8 +318,8 @@ impl MCTSAi {
                     .iter()
                     .enumerate()
                     .max_by(|(_, a), (_, b)| {
-                        a.uct_value(total_root_visits(&root_children))
-                            .partial_cmp(&b.uct_value(total_root_visits(&root_children)))
+                        a.rave_uct_value(total_root_visits(&root_children))
+                            .partial_cmp(&b.rave_uct_value(total_root_visits(&root_children)))
                             .unwrap_or(std::cmp::Ordering::Equal)
                     })
                     .map(|(i, _)| i)
@@ -268,6 +336,25 @@ impl MCTSAi {
                 continue;
             };
 
+            // Track moves played by each color for RAVE
+            let mut black_moves: Vec<(u8, u8)> = Vec::new();
+            let mut white_moves: Vec<(u8, u8)> = Vec::new();
+
+            // Record the root move
+            if !root_children[root_idx].is_pass {
+                if current_player == StoneColor::Black {
+                    black_moves.push((
+                        root_children[root_idx].move_x,
+                        root_children[root_idx].move_y,
+                    ));
+                } else {
+                    white_moves.push((
+                        root_children[root_idx].move_x,
+                        root_children[root_idx].move_y,
+                    ));
+                }
+            }
+
             if moved {
                 let mut current = &mut root_children[root_idx];
 
@@ -277,8 +364,21 @@ impl MCTSAi {
                         let moved = if child.is_pass {
                             sim_game.pass_fast();
                             true
+                        } else if sim_game.place_stone_fast(child.move_x, child.move_y) {
+                            // Track move for RAVE
+                            let player_before = if sim_game.current_player() == StoneColor::White {
+                                StoneColor::Black
+                            } else {
+                                StoneColor::White
+                            };
+                            if player_before == StoneColor::Black {
+                                black_moves.push((child.move_x, child.move_y));
+                            } else {
+                                white_moves.push((child.move_x, child.move_y));
+                            }
+                            true
                         } else {
-                            sim_game.place_stone_fast(child.move_x, child.move_y)
+                            break;
                         };
                         if !moved {
                             break;
@@ -294,16 +394,39 @@ impl MCTSAi {
                     let (cx, cy) = current.untried_moves.swap_remove(move_idx);
 
                     if sim_game.place_stone_fast(cx, cy) {
+                        let player_before = if sim_game.current_player() == StoneColor::White {
+                            StoneColor::Black
+                        } else {
+                            StoneColor::White
+                        };
+                        if player_before == StoneColor::Black {
+                            black_moves.push((cx, cy));
+                        } else {
+                            white_moves.push((cx, cy));
+                        }
+
                         let child_valid = get_valid_moves_fast(&sim_game);
-                        let child = MCTSNode::new(cx, cy, child_valid);
+                        let child = MCTSNode::new(cx, cy, child_valid, sim_game.board_hash());
                         current.children.push(child);
                     }
                 }
 
                 let result = if use_heavy_playout {
-                    heavy_playout(&mut sim_game, &mut rng, &self.style_weights)
+                    heavy_playout(
+                        &mut sim_game,
+                        &mut rng,
+                        &self.style_weights,
+                        &mut black_moves,
+                        &mut white_moves,
+                    )
                 } else {
-                    light_playout(&mut sim_game, &mut rng, &self.style_weights)
+                    light_playout(
+                        &mut sim_game,
+                        &mut rng,
+                        &self.style_weights,
+                        &mut black_moves,
+                        &mut white_moves,
+                    )
                 };
 
                 root_children[root_idx].visits += 1;
@@ -314,12 +437,45 @@ impl MCTSAi {
                 } else {
                     root_children[root_idx].wins += (0.5 - normalized.min(0.5)).max(0.0);
                 }
+
+                // RAVE update: for root children, update rave stats if the move was played
+                // by the same color as the current player in the playout
+                let player_moves = if current_player == StoneColor::Black {
+                    &black_moves
+                } else {
+                    &white_moves
+                };
+                for child in root_children.iter_mut() {
+                    if child.is_pass {
+                        continue;
+                    }
+                    if player_moves.contains(&(child.move_x, child.move_y)) {
+                        child.rave_visits += 1;
+                        if result.winner == current_player {
+                            child.rave_wins += 1.0;
+                        }
+                    }
+                }
             }
         }
 
         let best = root_children.iter().max_by_key(|n| n.visits).unwrap();
         if best.is_pass {
+            self.root = None;
             return None;
+        }
+
+        // Save best child as new root for tree reuse
+        let best_idx = root_children
+            .iter()
+            .enumerate()
+            .filter(|(_, n)| !n.is_pass)
+            .max_by_key(|(_, n)| n.visits)
+            .map(|(i, _)| i);
+
+        if let Some(idx) = best_idx {
+            let best_child = root_children.remove(idx);
+            self.root = Some(best_child);
         }
 
         select_most_visited(&root_children).map(|(x, y)| Point { x, y })
@@ -348,7 +504,13 @@ fn get_valid_moves_fast(game: &GoGame) -> Vec<(u8, u8)> {
     moves
 }
 
-fn light_playout(game: &mut GoGame, rng: &mut impl Rng, weights: &StyleWeights) -> PlayoutResult {
+fn light_playout(
+    game: &mut GoGame,
+    rng: &mut impl RngExt,
+    weights: &StyleWeights,
+    black_moves: &mut Vec<(u8, u8)>,
+    white_moves: &mut Vec<(u8, u8)>,
+) -> PlayoutResult {
     let max_moves = (game.board_size().to_u8() as u32).pow(2) * 2;
     let mut moves_played = 0u32;
 
@@ -363,8 +525,15 @@ fn light_playout(game: &mut GoGame, rng: &mut impl Rng, weights: &StyleWeights) 
             continue;
         }
 
+        let player = game.current_player();
         if let Some(m) = pick_heuristic_move(game, &valid_moves, rng, false, weights) {
-            game.place_stone_fast(m.0, m.1);
+            if game.place_stone_fast(m.0, m.1) {
+                if player == StoneColor::Black {
+                    black_moves.push(m);
+                } else {
+                    white_moves.push(m);
+                }
+            }
         } else {
             game.pass_fast();
         }
@@ -379,7 +548,13 @@ fn light_playout(game: &mut GoGame, rng: &mut impl Rng, weights: &StyleWeights) 
     }
 }
 
-fn heavy_playout(game: &mut GoGame, rng: &mut impl Rng, weights: &StyleWeights) -> PlayoutResult {
+fn heavy_playout(
+    game: &mut GoGame,
+    rng: &mut impl RngExt,
+    weights: &StyleWeights,
+    black_moves: &mut Vec<(u8, u8)>,
+    white_moves: &mut Vec<(u8, u8)>,
+) -> PlayoutResult {
     let max_moves = (game.board_size().to_u8() as u32).pow(2) * 2;
     let mut moves_played = 0u32;
 
@@ -397,8 +572,15 @@ fn heavy_playout(game: &mut GoGame, rng: &mut impl Rng, weights: &StyleWeights) 
         let remaining = max_moves - moves_played;
         let force_tactical = remaining < 40;
 
+        let player = game.current_player();
         if let Some(m) = pick_heuristic_move(game, &valid_moves, rng, force_tactical, weights) {
-            game.place_stone_fast(m.0, m.1);
+            if game.place_stone_fast(m.0, m.1) {
+                if player == StoneColor::Black {
+                    black_moves.push(m);
+                } else {
+                    white_moves.push(m);
+                }
+            }
         } else {
             game.pass_fast();
         }
@@ -416,7 +598,7 @@ fn heavy_playout(game: &mut GoGame, rng: &mut impl Rng, weights: &StyleWeights) 
 fn pick_heuristic_move(
     game: &GoGame,
     valid_moves: &[(u8, u8)],
-    rng: &mut impl Rng,
+    rng: &mut impl RngExt,
     force_tactical: bool,
     weights: &StyleWeights,
 ) -> Option<(u8, u8)> {
@@ -525,7 +707,6 @@ fn compute_proximity_score(
     let board = game.get_board_state();
     let opponent = current_player.opposite();
     let mut min_distance: Option<u8> = None;
-    let mut friendly_distance: Option<u8> = None;
 
     for by in 0..board_size {
         for bx in 0..board_size {
@@ -534,11 +715,6 @@ fn compute_proximity_score(
                     + (y as i16 - by as i16).unsigned_abs()) as u8;
                 if stone == opponent {
                     min_distance = Some(match min_distance {
-                        Some(d) => d.min(dist),
-                        None => dist,
-                    });
-                } else if stone == current_player {
-                    friendly_distance = Some(match friendly_distance {
                         Some(d) => d.min(dist),
                         None => dist,
                     });

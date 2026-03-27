@@ -25,6 +25,7 @@ export interface GameState {
   last_move: Point | null;
   game_over: boolean;
   passes_in_a_row: number;
+  komi: number;
 }
 
 export interface MoveResult {

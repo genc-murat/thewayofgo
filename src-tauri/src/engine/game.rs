@@ -13,12 +13,16 @@ pub struct GoGame {
     game_over: bool,
     passes_in_a_row: u8,
     move_history: Vec<MoveRecord>,
-    history: Vec<u64>, // Zobrist-like hash for ko detection
+    history: Vec<u64>,
+    zobrist: ZobristTable,
+    current_hash: u64,
+    komi: f32,
 }
 
 impl GoGame {
-    pub fn new(size: BoardSize) -> Self {
+    pub fn new(size: BoardSize, komi: f32) -> Self {
         let s = size.to_u8() as usize;
+        let zobrist = ZobristTable::new();
         GoGame {
             board: vec![vec![None; s]; s],
             board_size: size.to_u8(),
@@ -31,6 +35,9 @@ impl GoGame {
             passes_in_a_row: 0,
             move_history: Vec::new(),
             history: Vec::new(),
+            zobrist,
+            current_hash: 0,
+            komi,
         }
     }
 
@@ -46,22 +53,48 @@ impl GoGame {
         self.move_number
     }
 
-    fn neighbors(&self, x: u8, y: u8) -> Vec<(u8, u8)> {
-        let mut result = Vec::new();
+    pub fn komi(&self) -> f32 {
+        self.komi
+    }
+
+    pub fn board_hash(&self) -> u64 {
+        self.current_hash
+    }
+
+    fn neighbors(&self, x: u8, y: u8) -> [(bool, u8, u8); 4] {
         let size = self.board_size;
+        let mut result = [(false, 0u8, 0u8); 4];
+        let mut idx = 0;
         if x > 0 {
-            result.push((x - 1, y));
+            result[idx] = (true, x - 1, y);
+            idx += 1;
         }
         if x < size - 1 {
-            result.push((x + 1, y));
+            result[idx] = (true, x + 1, y);
+            idx += 1;
         }
         if y > 0 {
-            result.push((x, y - 1));
+            result[idx] = (true, x, y - 1);
+            idx += 1;
         }
         if y < size - 1 {
-            result.push((x, y + 1));
+            result[idx] = (true, x, y + 1);
+            idx += 1;
         }
+        let _ = idx;
         result
+    }
+
+    fn neighbors_iter(&self, x: u8, y: u8) -> impl Iterator<Item = (u8, u8)> + '_ {
+        self.neighbors(x, y).into_iter().filter_map(
+            |(valid, nx, ny)| {
+                if valid {
+                    Some((nx, ny))
+                } else {
+                    None
+                }
+            },
+        )
     }
 
     fn get_group(&self, x: u8, y: u8) -> HashSet<(u8, u8)> {
@@ -82,7 +115,7 @@ impl GoGame {
             }
             group.insert((cx, cy));
 
-            for (nx, ny) in self.neighbors(cx, cy) {
+            for (nx, ny) in self.neighbors_iter(cx, cy) {
                 if !group.contains(&(nx, ny)) {
                     stack.push((nx, ny));
                 }
@@ -96,7 +129,7 @@ impl GoGame {
         let mut liberties = HashSet::new();
 
         for &(x, y) in group {
-            for (nx, ny) in self.neighbors(x, y) {
+            for (nx, ny) in self.neighbors_iter(x, y) {
                 if self.board[ny as usize][nx as usize].is_none() {
                     liberties.insert((nx, ny));
                 }
@@ -110,7 +143,7 @@ impl GoGame {
         let mut captured = Vec::new();
         let opponent = color.opposite();
 
-        for (nx, ny) in self.neighbors(x, y) {
+        for (nx, ny) in self.neighbors_iter(x, y) {
             if self.board[ny as usize][nx as usize] == Some(opponent) {
                 let group = self.get_group(nx, ny);
                 if self.count_liberties(&group) == 0 {
@@ -122,20 +155,21 @@ impl GoGame {
         captured
     }
 
-    fn compute_board_hash(&self) -> u64 {
+    fn compute_hash(&self) -> u64 {
         let mut hash = 0u64;
         for y in 0..self.board_size as usize {
             for x in 0..self.board_size as usize {
                 if let Some(color) = self.board[y][x] {
-                    let val = match color {
-                        StoneColor::Black => 1u64,
-                        StoneColor::White => 2u64,
-                    };
-                    hash ^= val.wrapping_mul((x as u64 + 1) * 31 + (y as u64 + 1) * 37);
+                    match color {
+                        StoneColor::Black => hash ^= self.zobrist.black[y][x],
+                        StoneColor::White => hash ^= self.zobrist.white[y][x],
+                    }
                 }
             }
         }
-        hash ^= (self.current_player as u64) << 56;
+        if self.current_player == StoneColor::White {
+            hash ^= self.zobrist.player;
+        }
         hash
     }
 
@@ -165,10 +199,6 @@ impl GoGame {
         let group = self.get_group(x, y);
         let has_liberties = self.count_liberties(&group) > 0;
 
-        // Check for ko
-        let new_hash = self.compute_board_hash();
-        let is_ko = captured.len() == 1 && self.history.contains(&new_hash);
-
         // Remove the stone temporarily to check validity
         self.board[y as usize][x as usize] = None;
 
@@ -176,12 +206,29 @@ impl GoGame {
             return Err("Suicide move: stone would have no liberties".to_string());
         }
 
-        if is_ko {
+        // Compute hash for positional superko
+        let mut new_hash = self.current_hash;
+        match color {
+            StoneColor::Black => new_hash ^= self.zobrist.black[y as usize][x as usize],
+            StoneColor::White => new_hash ^= self.zobrist.white[y as usize][x as usize],
+        }
+        for &(cx, cy) in &captured {
+            let cap_color = color.opposite();
+            match cap_color {
+                StoneColor::Black => new_hash ^= self.zobrist.black[cy as usize][cx as usize],
+                StoneColor::White => new_hash ^= self.zobrist.white[cy as usize][cx as usize],
+            }
+        }
+        new_hash ^= self.zobrist.player;
+
+        // Positional superko
+        if self.history.contains(&new_hash) {
             return Err("Ko rule violation".to_string());
         }
 
         // Valid move - apply it
         self.board[y as usize][x as usize] = Some(color);
+        self.current_hash = new_hash;
 
         // Remove captured stones
         let mut captured_points = Vec::new();
@@ -232,6 +279,7 @@ impl GoGame {
         self.passes_in_a_row += 1;
         self.move_number += 1;
         self.current_player = self.current_player.opposite();
+        self.current_hash ^= self.zobrist.player;
 
         let game_over = self.passes_in_a_row >= 2;
 
@@ -281,6 +329,9 @@ impl GoGame {
         self.white_captures = last_move_record.white_captures;
         self.move_number -= 1;
 
+        // Recompute hash from board state
+        self.current_hash = self.compute_hash();
+
         match last_move_record.move_type {
             MoveType::Pass => {
                 self.passes_in_a_row = self.passes_in_a_row.saturating_sub(1);
@@ -314,6 +365,9 @@ impl GoGame {
                 }
             }
         }
+
+        // Remove last history entry
+        self.history.pop();
 
         Ok(())
     }
@@ -369,6 +423,7 @@ impl GoGame {
             last_move: self.last_move.clone(),
             game_over: self.game_over,
             passes_in_a_row: self.passes_in_a_row,
+            komi: self.komi,
         }
     }
 
@@ -385,85 +440,124 @@ impl GoGame {
         }
 
         let color = self.current_player;
+        let opponent = color.opposite();
 
-        // Check suicide
-        let mut test_board = self.board.clone();
-        test_board[y as usize][x as usize] = Some(color);
-
-        // Check if this captures opponent stones
+        // Check if this captures any opponent group
         let mut captures_opponent = false;
-        for (nx, ny) in self.neighbors(x, y) {
-            if test_board[ny as usize][nx as usize] == Some(color.opposite()) {
-                let mut group = HashSet::new();
-                let mut stack = vec![(nx, ny)];
-                while let Some((cx, cy)) = stack.pop() {
-                    if group.contains(&(cx, cy)) {
-                        continue;
-                    }
-                    if test_board[cy as usize][cx as usize] != Some(color.opposite()) {
-                        continue;
-                    }
-                    group.insert((cx, cy));
-                    for (nnx, nny) in self.neighbors(cx, cy) {
-                        if !group.contains(&(nnx, nny)) {
-                            stack.push((nnx, nny));
-                        }
-                    }
-                }
-
-                let mut liberties = HashSet::new();
+        for (nx, ny) in self.neighbors_iter(x, y) {
+            if self.board[ny as usize][nx as usize] == Some(opponent) {
+                // Check if that opponent group would have zero liberties after placing our stone
+                let group = self.get_group(nx, ny);
+                let mut has_liberty = false;
                 for &(gx, gy) in &group {
-                    for (lnx, lny) in self.neighbors(gx, gy) {
-                        if test_board[lny as usize][lnx as usize].is_none() {
-                            liberties.insert((lnx, lny));
+                    for (lnx, lny) in self.neighbors_iter(gx, gy) {
+                        if self.board[lny as usize][lnx as usize].is_none()
+                            && (lnx != x || lny != y)
+                        {
+                            has_liberty = true;
+                            break;
                         }
                     }
+                    if has_liberty {
+                        break;
+                    }
                 }
-
-                if liberties.is_empty() {
+                if !has_liberty {
                     captures_opponent = true;
                     break;
                 }
             }
         }
 
-        // Check own group liberties
-        let mut own_group = HashSet::new();
-        let mut stack = vec![(x, y)];
-        while let Some((cx, cy)) = stack.pop() {
-            if own_group.contains(&(cx, cy)) {
-                continue;
+        if captures_opponent {
+            // Check positional superko
+            let mut new_hash = self.current_hash;
+            match color {
+                StoneColor::Black => new_hash ^= self.zobrist.black[y as usize][x as usize],
+                StoneColor::White => new_hash ^= self.zobrist.white[y as usize][x as usize],
             }
-            if test_board[cy as usize][cx as usize] != Some(color) {
-                continue;
-            }
-            own_group.insert((cx, cy));
-            for (nx, ny) in self.neighbors(cx, cy) {
-                if !own_group.contains(&(nx, ny)) {
-                    stack.push((nx, ny));
+            // XOR out captured stones
+            for (nx, ny) in self.neighbors_iter(x, y) {
+                if self.board[ny as usize][nx as usize] == Some(opponent) {
+                    let group = self.get_group(nx, ny);
+                    let mut has_ext_liberty = false;
+                    for &(gx, gy) in &group {
+                        for (lnx, lny) in self.neighbors_iter(gx, gy) {
+                            if self.board[lny as usize][lnx as usize].is_none()
+                                && (lnx != x || lny != y)
+                            {
+                                has_ext_liberty = true;
+                                break;
+                            }
+                        }
+                        if has_ext_liberty {
+                            break;
+                        }
+                    }
+                    if !has_ext_liberty {
+                        for &(gx, gy) in &group {
+                            match opponent {
+                                StoneColor::Black => {
+                                    new_hash ^= self.zobrist.black[gy as usize][gx as usize]
+                                }
+                                StoneColor::White => {
+                                    new_hash ^= self.zobrist.white[gy as usize][gx as usize]
+                                }
+                            }
+                        }
+                    }
                 }
+            }
+            new_hash ^= self.zobrist.player;
+            if self.history.contains(&new_hash) {
+                return false;
+            }
+            return true;
+        }
+
+        // No captures — check suicide: does our own group have liberties?
+        // Temporarily check by looking at neighbors of (x,y)
+        let mut own_has_liberty = false;
+        for (nx, ny) in self.neighbors_iter(x, y) {
+            if self.board[ny as usize][nx as usize].is_none() {
+                own_has_liberty = true;
+                break;
+            }
+            if self.board[ny as usize][nx as usize] == Some(color) {
+                // Check if friendly group has liberties beyond (x,y)
+                let group = self.get_group(nx, ny);
+                for &(gx, gy) in &group {
+                    for (lnx, lny) in self.neighbors_iter(gx, gy) {
+                        if self.board[lny as usize][lnx as usize].is_none()
+                            && (lnx != x || lny != y)
+                        {
+                            own_has_liberty = true;
+                            break;
+                        }
+                    }
+                    if own_has_liberty {
+                        break;
+                    }
+                }
+            }
+            if own_has_liberty {
+                break;
             }
         }
 
-        let mut own_liberties = HashSet::new();
-        for &(gx, gy) in &own_group {
-            for (nx, ny) in self.neighbors(gx, gy) {
-                if test_board[ny as usize][nx as usize].is_none() {
-                    own_liberties.insert((nx, ny));
-                }
-            }
-        }
-
-        if own_liberties.is_empty() && !captures_opponent {
+        if !own_has_liberty {
             return false; // Suicide
         }
 
-        // Ko check
-        let mut temp_game = self.clone_game();
-        temp_game.board[y as usize][x as usize] = Some(color);
-        let hash = temp_game.compute_board_hash();
-        if self.history.contains(&hash) {
-            return false; // Ko
+        // Check positional superko
+        let mut new_hash = self.current_hash;
+        match color {
+            StoneColor::Black => new_hash ^= self.zobrist.black[y as usize][x as usize],
+            StoneColor::White => new_hash ^= self.zobrist.white[y as usize][x as usize],
+        }
+        new_hash ^= self.zobrist.player;
+        if self.history.contains(&new_hash) {
+            return false;
         }
 
         true
@@ -471,7 +565,7 @@ impl GoGame {
 
     pub fn get_valid_moves(&self) -> Vec<Point> {
         let size = self.board_size;
-        let mut moves = Vec::new();
+        let mut moves = Vec::with_capacity((size as usize) * (size as usize));
 
         for y in 0..size {
             for x in 0..size {
@@ -489,11 +583,10 @@ impl GoGame {
     }
 
     pub fn compute_score(&self) -> (StoneColor, ScoreResult) {
-        let komi = 6.5f32;
         let (black_territory, white_territory) = self.count_territory();
 
         let black_total = black_territory as f32 + self.black_captures as f32;
-        let white_total = white_territory as f32 + self.white_captures as f32 + komi;
+        let white_total = white_territory as f32 + self.white_captures as f32 + self.komi;
 
         let winner = if black_total > white_total {
             StoneColor::Black
@@ -510,7 +603,7 @@ impl GoGame {
                 white_territory,
                 black_captures: self.black_captures,
                 white_captures: self.white_captures,
-                komi,
+                komi: self.komi,
                 black_total,
                 white_total,
                 winner,
@@ -524,6 +617,13 @@ impl GoGame {
         let mut black_territory = 0u32;
         let mut white_territory = 0u32;
         let mut visited = vec![vec![false; size]; size];
+
+        // Detect seki regions to exclude from scoring
+        let seki_points: HashSet<(usize, usize)> = self
+            .detect_seki_regions()
+            .into_iter()
+            .map(|(x, y)| (x as usize, y as usize))
+            .collect();
 
         for y in 0..size {
             for x in 0..size {
@@ -551,25 +651,216 @@ impl GoGame {
                     for (dx, dy) in &[(0i32, 1i32), (0, -1), (1, 0), (-1, 0)] {
                         let nx = cx as i32 + dx;
                         let ny = cy as i32 + dy;
-                        if nx >= 0 && nx < size as i32 && ny >= 0 && ny < size as i32 {
-                            if !visited[ny as usize][nx as usize] {
-                                stack.push((nx as usize, ny as usize));
-                            }
+                        if nx >= 0
+                            && nx < size as i32
+                            && ny >= 0
+                            && ny < size as i32
+                            && !visited[ny as usize][nx as usize]
+                        {
+                            stack.push((nx as usize, ny as usize));
                         }
                     }
                 }
 
                 if border_colors.len() == 1 {
                     let owner = border_colors.iter().next().unwrap();
+                    // Exclude seki points from territory
+                    let non_seki_count =
+                        region.iter().filter(|pt| !seki_points.contains(pt)).count() as u32;
                     match owner {
-                        StoneColor::Black => black_territory += region.len() as u32,
-                        StoneColor::White => white_territory += region.len() as u32,
+                        StoneColor::Black => black_territory += non_seki_count,
+                        StoneColor::White => white_territory += non_seki_count,
                     }
                 }
             }
         }
 
         (black_territory, white_territory)
+    }
+
+    pub fn detect_seki_regions(&self) -> Vec<(u8, u8)> {
+        let size = self.board_size as usize;
+        let mut seki_points = Vec::new();
+        let mut visited_empty = vec![vec![false; size]; size];
+
+        for y in 0..size {
+            for x in 0..size {
+                if visited_empty[y][x] || self.board[y][x].is_some() {
+                    continue;
+                }
+
+                // Flood-fill this empty region
+                let mut region = Vec::new();
+                let mut border_groups: Vec<HashSet<(usize, usize)>> = Vec::new();
+                let mut visited_group = vec![vec![false; size]; size];
+                let mut stack = vec![(x, y)];
+                let mut region_visited = vec![vec![false; size]; size];
+
+                while let Some((cx, cy)) = stack.pop() {
+                    if region_visited[cy][cx] {
+                        continue;
+                    }
+                    region_visited[cy][cx] = true;
+                    visited_empty[cy][cx] = true;
+
+                    if self.board[cy][cx].is_some() {
+                        continue;
+                    }
+                    region.push((cx, cy));
+
+                    for (dx, dy) in &[(0i32, 1i32), (0, -1), (1, 0), (-1, 0)] {
+                        let nx = cx as i32 + dx;
+                        let ny = cy as i32 + dy;
+                        if nx >= 0 && nx < size as i32 && ny >= 0 && ny < size as i32 {
+                            let (ux, uy) = (nx as usize, ny as usize);
+                            if !region_visited[uy][ux] {
+                                stack.push((ux, uy));
+                            }
+                            // Track border groups
+                            if let Some(color) = self.board[uy][ux] {
+                                if !visited_group[uy][ux] {
+                                    // Flood fill this group
+                                    let mut group = HashSet::new();
+                                    let mut gstack = vec![(ux, uy)];
+                                    while let Some((gx, gy)) = gstack.pop() {
+                                        if group.contains(&(gx, gy)) {
+                                            continue;
+                                        }
+                                        if self.board[gy][gx] != Some(color) {
+                                            continue;
+                                        }
+                                        group.insert((gx, gy));
+                                        visited_group[gy][gx] = true;
+                                        for (gdx, gdy) in &[(0i32, 1i32), (0, -1), (1, 0), (-1, 0)]
+                                        {
+                                            let gnx = gx as i32 + gdx;
+                                            let gny = gy as i32 + gdy;
+                                            if gnx >= 0
+                                                && gnx < size as i32
+                                                && gny >= 0
+                                                && gny < size as i32
+                                            {
+                                                let (gnux, gnuy) = (gnx as usize, gny as usize);
+                                                if !group.contains(&(gnux, gnuy)) {
+                                                    gstack.push((gnux, gnuy));
+                                                }
+                                            }
+                                        }
+                                    }
+                                    border_groups.push(group);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if region.is_empty() {
+                    continue;
+                }
+
+                // Seki condition: 2+ groups share this empty region AND
+                // all groups have ALL their liberties in this region (no outside liberties)
+                if border_groups.len() < 2 {
+                    continue;
+                }
+
+                let region_set: HashSet<(usize, usize)> = region.iter().copied().collect();
+                let mut all_groups_trapped = true;
+
+                for group in &border_groups {
+                    let mut group_has_outside_liberty = false;
+                    for &(gx, gy) in group {
+                        for (dx, dy) in &[(0i32, 1i32), (0, -1), (1, 0), (-1, 0)] {
+                            let nx = gx as i32 + dx;
+                            let ny = gy as i32 + dy;
+                            if nx >= 0 && nx < size as i32 && ny >= 0 && ny < size as i32 {
+                                let (ux, uy) = (nx as usize, ny as usize);
+                                if self.board[uy][ux].is_none() && !region_set.contains(&(ux, uy)) {
+                                    group_has_outside_liberty = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if group_has_outside_liberty {
+                            break;
+                        }
+                    }
+                    if group_has_outside_liberty {
+                        all_groups_trapped = false;
+                        break;
+                    }
+                }
+
+                if all_groups_trapped {
+                    for (rx, ry) in &region {
+                        seki_points.push((*rx as u8, *ry as u8));
+                    }
+                }
+            }
+        }
+
+        seki_points
+    }
+
+    pub fn estimate_dead_stones(&self) -> Vec<(u8, u8, StoneColor)> {
+        let size = self.board_size;
+        let mut dead = Vec::new();
+        let mut visited = vec![vec![false; size as usize]; size as usize];
+
+        for y in 0..size {
+            for x in 0..size {
+                if visited[y as usize][x as usize] {
+                    continue;
+                }
+                if let Some(color) = self.board[y as usize][x as usize] {
+                    let group = self.get_group(x, y);
+                    for &(gx, gy) in &group {
+                        visited[gy as usize][gx as usize] = true;
+                    }
+
+                    let liberties = self.count_liberties(&group);
+                    if liberties <= 2 {
+                        // Check if liberties are surrounded by opponent
+                        let mut lib_positions = HashSet::new();
+                        for &(gx, gy) in &group {
+                            for (nx, ny) in self.neighbors_iter(gx, gy) {
+                                if self.board[ny as usize][nx as usize].is_none() {
+                                    lib_positions.insert((nx, ny));
+                                }
+                            }
+                        }
+
+                        let mut dominated = true;
+                        for &(lx, ly) in &lib_positions {
+                            let mut surrounded_by_opponent = true;
+                            for (nx, ny) in self.neighbors_iter(lx, ly) {
+                                if let Some(stone) = self.board[ny as usize][nx as usize] {
+                                    if stone != color.opposite() {
+                                        surrounded_by_opponent = false;
+                                        break;
+                                    }
+                                } else {
+                                    surrounded_by_opponent = false;
+                                    break;
+                                }
+                            }
+                            if !surrounded_by_opponent {
+                                dominated = false;
+                                break;
+                            }
+                        }
+
+                        if dominated {
+                            for &(gx, gy) in &group {
+                                dead.push((gx, gy, color));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        dead
     }
 
     pub fn clone_game(&self) -> Self {
@@ -585,6 +876,9 @@ impl GoGame {
             passes_in_a_row: self.passes_in_a_row,
             move_history: self.move_history.clone(),
             history: self.history.clone(),
+            zobrist: self.zobrist.clone(),
+            current_hash: self.current_hash,
+            komi: self.komi,
         }
     }
 
@@ -601,6 +895,9 @@ impl GoGame {
             passes_in_a_row: self.passes_in_a_row,
             move_history: Vec::new(),
             history: Vec::new(),
+            zobrist: self.zobrist.clone(),
+            current_hash: self.current_hash,
+            komi: self.komi,
         }
     }
 
@@ -628,6 +925,24 @@ impl GoGame {
             return false;
         }
 
+        // Incremental hash update
+        match color {
+            StoneColor::Black => self.current_hash ^= self.zobrist.black[y as usize][x as usize],
+            StoneColor::White => self.current_hash ^= self.zobrist.white[y as usize][x as usize],
+        }
+        for &(cx, cy) in &captured {
+            let cap_color = color.opposite();
+            match cap_color {
+                StoneColor::Black => {
+                    self.current_hash ^= self.zobrist.black[cy as usize][cx as usize]
+                }
+                StoneColor::White => {
+                    self.current_hash ^= self.zobrist.white[cy as usize][cx as usize]
+                }
+            }
+        }
+        self.current_hash ^= self.zobrist.player;
+
         match color {
             StoneColor::Black => self.black_captures += captured.len() as u32,
             StoneColor::White => self.white_captures += captured.len() as u32,
@@ -647,6 +962,7 @@ impl GoGame {
         self.passes_in_a_row += 1;
         self.move_number += 1;
         self.current_player = self.current_player.opposite();
+        self.current_hash ^= self.zobrist.player;
     }
 
     pub fn is_game_over_fast(&self) -> bool {
@@ -659,6 +975,7 @@ impl GoGame {
             return 0;
         }
 
+        // Use a test board
         let mut test_board = self.board.clone();
         test_board[y as usize][x as usize] = Some(color);
 
@@ -666,7 +983,7 @@ impl GoGame {
         let opponent = color.opposite();
         let mut checked_groups: HashSet<(u8, u8)> = HashSet::new();
 
-        for (nx, ny) in self.neighbors(x, y) {
+        for (nx, ny) in self.neighbors_iter(x, y) {
             if test_board[ny as usize][nx as usize] == Some(opponent)
                 && !checked_groups.contains(&(nx, ny))
             {
@@ -681,26 +998,27 @@ impl GoGame {
                     }
                     group.insert((cx, cy));
                     checked_groups.insert((cx, cy));
-                    for (nnx, nny) in self.neighbors(cx, cy) {
+                    for (nnx, nny) in self.neighbors_iter(cx, cy) {
                         if !group.contains(&(nnx, nny)) {
                             stack.push((nnx, nny));
                         }
                     }
                 }
 
-                let mut liberties = 0u8;
-                let mut liberty_set = HashSet::new();
+                let mut has_liberty = false;
                 for &(gx, gy) in &group {
-                    for (lnx, lny) in self.neighbors(gx, gy) {
-                        if test_board[lny as usize][lnx as usize].is_none()
-                            && liberty_set.insert((lnx, lny))
-                        {
-                            liberties += 1;
+                    for (lnx, lny) in self.neighbors_iter(gx, gy) {
+                        if test_board[lny as usize][lnx as usize].is_none() {
+                            has_liberty = true;
+                            break;
                         }
+                    }
+                    if has_liberty {
+                        break;
                     }
                 }
 
-                if liberties == 0 {
+                if !has_liberty {
                     total_captured += group.len();
                     for &(gx, gy) in &group {
                         test_board[gy as usize][gx as usize] = None;
@@ -718,13 +1036,14 @@ impl GoGame {
             return false;
         }
 
+        // Use a test board
         let mut test_board = self.board.clone();
         test_board[y as usize][x as usize] = Some(color);
 
         let opponent = color.opposite();
         let mut checked: HashSet<(u8, u8)> = HashSet::new();
 
-        for (nx, ny) in self.neighbors(x, y) {
+        for (nx, ny) in self.neighbors_iter(x, y) {
             if test_board[ny as usize][nx as usize] == Some(opponent)
                 && !checked.contains(&(nx, ny))
             {
@@ -739,7 +1058,7 @@ impl GoGame {
                     }
                     group.insert((cx, cy));
                     checked.insert((cx, cy));
-                    for (nnx, nny) in self.neighbors(cx, cy) {
+                    for (nnx, nny) in self.neighbors_iter(cx, cy) {
                         if !group.contains(&(nnx, nny)) {
                             stack.push((nnx, nny));
                         }
@@ -749,7 +1068,7 @@ impl GoGame {
                 let mut liberties = 0u8;
                 let mut liberty_set = HashSet::new();
                 for &(gx, gy) in &group {
-                    for (lnx, lny) in self.neighbors(gx, gy) {
+                    for (lnx, lny) in self.neighbors_iter(gx, gy) {
                         if test_board[lny as usize][lnx as usize].is_none()
                             && liberty_set.insert((lnx, lny))
                         {
@@ -779,22 +1098,25 @@ impl GoGame {
             return false;
         }
 
+        // Use a test board since we need to simulate captures
         let mut test_board = self.board.clone();
         test_board[y as usize][x as usize] = Some(color);
 
-        for (nx, ny) in self.neighbors(x, y) {
-            if test_board[ny as usize][nx as usize] == Some(color.opposite()) {
+        // Check if any opponent groups adjacent would be captured
+        let opponent = color.opposite();
+        for (nx, ny) in self.neighbors_iter(x, y) {
+            if test_board[ny as usize][nx as usize] == Some(opponent) {
                 let mut group = HashSet::new();
                 let mut stack = vec![(nx, ny)];
                 while let Some((cx, cy)) = stack.pop() {
                     if group.contains(&(cx, cy)) {
                         continue;
                     }
-                    if test_board[cy as usize][cx as usize] != Some(color.opposite()) {
+                    if test_board[cy as usize][cx as usize] != Some(opponent) {
                         continue;
                     }
                     group.insert((cx, cy));
-                    for (nnx, nny) in self.neighbors(cx, cy) {
+                    for (nnx, nny) in self.neighbors_iter(cx, cy) {
                         if !group.contains(&(nnx, nny)) {
                             stack.push((nnx, nny));
                         }
@@ -802,9 +1124,8 @@ impl GoGame {
                 }
 
                 let has_liberty = group.iter().any(|&(gx, gy)| {
-                    self.neighbors(gx, gy)
-                        .iter()
-                        .any(|&(lnx, lny)| test_board[lny as usize][lnx as usize].is_none())
+                    self.neighbors_iter(gx, gy)
+                        .any(|(lnx, lny)| test_board[lny as usize][lnx as usize].is_none())
                 });
 
                 if !has_liberty {
@@ -815,6 +1136,7 @@ impl GoGame {
             }
         }
 
+        // Count own group liberties
         let mut own_group = HashSet::new();
         let mut stack = vec![(x, y)];
         while let Some((cx, cy)) = stack.pop() {
@@ -825,7 +1147,7 @@ impl GoGame {
                 continue;
             }
             own_group.insert((cx, cy));
-            for (nx, ny) in self.neighbors(cx, cy) {
+            for (nx, ny) in self.neighbors_iter(cx, cy) {
                 if !own_group.contains(&(nx, ny)) {
                     stack.push((nx, ny));
                 }
@@ -835,7 +1157,7 @@ impl GoGame {
         let mut liberties = 0u8;
         let mut liberty_set = HashSet::new();
         for &(gx, gy) in &own_group {
-            for (lnx, lny) in self.neighbors(gx, gy) {
+            for (lnx, lny) in self.neighbors_iter(gx, gy) {
                 if test_board[lny as usize][lnx as usize].is_none()
                     && liberty_set.insert((lnx, lny))
                 {
@@ -868,7 +1190,7 @@ impl GoGame {
         }
 
         let mut groups: HashSet<(u8, u8)> = HashSet::new();
-        for (nx, ny) in self.neighbors(x, y) {
+        for (nx, ny) in self.neighbors_iter(x, y) {
             if self.board[ny as usize][nx as usize] == Some(color) && !groups.contains(&(nx, ny)) {
                 let group = self.get_group(nx, ny);
                 for &pt in &group {

@@ -1,6 +1,5 @@
 pub mod ai;
 pub mod commands;
-pub mod db;
 pub mod engine;
 
 use commands::exercise_commands::*;

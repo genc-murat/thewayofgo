@@ -13,6 +13,7 @@ import type {
   AIStyle,
 } from '../types';
 import { recordExerciseAttempt } from '../utils/progressDb';
+import { createBoardFromStones } from '../utils/boardUtils';
 
 interface AppState {
   // Navigation
@@ -26,6 +27,7 @@ interface AppState {
   isAiGame: boolean;
   aiDifficulty: number;
   aiStyle: AIStyle;
+  komi: number;
 
   // Lesson state
   currentLesson: Lesson | null;
@@ -56,14 +58,14 @@ interface AppState {
   setLevel: (level: number, module: number) => void;
 
   // Game actions
-  createGame: (size: number) => Promise<void>;
+  createGame: (size: number, komi?: number) => Promise<void>;
   placeStone: (x: number, y: number) => Promise<MoveResult | null>;
   pass: () => Promise<MoveResult | null>;
   resign: (player: string) => Promise<void>;
   aiMove: () => Promise<MoveResult | null>;
   setAiDifficulty: (level: number) => Promise<void>;
   setAiStyle: (style: AIStyle) => Promise<void>;
-  startAiGame: (size: number, difficulty: number, style?: AIStyle) => Promise<void>;
+  startAiGame: (size: number, difficulty: number, style?: AIStyle, komi?: number) => Promise<void>;
   undoMove: () => Promise<void>;
   getMoveHistory: () => Promise<MoveRecord[]>;
 
@@ -96,6 +98,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   isAiGame: false,
   aiDifficulty: 2,
   aiStyle: 'balanced',
+  komi: 6.5,
 
   // Lesson state
   currentLesson: null,
@@ -127,11 +130,11 @@ export const useAppStore = create<AppState>((set, get) => ({
   setLevel: (level, module) => set({ currentLevel: level, currentModule: module }),
 
   // Game actions
-  createGame: async (size) => {
+  createGame: async (size, komi) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await invoke<GameStateResponse>('create_game', { size });
-      set({ game: response.state, gameResult: null, isLoading: false });
+      const response = await invoke<GameStateResponse>('create_game', { size, komi });
+      set({ game: response.state, gameResult: null, isLoading: false, komi: komi ?? 6.5 });
     } catch (e) {
       set({ error: String(e), isLoading: false });
     }
@@ -200,18 +203,20 @@ export const useAppStore = create<AppState>((set, get) => ({
     }
   },
 
-  startAiGame: async (size, difficulty, style) => {
+  startAiGame: async (size, difficulty, style, komi) => {
     const aiStyle = style || useAppStore.getState().aiStyle;
+    const gameKomi = komi ?? useAppStore.getState().komi;
     set({ isLoading: true, error: null, isAiGame: true });
     try {
       await invoke('set_ai_difficulty', { level: difficulty });
       await invoke('set_ai_style', { style: aiStyle });
-      const response = await invoke<GameStateResponse>('create_game', { size });
+      const response = await invoke<GameStateResponse>('create_game', { size, komi: gameKomi });
       set({
         game: response.state,
         gameResult: null,
         aiDifficulty: difficulty,
         aiStyle: aiStyle,
+        komi: gameKomi,
         isLoading: false,
         currentView: 'play',
       });
@@ -441,17 +446,4 @@ export const useAppStore = create<AppState>((set, get) => ({
   setError: (error) => set({ error }),
 }));
 
-function createBoardFromStones(
-  stones: { x: number; y: number; color: string }[],
-  size: number
-): (StoneColor | null)[][] {
-  const board: (StoneColor | null)[][] = Array(size)
-    .fill(null)
-    .map(() => Array(size).fill(null));
-  for (const stone of stones) {
-    if (stone.x >= 0 && stone.x < size && stone.y >= 0 && stone.y < size) {
-      board[stone.y][stone.x] = stone.color as StoneColor;
-    }
-  }
-  return board;
-}
+

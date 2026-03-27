@@ -1,5 +1,41 @@
 use serde::{Deserialize, Serialize};
 
+use rand::RngExt;
+
+const MAX_BOARD: usize = 19;
+
+#[derive(Debug, Clone)]
+pub struct ZobristTable {
+    pub black: [[u64; MAX_BOARD]; MAX_BOARD],
+    pub white: [[u64; MAX_BOARD]; MAX_BOARD],
+    pub player: u64,
+}
+
+impl ZobristTable {
+    pub fn new() -> Self {
+        let mut rng = rand::rng();
+        let mut black = [[0u64; MAX_BOARD]; MAX_BOARD];
+        let mut white = [[0u64; MAX_BOARD]; MAX_BOARD];
+        for y in 0..MAX_BOARD {
+            for x in 0..MAX_BOARD {
+                black[y][x] = rng.random();
+                white[y][x] = rng.random();
+            }
+        }
+        ZobristTable {
+            black,
+            white,
+            player: rng.random(),
+        }
+    }
+}
+
+impl Default for ZobristTable {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, Hash)]
 #[serde(rename_all = "snake_case")]
 pub enum StoneColor {
@@ -86,6 +122,7 @@ pub struct GameState {
     pub last_move: Option<Point>,
     pub game_over: bool,
     pub passes_in_a_row: u8,
+    pub komi: f32,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -126,34 +163,29 @@ pub struct AIDifficulty {
 }
 
 impl AIDifficulty {
-    pub fn new(level: u8) -> Self {
-        let simulations = match level {
+    fn simulations_for_level(level: u8) -> u32 {
+        match level {
             1 => 0,
             2 => 100,
             3 => 500,
             4 => 2000,
             5 => 5000,
             _ => 200,
-        };
+        }
+    }
+
+    pub fn new(level: u8) -> Self {
         AIDifficulty {
             level,
-            simulations,
+            simulations: Self::simulations_for_level(level),
             style: AIStyle::default(),
         }
     }
 
     pub fn new_with_style(level: u8, style: AIStyle) -> Self {
-        let simulations = match level {
-            1 => 0,
-            2 => 100,
-            3 => 500,
-            4 => 2000,
-            5 => 5000,
-            _ => 200,
-        };
         AIDifficulty {
             level,
-            simulations,
+            simulations: Self::simulations_for_level(level),
             style,
         }
     }

@@ -12,7 +12,7 @@ interface StatsData {
 }
 
 export function ProgressPage() {
-  const { setView } = useAppStore();
+  const { setView, currentLevel } = useAppStore();
   const [stats, setStats] = useState<StatsData>({
     total_lessons_completed: 0,
     total_exercises_completed: 0,
@@ -29,7 +29,7 @@ export function ProgressPage() {
     getWeakAreas().then(setWeakAreas).catch(() => {});
     getStreak().then(setStreak).catch(() => {});
     getDailyProgress().then(setDaily).catch(() => {});
-    canAdvanceLevel(1).then(setCanAdvance).catch(() => {});
+    canAdvanceLevel(currentLevel).then(setCanAdvance).catch(() => {});
   }, []);
 
   const statItems = [
