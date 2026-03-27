@@ -3,19 +3,25 @@ import { getCurrentWindow } from '@tauri-apps/api/window';
 
 export function TitleBar() {
   const [isMaximized, setIsMaximized] = useState(false);
-  const appWindow = getCurrentWindow();
+  let appWindow: ReturnType<typeof getCurrentWindow> | null = null;
+  try {
+    appWindow = getCurrentWindow();
+  } catch {
+    return null;
+  }
 
   useEffect(() => {
-    appWindow.isMaximized().then(setIsMaximized);
+    appWindow?.isMaximized().then(setIsMaximized);
   }, []);
 
-  const handleMinimize = () => appWindow.minimize();
+  const handleMinimize = () => appWindow?.minimize();
   const handleMaximize = async () => {
+    if (!appWindow) return;
     await appWindow.toggleMaximize();
     const maximized = await appWindow.isMaximized();
     setIsMaximized(maximized);
   };
-  const handleClose = () => appWindow.close();
+  const handleClose = () => appWindow?.close();
 
   return (
     <div data-tauri-drag-region className="titlebar">

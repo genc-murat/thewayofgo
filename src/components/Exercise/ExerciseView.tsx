@@ -293,7 +293,7 @@ export function ExerciseView() {
             </div>
             <h4 className="font-bold mb-1 group-hover:text-accent transition-colors">{ex.title}</h4>
             <div className="flex items-center gap-1 text-xs text-accent">
-              {'★'.repeat(ex.difficulty)}{'☆'.repeat(5 - ex.difficulty)}
+              {'★'.repeat(Math.max(0, Math.min(5, ex.difficulty || 0)))}{'☆'.repeat(Math.max(0, 5 - Math.max(0, Math.min(5, ex.difficulty || 0))))}
             </div>
           </button>
         ))}
@@ -335,7 +335,7 @@ function ExercisePlayer() {
           <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-md border ${TYPE_COLORS[currentExercise.title] || ''}`}>
             {currentExercise.type}
           </span>
-          <span className="text-xs">Zorluk: {'★'.repeat(currentExercise.difficulty)}{'☆'.repeat(5 - currentExercise.difficulty)}</span>
+          <span className="text-xs">Zorluk: {'★'.repeat(Math.max(0, Math.min(5, currentExercise.difficulty || 0)))}{'☆'.repeat(Math.max(0, 5 - Math.max(0, Math.min(5, currentExercise.difficulty || 0))))}</span>
         </div>
         <h2 className="text-2xl font-bold">{currentExercise.title}</h2>
         <p className="text-text-secondary mt-1">{currentExercise.description}</p>

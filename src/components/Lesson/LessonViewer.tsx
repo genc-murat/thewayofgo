@@ -95,7 +95,7 @@ export function LessonViewer() {
         <div className="mb-6">
           <div className="flex items-center gap-2 text-sm text-text-secondary mb-2">
             <span className="bg-accent/15 text-accent px-2.5 py-1 rounded-lg font-medium text-xs">Alıştırma</span>
-            <span className="text-xs">Zorluk: {'★'.repeat(exercise.difficulty)}{'☆'.repeat(5 - exercise.difficulty)}</span>
+            <span className="text-xs">Zorluk: {'★'.repeat(Math.max(0, Math.min(5, exercise.difficulty || 0)))}{'☆'.repeat(Math.max(0, 5 - Math.max(0, Math.min(5, exercise.difficulty || 0))))}</span>
           </div>
           <h2 className="text-2xl font-bold">{exercise.title}</h2>
           <p className="text-text-secondary mt-1">{exercise.description}</p>
