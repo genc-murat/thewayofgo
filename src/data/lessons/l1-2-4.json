@@ -1,0 +1,93 @@
+{
+  "id": "l1-2-4",
+  "level": 1,
+  "module": 2,
+  "lesson": 4,
+  "title": "Gerçek Göz ve Sahte Göz",
+  "description": "Gerçek göz ile sahte göz arasındaki farkı öğrenin.",
+  "duration_minutes": 8,
+  "content": [
+    {
+      "type": "text",
+      "content": "Her boş nokta bir göz değildir! Bir noktanın gerçek göz olabilmesi için dört komşusunun da kendi renginizde olması gerekir. Ayrıca köşegen komşuların en az üçünün kendi renginizde olması şarttır - aksi halde bu bir 'sahte göz' olur."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 4, "y": 2, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 3, "y": 3, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 3, "y": 3, "type": "liberty"}
+      ],
+      "annotation": "Gerçek göz: (3,3) tüm komşuları ve 3/4 köşegeni siyah - bu gerçek bir göz"
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 4, "y": 2, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 2, "y": 5, "color": "black"},
+        {"x": 3, "y": 5, "color": "black"},
+        {"x": 4, "y": 5, "color": "black"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 3, "y": 4, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 3, "y": 3, "type": "bad"}
+      ],
+      "annotation": "Sahte göz: (3,3) karsı iki köşegeni beyaz - bu göz sayılmaz!"
+    },
+    {
+      "type": "text",
+      "content": "Sahte göz kuralı: Bir boş noktanın gerçek göz sayılabilmesi için, boşluğun dört köşegen komşusundan en az üçü kendi taşınız olmalıdır. İki veya daha az köşegen sizin taşınızsa, bu bir sahte göz olur ve grup savunmasızdır."
+    },
+    {
+      "type": "text",
+      "content": "Önemli: Bir grubun iki 'görünen gözü' varsa ama ikisi de sahte gözse, grup ölüdür. Grubun yaşaması için en az iki GERÇEK göze ihtiyacı vardır. Sahte gözler sayılmaz!"
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 1, "y": 1, "color": "black"},
+        {"x": 2, "y": 1, "color": "black"},
+        {"x": 3, "y": 1, "color": "black"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 0, "y": 0, "color": "white"},
+        {"x": 4, "y": 0, "color": "white"},
+        {"x": 4, "y": 2, "color": "white"},
+        {"x": 0, "y": 4, "color": "white"},
+        {"x": 4, "y": 4, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 2, "type": "bad"}
+      ],
+      "annotation": "Kenardaki grup: (2,2) iki köşegeni beyaz - sahte göz! Grup güvende değil."
+    },
+    {
+      "type": "text",
+      "content": "Özet: Gerçek göz = tüm 4 komşu kendi rengi + en az 3/4 köşegen kendi rengi. Sahte göz sayılmaz. Grubunuzda en az iki gerçek göz olmalı!"
+    }
+  ],
+  "prerequisites": ["l1-2-3"],
+  "next_lesson": "l1-3-1",
+  "required_exercise": "e1-2-4"
+}

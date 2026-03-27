@@ -1,0 +1,105 @@
+{
+  "id": "l2-1-1",
+  "level": 2,
+  "module": 1,
+  "lesson": 1,
+  "title": "Merdiven (Shicho)",
+  "description": "Merdiven tekniği ile rakip taşı köşeye veya kenara doğru kovalayarak yakalamayı öğrenin.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Merdiven (shicho), rakip taşı köşeye veya tahta kenarına doğru köşe köşe kovalayarak yakalama tekniğidir. Atari durumundaki bir taş kaçtıkça, siyah her adımda bir özgürlüğünü kapatır."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 4, "y": 4, "color": "white"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 5, "y": 5, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 5, "y": 4, "type": "good"}
+      ],
+      "annotation": "Beyaz taşın tek özgürlüğü (5,4). Siyah burayı oynayarak merdiveni başlatır."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"}
+          ],
+          "captured": [],
+          "text": "Beyaz taşın 2 özgürlüğü var: (5,4) ve (4,5)."
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"}
+          ],
+          "captured": [],
+          "text": "Siyah (5,4) oynadı. Beyaz taşın tek özgürlüğü (4,5) kaldı. Atari!"
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"}
+          ],
+          "captured": [],
+          "text": "Beyaz (4,5) oynayarak kaçtı. Grubun özgürlükleri: (3,5) ve (5,5)."
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 5, "y": 5, "color": "black"}
+          ],
+          "captured": [],
+          "text": "Siyah (5,5) oynadı. Tekrar atari! Beyaz (3,5) kaçacak."
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"}
+          ],
+          "captured": [
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"}
+          ],
+          "text": "Merdiven devam eder... Taşa kadar kovalar ve sonunda yakalar!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Merdiven, köşeye veya kenara ulaştığında beyaz taş yakalanır. Zig-zag deseni takip eder: her kaçıtta siyah bir kenarı kapatır, beyaz diğer kenara kaçar."
+    },
+    {
+      "type": "text",
+      "content": "Merdiven tekniği en çok 9x9 tahtada etkili olur çünkü taşlar çabuk kenara ulaşıp sıkışır. 19x19 tahtada merdiven kırıcı taşlar daha sık karşılaşılır."
+    }
+  ],
+  "prerequisites": ["l1-3-3"],
+  "next_lesson": "l2-1-2",
+  "required_exercise": "e2-1-1"
+}

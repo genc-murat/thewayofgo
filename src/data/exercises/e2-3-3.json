@@ -1,0 +1,39 @@
+{
+  "id": "e2-3-3",
+  "level": 2,
+  "module": 3,
+  "lesson": 3,
+  "type": "life_and_death",
+  "title": "Beyaz Grubu Öldürün",
+  "description": "Beyaz grubun yaşamasını engelleyecek hamleyi bulun.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "white"},
+    {"x": 4, "y": 2, "color": "white"},
+    {"x": 2, "y": 3, "color": "white"},
+    {"x": 4, "y": 3, "color": "white"},
+    {"x": 2, "y": 4, "color": "white"},
+    {"x": 4, "y": 4, "color": "white"},
+    {"x": 1, "y": 2, "color": "black"},
+    {"x": 5, "y": 2, "color": "black"},
+    {"x": 1, "y": 3, "color": "black"},
+    {"x": 5, "y": 3, "color": "black"},
+    {"x": 1, "y": 4, "color": "black"},
+    {"x": 5, "y": 4, "color": "black"},
+    {"x": 2, "y": 1, "color": "black"},
+    {"x": 3, "y": 1, "color": "black"},
+    {"x": 4, "y": 1, "color": "black"},
+    {"x": 2, "y": 5, "color": "black"},
+    {"x": 3, "y": 5, "color": "black"},
+    {"x": 4, "y": 5, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 3, "y": 3, "is_correct": true, "explanation": "Doğru! Hayati noktayı işgal ettiniz! Beyaz artık iki göz yapamaz ve grup ölü!"}
+  ],
+  "hints": [
+    "Beyaz grubun göz oluşturabileceği noktayı bulun.",
+    "Hayati nokta genellikle grubun tam ortasıdır."
+  ],
+  "difficulty": 3,
+  "stars_required": 1
+}

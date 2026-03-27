@@ -1,0 +1,25 @@
+{
+  "id": "e1-1-2",
+  "level": 1,
+  "module": 1,
+  "lesson": 2,
+  "type": "place_correct",
+  "title": "Özgürlük Sayısı",
+  "description": "Merkezdeki siyah taşın kaç özgürlüğü var? Doğru sayıyı seçin.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 4, "y": 4, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 3, "y": 4, "is_correct": true, "explanation": "Doğru! Bu nokta siyah taşın bir özgürlüğüdür. Toplam 4 özgürlük var."},
+    {"x": 5, "y": 4, "is_correct": true, "explanation": "Doğru! Bu da bir özgürlük."},
+    {"x": 4, "y": 3, "is_correct": true, "explanation": "Doğru! Üst komşu boş, bir özgürlük daha."},
+    {"x": 4, "y": 5, "is_correct": true, "explanation": "Doğru! Alt komşu da boş. 4 özgürlük tamam."}
+  ],
+  "hints": [
+    "Bir taşın 4 komşu noktası vardır.",
+    "Komşu noktalar boşsa o taşın özgürlüğüdür."
+  ],
+  "difficulty": 1,
+  "stars_required": 1
+}

@@ -1,0 +1,103 @@
+{
+  "id": "l2-4-1",
+  "level": 2,
+  "module": 4,
+  "lesson": 1,
+  "title": "Yose: Bitiriş Hamleleri",
+  "description": "Yose (bitiriş) hamleleri ve sente/gote kavramlarını öğrenin.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Yose, oyunun bitiriş aşamasında oynanan hamlelerdir. Büyük yose hamleleri puan farkı yaratır. Oyunun son aşamasında doğru yose hamlelerini oynamak, bir oyunu kazanmanın anahtarıdır."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 8, "y": 0, "color": "white"},
+        {"x": 8, "y": 1, "color": "white"},
+        {"x": 8, "y": 2, "color": "white"},
+        {"x": 7, "y": 0, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 3, "y": 0, "type": "good"},
+        {"x": 6, "y": 0, "type": "good"}
+      ],
+      "annotation": "Büyük yose hamleleri: (3,0) ve (6,0). Her iki hamle de önemli sınır çizgileri."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 8, "y": 0, "color": "white"},
+            {"x": 8, "y": 1, "color": "white"},
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 7, "y": 0, "color": "white"}
+          ],
+          "captured": [],
+          "text": "Oyun bitiş aşamasında. Sınır çizgileri henüz tamamlanmadı."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 3, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 8, "y": 0, "color": "white"},
+            {"x": 8, "y": 1, "color": "white"},
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 7, "y": 0, "color": "white"}
+          ],
+          "captured": [],
+          "text": "Siyah (3,0) oynadı - üst sınır genişledi. Bu bir sente yose hamlesi."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 3, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 6, "y": 0, "color": "white"},
+            {"x": 8, "y": 0, "color": "white"},
+            {"x": 8, "y": 1, "color": "white"},
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 7, "y": 0, "color": "white"}
+          ],
+          "captured": [],
+          "text": "Beyaz (6,0) oynadı. Her iki taraf da sınırını genişletti."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Sente (öncelikli hamle): Hamlenizi oynadıktan sonra rakip cevap vermek zorunda kalır. Sente hamleleri her zaman gote hamlelerinden önce oynanmalıdır."
+    },
+    {
+      "type": "text",
+      "content": "Gote (sonra oynanan hamle): Hamlenizi oynadıktan sonra rakip başka bir yere oynayabilir. Gote hamleleri değerlidir ama sente kadar acil değildir."
+    },
+    {
+      "type": "text",
+      "content": "Yose sırası: 1) Büyük sente hamleleri, 2) Büyük gote hamleleri, 3) Küçük sente hamleleri, 4) Küçük gote hamleleri."
+    }
+  ],
+  "prerequisites": ["l2-3-4"],
+  "next_lesson": "l2-4-2",
+  "required_exercise": "e2-4-1"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "e1-1-3",
+  "level": 1,
+  "module": 1,
+  "lesson": 3,
+  "type": "capture_stones",
+  "title": "Taşı Yakala",
+  "description": "Köşedeki beyaz taşı yakalamak için son hamleyi yapın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 0, "y": 1, "color": "white"},
+    {"x": 1, "y": 0, "color": "black"},
+    {"x": 1, "y": 1, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 0, "y": 0, "is_correct": true, "explanation": "Mükemmel! 0,0 noktasına taş koyarak beyazın son özgürlüğünü kapattınız ve taşı yakaladınız."}
+  ],
+  "hints": [
+    "Beyaz taşın kaç özgürlüğü var?",
+    "Hangi nokta boş kaldı?"
+  ],
+  "difficulty": 1,
+  "stars_required": 1
+}

@@ -1,0 +1,50 @@
+{
+  "id": "l1-2-1",
+  "level": 1,
+  "module": 2,
+  "lesson": 1,
+  "title": "Taş Grupları",
+  "description": "Birden fazla taşın nasıl grup oluşturduğunu öğrenin.",
+  "duration_minutes": 6,
+  "content": [
+    {
+      "type": "text",
+      "content": "Yanyana veya üst üste duran aynı renk taşlar bir grup oluşturur. Grup, taşların birbirine bağlı olmasıyla oluşur."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"}
+      ],
+      "annotation": "Bu 3 taş bir grup oluşturur çünkü birbirine bağlı."
+    },
+    {
+      "type": "text",
+      "content": "Bir grubun özgürlükleri, gruptaki tüm taşların ortak boş komşu noktalarıdır. Grup büyüdükçe özgürlük sayısı da artabilir."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 3, "type": "liberty"},
+        {"x": 5, "y": 3, "type": "liberty"},
+        {"x": 3, "y": 2, "type": "liberty"},
+        {"x": 4, "y": 4, "type": "liberty"},
+        {"x": 2, "y": 4, "type": "liberty"},
+        {"x": 3, "y": 5, "type": "liberty"}
+      ],
+      "annotation": "Bu grubun 6 özgürlüğü var (yeşil noktalar)"
+    }
+  ],
+  "prerequisites": ["l1-1-3"],
+  "next_lesson": "l1-2-2",
+  "required_exercise": "e1-2-1"
+}

@@ -1,0 +1,107 @@
+{
+  "id": "l2-4-4",
+  "level": 2,
+  "module": 4,
+  "lesson": 4,
+  "title": "Oyun Sonu Skorlama",
+  "description": "Go'da skorlama yöntemlerini ve oyunun nasıl bittiğini öğrenin.",
+  "duration_minutes": 11,
+  "content": [
+    {
+      "type": "text",
+      "content": "Oyun sonunda skorlama yapılır. Go'da iki temel skorlama yöntemi vardır: Çin kuralları (alan sayımı) ve Japon kuralları (taş sayımı). Her ikisi de normalde aynı sonucu verir."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 6, "y": 0, "color": "white"},
+        {"x": 7, "y": 0, "color": "white"},
+        {"x": 8, "y": 0, "color": "white"},
+        {"x": 8, "y": 1, "color": "white"},
+        {"x": 8, "y": 2, "color": "white"},
+        {"x": 0, "y": 8, "color": "black"},
+        {"x": 1, "y": 8, "color": "black"},
+        {"x": 2, "y": 8, "color": "black"},
+        {"x": 6, "y": 8, "color": "white"},
+        {"x": 7, "y": 8, "color": "white"},
+        {"x": 8, "y": 8, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 1, "type": "territory"},
+        {"x": 2, "y": 1, "type": "territory"},
+        {"x": 7, "y": 1, "type": "territory"}
+      ],
+      "annotation": "Oyun sonu: Mavi = bölge. Tahtadaki boşluklar kimin alanına ait?"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 6, "y": 0, "color": "white"},
+            {"x": 7, "y": 0, "color": "white"},
+            {"x": 8, "y": 0, "color": "white"},
+            {"x": 8, "y": 1, "color": "white"},
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 0, "y": 8, "color": "black"},
+            {"x": 1, "y": 8, "color": "black"},
+            {"x": 2, "y": 8, "color": "black"},
+            {"x": 6, "y": 8, "color": "white"},
+            {"x": 7, "y": 8, "color": "white"},
+            {"x": 8, "y": 8, "color": "white"}
+          ],
+          "captured": [],
+          "text": "Ölü taşlar belirlenir ve tahtadan kaldırılır."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 6, "y": 0, "color": "white"},
+            {"x": 7, "y": 0, "color": "white"},
+            {"x": 8, "y": 0, "color": "white"},
+            {"x": 8, "y": 1, "color": "white"},
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 0, "y": 8, "color": "black"},
+            {"x": 1, "y": 8, "color": "black"},
+            {"x": 2, "y": 8, "color": "black"},
+            {"x": 6, "y": 8, "color": "white"},
+            {"x": 7, "y": 8, "color": "white"},
+            {"x": 8, "y": 8, "color": "white"}
+          ],
+          "captured": [],
+          "text": "Bölgeler sayılır: Siyah'ın alanı + siyah taş sayısı vs Beyaz'ın alanı + beyaz taş sayısı + komi."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Skorlama: Sahip olduğunuz alan + tahtadaki taşlarınız (Çin kuralları) veya Yakaladığınız taşlar + tahtadaki boş alan (Japon kuralları). Komi (tazminat): Beyaz'a siyah'ın ilk oynama avantajını dengelemek için ekstra puan verilir (9x9 tahtada genellikle 5.5 veya 6.5 puan)."
+    },
+    {
+      "type": "text",
+      "content": "Oyun nasıl biter? İki oyuncu da 'pas' derse oyun biter. Ardından ölü taşlar kaldırılır ve skor hesaplanır. Oyuncular skor konusunda anlaşamazsa 'yine oyna' (resumption) yapılır."
+    },
+    {
+      "type": "text",
+      "content": "Seviye 2 tamamlandı! Tebrikler! Merdiven, ağ, snapback, bağlantı teknikleri, tsumego problemleri ve yose hesaplama konularını öğrendiniz. Artık temel teknikleri biliyorsunuz ve 9x9 tahtada rahatça oynayabilirsiniz!"
+    }
+  ],
+  "prerequisites": ["l2-4-3"],
+  "next_lesson": null,
+  "required_exercise": "e2-4-4"
+}

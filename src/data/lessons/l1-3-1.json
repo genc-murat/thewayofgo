@@ -1,0 +1,47 @@
+{
+  "id": "l1-3-1",
+  "level": 1,
+  "module": 3,
+  "lesson": 1,
+  "title": "Oyunun Akışı",
+  "description": "Bir Go oyununun nasıl başladığını, devam ettiğini ve bittiğini öğrenin.",
+  "duration_minutes": 7,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bir Go oyunu üç aşamadan oluşur: Açılış (fuseki), Orta oyun (chuban) ve Bitiriş (yose). Her aşama farklı stratejiler gerektirir."
+    },
+    {
+      "type": "text",
+      "content": "Açılış: Oyuncular tahtaya taşlarını stratejik noktalara yerleştirir. Genellikle kenar ve köşeler tercih edilir."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [{"x": 2, "y": 6, "color": "black"}],
+          "text": "Siyah açılış hamlesi yapıyor - köşe noktası."
+        },
+        {
+          "stones": [{"x": 2, "y": 6, "color": "black"}, {"x": 6, "y": 2, "color": "white"}],
+          "text": "Beyaz karşılık veriyor - diğer köşe."
+        },
+        {
+          "stones": [{"x": 2, "y": 6, "color": "black"}, {"x": 6, "y": 2, "color": "white"}, {"x": 6, "y": 6, "color": "black"}],
+          "text": "Siyah üçüncü bir köşeye yerleşiyor."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Oyun iki kez üst üste pas yapıldığında biter. Sonra saha sayılarak kazanan belirlenir."
+    },
+    {
+      "type": "text",
+      "content": "Skorlama: Sahada kontrol ettiğiniz alan + yakaladığınız taşlar toplamı. Beyaza 6.5 komi (puan) verilir çünkü siyah ilk hamle avantajına sahiptir."
+    }
+  ],
+  "prerequisites": ["l1-2-2"],
+  "next_lesson": "l1-3-2",
+  "required_exercise": "e1-3-1"
+}

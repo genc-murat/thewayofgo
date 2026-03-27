@@ -1,0 +1,109 @@
+{
+  "id": "l1-1-5",
+  "level": 1,
+  "module": 1,
+  "lesson": 5,
+  "title": "Ko Kuralı",
+  "description": "Ko kuralını ve ko tehditlerini öğrenin.",
+  "duration_minutes": 8,
+  "content": [
+    {
+      "type": "text",
+      "content": "Ko, Go'daki en önemli kurallardan biridir. Ko kuralı der ki: Üst üste aynı tahta durumunu tekrar oluşturmak yasaktır. Bu kural sonsuz döngüyü engeller."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 1, "y": 1, "color": "white"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 1, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 1, "type": "capture"}
+      ],
+      "annotation": "Ko durumu: Beyaz taşın tek özgürlüğü (2,1). Siyah buraya oynayarak yakalayabilir."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 1, "y": 1, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"}
+          ],
+          "text": "Beyaz taşıın tek özgürlüğü (2,1) noktası. Siyah buraya oynayarak yakalayabilir."
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"}
+          ],
+          "captured": [{"x": 1, "y": 1}],
+          "text": "Siyah beyazı yakaladı! Ko oluştu."
+        }
+      ]
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 2, "y": 1, "color": "black"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 1, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 1, "type": "bad"}
+      ],
+      "annotation": "Ko kuralı: Beyaz (1,1) oynayarak geri alamaz - aynı durum tekrar oluşur!"
+    },
+    {
+      "type": "text",
+      "content": "Ko tehdidi: Ko kuralını aşmanın tek yolu, başka yerde bir hamle oynamaktır. Buna 'ko tehdidi' denir. Rakip ko tehdidine yanıt verirse, siz ko'yu alabilirsiniz. Rakip görmezden gelirse, ko tehdidinden kazanırsınız."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 2, "y": 1, "color": "black"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 1, "color": "black"},
+        {"x": 5, "y": 5, "color": "white"},
+        {"x": 6, "y": 6, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 6, "y": 5, "type": "good"}
+      ],
+      "annotation": "Siyah ko tehdidi oynuyor (6,5). Beyaz ko'yu almak yerine tehdidi yanıtlamak zorunda."
+    },
+    {
+      "type": "text",
+      "content": "Ko durumlarında yaklaşık olarak bir taş değerinde bir avantaj söz konusudur. İyi oyuncular ko tehditlerini önceden planlar ve oyunun erken aşamasında ko tehdidi olarak kullanılabilecek hamleler bırakır."
+    }
+  ],
+  "prerequisites": ["l1-1-4"],
+  "next_lesson": "l1-2-1",
+  "required_exercise": "e1-1-5"
+}

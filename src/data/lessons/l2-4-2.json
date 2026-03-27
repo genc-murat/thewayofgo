@@ -1,0 +1,86 @@
+{
+  "id": "l2-4-2",
+  "level": 2,
+  "module": 4,
+  "lesson": 2,
+  "title": "Büyük ve Küçük Yose",
+  "description": "Yose hamlelerinin değerini hesaplamayı ve öncelik sırasını belirlemeyi öğrenin.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Yose hamlelerinin değerini hesaplamak önemlidir. Büyük yose önce oynanmalıdır. Değer, hamlenin skora etkisine göre belirlenir."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 0, "y": 3, "color": "black"},
+        {"x": 0, "y": 4, "color": "black"},
+        {"x": 8, "y": 8, "color": "white"},
+        {"x": 7, "y": 8, "color": "white"},
+        {"x": 8, "y": 7, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 0, "type": "good"},
+        {"x": 6, "y": 8, "type": "good"}
+      ],
+      "annotation": "Büyük yose: Sol üst (2,0) - ~8 puan. Küçük yose: Sağ alt (6,8) - ~2 puan."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 0, "y": 4, "color": "black"},
+            {"x": 8, "y": 8, "color": "white"},
+            {"x": 7, "y": 8, "color": "white"},
+            {"x": 8, "y": 7, "color": "white"}
+          ],
+          "captured": [],
+          "text": "İki yose hamlesi var. Hangisi daha büyük?"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 0, "y": 4, "color": "black"},
+            {"x": 8, "y": 8, "color": "white"},
+            {"x": 7, "y": 8, "color": "white"},
+            {"x": 8, "y": 7, "color": "white"}
+          ],
+          "captured": [],
+          "text": "Siyah (2,0) oynadı. Büyük yose! Sol üst sınır ~8 puanlık alan kazandırdı."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Bir yose hamlesinin değeri, her iki tarafın da oynaması durumunda ortaya çıkan puan farkıdır. Siyah oynarsa +X puan, beyaz oynarsa -X puan ise, yose değeri 2X'dir."
+    },
+    {
+      "type": "text",
+      "content": "Değerlendirme kuralı: Büyük yose > küçük yose. Sente yose > gote yose. Aynı büyüklükte ise sente olanı önce oynayın."
+    },
+    {
+      "type": "text",
+      "content": "Yose hesaplama yeteneği gelişir. Başlangıçta hamle değerlerini tam olarak hesaplayamasanız da, hangi hamlenin daha büyük olduğunu hissetmek yeterlidir."
+    }
+  ],
+  "prerequisites": ["l2-4-1"],
+  "next_lesson": "l2-4-3",
+  "required_exercise": "e2-4-2"
+}

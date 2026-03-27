@@ -1,0 +1,25 @@
+{
+  "id": "e1-1-1",
+  "level": 1,
+  "module": 1,
+  "lesson": 1,
+  "type": "place_correct",
+  "title": "İlk Hamle",
+  "description": "Tahtada boş bir noktaya taş koyun. Kesişim noktalarına dikkat edin.",
+  "board_size": 9,
+  "initial_stones": [],
+  "correct_moves": [
+    {"x": 4, "y": 4, "is_correct": true, "explanation": "Merkez noktaya taş koydunuz! Doğru."},
+    {"x": 3, "y": 3, "is_correct": true, "explanation": "Köşeye yakın bir nokta seçtiniz, harika."},
+    {"x": 2, "y": 6, "is_correct": true, "explanation": "Güzel bir açılış hamlesi."},
+    {"x": 6, "y": 2, "is_correct": true, "explanation": "İyi bir nokta seçimi."},
+    {"x": 0, "y": 0, "is_correct": true, "explanation": "Köşe noktası - geçerli bir hamle."},
+    {"x": 8, "y": 8, "is_correct": true, "explanation": "Karşı köşe - geçerli."}
+  ],
+  "hints": [
+    "Tahtada herhangi bir boş kesişim noktasına taş koyabilirsiniz.",
+    "Merkez veya köşe noktalarını deneyin."
+  ],
+  "difficulty": 1,
+  "stars_required": 1
+}

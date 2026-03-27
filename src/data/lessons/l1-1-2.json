@@ -1,0 +1,66 @@
+{
+  "id": "l1-1-2",
+  "level": 1,
+  "module": 1,
+  "lesson": 2,
+  "title": "Özgürlükler",
+  "description": "Bir taşın özgürlükleri nasıl belirlenir ve özgürlük kavramı.",
+  "duration_minutes": 7,
+  "content": [
+    {
+      "type": "text",
+      "content": "Özgürlük, bir taşın veya taş grubunun bağlı olduğu boş komşu noktalardır. Bir taş en az 1 özgürlüğe sahip olmalıdır."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [{"x": 4, "y": 4, "color": "black"}],
+      "highlights": [
+        {"x": 3, "y": 4, "type": "liberty"},
+        {"x": 5, "y": 4, "type": "liberty"},
+        {"x": 4, "y": 3, "type": "liberty"},
+        {"x": 4, "y": 5, "type": "liberty"}
+      ],
+      "annotation": "Bu taşın 4 özgürlüğü var (yeşil noktalar)"
+    },
+    {
+      "type": "text",
+      "content": "Bir taş tüm özgürlüklerini kaybettiğinde tahtadan kaldırılır (yakalanır)."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"}
+          ],
+          "text": "Siyah taşın 2 özgürlüğü kaldı."
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 4, "y": 3, "color": "white"}
+          ],
+          "text": "Siyah taşın 1 özgürlüğü kaldı."
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"}
+          ],
+          "captured": [{"x": 4, "y": 4}],
+          "text": "Beyaz son hamleyle siyah taşı yakaladı!"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l1-1-1"],
+  "next_lesson": "l1-1-3",
+  "required_exercise": "e1-1-2"
+}

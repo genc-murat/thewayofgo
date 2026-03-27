@@ -1,0 +1,28 @@
+{
+  "id": "e1-2-1",
+  "level": 1,
+  "module": 2,
+  "lesson": 1,
+  "type": "place_correct",
+  "title": "Grubu Güçlendir",
+  "description": "Siyah grubun özgürlüğünü artırmak için en iyi hamleyi yapın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 4, "y": 3, "color": "black"},
+    {"x": 3, "y": 4, "color": "black"},
+    {"x": 5, "y": 3, "color": "white"},
+    {"x": 3, "y": 5, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 4, "y": 4, "is_correct": true, "explanation": "Harika! Bu hamle grubu güçlendirir ve özgürlükleri artırır."},
+    {"x": 2, "y": 3, "is_correct": true, "explanation": "İyi seçim! Bu nokta grubun özgürlüğünü artırır."},
+    {"x": 3, "y": 2, "is_correct": true, "explanation": "Doğru! Yukarıdan genişlemek grubu güçlendirir."}
+  ],
+  "hints": [
+    "Grubun hangi yöne genişlemesi güvenli?",
+    "Beyaz taşların baskısından uzak noktaları arayın."
+  ],
+  "difficulty": 1,
+  "stars_required": 1
+}

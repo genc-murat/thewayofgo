@@ -1,0 +1,37 @@
+{
+  "id": "e1-2-2",
+  "level": 1,
+  "module": 2,
+  "lesson": 2,
+  "type": "life_and_death",
+  "title": "İki Göz Yap",
+  "description": "Siyah grubu yaşatmak için ikinci gözü oluşturun.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 1, "y": 1, "color": "black"},
+    {"x": 2, "y": 1, "color": "black"},
+    {"x": 3, "y": 1, "color": "black"},
+    {"x": 1, "y": 2, "color": "black"},
+    {"x": 3, "y": 2, "color": "black"},
+    {"x": 1, "y": 3, "color": "black"},
+    {"x": 2, "y": 3, "color": "black"},
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 5, "y": 2, "color": "black"},
+    {"x": 6, "y": 2, "color": "black"},
+    {"x": 4, "y": 3, "color": "black"},
+    {"x": 6, "y": 3, "color": "black"},
+    {"x": 4, "y": 4, "color": "black"},
+    {"x": 5, "y": 4, "color": "black"},
+    {"x": 6, "y": 4, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 5, "y": 3, "is_correct": true, "explanation": "Doğru! Bu hamle ikinci gözü oluşturur. Grup artık yakalanamaz."}
+  ],
+  "hints": [
+    "Birinci grup zaten tek gözle dolu. İkinci grup için göz arayın.",
+    "5,3 noktası boş kalıyor - bu ikinci göz olabilir mi?"
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

@@ -1,0 +1,89 @@
+{
+  "id": "l2-2-4",
+  "level": 2,
+  "module": 2,
+  "lesson": 4,
+  "title": "Bağlantı Savunması",
+  "description": "Kesme tehditlerine karşı bağlantınızı savunmayı öğrenin.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bağlantınızı korumak, kesme tehditlerine karşı savunma yapmak önemlidir. Eksik bağlantı noktalarını zamanında doldurmalısınız."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 5, "y": 3, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 5, "y": 4, "color": "white"},
+        {"x": 3, "y": 5, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 4, "type": "bad"}
+      ],
+      "annotation": "Siyah grubu tehlikede! (4,4) boş - beyaz burayı oynarsa keser."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"}
+          ],
+          "captured": [],
+          "text": "Siyah grubu iki parçaya bölünmüş gibi görünüyor. (4,4) kritik nokta."
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"}
+          ],
+          "captured": [],
+          "text": "Siyah (4,4) oynayarak bağlantıyı savundu. Grup tek parça olarak güçlendi."
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"}
+          ],
+          "captured": [],
+          "text": "Eğer siyah savunmazsa: Beyaz (4,4) oynar ve grup ikiye bölünür!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Bağlantı savunması, eksik olan bağlantı noktalarını doldurarak yapılır. Her boşluk bir kesme tehdidi olabilir."
+    },
+    {
+      "type": "text",
+      "content": "Savunma zamanlaması: Kesme tehdidini erken fark edin. Grubunuz zayıflarsa savunma hamlesi ertelemeyin. 'Savunma en iyi saldırıdır.'"
+    },
+    {
+      "type": "text",
+      "content": "Önemli: Her bağlantı noktasını doldurmak gerekmez. Sadece gerçek kesme tehditlerine karşı savunma yapın. Gereksiz savunma hamleleri tempo kaybı yaratır."
+    }
+  ],
+  "prerequisites": ["l2-2-3"],
+  "next_lesson": "l2-3-1",
+  "required_exercise": "e2-2-4"
+}

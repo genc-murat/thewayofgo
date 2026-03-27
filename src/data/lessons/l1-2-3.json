@@ -1,0 +1,108 @@
+{
+  "id": "l1-2-3",
+  "level": 1,
+  "module": 2,
+  "lesson": 3,
+  "title": "İki Göz ve Yaşam",
+  "description": "İki göz kavramını ve grupların yaşam şartlarını öğrenin.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bir grup tam olarak iki gerçek göze sahipse, rakip onu asla yakalayamaz. Bu kural Go'nun en temel yaşam şartıdır ve 'İki Göz Kuralı' olarak bilinir."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 2, "y": 1, "color": "black"},
+        {"x": 3, "y": 1, "color": "black"},
+        {"x": 4, "y": 1, "color": "black"},
+        {"x": 5, "y": 1, "color": "black"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 5, "y": 2, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 5, "y": 3, "color": "black"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 5, "y": 4, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 3, "y": 2, "type": "liberty"},
+        {"x": 4, "y": 3, "type": "liberty"}
+      ],
+      "annotation": "İki gözlü grup: (3,2) ve (4,3) noktaları gerçek gözler - bu grup yaşıyor!"
+    },
+    {
+      "type": "text",
+      "content": "Neden iki göz yakalanamaz? Çünkü rakip bir gözü doldurmaya çalıştığında, bu bir intihar hamlesi olur. Rakip aynı anda iki gözü dolduramaz çünkü sırayla oynanır. Dolayısıyla grup her zaman en az bir özgürlüğe sahip kalır."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 4, "y": 1, "color": "black"},
+            {"x": 5, "y": 1, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 4, "y": 3, "color": "white"}
+          ],
+          "text": "Beyaz bir gözü doldurmaya çalışıyor..."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 4, "y": 1, "color": "black"},
+            {"x": 5, "y": 1, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"}
+          ],
+          "captured": [{"x": 4, "y": 3}],
+          "text": "İntihar! Beyaz taşın tüm çevresi siyah - hemen yakalandı. Göz doldurulamaz!"
+        }
+      ]
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 1, "y": 1, "color": "black"},
+        {"x": 2, "y": 1, "color": "black"},
+        {"x": 3, "y": 1, "color": "black"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 3, "y": 3, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 2, "type": "bad"}
+      ],
+      "annotation": "Tek gözlü grup: Beyaz (2,2) oynarsa grubu öldürür! Bu grup güvende değil."
+    },
+    {
+      "type": "text",
+      "content": "Tek gözlü gruplar yakalanabilir çünkü rakip o tek gözü doldurduğunda, grubun tüm özgürlükleri kapanır. Go'da 'yaşamak' istiyorsanız, gruplarınızda en az iki gerçek göz oluşturmalısınız."
+    }
+  ],
+  "prerequisites": ["l1-2-2"],
+  "next_lesson": "l1-2-4",
+  "required_exercise": "e1-2-3"
+}

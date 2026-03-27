@@ -1,0 +1,20 @@
+{
+  "id": "e1-3-3",
+  "level": 1,
+  "module": 3,
+  "lesson": 3,
+  "type": "opening",
+  "title": "Açılış Hamlesi",
+  "description": "Boş tahtada en iyi açılış noktasını seçin.",
+  "board_size": 9,
+  "initial_stones": [],
+  "correct_moves": [
+    {"x": 2, "y": 2, "is_correct": true, "explanation": "Doğru! (2,2) köşe noktası açılış için en iyi seçenektir. Köşeler önce, kenarlar sonra, orta en son!"}
+  ],
+  "hints": [
+    "Açılış stratejisi: Köşe, kenar, orta sırası.",
+    "Tahtanın dört köşesinden birini seçin."
+  ],
+  "difficulty": 1,
+  "stars_required": 1
+}

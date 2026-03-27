@@ -1,0 +1,87 @@
+{
+  "id": "l2-4-3",
+  "level": 2,
+  "module": 4,
+  "lesson": 3,
+  "title": "Hane Hesaplama",
+  "description": "Hane (hamle değeri) hesaplamayı ve yose öncelik belirlemeyi öğrenin.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Hane (move value), bir hamlenin skora etkisinin ölçüsüdür. Hane hesaplama, yose sırasında hangi hamleyi önce oynayacağınızı belirler."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 0, "y": 3, "color": "black"},
+        {"x": 2, "y": 1, "color": "white"},
+        {"x": 2, "y": 2, "color": "white"},
+        {"x": 1, "y": 3, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 1, "type": "good"},
+        {"x": 1, "y": 2, "type": "liberty"}
+      ],
+      "annotation": "Hane hesaplama: (1,1) siyah oynarsa 5 puan, beyaz oynarsa 3 puan. Hane = (5+3)/2 = 4."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"}
+          ],
+          "captured": [],
+          "text": "Siyah (1,1) oynarsa: Sol üst bölgeyi güvenli hale getirir. ~5 puanlık alan."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 1, "y": 1, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"}
+          ],
+          "captured": [],
+          "text": "Beyaz (1,1) oynarsa: Siyah'ın sol üst bölgesini daraltır. ~3 puanlık alan kazandırır."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Hane hesaplama formülü: (Siyah'ın kazancı + Beyaz'ın kazancı) / 2 = Hamle değeri (hane). Bu formül, her iki tarafın da oynaması durumundaki ortalama puan etkisini verir."
+    },
+    {
+      "type": "text",
+      "content": "Hane sıralaması: En büyük haneden en küçüğe doğru oynayın. Önce büyük sente, sonra büyük gote, sonra küçük sente, en son küçük gote."
+    },
+    {
+      "type": "text",
+      "content": "Pratik tavsiye: Tam hane hesabı yapmanız gerekmez. 'Bu hamle büyük mü, küçük mü?' diye düşünün ve büyükleri önce oynayın. Hane hesabı deneyimle gelişir."
+    },
+    {
+      "type": "text",
+      "content": "Ortalama yose değerleri: Kenar sınırı ~2-4 hane, Köşe sınırı ~4-8 hane, Büyük grup tehlikesi ~10+ hane, Bir taş yakalama ~2 hane."
+    }
+  ],
+  "prerequisites": ["l2-4-2"],
+  "next_lesson": "l2-4-4",
+  "required_exercise": "e2-4-3"
+}

@@ -1,0 +1,33 @@
+{
+  "id": "e2-1-4",
+  "level": 2,
+  "module": 1,
+  "lesson": 4,
+  "type": "capture_stones",
+  "title": "Snepbek Yapın",
+  "description": "Snepbek (snapback) ile beyaz grubu yakalayın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 4, "y": 2, "color": "black"},
+    {"x": 3, "y": 1, "color": "black"},
+    {"x": 2, "y": 4, "color": "black"},
+    {"x": 4, "y": 4, "color": "black"},
+    {"x": 3, "y": 5, "color": "black"},
+    {"x": 1, "y": 3, "color": "black"},
+    {"x": 5, "y": 3, "color": "black"},
+    {"x": 2, "y": 3, "color": "white"},
+    {"x": 4, "y": 3, "color": "white"},
+    {"x": 3, "y": 4, "color": "white"},
+    {"x": 3, "y": 2, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 3, "y": 3, "is_correct": true, "explanation": "Snepbek! 4 beyaz taşı birden yakaladınız! Beyaz bir taş feda ederek bu pozisyonu oluşturdu ama siyah geri aldı."}
+  ],
+  "hints": [
+    "Beyaz grubun kaç özgürlüğü var?",
+    "Ortadaki boş nokta grubun son özgürlüğü olabilir."
+  ],
+  "difficulty": 3,
+  "stars_required": 1
+}

@@ -1,0 +1,86 @@
+{
+  "id": "l2-2-1",
+  "level": 2,
+  "module": 2,
+  "lesson": 1,
+  "title": "Kaplan Ağzı (Tiger's Mouth)",
+  "description": "Kaplan ağzı şekli ile taşlarınızı güvenli bir şekilde bağlamayı öğrenin.",
+  "duration_minutes": 9,
+  "content": [
+    {
+      "type": "text",
+      "content": "Kaplan ağzı (tiger's mouth), taşlarınızı güvenli bir şekilde bağlamanın en temel şeklidir. İki taşın arasındaki boşluk köşegen olarak doldurulduğunda güçlü bir bağlantı oluşturur."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 4, "type": "good"}
+      ],
+      "annotation": "Kaplan ağzı: (4,4) noktası ağız noktasıdır. Siyah burayı oynarsa güvenli bağlantı kurar."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"}
+          ],
+          "captured": [],
+          "text": "Siyah'ın iki taşı yan yana, biri ise altında. (4,4) boşlukta bekliyor."
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"}
+          ],
+          "captured": [],
+          "text": "Beyaz bağlantıyı kesmek istiyor. (5,4) oynadı."
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"}
+          ],
+          "captured": [],
+          "text": "Siyah (4,4) oynayarak kaplan ağzını tamamladı. Bağlantı güvenli!"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"}
+          ],
+          "captured": [],
+          "text": "Beyaz tekrar denedi ama siyah grubu sağlam bağlandı. Kaplan ağzı korundu!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Kaplan ağzı şekli: İki yan yana taş + bir köşegen taş = güçlü bağlantı. Boşluk noktası 'ağız' olarak adlandırılır."
+    },
+    {
+      "type": "text",
+      "content": "Kaplan ağzı nerede kullanılır? Köşe savunmasında, kenar bağlantılarında ve gruplarınızı güçlendirmek için her yerde."
+    }
+  ],
+  "prerequisites": ["l2-1-5"],
+  "next_lesson": "l2-2-2",
+  "required_exercise": "e2-2-1"
+}

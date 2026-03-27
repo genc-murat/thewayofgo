@@ -1,0 +1,118 @@
+{
+  "id": "l2-3-1",
+  "level": 2,
+  "module": 3,
+  "lesson": 1,
+  "title": "Temel Tsumego 1: İki Göz Problemleri",
+  "description": "Tsumego (yaşam-ölüm) problemlerinde iki göz oluşturmayı öğrenin.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Tsumego, yaşam ve ölüm problemleridir. Go'da bir grubun yaşaması için en az iki göz (eye) oluşturması gerekir. İlk tsumego türü: iki göz oluşturma."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 4, "y": 2, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 1, "y": 2, "color": "white"},
+        {"x": 1, "y": 3, "color": "white"},
+        {"x": 1, "y": 4, "color": "white"},
+        {"x": 5, "y": 2, "color": "white"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 5, "y": 4, "color": "white"},
+        {"x": 2, "y": 1, "color": "white"},
+        {"x": 3, "y": 1, "color": "white"},
+        {"x": 4, "y": 1, "color": "white"},
+        {"x": 2, "y": 5, "color": "white"},
+        {"x": 3, "y": 5, "color": "white"},
+        {"x": 4, "y": 5, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 3, "y": 3, "type": "good"}
+      ],
+      "annotation": "Siyah grubun iç boşluğu (3,3). Hayati nokta burası - siyah burayı oynarsa iki göz yapar."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 4, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"},
+            {"x": 5, "y": 2, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 4, "y": 1, "color": "white"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"}
+          ],
+          "captured": [],
+          "text": "Siyah grubun tek iç boşluğu var. Beyaz'ı dışarıda. Siyah ne yapmalı?"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 4, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"},
+            {"x": 5, "y": 2, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 4, "y": 1, "color": "white"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"}
+          ],
+          "captured": [],
+          "text": "Siyah (3,3) oynadı - iki göz oluşturdu! Bu grup artık ölümsüz."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Yaşam ve ölüm problemlerinde 'hayati nokta'yı (vital point) bulmak anahtardır. Hayati nokta, göz bölgesinin tam ortasıdır."
+    },
+    {
+      "type": "text",
+      "content": "İki göz kuralı: Bir grup iki ayrı göze sahipse, rakip hiçbir zaman onu yakalayamaz. Çünkü rakip bir gözü doldursa bile, diğer göz hala boş kalır ve grup yaşar."
+    },
+    {
+      "type": "text",
+      "content": "Pratik kural: Kare şeklindeki bir bölge için hayati nokta tam ortadır. Dikdörtgen bölgelerde ise ortadaki iki noktadan birini oynamak yeterlidir."
+    }
+  ],
+  "prerequisites": ["l2-2-4"],
+  "next_lesson": "l2-3-2",
+  "required_exercise": "e2-3-1"
+}

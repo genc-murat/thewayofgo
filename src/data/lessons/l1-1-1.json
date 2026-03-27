@@ -1,0 +1,45 @@
+{
+  "id": "l1-1-1",
+  "level": 1,
+  "module": 1,
+  "lesson": 1,
+  "title": "Go Nedir?",
+  "description": "Go'nun temel kavramlarını öğrenin: taşlar, tahta ve hamleler.",
+  "duration_minutes": 5,
+  "content": [
+    {
+      "type": "text",
+      "content": "Go, iki oyuncunun siyah ve beyaz taşlarla oynadığı strateji tabanlı bir tahta oyunudur. Amaç, tahtada en çok alanı kontrol etmektir."
+    },
+    {
+      "type": "text",
+      "content": "Oyuna siyah taş başlar. Oyuncular sırayla taşlarını tahtadaki kesişim noktalarına yerleştirir."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [],
+      "annotation": "9x9 tahta - Başlangıç için ideal boyut"
+    },
+    {
+      "type": "text",
+      "content": "Her taşın 4 komşu noktası vardır (üst, alt, sol, sağ). Köşede 2, kenarda 3 komşu noktası bulunur."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [{"x": 4, "y": 4, "color": "black"}],
+          "text": "Siyah taş merkeze yerleştirildi."
+        },
+        {
+          "stones": [{"x": 4, "y": 4, "color": "black"}, {"x": 3, "y": 3, "color": "white"}],
+          "text": "Beyaz taş köşeye yerleştirildi."
+        }
+      ]
+    }
+  ],
+  "prerequisites": [],
+  "next_lesson": "l1-1-2",
+  "required_exercise": "e1-1-1"
+}

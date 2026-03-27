@@ -1,0 +1,91 @@
+{
+  "id": "l2-2-2",
+  "level": 2,
+  "module": 2,
+  "lesson": 2,
+  "title": "Bağlantı ve Kesme",
+  "description": "Bağlantı (connect) ve kesme (cut) tekniklerini öğrenin.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bağlantı (connect) taşlarınızı güçlendirir. Kesme (cut) ise rakibin gruplarını zayıflatır. Bu iki kavram Go'nun temel stratejik unsurlarıdır."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 5, "y": 4, "color": "black"},
+        {"x": 3, "y": 3, "color": "white"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 3, "y": 5, "color": "white"},
+        {"x": 5, "y": 5, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 4, "type": "bad"},
+        {"x": 4, "y": 3, "type": "good"}
+      ],
+      "annotation": "Beyaz'ın (4,4) oynaması keser, siyah'ın (4,3) oynaması bağlar."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 5, "y": 5, "color": "white"}
+          ],
+          "captured": [],
+          "text": "Siyah iki grubu var, beyaz ise arada. Kim bağlanır/kim keser?"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 5, "y": 5, "color": "white"}
+          ],
+          "captured": [],
+          "text": "Siyah (4,4) oynadı - bağlantı başarılı! Siyah grubu tek parça oldu."
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 4, "y": 3, "color": "white"}
+          ],
+          "captured": [],
+          "text": "Başka senaryo: Beyaz (4,4) oynadı. Siyah'ın iki grubu ayrıldı - kesme başarılı!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Kesme genellikle bağlantıdan daha değerlidir çünkü rakip grubu ikiye böler. Her iki parça ayrı ayrı savunulmak zorunda kalır."
+    },
+    {
+      "type": "text",
+      "content": "Bağlantı kararı verirken: Grubunuzun yaşaması için bağlantı mı gerekiyor, yoksa grubunuz zaten yeterince güçlü mü? Bazen kesme fırsatını kaçırmamak için bağlantıyı riske atmanız gerekir."
+    },
+    {
+      "type": "text",
+      "content": "Pratik ipucu: Her hamlede hem kendi bağlantılarınızı hem de rakibin bağlantılarını kontrol edin. 'Ben bağlanıyorum, yoksa rakip mi kesiyor?' sorusu her hamlede sorulmalıdır."
+    }
+  ],
+  "prerequisites": ["l2-2-1"],
+  "next_lesson": "l2-2-3",
+  "required_exercise": "e2-2-2"
+}

@@ -1,0 +1,134 @@
+{
+  "id": "l2-3-3",
+  "level": 2,
+  "module": 3,
+  "lesson": 3,
+  "title": "Temel Tsumego 3: Öldürme",
+  "description": "Rakip grubu öldürmek için doğru noktayı bulmayı öğrenin.",
+  "duration_minutes": 11,
+  "content": [
+    {
+      "type": "text",
+      "content": "Rakip grubu öldürmek için doğru noktayı bulmak gerekir. Öldürme hamlesi genellikle yaşatma hamlesinin tam tersidir - hayati noktayı rakip için oynarsınız."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 2, "y": 2, "color": "white"},
+        {"x": 4, "y": 2, "color": "white"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 4, "y": 3, "color": "white"},
+        {"x": 2, "y": 4, "color": "white"},
+        {"x": 4, "y": 4, "color": "white"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 1, "y": 4, "color": "black"},
+        {"x": 5, "y": 2, "color": "black"},
+        {"x": 5, "y": 3, "color": "black"},
+        {"x": 5, "y": 4, "color": "black"},
+        {"x": 2, "y": 1, "color": "black"},
+        {"x": 3, "y": 1, "color": "black"},
+        {"x": 4, "y": 1, "color": "black"},
+        {"x": 2, "y": 5, "color": "black"},
+        {"x": 3, "y": 5, "color": "black"},
+        {"x": 4, "y": 5, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 3, "y": 3, "type": "good"}
+      ],
+      "annotation": "Beyaz grubun tek iç boşluğu var. Siyah (3,3) oynarsa beyaz'ı öldürür."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 2, "y": 4, "color": "white"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 1, "y": 4, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 4, "y": 1, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"}
+          ],
+          "captured": [],
+          "text": "Beyaz grubun 4 boş iç noktası var. Siyah öldürmek için hayati noktayı bulmalı."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 2, "y": 4, "color": "white"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 1, "y": 4, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 4, "y": 1, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"}
+          ],
+          "captured": [],
+          "text": "Siyah (3,3) oynadı - hayati nokta! Beyaz iki ayrı göze sahip olamadı."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 2, "y": 4, "color": "white"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 1, "y": 4, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 4, "y": 1, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"}
+          ],
+          "captured": [],
+          "text": "Beyaz (3,2) oynayarak direniyor ama tek göz kaldı. Grup ölü."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Öldürme hamlesi genellikle grubun gözlerinin ortasındaki noktadır. Hayati noktayı rakip için oynamak, onun iki göz oluşturmasını engeller."
+    },
+    {
+      "type": "text",
+      "content": "Öldürme ve yaşatma aynı madalyonun iki yüzüdür. Bir grubu yaşatmak için hayati noktayı siz oynarsınız; öldürmek için rakip için oynarsınız."
+    }
+  ],
+  "prerequisites": ["l2-3-2"],
+  "next_lesson": "l2-3-4",
+  "required_exercise": "e2-3-3"
+}

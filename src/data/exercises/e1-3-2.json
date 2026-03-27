@@ -1,0 +1,23 @@
+{
+  "id": "e1-3-2",
+  "level": 1,
+  "module": 3,
+  "lesson": 2,
+  "type": "territorial_control",
+  "title": "Alanı Belirleyin",
+  "description": "Siyah için en değerli açılış hamlesini seçin.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 6, "y": 6, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 6, "y": 2, "is_correct": true, "explanation": "Doğru! Karşı köşeye oynamak (6,2) en iyi açılış stratejisidir. Köşeler önce alınmalı, sonra kenarlar!"}
+  ],
+  "hints": [
+    "Açılış kuralını hatırlayın: Köşeler, kenarlar, orta.",
+    "Hangi köşe hala boş?"
+  ],
+  "difficulty": 1,
+  "stars_required": 1
+}

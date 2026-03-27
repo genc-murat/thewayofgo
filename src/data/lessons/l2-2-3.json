@@ -1,0 +1,88 @@
+{
+  "id": "l2-2-3",
+  "level": 2,
+  "module": 2,
+  "lesson": 3,
+  "title": "Köprü (Bridging)",
+  "description": "Köprü tekniği ile bir boşluk üzerinden taşlarınızı bağlamayı öğrenin.",
+  "duration_minutes": 9,
+  "content": [
+    {
+      "type": "text",
+      "content": "Köprü (bridge) tekniği, bir boşluk üzerinden taşlarınızı bağlamanın elegant bir yoludur. Köşegen atarak rakip boşluğu doldursa bile bağlantıyı korur."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 5, "y": 3, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 4, "type": "good"},
+        {"x": 4, "y": 3, "type": "bad"}
+      ],
+      "annotation": "Köprü: (3,3) ve (5,3) arasında 1 boşluk var. (4,4) köprü hamlesi."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"}
+          ],
+          "captured": [],
+          "text": "İki siyah taş arasında 1 boşluk var: (4,3)."
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"}
+          ],
+          "captured": [],
+          "text": "Siyah (4,4) oynadı - köprü kuruldu! Taşlar köşegen ile bağlandı."
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "white"}
+          ],
+          "captured": [],
+          "text": "Beyaz (4,3) oynayarak kesmeye çalışıyor..."
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 4, "y": 2, "color": "black"}
+          ],
+          "captured": [
+            {"x": 4, "y": 3, "color": "white"}
+          ],
+          "text": "Siyah (4,2) oynayarak beyaz'ı yakaladı! Köprü korundu."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Köprü çalışma mantığı: Köşegen bağlantısındaki boşlukta rakip oynasa bile, diğer taraftan oynayarak rakip taşını yakalayabilirsiniz."
+    },
+    {
+      "type": "text",
+      "content": "Köprü, özellikle savaşlarda gruplarınızı hızlıca güçlendirmek için kullanılır. Sadece 1 hamle ile güvenli bağlantı sağlar."
+    },
+    {
+      "type": "text",
+      "content": "Dikkat: Köprü sadece 1 boşlukluk aralıklarda çalışır. 2 veya daha fazla boşluk varsa, köprü tekniği geçerli değildir."
+    }
+  ],
+  "prerequisites": ["l2-2-2"],
+  "next_lesson": "l2-2-4",
+  "required_exercise": "e2-2-3"
+}

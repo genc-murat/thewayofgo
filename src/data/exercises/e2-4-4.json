@@ -1,0 +1,35 @@
+{
+  "id": "e2-4-4",
+  "level": 2,
+  "module": 4,
+  "lesson": 4,
+  "type": "territorial_control",
+  "title": "Skor Tahmini Yapın",
+  "description": "Oyun sonunda en değerli hamleyi oynayın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 0, "y": 0, "color": "black"},
+    {"x": 1, "y": 0, "color": "black"},
+    {"x": 2, "y": 0, "color": "black"},
+    {"x": 0, "y": 1, "color": "black"},
+    {"x": 0, "y": 2, "color": "black"},
+    {"x": 6, "y": 0, "color": "white"},
+    {"x": 7, "y": 0, "color": "white"},
+    {"x": 8, "y": 0, "color": "white"},
+    {"x": 8, "y": 1, "color": "white"},
+    {"x": 8, "y": 2, "color": "white"},
+    {"x": 6, "y": 6, "color": "white"},
+    {"x": 7, "y": 6, "color": "white"},
+    {"x": 6, "y": 7, "color": "white"},
+    {"x": 7, "y": 7, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 1, "y": 1, "is_correct": true, "explanation": "Doğru! Bu hamle sol üst köşedeki alanı mühürler ve yaklaşık 2 puan değerindedir. En büyük son hamle!"}
+  ],
+  "hints": [
+    "Hangi bölge hala açık?",
+    "Sınırlardaki mühürleme hamlesini bulun."
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

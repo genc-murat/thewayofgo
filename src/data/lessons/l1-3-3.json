@@ -1,0 +1,82 @@
+{
+  "id": "l1-3-3",
+  "level": 1,
+  "module": 3,
+  "lesson": 3,
+  "title": "İlk Oyun Stratejileri",
+  "description": "Go oyununda açılış stratejilerini öğrenin.",
+  "duration_minutes": 8,
+  "content": [
+    {
+      "type": "text",
+      "content": "Go'da açılış stratejisi çok önemlidir. İlk altın kural: 'Önce köşeler, sonra kenarlar, en son orta'. Bu sıralama, az taşla çok alan kontrol etmenin en verimli yoludur."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 6, "y": 2, "color": "white"},
+        {"x": 2, "y": 6, "color": "white"},
+        {"x": 6, "y": 6, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 2, "type": "good"},
+        {"x": 6, "y": 2, "type": "good"},
+        {"x": 2, "y": 6, "type": "good"},
+        {"x": 6, "y": 6, "type": "good"}
+      ],
+      "annotation": "Köşe noktaları (2,2) ve (6,6): Açılışın en değerli bölgeleri"
+    },
+    {
+      "type": "text",
+      "content": "3-4 ve 4-4 noktaları: Köşede en yaygın açılış noktaları (3,2)-(2,3) hattı '3-4 noktası' ve (2,2)-(4,4) hattı '4-4 noktası' olarak bilinir. 3-4 noktası alan ve etki dengesi sunar, 4-4 noktası daha fazla alan hedefler."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"}
+          ],
+          "text": "Siyah köşeye oynuyor (2,2) - 4-4 noktası. Güçlü alan hamlesi."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 6, "y": 2, "color": "white"}
+          ],
+          "text": "Beyaz karşı köşeye oynuyor (6,2) - 3-4 noktası. Dengeli hamle."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 2, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah üçüncü köşeye yerleşiyor (2,6). Her köşeyi kapmak ideal açılıştır."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"}
+          ],
+          "text": "Beyaz son köşeyi alıyor. 9x9 tahtada 4 hamlede tüm köşeler dağıtıldı!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Açılış ipuçları:\n1. Köşelere yakın oynayın - kenardan 2. veya 3. satır ideal\n2. Taşlarınızı birbirine çok yakın koymayın - her taş farklı bölgeye etki etsin\n3. Açılışta (9x9) taş yakalamaya çalışmayın - alan kurmaya odaklanın\n4. Yıldız noktaları (2,2), (2,6), (6,2), (6,6) ve merkez (4,4) referans noktalarıdır"
+    },
+    {
+      "type": "text",
+      "content": "Tebrikler! Seviye 1'i tamamladınız! Artık Go'nun temellerini biliyorsunuz: özgürlükler, yakalama, yasak hamleler, ko, göz kavramı, iki göz kuralı, alan ve açılış stratejileri. Seviye 2'de yakalama teknikleri, bağlantılar ve yaşam-ölüm problemlerini öğreneceksiniz!"
+    }
+  ],
+  "prerequisites": ["l1-3-2"],
+  "next_lesson": "l2-1-1",
+  "required_exercise": "e1-3-3"
+}

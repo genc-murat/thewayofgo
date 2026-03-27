@@ -1,0 +1,30 @@
+{
+  "id": "e1-1-5",
+  "level": 1,
+  "module": 1,
+  "lesson": 5,
+  "type": "capture_stones",
+  "title": "Ko Durumu",
+  "description": "Ko durumunda beyaz taşı yakalayın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 1, "y": 1, "color": "white"},
+    {"x": 2, "y": 1, "color": "black"},
+    {"x": 0, "y": 2, "color": "black"},
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 1, "y": 3, "color": "black"},
+    {"x": 0, "y": 0, "color": "black"},
+    {"x": 2, "y": 0, "color": "black"},
+    {"x": 0, "y": 3, "color": "black"},
+    {"x": 3, "y": 2, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 1, "y": 2, "is_correct": true, "explanation": "Doğru! Beyaz taşın tek özgürlüğünü kapattınız ve ko oluşturdunuz. Beyaz hemen geri alamaz!"}
+  ],
+  "hints": [
+    "Beyaz taşın kaç özgürlüğü var?",
+    "Boş kalan tek noktayı doldurun."
+  ],
+  "difficulty": 1,
+  "stars_required": 1
+}

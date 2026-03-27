@@ -1,0 +1,113 @@
+{
+  "id": "l2-1-5",
+  "level": 2,
+  "module": 1,
+  "lesson": 5,
+  "title": "Birlikte Yakalama",
+  "description": "Bağlantılı taş gruplarını yakalama tekniğini öğrenin.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Birlikte bağlantılı taşlar tek bir grup olarak yakalanır. Grubun tüm özgürlükleri kapatılmalıdır. Tek bir taş yakalamaktan daha fazla hamle gerektirir ama çok daha değerlidir."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 4, "y": 3, "color": "white"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 4, "y": 4, "color": "white"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 6, "y": 3, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 4, "y": 5, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 5, "y": 4, "type": "liberty"},
+        {"x": 5, "y": 2, "type": "liberty"}
+      ],
+      "annotation": "Beyaz grubun (3 taş) 2 özgürlüğü kaldı: (5,4) ve (5,2)."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"}
+          ],
+          "captured": [],
+          "text": "Beyaz 3 taşlı grup. Özgürlükler: (5,4) ve (5,2)."
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"}
+          ],
+          "captured": [],
+          "text": "Siyah (5,4) oynadı. Beyaz grubun tek özgürlüğü (5,2) kaldı. Atari!"
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 5, "y": 2, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"}
+          ],
+          "captured": [],
+          "text": "Beyaz (5,2) oynayarak grubu genişletti. Şimdi 3 özgürlük var!"
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 5, "y": 2, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 6, "y": 4, "color": "black"},
+            {"x": 5, "y": 1, "color": "black"},
+            {"x": 6, "y": 2, "color": "black"}
+          ],
+          "captured": [],
+          "text": "Siyah tüm özgürlükleri kapatıyor... (6,2) ile son özgürlük kapandı!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Büyük gruplar yakalamak daha fazla hamle gerektirir ama daha değerlidir. 3 taş yakalamak, 1 taş yakalamaktan 3 kat daha değerlidir."
+    },
+    {
+      "type": "text",
+      "content": "Grup bağlantısını kesmek bazen yakalamaktan daha önemlidir. Bir grubu ikiye bölerseniz, her iki parça daha zayıf olur ve ayrı ayrı tehdit edilebilir."
+    },
+    {
+      "type": "text",
+      "content": "Önemli kural: Bağlantılı taşlar aynı kaderi paylaşır. Gruptan birinin tüm özgürlükleri kapanırsa, grup tamamı yakalanır."
+    }
+  ],
+  "prerequisites": ["l2-1-4"],
+  "next_lesson": "l2-2-1",
+  "required_exercise": "e2-1-5"
+}

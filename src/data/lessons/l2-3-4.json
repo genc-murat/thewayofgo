@@ -1,0 +1,85 @@
+{
+  "id": "l2-3-4",
+  "level": 2,
+  "module": 3,
+  "lesson": 4,
+  "title": "Ölüm Şekilleri (Dead Shapes)",
+  "description": "Go'da her zaman ölü olan temel şekilleri tanıyın.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Go'da bazı şekiller her zaman ölüdür. Bu şekilleri tanımak, tsumego çözmenizi çok hızlandırır. Üç temel ölüm şekli: Düz üç, L şekli ve dikdörtgen iki."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 5, "y": 4, "color": "black"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 6, "y": 3, "color": "white"},
+        {"x": 2, "y": 5, "color": "white"},
+        {"x": 6, "y": 5, "color": "white"},
+        {"x": 3, "y": 6, "color": "white"},
+        {"x": 4, "y": 6, "color": "white"},
+        {"x": 5, "y": 6, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 5, "type": "bad"}
+      ],
+      "annotation": "Düz üç (straight three): 3 taşlık düz çizgi. (4,5) hayati nokta - siyah burayı oynarsa beyaz ölür."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 2, "y": 2, "color": "white"},
+        {"x": 4, "y": 2, "color": "white"},
+        {"x": 2, "y": 5, "color": "white"},
+        {"x": 4, "y": 5, "color": "white"},
+        {"x": 4, "y": 3, "color": "white"},
+        {"x": 4, "y": 4, "color": "white"},
+        {"x": 3, "y": 5, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 3, "y": 5, "type": "bad"}
+      ],
+      "annotation": "L şekli (L-shape): Dönük L şeklindeki boşluk. (3,5) hayati nokta - siyah oynarsa beyaz ölür."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 3, "y": 3, "color": "white"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 3, "y": 5, "color": "white"},
+        {"x": 5, "y": 5, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 5, "type": "bad"},
+        {"x": 5, "y": 4, "type": "bad"}
+      ],
+      "annotation": "Dikdörtgen iki (bent four in the corner): Köşede 5 boş nokta. Siyah iki noktadan birini oynarsa beyaz ölür."
+    },
+    {
+      "type": "text",
+      "content": "Bu ölüm şekillerini ezberleyin: Düz üç, L şekli ve dikdörtgen iki her zaman ölüdür. Eğer rakip bu şekillerden birini oluşturduysa, hayati noktayı bulup öldürebilirsiniz."
+    },
+    {
+      "type": "text",
+      "content": "Önemli: Bu şekiller 'dahili' olarak ölüdür - yani dışarıdan sarılmışlarsa. Eğer grup sınırları açık değilse, durum değişebilir."
+    },
+    {
+      "type": "text",
+      "content": "Pratik ipucu: Tsumego çözerken önce ölüm şekillerini tarayın. Rakip grup bu şekillerden birini mi oluşturuyor? Hayati noktayı hemen bulun."
+    }
+  ],
+  "prerequisites": ["l2-3-3"],
+  "next_lesson": "l2-4-1",
+  "required_exercise": "e2-3-4"
+}

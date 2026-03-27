@@ -1,0 +1,89 @@
+{
+  "id": "l1-1-4",
+  "level": 1,
+  "module": 1,
+  "lesson": 4,
+  "title": "Yasak Hamleler: İntihar",
+  "description": "İntihar kuralını ve istisnasını öğrenin.",
+  "duration_minutes": 8,
+  "content": [
+    {
+      "type": "text",
+      "content": "Go'da bazı hamleler yasaktır. İntihar kuralı: Kendi taşıınızın tüm özgürlüklerini kapatamazsınız. Bir noktaya taş koyduğunuzda, o taşıınızın en az bir özgürlüğü olmalıdır."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 5, "y": 3, "color": "black"},
+        {"x": 4, "y": 2, "color": "black"},
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 5, "y": 4, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 3, "type": "bad"}
+      ],
+      "annotation": "Beyaz buraya oynayamaz - tüm çevresi siyah, bu bir intihar hamlesi olurdur"
+    },
+    {
+      "type": "text",
+      "content": "Bu kuralın önemli bir istisnası var: Eğer hamleniz rakip taşları yakalarsa, oynayabilirsiniz. Yani kendi taşıınız sıfır özgürlükle başlasa bile, rakip taşları yakaladığı an özgürlük kazanır."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 5, "y": 3, "color": "black"},
+        {"x": 4, "y": 2, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 5, "y": 4, "color": "black"},
+        {"x": 4, "y": 5, "color": "black"},
+        {"x": 4, "y": 3, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 4, "type": "good"}
+      ],
+      "annotation": "Siyah (4,4) oynayabilir! Beyaz taşı yakalayacağı için yasal bir hamle"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 4, "y": 2, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 4, "y": 3, "color": "white"}
+          ],
+          "text": "Beyaz taşıının tek özgürlüğü (4,4) noktasında kaldı."
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 4, "y": 2, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"}
+          ],
+          "captured": [{"x": 4, "y": 3}],
+          "text": "Siyah oynadı ve beyazı yakaladı! Görünüşte intihar gibi ama rakip taş yakalandığı için yasal."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Özet: Kendinizi öldüren hamle yasaktır. Ama rakip taşıını öldürerek oynarsanız serbestsiniz. Unutmayın: Go'da taş koyduğunuz noktanın etrafında en az bir boşluk olmalı - ya da rakip taş yakalamalısınız!"
+    }
+  ],
+  "prerequisites": ["l1-1-3"],
+  "next_lesson": "l1-1-5",
+  "required_exercise": "e1-1-4"
+}

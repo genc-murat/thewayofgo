@@ -1,0 +1,135 @@
+{
+  "id": "l2-3-2",
+  "level": 2,
+  "module": 3,
+  "lesson": 2,
+  "title": "Temel Tsumego 2: Yaşatma",
+  "description": "Görünüşte ölü olan bir grubu doğru hamleyle yaşatmayı öğrenin.",
+  "duration_minutes": 11,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bazı durumlarda grup ölü gibi görünür ama doğru hamleyle yaşatılabilir. Yaşatma (making life) tsumego problemlerinin en tatmin edici türüdür."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 4, "y": 2, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 1, "y": 2, "color": "white"},
+        {"x": 1, "y": 3, "color": "white"},
+        {"x": 1, "y": 4, "color": "white"},
+        {"x": 5, "y": 2, "color": "white"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 5, "y": 4, "color": "white"},
+        {"x": 2, "y": 1, "color": "white"},
+        {"x": 3, "y": 1, "color": "white"},
+        {"x": 4, "y": 1, "color": "white"},
+        {"x": 2, "y": 5, "color": "white"},
+        {"x": 3, "y": 5, "color": "white"},
+        {"x": 4, "y": 5, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 3, "y": 3, "type": "good"},
+        {"x": 3, "y": 2, "type": "bad"},
+        {"x": 3, "y": 4, "type": "bad"}
+      ],
+      "annotation": "Siyah'ın içi tamamen boş. (3,3) hayati nokta - orayı oynamak iki göz yapar."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 4, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"},
+            {"x": 5, "y": 2, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 4, "y": 1, "color": "white"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"}
+          ],
+          "captured": [],
+          "text": "Siyah grubun 4 boş noktası var. Yanlış hamle grup ölür!"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 4, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"},
+            {"x": 5, "y": 2, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 4, "y": 1, "color": "white"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"}
+          ],
+          "captured": [],
+          "text": "Yanlış: Siyah (3,2) oynadı. Tek bir büyük göz - beyaz grup öldürebilir!"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 4, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"},
+            {"x": 5, "y": 2, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 4, "y": 1, "color": "white"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"}
+          ],
+          "captured": [],
+          "text": "Doğru: Siyah (3,3) oynadı. İki ayrı göz oluşturdu - grup yaşadı!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Yaşatma problemlerinde genellikle hayati noktanın tam ortasıdır. Orta noktayı oynamak, bölgeyi iki eşit göze böler."
+    },
+    {
+      "type": "text",
+      "content": "Kilit düşünce: Büyük tek göz = ölü grup. İki küçük göz = yaşayan grup. Amacınız her zaman bölgeyi ikiye bölmek."
+    }
+  ],
+  "prerequisites": ["l2-3-1"],
+  "next_lesson": "l2-3-3",
+  "required_exercise": "e2-3-2"
+}

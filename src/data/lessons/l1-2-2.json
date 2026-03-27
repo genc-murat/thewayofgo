@@ -1,0 +1,63 @@
+{
+  "id": "l1-2-2",
+  "level": 1,
+  "module": 2,
+  "lesson": 2,
+  "title": "Göz Kavramı",
+  "description": "Bir grubun göz sahibi olmasının önemini öğrenin.",
+  "duration_minutes": 8,
+  "content": [
+    {
+      "type": "text",
+      "content": "Göz, bir taş grubunun içinde kalan boş noktadır. Bir grup en az iki göze sahipse yakalanamaz."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 1, "y": 1, "color": "black"},
+        {"x": 2, "y": 1, "color": "black"},
+        {"x": 3, "y": 1, "color": "black"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 3, "y": 3, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 2, "type": "territory"}
+      ],
+      "annotation": "Bu grubun ortasında bir göz var (mavi nokta)"
+    },
+    {
+      "type": "text",
+      "content": "Tek gözü olan bir grup yakalanabilir çünkü rakip o tek noktaya taş koyabilir. İki göz ise rakibin her ikisini de kapatamayacağı anlamına gelir."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 2, "y": 1, "color": "black"},
+        {"x": 3, "y": 1, "color": "black"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 3, "y": 3, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 1, "type": "liberty"},
+        {"x": 2, "y": 2, "type": "liberty"}
+      ],
+      "annotation": "İki gözlü bu grup yakalanamaz"
+    }
+  ],
+  "prerequisites": ["l1-2-1"],
+  "next_lesson": "l1-2-3",
+  "required_exercise": "e1-2-2"
+}

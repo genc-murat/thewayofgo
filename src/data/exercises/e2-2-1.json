@@ -1,0 +1,26 @@
+{
+  "id": "e2-2-1",
+  "level": 2,
+  "module": 2,
+  "lesson": 1,
+  "type": "connect_groups",
+  "title": "Kaplan Ağzı Yapın",
+  "description": "İki siyah grubu kaplan ağzı şekliyle bağlayın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 4, "y": 2, "color": "black"},
+    {"x": 3, "y": 2, "color": "white"},
+    {"x": 5, "y": 2, "color": "white"},
+    {"x": 4, "y": 4, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 4, "y": 3, "is_correct": true, "explanation": "Doğru! Kaplan ağzı bağlantısı! İki siyah taş birbirine bağlandı ve beyaz kesemez."}
+  ],
+  "hints": [
+    "Köşegen bağlantı düşünün.",
+    "Hangi nokta iki siyah taşı birleştirir?"
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}
