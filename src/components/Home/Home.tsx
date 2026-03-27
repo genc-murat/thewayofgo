@@ -1,4 +1,6 @@
+import { useState, useEffect } from 'react';
 import { useAppStore } from '../../stores/appStore';
+import { getOverallProgress, getNextRecommendedLesson } from '../../utils/lessonPath';
 
 const LEVEL_COLORS = [
   'from-amber-500/20 to-amber-600/5 border-amber-500/30',
@@ -116,6 +118,25 @@ const LEVELS = [
 
 export function HomePage() {
   const { startAiGame, loadLesson, setLevel } = useAppStore();
+  const [progress, setProgress] = useState<{
+    lessonsCompleted: number;
+    exercisesCorrect: number;
+    currentLevel: number;
+    levelProgress: Record<number, number>;
+  } | null>(null);
+  const [nextLesson, setNextLesson] = useState<{
+    lessonId: string;
+    level: number;
+  } | null>(null);
+
+  useEffect(() => {
+    getOverallProgress().then(setProgress).catch(() => {});
+    getNextRecommendedLesson().then((result) => {
+      if (result) setNextLesson({ lessonId: result.lessonId, level: result.level });
+    }).catch(() => {});
+  }, []);
+
+  const continueLessonId = nextLesson?.lessonId ?? 'l1-1-1';
 
   return (
     <div className="space-y-12">
@@ -145,8 +166,8 @@ export function HomePage() {
           </p>
 
           <div className="flex gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            <button onClick={() => loadLesson('l1-1-1')} className="btn-primary text-base px-8 py-3.5 rounded-xl">
-              Öğrenmeye Başla
+            <button onClick={() => loadLesson(continueLessonId)} className="btn-primary text-base px-8 py-3.5 rounded-xl">
+              {nextLesson ? 'Devam Et' : 'Öğrenmeye Başla'}
             </button>
             <button onClick={() => startAiGame(9, 1)} className="btn-secondary text-base px-8 py-3.5 rounded-xl">
               Yapay Zekaya Karşı Oyna
@@ -167,9 +188,11 @@ export function HomePage() {
           {LEVELS.map((level, idx) => {
             const totalLessons = level.modules.reduce((sum, m) => sum + m.lessons, 0);
             const completedLessons = level.modules.reduce((sum, m) => sum + m.completed, 0);
-            const progress = totalLessons > 0 ? (completedLessons / totalLessons) * 100 : 0;
-            const isLocked = idx > 0 && LEVELS[idx - 1].modules.every(m => m.completed !== m.lessons);
-            const isComplete = completedLessons === totalLessons;
+            // Use real progress if available
+            const realProgress = progress?.levelProgress?.[level.id] ?? 0;
+            const progressPct = realProgress > 0 ? realProgress : (totalLessons > 0 ? (completedLessons / totalLessons) * 100 : 0);
+            const isLocked = idx > 0 && (progress?.levelProgress?.[idx] ?? 0) < 30;
+            const isComplete = progressPct >= 95;
 
             return (
               <button
@@ -210,7 +233,7 @@ export function HomePage() {
                   <div className="h-1.5 bg-bg-primary/50 rounded-full overflow-hidden">
                     <div
                       className={`h-full rounded-full transition-all duration-500 ${LEVEL_PROGRESS[idx]}`}
-                      style={{ width: `${progress}%` }}
+                      style={{ width: `${progressPct}%` }}
                     />
                   </div>
                 </div>

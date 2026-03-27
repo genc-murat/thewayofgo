@@ -11,6 +11,7 @@ import type {
   StepResult,
   StoneColor,
 } from '../types';
+import { recordExerciseAttempt } from '../utils/progressDb';
 
 interface AppState {
   // Navigation
@@ -308,6 +309,14 @@ export const useAppStore = create<AppState>((set, get) => ({
         exerciseAttempts: exerciseAttempts + 1,
         isLoading: false,
       });
+
+      // Record progress (fire-and-forget)
+      recordExerciseAttempt(
+        currentExercise.id,
+        currentExercise.type,
+        result.correct,
+        0
+      ).catch(() => {});
     } catch (e) {
       set({ error: String(e), isLoading: false });
     }
@@ -348,6 +357,14 @@ export const useAppStore = create<AppState>((set, get) => ({
             exerciseAttempts: exerciseAttempts + 1,
             isLoading: false,
           });
+
+          // Record progress (fire-and-forget)
+          recordExerciseAttempt(
+            currentExercise.id,
+            currentExercise.type,
+            true,
+            0
+          ).catch(() => {});
         } else {
           // Move to next step
           set({
@@ -362,6 +379,14 @@ export const useAppStore = create<AppState>((set, get) => ({
           exerciseAttempts: exerciseAttempts + 1,
           isLoading: false,
         });
+
+        // Record failed attempt for this step
+        recordExerciseAttempt(
+          currentExercise.id,
+          currentExercise.type,
+          false,
+          0
+        ).catch(() => {});
       }
     } catch (e) {
       set({ error: String(e), isLoading: false });

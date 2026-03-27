@@ -1,7 +1,8 @@
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo, useEffect } from 'react';
 import { useAppStore } from '../../stores/appStore';
 import { Board } from '../Board';
 import type { BoardSize, StoneColor, Highlight } from '../../types';
+import { getAdaptiveDifficulty, getTypeDisplayName, type DifficultyRecommendation } from '../../utils/adaptiveDifficulty';
 
 const EXERCISE_CATALOG = [
   { id: 'e1-1-1', level: 1, module: 1, title: 'İlk Hamle', type: 'Doğru Hamle', difficulty: 1 },
@@ -248,6 +249,11 @@ export function ExerciseView() {
 
   const [filterLevel, setFilterLevel] = useState<number | null>(null);
   const [filterType, setFilterType] = useState<string | null>(null);
+  const [recommendation, setRecommendation] = useState<DifficultyRecommendation | null>(null);
+
+  useEffect(() => {
+    getAdaptiveDifficulty(2).then(setRecommendation).catch(() => {});
+  }, []);
 
   const filteredCatalog = useMemo(() => {
     let items = EXERCISE_CATALOG;
@@ -260,12 +266,52 @@ export function ExerciseView() {
 
   if (currentExercise) return <ExercisePlayer />;
 
+  // Get recommended exercises based on weak areas
+  const recommendedExercises = useMemo(() => {
+    if (!recommendation || recommendation.focusTypes.length === 0) return [];
+    return EXERCISE_CATALOG
+      .filter(ex => recommendation.focusTypes.includes(ex.type))
+      .slice(0, 3);
+  }, [recommendation]);
+
   return (
     <div className="max-w-5xl mx-auto space-y-8 animate-fade-in">
       <div>
         <h2 className="text-3xl font-bold mb-2">Alıştırmalar</h2>
         <p className="text-text-secondary">Seviye ve türe göre filtreleyerek çalışın ({EXERCISE_CATALOG.length} alıştırma)</p>
       </div>
+
+      {/* Recommended section */}
+      {recommendedExercises.length > 0 && (
+        <div className="glass rounded-2xl p-6 border border-accent/20">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-lg">🎯</span>
+            <h3 className="text-lg font-bold">Sizin İçin Önerilen</h3>
+          </div>
+          <p className="text-sm text-text-secondary mb-4">{recommendation?.reason}</p>
+          {recommendation && recommendation.focusTypes.length > 0 && (
+            <p className="text-sm text-text-secondary mb-4">
+              Odaklanmanız gereken türler: <span className="text-accent font-medium">
+                {recommendation.focusTypes.map(t => getTypeDisplayName(t)).join(', ')}
+              </span>
+            </p>
+          )}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {recommendedExercises.map(ex => (
+              <button key={ex.id} onClick={() => loadExercise(ex.id)}
+                className="bg-accent/5 rounded-xl p-4 text-left border border-accent/20 hover:border-accent/40 transition-all group">
+                <div className="flex items-start justify-between mb-2">
+                  <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-md border ${TYPE_COLORS[ex.type] || 'glass text-text-secondary'}`}>
+                    {ex.type}
+                  </span>
+                  <span className="text-xs text-text-secondary">Lv.{ex.level}</span>
+                </div>
+                <h4 className="font-semibold text-sm group-hover:text-accent transition-colors">{ex.title}</h4>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="flex flex-wrap gap-2">
         <button onClick={() => setFilterLevel(null)} className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${filterLevel === null ? 'gradient-accent text-bg-primary' : 'glass text-text-secondary hover:text-text-primary'}`}>
