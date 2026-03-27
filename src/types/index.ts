@@ -1,5 +1,7 @@
 export type StoneColor = 'black' | 'white';
 
+export type AIStyle = 'balanced' | 'aggressive' | 'defensive' | 'educational';
+
 export interface Point {
   x: number;
   y: number;

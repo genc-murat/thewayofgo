@@ -108,10 +108,21 @@ pub enum MoveType {
     Resign,
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, Default)]
+#[serde(rename_all = "snake_case")]
+pub enum AIStyle {
+    #[default]
+    Balanced,
+    Aggressive,
+    Defensive,
+    Educational,
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct AIDifficulty {
     pub level: u8,
     pub simulations: u32,
+    pub style: AIStyle,
 }
 
 impl AIDifficulty {
@@ -124,6 +135,26 @@ impl AIDifficulty {
             5 => 5000,
             _ => 200,
         };
-        AIDifficulty { level, simulations }
+        AIDifficulty {
+            level,
+            simulations,
+            style: AIStyle::default(),
+        }
+    }
+
+    pub fn new_with_style(level: u8, style: AIStyle) -> Self {
+        let simulations = match level {
+            1 => 0,
+            2 => 100,
+            3 => 500,
+            4 => 2000,
+            5 => 5000,
+            _ => 200,
+        };
+        AIDifficulty {
+            level,
+            simulations,
+            style,
+        }
     }
 }

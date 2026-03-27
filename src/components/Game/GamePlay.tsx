@@ -3,7 +3,7 @@ import { useAppStore } from '../../stores/appStore';
 import { Board } from '../Board';
 import { invoke } from '@tauri-apps/api/core';
 import { getSavedGames, formatGameResult, formatDuration, saveGame } from '../../utils/gameHistory';
-import type { BoardSize, ScoreResult, MoveRecord, Point } from '../../types';
+import type { BoardSize, ScoreResult, MoveRecord, Point, AIStyle } from '../../types';
 import type { SavedGame } from '../../utils/gameHistory';
 
 const COLUMN_LABELS = 'ABCDEFGHJKLMNOPQRST';
@@ -21,9 +21,9 @@ function formatMove(record: MoveRecord, index: number): string {
 
 export function GamePlay() {
   const {
-    game, gameResult, isAiGame, aiDifficulty,
+    game, gameResult, isAiGame, aiDifficulty, aiStyle,
     placeStone, pass: doPass, resign: doResign,
-    aiMove, setView, startAiGame, undoMove, getMoveHistory,
+    aiMove, setView, startAiGame, setAiStyle, undoMove, getMoveHistory,
   } = useAppStore();
 
   const [showScore, setShowScore] = useState(false);
@@ -161,7 +161,7 @@ export function GamePlay() {
             { size: 13, label: '13x13', desc: 'Orta', color: 'border-blue-500/30' },
             { size: 19, label: '19x19', desc: 'Uzman', color: 'border-purple-500/30' },
           ].map((opt) => (
-            <button key={opt.size} onClick={() => startAiGame(opt.size, aiDifficulty)}
+            <button key={opt.size} onClick={() => startAiGame(opt.size, aiDifficulty, aiStyle)}
               className={`glass rounded-2xl p-6 text-center card-hover border ${opt.color} min-w-[120px]`}>
               <div className="text-3xl font-bold mb-1">{opt.label}</div>
               <div className="text-xs text-text-secondary">{opt.desc}</div>
@@ -185,6 +185,31 @@ export function GamePlay() {
           </div>
           <div className="flex justify-between mt-2 text-[10px] text-text-secondary px-1">
             <span>Kolay</span><span>Zor</span>
+          </div>
+        </div>
+
+        <div className="glass rounded-2xl p-6">
+          <p className="text-sm text-text-secondary mb-3 font-medium text-center">Oyun Stili</p>
+          <div className="grid grid-cols-2 gap-2">
+            {([
+              { style: 'balanced' as AIStyle, label: 'Dengeli', desc: 'Dengeli strateji, standart Go oynar', icon: '⚖️' },
+              { style: 'aggressive' as AIStyle, label: 'Agresif', desc: 'Taş yakalama odaklı, saldırgan oynar', icon: '⚔️' },
+              { style: 'defensive' as AIStyle, label: 'Savunmacı', desc: 'Grup güvenliği öncelikli, sağlam oynar', icon: '🛡️' },
+              { style: 'educational' as AIStyle, label: 'Eğitici', desc: 'Öğrenme odaklı, hamlelerini açıklar', icon: '📖' },
+            ]).map((opt) => (
+              <button key={opt.style} onClick={() => setAiStyle(opt.style)}
+                className={`p-3 rounded-xl text-left transition-all border ${
+                  aiStyle === opt.style
+                    ? 'bg-accent/10 border-accent/40 ring-1 ring-accent/30'
+                    : 'glass border-transparent hover:bg-bg-secondary card-hover'
+                }`}>
+                <div className="flex items-center gap-2">
+                  <span className="text-lg">{opt.icon}</span>
+                  <span className="text-sm font-semibold">{opt.label}</span>
+                </div>
+                <div className="text-[10px] text-text-secondary mt-1">{opt.desc}</div>
+              </button>
+            ))}
           </div>
         </div>
 
@@ -239,7 +264,7 @@ export function GamePlay() {
               <span className="text-xs text-text-secondary font-medium">HAMLE</span>
               <span className="text-2xl font-bold text-text-primary">{game.move_number}</span>
             </div>
-            <PlayerInfo color="white" captures={game.white_captures} isActive={game.current_player === 'white'} isAi={isAiGame} />
+            <PlayerInfo color="white" captures={game.white_captures} isActive={game.current_player === 'white'} isAi={isAiGame} aiStyle={aiStyle} />
           </div>
 
           <div className={`text-center py-3 rounded-xl text-sm font-medium ${
@@ -335,13 +360,20 @@ export function GamePlay() {
   );
 }
 
-function PlayerInfo({ color, captures, isActive, isAi }: { color: 'black' | 'white'; captures: number; isActive: boolean; isAi: boolean }) {
+function PlayerInfo({ color, captures, isActive, isAi, aiStyle }: { color: 'black' | 'white'; captures: number; isActive: boolean; isAi: boolean; aiStyle?: AIStyle }) {
+  const styleLabels: Record<string, string> = {
+    balanced: 'Dengeli',
+    aggressive: 'Agresif',
+    defensive: 'Savunmacı',
+    educational: 'Eğitici',
+  };
+  const styleLabel = aiStyle && styleLabels[aiStyle] ? ` - ${styleLabels[aiStyle]}` : '';
   return (
     <div className={`flex flex-col items-center gap-2 p-3 rounded-xl transition-all duration-300 ${isActive ? 'bg-accent/10 ring-1 ring-accent/50 scale-105' : ''}`}>
       <div className={`w-10 h-10 rounded-full ${
         color === 'black' ? 'bg-gradient-to-br from-gray-600 to-gray-900 ring-1 ring-gray-700' : 'bg-gradient-to-br from-white to-gray-200 ring-1 ring-gray-300'
       }`} />
-      <span className="text-xs font-semibold">{color === 'black' ? 'Siyah' : 'Beyaz'}{isAi && color === 'white' ? ' (AI)' : ''}</span>
+      <span className="text-xs font-semibold">{color === 'black' ? 'Siyah' : 'Beyaz'}{isAi && color === 'white' ? ` (AI${styleLabel})` : ''}</span>
       <span className="text-xs text-text-secondary">{captures} yakalanan</span>
     </div>
   );

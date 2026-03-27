@@ -30,6 +30,8 @@ pub fn run() {
             ai_get_move,
             ai_place_stone,
             set_ai_difficulty,
+            set_ai_style,
+            get_ai_style,
             undo,
             undo_multiple,
             get_move_history,

@@ -2,8 +2,9 @@ use rand::seq::SliceRandom;
 use rand::Rng;
 use rand::RngExt;
 
+use crate::ai::styles::{get_style_weights, StyleWeights};
 use crate::engine::game::GoGame;
-use crate::engine::types::{AIDifficulty, Point, StoneColor};
+use crate::engine::types::{AIDifficulty, AIStyle, Point, StoneColor};
 
 const EXPLORATION_CONSTANT: f64 = 1.414;
 
@@ -78,11 +79,24 @@ fn select_most_visited(root_children: &[MCTSNode]) -> Option<(u8, u8)> {
 
 pub struct MCTSAi {
     difficulty: AIDifficulty,
+    style_weights: StyleWeights,
 }
 
 impl MCTSAi {
     pub fn new(difficulty: AIDifficulty) -> Self {
-        MCTSAi { difficulty }
+        let style_weights = get_style_weights(difficulty.style);
+        MCTSAi {
+            difficulty,
+            style_weights,
+        }
+    }
+
+    pub fn style(&self) -> AIStyle {
+        self.difficulty.style
+    }
+
+    pub fn difficulty_level(&self) -> u8 {
+        self.difficulty.level
     }
 
     pub fn get_move(&self, game: &GoGame) -> Option<Point> {
@@ -105,6 +119,8 @@ impl MCTSAi {
         let board_area = board_size as u32;
         let move_number = game.move_number();
         let game_progress = move_number as f64 / board_area as f64;
+        let w = &self.style_weights;
+        let current_player = game.current_player();
 
         let mut scored: Vec<(usize, f64)> = valid_moves
             .iter()
@@ -114,40 +130,54 @@ impl MCTSAi {
 
                 let captures = game.would_capture_count(m.x, m.y);
                 if captures > 0 {
-                    score += 15.0 * captures as f64;
+                    score += w.capture_mult * captures as f64;
                 }
 
                 if game.creates_atari(m.x, m.y) {
-                    score += 8.0;
+                    score += w.atari_weight;
                 }
 
                 if game.is_self_atari(m.x, m.y) {
-                    score -= 12.0;
+                    score += w.self_atari_penalty;
                 }
 
                 let connections = game.connects_friendly_groups(m.x, m.y);
                 if connections > 1 {
-                    score += 3.0 * (connections as f64 - 1.0);
+                    score += w.connection_weight * (connections as f64 - 1.0);
                 }
 
                 let dist = ((m.x as f64 - center).powi(2) + (m.y as f64 - center).powi(2)).sqrt();
-                score += (center - dist).max(0.0) * 0.5;
+                score += (center - dist).max(0.0) * w.center_weight;
 
                 let edge_dist =
                     m.x.min(m.y)
                         .min(board_size - 1 - m.x)
                         .min(board_size - 1 - m.y);
                 if edge_dist == 0 {
-                    score -= 4.0;
+                    score += w.edge_penalty_first;
                 } else if edge_dist == 1 {
-                    score -= 1.0;
+                    score += w.edge_penalty_second;
                 } else if edge_dist == 2 || edge_dist == 3 {
                     score += 2.0;
                 }
 
+                // Proximity scoring for aggressive/defensive styles
+                if w.proximity_weight != 0.0 {
+                    let proximity =
+                        compute_proximity_score(game, m.x, m.y, current_player, board_size);
+                    score += w.proximity_weight * proximity;
+                }
+
+                // Territory weight for defensive/educational styles
+                if w.territory_weight != 0.0 {
+                    let territory =
+                        compute_territory_score(game, m.x, m.y, current_player, board_size);
+                    score += w.territory_weight * territory;
+                }
+
                 let noise = match self.difficulty.level {
                     1 => rng.random_range(-5.0f64..5.0),
-                    _ => rng.random_range(-1.5f64..1.5),
+                    _ => rng.random_range(-w.noise_scale..w.noise_scale),
                 };
                 score += noise;
 
@@ -271,9 +301,9 @@ impl MCTSAi {
                 }
 
                 let result = if use_heavy_playout {
-                    heavy_playout(&mut sim_game, &mut rng)
+                    heavy_playout(&mut sim_game, &mut rng, &self.style_weights)
                 } else {
-                    light_playout(&mut sim_game, &mut rng)
+                    light_playout(&mut sim_game, &mut rng, &self.style_weights)
                 };
 
                 root_children[root_idx].visits += 1;
@@ -318,7 +348,7 @@ fn get_valid_moves_fast(game: &GoGame) -> Vec<(u8, u8)> {
     moves
 }
 
-fn light_playout(game: &mut GoGame, rng: &mut impl Rng) -> PlayoutResult {
+fn light_playout(game: &mut GoGame, rng: &mut impl Rng, weights: &StyleWeights) -> PlayoutResult {
     let max_moves = (game.board_size().to_u8() as u32).pow(2) * 2;
     let mut moves_played = 0u32;
 
@@ -333,7 +363,7 @@ fn light_playout(game: &mut GoGame, rng: &mut impl Rng) -> PlayoutResult {
             continue;
         }
 
-        if let Some(m) = pick_heuristic_move(game, &valid_moves, rng, false) {
+        if let Some(m) = pick_heuristic_move(game, &valid_moves, rng, false, weights) {
             game.place_stone_fast(m.0, m.1);
         } else {
             game.pass_fast();
@@ -349,7 +379,7 @@ fn light_playout(game: &mut GoGame, rng: &mut impl Rng) -> PlayoutResult {
     }
 }
 
-fn heavy_playout(game: &mut GoGame, rng: &mut impl Rng) -> PlayoutResult {
+fn heavy_playout(game: &mut GoGame, rng: &mut impl Rng, weights: &StyleWeights) -> PlayoutResult {
     let max_moves = (game.board_size().to_u8() as u32).pow(2) * 2;
     let mut moves_played = 0u32;
 
@@ -367,7 +397,7 @@ fn heavy_playout(game: &mut GoGame, rng: &mut impl Rng) -> PlayoutResult {
         let remaining = max_moves - moves_played;
         let force_tactical = remaining < 40;
 
-        if let Some(m) = pick_heuristic_move(game, &valid_moves, rng, force_tactical) {
+        if let Some(m) = pick_heuristic_move(game, &valid_moves, rng, force_tactical, weights) {
             game.place_stone_fast(m.0, m.1);
         } else {
             game.pass_fast();
@@ -388,6 +418,7 @@ fn pick_heuristic_move(
     valid_moves: &[(u8, u8)],
     rng: &mut impl Rng,
     force_tactical: bool,
+    weights: &StyleWeights,
 ) -> Option<(u8, u8)> {
     let board_size = game.board_size().to_u8();
     let center = board_size as f64 / 2.0;
@@ -395,7 +426,7 @@ fn pick_heuristic_move(
     let game_progress = game.move_number() as f64 / board_area as f64;
 
     let mut best_tactical: Option<(usize, f64)> = None;
-    let mut weights: Vec<f64> = Vec::with_capacity(valid_moves.len());
+    let mut wts: Vec<f64> = Vec::with_capacity(valid_moves.len());
 
     for (i, &(x, y)) in valid_moves.iter().enumerate() {
         let captures = game.would_capture_count(x, y);
@@ -405,14 +436,14 @@ fn pick_heuristic_move(
         let mut weight = 1.0f64;
 
         if captures > 0 {
-            weight += 10.0 * captures as f64;
+            weight += weights.base_capture_bonus * captures as f64;
             if best_tactical.is_none() || captures as f64 > best_tactical.unwrap().1 {
                 best_tactical = Some((i, captures as f64));
             }
         }
 
         if atari {
-            weight += 4.0;
+            weight += weights.base_atari_bonus;
             if best_tactical.is_none() {
                 best_tactical = Some((i, 4.0));
             }
@@ -432,7 +463,7 @@ fn pick_heuristic_move(
         }
 
         let dist = ((x as f64 - center).powi(2) + (y as f64 - center).powi(2)).sqrt();
-        weight += (center - dist).max(0.0) * 0.1;
+        weight += (center - dist).max(0.0) * weights.connection_bonus_per;
 
         if game_progress > 0.5 {
             weight *= 0.5;
@@ -441,7 +472,7 @@ fn pick_heuristic_move(
             weight *= 0.3;
         }
 
-        weights.push(weight);
+        wts.push(weight);
     }
 
     if force_tactical {
@@ -450,14 +481,18 @@ fn pick_heuristic_move(
         }
     }
 
-    let capture_threshold = if force_tactical { 0.8 } else { 0.7 };
+    let capture_threshold = if force_tactical {
+        0.8
+    } else {
+        weights.capture_threshold
+    };
     if let Some((idx, _)) = best_tactical {
         if rng.random_range(0.0f64..1.0) < capture_threshold {
             return Some(valid_moves[idx]);
         }
     }
 
-    let total: f64 = weights.iter().sum();
+    let total: f64 = wts.iter().sum();
     if total <= 0.0 {
         return None;
     }
@@ -470,7 +505,7 @@ fn pick_heuristic_move(
     }
 
     let mut roll = rng.random_range(0.0..total);
-    for (i, &w) in weights.iter().enumerate() {
+    for (i, &w) in wts.iter().enumerate() {
         roll -= w;
         if roll <= 0.0 {
             return Some(valid_moves[i]);
@@ -478,4 +513,69 @@ fn pick_heuristic_move(
     }
 
     valid_moves.last().copied()
+}
+
+fn compute_proximity_score(
+    game: &GoGame,
+    x: u8,
+    y: u8,
+    current_player: StoneColor,
+    board_size: u8,
+) -> f64 {
+    let board = game.get_board_state();
+    let opponent = current_player.opposite();
+    let mut min_distance: Option<u8> = None;
+    let mut friendly_distance: Option<u8> = None;
+
+    for by in 0..board_size {
+        for bx in 0..board_size {
+            if let Some(stone) = board[by as usize][bx as usize] {
+                let dist = ((x as i16 - bx as i16).unsigned_abs()
+                    + (y as i16 - by as i16).unsigned_abs()) as u8;
+                if stone == opponent {
+                    min_distance = Some(match min_distance {
+                        Some(d) => d.min(dist),
+                        None => dist,
+                    });
+                } else if stone == current_player {
+                    friendly_distance = Some(match friendly_distance {
+                        Some(d) => d.min(dist),
+                        None => dist,
+                    });
+                }
+            }
+        }
+    }
+
+    match min_distance {
+        Some(d) if d <= 3 => (4 - d) as f64,
+        _ => 0.0,
+    }
+}
+
+fn compute_territory_score(
+    game: &GoGame,
+    x: u8,
+    y: u8,
+    current_player: StoneColor,
+    board_size: u8,
+) -> f64 {
+    let board = game.get_board_state();
+    let mut friendly_count = 0u8;
+    let mut empty_count = 0u8;
+
+    let dirs: [(i16, i16); 4] = [(0, 1), (0, -1), (1, 0), (-1, 0)];
+    for (dx, dy) in dirs {
+        let nx = x as i16 + dx;
+        let ny = y as i16 + dy;
+        if nx >= 0 && nx < board_size as i16 && ny >= 0 && ny < board_size as i16 {
+            match board[ny as usize][nx as usize] {
+                Some(stone) if stone == current_player => friendly_count += 1,
+                None => empty_count += 1,
+                _ => {}
+            }
+        }
+    }
+
+    (friendly_count as f64 * 1.5) + (empty_count as f64 * 0.5)
 }

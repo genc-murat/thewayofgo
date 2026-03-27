@@ -10,6 +10,7 @@ import type {
   UserStats,
   StepResult,
   StoneColor,
+  AIStyle,
 } from '../types';
 import { recordExerciseAttempt } from '../utils/progressDb';
 
@@ -24,6 +25,7 @@ interface AppState {
   gameResult: MoveResult | null;
   isAiGame: boolean;
   aiDifficulty: number;
+  aiStyle: AIStyle;
 
   // Lesson state
   currentLesson: Lesson | null;
@@ -60,7 +62,8 @@ interface AppState {
   resign: (player: string) => Promise<void>;
   aiMove: () => Promise<MoveResult | null>;
   setAiDifficulty: (level: number) => Promise<void>;
-  startAiGame: (size: number, difficulty: number) => Promise<void>;
+  setAiStyle: (style: AIStyle) => Promise<void>;
+  startAiGame: (size: number, difficulty: number, style?: AIStyle) => Promise<void>;
   undoMove: () => Promise<void>;
   getMoveHistory: () => Promise<MoveRecord[]>;
 
@@ -92,6 +95,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   gameResult: null,
   isAiGame: false,
   aiDifficulty: 2,
+  aiStyle: 'balanced',
 
   // Lesson state
   currentLesson: null,
@@ -187,15 +191,27 @@ export const useAppStore = create<AppState>((set, get) => ({
     }
   },
 
-  startAiGame: async (size, difficulty) => {
+  setAiStyle: async (style) => {
+    try {
+      await invoke('set_ai_style', { style });
+      set({ aiStyle: style });
+    } catch (e) {
+      set({ error: String(e) });
+    }
+  },
+
+  startAiGame: async (size, difficulty, style) => {
+    const aiStyle = style || useAppStore.getState().aiStyle;
     set({ isLoading: true, error: null, isAiGame: true });
     try {
       await invoke('set_ai_difficulty', { level: difficulty });
+      await invoke('set_ai_style', { style: aiStyle });
       const response = await invoke<GameStateResponse>('create_game', { size });
       set({
         game: response.state,
         gameResult: null,
         aiDifficulty: difficulty,
+        aiStyle: aiStyle,
         isLoading: false,
         currentView: 'play',
       });

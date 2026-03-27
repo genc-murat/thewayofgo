@@ -166,8 +166,30 @@ pub async fn ai_place_stone(state: State<'_, AppState>) -> Result<GameStateRespo
 #[tauri::command]
 pub fn set_ai_difficulty(state: State<AppState>, level: u8) -> Result<(), String> {
     let mut ai = state.ai.lock().map_err(|e| e.to_string())?;
-    *ai = MCTSAi::new(AIDifficulty::new(level));
+    let current_style = ai.style();
+    *ai = MCTSAi::new(AIDifficulty::new_with_style(level, current_style));
     Ok(())
+}
+
+#[tauri::command]
+pub fn set_ai_style(state: State<AppState>, style: String) -> Result<(), String> {
+    let ai_style: AIStyle = serde_json::from_str(&format!("\"{}\"", style))
+        .map_err(|_| format!("Invalid AI style: {}", style))?;
+    let mut ai = state.ai.lock().map_err(|e| e.to_string())?;
+    let current_level = ai.difficulty_level();
+    *ai = MCTSAi::new(AIDifficulty::new_with_style(current_level, ai_style));
+    Ok(())
+}
+
+#[tauri::command]
+pub fn get_ai_style(state: State<AppState>) -> Result<String, String> {
+    let ai = state.ai.lock().map_err(|e| e.to_string())?;
+    let style = ai.style();
+    let style_str = serde_json::to_string(&style)
+        .map_err(|e| e.to_string())?
+        .trim_matches('"')
+        .to_string();
+    Ok(style_str)
 }
 
 #[tauri::command]
