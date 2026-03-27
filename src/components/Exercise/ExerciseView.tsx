@@ -219,6 +219,13 @@ const EXERCISE_CATALOG = [
   { id: 'e6-r-1', level: 6, module: 6, title: 'Pro Analiz ve AI Stratejisi', type: 'Açılış', difficulty: 6 },
   { id: 'e6-r-2', level: 6, module: 6, title: 'Turnuva ve Mentörlük Sentezi', type: 'Alan Kontrolü', difficulty: 6 },
   { id: 'e6-r-3', level: 6, module: 6, title: 'Tüm Seviyelerin Sentezi', type: 'Yaşam ve Ölüm', difficulty: 6 },
+  { id: 'e2-ms-1', level: 2, module: 6, title: 'Merdiven Okuma (2 Adım)', type: 'Çok Adımlı', difficulty: 3 },
+  { id: 'e2-ms-2', level: 2, module: 6, title: 'İki Göz Yap (2 Adım)', type: 'Çok Adımlı', difficulty: 3 },
+  { id: 'e3-ms-1', level: 3, module: 6, title: 'Tesuji Kombinasyonu (3 Adım)', type: 'Çok Adımlı', difficulty: 4 },
+  { id: 'e3-ms-2', level: 3, module: 6, title: 'Çift Yönlü Savunma (2 Adım)', type: 'Çok Adımlı', difficulty: 3 },
+  { id: 'e4-ms-1', level: 4, module: 6, title: 'İstila ve Yaşam (3 Adım)', type: 'Çok Adımlı', difficulty: 4 },
+  { id: 'e4-ms-2', level: 4, module: 6, title: 'Atari-Kaçış-Yakalama (3 Adım)', type: 'Çok Adımlı', difficulty: 4 },
+  { id: 'e5-ms-1', level: 5, module: 5, title: 'Karmaşık Okuma (4 Adım)', type: 'Çok Adımlı', difficulty: 5 },
 ];
 
 const TYPE_COLORS: Record<string, string> = {
@@ -231,6 +238,7 @@ const TYPE_COLORS: Record<string, string> = {
   'Alan Kontrolü': 'bg-amber-500/15 text-amber-400 border-amber-500/20',
   'Bitiriş': 'bg-pink-500/15 text-pink-400 border-pink-500/20',
   'Açılış': 'bg-teal-500/15 text-teal-400 border-teal-500/20',
+  'Çok Adımlı': 'bg-indigo-500/15 text-indigo-400 border-indigo-500/20',
 };
 
 export function ExerciseView() {
@@ -306,22 +314,50 @@ function ExercisePlayer() {
   const {
     currentExercise, exerciseResult, exerciseAttempts,
     submitExerciseMove, closeExercise, loadExercise,
+    currentStepIndex, stepBoard, stepResults, allStepsCompleted,
+    submitMultiStepMove, advanceToNextStep,
   } = useAppStore();
+
+  const isMultiStep = currentExercise?.steps && currentExercise.steps.length > 0;
 
   const handleBoardClick = useCallback(async (x: number, y: number) => {
     if (exerciseResult || !currentExercise) return;
-    await submitExerciseMove(x, y);
-  }, [exerciseResult, submitExerciseMove, currentExercise]);
+    if (isMultiStep && !allStepsCompleted) {
+      const lastResult = stepResults[stepResults.length - 1];
+      if (lastResult && !lastResult.correct) return;
+      await submitMultiStepMove(x, y);
+    } else {
+      await submitExerciseMove(x, y);
+    }
+  }, [exerciseResult, submitExerciseMove, submitMultiStepMove, currentExercise, isMultiStep, stepResults, allStepsCompleted]);
 
   if (!currentExercise) return null;
 
   const boardSize = currentExercise.board_size as BoardSize;
-  const board = createBoardFromStones(currentExercise.initial_stones, boardSize);
+  const steps = currentExercise.steps;
+  const currentStep = isMultiStep && steps ? steps[currentStepIndex] : null;
+  const lastStepResult = stepResults.length > 0 ? stepResults[stepResults.length - 1] : null;
+
+  // Determine board for multi-step
+  const board = isMultiStep && stepBoard
+    ? stepBoard
+    : createBoardFromStones(currentExercise.initial_stones, boardSize);
 
   const highlights: Highlight[] = [];
-  if (exerciseResult && !exerciseResult.correct && exerciseResult.best_move) {
+  if (!isMultiStep && exerciseResult && !exerciseResult.correct && exerciseResult.best_move) {
     highlights.push({ x: exerciseResult.best_move[0], y: exerciseResult.best_move[1], type: 'good' });
   }
+  if (isMultiStep && lastStepResult && !lastStepResult.correct && lastStepResult.best_move) {
+    highlights.push({ x: lastStepResult.best_move[0], y: lastStepResult.best_move[1], type: 'good' });
+  }
+
+  // Determine hints source
+  const hints = isMultiStep && currentStep?.hints ? currentStep.hints : currentExercise.hints;
+
+  // Current step description
+  const stepDescription = isMultiStep && currentStep
+    ? (currentStep.explanation || currentExercise.description)
+    : currentExercise.description;
 
   return (
     <div className="max-w-4xl mx-auto animate-fade-in">
@@ -338,18 +374,78 @@ function ExercisePlayer() {
           <span className="text-xs">Zorluk: {'★'.repeat(Math.max(0, Math.min(5, currentExercise.difficulty || 0)))}{'☆'.repeat(Math.max(0, 5 - Math.max(0, Math.min(5, currentExercise.difficulty || 0))))}</span>
         </div>
         <h2 className="text-2xl font-bold">{currentExercise.title}</h2>
-        <p className="text-text-secondary mt-1">{currentExercise.description}</p>
+        <p className="text-text-secondary mt-1">{stepDescription}</p>
       </div>
+
+      {/* Multi-step indicator */}
+      {isMultiStep && steps && (
+        <div className="mb-6">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-sm font-medium text-text-secondary">
+              Adım {currentStepIndex + 1} / {steps.length}
+            </span>
+          </div>
+          <div className="flex gap-1.5">
+            {steps.map((_, idx) => {
+              const isCompleted = idx < stepResults.length && stepResults[idx]?.correct;
+              const isCurrent = idx === currentStepIndex;
+              const isFailed = idx < stepResults.length && !stepResults[idx]?.correct;
+              return (
+                <div
+                  key={idx}
+                  className={`h-1.5 flex-1 rounded-full transition-all ${
+                    isCompleted ? 'bg-success' :
+                    isFailed ? 'bg-error' :
+                    isCurrent ? 'bg-accent' :
+                    'bg-glass-border'
+                  }`}
+                />
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       <div className="flex flex-col lg:flex-row gap-8">
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-sm glass rounded-2xl p-4">
-            <Board size={boardSize} board={board} highlights={highlights} onIntersectionClick={handleBoardClick} interactive={!exerciseResult} showCoordinates={true} />
+            <Board
+              size={boardSize}
+              board={board}
+              highlights={highlights}
+              onIntersectionClick={handleBoardClick}
+              interactive={!(exerciseResult || (isMultiStep && (allStepsCompleted || (lastStepResult && !lastStepResult.correct))))}
+              showCoordinates={true}
+            />
           </div>
         </div>
 
         <div className="lg:w-72 space-y-4">
-          {exerciseResult && (
+          {/* Multi-step last step result */}
+          {isMultiStep && lastStepResult && (
+            <div className={`animate-scale-in rounded-2xl p-5 border ${
+              lastStepResult.correct ? 'bg-success/10 border-success/30 glow-success' : 'bg-error/10 border-error/30 glow-error'
+            }}`}>
+              <div className="flex items-center gap-2.5 mb-2">
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-lg font-bold ${lastStepResult.correct ? 'bg-success/20 text-success' : 'bg-error/20 text-error'}`}>
+                  {lastStepResult.correct ? '✓' : '✗'}
+                </div>
+                <span className="font-bold">{lastStepResult.correct ? 'Doğru!' : 'Yanlış'}</span>
+              </div>
+              <p className="text-sm text-text-secondary">{lastStepResult.explanation}</p>
+              {lastStepResult.correct && !allStepsCompleted && (
+                <button
+                  onClick={() => advanceToNextStep()}
+                  className="mt-3 w-full btn-primary py-2 rounded-xl text-sm"
+                >
+                  Sonraki Adım →
+                </button>
+              )}
+            </div>
+          )}
+
+          {/* Single-step result */}
+          {!isMultiStep && exerciseResult && (
             <div className={`animate-scale-in rounded-2xl p-5 border ${
               exerciseResult.correct ? 'bg-success/10 border-success/30 glow-success' : 'bg-error/10 border-error/30 glow-error'
             }`}>
@@ -363,14 +459,35 @@ function ExercisePlayer() {
             </div>
           )}
 
+          {/* Completed all steps */}
+          {isMultiStep && allStepsCompleted && (
+            <div className="animate-scale-in rounded-2xl p-5 border bg-success/10 border-success/30 glow-success">
+              <div className="flex items-center gap-2.5 mb-2">
+                <div className="w-8 h-8 rounded-full flex items-center justify-center text-lg font-bold bg-success/20 text-success">✓</div>
+                <span className="font-bold">Tüm Adımlar Tamamlandı!</span>
+              </div>
+              <p className="text-sm text-text-secondary">Tüm adımları başarıyla çözdünüz.</p>
+            </div>
+          )}
+
           <div className="glass rounded-2xl p-5">
             <div className="text-sm text-text-secondary mb-1">Deneme Sayısı</div>
             <div className="text-3xl font-bold">{exerciseAttempts}</div>
           </div>
 
+          {/* Hints */}
+          {hints.length > 0 && (
+            <div className="glass rounded-2xl p-5">
+              <div className="text-sm font-medium mb-2">İpuçları</div>
+              {hints.slice(0, 1).map((hint, i) => (
+                <p key={i} className="text-sm text-text-secondary">{hint}</p>
+              ))}
+            </div>
+          )}
+
           <div className="flex gap-2">
             <button onClick={() => closeExercise()} className="flex-1 btn-ghost py-2.5 rounded-xl text-sm">Listeye Dön</button>
-            {exerciseResult && (
+            {(exerciseResult || (isMultiStep && (allStepsCompleted || (lastStepResult && !lastStepResult.correct)))) && (
               <button onClick={() => loadExercise(currentExercise.id)} className="flex-1 btn-primary py-2.5 rounded-xl text-sm">Tekrar Dene</button>
             )}
           </div>

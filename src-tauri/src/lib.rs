@@ -34,6 +34,7 @@ pub fn run() {
             undo_multiple,
             get_move_history,
             validate_exercise_move,
+            validate_multi_step_move,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

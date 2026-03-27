@@ -1,0 +1,96 @@
+{
+  "id": "e4-ms-1",
+  "level": 4,
+  "module": 6,
+  "lesson": 8,
+  "type": "life_and_death",
+  "title": "İstila ve Yaşam (3 Adım)",
+  "description": "Düşman bölgesine istila edin ve grubunuzu yaşatın.",
+  "board_size": 9,
+  "initial_stones": [],
+  "correct_moves": [],
+  "hints": [
+    "İstila noktasını bulun",
+    "Kaçış yolunu garantiye alın",
+    "İki göz oluşturun"
+  ],
+  "difficulty": 4,
+  "stars_required": 1,
+  "steps": [
+    {
+      "initial_stones": [
+        {"x": 3, "y": 1, "color": "white"},
+        {"x": 4, "y": 1, "color": "white"},
+        {"x": 5, "y": 1, "color": "white"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 5, "y": 2, "color": "white"},
+        {"x": 3, "y": 3, "color": "white"},
+        {"x": 4, "y": 3, "color": "white"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 6, "y": 2, "color": "black"}
+      ],
+      "correct_moves": [
+        {"x": 4, "y": 2, "is_correct": true, "explanation": "Doğru istila noktası! Beyaz'ın alanını yarıya böldünüz."},
+        {"x": 3, "y": 0, "is_correct": false, "explanation": "Bu nokta beyaz tarafından kolayca yakalanır."},
+        {"x": 5, "y": 0, "is_correct": false, "explanation": "Bu nokta istila etkinliğini azaltır."}
+      ],
+      "opponent_response": [
+        {"x": 2, "y": 1, "color": "white"}
+      ],
+      "explanation": "İstila noktasını belirleyin.",
+      "hints": ["Beyaz'ın bölgesinin en zayıf noktasını bulun"]
+    },
+    {
+      "initial_stones": [
+        {"x": 3, "y": 1, "color": "white"},
+        {"x": 4, "y": 1, "color": "white"},
+        {"x": 5, "y": 1, "color": "white"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 5, "y": 2, "color": "white"},
+        {"x": 3, "y": 3, "color": "white"},
+        {"x": 4, "y": 3, "color": "white"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 6, "y": 2, "color": "black"},
+        {"x": 4, "y": 2, "color": "black"},
+        {"x": 2, "y": 1, "color": "white"}
+      ],
+      "correct_moves": [
+        {"x": 6, "y": 1, "is_correct": true, "explanation": "Kaçış yolu açıldı! Grubunuz dışa bağlandı."},
+        {"x": 1, "y": 2, "is_correct": false, "explanation": "Bu nokta grubunuzu kurtarmaz."},
+        {"x": 5, "y": 0, "is_correct": false, "explanation": "Bu nokta beyaz tarafından kontrol edilir."}
+      ],
+      "opponent_response": [
+        {"x": 5, "y": 0, "color": "white"}
+      ],
+      "explanation": "Kaçış yolunu açın.",
+      "hints": ["Dışarıdaki siyah taşlara bağlanacak noktayı düşünün"]
+    },
+    {
+      "initial_stones": [
+        {"x": 3, "y": 1, "color": "white"},
+        {"x": 4, "y": 1, "color": "white"},
+        {"x": 5, "y": 1, "color": "white"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 5, "y": 2, "color": "white"},
+        {"x": 3, "y": 3, "color": "white"},
+        {"x": 4, "y": 3, "color": "white"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 6, "y": 2, "color": "black"},
+        {"x": 4, "y": 2, "color": "black"},
+        {"x": 2, "y": 1, "color": "white"},
+        {"x": 6, "y": 1, "color": "black"},
+        {"x": 5, "y": 0, "color": "white"}
+      ],
+      "correct_moves": [
+        {"x": 1, "y": 1, "is_correct": true, "explanation": "Mükemmel! İstila grubunuz artık canlı. Beyaz'ın alanı önemli ölçüde azaldı."},
+        {"x": 6, "y": 0, "is_correct": false, "explanation": "Bu nokta grubunuzu korumaz."},
+        {"x": 7, "y": 1, "is_correct": false, "explanation": "Bu nokta çok uzak, grubunuzu ilgilendirmez."}
+      ],
+      "explanation": "Grubu yaşatın.",
+      "hints": ["Göz oluşturacak noktayı bulun"]
+    }
+  ]
+}

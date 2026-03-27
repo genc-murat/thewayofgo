@@ -1,0 +1,77 @@
+{
+  "id": "e2-ms-1",
+  "level": 2,
+  "module": 6,
+  "lesson": 2,
+  "type": "capture_stones",
+  "title": "Merdiven Okuma (2 Adım)",
+  "description": "Merdiven pozisyonunda ilk iki adımı doğru oynayın.",
+  "board_size": 9,
+  "initial_stones": [],
+  "correct_moves": [],
+  "hints": [
+    "Merdiven açısını kurun",
+    "Beyaz'ın kaçış yolunu kesin"
+  ],
+  "difficulty": 3,
+  "stars_required": 1,
+  "steps": [
+    {
+      "initial_stones": [
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 5, "y": 4, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 4, "y": 5, "color": "white"}
+      ],
+      "correct_moves": [
+        {"x": 3, "y": 5, "is_correct": true, "explanation": "Adım 1 doğru! Beyaz'ı sağa doğru kovalamaya başladınız. Merdiven açısı kuruldu."},
+        {"x": 5, "y": 5, "is_correct": false, "explanation": "Beyaz bu noktada kaçabilir. Merdiven açısını korumalısınız."},
+        {"x": 4, "y": 6, "is_correct": false, "explanation": "Bu hamle merdiven oluşturmak için yanlış yöne gidiyor."}
+      ],
+      "opponent_response": [
+        {"x": 5, "y": 5, "color": "white"}
+      ],
+      "explanation": "Merdiven başlangıcı: Beyaz'ı köşeye doğru sürükleyin.",
+      "hints": ["Beyaz'ın sadece bir özgürlüğünü kapatacak hamleyi düşünün"]
+    },
+    {
+      "initial_stones": [
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 5, "y": 4, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 4, "y": 5, "color": "white"},
+        {"x": 3, "y": 5, "color": "black"},
+        {"x": 5, "y": 5, "color": "white"}
+      ],
+      "correct_moves": [
+        {"x": 5, "y": 6, "is_correct": true, "explanation": "Mükemmel! Merdiven devam ediyor. Beyaz köşeye yaklaşıyor."},
+        {"x": 6, "y": 5, "is_correct": false, "explanation": "Beyaz bu noktada kaçabilir ve merdiven bozulur."},
+        {"x": 4, "y": 6, "is_correct": false, "explanation": "Bu yönde merdiven işlemez."}
+      ],
+      "opponent_response": [
+        {"x": 6, "y": 5, "color": "white"}
+      ],
+      "explanation": "Adım 2: Merdiveni sürdürün.",
+      "hints": ["Merdiven açısını bozmadan bir sonraki adımı düşünün"]
+    },
+    {
+      "initial_stones": [
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 5, "y": 4, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 4, "y": 5, "color": "white"},
+        {"x": 3, "y": 5, "color": "black"},
+        {"x": 5, "y": 5, "color": "white"},
+        {"x": 5, "y": 6, "color": "black"},
+        {"x": 6, "y": 5, "color": "white"}
+      ],
+      "correct_moves": [
+        {"x": 6, "y": 6, "is_correct": true, "explanation": "Harika! Merdiven ilerliyor. Beyaz yakalanma yolunda."},
+        {"x": 7, "y": 5, "is_correct": false, "explanation": "Beyaz bu şekilde köşeden kaçabilir."},
+        {"x": 5, "y": 7, "is_correct": false, "explanation": "Bu yönde merdiven doğru çalışmaz."}
+      ],
+      "explanation": "Son adım: Merdiveni sürdürün.",
+      "hints": ["Beyaz'ı köşeye doğru sürmeye devam edin"]
+    }
+  ]
+}

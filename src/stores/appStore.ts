@@ -8,6 +8,8 @@ import type {
   Lesson,
   Exercise,
   UserStats,
+  StepResult,
+  StoneColor,
 } from '../types';
 
 interface AppState {
@@ -32,6 +34,11 @@ interface AppState {
   showHint: boolean;
   hintIndex: number;
   exerciseResult: { correct: boolean; explanation: string; best_move: [number, number] | null } | null;
+  // Multi-step exercise state
+  currentStepIndex: number;
+  stepBoard: (StoneColor | null)[][] | null;
+  stepResults: StepResult[];
+  allStepsCompleted: boolean;
 
   // Progress
   stats: UserStats | null;
@@ -65,6 +72,8 @@ interface AppState {
   loadExercise: (exerciseId: string) => Promise<void>;
   closeExercise: () => void;
   submitExerciseMove: (x: number, y: number) => Promise<void>;
+  submitMultiStepMove: (x: number, y: number) => Promise<void>;
+  advanceToNextStep: () => void;
   showNextHint: () => void;
 
   // Error handling
@@ -93,6 +102,12 @@ export const useAppStore = create<AppState>((set, get) => ({
   showHint: false,
   hintIndex: 0,
   exerciseResult: null,
+
+  // Multi-step exercise state
+  currentStepIndex: 0,
+  stepBoard: null,
+  stepResults: [],
+  allStepsCompleted: false,
 
   // Progress
   stats: null,
@@ -236,10 +251,26 @@ export const useAppStore = create<AppState>((set, get) => ({
     set({ isLoading: true, error: null, exerciseAttempts: 0, showHint: false, hintIndex: 0, exerciseResult: null });
     try {
       const exerciseData = await import(`../data/exercises/${exerciseId}.json`);
+      const exercise: Exercise = exerciseData.default || exerciseData;
+
+      const isMultiStep = exercise.steps && exercise.steps.length > 0;
+      let stepBoard = null;
+      if (isMultiStep && exercise.steps) {
+        const firstStep = exercise.steps[0];
+        const stones = firstStep.initial_stones.length > 0
+          ? firstStep.initial_stones
+          : exercise.initial_stones;
+        stepBoard = createBoardFromStones(stones, exercise.board_size);
+      }
+
       set({
-        currentExercise: exerciseData.default || exerciseData,
+        currentExercise: exercise,
         isLoading: false,
         currentView: 'exercise',
+        currentStepIndex: 0,
+        stepBoard,
+        stepResults: [],
+        allStepsCompleted: false,
       });
     } catch (e) {
       set({ error: `Failed to load exercise: ${e}`, isLoading: false });
@@ -253,6 +284,10 @@ export const useAppStore = create<AppState>((set, get) => ({
       exerciseAttempts: 0,
       showHint: false,
       hintIndex: 0,
+      currentStepIndex: 0,
+      stepBoard: null,
+      stepResults: [],
+      allStepsCompleted: false,
       currentView: 'exercise',
     });
   },
@@ -285,6 +320,97 @@ export const useAppStore = create<AppState>((set, get) => ({
     }
   },
 
+  submitMultiStepMove: async (x, y) => {
+    const { currentExercise, currentStepIndex, stepResults, exerciseAttempts } = get();
+    if (!currentExercise || !currentExercise.steps) return;
+
+    set({ isLoading: true });
+    try {
+      const exerciseJson = JSON.stringify(currentExercise);
+      const result = await invoke<StepResult>(
+        'validate_multi_step_move',
+        { exerciseJson, stepIndex: currentStepIndex, x, y }
+      );
+
+      const newResults = [...stepResults, result];
+
+      if (result.correct) {
+        if (result.all_steps_completed) {
+          // All steps done
+          set({
+            exerciseResult: {
+              correct: true,
+              explanation: result.explanation,
+              best_move: null,
+            },
+            stepResults: newResults,
+            allStepsCompleted: true,
+            exerciseAttempts: exerciseAttempts + 1,
+            isLoading: false,
+          });
+        } else {
+          // Move to next step
+          set({
+            stepResults: newResults,
+            exerciseAttempts: exerciseAttempts + 1,
+            isLoading: false,
+          });
+        }
+      } else {
+        set({
+          stepResults: newResults,
+          exerciseAttempts: exerciseAttempts + 1,
+          isLoading: false,
+        });
+      }
+    } catch (e) {
+      set({ error: String(e), isLoading: false });
+    }
+  },
+
+  advanceToNextStep: () => {
+    const { currentExercise, currentStepIndex } = get();
+    if (!currentExercise?.steps) return;
+
+    const nextIndex = currentStepIndex + 1;
+    const steps = currentExercise.steps;
+    if (nextIndex >= steps.length) return;
+
+    const nextStep = steps[nextIndex];
+
+    // Determine board state: start from opponent_response of previous step or current step's initial_stones
+    let stones = nextStep.initial_stones;
+    if (nextStep.opponent_response) {
+      // Merge: keep previous stones, add opponent response
+      stones = [...nextStep.initial_stones, ...nextStep.opponent_response];
+    }
+
+    const board = createBoardFromStones(stones, currentExercise.board_size);
+
+    set({
+      currentStepIndex: nextIndex,
+      stepBoard: board,
+      showHint: false,
+      hintIndex: 0,
+      exerciseResult: null,
+    });
+  },
+
   // Error handling
   setError: (error) => set({ error }),
 }));
+
+function createBoardFromStones(
+  stones: { x: number; y: number; color: string }[],
+  size: number
+): (StoneColor | null)[][] {
+  const board: (StoneColor | null)[][] = Array(size)
+    .fill(null)
+    .map(() => Array(size).fill(null));
+  for (const stone of stones) {
+    if (stone.x >= 0 && stone.x < size && stone.y >= 0 && stone.y < size) {
+      board[stone.y][stone.x] = stone.color as StoneColor;
+    }
+  }
+  return board;
+}

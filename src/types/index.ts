@@ -122,6 +122,14 @@ export interface MoveOption {
   explanation: string;
 }
 
+export interface ExerciseStep {
+  initial_stones: Stone[];
+  correct_moves: MoveOption[];
+  opponent_response?: Stone[];
+  explanation?: string;
+  hints?: string[];
+}
+
 export interface Exercise {
   id: string;
   level: number;
@@ -136,6 +144,15 @@ export interface Exercise {
   hints: string[];
   difficulty: number;
   stars_required: number;
+  steps?: ExerciseStep[];
+}
+
+export interface StepResult {
+  step_index: number;
+  correct: boolean;
+  explanation: string;
+  best_move: [number, number] | null;
+  all_steps_completed: boolean;
 }
 
 export interface ExerciseResult {

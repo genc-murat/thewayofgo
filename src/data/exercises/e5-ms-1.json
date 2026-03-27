@@ -1,0 +1,143 @@
+{
+  "id": "e5-ms-1",
+  "level": 5,
+  "module": 5,
+  "lesson": 8,
+  "type": "life_and_death",
+  "title": "Karmaşık Okuma (4 Adım)",
+  "description": "Karmaşık bir yaşam/ölüm pozisyonunda 4 adımlı okuma yapın.",
+  "board_size": 9,
+  "initial_stones": [],
+  "correct_moves": [],
+  "hints": [
+    "İlk hamle ile gözü bölün",
+    "Rakibin cevabını okuyun",
+    "Karşı hamle ile göz oluşturun",
+    "Son noktayı garantiye alın"
+  ],
+  "difficulty": 5,
+  "stars_required": 1,
+  "steps": [
+    {
+      "initial_stones": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 4, "y": 2, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 1, "y": 2, "color": "white"},
+        {"x": 1, "y": 3, "color": "white"},
+        {"x": 1, "y": 4, "color": "white"},
+        {"x": 5, "y": 2, "color": "white"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 5, "y": 4, "color": "white"}
+      ],
+      "correct_moves": [
+        {"x": 3, "y": 3, "is_correct": true, "explanation": "Göz noktasına taş koydunuz. Siyah grup zayıflamış görünüyor, ama doğru oynarsanız yaşayabilirsiniz."},
+        {"x": 3, "y": 1, "is_correct": false, "explanation": "Bu nokta beyaz tarafından kesilir."},
+        {"x": 2, "y": 1, "is_correct": false, "explanation": "Bu nokta grubunuzu yaşatmaz."}
+      ],
+      "opponent_response": [
+        {"x": 3, "y": 1, "color": "white"}
+      ],
+      "explanation": "Adım 1: Göz noktasını savunun.",
+      "hints": ["Göz oluşturacak kritik noktayı bulun"]
+    },
+    {
+      "initial_stones": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 4, "y": 2, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 1, "y": 2, "color": "white"},
+        {"x": 1, "y": 3, "color": "white"},
+        {"x": 1, "y": 4, "color": "white"},
+        {"x": 5, "y": 2, "color": "white"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 5, "y": 4, "color": "white"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 3, "y": 1, "color": "white"}
+      ],
+      "correct_moves": [
+        {"x": 4, "y": 3, "is_correct": true, "explanation": "Güzel hamle! İkinci göz oluşturdunuz. Grup şimdi daha güvenli."},
+        {"x": 2, "y": 5, "is_correct": false, "explanation": "Bu nokta ikinci göz oluşturmaz."},
+        {"x": 3, "y": 5, "is_correct": false, "explanation": "Bu nokta beyaz tarafından kontrol edilir."}
+      ],
+      "opponent_response": [
+        {"x": 3, "y": 5, "color": "white"}
+      ],
+      "explanation": "Adım 2: İkinci gözü oluşturun.",
+      "hints": ["Grubun diğer tarafında boş nokta arayın"]
+    },
+    {
+      "initial_stones": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 4, "y": 2, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 1, "y": 2, "color": "white"},
+        {"x": 1, "y": 3, "color": "white"},
+        {"x": 1, "y": 4, "color": "white"},
+        {"x": 5, "y": 2, "color": "white"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 5, "y": 4, "color": "white"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 3, "y": 1, "color": "white"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 3, "y": 5, "color": "white"}
+      ],
+      "correct_moves": [
+        {"x": 4, "y": 5, "is_correct": true, "explanation": "Mükemmel okuma! Beyaz'ın saldırısını püskürttünüz."},
+        {"x": 2, "y": 5, "is_correct": false, "explanation": "Bu nokta beyaz tarafından atari durumuna sokulabilir."},
+        {"x": 5, "y": 5, "is_correct": false, "explanation": "Bu nokta grubunuzu ilgilendirmez."}
+      ],
+      "opponent_response": [
+        {"x": 2, "y": 5, "color": "white"}
+      ],
+      "explanation": "Adım 3: Rakibin saldırısını püskürtün.",
+      "hints": ["Beyaz'ın son saldırısını durdurun"]
+    },
+    {
+      "initial_stones": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 4, "y": 2, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 1, "y": 2, "color": "white"},
+        {"x": 1, "y": 3, "color": "white"},
+        {"x": 1, "y": 4, "color": "white"},
+        {"x": 5, "y": 2, "color": "white"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 5, "y": 4, "color": "white"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 3, "y": 1, "color": "white"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 3, "y": 5, "color": "white"},
+        {"x": 4, "y": 5, "color": "black"},
+        {"x": 2, "y": 5, "color": "white"}
+      ],
+      "correct_moves": [
+        {"x": 1, "y": 5, "is_correct": true, "explanation": "Bravo! Tüm adımları başarıyla okudunuz. Siyah grup artık canlı. İki göz noktası garanti."},
+        {"x": 4, "y": 6, "is_correct": false, "explanation": "Bu nokta grubunuzu ilgilendirmez."},
+        {"x": 5, "y": 5, "is_correct": false, "explanation": "Bu nokta beyaz grubu için boşluk kalır."}
+      ],
+      "explanation": "Son adım: Grubun güvenliğini garantiye alın.",
+      "hints": ["Göz noktalarını garantiye alacak noktayı bulun"]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "id": "e3-ms-2",
+  "level": 3,
+  "module": 6,
+  "lesson": 6,
+  "type": "defend_group",
+  "title": "Çift Yönlü Savunma (2 Adım)",
+  "description": "Birbirine bağlı grupları iki adımda güvenli hale getirin.",
+  "board_size": 9,
+  "initial_stones": [],
+  "correct_moves": [],
+  "hints": [
+    "Köprü noktasını bulun",
+    "Bağlantıyı güçlendirin"
+  ],
+  "difficulty": 3,
+  "stars_required": 1,
+  "steps": [
+    {
+      "initial_stones": [
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 5, "y": 4, "color": "black"},
+        {"x": 6, "y": 4, "color": "black"},
+        {"x": 3, "y": 3, "color": "white"},
+        {"x": 4, "y": 3, "color": "white"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 3, "y": 5, "color": "white"},
+        {"x": 5, "y": 5, "color": "white"}
+      ],
+      "correct_moves": [
+        {"x": 4, "y": 5, "is_correct": true, "explanation": "Köprü noktası oluşturuldu! Siyah gruplar bağlandı."},
+        {"x": 4, "y": 4, "is_correct": false, "explanation": "Bu nokta beyaz tarafından kesilebilir."},
+        {"x": 2, "y": 5, "is_correct": false, "explanation": "Bu nokta grubunuzu güçlendirmez."}
+      ],
+      "opponent_response": [
+        {"x": 4, "y": 4, "color": "white"}
+      ],
+      "explanation": "Köprü noktasını kurun.",
+      "hints": ["İki siyah grubu birleştirecek noktayı düşünün"]
+    },
+    {
+      "initial_stones": [
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 5, "y": 4, "color": "black"},
+        {"x": 6, "y": 4, "color": "black"},
+        {"x": 3, "y": 3, "color": "white"},
+        {"x": 4, "y": 3, "color": "white"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 3, "y": 5, "color": "white"},
+        {"x": 5, "y": 5, "color": "white"},
+        {"x": 4, "y": 5, "color": "black"},
+        {"x": 4, "y": 4, "color": "white"}
+      ],
+      "correct_moves": [
+        {"x": 2, "y": 3, "is_correct": true, "explanation": "Harika! Grubunuzu güçlendirdiniz. Beyaz artık kesim yapamaz."},
+        {"x": 6, "y": 3, "is_correct": false, "explanation": "Bu nokta beyaz grubu için boş bir nokta kalır."},
+        {"x": 3, "y": 6, "is_correct": false, "explanation": "Bu nokta grubunuzu güçlendirmez."}
+      ],
+      "explanation": "Bağlantıyı güçlendirin.",
+      "hints": ["Grubunuzun dış özgürlüklerini garantiye alın"]
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "id": "e4-ms-2",
+  "level": 4,
+  "module": 6,
+  "lesson": 9,
+  "type": "capture_stones",
+  "title": "Atari-Kaçış-Yakalama (3 Adım)",
+  "description": "Bir taş üzerinde atari-kaçış-yakalama sekansını tamamlayın.",
+  "board_size": 9,
+  "initial_stones": [],
+  "correct_moves": [],
+  "hints": [
+    "Atari verin",
+    "Kaçış noktalarını kapatın",
+    "Yakalayın"
+  ],
+  "difficulty": 4,
+  "stars_required": 1,
+  "steps": [
+    {
+      "initial_stones": [
+        {"x": 3, "y": 3, "color": "white"},
+        {"x": 3, "y": 4, "color": "white"},
+        {"x": 4, "y": 4, "color": "white"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 3, "y": 5, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 5, "y": 4, "color": "black"}
+      ],
+      "correct_moves": [
+        {"x": 2, "y": 5, "is_correct": true, "explanation": "Atari! Beyaz grubun sadece 1 özgürlüğü kaldı."},
+        {"x": 5, "y": 3, "is_correct": false, "explanation": "Bu hamle beyaz grubun 2 özgürlük kalmasına izin verir."},
+        {"x": 1, "y": 4, "is_correct": false, "explanation": "Bu nokta beyaz grubu atari durumuna sokmaz."}
+      ],
+      "opponent_response": [
+        {"x": 5, "y": 3, "color": "white"}
+      ],
+      "explanation": "Adım 1: Beyaz grubu atari durumuna getirin.",
+      "hints": ["Beyaz grubun tüm özgürlüklerini kapatın"]
+    },
+    {
+      "initial_stones": [
+        {"x": 3, "y": 3, "color": "white"},
+        {"x": 3, "y": 4, "color": "white"},
+        {"x": 4, "y": 4, "color": "white"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 3, "y": 5, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 5, "y": 4, "color": "black"},
+        {"x": 2, "y": 5, "color": "black"},
+        {"x": 5, "y": 3, "color": "white"}
+      ],
+      "correct_moves": [
+        {"x": 4, "y": 5, "is_correct": true, "explanation": "Mükemmel! Beyaz'ın kaçış yolunu kapattınız."},
+        {"x": 3, "y": 2, "is_correct": false, "explanation": "Bu nokta beyaz grubun kaçmasına izin verir."},
+        {"x": 6, "y": 3, "is_correct": false, "explanation": "Bu nokta grubunuzu ilgilendirmez."}
+      ],
+      "opponent_response": [
+        {"x": 3, "y": 2, "color": "white"}
+      ],
+      "explanation": "Adım 2: Kaçış noktalarını kapatın.",
+      "hints": ["Beyaz'ın kalan özgürlüklerini de kapatın"]
+    },
+    {
+      "initial_stones": [
+        {"x": 3, "y": 3, "color": "white"},
+        {"x": 3, "y": 4, "color": "white"},
+        {"x": 4, "y": 4, "color": "white"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 3, "y": 5, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 5, "y": 4, "color": "black"},
+        {"x": 2, "y": 5, "color": "black"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 4, "y": 5, "color": "black"},
+        {"x": 3, "y": 2, "color": "white"}
+      ],
+      "correct_moves": [
+        {"x": 4, "y": 2, "is_correct": true, "explanation": "Bravo! Beyaz grubu yakalandı. Tüm özgürlükler kapandı!"},
+        {"x": 3, "y": 1, "is_correct": false, "explanation": "Bu nokta beyaz grubu atari yapmaz."},
+        {"x": 5, "y": 5, "is_correct": false, "explanation": "Bu nokta beyaz grubu yakalama etkisini kaybettirir."}
+      ],
+      "explanation": "Son adım: Beyaz grubu yakalayın.",
+      "hints": ["Beyaz grubun son özgürlüğünü kapatın"]
+    }
+  ]
+}
