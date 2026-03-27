@@ -7,6 +7,7 @@ interface BoardProps {
   lastMove?: Point | null;
   highlights?: Highlight[];
   validMoves?: Point[];
+  showValidMoves?: boolean;
   onIntersectionClick?: (x: number, y: number) => void;
   interactive?: boolean;
   showCoordinates?: boolean;
@@ -20,6 +21,7 @@ export function Board({
   lastMove,
   highlights = [],
   validMoves = [],
+  showValidMoves = false,
   onIntersectionClick,
   interactive = false,
   showCoordinates = true,
@@ -32,7 +34,13 @@ export function Board({
   const boardPixels = cellSize * (size - 1) + padding * 2;
 
   const [hoverPoint, setHoverPoint] = useState<Point | null>(null);
-  void validMoves;
+
+  const validMoveSet = useMemo(() => {
+    if (!showValidMoves) return null;
+    const set = new Set<string>();
+    for (const m of validMoves) set.add(`${m.x},${m.y}`);
+    return set;
+  }, [showValidMoves, validMoves]);
 
   const starPoints = useMemo(() => {
     if (size === 9) return [[2, 2], [6, 2], [4, 4], [2, 6], [6, 6]];
@@ -157,6 +165,25 @@ export function Board({
       {starPoints.map(([x, y]) => (
         <circle key={`star-${x}-${y}`} cx={toPixel(x)} cy={toPixel(y)} r={3.5} fill="#5a3e1b" />
       ))}
+
+      {/* Valid move indicators */}
+      {validMoveSet && board.map((row, y) =>
+        row.map((cell, x) => {
+          if (cell) return null;
+          if (!validMoveSet.has(`${x},${y}`)) return null;
+          return (
+            <circle
+              key={`valid-${x}-${y}`}
+              cx={toPixel(x)}
+              cy={toPixel(y)}
+              r={4}
+              fill="rgba(245, 158, 11, 0.35)"
+              stroke="rgba(245, 158, 11, 0.5)"
+              strokeWidth={1}
+            />
+          );
+        })
+      )}
 
       {highlights.map((h, i) => {
         const colorMap: Record<string, string> = {

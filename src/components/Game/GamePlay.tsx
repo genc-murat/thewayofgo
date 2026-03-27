@@ -1,7 +1,10 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { useAppStore } from '../../stores/appStore';
 import { Board } from '../Board';
-import type { BoardSize, ScoreResult, MoveRecord } from '../../types';
+import { invoke } from '@tauri-apps/api/core';
+import { getSavedGames, formatGameResult, formatDuration, saveGame } from '../../utils/gameHistory';
+import type { BoardSize, ScoreResult, MoveRecord, Point } from '../../types';
+import type { SavedGame } from '../../utils/gameHistory';
 
 const COLUMN_LABELS = 'ABCDEFGHJKLMNOPQRST';
 
@@ -27,7 +30,16 @@ export function GamePlay() {
   const [isThinking, setIsThinking] = useState(false);
   const [moveHistory, setMoveHistory] = useState<MoveRecord[]>([]);
   const [showMoveList, setShowMoveList] = useState(false);
+  const [showValidMoves, setShowValidMoves] = useState(false);
+  const [validMoves, setValidMoves] = useState<Point[]>([]);
+  const [recentGames, setRecentGames] = useState<SavedGame[]>([]);
+  const [lastMoveAnalysis, setLastMoveAnalysis] = useState<string | null>(null);
   const aiThinkingRef = useRef(false);
+
+  // Load recent games on mount
+  useEffect(() => {
+    getSavedGames(5).then(setRecentGames).catch(() => {});
+  }, []);
 
   useEffect(() => {
     if (isAiGame && game && !game.game_over && game.current_player === 'white' && !aiThinkingRef.current) {
@@ -40,16 +52,54 @@ export function GamePlay() {
         if (result?.game_over) setShowScore(true);
         const history = await getMoveHistory();
         setMoveHistory(history);
+
+        // Analyze AI's move
+        if (game) {
+          const lastMove = history[history.length - 1];
+          if (lastMove && lastMove.x != null && lastMove.y != null) {
+            invoke<{ explanation: string; confidence: number }>('analyze_move', {
+              x: lastMove.x,
+              y: lastMove.y,
+            }).then(analysis => {
+              setLastMoveAnalysis(analysis.explanation);
+            }).catch(() => {});
+          }
+        }
       }, 500);
       return () => clearTimeout(timer);
     }
   }, [game?.current_player, game?.game_over, isAiGame, aiMove, getMoveHistory]);
 
   useEffect(() => {
-    if (game && !isAiGame) {
+    if (game && !game.game_over && !isAiGame) {
       getMoveHistory().then(setMoveHistory);
     }
   }, [game?.move_number, isAiGame, getMoveHistory]);
+
+  // Fetch valid moves when showValidMoves is enabled
+  useEffect(() => {
+    if (showValidMoves && game && !game.game_over) {
+      invoke<Point[]>('get_valid_moves').then(setValidMoves).catch(() => setValidMoves([]));
+    } else {
+      setValidMoves([]);
+    }
+  }, [showValidMoves, game?.move_number, game?.game_over]);
+
+  // Auto-save completed games
+  const gameSavedRef = useRef(false);
+  useEffect(() => {
+    if (game?.game_over && isAiGame && !gameSavedRef.current) {
+      gameSavedRef.current = true;
+      const winner = gameResult?.winner || 'unknown';
+      const result = winner === 'black' ? 'black_wins' : 'white_wins';
+      saveGame(game.board_size, 'ai', result, game.move_number, 0)
+        .then(() => getSavedGames(5).then(setRecentGames))
+        .catch(() => {});
+    }
+    if (!game?.game_over) {
+      gameSavedRef.current = false;
+    }
+  }, [game?.game_over, gameResult?.winner, isAiGame]);
 
   const handleIntersectionClick = useCallback(async (x: number, y: number) => {
     if (!game || game.game_over) return;
@@ -60,6 +110,11 @@ export function GamePlay() {
       const history = await getMoveHistory();
       setMoveHistory(history);
     }
+
+    // Analyze human's move
+    invoke<{ explanation: string; confidence: number }>('analyze_move', { x, y })
+      .then(analysis => setLastMoveAnalysis(analysis.explanation))
+      .catch(() => {});
   }, [game, isAiGame, placeStone, getMoveHistory]);
 
   const handlePass = useCallback(async () => {
@@ -132,6 +187,35 @@ export function GamePlay() {
             <span>Kolay</span><span>Zor</span>
           </div>
         </div>
+
+        {/* Recent games */}
+        {recentGames.length > 0 && (
+          <div className="w-full max-w-md glass rounded-2xl p-6">
+            <h3 className="font-bold text-sm mb-4 text-text-secondary">Son Oyunlar</h3>
+            <div className="space-y-2">
+              {recentGames.map((g) => (
+                <div key={g.id} className="flex items-center justify-between p-3 rounded-xl bg-bg-primary/40">
+                  <div>
+                    <div className="text-sm font-medium">{g.board_size}x{g.board_size} vs {g.opponent === 'ai' ? 'AI' : 'İnsan'}</div>
+                    <div className="text-xs text-text-secondary">{g.moves} hamle · {formatDuration(g.duration_seconds)}</div>
+                  </div>
+                  <div className="text-right">
+                    <div className={`text-xs font-medium ${
+                      g.result.includes('black') ? 'text-success' :
+                      g.result.includes('white') ? 'text-error' :
+                      'text-text-secondary'
+                    }`}>
+                      {formatGameResult(g.result)}
+                    </div>
+                    <div className="text-[10px] text-text-secondary">
+                      {new Date(g.played_at).toLocaleDateString('tr-TR')}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     );
   }
@@ -143,7 +227,7 @@ export function GamePlay() {
     <div className="flex flex-col lg:flex-row gap-8 animate-fade-in">
       <div className="flex-1 flex flex-col items-center">
         <div className="w-full max-w-2xl glass rounded-2xl p-4">
-          <Board size={boardSize} board={game.board} lastMove={game.last_move} onIntersectionClick={handleIntersectionClick} interactive={!game.game_over} showCoordinates={true} currentPlayer={game.current_player} />
+          <Board size={boardSize} board={game.board} lastMove={game.last_move} validMoves={validMoves} showValidMoves={showValidMoves} onIntersectionClick={handleIntersectionClick} interactive={!game.game_over} showCoordinates={true} currentPlayer={game.current_player} />
         </div>
       </div>
 
@@ -168,12 +252,20 @@ export function GamePlay() {
             ) : isThinking ? (
               <span className="flex items-center justify-center gap-2">
                 <span className="w-4 h-4 border-2 border-info/30 border-t-info rounded-full animate-spin-slow" />
-                Yapay zeka düşünüyorsunuz...
+                Yapay zeka düşünüyor...
               </span>
             ) : (
               <span>Sıra: <strong className="text-text-primary">{game.current_player === 'black' ? 'Siyah' : 'Beyaz'}</strong></span>
             )}
           </div>
+
+          {/* AI Move Analysis */}
+          {isAiGame && lastMoveAnalysis && !game.game_over && (
+            <div className="mt-3 p-3 rounded-xl bg-info/5 border border-info/20">
+              <div className="text-[10px] font-semibold text-info mb-1">AI Analizi</div>
+              <p className="text-xs text-text-secondary">{lastMoveAnalysis}</p>
+            </div>
+          )}
         </div>
 
         {gameResult && showScore && gameResult.score && <ScoreDisplay score={gameResult.score} />}
@@ -193,6 +285,15 @@ export function GamePlay() {
                   Pas
                 </button>
               </div>
+              <button onClick={() => setShowValidMoves(!showValidMoves)}
+                className={`flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-medium transition-all border ${
+                  showValidMoves
+                    ? 'bg-accent/10 text-accent border-accent/30'
+                    : 'glass text-text-secondary hover:text-text-primary border-transparent'
+                }`}>
+                <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z" /><path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" /></svg>
+                {showValidMoves ? 'Hamle Yardımını Gizle' : 'Geçerli Hamleleri Göster'}
+              </button>
               <button onClick={handleResign}
                 className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-error/10 hover:bg-error/20 text-error font-medium transition-all border border-error/20">
                 <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M13.477 14.89A6 6 0 015.11 6.524l8.367 8.368zm1.414-1.414L6.524 5.11a6 6 0 008.367 8.367zM18 10a8 8 0 11-16 0 8 8 0 0116 0z" clipRule="evenodd" /></svg>

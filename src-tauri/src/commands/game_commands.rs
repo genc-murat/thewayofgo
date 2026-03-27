@@ -207,3 +207,66 @@ pub fn get_move_history(state: State<AppState>) -> Result<Vec<MoveRecord>, Strin
 
     Ok(game.get_move_history())
 }
+
+#[derive(Debug, Clone, serde::Serialize)]
+pub struct MoveAnalysis {
+    pub explanation: String,
+    pub confidence: u8,
+    pub tactics: Vec<String>,
+}
+
+#[tauri::command]
+pub fn analyze_move(state: State<AppState>, x: u8, y: u8) -> Result<MoveAnalysis, String> {
+    let guard = state.game.lock().map_err(|e| e.to_string())?;
+    let game = guard.as_ref().ok_or("No active game")?;
+
+    let mut tactics = Vec::new();
+    let mut score: i32 = 0;
+
+    // Check captures
+    let captures = game.would_capture_count(x, y);
+    if captures > 0 {
+        tactics.push(format!("{} taş yakalama", captures));
+        score += captures as i32 * 15;
+    }
+
+    // Check atari
+    if game.creates_atari(x, y) {
+        tactics.push("Atari yaratır".to_string());
+        score += 8;
+    }
+
+    // Check self-atari
+    if game.is_self_atari(x, y) {
+        tactics.push("Kendi taşı atari durumuna sokar".to_string());
+        score -= 12;
+    }
+
+    // Check connections
+    let connected = game.connects_friendly_groups(x, y);
+    if connected > 1 {
+        tactics.push("Grupları bağlar".to_string());
+        score += 3 * connected as i32;
+    }
+
+    // Check liberties
+    let liberties = game.get_group_liberties_at(x, y);
+    if liberties > 0 && liberties <= 2 {
+        tactics.push(format!("Grup özgürlükleri: {}", liberties));
+    }
+
+    // Generate explanation
+    let explanation = if tactics.is_empty() {
+        "Stratejik bir hamle. Pozisyonu değerlendirin.".to_string()
+    } else {
+        tactics.join(" | ")
+    };
+
+    let confidence = if score > 20 { 95 } else if score > 10 { 80 } else if score > 0 { 65 } else if score > -10 { 50 } else { 35 };
+
+    Ok(MoveAnalysis {
+        explanation,
+        confidence,
+        tactics,
+    })
+}

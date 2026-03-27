@@ -15,7 +15,7 @@ import { recordExerciseAttempt } from '../utils/progressDb';
 
 interface AppState {
   // Navigation
-  currentView: 'home' | 'learn' | 'play' | 'exercise' | 'progress';
+  currentView: 'home' | 'learn' | 'play' | 'exercise' | 'progress' | 'settings';
   currentLevel: number;
   currentModule: number;
 

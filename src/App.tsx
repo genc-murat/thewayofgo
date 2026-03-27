@@ -5,6 +5,7 @@ import { LessonViewer } from './components/Lesson';
 import { GamePlay } from './components/Game';
 import { ExerciseView } from './components/Exercise';
 import { ProgressPage } from './components/Progress';
+import { SettingsPage } from './components/Settings';
 import { useAppStore } from './stores/appStore';
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
         return <ExerciseView />;
       case 'progress':
         return <ProgressPage />;
+      case 'settings':
+        return <SettingsPage />;
       default:
         return <HomePage />;
     }
