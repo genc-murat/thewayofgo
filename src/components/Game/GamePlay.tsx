@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { useAppStore } from '../../stores/appStore';
 import { Board } from '../Board';
 import type { BoardSize, ScoreResult } from '../../types';
@@ -12,17 +12,20 @@ export function GamePlay() {
 
   const [showScore, setShowScore] = useState(false);
   const [isThinking, setIsThinking] = useState(false);
+  const aiThinkingRef = useRef(false);
 
   useEffect(() => {
-    if (isAiGame && game && !game.game_over && game.current_player === 'white' && !isThinking) {
+    if (isAiGame && game && !game.game_over && game.current_player === 'white' && !aiThinkingRef.current) {
+      aiThinkingRef.current = true;
       setIsThinking(true);
       const timer = setTimeout(async () => {
         await aiMove();
+        aiThinkingRef.current = false;
         setIsThinking(false);
       }, 500);
       return () => clearTimeout(timer);
     }
-  }, [game?.current_player, game?.game_over, isAiGame, isThinking, aiMove]);
+  }, [game?.current_player, game?.game_over, isAiGame, aiMove]);
 
   const handleIntersectionClick = useCallback(async (x: number, y: number) => {
     if (!game || game.game_over) return;
