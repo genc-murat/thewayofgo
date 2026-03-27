@@ -1,0 +1,27 @@
+{
+  "id": "e1-r-2",
+  "level": 1,
+  "module": 6,
+  "lesson": 8,
+  "type": "life_and_death",
+  "title": "Göz ve Grup Savunma",
+  "description": "Göz kavramı ile grup savunmasını birleştirin. Siyah grubunuzun iki göz oluşturarak yaşamasını sağlayın. Grubu tehdit eden beyaz taşlara dikkat edin.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 3, "y": 2, "color": "black"},
+    {"x": 2, "y": 3, "color": "black"},
+    {"x": 4, "y": 2, "color": "white"},
+    {"x": 4, "y": 3, "color": "white"},
+    {"x": 3, "y": 4, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 3, "y": 3, "is_correct": true, "explanation": "Doğru! (3,3) oynayarak grubunuzu tamamladınız ve iki göz oluşturabilecek bir şekil yaptınız. Göz kavramı ve grup savunması bir arada!"}
+  ],
+  "hints": [
+    "İki göz oluşturmak için hangi nokta eksik?",
+    "Grubunuzu tamamlayın."
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

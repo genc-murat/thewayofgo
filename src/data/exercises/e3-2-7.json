@@ -5,7 +5,7 @@
   "lesson": 7,
   "type": "territorial_control",
   "title": "Sınırı Genişletme",
-  "description": "Sınırı daha da genişletin.",
+  "description": "Mevcut sınır hattınızı bir adım daha ileriye taşıyın. Rakibin müdahalesini önleyerek alanınızı büyütün.",
   "board_size": 9,
   "initial_stones": [
     {

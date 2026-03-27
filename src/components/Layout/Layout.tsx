@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAppStore } from '../../stores/appStore';
+import { TitleBar } from '../TitleBar';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -36,6 +37,7 @@ export function Layout({ children }: LayoutProps) {
 
   return (
     <div className="min-h-screen flex flex-col bg-surface-0 text-text-primary">
+      <TitleBar />
       <header className="glass-strong sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
           <button onClick={() => setView('home')} className="flex items-center gap-3 hover:opacity-80 transition-opacity">

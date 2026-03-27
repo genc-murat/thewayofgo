@@ -5,7 +5,7 @@
   "lesson": 6,
   "type": "territorial_control",
   "title": "Moyo Oluşturma",
-  "description": "Büyük moyo oluşturun.",
+  "description": "Taşlarınızı stratejik noktalara yerleştirerek büyük bir moyo (etki alanı) oluşturun. Köşe ve kenar taşlarını merkeze bağlayın.",
   "board_size": 9,
   "initial_stones": [
     {

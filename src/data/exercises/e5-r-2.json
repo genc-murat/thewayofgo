@@ -1,0 +1,27 @@
+{
+  "id": "e5-r-2",
+  "level": 5,
+  "module": 6,
+  "lesson": 8,
+  "type": "territorial_control",
+  "title": "Denge ve Sabırlı Oyun",
+  "description": "Etki alanı ile toprak arasındaki dengeyi kurun. Sabırlı bir hamle yaparak rakibin saldırgan hamlesini bekleyin. Acele etmeyin, doğru zamanı bekleyin.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 1, "y": 1, "color": "black"},
+    {"x": 3, "y": 1, "color": "black"},
+    {"x": 5, "y": 1, "color": "black"},
+    {"x": 1, "y": 5, "color": "white"},
+    {"x": 3, "y": 5, "color": "white"},
+    {"x": 5, "y": 5, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 3, "y": 3, "is_correct": true, "explanation": "Doğru! (3,3) sabırlı bir merkez hamlesi. Hemen saldırmak yerine merkezde güçlenerek dengeyi kurdunuz. Sabırlı oyun stratejisi!"}
+  ],
+  "hints": [
+    "Aceleye gerek yok, dengeyi düşünün.",
+    "Merkez kontrolü uzun vadede daha değerli olabilir."
+  ],
+  "difficulty": 5,
+  "stars_required": 4
+}

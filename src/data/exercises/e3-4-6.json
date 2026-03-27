@@ -5,7 +5,7 @@
   "lesson": 6,
   "type": "capture_stones",
   "title": "Kake Uygulama",
-  "description": "Kake tesujisini uygulayın.",
+  "description": "Kake tesujisini uygulayarak beyaz grubu köşeye sıkıştırın. Taşların etrafından dolaşarak kaçış yolunu kapatın.",
   "board_size": 9,
   "initial_stones": [
     {

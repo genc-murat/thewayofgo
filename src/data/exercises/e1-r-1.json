@@ -1,0 +1,28 @@
+{
+  "id": "e1-r-1",
+  "level": 1,
+  "module": 6,
+  "lesson": 8,
+  "type": "capture_stones",
+  "title": "Özgürlük ve Yakalama",
+  "description": "Özgürlük sayma ve taş yakalama kavramlarını birleştirin. Beyaz grubun özgürlüklerini sayın ve en etkili yakalama hamlesini bulun. Bu alıştırma iki temel kavramı bir arada kullanmanızı gerektirir.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 4, "y": 3, "color": "black"},
+    {"x": 3, "y": 4, "color": "black"},
+    {"x": 4, "y": 5, "color": "white"},
+    {"x": 5, "y": 4, "color": "white"},
+    {"x": 5, "y": 5, "color": "white"},
+    {"x": 4, "y": 4, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 5, "y": 3, "is_correct": true, "explanation": "Doğru! Beyaz grubun son özgürlüğünü kapattınız. (5,3) ile beyazın kaçış yolunu kestiniz ve taşı yakaladınız. Özgürlük sayma ve yakalama birleşti!"}
+  ],
+  "hints": [
+    "Beyaz grubun kaç özgürlüğü var?",
+    "Hangi hamle en fazla özgürlük kapatır?"
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

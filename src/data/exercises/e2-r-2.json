@@ -1,0 +1,27 @@
+{
+  "id": "e2-r-2",
+  "level": 2,
+  "module": 7,
+  "lesson": 8,
+  "type": "life_and_death",
+  "title": "Yaşam ve Alan Kontrolü",
+  "description": "Yaşam/ölüm kavramı ile alan kontrolünü birleştirin. Siyah grubunuzu yaşatırken aynı zamanda alanınızı genişletin. İki hedefi aynı anda düşünün.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 3, "y": 2, "color": "black"},
+    {"x": 2, "y": 3, "color": "black"},
+    {"x": 2, "y": 4, "color": "white"},
+    {"x": 3, "y": 4, "color": "white"},
+    {"x": 1, "y": 3, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 3, "y": 3, "is_correct": true, "explanation": "Doğru! (3,3) ile hem grubunuzu yaşattınız (iki göz oluşturuyor) hem de sağ tarafa doğru alan kazandınız. Yaşam + alan kontrolü!"}
+  ],
+  "hints": [
+    "Grubu yaşatmak için en iyi hamle hangisi?",
+    "Bu hamle aynı zamanda alan kazandırır mı?"
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

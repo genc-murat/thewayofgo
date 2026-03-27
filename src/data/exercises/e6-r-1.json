@@ -1,0 +1,25 @@
+{
+  "id": "e6-r-1",
+  "level": 6,
+  "module": 6,
+  "lesson": 8,
+  "type": "opening",
+  "title": "Pro Analiz ve AI Stratejisi",
+  "description": "Modern AI stratejisini pro oyun analizi ile birleştirin. AlphaGo tarzı açılışı uygulayın. Beklenmeyen bir noktaya hamle yaparak dengeyi değiştirin.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 6, "y": 6, "color": "black"},
+    {"x": 2, "y": 6, "color": "white"},
+    {"x": 6, "y": 2, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 4, "y": 4, "is_correct": true, "explanation": "Doğru! (4,4) merkez hamlesi modern AI stratejisine uygun. Pro oyunlarda da sıkça görülen bu hamle, dört köşeye de eşit mesafede denge sağlıyor."}
+  ],
+  "hints": [
+    "AI'ların tercih ettiği açılış noktalarını düşünün.",
+    "Merkez kontrolü pro seviyede ne kadar değerli?"
+  ],
+  "difficulty": 6,
+  "stars_required": 5
+}

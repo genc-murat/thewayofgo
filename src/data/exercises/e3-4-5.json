@@ -5,7 +5,7 @@
   "lesson": 5,
   "type": "capture_stones",
   "title": "İleri Tesuji",
-  "description": "İleri düzey tesuji.",
+  "description": "İleri düzey tesuji kalıbını tanıyın. Siyah taşları kullanarak beyaz grubu kesin ve yakalayın. Katate tekniğini uygulayın.",
   "board_size": 9,
   "initial_stones": [
     {

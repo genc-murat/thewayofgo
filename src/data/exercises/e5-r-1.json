@@ -1,0 +1,28 @@
+{
+  "id": "e5-r-1",
+  "level": 5,
+  "module": 6,
+  "lesson": 8,
+  "type": "capture_stones",
+  "title": "İleri Okuma ve Karmaşık Dövüş",
+  "description": "5 hamle ileri okuma yapın. Karmaşık bir dövüş durumunda tüm varyantları hesaplayın. Her hamleden sonra rakibin en iyi cevabını düşünün.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 4, "y": 3, "color": "black"},
+    {"x": 3, "y": 4, "color": "black"},
+    {"x": 5, "y": 4, "color": "white"},
+    {"x": 4, "y": 5, "color": "white"},
+    {"x": 5, "y": 5, "color": "white"},
+    {"x": 4, "y": 4, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 5, "y": 3, "is_correct": true, "explanation": "Doğru! (5,3) ile beyaz grubu köşeye sıkıştırdınız. 5 hamle ileri okuma: beyaz kaçar, siyah kovalar, beyaz tekrar kaçar, siyah keser ve sonunda yakalar!"}
+  ],
+  "hints": [
+    "5 hamle sonrasını hesaplayın.",
+    "Beyazın en iyi kaçış yolu hangisi?"
+  ],
+  "difficulty": 5,
+  "stars_required": 4
+}

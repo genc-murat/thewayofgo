@@ -1,0 +1,28 @@
+{
+  "id": "e6-r-2",
+  "level": 6,
+  "module": 6,
+  "lesson": 8,
+  "type": "territorial_control",
+  "title": "Turnuva ve Mentörlük Sentezi",
+  "description": "Turnuva stratejisini mentörlük kavramıyla birleştirin. Zaman baskısı altında en iyi hamleyi bulun. Profesyonel düşünce sürecini uygulayın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 1, "y": 1, "color": "black"},
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 5, "y": 5, "color": "black"},
+    {"x": 7, "y": 7, "color": "black"},
+    {"x": 2, "y": 2, "color": "white"},
+    {"x": 4, "y": 4, "color": "white"},
+    {"x": 6, "y": 6, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 4, "y": 2, "is_correct": true, "explanation": "Doğru! (4,2) pro seviye bir strateji hamlesi. Beyazın diagonal hattını keserken kendi bağlantınızı güçlendirdiniz. Turnuva zihniyetiyle optimal karar!"}
+  ],
+  "hints": [
+    "Beyazın stratejik zayıflığı nerede?",
+    "Profesyonel oyuncular bu pozisyonda ne yapar?"
+  ],
+  "difficulty": 6,
+  "stars_required": 5
+}

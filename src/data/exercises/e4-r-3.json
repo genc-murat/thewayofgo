@@ -1,0 +1,30 @@
+{
+  "id": "e4-r-3",
+  "level": 4,
+  "module": 7,
+  "lesson": 8,
+  "type": "life_and_death",
+  "title": "Sentez: Çoklu Kavram",
+  "description": "Birden fazla Go kavramını bir arada kullanın: bağlantı, kesme, yaşam ve alan. Bu sentez alıştırması tüm öğrendiklerinizi test eder. En iyi genel hamleyi bulun.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 3, "y": 2, "color": "black"},
+    {"x": 2, "y": 3, "color": "black"},
+    {"x": 5, "y": 2, "color": "white"},
+    {"x": 6, "y": 2, "color": "white"},
+    {"x": 5, "y": 3, "color": "white"},
+    {"x": 3, "y": 4, "color": "white"},
+    {"x": 4, "y": 4, "color": "white"},
+    {"x": 4, "y": 3, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 4, "y": 2, "is_correct": true, "explanation": "Doğru! (4,2) mükemmel bir sentez hamlesi: kendi taşlarınızı birbirine bağladınız, beyazı böldünüz ve merkezde alan kazandınız. Tüm kavramlar bir arada!"}
+  ],
+  "hints": [
+    "Bağlantı, kesme ve alan hedeflerini aynı anda düşünün.",
+    "Hangi hamle en çok kavramı birleştirir?"
+  ],
+  "difficulty": 4,
+  "stars_required": 3
+}

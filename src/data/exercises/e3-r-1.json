@@ -1,0 +1,26 @@
+{
+  "id": "e3-r-1",
+  "level": 3,
+  "module": 7,
+  "lesson": 8,
+  "type": "opening",
+  "title": "Açılış ve Orta Oyun Geçişi",
+  "description": "Açılış (fuseki) ile orta oyun arasındaki geçiş hamlesini bulun. Açılış taşlarınızı orta oyun stratejisine dönüştürün. Etki alanı oluştururken bağlantıyı koruyun.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 6, "y": 2, "color": "black"},
+    {"x": 2, "y": 6, "color": "white"},
+    {"x": 6, "y": 6, "color": "white"},
+    {"x": 4, "y": 4, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 4, "y": 2, "is_correct": true, "explanation": "Doğru! (4,2) açılış taşlarınızı orta oyuna bağlayan mükemmel geçiş hamlesi. Üst kenarda moyo oluştururken merkez taşınızla bağlantıyı kurdunuz."}
+  ],
+  "hints": [
+    "Açılış taşlarınızı birbirine bağlayın.",
+    "Orta oyun için en etkili hamle hangisi?"
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

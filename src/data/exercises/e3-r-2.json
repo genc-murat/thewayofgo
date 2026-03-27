@@ -1,0 +1,28 @@
+{
+  "id": "e3-r-2",
+  "level": 3,
+  "module": 7,
+  "lesson": 8,
+  "type": "capture_stones",
+  "title": "Tesuji ve Saldırı/Savunma",
+  "description": "Tesuji kalıbını saldırı veya savunma durumunda uygulayın. Doğru tesuji tekniğini seçerek avantaj kazanın. Hem saldırı hem savunma seçeneklerini değerlendirin.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 4, "y": 3, "color": "black"},
+    {"x": 5, "y": 3, "color": "black"},
+    {"x": 3, "y": 4, "color": "white"},
+    {"x": 4, "y": 5, "color": "white"},
+    {"x": 5, "y": 4, "color": "white"},
+    {"x": 4, "y": 4, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 4, "y": 2, "is_correct": true, "explanation": "Doğru! (4,2) ile beyaz grubu tehdit ederken kendi bağlantınızı da güçlendirdiniz. Tesuji + saldırı/savunma birleşimi!"}
+  ],
+  "hints": [
+    "Beyaz grubun zayıf noktası neresi?",
+    "Hem saldırı hem savunma yapan hamle var mı?"
+  ],
+  "difficulty": 4,
+  "stars_required": 3
+}

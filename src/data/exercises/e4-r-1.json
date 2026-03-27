@@ -1,0 +1,27 @@
+{
+  "id": "e4-r-1",
+  "level": 4,
+  "module": 7,
+  "lesson": 8,
+  "type": "opening",
+  "title": "Joseki ve Etki Alanı Birleşimi",
+  "description": "Joseki sonucunda oluşan etki alanını değerlendirin. Köşe josekisinden sonra en iyi devam hamlesini bulun. Etki alanı ile toprak dengesini kurun.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 4, "y": 2, "color": "black"},
+    {"x": 3, "y": 3, "color": "white"},
+    {"x": 5, "y": 3, "color": "white"},
+    {"x": 2, "y": 6, "color": "black"},
+    {"x": 6, "y": 6, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 4, "y": 5, "is_correct": true, "explanation": "Doğru! (4,5) joseki sonrasındaki en iyi devam hamlesi. Köşe josekisinden gelen etki alanınızı merkeze taşıyarak büyük bir moyo oluşturdunuz."}
+  ],
+  "hints": [
+    "Joseki sonucundaki etki alanınızı genişletin.",
+    "Merkez kontrolü hangi noktayla sağlanır?"
+  ],
+  "difficulty": 4,
+  "stars_required": 3
+}

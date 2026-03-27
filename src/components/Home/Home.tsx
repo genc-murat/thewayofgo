@@ -42,9 +42,11 @@ const LEVELS = [
     title: 'Başlangıç',
     description: "Go'nun temellerini öğrenin",
     modules: [
-      { id: 1, title: "Go'nun Temelleri", lessons: 5, completed: 2 },
-      { id: 2, title: 'Temel Kavramlar', lessons: 4, completed: 0 },
-      { id: 3, title: 'İlk Oyununuz', lessons: 3, completed: 0 },
+      { id: 1, title: "Go'nun Temelleri", lessons: 8, completed: 2 },
+      { id: 2, title: 'Temel Kavramlar', lessons: 8, completed: 0 },
+      { id: 3, title: 'İlk Oyununuz', lessons: 6, completed: 0 },
+      { id: 4, title: 'Ko ve Skor', lessons: 6, completed: 0 },
+      { id: 5, title: 'Tekrar', lessons: 4, completed: 0 },
     ],
   },
   {
@@ -52,10 +54,12 @@ const LEVELS = [
     title: 'Temel Teknikler',
     description: 'Yakalama teknikleri, bağlantılar ve tsumego',
     modules: [
-      { id: 1, title: 'Esir Etme Teknikleri', lessons: 5, completed: 0 },
+      { id: 1, title: 'Esir Etme Teknikleri', lessons: 8, completed: 0 },
       { id: 2, title: 'Bağlantı Kurma', lessons: 4, completed: 0 },
-      { id: 3, title: 'Tsumego (Yaşam ve Ölüm)', lessons: 4, completed: 0 },
-      { id: 4, title: 'Oyun Sonu (Yose)', lessons: 4, completed: 0 },
+      { id: 3, title: 'Tsumego (Yaşam ve Ölüm)', lessons: 8, completed: 0 },
+      { id: 4, title: 'Oyun Sonu (Yose)', lessons: 6, completed: 0 },
+      { id: 5, title: 'Uygulama', lessons: 8, completed: 0 },
+      { id: 6, title: 'Çok Adımlı', lessons: 4, completed: 0 },
     ],
   },
   {
@@ -63,11 +67,12 @@ const LEVELS = [
     title: 'Orta Seviye',
     description: 'Strateji ve taktikler',
     modules: [
-      { id: 1, title: 'Açılış (Fuseki)', lessons: 5, completed: 0 },
-      { id: 2, title: 'Orta Oyun', lessons: 5, completed: 0 },
-      { id: 3, title: 'Bitiriş (Yose)', lessons: 4, completed: 0 },
-      { id: 4, title: 'Tesuji Kalıpları', lessons: 5, completed: 0 },
-      { id: 5, title: 'Saldırı Savunma', lessons: 4, completed: 0 },
+      { id: 1, title: 'Açılış (Fuseki)', lessons: 6, completed: 0 },
+      { id: 2, title: 'Orta Oyun', lessons: 7, completed: 0 },
+      { id: 3, title: 'Bitiriş (Yose)', lessons: 6, completed: 0 },
+      { id: 4, title: 'Tesuji Kalıpları', lessons: 7, completed: 0 },
+      { id: 5, title: 'Saldırı Savunma', lessons: 7, completed: 0 },
+      { id: 6, title: 'İleri Tsumego', lessons: 6, completed: 0 },
     ],
   },
   {
@@ -76,10 +81,11 @@ const LEVELS = [
     description: 'Derin strateji',
     modules: [
       { id: 1, title: 'Joseki', lessons: 5, completed: 0 },
-      { id: 2, title: 'Etki Alanları', lessons: 4, completed: 0 },
-      { id: 3, title: 'Kalınlaştırma', lessons: 4, completed: 0 },
-      { id: 4, title: 'İstila', lessons: 5, completed: 0 },
-      { id: 5, title: 'Sentez', lessons: 5, completed: 0 },
+      { id: 2, title: 'Etki Alanları', lessons: 6, completed: 0 },
+      { id: 3, title: 'Kalınlaştırma', lessons: 5, completed: 0 },
+      { id: 4, title: 'İstila', lessons: 6, completed: 0 },
+      { id: 5, title: 'Sentez', lessons: 6, completed: 0 },
+      { id: 6, title: 'Derinlemesine', lessons: 7, completed: 0 },
     ],
   },
   {
@@ -88,9 +94,10 @@ const LEVELS = [
     description: 'Profesyonel seviye kavramlar',
     modules: [
       { id: 1, title: 'İleri Okuma', lessons: 5, completed: 0 },
-      { id: 2, title: 'Sabırlı Oyun', lessons: 4, completed: 0 },
-      { id: 3, title: 'Denge', lessons: 4, completed: 0 },
+      { id: 2, title: 'Sabırlı Oyun', lessons: 5, completed: 0 },
+      { id: 3, title: 'Denge', lessons: 5, completed: 0 },
       { id: 4, title: 'Karmaşık Dövüşler', lessons: 5, completed: 0 },
+      { id: 5, title: 'Planlama', lessons: 7, completed: 0 },
     ],
   },
   {
@@ -100,8 +107,9 @@ const LEVELS = [
     modules: [
       { id: 1, title: 'Pro Oyun Analizi', lessons: 5, completed: 0 },
       { id: 2, title: 'AI Stratejileri', lessons: 5, completed: 0 },
-      { id: 3, title: 'Turnuva Hazırlık', lessons: 4, completed: 0 },
+      { id: 3, title: 'Turnuva Hazırlık', lessons: 5, completed: 0 },
       { id: 4, title: 'Mentörlük', lessons: 5, completed: 0 },
+      { id: 5, title: 'Usta Seviye', lessons: 10, completed: 0 },
     ],
   },
 ];
@@ -123,7 +131,7 @@ export function HomePage() {
         <div className="relative z-10 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium mb-6 animate-fade-in">
             <span className="w-2 h-2 rounded-full bg-accent animate-pulse-slow" />
-            6 seviye, 29 modül, 80+ ders
+            6 seviye, 33 modül, 200+ alıştırma
           </div>
 
           <h2 className="text-5xl md:text-6xl font-bold mb-6 leading-tight animate-fade-in-up">
@@ -152,7 +160,7 @@ export function HomePage() {
         <div className="flex items-center gap-3 mb-8">
           <h3 className="text-2xl font-bold">Müfredat</h3>
           <div className="flex-1 h-px bg-glass-border" />
-          <span className="text-sm text-text-secondary">29 modül</span>
+          <span className="text-sm text-text-secondary">33 modül</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

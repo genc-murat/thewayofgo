@@ -1,0 +1,29 @@
+{
+  "id": "e4-r-2",
+  "level": 4,
+  "module": 7,
+  "lesson": 8,
+  "type": "territorial_control",
+  "title": "İstila ve Yaşam/Ölüm",
+  "description": "Rakibin alanını istila ederken kendi grubunuzu yaşatın. İstila hamlesinden sonra iki göz oluşturmayı planlayın. Hem alan kazanın hem de hayatta kalın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 0, "y": 0, "color": "black"},
+    {"x": 1, "y": 0, "color": "black"},
+    {"x": 0, "y": 1, "color": "black"},
+    {"x": 0, "y": 2, "color": "white"},
+    {"x": 1, "y": 2, "color": "white"},
+    {"x": 2, "y": 2, "color": "white"},
+    {"x": 2, "y": 0, "color": "white"},
+    {"x": 2, "y": 1, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 1, "y": 1, "is_correct": true, "explanation": "Doğru! (1,1) ile beyazın alanını istila ettiniz ve bu nokta iki göz oluşturmanızı sağlıyor. İstila + yaşam stratejisi!"}
+  ],
+  "hints": [
+    "Rakibin alanında yaşayabilir misiniz?",
+    "İki göz oluşturmak için hangi nokta kritik?"
+  ],
+  "difficulty": 4,
+  "stars_required": 3
+}

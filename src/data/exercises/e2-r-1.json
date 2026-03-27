@@ -1,0 +1,27 @@
+{
+  "id": "e2-r-1",
+  "level": 2,
+  "module": 7,
+  "lesson": 8,
+  "type": "capture_stones",
+  "title": "Merdiven ve Kesme Birleşimi",
+  "description": "Merdiven tekniği ile kesme hamlesini birleştirin. Beyaz grubu keserek merdivenle yakalayın. Önce doğru kesme noktasını bulun, sonra merdiven yönünü belirleyin.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 5, "y": 3, "color": "black"},
+    {"x": 4, "y": 4, "color": "black"},
+    {"x": 4, "y": 3, "color": "white"},
+    {"x": 3, "y": 4, "color": "white"},
+    {"x": 5, "y": 4, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 4, "y": 2, "is_correct": true, "explanation": "Doğru! (4,2) ile beyaz grubu ikiye böldünüz ve merdiven başlatarak yakaladınız. Kesme + merdiven kombinasyonu mükemmel!"}
+  ],
+  "hints": [
+    "Beyaz grubu ikiye bölecek nokta neresi?",
+    "Merdiven hangi yöne çalışır?"
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

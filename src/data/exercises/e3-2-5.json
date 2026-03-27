@@ -5,7 +5,7 @@
   "lesson": 5,
   "type": "territorial_control",
   "title": "Grubu İkiye Böl 2",
-  "description": "İleri bölme tekniği.",
+  "description": "Beyaz grubu ikiye bölerek bağlantısını kesin. İki ayrı grubu zayıflatmak için doğru kesme noktasını bulun.",
   "board_size": 9,
   "initial_stones": [
     {

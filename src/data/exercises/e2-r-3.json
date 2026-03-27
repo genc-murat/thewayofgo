@@ -1,0 +1,27 @@
+{
+  "id": "e2-r-3",
+  "level": 2,
+  "module": 7,
+  "lesson": 8,
+  "type": "capture_stones",
+  "title": "Snapback ve Tsumego",
+  "description": "Snapback tekniğini tsumego (yaşam/ölüm) problemi içinde uygulayın. Beyaz grubu snapback ile yakalayın. Köşede snapback kalıbını tanıyın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 0, "y": 0, "color": "black"},
+    {"x": 1, "y": 0, "color": "black"},
+    {"x": 0, "y": 1, "color": "black"},
+    {"x": 1, "y": 1, "color": "white"},
+    {"x": 2, "y": 0, "color": "white"},
+    {"x": 2, "y": 1, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 2, "y": 2, "is_correct": true, "explanation": "Doğru! (2,2) oynadığınızda beyaz (1,1) yakalar ama siyah tekrar (1,1) oynayarak snapback yapar ve beyaz grubu yakalar! Snapback + tsumego!"}
+  ],
+  "hints": [
+    "Beyaz grubun kaçış yolu var mı?",
+    "Snapback kalıbını düşünün."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

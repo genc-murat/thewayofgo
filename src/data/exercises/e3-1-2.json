@@ -22,7 +22,7 @@
     {"x": 4, "y": 4, "color": "white"}
   ],
   "correct_moves": [
-    {"x": 3, "y": 3, "is_correct": false, "explanation": "Bu bir sekidir! Siyah (3,2)-(4,3) ve beyaz (2,2)-(5,3) birbirine bağlı ama ne siyah ne beyaz tek başına yaşar."}
+    {"x": 3, "y": 3, "is_correct": true, "explanation": "Doğru! Bu bir seki durumudur. Siyah ve beyaz gruplar birbirine bağlı, ne siyah ne beyaz tek başına ölemez. Seki: her iki grup da yaşar."}
   ],
   "hints": [
     "İki grubun özgürlüklerini sayın.",

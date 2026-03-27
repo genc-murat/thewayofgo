@@ -1,0 +1,33 @@
+{
+  "id": "e6-r-3",
+  "level": 6,
+  "module": 6,
+  "lesson": 8,
+  "type": "life_and_death",
+  "title": "Tüm Seviyelerin Sentezi",
+  "description": "Bu final pekiştirme alıştırması tüm seviyelerin kavramlarını bir araya getirir. Temel özgürlük saymadan ileri okumaya, açılıştan oyun sonuna kadar her şeyi uygulayın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 1, "y": 1, "color": "black"},
+    {"x": 2, "y": 1, "color": "black"},
+    {"x": 1, "y": 2, "color": "black"},
+    {"x": 3, "y": 2, "color": "white"},
+    {"x": 2, "y": 3, "color": "white"},
+    {"x": 3, "y": 3, "color": "white"},
+    {"x": 5, "y": 5, "color": "black"},
+    {"x": 6, "y": 5, "color": "black"},
+    {"x": 5, "y": 6, "color": "black"},
+    {"x": 7, "y": 6, "color": "white"},
+    {"x": 6, "y": 7, "color": "white"},
+    {"x": 7, "y": 7, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 2, "y": 2, "is_correct": true, "explanation": "Doğru! (2,2) ile sol grubunuzu kurtardınız. İki göz oluşturarak yaşarken beyazın saldırısını önlediniz. Tüm seviyelerin sentezi: özgürlük, göz, bağlantı, strateji!"}
+  ],
+  "hints": [
+    "Hangi grup daha kritik?",
+    "Öğrendiğiniz tüm kavramları sırayla düşünün."
+  ],
+  "difficulty": 6,
+  "stars_required": 5
+}
