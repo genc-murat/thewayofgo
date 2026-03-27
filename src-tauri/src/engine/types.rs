@@ -117,11 +117,11 @@ pub struct AIDifficulty {
 impl AIDifficulty {
     pub fn new(level: u8) -> Self {
         let simulations = match level {
-            1 => 50,
-            2 => 200,
-            3 => 800,
-            4 => 3000,
-            5 => 10000,
+            1 => 0,
+            2 => 100,
+            3 => 500,
+            4 => 2000,
+            5 => 5000,
             _ => 200,
         };
         AIDifficulty { level, simulations }

@@ -587,4 +587,296 @@ impl GoGame {
             history: self.history.clone(),
         }
     }
+
+    pub fn clone_for_simulation(&self) -> Self {
+        GoGame {
+            board: self.board.clone(),
+            board_size: self.board_size,
+            current_player: self.current_player,
+            move_number: self.move_number,
+            black_captures: self.black_captures,
+            white_captures: self.white_captures,
+            last_move: None,
+            game_over: false,
+            passes_in_a_row: self.passes_in_a_row,
+            move_history: Vec::new(),
+            history: Vec::new(),
+        }
+    }
+
+    pub fn place_stone_fast(&mut self, x: u8, y: u8) -> bool {
+        if self.game_over {
+            return false;
+        }
+        let size = self.board_size;
+        if x >= size || y >= size {
+            return false;
+        }
+        if self.board[y as usize][x as usize].is_some() {
+            return false;
+        }
+
+        let color = self.current_player;
+        self.board[y as usize][x as usize] = Some(color);
+
+        let captured = self.find_captures(x, y, color);
+        let group = self.get_group(x, y);
+        let has_liberties = self.count_liberties(&group) > 0;
+
+        if !has_liberties && captured.is_empty() {
+            self.board[y as usize][x as usize] = None;
+            return false;
+        }
+
+        match color {
+            StoneColor::Black => self.black_captures += captured.len() as u32,
+            StoneColor::White => self.white_captures += captured.len() as u32,
+        }
+
+        for (cx, cy) in &captured {
+            self.board[*cy as usize][*cx as usize] = None;
+        }
+
+        self.move_number += 1;
+        self.passes_in_a_row = 0;
+        self.current_player = self.current_player.opposite();
+        true
+    }
+
+    pub fn pass_fast(&mut self) {
+        self.passes_in_a_row += 1;
+        self.move_number += 1;
+        self.current_player = self.current_player.opposite();
+    }
+
+    pub fn is_game_over_fast(&self) -> bool {
+        self.passes_in_a_row >= 2
+    }
+
+    pub fn would_capture_count(&self, x: u8, y: u8) -> usize {
+        let color = self.current_player;
+        if self.board[y as usize][x as usize].is_some() {
+            return 0;
+        }
+
+        let mut test_board = self.board.clone();
+        test_board[y as usize][x as usize] = Some(color);
+
+        let mut total_captured = 0;
+        let opponent = color.opposite();
+        let mut checked_groups: HashSet<(u8, u8)> = HashSet::new();
+
+        for (nx, ny) in self.neighbors(x, y) {
+            if test_board[ny as usize][nx as usize] == Some(opponent)
+                && !checked_groups.contains(&(nx, ny))
+            {
+                let mut group = HashSet::new();
+                let mut stack = vec![(nx, ny)];
+                while let Some((cx, cy)) = stack.pop() {
+                    if group.contains(&(cx, cy)) {
+                        continue;
+                    }
+                    if test_board[cy as usize][cx as usize] != Some(opponent) {
+                        continue;
+                    }
+                    group.insert((cx, cy));
+                    checked_groups.insert((cx, cy));
+                    for (nnx, nny) in self.neighbors(cx, cy) {
+                        if !group.contains(&(nnx, nny)) {
+                            stack.push((nnx, nny));
+                        }
+                    }
+                }
+
+                let mut liberties = 0u8;
+                let mut liberty_set = HashSet::new();
+                for &(gx, gy) in &group {
+                    for (lnx, lny) in self.neighbors(gx, gy) {
+                        if test_board[lny as usize][lnx as usize].is_none()
+                            && liberty_set.insert((lnx, lny))
+                        {
+                            liberties += 1;
+                        }
+                    }
+                }
+
+                if liberties == 0 {
+                    total_captured += group.len();
+                    for &(gx, gy) in &group {
+                        test_board[gy as usize][gx as usize] = None;
+                    }
+                }
+            }
+        }
+
+        total_captured
+    }
+
+    pub fn creates_atari(&self, x: u8, y: u8) -> bool {
+        let color = self.current_player;
+        if self.board[y as usize][x as usize].is_some() {
+            return false;
+        }
+
+        let mut test_board = self.board.clone();
+        test_board[y as usize][x as usize] = Some(color);
+
+        let opponent = color.opposite();
+        let mut checked: HashSet<(u8, u8)> = HashSet::new();
+
+        for (nx, ny) in self.neighbors(x, y) {
+            if test_board[ny as usize][nx as usize] == Some(opponent)
+                && !checked.contains(&(nx, ny))
+            {
+                let mut group = HashSet::new();
+                let mut stack = vec![(nx, ny)];
+                while let Some((cx, cy)) = stack.pop() {
+                    if group.contains(&(cx, cy)) {
+                        continue;
+                    }
+                    if test_board[cy as usize][cx as usize] != Some(opponent) {
+                        continue;
+                    }
+                    group.insert((cx, cy));
+                    checked.insert((cx, cy));
+                    for (nnx, nny) in self.neighbors(cx, cy) {
+                        if !group.contains(&(nnx, nny)) {
+                            stack.push((nnx, nny));
+                        }
+                    }
+                }
+
+                let mut liberties = 0u8;
+                let mut liberty_set = HashSet::new();
+                for &(gx, gy) in &group {
+                    for (lnx, lny) in self.neighbors(gx, gy) {
+                        if test_board[lny as usize][lnx as usize].is_none()
+                            && liberty_set.insert((lnx, lny))
+                        {
+                            liberties += 1;
+                            if liberties >= 2 {
+                                break;
+                            }
+                        }
+                    }
+                    if liberties >= 2 {
+                        break;
+                    }
+                }
+
+                if liberties == 1 && group.len() >= 2 {
+                    return true;
+                }
+            }
+        }
+
+        false
+    }
+
+    pub fn is_self_atari(&self, x: u8, y: u8) -> bool {
+        let color = self.current_player;
+        if self.board[y as usize][x as usize].is_some() {
+            return false;
+        }
+
+        let mut test_board = self.board.clone();
+        test_board[y as usize][x as usize] = Some(color);
+
+        for (nx, ny) in self.neighbors(x, y) {
+            if test_board[ny as usize][nx as usize] == Some(color.opposite()) {
+                let mut group = HashSet::new();
+                let mut stack = vec![(nx, ny)];
+                while let Some((cx, cy)) = stack.pop() {
+                    if group.contains(&(cx, cy)) {
+                        continue;
+                    }
+                    if test_board[cy as usize][cx as usize] != Some(color.opposite()) {
+                        continue;
+                    }
+                    group.insert((cx, cy));
+                    for (nnx, nny) in self.neighbors(cx, cy) {
+                        if !group.contains(&(nnx, nny)) {
+                            stack.push((nnx, nny));
+                        }
+                    }
+                }
+
+                let has_liberty = group.iter().any(|&(gx, gy)| {
+                    self.neighbors(gx, gy)
+                        .iter()
+                        .any(|&(lnx, lny)| test_board[lny as usize][lnx as usize].is_none())
+                });
+
+                if !has_liberty {
+                    for &(gx, gy) in &group {
+                        test_board[gy as usize][gx as usize] = None;
+                    }
+                }
+            }
+        }
+
+        let mut own_group = HashSet::new();
+        let mut stack = vec![(x, y)];
+        while let Some((cx, cy)) = stack.pop() {
+            if own_group.contains(&(cx, cy)) {
+                continue;
+            }
+            if test_board[cy as usize][cx as usize] != Some(color) {
+                continue;
+            }
+            own_group.insert((cx, cy));
+            for (nx, ny) in self.neighbors(cx, cy) {
+                if !own_group.contains(&(nx, ny)) {
+                    stack.push((nx, ny));
+                }
+            }
+        }
+
+        let mut liberties = 0u8;
+        let mut liberty_set = HashSet::new();
+        for &(gx, gy) in &own_group {
+            for (lnx, lny) in self.neighbors(gx, gy) {
+                if test_board[lny as usize][lnx as usize].is_none()
+                    && liberty_set.insert((lnx, lny))
+                {
+                    liberties += 1;
+                    if liberties >= 2 {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        own_group.len() > 1 && liberties == 1
+    }
+
+    pub fn get_group_liberties_at(&self, x: u8, y: u8) -> usize {
+        if self.board[y as usize][x as usize].is_none() {
+            return 0;
+        }
+        let group = self.get_group(x, y);
+        if group.is_empty() {
+            return 0;
+        }
+        self.count_liberties(&group)
+    }
+
+    pub fn connects_friendly_groups(&self, x: u8, y: u8) -> usize {
+        let color = self.current_player;
+        if self.board[y as usize][x as usize].is_some() {
+            return 0;
+        }
+
+        let mut groups: HashSet<(u8, u8)> = HashSet::new();
+        for (nx, ny) in self.neighbors(x, y) {
+            if self.board[ny as usize][nx as usize] == Some(color) && !groups.contains(&(nx, ny)) {
+                let group = self.get_group(nx, ny);
+                for &pt in &group {
+                    groups.insert(pt);
+                }
+            }
+        }
+
+        groups.len()
+    }
 }
