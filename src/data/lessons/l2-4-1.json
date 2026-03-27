@@ -29,7 +29,7 @@
         {"x": 3, "y": 0, "type": "good"},
         {"x": 6, "y": 0, "type": "good"}
       ],
-      "annotation": "Büyük yose hamleleri: (3,0) ve (6,0). Her iki hamle de önemli sınır çizgileri."
+      "annotation": "Büyük yose hamleleri: (3,0) ve (6,0). Her iki hamle de sınır çizgilerini genişletir."
     },
     {
       "type": "animation",
@@ -46,7 +46,6 @@
             {"x": 8, "y": 2, "color": "white"},
             {"x": 7, "y": 0, "color": "white"}
           ],
-          "captured": [],
           "text": "Oyun bitiş aşamasında. Sınır çizgileri henüz tamamlanmadı."
         },
         {
@@ -62,8 +61,7 @@
             {"x": 8, "y": 2, "color": "white"},
             {"x": 7, "y": 0, "color": "white"}
           ],
-          "captured": [],
-          "text": "Siyah (3,0) oynadı - üst sınır genişledi. Bu bir sente yose hamlesi."
+          "text": "Siyah (3,0) oynadı. Bu bir sente yose hamlesi - beyaz cevap vermek zorunda."
         },
         {
           "stones": [
@@ -79,14 +77,13 @@
             {"x": 8, "y": 2, "color": "white"},
             {"x": 7, "y": 0, "color": "white"}
           ],
-          "captured": [],
-          "text": "Beyaz (6,0) oynadı. Her iki taraf da sınırını genişletti."
+          "text": "Beyaz (6,0) oynadı - sente cevabı. Her iki taraf da sınırını genişletti."
         }
       ]
     },
     {
       "type": "text",
-      "content": "Sente (öncelikli hamle): Hamlenizi oynadıktan sonra rakip cevap vermek zorunda kalır. Sente hamleleri her zaman gote hamlelerinden önce oynanmalıdır."
+      "content": "Sente (öncelikli hamle): Hamlenizi oynadıktan sonra rakip cevap vermek zorunda kalır. Eğer cevap vermezse, büyük puan kaybeder. Sente hamleleri her zaman gote hamlelerinden önce oynanmalıdır."
     },
     {
       "type": "text",
@@ -94,7 +91,7 @@
     },
     {
       "type": "text",
-      "content": "Yose sırası: 1) Büyük sente hamleleri, 2) Büyük gote hamleleri, 3) Küçük sente hamleleri, 4) Küçük gote hamleleri."
+      "content": "Yose sırası: 1) Büyük sente hamleleri, 2) Büyük gote hamleleri, 3) Küçük sente hamleleri, 4) Küçük gote hamleleri. Her zaman en büyük sente hamleyi önce oynayın!"
     }
   ],
   "prerequisites": ["l2-3-4"],

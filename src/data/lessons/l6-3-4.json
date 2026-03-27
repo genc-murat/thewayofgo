@@ -1,0 +1,88 @@
+{
+  "id": "l6-3-4",
+  "level": 6,
+  "module": 3,
+  "lesson": 4,
+  "title": "Nihon Ki-In Kalite",
+  "description": "Japon profesyonel kalite.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Nihon Ki-In Kalite: Japon profesyonel kalite. Temel kavramları ve stratejileri öğrenin."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {
+          "x": 4,
+          "y": 4,
+          "color": "black"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "color": "white"
+        }
+      ],
+      "highlights": [],
+      "annotation": "Nihon Ki-In Kalite"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "Pozisyon analizi başladı"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "white"
+            }
+          ],
+          "text": "Taşlar yerleşti"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "white"
+            },
+            {
+              "x": 5,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "Sonraki hamleyi düşünün"
+        }
+      ]
+    }
+  ],
+  "prerequisites": [
+    "l----3"
+  ],
+  "next_lesson": "l6-3",
+  "required_exercise": "e6-3-4"
+}

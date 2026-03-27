@@ -21,13 +21,15 @@
         {"x": 3, "y": 3, "color": "black"},
         {"x": 6, "y": 3, "color": "black"},
         {"x": 3, "y": 4, "color": "black"},
+        {"x": 6, "y": 4, "color": "black"},
         {"x": 4, "y": 5, "color": "black"}
       ],
       "highlights": [
         {"x": 5, "y": 4, "type": "liberty"},
-        {"x": 5, "y": 2, "type": "liberty"}
+        {"x": 5, "y": 2, "type": "liberty"},
+        {"x": 4, "y": 2, "type": "liberty"}
       ],
-      "annotation": "Beyaz grubun (3 taş) 2 özgürlüğü kaldı: (5,4) ve (5,2)."
+      "annotation": "Beyaz grubun (3 taş) 3 özgürlüğü kaldı: (5,4), (5,2) ve (4,2)."
     },
     {
       "type": "animation",
@@ -40,10 +42,10 @@
             {"x": 3, "y": 3, "color": "black"},
             {"x": 6, "y": 3, "color": "black"},
             {"x": 3, "y": 4, "color": "black"},
+            {"x": 6, "y": 4, "color": "black"},
             {"x": 4, "y": 5, "color": "black"}
           ],
-          "captured": [],
-          "text": "Beyaz 3 taşlı grup. Özgürlükler: (5,4) ve (5,2)."
+          "text": "Beyaz 3 taşlı grup. Özgürlükler: (5,4), (5,2) ve (4,2)."
         },
         {
           "stones": [
@@ -53,44 +55,47 @@
             {"x": 3, "y": 3, "color": "black"},
             {"x": 6, "y": 3, "color": "black"},
             {"x": 3, "y": 4, "color": "black"},
+            {"x": 6, "y": 4, "color": "black"},
             {"x": 4, "y": 5, "color": "black"},
             {"x": 5, "y": 4, "color": "black"}
           ],
-          "captured": [],
-          "text": "Siyah (5,4) oynadı. Beyaz grubun tek özgürlüğü (5,2) kaldı. Atari!"
+          "text": "Siyah (5,4) oynadı. Beyaz grubun özgürlükleri: (5,2) ve (4,2)."
         },
         {
           "stones": [
             {"x": 4, "y": 3, "color": "white"},
             {"x": 5, "y": 3, "color": "white"},
             {"x": 4, "y": 4, "color": "white"},
-            {"x": 5, "y": 2, "color": "white"},
             {"x": 3, "y": 3, "color": "black"},
             {"x": 6, "y": 3, "color": "black"},
             {"x": 3, "y": 4, "color": "black"},
-            {"x": 4, "y": 5, "color": "black"},
-            {"x": 5, "y": 4, "color": "black"}
-          ],
-          "captured": [],
-          "text": "Beyaz (5,2) oynayarak grubu genişletti. Şimdi 3 özgürlük var!"
-        },
-        {
-          "stones": [
-            {"x": 4, "y": 3, "color": "white"},
-            {"x": 5, "y": 3, "color": "white"},
-            {"x": 4, "y": 4, "color": "white"},
-            {"x": 5, "y": 2, "color": "white"},
-            {"x": 3, "y": 3, "color": "black"},
-            {"x": 6, "y": 3, "color": "black"},
-            {"x": 3, "y": 4, "color": "black"},
+            {"x": 6, "y": 4, "color": "black"},
             {"x": 4, "y": 5, "color": "black"},
             {"x": 5, "y": 4, "color": "black"},
-            {"x": 6, "y": 4, "color": "black"},
-            {"x": 5, "y": 1, "color": "black"},
-            {"x": 6, "y": 2, "color": "black"}
+            {"x": 5, "y": 2, "color": "black"}
           ],
-          "captured": [],
-          "text": "Siyah tüm özgürlükleri kapatıyor... (6,2) ile son özgürlük kapandı!"
+          "text": "Siyah (5,2) oynadı. Beyaz grubun tek özgürlüğü (4,2) kaldı. Atari!"
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 6, "y": 4, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 4, "y": 2, "color": "black"}
+          ],
+          "captured": [
+            {"x": 4, "y": 3},
+            {"x": 5, "y": 3},
+            {"x": 4, "y": 4}
+          ],
+          "text": "Siyah (4,2) oynadı! Beyaz grubun son özgürlüğü kapatıldı - 3 taş yakalandı!"
         }
       ]
     },

@@ -1,0 +1,29 @@
+{
+  "id": "e3-1-4",
+  "level": 3,
+  "module": 1,
+  "lesson": 4,
+  "type": "capture_stones",
+  "title": "Yakalama Yarışı",
+  "description": "Kim daha önce yakalayacak? Doğru sırayı bulun.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "white"},
+    {"x": 3, "y": 2, "color": "black"},
+    {"x": 2, "y": 3, "color": "white"},
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 4, "y": 3, "color": "black"},
+    {"x": 2, "y": 4, "color": "black"},
+    {"x": 4, "y": 4, "color": "white"},
+    {"x": 3, "y": 4, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 3, "y": 4, "is_correct": true, "explanation": "Doğru! Önce (3,4) oynayarak beyazı yakaladınız. Sonra (2,4) ile siyahın kaçışını engellediniz."}
+  ],
+  "hints": [
+    "Her iki tarafın da atari durumunu kontrol edin.",
+    "Önce kimin yakalanacağını düşünün."
+  ],
+  "difficulty": 4,
+  "stars_required": 2
+}

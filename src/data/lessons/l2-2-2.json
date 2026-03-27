@@ -9,7 +9,7 @@
   "content": [
     {
       "type": "text",
-      "content": "Bağlantı (connect) taşlarınızı güçlendirir. Kesme (cut) ise rakibin gruplarını zayıflatır. Bu iki kavram Go'nun temel stratejik unsurlarıdır."
+      "content": "Bağlantı (connect) taşlarınızı güçlendirir. Kesme (cut) ise rakibin gruplarını zayıflatır. Bu iki kavram Go'nun temel stratejik unsurlarıdır. Önemli: Köşegen komşuluk bağlantı sayılmaz - sadece kardinal (üst-alt-sol-sağ) komşuluk bağlantıdır."
     },
     {
       "type": "board",
@@ -17,16 +17,15 @@
       "stones": [
         {"x": 3, "y": 4, "color": "black"},
         {"x": 5, "y": 4, "color": "black"},
-        {"x": 3, "y": 3, "color": "white"},
-        {"x": 5, "y": 3, "color": "white"},
-        {"x": 3, "y": 5, "color": "white"},
-        {"x": 5, "y": 5, "color": "white"}
+        {"x": 4, "y": 3, "color": "white"},
+        {"x": 4, "y": 5, "color": "white"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 5, "y": 3, "color": "black"}
       ],
       "highlights": [
-        {"x": 4, "y": 4, "type": "bad"},
-        {"x": 4, "y": 3, "type": "good"}
+        {"x": 4, "y": 4, "type": "good"}
       ],
-      "annotation": "Beyaz'ın (4,4) oynaması keser, siyah'ın (4,3) oynaması bağlar."
+      "annotation": "Siyah'ın iki grubu var: (3,4)-(3,3) ve (5,4)-(5,3). (4,4) oynamak bağlar."
     },
     {
       "type": "animation",
@@ -35,25 +34,23 @@
           "stones": [
             {"x": 3, "y": 4, "color": "black"},
             {"x": 5, "y": 4, "color": "black"},
-            {"x": 3, "y": 3, "color": "white"},
-            {"x": 5, "y": 3, "color": "white"},
-            {"x": 3, "y": 5, "color": "white"},
-            {"x": 5, "y": 5, "color": "white"}
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"}
           ],
-          "captured": [],
-          "text": "Siyah iki grubu var, beyaz ise arada. Kim bağlanır/kim keser?"
+          "text": "Siyah'ın iki ayrı grubu var. Arada (4,4) boş. Kim bağlanır/kim keser?"
         },
         {
           "stones": [
             {"x": 3, "y": 4, "color": "black"},
             {"x": 4, "y": 4, "color": "black"},
             {"x": 5, "y": 4, "color": "black"},
-            {"x": 3, "y": 3, "color": "white"},
-            {"x": 5, "y": 3, "color": "white"},
-            {"x": 3, "y": 5, "color": "white"},
-            {"x": 5, "y": 5, "color": "white"}
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"}
           ],
-          "captured": [],
           "text": "Siyah (4,4) oynadı - bağlantı başarılı! Siyah grubu tek parça oldu."
         },
         {
@@ -61,13 +58,11 @@
             {"x": 3, "y": 4, "color": "black"},
             {"x": 4, "y": 4, "color": "white"},
             {"x": 5, "y": 4, "color": "black"},
-            {"x": 3, "y": 3, "color": "white"},
-            {"x": 5, "y": 3, "color": "white"},
-            {"x": 3, "y": 5, "color": "white"},
-            {"x": 5, "y": 5, "color": "white"},
-            {"x": 4, "y": 3, "color": "white"}
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"}
           ],
-          "captured": [],
           "text": "Başka senaryo: Beyaz (4,4) oynadı. Siyah'ın iki grubu ayrıldı - kesme başarılı!"
         }
       ]

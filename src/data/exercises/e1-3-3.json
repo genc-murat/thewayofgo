@@ -9,7 +9,10 @@
   "board_size": 9,
   "initial_stones": [],
   "correct_moves": [
-    {"x": 2, "y": 2, "is_correct": true, "explanation": "Doğru! (2,2) köşe noktası açılış için en iyi seçenektir. Köşeler önce, kenarlar sonra, orta en son!"}
+    {"x": 2, "y": 2, "is_correct": true, "explanation": "Doğru! (2,2) 3-3 köşe noktası açılış için en iyi seçenektir. Köşeler önce, kenarlar sonra, orta en son!"},
+    {"x": 2, "y": 6, "is_correct": true, "explanation": "Doğru! Sol alt köşe noktası - mükemmel açılış hamlesi."},
+    {"x": 6, "y": 2, "is_correct": true, "explanation": "Doğru! Sağ üst köşe noktası - harika bir başlangıç."},
+    {"x": 6, "y": 6, "is_correct": true, "explanation": "Doğru! Sağ alt köşe noktası - köşeler en değerli bölgelerdir."}
   ],
   "hints": [
     "Açılış stratejisi: Köşe, kenar, orta sırası.",

@@ -1,0 +1,88 @@
+{
+  "id": "l6-2-3",
+  "level": 6,
+  "module": 2,
+  "lesson": 3,
+  "title": "İleri Joseki Okuma",
+  "description": "Joseki varyasyonlarını okuyun.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "İleri Joseki Okuma: Joseki varyasyonlarını okuyun. Temel kavramları ve stratejileri öğrenin."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {
+          "x": 4,
+          "y": 4,
+          "color": "black"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "color": "white"
+        }
+      ],
+      "highlights": [],
+      "annotation": "İleri Joseki Okuma"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "Pozisyon analizi başladı"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "white"
+            }
+          ],
+          "text": "Taşlar yerleşti"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "white"
+            },
+            {
+              "x": 5,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "Sonraki hamleyi düşünün"
+        }
+      ]
+    }
+  ],
+  "prerequisites": [
+    "l----2"
+  ],
+  "next_lesson": "l6-2-4",
+  "required_exercise": "e6-2-3"
+}

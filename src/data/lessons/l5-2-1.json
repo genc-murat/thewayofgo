@@ -1,0 +1,88 @@
+{
+  "id": "l5-2-1",
+  "level": 5,
+  "module": 2,
+  "lesson": 1,
+  "title": "İleri Fuseki Kalıpları",
+  "description": "Profesyonel açılış kalıplarını öğrenin.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "İleri Fuseki Kalıpları: Profesyonel açılış kalıplarını öğrenin. Temel kavramları ve stratejileri öğrenin."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {
+          "x": 4,
+          "y": 4,
+          "color": "black"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "color": "white"
+        }
+      ],
+      "highlights": [],
+      "annotation": "İleri Fuseki Kalıpları"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "Pozisyon analizi başladı"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "white"
+            }
+          ],
+          "text": "Taşlar yerleşti"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "white"
+            },
+            {
+              "x": 5,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "Sonraki hamleyi düşünün"
+        }
+      ]
+    }
+  ],
+  "prerequisites": [
+    "l5-1-4"
+  ],
+  "next_lesson": "l5-2-2",
+  "required_exercise": "e5-2-1"
+}

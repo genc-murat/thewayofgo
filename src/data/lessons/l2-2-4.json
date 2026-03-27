@@ -15,58 +15,67 @@
       "type": "board",
       "size": 9,
       "stones": [
+        {"x": 2, "y": 3, "color": "black"},
         {"x": 3, "y": 3, "color": "black"},
         {"x": 4, "y": 3, "color": "black"},
-        {"x": 5, "y": 3, "color": "black"},
-        {"x": 3, "y": 4, "color": "black"},
-        {"x": 5, "y": 4, "color": "white"},
-        {"x": 3, "y": 5, "color": "white"}
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 4, "y": 4, "color": "white"},
+        {"x": 2, "y": 5, "color": "white"},
+        {"x": 4, "y": 5, "color": "white"},
+        {"x": 1, "y": 4, "color": "white"},
+        {"x": 5, "y": 4, "color": "white"}
       ],
       "highlights": [
-        {"x": 4, "y": 4, "type": "bad"}
+        {"x": 3, "y": 4, "type": "bad"}
       ],
-      "annotation": "Siyah grubu tehlikede! (4,4) boş - beyaz burayı oynarsa keser."
+      "annotation": "Siyah grubu tehlikede! (3,4) boş - beyaz burayı oynarsa grubu ikiye böler."
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
+            {"x": 2, "y": 3, "color": "black"},
             {"x": 3, "y": 3, "color": "black"},
             {"x": 4, "y": 3, "color": "black"},
-            {"x": 5, "y": 3, "color": "black"},
-            {"x": 3, "y": 4, "color": "black"},
-            {"x": 5, "y": 4, "color": "white"},
-            {"x": 3, "y": 5, "color": "white"}
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"}
           ],
-          "captured": [],
-          "text": "Siyah grubu iki parçaya bölünmüş gibi görünüyor. (4,4) kritik nokta."
+          "text": "Siyah grubu (2,3)-(3,3)-(2,4) ile (4,3) arasında (3,4) kritik nokta. Beyaz (2,4) ile baskı yapıyor."
         },
         {
           "stones": [
+            {"x": 2, "y": 3, "color": "black"},
             {"x": 3, "y": 3, "color": "black"},
             {"x": 4, "y": 3, "color": "black"},
-            {"x": 5, "y": 3, "color": "black"},
-            {"x": 3, "y": 4, "color": "black"},
-            {"x": 4, "y": 4, "color": "black"},
-            {"x": 5, "y": 4, "color": "white"},
-            {"x": 3, "y": 5, "color": "white"}
-          ],
-          "captured": [],
-          "text": "Siyah (4,4) oynayarak bağlantıyı savundu. Grup tek parça olarak güçlendi."
-        },
-        {
-          "stones": [
-            {"x": 3, "y": 3, "color": "black"},
-            {"x": 4, "y": 3, "color": "black"},
-            {"x": 5, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
             {"x": 3, "y": 4, "color": "black"},
             {"x": 4, "y": 4, "color": "white"},
-            {"x": 5, "y": 4, "color": "white"},
-            {"x": 3, "y": 5, "color": "white"}
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"}
           ],
-          "captured": [],
-          "text": "Eğer siyah savunmazsa: Beyaz (4,4) oynar ve grup ikiye bölünür!"
+          "text": "Siyah (3,4) oynayarak bağlantıyı savundu. Grup tek parça olarak güçlendi."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"}
+          ],
+          "text": "Eğer siyah savunmazsa: Beyaz (3,4) oynar ve (2,4) siyah taşını keser! Siyah (2,3)-(3,3) grubu tehdit altında kalır."
         }
       ]
     },
@@ -76,7 +85,7 @@
     },
     {
       "type": "text",
-      "content": "Savunma zamanlaması: Kesme tehdidini erken fark edin. Grubunuz zayıflarsa savunma hamlesi ertelemeyin. 'Savunma en iyi saldırıdır.'"
+      "content": "Savunma zamanlaması: Kesme tehdidini erken fark edin. Grubunuz zayıflarsa savunma hamlesi ertelemeyin."
     },
     {
       "type": "text",

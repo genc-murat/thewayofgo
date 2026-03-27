@@ -35,10 +35,18 @@
           "stones": [
             {"x": 3, "y": 0, "color": "white"},
             {"x": 2, "y": 0, "color": "black"},
+            {"x": 4, "y": 0, "color": "black"}
+          ],
+          "text": "Beyaz taş kenar üzerinde. Kenar taşının 3 özgürlüğü var: yukarı yok, sol ve sağ kapatıldı, sadece (3,1) boş."
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 0, "color": "white"},
+            {"x": 2, "y": 0, "color": "black"},
             {"x": 4, "y": 0, "color": "black"},
             {"x": 3, "y": 1, "color": "black"}
           ],
-          "text": "Beyaz taşın sadece 1 özgürlüğü kaldı."
+          "text": "Siyah (3,1) oynadı! Beyaz taşın son özgürlüğü kapatıldı."
         },
         {
           "stones": [
@@ -47,7 +55,7 @@
             {"x": 3, "y": 1, "color": "black"}
           ],
           "captured": [{"x": 3, "y": 0}],
-          "text": "Siyah son özgürlüğü kapattı ve beyaz taşı yakaladı!"
+          "text": "Beyaz taş yakalandı! Tahtadan kaldırıldı."
         }
       ]
     }

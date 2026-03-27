@@ -1,0 +1,114 @@
+{
+  "id": "l3-5-3",
+  "level": 3,
+  "module": 5,
+  "lesson": 3,
+  "title": "Savunma Teknikleri",
+  "description": "Rakip saldırısına karşı savunma yöntemlerini öğrenin.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Savunma üç şekilde yapılır: Kaçış (taşı uzaklaştırma), Dipleri barındırma, ve Karşı saldırı. En iyi savunma, saldırıdır."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {
+          "x": 4,
+          "y": 4,
+          "color": "black"
+        },
+        {
+          "x": 5,
+          "y": 4,
+          "color": "black"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "color": "white"
+        }
+      ],
+      "highlights": [
+        {
+          "x": 3,
+          "y": 4,
+          "type": "good"
+        }
+      ],
+      "annotation": "Savunma: (3,4) ile kaçış yolu aç"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 5,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "Beyaz saldırıyor - siyah tehlikede"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 5,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 3,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "(3,4) ile kaçış yolu buldu!"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 5,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 3,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 3,
+              "y": 5,
+              "color": "white"
+            }
+          ],
+          "text": "Siyah güvenli bölgeye kaçtı"
+        }
+      ]
+    }
+  ],
+  "prerequisites": [
+    "l3-5-2"
+  ],
+  "next_lesson": "l3-5-4",
+  "required_exercise": "e3-5-3"
+}

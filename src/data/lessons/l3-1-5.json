@@ -1,0 +1,31 @@
+{
+  "id": "l3-1-5",
+  "level": 3,
+  "module": 1,
+  "lesson": 5,
+  "title": "Açılış Değerlendirmesi",
+  "description": "Farklı açılışların ne zaman kullanılacağını öğrenin.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Hangi açılış ne zaman? 3-3 = güvenli, köşe öncelikli. 4-4 = saldırgan, merkez öncelikli. 3-4 = dengeli, alan+etki. Seçim stilinize ve tahtadaki duruma bağlıdır."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 4, "y": 4, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 2, "type": "territory"},
+        {"x": 4, "y": 4, "type": "territory"}
+      ],
+      "annotation": "İki açılış karşı karşıya"
+    }
+  ],
+  "prerequisites": ["l3-1-4"],
+  "next_lesson": "l3-2-1",
+  "required_exercise": "e3-5-1"
+}

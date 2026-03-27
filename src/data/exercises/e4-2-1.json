@@ -1,0 +1,18 @@
+{
+  "id": "e4-2-1",
+  "level": 4,
+  "module": 2,
+  "lesson": 1,
+  "type": "opening",
+  "title": "Çin Açılışı",
+  "description": "Çin açılışına uygun hamle yapın. (Çin: 4-4 noktası ile karşı köşe)",
+  "board_size": 9,
+  "initial_stones": [{"x": 4, "y": 4, "color": "black"}],
+  "correct_moves": [
+    {"x": 4, "y": 4, "is_correct": false, "explanation": "Zaten orada! Çin açılışında siyah (4,4) oynadıktan sonra beyaz 3-3 noktasına oynar."},
+    {"x": 2, "y": 2, "is_correct": true, "explanation": "Doğru! Karşı köşeye (2,2) oynayarak Çin açılışını tamamladınız. Dengeli, merkeze yakın bir açılış."}
+  ],
+  "hints": ["Karşı köşeye oynayın.", "(4,4) sonra (2,2) ideal Çin açılışı."],
+  "difficulty": 3,
+  "stars_required": 3
+}

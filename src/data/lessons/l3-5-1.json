@@ -1,0 +1,114 @@
+{
+  "id": "l3-5-1",
+  "level": 3,
+  "module": 5,
+  "lesson": 1,
+  "title": "Saldırıya Giriş",
+  "description": "Saldırı stratejisinin temellerini öğrenin.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Saldırı, rakip grubunu tehdit ederek kendi taşlarınızı güçlendirmektir. Saldırırken savunmayı da unutmayın. Aceleci saldırı zararlıdır."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {
+          "x": 2,
+          "y": 2,
+          "color": "black"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "color": "black"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "color": "white"
+        }
+      ],
+      "highlights": [
+        {
+          "x": 2,
+          "y": 4,
+          "type": "good"
+        }
+      ],
+      "annotation": "Saldırı: (2,4) ile baskı kur"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {
+              "x": 2,
+              "y": 2,
+              "color": "black"
+            },
+            {
+              "x": 2,
+              "y": 3,
+              "color": "black"
+            }
+          ],
+          "text": "Siyah güçlü - beyaz tehlikede"
+        },
+        {
+          "stones": [
+            {
+              "x": 2,
+              "y": 2,
+              "color": "black"
+            },
+            {
+              "x": 2,
+              "y": 3,
+              "color": "black"
+            },
+            {
+              "x": 2,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "(2,4) ile saldırı başlatalım!"
+        },
+        {
+          "stones": [
+            {
+              "x": 2,
+              "y": 2,
+              "color": "black"
+            },
+            {
+              "x": 2,
+              "y": 3,
+              "color": "black"
+            },
+            {
+              "x": 2,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 4,
+              "color": "white"
+            }
+          ],
+          "text": "Beyaz kaçtı - siyah tempoyu aldı"
+        }
+      ]
+    }
+  ],
+  "prerequisites": [
+    "l3-4-5"
+  ],
+  "next_lesson": "l3-5-2",
+  "required_exercise": "e3-5-1"
+}

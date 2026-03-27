@@ -9,7 +9,7 @@
   "content": [
     {
       "type": "text",
-      "content": "Her boş nokta bir göz değildir! Bir noktanın gerçek göz olabilmesi için dört komşusunun da kendi renginizde olması gerekir. Ayrıca köşegen komşuların en az üçünün kendi renginizde olması şarttır - aksi halde bu bir 'sahte göz' olur."
+      "content": "Her boş nokta bir göz değildir! Bir noktanın gerçek göz olabilmesi için dört kardinal komşusunun da kendi renginizde olması gerekir. Ayrıca köşegen komşuların en az üçünün kendi renginizde olması şarttır - aksi halde bu bir 'sahte göz' olur."
     },
     {
       "type": "board",
@@ -22,13 +22,16 @@
         {"x": 2, "y": 4, "color": "black"},
         {"x": 3, "y": 4, "color": "black"},
         {"x": 4, "y": 4, "color": "black"},
-        {"x": 3, "y": 2, "color": "black"},
-        {"x": 3, "y": 3, "color": "black"}
+        {"x": 3, "y": 2, "color": "black"}
       ],
       "highlights": [
         {"x": 3, "y": 3, "type": "liberty"}
       ],
-      "annotation": "Gerçek göz: (3,3) tüm komşuları ve 3/4 köşegeni siyah - bu gerçek bir göz"
+      "annotation": "Gerçek göz adayı: (3,3) tüm kardinal komşuları siyah ve 3/4 köşegeni siyah"
+    },
+    {
+      "type": "text",
+      "content": "Bu örnekte (3,3) noktasının 4 kardinal komşusu siyah: (2,3), (4,3), (3,2), (3,4). Köşegenler: (2,2) siyah, (4,2) siyah, (2,4) siyah, (4,4) siyah. Tüm 4 köşegen de siyah = gerçek göz!"
     },
     {
       "type": "board",
@@ -40,16 +43,22 @@
         {"x": 4, "y": 3, "color": "black"},
         {"x": 2, "y": 4, "color": "black"},
         {"x": 4, "y": 4, "color": "black"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
         {"x": 2, "y": 5, "color": "black"},
         {"x": 3, "y": 5, "color": "black"},
         {"x": 4, "y": 5, "color": "black"},
-        {"x": 3, "y": 2, "color": "white"},
-        {"x": 3, "y": 4, "color": "white"}
+        {"x": 2, "y": 2, "color": "white"},
+        {"x": 4, "y": 4, "color": "white"}
       ],
       "highlights": [
         {"x": 3, "y": 3, "type": "bad"}
       ],
-      "annotation": "Sahte göz: (3,3) karsı iki köşegeni beyaz - bu göz sayılmaz!"
+      "annotation": "Sahte göz: (3,3) iki köşegeni beyaz - bu göz sayılmaz!"
+    },
+    {
+      "type": "text",
+      "content": "Bu örnekte (3,3) noktasının 4 kardinal komşusu yine siyah. Ancak köşegenlerden (2,2) ve (4,4) beyaz! Sadece 2/4 köşegen siyah olduğu için bu bir sahte göz. Rakip bu noktaya oynayabilir."
     },
     {
       "type": "text",
@@ -71,20 +80,17 @@
         {"x": 1, "y": 3, "color": "black"},
         {"x": 2, "y": 3, "color": "black"},
         {"x": 3, "y": 3, "color": "black"},
-        {"x": 0, "y": 0, "color": "white"},
-        {"x": 4, "y": 0, "color": "white"},
-        {"x": 4, "y": 2, "color": "white"},
-        {"x": 0, "y": 4, "color": "white"},
-        {"x": 4, "y": 4, "color": "white"}
+        {"x": 0, "y": 2, "color": "white"},
+        {"x": 4, "y": 2, "color": "white"}
       ],
       "highlights": [
         {"x": 2, "y": 2, "type": "bad"}
       ],
-      "annotation": "Kenardaki grup: (2,2) iki köşegeni beyaz - sahte göz! Grup güvende değil."
+      "annotation": "Kenardaki sahte göz: (2,2) sol ve sağ kardinal komşuları siyah, üst ve alt köşegenleri beyaz - sahte göz!"
     },
     {
       "type": "text",
-      "content": "Özet: Gerçek göz = tüm 4 komşu kendi rengi + en az 3/4 köşegen kendi rengi. Sahte göz sayılmaz. Grubunuzda en az iki gerçek göz olmalı!"
+      "content": "Özet: Gerçek göz = tüm 4 kardinal komşu kendi rengi + en az 3/4 köşegen kendi rengi. Sahte göz sayılmaz. Grubunuzda en az iki gerçek göz olmalı!"
     }
   ],
   "prerequisites": ["l1-2-3"],

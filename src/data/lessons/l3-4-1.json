@@ -1,0 +1,114 @@
+{
+  "id": "l3-4-1",
+  "level": 3,
+  "module": 4,
+  "lesson": 1,
+  "title": "Tesuji'ye Giriş",
+  "description": "Özel hamle kalıplarını (tesuji) öğrenin.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Tesuji, özel amaçlı hamle kalıplarıdır. Her tesuji belirli bir durumda en iyi sonucu verir. Temel tesujiler: Katate, Notare, Kake, Nuki."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {
+          "x": 3,
+          "y": 3,
+          "color": "black"
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "color": "black"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "color": "white"
+        }
+      ],
+      "highlights": [
+        {
+          "x": 3,
+          "y": 5,
+          "type": "good"
+        }
+      ],
+      "annotation": "Katate: (3,5) ile kesme"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {
+              "x": 3,
+              "y": 3,
+              "color": "black"
+            },
+            {
+              "x": 3,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "Siyah 2 taşla tehdit altında"
+        },
+        {
+          "stones": [
+            {
+              "x": 3,
+              "y": 3,
+              "color": "black"
+            },
+            {
+              "x": 3,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 3,
+              "y": 5,
+              "color": "black"
+            }
+          ],
+          "text": "Katate (3,5) ile kesme - harika!"
+        },
+        {
+          "stones": [
+            {
+              "x": 3,
+              "y": 3,
+              "color": "black"
+            },
+            {
+              "x": 3,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 3,
+              "y": 5,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "white"
+            }
+          ],
+          "text": "Beyaz connect olamaz - kaybetti"
+        }
+      ]
+    }
+  ],
+  "prerequisites": [
+    "l3-3-3"
+  ],
+  "next_lesson": "l3-4-2",
+  "required_exercise": "e3-4-1"
+}

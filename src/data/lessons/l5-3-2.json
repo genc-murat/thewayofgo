@@ -1,0 +1,88 @@
+{
+  "id": "l5-3-2",
+  "level": 5,
+  "module": 3,
+  "lesson": 2,
+  "title": "Sek Raisedama",
+  "description": "Sek armament etrafında taarruz.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Sek Raisedama: Sek armament etrafında taarruz. Temel kavramları ve stratejileri öğrenin."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {
+          "x": 4,
+          "y": 4,
+          "color": "black"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "color": "white"
+        }
+      ],
+      "highlights": [],
+      "annotation": "Sek Raisedama"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "Pozisyon analizi başladı"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "white"
+            }
+          ],
+          "text": "Taşlar yerleşti"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "white"
+            },
+            {
+              "x": 5,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "Sonraki hamleyi düşünün"
+        }
+      ]
+    }
+  ],
+  "prerequisites": [
+    "l----1"
+  ],
+  "next_lesson": "l5-3-3",
+  "required_exercise": "e5-3-2"
+}

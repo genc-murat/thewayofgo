@@ -1,0 +1,124 @@
+{
+  "id": "l3-3-1",
+  "level": 3,
+  "module": 3,
+  "lesson": 1,
+  "title": "Yose'ye Giriş",
+  "description": "Oyun sonu (yose) kavramını öğrenin.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Yose, oyunun son aşamasında oynanan hamlelerdir. Yose hamleleri skor avantajı sağlar. İki tür yose vardır: Sente (zorunlu cevap) ve Gote (opsiyonel). Her zaman sente önce oynanmalıdır."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {
+          "x": 0,
+          "y": 0,
+          "color": "black"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "color": "black"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "color": "black"
+        },
+        {
+          "x": 8,
+          "y": 0,
+          "color": "white"
+        }
+      ],
+      "highlights": [
+        {
+          "x": 3,
+          "y": 0,
+          "type": "good"
+        },
+        {
+          "x": 7,
+          "y": 0,
+          "type": "good"
+        }
+      ],
+      "annotation": "Yose bölgeleri: (3,0) büyük sente, (7,0) küçük gote"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {
+              "x": 0,
+              "y": 0,
+              "color": "black"
+            },
+            {
+              "x": 1,
+              "y": 0,
+              "color": "black"
+            }
+          ],
+          "text": "Sınır çizgisi 2. sırada - yose başladı"
+        },
+        {
+          "stones": [
+            {
+              "x": 0,
+              "y": 0,
+              "color": "black"
+            },
+            {
+              "x": 1,
+              "y": 0,
+              "color": "black"
+            },
+            {
+              "x": 3,
+              "y": 0,
+              "color": "black"
+            }
+          ],
+          "text": "(3,0) ile büyük sente - beyaz cevap vermeli"
+        },
+        {
+          "stones": [
+            {
+              "x": 0,
+              "y": 0,
+              "color": "black"
+            },
+            {
+              "x": 1,
+              "y": 0,
+              "color": "black"
+            },
+            {
+              "x": 3,
+              "y": 0,
+              "color": "black"
+            },
+            {
+              "x": 7,
+              "y": 0,
+              "color": "white"
+            }
+          ],
+          "text": "Gote (7,0) daha az değerli - son hamle olur"
+        }
+      ]
+    }
+  ],
+  "prerequisites": [
+    "l3-2-5"
+  ],
+  "next_lesson": "l3-3-2",
+  "required_exercise": "e3-3-1"
+}

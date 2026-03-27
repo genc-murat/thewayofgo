@@ -13,29 +13,27 @@
     {"x": 2, "y": 3, "color": "black"},
     {"x": 4, "y": 3, "color": "black"},
     {"x": 2, "y": 4, "color": "black"},
-    {"x": 4, "y": 4, "color": "black"},
     {"x": 3, "y": 4, "color": "black"},
+    {"x": 4, "y": 4, "color": "black"},
     {"x": 1, "y": 2, "color": "white"},
     {"x": 5, "y": 2, "color": "white"},
     {"x": 1, "y": 3, "color": "white"},
     {"x": 5, "y": 3, "color": "white"},
     {"x": 1, "y": 4, "color": "white"},
-    {"x": 3, "y": 5, "color": "white"},
-    {"x": 4, "y": 5, "color": "white"},
     {"x": 5, "y": 4, "color": "white"},
     {"x": 2, "y": 1, "color": "white"},
     {"x": 3, "y": 1, "color": "white"},
     {"x": 4, "y": 1, "color": "white"},
-    {"x": 5, "y": 1, "color": "white"},
     {"x": 2, "y": 5, "color": "white"},
-    {"x": 5, "y": 5, "color": "white"}
+    {"x": 3, "y": 5, "color": "white"},
+    {"x": 4, "y": 5, "color": "white"}
   ],
   "correct_moves": [
-    {"x": 3, "y": 3, "is_correct": true, "explanation": "Doğru! Hayati nokta! Bu hamle ile (3,3) ve (3,4)... tek göz var ama (3,2) ve (3,3) iki ayrı göz oluşturabilir. Grup yaşar!"}
+    {"x": 3, "y": 3, "is_correct": true, "explanation": "Doğru! Hayati nokta (3,3)! Bu hamle bölgeyi ikiye böler: (3,2) bir gerçek göz ve (4,3) bir gerçek göz. Grup artık iki gerçek göze sahip ve yaşar!"}
   ],
   "hints": [
-    "Grubun içindeki boşlukları inceleyin.",
-    "Hangi nokta iki göz potansiyeli yaratır?"
+    "İç boşluklara bakın: (3,2), (3,3), (4,3) - 3 nokta.",
+    "Bölgeyi ikiye bölecek noktayı düşünün."
   ],
   "difficulty": 3,
   "stars_required": 1

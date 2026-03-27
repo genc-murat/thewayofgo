@@ -77,7 +77,7 @@ export function ExerciseView() {
         <button onClick={() => setFilterLevel(null)} className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${filterLevel === null ? 'gradient-accent text-bg-primary' : 'glass text-text-secondary hover:text-text-primary'}`}>
           Tümü
         </button>
-        {[1, 2].map(lvl => (
+        {[1, 2, 3, 4].map(lvl => (
           <button key={lvl} onClick={() => setFilterLevel(lvl === filterLevel ? null : lvl)}
             className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${filterLevel === lvl ? 'gradient-accent text-bg-primary' : 'glass text-text-secondary hover:text-text-primary'}`}>
             Seviye {lvl}
@@ -119,7 +119,7 @@ export function ExerciseView() {
 function ExercisePlayer() {
   const {
     currentExercise, exerciseResult, exerciseAttempts,
-    submitExerciseMove, setView, loadExercise,
+    submitExerciseMove, closeExercise, loadExercise,
   } = useAppStore();
 
   const handleBoardClick = useCallback(async (x: number, y: number) => {
@@ -140,7 +140,7 @@ function ExercisePlayer() {
   return (
     <div className="max-w-4xl mx-auto animate-fade-in">
       <div className="mb-6">
-        <button onClick={() => setView('exercise')} className="flex items-center gap-1.5 text-sm text-text-secondary hover:text-text-primary transition-colors mb-4">
+        <button onClick={() => closeExercise()} className="flex items-center gap-1.5 text-sm text-text-secondary hover:text-text-primary transition-colors mb-4">
           <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" /></svg>
           Tüm Alıştırmalar
         </button>
@@ -183,7 +183,7 @@ function ExercisePlayer() {
           </div>
 
           <div className="flex gap-2">
-            <button onClick={() => setView('exercise')} className="flex-1 btn-ghost py-2.5 rounded-xl text-sm">Listeye Dön</button>
+            <button onClick={() => closeExercise()} className="flex-1 btn-ghost py-2.5 rounded-xl text-sm">Listeye Dön</button>
             {exerciseResult && (
               <button onClick={() => loadExercise(currentExercise.id)} className="flex-1 btn-primary py-2.5 rounded-xl text-sm">Tekrar Dene</button>
             )}

@@ -8,18 +8,19 @@
   "description": "Merdiven yerine ağ (geta) tekniğiyle taşı yakalayın.",
   "board_size": 9,
   "initial_stones": [
-    {"x": 4, "y": 2, "color": "black"},
-    {"x": 2, "y": 3, "color": "black"},
-    {"x": 5, "y": 3, "color": "black"},
-    {"x": 4, "y": 4, "color": "black"},
+    {"x": 3, "y": 4, "color": "black"},
+    {"x": 5, "y": 4, "color": "black"},
+    {"x": 3, "y": 2, "color": "black"},
+    {"x": 5, "y": 2, "color": "black"},
     {"x": 4, "y": 3, "color": "white"}
   ],
   "correct_moves": [
-    {"x": 3, "y": 2, "is_correct": true, "explanation": "Doğru! Ağ (geta) atıldı! Beyaz kaçmaya çalışsa bile siyah bir sonraki hamlede yakalayacak."}
+    {"x": 4, "y": 4, "is_correct": true, "explanation": "Doğru! Ağ (geta) atıldı! Beyaz (4,3) taşının her iki kaçış yönü kapatıldı. Beyaz (4,2) veya (3,3) oynasa bile, siyah hemen yakalayabilir."}
   ],
   "hints": [
     "Merdiven yerine tek hamlede yakalama düşünün.",
-    "Beyaz taşın kaçabileceği yönleri kapatın."
+    "Beyaz taşın kaçabileceği yönleri kapatın.",
+    "Beyaz taşın kaçış yolları (4,4) ve (4,2) yönünde."
   ],
   "difficulty": 3,
   "stars_required": 1

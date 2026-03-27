@@ -12,7 +12,8 @@
     {"x": 6, "y": 6, "color": "white"}
   ],
   "correct_moves": [
-    {"x": 6, "y": 2, "is_correct": true, "explanation": "Doğru! Karşı köşeye oynamak (6,2) en iyi açılış stratejisidir. Köşeler önce alınmalı, sonra kenarlar!"}
+    {"x": 6, "y": 2, "is_correct": true, "explanation": "Doğru! Karşı köşeye oynamak (6,2) en iyi açılış stratejisidir. Köşeler önce alınmalı, sonra kenarlar!"},
+    {"x": 2, "y": 6, "is_correct": true, "explanation": "Doğru! (2,6) boş bir köşe noktası. Köşeleri kapmak açılışta en verimli stratejidir."}
   ],
   "hints": [
     "Açılış kuralını hatırlayın: Köşeler, kenarlar, orta.",

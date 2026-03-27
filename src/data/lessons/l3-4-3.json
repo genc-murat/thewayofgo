@@ -1,0 +1,114 @@
+{
+  "id": "l3-4-3",
+  "level": 3,
+  "module": 4,
+  "lesson": 3,
+  "title": "Kake Tesuji",
+  "description": "Kake (交织) tesuji kalıbını öğrenin.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Kake, rakip taşların etrafından dolaşarak avantaj sağlayan tesujidir. İki taş arasındaki boşluğu kullanarak rakibi sıkıştırır."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {
+          "x": 4,
+          "y": 4,
+          "color": "black"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "color": "black"
+        },
+        {
+          "x": 5,
+          "y": 5,
+          "color": "white"
+        }
+      ],
+      "highlights": [
+        {
+          "x": 5,
+          "y": 4,
+          "type": "good"
+        }
+      ],
+      "annotation": "Kake: (5,4) ile beyazı sıkıştır"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "black"
+            }
+          ],
+          "text": "Siyah taşlar ayrık - kake zamanı"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "black"
+            },
+            {
+              "x": 5,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "Kake (5,4) ile baskı kurdu!"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "black"
+            },
+            {
+              "x": 5,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 5,
+              "y": 3,
+              "color": "white"
+            }
+          ],
+          "text": "Beyaz kaçtı ama taşlar kopuk"
+        }
+      ]
+    }
+  ],
+  "prerequisites": [
+    "l3-4-2"
+  ],
+  "next_lesson": "l3-4-4",
+  "required_exercise": "e3-4-3"
+}

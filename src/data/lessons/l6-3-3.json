@@ -1,0 +1,88 @@
+{
+  "id": "l6-3-3",
+  "level": 6,
+  "module": 3,
+  "lesson": 3,
+  "title": "Hoshi Atama",
+  "description": "Yıldız noktalarının stratejik kullanımı.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Hoshi Atama: Yıldız noktalarının stratejik kullanımı. Temel kavramları ve stratejileri öğrenin."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {
+          "x": 4,
+          "y": 4,
+          "color": "black"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "color": "white"
+        }
+      ],
+      "highlights": [],
+      "annotation": "Hoshi Atama"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "Pozisyon analizi başladı"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "white"
+            }
+          ],
+          "text": "Taşlar yerleşti"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "white"
+            },
+            {
+              "x": 5,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "Sonraki hamleyi düşünün"
+        }
+      ]
+    }
+  ],
+  "prerequisites": [
+    "l----2"
+  ],
+  "next_lesson": "l6-4-4",
+  "required_exercise": "e6-3-3"
+}

@@ -41,45 +41,41 @@
       "content": "Komi: Siyah ilk hamleyi oynadığı için bir avantaja sahiptir. Bu dengeyi sağlamak için beyaza 'komi' verilir. 9x9 tahtada genellikle 6.5 komi (yarım puan beraberliği engeller). 19x19 tahtada 6.5 veya 7.5 komi kullanılır."
     },
     {
-      "type": "animation",
-      "steps": [
-        {
-          "stones": [
-            {"x": 0, "y": 0, "color": "black"},
-            {"x": 1, "y": 0, "color": "black"},
-            {"x": 2, "y": 0, "color": "black"},
-            {"x": 0, "y": 1, "color": "black"},
-            {"x": 0, "y": 2, "color": "black"},
-            {"x": 5, "y": 0, "color": "white"},
-            {"x": 6, "y": 0, "color": "white"},
-            {"x": 7, "y": 0, "color": "white"},
-            {"x": 7, "y": 1, "color": "white"},
-            {"x": 7, "y": 2, "color": "white"},
-            {"x": 3, "y": 0, "color": "black"},
-            {"x": 4, "y": 0, "color": "white"}
-          ],
-          "text": "Tahta bölündü. Siyahın sol üst alanı 4 nokta, beyazın sağ üst alanı 4 nokta."
-        },
-        {
-          "stones": [
-            {"x": 0, "y": 0, "color": "black"},
-            {"x": 1, "y": 0, "color": "black"},
-            {"x": 2, "y": 0, "color": "black"},
-            {"x": 0, "y": 1, "color": "black"},
-            {"x": 0, "y": 2, "color": "black"},
-            {"x": 5, "y": 0, "color": "white"},
-            {"x": 6, "y": 0, "color": "white"},
-            {"x": 7, "y": 0, "color": "white"},
-            {"x": 7, "y": 1, "color": "white"},
-            {"x": 7, "y": 2, "color": "white"},
-            {"x": 3, "y": 0, "color": "black"},
-            {"x": 4, "y": 0, "color": "white"},
-            {"x": 4, "y": 3, "color": "black"},
-            {"x": 3, "y": 4, "color": "white"}
-          ],
-          "text": "Siyah 1 taş yakaladı. Skor: Siyah = 4 alan + 1 taş = 5, Beyaz = 4 alan + 6.5 komi = 10.5. Beyaz kazanır."
-        }
-      ]
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 3, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 0, "y": 3, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 5, "y": 0, "color": "white"},
+        {"x": 6, "y": 0, "color": "white"},
+        {"x": 7, "y": 0, "color": "white"},
+        {"x": 8, "y": 0, "color": "white"},
+        {"x": 8, "y": 1, "color": "white"},
+        {"x": 8, "y": 2, "color": "white"},
+        {"x": 8, "y": 3, "color": "white"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 6, "y": 3, "color": "white"},
+        {"x": 7, "y": 3, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 1, "type": "territory"},
+        {"x": 2, "y": 1, "type": "territory"},
+        {"x": 1, "y": 2, "type": "territory"},
+        {"x": 2, "y": 2, "type": "territory"},
+        {"x": 6, "y": 1, "type": "territory"},
+        {"x": 7, "y": 1, "type": "territory"},
+        {"x": 6, "y": 2, "type": "territory"},
+        {"x": 7, "y": 2, "type": "territory"}
+      ],
+      "annotation": "Siyah 4 alan, Beyaz 4 alan - örnek oyun sonu bölünmesi"
     },
     {
       "type": "text",

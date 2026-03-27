@@ -19,20 +19,28 @@
         {"x": 3, "y": 1, "color": "black"},
         {"x": 4, "y": 1, "color": "black"},
         {"x": 5, "y": 1, "color": "black"},
+        {"x": 6, "y": 1, "color": "black"},
         {"x": 2, "y": 2, "color": "black"},
-        {"x": 5, "y": 2, "color": "black"},
+        {"x": 4, "y": 2, "color": "black"},
+        {"x": 6, "y": 2, "color": "black"},
         {"x": 2, "y": 3, "color": "black"},
-        {"x": 5, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 6, "y": 3, "color": "black"},
         {"x": 2, "y": 4, "color": "black"},
         {"x": 3, "y": 4, "color": "black"},
         {"x": 4, "y": 4, "color": "black"},
-        {"x": 5, "y": 4, "color": "black"}
+        {"x": 5, "y": 4, "color": "black"},
+        {"x": 6, "y": 4, "color": "black"}
       ],
       "highlights": [
         {"x": 3, "y": 2, "type": "liberty"},
-        {"x": 4, "y": 3, "type": "liberty"}
+        {"x": 5, "y": 3, "type": "liberty"}
       ],
-      "annotation": "İki gözlü grup: (3,2) ve (4,3) noktaları gerçek gözler - bu grup yaşıyor!"
+      "annotation": "İki gözlü grup: (3,2) ve (5,3) noktaları gerçek gözler - bu grup yaşıyor!"
+    },
+    {
+      "type": "text",
+      "content": "Bu grup 5x4 bir çerçeve şeklindedir. İçerideki (4,2) noktası bir ayırıcı olarak çalışır. Sol tarafta (3,2) bir gerçek göz, sağ tarafta (5,3) bir gerçek göz var. İki ayrı tek noktalı göz = grup yaşıyor!"
     },
     {
       "type": "text",
@@ -47,17 +55,21 @@
             {"x": 3, "y": 1, "color": "black"},
             {"x": 4, "y": 1, "color": "black"},
             {"x": 5, "y": 1, "color": "black"},
+            {"x": 6, "y": 1, "color": "black"},
             {"x": 2, "y": 2, "color": "black"},
-            {"x": 5, "y": 2, "color": "black"},
+            {"x": 4, "y": 2, "color": "black"},
+            {"x": 6, "y": 2, "color": "black"},
             {"x": 2, "y": 3, "color": "black"},
-            {"x": 5, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
             {"x": 2, "y": 4, "color": "black"},
             {"x": 3, "y": 4, "color": "black"},
             {"x": 4, "y": 4, "color": "black"},
             {"x": 5, "y": 4, "color": "black"},
-            {"x": 4, "y": 3, "color": "white"}
+            {"x": 6, "y": 4, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"}
           ],
-          "text": "Beyaz bir gözü doldurmaya çalışıyor..."
+          "text": "Beyaz sağ gözü doldurmaya çalışıyor..."
         },
         {
           "stones": [
@@ -65,16 +77,20 @@
             {"x": 3, "y": 1, "color": "black"},
             {"x": 4, "y": 1, "color": "black"},
             {"x": 5, "y": 1, "color": "black"},
+            {"x": 6, "y": 1, "color": "black"},
             {"x": 2, "y": 2, "color": "black"},
-            {"x": 5, "y": 2, "color": "black"},
+            {"x": 4, "y": 2, "color": "black"},
+            {"x": 6, "y": 2, "color": "black"},
             {"x": 2, "y": 3, "color": "black"},
-            {"x": 5, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
             {"x": 2, "y": 4, "color": "black"},
             {"x": 3, "y": 4, "color": "black"},
             {"x": 4, "y": 4, "color": "black"},
-            {"x": 5, "y": 4, "color": "black"}
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 6, "y": 4, "color": "black"}
           ],
-          "captured": [{"x": 4, "y": 3}],
+          "captured": [{"x": 5, "y": 3}],
           "text": "İntihar! Beyaz taşın tüm çevresi siyah - hemen yakalandı. Göz doldurulamaz!"
         }
       ]

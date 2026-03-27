@@ -9,7 +9,7 @@
   "content": [
     {
       "type": "text",
-      "content": "Go'da bazı hamleler yasaktır. İntihar kuralı: Kendi taşıınızın tüm özgürlüklerini kapatamazsınız. Bir noktaya taş koyduğunuzda, o taşıınızın en az bir özgürlüğü olmalıdır."
+      "content": "Go'da bazı hamleler yasaktır. İntihar kuralı: Kendi taşınızın tüm özgürlüklerini kapatamazsınız. Bir noktaya taş koyduğunuzda, o taşınızın en az bir özgürlüğü olmalıdır."
     },
     {
       "type": "board",
@@ -29,7 +29,7 @@
     },
     {
       "type": "text",
-      "content": "Bu kuralın önemli bir istisnası var: Eğer hamleniz rakip taşları yakalarsa, oynayabilirsiniz. Yani kendi taşıınız sıfır özgürlükle başlasa bile, rakip taşları yakaladığı an özgürlük kazanır."
+      "content": "Bu kuralın önemli bir istisnası var: Eğer hamleniz rakip taşları yakalarsa, oynayabilirsiniz. Yani kendi taşınız sıfır özgürlükle başlasa bile, rakip taşları yakaladığı an özgürlük kazanır."
     },
     {
       "type": "board",
@@ -61,7 +61,7 @@
             {"x": 4, "y": 5, "color": "black"},
             {"x": 4, "y": 3, "color": "white"}
           ],
-          "text": "Beyaz taşıının tek özgürlüğü (4,4) noktasında kaldı."
+          "text": "Beyaz taşın tek özgürlüğü (4,4) noktasında kaldı."
         },
         {
           "stones": [
@@ -80,7 +80,7 @@
     },
     {
       "type": "text",
-      "content": "Özet: Kendinizi öldüren hamle yasaktır. Ama rakip taşıını öldürerek oynarsanız serbestsiniz. Unutmayın: Go'da taş koyduğunuz noktanın etrafında en az bir boşluk olmalı - ya da rakip taş yakalamalısınız!"
+      "content": "Özet: Kendinizi öldüren hamle yasaktır. Ama rakip taşınızı öldürerek oynarsanız serbestsiniz. Unutmayın: Go'da taş koyduğunuz noktanın etrafında en az bir boşluk olmalı - ya da rakip taş yakalamalısınız!"
     }
   ],
   "prerequisites": ["l1-1-3"],

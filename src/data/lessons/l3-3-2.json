@@ -1,0 +1,114 @@
+{
+  "id": "l3-3-2",
+  "level": 3,
+  "module": 3,
+  "lesson": 2,
+  "title": "Sente ve Gote",
+  "description": "Zorunlu ve opsiyonel yose arasındaki farkı öğrenin.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Sente, zorunlu hamledir - oynamazsanız zarar görürsünüz. Gote, opsiyonel hamledir - oynamasak da olur. Sente her zaman önce oynanmalıdır."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {
+          "x": 4,
+          "y": 4,
+          "color": "black"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "color": "black"
+        },
+        {
+          "x": 5,
+          "y": 4,
+          "color": "white"
+        }
+      ],
+      "highlights": [
+        {
+          "x": 4,
+          "y": 3,
+          "type": "good"
+        }
+      ],
+      "annotation": "Sente: (4,3) yapılmazsa beyaz ölmüş sayılır"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "black"
+            }
+          ],
+          "text": "Siyahın 2 ölü taşı var - tehlike!"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 3,
+              "color": "black"
+            }
+          ],
+          "text": "(4,3) ile sente - can aldı!"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 3,
+              "color": "black"
+            },
+            {
+              "x": 6,
+              "y": 6,
+              "color": "white"
+            }
+          ],
+          "text": "Gote: başka yere oynanabilir"
+        }
+      ]
+    }
+  ],
+  "prerequisites": [
+    "l3-3-1"
+  ],
+  "next_lesson": "l3-3-3",
+  "required_exercise": "e3-3-2"
+}

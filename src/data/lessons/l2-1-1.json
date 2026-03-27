@@ -9,7 +9,7 @@
   "content": [
     {
       "type": "text",
-      "content": "Merdiven (shicho), rakip taşı köşeye veya tahta kenarına doğru köşe köşe kovalayarak yakalama tekniğidir. Atari durumundaki bir taş kaçtıkça, siyah her adımda bir özgürlüğünü kapatır."
+      "content": "Merdiven (shicho), rakip taşı köşeye veya tahta kenarına doğru zig-zag kovalayarak yakalama tekniğidir. Atari durumundaki bir taş kaçtıkça, siyah her adımda bir özgürlüğünü kapatır."
     },
     {
       "type": "board",
@@ -23,7 +23,7 @@
       "highlights": [
         {"x": 5, "y": 4, "type": "good"}
       ],
-      "annotation": "Beyaz taşın tek özgürlüğü (5,4). Siyah burayı oynayarak merdiveni başlatır."
+      "annotation": "Beyaz taşın 2 özgürlüğü var: (5,4) ve (4,5). Siyah (5,4) oynayarak merdiveni başlatır."
     },
     {
       "type": "animation",
@@ -32,9 +32,9 @@
           "stones": [
             {"x": 4, "y": 4, "color": "white"},
             {"x": 3, "y": 4, "color": "black"},
-            {"x": 4, "y": 3, "color": "black"}
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 5, "y": 5, "color": "black"}
           ],
-          "captured": [],
           "text": "Beyaz taşın 2 özgürlüğü var: (5,4) ve (4,5)."
         },
         {
@@ -42,9 +42,9 @@
             {"x": 4, "y": 4, "color": "white"},
             {"x": 3, "y": 4, "color": "black"},
             {"x": 4, "y": 3, "color": "black"},
+            {"x": 5, "y": 5, "color": "black"},
             {"x": 5, "y": 4, "color": "black"}
           ],
-          "captured": [],
           "text": "Siyah (5,4) oynadı. Beyaz taşın tek özgürlüğü (4,5) kaldı. Atari!"
         },
         {
@@ -53,10 +53,10 @@
             {"x": 4, "y": 5, "color": "white"},
             {"x": 3, "y": 4, "color": "black"},
             {"x": 4, "y": 3, "color": "black"},
+            {"x": 5, "y": 5, "color": "black"},
             {"x": 5, "y": 4, "color": "black"}
           ],
-          "captured": [],
-          "text": "Beyaz (4,5) oynayarak kaçtı. Grubun özgürlükleri: (3,5) ve (5,5)."
+          "text": "Beyaz (4,5) oynayarak kaçtı. Grubun özgürlükleri: (3,5) ve (4,6)."
         },
         {
           "stones": [
@@ -64,11 +64,11 @@
             {"x": 4, "y": 5, "color": "white"},
             {"x": 3, "y": 4, "color": "black"},
             {"x": 4, "y": 3, "color": "black"},
+            {"x": 5, "y": 5, "color": "black"},
             {"x": 5, "y": 4, "color": "black"},
-            {"x": 5, "y": 5, "color": "black"}
+            {"x": 4, "y": 6, "color": "black"}
           ],
-          "captured": [],
-          "text": "Siyah (5,5) oynadı. Tekrar atari! Beyaz (3,5) kaçacak."
+          "text": "Siyah (4,6) oynadı. Tekrar atari! Beyaz grubun tek özgürlüğü (3,5) kaldı."
         },
         {
           "stones": [
@@ -77,22 +77,36 @@
             {"x": 3, "y": 5, "color": "white"},
             {"x": 3, "y": 4, "color": "black"},
             {"x": 4, "y": 3, "color": "black"},
-            {"x": 5, "y": 4, "color": "black"},
             {"x": 5, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"}
+          ],
+          "text": "Beyaz (3,5) oynayarak kaçtı. Grubun özgürlükleri: (3,6) ve (2,5)."
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"},
             {"x": 3, "y": 6, "color": "black"}
           ],
           "captured": [
-            {"x": 4, "y": 4, "color": "white"},
-            {"x": 4, "y": 5, "color": "white"},
-            {"x": 3, "y": 5, "color": "white"}
+            {"x": 4, "y": 4},
+            {"x": 4, "y": 5},
+            {"x": 3, "y": 5}
           ],
-          "text": "Merdiven devam eder... Taşa kadar kovalar ve sonunda yakalar!"
+          "text": "Siyah (3,6) oynadı! Beyaz grubun son özgürlüğü kapatıldı - 3 taş yakalandı!"
         }
       ]
     },
     {
       "type": "text",
-      "content": "Merdiven, köşeye veya kenara ulaştığında beyaz taş yakalanır. Zig-zag deseni takip eder: her kaçıtta siyah bir kenarı kapatır, beyaz diğer kenara kaçar."
+      "content": "Merdiven zig-zag deseni takip eder: her kaçıtta siyah bir kenarı kapatır, beyaz diğer kenara kaçar. Kenara ulaştığında beyaz taş yakalanır."
     },
     {
       "type": "text",

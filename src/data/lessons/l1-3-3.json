@@ -26,11 +26,11 @@
         {"x": 2, "y": 6, "type": "good"},
         {"x": 6, "y": 6, "type": "good"}
       ],
-      "annotation": "Köşe noktaları (2,2) ve (6,6): Açılışın en değerli bölgeleri"
+      "annotation": "3-3 noktaları (2,2) ve (6,6): 9x9 tahtada açılışın en değerli bölgeleri"
     },
     {
       "type": "text",
-      "content": "3-4 ve 4-4 noktaları: Köşede en yaygın açılış noktaları (3,2)-(2,3) hattı '3-4 noktası' ve (2,2)-(4,4) hattı '4-4 noktası' olarak bilinir. 3-4 noktası alan ve etki dengesi sunar, 4-4 noktası daha fazla alan hedefler."
+      "content": "9x9 tahtada açılış noktaları: (2,2) 3-3 noktası (kenardan 3. satır), (2,6) 3-3 noktası, (6,2) 3-3 noktası, (6,6) 3-3 noktası. (3,3) yıldız noktası (hoshi) ise etki odaklı bir açılıştır - merkezden 4. satır, daha geniş etki alanı sunar."
     },
     {
       "type": "animation",
@@ -39,14 +39,14 @@
           "stones": [
             {"x": 2, "y": 2, "color": "black"}
           ],
-          "text": "Siyah köşeye oynuyor (2,2) - 4-4 noktası. Güçlü alan hamlesi."
+          "text": "Siyah köşeye oynuyor (2,2) - 3-3 noktası. Köşeyi güvence altına alan sağlam hamle."
         },
         {
           "stones": [
             {"x": 2, "y": 2, "color": "black"},
             {"x": 6, "y": 2, "color": "white"}
           ],
-          "text": "Beyaz karşı köşeye oynuyor (6,2) - 3-4 noktası. Dengeli hamle."
+          "text": "Beyaz karşı köşeye oynuyor (6,2) - 3-3 noktası. Dengeli hamle."
         },
         {
           "stones": [

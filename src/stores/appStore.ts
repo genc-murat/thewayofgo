@@ -60,6 +60,7 @@ interface AppState {
 
   // Exercise actions
   loadExercise: (exerciseId: string) => Promise<void>;
+  closeExercise: () => void;
   submitExerciseMove: (x: number, y: number) => Promise<void>;
   showNextHint: () => void;
 
@@ -222,6 +223,17 @@ export const useAppStore = create<AppState>((set, get) => ({
     } catch (e) {
       set({ error: `Failed to load exercise: ${e}`, isLoading: false });
     }
+  },
+
+  closeExercise: () => {
+    set({
+      currentExercise: null,
+      exerciseResult: null,
+      exerciseAttempts: 0,
+      showHint: false,
+      hintIndex: 0,
+      currentView: 'exercise',
+    });
   },
 
   submitExerciseMove: async (x, y) => {

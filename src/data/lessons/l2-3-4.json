@@ -9,74 +9,112 @@
   "content": [
     {
       "type": "text",
-      "content": "Go'da bazı şekiller her zaman ölüdür. Bu şekilleri tanımak, tsumego çözmenizi çok hızlandırır. Üç temel ölüm şekli: Düz üç, L şekli ve dikdörtgen iki."
+      "content": "Go'da bazı iç boşluk şekilleri her zaman ölüdür. Bu şekilleri tanımak, tsumego çözmenizi çok hızlandırır. Üç temel ölüm şekli: Düz üç (straight three), L şekli (bent three) ve 2x2 kare."
     },
     {
       "type": "board",
       "size": 9,
       "stones": [
-        {"x": 3, "y": 4, "color": "black"},
-        {"x": 4, "y": 4, "color": "black"},
-        {"x": 5, "y": 4, "color": "black"},
-        {"x": 2, "y": 3, "color": "white"},
-        {"x": 6, "y": 3, "color": "white"},
+        {"x": 3, "y": 3, "color": "white"},
+        {"x": 4, "y": 3, "color": "white"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 2, "y": 4, "color": "white"},
+        {"x": 6, "y": 4, "color": "white"},
         {"x": 2, "y": 5, "color": "white"},
         {"x": 6, "y": 5, "color": "white"},
         {"x": 3, "y": 6, "color": "white"},
         {"x": 4, "y": 6, "color": "white"},
-        {"x": 5, "y": 6, "color": "white"}
-      ],
-      "highlights": [
-        {"x": 4, "y": 5, "type": "bad"}
-      ],
-      "annotation": "Düz üç (straight three): 3 taşlık düz çizgi. (4,5) hayati nokta - siyah burayı oynarsa beyaz ölür."
-    },
-    {
-      "type": "board",
-      "size": 9,
-      "stones": [
-        {"x": 3, "y": 3, "color": "black"},
+        {"x": 5, "y": 6, "color": "white"},
         {"x": 3, "y": 4, "color": "black"},
-        {"x": 2, "y": 2, "color": "white"},
-        {"x": 4, "y": 2, "color": "white"},
-        {"x": 2, "y": 5, "color": "white"},
-        {"x": 4, "y": 5, "color": "white"},
-        {"x": 4, "y": 3, "color": "white"},
-        {"x": 4, "y": 4, "color": "white"},
-        {"x": 3, "y": 5, "color": "white"}
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 5, "y": 4, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 6, "y": 3, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 1, "y": 4, "color": "black"},
+        {"x": 1, "y": 5, "color": "black"},
+        {"x": 7, "y": 3, "color": "black"},
+        {"x": 7, "y": 4, "color": "black"},
+        {"x": 7, "y": 5, "color": "black"}
       ],
       "highlights": [
-        {"x": 3, "y": 5, "type": "bad"}
+        {"x": 4, "y": 5, "type": "good"}
       ],
-      "annotation": "L şekli (L-shape): Dönük L şeklindeki boşluk. (3,5) hayati nokta - siyah oynarsa beyaz ölür."
+      "annotation": "Düz üç (straight three): 3 boş nokta düz çizgide. (4,5) hayati nokta - siyah burayı oynarsa iki göze böler."
+    },
+    {
+      "type": "text",
+      "content": "Düz üç: 3 boş nokta düz çizgide (satır veya sütun). Orta nokta hayati noktadır. Siyah orayı oynarsa iki tek noktalı göz oluşur."
     },
     {
       "type": "board",
       "size": 9,
       "stones": [
-        {"x": 4, "y": 4, "color": "black"},
         {"x": 3, "y": 3, "color": "white"},
-        {"x": 5, "y": 3, "color": "white"},
-        {"x": 3, "y": 5, "color": "white"},
-        {"x": 5, "y": 5, "color": "white"}
+        {"x": 3, "y": 4, "color": "white"},
+        {"x": 2, "y": 5, "color": "white"},
+        {"x": 3, "y": 6, "color": "white"},
+        {"x": 4, "y": 5, "color": "white"},
+        {"x": 5, "y": 5, "color": "white"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 4, "y": 2, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 5, "y": 3, "color": "black"},
+        {"x": 5, "y": 4, "color": "black"},
+        {"x": 5, "y": 6, "color": "black"},
+        {"x": 6, "y": 5, "color": "black"},
+        {"x": 6, "y": 6, "color": "black"},
+        {"x": 2, "y": 6, "color": "black"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 1, "y": 4, "color": "black"},
+        {"x": 1, "y": 5, "color": "black"},
+        {"x": 1, "y": 6, "color": "black"},
+        {"x": 2, "y": 7, "color": "black"},
+        {"x": 3, "y": 7, "color": "black"},
+        {"x": 4, "y": 7, "color": "black"},
+        {"x": 5, "y": 7, "color": "black"}
       ],
       "highlights": [
-        {"x": 4, "y": 5, "type": "bad"},
-        {"x": 5, "y": 4, "type": "bad"}
+        {"x": 3, "y": 5, "type": "good"}
       ],
-      "annotation": "Dikdörtgen iki (bent four in the corner): Köşede 5 boş nokta. Siyah iki noktadan birini oynarsa beyaz ölür."
+      "annotation": "Bent three (L şekli): 3 boş nokta L şeklinde. (3,5) hayati nokta - L'nin dönme noktası."
     },
     {
       "type": "text",
-      "content": "Bu ölüm şekillerini ezberleyin: Düz üç, L şekli ve dikdörtgen iki her zaman ölüdür. Eğer rakip bu şekillerden birini oluşturduysa, hayati noktayı bulup öldürebilirsiniz."
+      "content": "Bent three (L şekli): 3 boş nokta L şeklinde. L'nin dönme noktası hayati noktadır. Siyah orayı oynarsa iki tek noktalı göz oluşur."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 2, "y": 2, "color": "white"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 3, "y": 3, "color": "white"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 2, "y": 1, "color": "black"},
+        {"x": 3, "y": 1, "color": "black"},
+        {"x": 4, "y": 2, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 2, "type": "bad"},
+        {"x": 3, "y": 3, "type": "bad"}
+      ],
+      "annotation": "2x2 kare: 4 boş nokta. Siyah iki noktadan birini oynarsa bent three oluşturur ve beyaz ölü kalır."
     },
     {
       "type": "text",
-      "content": "Önemli: Bu şekiller 'dahili' olarak ölüdür - yani dışarıdan sarılmışlarsa. Eğer grup sınırları açık değilse, durum değişebilir."
+      "content": "2x2 kare: 4 boş noktalı kare şekli. Siyah hayati noktaya (köşe) oynarsa 3 noktalı bent three kalır. Bu bent three'ün hayati noktasını da siyah alırsa beyaz ölür."
     },
     {
       "type": "text",
-      "content": "Pratik ipucu: Tsumego çözerken önce ölüm şekillerini tarayın. Rakip grup bu şekillerden birini mi oluşturuyor? Hayati noktayı hemen bulun."
+      "content": "Bu ölüm şekillerini ezberleyin: Düz üç, bent three ve 2x2 kare tamamen kuşatıldığında ölüdür. Eğer rakip bu şekillerden birini oluşturduysa, hayati noktayı bulup öldürebilirsiniz."
     }
   ],
   "prerequisites": ["l2-3-3"],

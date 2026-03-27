@@ -19,7 +19,7 @@
         {"x": 4, "y": 4, "color": "white"},
         {"x": 3, "y": 4, "color": "black"},
         {"x": 4, "y": 3, "color": "black"},
-        {"x": 5, "y": 4, "color": "black"}
+        {"x": 5, "y": 5, "color": "black"}
       ],
       "highlights": [
         {"x": 3, "y": 1, "type": "good"}
@@ -35,10 +35,20 @@
             {"x": 4, "y": 4, "color": "white"},
             {"x": 3, "y": 4, "color": "black"},
             {"x": 4, "y": 3, "color": "black"},
+            {"x": 5, "y": 5, "color": "black"}
+          ],
+          "text": "Beyaz 2 özgürlüklü: (5,4) ve (4,5). Siyah merdivene başlar."
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 5, "y": 5, "color": "black"},
             {"x": 5, "y": 4, "color": "black"}
           ],
-          "captured": [],
-          "text": "Beyaz atari durumunda. (3,1)deki beyaz taş merdiven yolunda bekliyor."
+          "text": "Siyah (5,4) oynadı. Atari! Beyaz (4,5) ile kaçacak."
         },
         {
           "stones": [
@@ -47,11 +57,11 @@
             {"x": 4, "y": 5, "color": "white"},
             {"x": 3, "y": 4, "color": "black"},
             {"x": 4, "y": 3, "color": "black"},
+            {"x": 5, "y": 5, "color": "black"},
             {"x": 5, "y": 4, "color": "black"},
-            {"x": 5, "y": 5, "color": "black"}
+            {"x": 4, "y": 6, "color": "black"}
           ],
-          "captured": [],
-          "text": "Beyaz kaçıyor. Siyah kovalamaya devam eder."
+          "text": "Beyaz kaçtı, siyah kovalıyor. Beyaz özgürlükleri: (3,5) ve (4,6) yok, (3,5)."
         },
         {
           "stones": [
@@ -61,12 +71,26 @@
             {"x": 3, "y": 5, "color": "white"},
             {"x": 3, "y": 4, "color": "black"},
             {"x": 4, "y": 3, "color": "black"},
-            {"x": 5, "y": 4, "color": "black"},
             {"x": 5, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"}
+          ],
+          "text": "Beyaz (3,5) oynadı. Beyaz grubun özgürlükleri: (2,5) ve (3,6)."
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"},
             {"x": 3, "y": 6, "color": "black"}
           ],
-          "captured": [],
-          "text": "Merdiven devam ediyor. Beyaz kaçıyor..."
+          "text": "Siyah (3,6) oynadı. Atari! Beyaz (2,5) ile kaçacak."
         },
         {
           "stones": [
@@ -77,13 +101,32 @@
             {"x": 2, "y": 5, "color": "white"},
             {"x": 3, "y": 4, "color": "black"},
             {"x": 4, "y": 3, "color": "black"},
-            {"x": 5, "y": 4, "color": "black"},
             {"x": 5, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"},
             {"x": 3, "y": 6, "color": "black"},
             {"x": 2, "y": 6, "color": "black"}
           ],
-          "captured": [],
-          "text": "Beyaz merdiven kırıcıya (3,1) ulaştı! Grup güçlendi, merdiven bozuldu!"
+          "text": "Beyaz (2,5) oynadı. Beyaz grubun özgürlükleri: (1,5) ve (2,4). Merdiven yolunda (3,1) beyaz taşı bekliyor!"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 2, "y": 4, "color": "white"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 1, "y": 5, "color": "black"}
+          ],
+          "text": "Siyah (1,5) oynadı. Ama beyaz (2,3) ile kaçabilir - merdiven kırıcıya ulaştı, grup güçlendi!"
         }
       ]
     },

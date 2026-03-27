@@ -1,0 +1,119 @@
+{
+  "id": "l3-4-4",
+  "level": 3,
+  "module": 4,
+  "lesson": 4,
+  "title": "Nuki Tesuji",
+  "description": "Nuki (抜き) tesuji kalıbını öğrenin.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Nuki, rakip taşları alarak hammadde kazandıran tesujidir. Taş almak her zaman değerlidir, özellikle rakip gruplarını tehdit ederken."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {
+          "x": 3,
+          "y": 3,
+          "color": "black"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "color": "black"
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "color": "white"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "color": "white"
+        }
+      ],
+      "highlights": [
+        {
+          "x": 3,
+          "y": 3,
+          "type": "good"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "type": "good"
+        }
+      ],
+      "annotation": "Nuki: Her iki noktadan da alınabilir"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {
+              "x": 3,
+              "y": 3,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 3,
+              "color": "black"
+            }
+          ],
+          "text": "Siyah iki ölü noktaya sahip"
+        },
+        {
+          "stones": [
+            {
+              "x": 3,
+              "y": 3,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 3,
+              "color": "black"
+            }
+          ],
+          "text": "Nuki ile ikisini birden al!"
+        },
+        {
+          "stones": [
+            {
+              "x": 3,
+              "y": 3,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 3,
+              "color": "black"
+            },
+            {
+              "x": 3,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "Beyaz taşlar alındı - büyük kazanç!"
+        }
+      ]
+    }
+  ],
+  "prerequisites": [
+    "l3-4-3"
+  ],
+  "next_lesson": "l3-4-5",
+  "required_exercise": "e3-4-4"
+}

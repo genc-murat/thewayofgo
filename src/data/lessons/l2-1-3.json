@@ -9,7 +9,7 @@
   "content": [
     {
       "type": "text",
-      "content": "Ağ (geta), merdiven yerine bir hamleyle taşı yakalama tekniğidir. Merdiven kırıcıdan etkilenmez, bu yüzden daha güvenlidir. Ama doğru pozisyon gerektirir."
+      "content": "Ağ (geta), merdiven yerine tek hamleyle taşı yakalama tekniğidir. Merdiven kırıcıdan etkilenmez, bu yüzden daha güvenlidir. Ama doğru pozisyon gerektirir."
     },
     {
       "type": "board",
@@ -17,12 +17,13 @@
       "stones": [
         {"x": 4, "y": 4, "color": "white"},
         {"x": 5, "y": 4, "color": "black"},
-        {"x": 3, "y": 5, "color": "black"}
+        {"x": 3, "y": 5, "color": "black"},
+        {"x": 3, "y": 3, "color": "black"}
       ],
       "highlights": [
-        {"x": 3, "y": 3, "type": "good"}
+        {"x": 5, "y": 3, "type": "good"}
       ],
-      "annotation": "Ağ hamlesi (3,3): Beyaz hangi yöne kaçarsa kaçsın, siyah onu yakalar."
+      "annotation": "Ağ hamlesi (5,3): Beyaz kaçsa bile siyah her iki yolu da kapatır."
     },
     {
       "type": "animation",
@@ -31,65 +32,82 @@
           "stones": [
             {"x": 4, "y": 4, "color": "white"},
             {"x": 5, "y": 4, "color": "black"},
-            {"x": 3, "y": 5, "color": "black"}
-          ],
-          "captured": [],
-          "text": "Beyaz taşın özgürlükleri: (3,4), (4,5), (4,3). Siyah ağ atacak."
-        },
-        {
-          "stones": [
-            {"x": 4, "y": 4, "color": "white"},
-            {"x": 5, "y": 4, "color": "black"},
             {"x": 3, "y": 5, "color": "black"},
             {"x": 3, "y": 3, "color": "black"}
           ],
-          "captured": [],
-          "text": "Siyah (3,3) oynadı - ağ atıldı! Beyaz'ın özgürlükleri kısıtlandı."
+          "text": "Beyaz taşın özgürlükleri: (3,4), (4,5), (5,3), (4,3)."
         },
         {
           "stones": [
             {"x": 4, "y": 4, "color": "white"},
-            {"x": 5, "y": 5, "color": "white"},
-            {"x": 5, "y": 4, "color": "black"},
-            {"x": 3, "y": 5, "color": "black"},
-            {"x": 3, "y": 3, "color": "black"}
-          ],
-          "captured": [],
-          "text": "Beyaz (5,5) oynayarak kaçmayı deniyor..."
-        },
-        {
-          "stones": [
-            {"x": 4, "y": 4, "color": "white"},
-            {"x": 5, "y": 5, "color": "white"},
             {"x": 5, "y": 4, "color": "black"},
             {"x": 3, "y": 5, "color": "black"},
             {"x": 3, "y": 3, "color": "black"},
-            {"x": 6, "y": 4, "color": "black"}
+            {"x": 5, "y": 3, "color": "black"}
           ],
-          "captured": [],
-          "text": "Siyah (6,4) oynadı. Beyaz grubun özgürlükleri azaldı, yakalandı!"
+          "text": "Siyah (5,3) oynadı - ağ atıldı! Beyaz'ın özgürlükleri: (3,4), (4,5), (4,3)."
         },
         {
           "stones": [
             {"x": 4, "y": 4, "color": "white"},
-            {"x": 5, "y": 5, "color": "white"},
+            {"x": 4, "y": 3, "color": "white"},
             {"x": 5, "y": 4, "color": "black"},
             {"x": 3, "y": 5, "color": "black"},
             {"x": 3, "y": 3, "color": "black"},
-            {"x": 6, "y": 4, "color": "black"},
-            {"x": 5, "y": 6, "color": "black"}
+            {"x": 5, "y": 3, "color": "black"}
+          ],
+          "text": "Beyaz (4,3) oynayarak kaçmayı deniyor... Grup özgürlükleri: (3,4) ve (4,5)."
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"}
+          ],
+          "text": "Siyah (5,2) oynadı. Beyaz grubun özgürlükleri: (3,4), (4,5) ve (4,2). Hala kaçabilir."
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"}
+          ],
+          "text": "Beyaz (4,5) ile kaçtı. Ama siyah (4,6) oynayarak atari yapabilir."
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"}
           ],
           "captured": [
-            {"x": 4, "y": 4, "color": "white"},
-            {"x": 5, "y": 5, "color": "white"}
+            {"x": 4, "y": 4},
+            {"x": 4, "y": 3},
+            {"x": 4, "y": 5}
           ],
-          "text": "Beyaz kaçamadı! Ağ başarılı oldu."
+          "text": "Beyaz kaçamadı! (3,4) ve (4,6) ile tüm özgürlükler kapandı. Ağ başarılı!"
         }
       ]
     },
     {
       "type": "text",
-      "content": "Ağ, merdivenden farkı olarak tek hamlede yakalar ve rakip kaçamaz. Merdiven kırıcı taşlardan etkilenmez."
+      "content": "Ağ, merdivenden farkı olarak taşın kaçış yollarını önceden kapatır. Merdiven kırıcı taşlardan etkilenmez."
     },
     {
       "type": "text",

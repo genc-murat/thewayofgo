@@ -8,29 +8,36 @@
   "description": "Siyah grubu yaşatmak için ikinci gözü oluşturun.",
   "board_size": 9,
   "initial_stones": [
-    {"x": 1, "y": 1, "color": "black"},
-    {"x": 2, "y": 1, "color": "black"},
     {"x": 3, "y": 1, "color": "black"},
-    {"x": 1, "y": 2, "color": "black"},
+    {"x": 4, "y": 1, "color": "black"},
+    {"x": 5, "y": 1, "color": "black"},
     {"x": 3, "y": 2, "color": "black"},
-    {"x": 1, "y": 3, "color": "black"},
-    {"x": 2, "y": 3, "color": "black"},
-    {"x": 3, "y": 3, "color": "black"},
-    {"x": 2, "y": 2, "color": "black"},
     {"x": 5, "y": 2, "color": "black"},
-    {"x": 6, "y": 2, "color": "black"},
+    {"x": 3, "y": 3, "color": "black"},
     {"x": 4, "y": 3, "color": "black"},
-    {"x": 6, "y": 3, "color": "black"},
-    {"x": 4, "y": 4, "color": "black"},
-    {"x": 5, "y": 4, "color": "black"},
-    {"x": 6, "y": 4, "color": "black"}
+    {"x": 5, "y": 3, "color": "black"},
+    {"x": 1, "y": 1, "color": "white"},
+    {"x": 2, "y": 1, "color": "white"},
+    {"x": 1, "y": 2, "color": "white"},
+    {"x": 2, "y": 2, "color": "white"},
+    {"x": 1, "y": 3, "color": "white"},
+    {"x": 2, "y": 3, "color": "white"},
+    {"x": 6, "y": 1, "color": "white"},
+    {"x": 6, "y": 2, "color": "white"},
+    {"x": 6, "y": 3, "color": "white"},
+    {"x": 3, "y": 0, "color": "white"},
+    {"x": 4, "y": 0, "color": "white"},
+    {"x": 5, "y": 0, "color": "white"},
+    {"x": 3, "y": 4, "color": "white"},
+    {"x": 4, "y": 4, "color": "white"},
+    {"x": 5, "y": 4, "color": "white"}
   ],
   "correct_moves": [
-    {"x": 5, "y": 3, "is_correct": true, "explanation": "Doğru! Bu hamle ikinci gözü oluşturur. Grup artık yakalanamaz."}
+    {"x": 4, "y": 2, "is_correct": true, "explanation": "Doğru! Bu hamle iç boşluğu ikiye böler: sol göz (4,2 yok artık, divider olarak) ve sağ göz oluşur. Grup artık iki gerçek göze sahip ve yaşayabilir!"}
   ],
   "hints": [
-    "Birinci grup zaten tek gözle dolu. İkinci grup için göz arayın.",
-    "5,3 noktası boş kalıyor - bu ikinci göz olabilir mi?"
+    "Grubun iç boşluğuna bakın - 3 boş nokta var.",
+    "Ortadaki noktayı oynamak boşluğu ikiye böler."
   ],
   "difficulty": 2,
   "stars_required": 1

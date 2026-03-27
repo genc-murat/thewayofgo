@@ -1,0 +1,17 @@
+{
+  "id": "e4-2-2",
+  "level": 4,
+  "module": 2,
+  "lesson": 2,
+  "type": "opening",
+  "title": "Japon Açılışı",
+  "description": "Japon açılışına uygun hamle yapın. (Japon: 3-4 noktası)",
+  "board_size": 9,
+  "initial_stones": [{"x": 2, "y": 2, "color": "black"}],
+  "correct_moves": [
+    {"x": 3, "y": 2, "is_correct": true, "explanation": "Doğru! (3,2) 3-4 noktası - Japon açılışının temelidir. Alan ve etki dengesi sağlar."}
+  ],
+  "hints": ["3-4 noktası (kenardan 3. satır) ideal.", "(3,2) veya (2,3) 3-4 noktasıdır."],
+  "difficulty": 3,
+  "stars_required": 3
+}

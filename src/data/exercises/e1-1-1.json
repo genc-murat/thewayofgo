@@ -10,7 +10,7 @@
   "initial_stones": [],
   "correct_moves": [
     {"x": 4, "y": 4, "is_correct": true, "explanation": "Merkez noktaya taş koydunuz! Doğru."},
-    {"x": 3, "y": 3, "is_correct": true, "explanation": "Köşeye yakın bir nokta seçtiniz, harika."},
+    {"x": 3, "y": 3, "is_correct": true, "explanation": "Yıldız noktası (3,3) seçtiniz, harika açılış noktası."},
     {"x": 2, "y": 6, "is_correct": true, "explanation": "Güzel bir açılış hamlesi."},
     {"x": 6, "y": 2, "is_correct": true, "explanation": "İyi bir nokta seçimi."},
     {"x": 0, "y": 0, "is_correct": true, "explanation": "Köşe noktası - geçerli bir hamle."},
