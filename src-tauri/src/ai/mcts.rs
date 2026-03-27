@@ -10,6 +10,7 @@ const EXPLORATION_CONSTANT: f64 = 1.414;
 struct MCTSNode {
     move_x: u8,
     move_y: u8,
+    is_pass: bool,
     visits: u32,
     wins: f64,
     children: Vec<MCTSNode>,
@@ -21,6 +22,19 @@ impl MCTSNode {
         MCTSNode {
             move_x: x,
             move_y: y,
+            is_pass: false,
+            visits: 0,
+            wins: 0.0,
+            children: Vec::new(),
+            untried_moves,
+        }
+    }
+
+    fn new_pass(untried_moves: Vec<(u8, u8)>) -> Self {
+        MCTSNode {
+            move_x: 0,
+            move_y: 0,
+            is_pass: true,
             visits: 0,
             wins: 0.0,
             children: Vec::new(),
@@ -88,6 +102,9 @@ impl MCTSAi {
         let mut rng = rand::rng();
         let board_size = game.board_size().to_u8();
         let center = board_size as f64 / 2.0;
+        let board_area = board_size as u32;
+        let move_number = game.move_number();
+        let game_progress = move_number as f64 / board_area as f64;
 
         let mut scored: Vec<(usize, f64)> = valid_moves
             .iter()
@@ -140,6 +157,22 @@ impl MCTSAi {
 
         scored.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap_or(std::cmp::Ordering::Equal));
 
+        let best_score = scored[0].1;
+        let positive_score_moves: Vec<_> = scored.iter().filter(|(_, s)| *s > 0.0).collect();
+
+        if game_progress > 0.4 {
+            if positive_score_moves.is_empty() {
+                return None;
+            }
+            if best_score < -3.0 && game_progress > 0.6 {
+                return None;
+            }
+        }
+
+        if game_progress > 0.7 && best_score < 1.0 {
+            return None;
+        }
+
         let top_count = (scored.len() as f64 * 0.3).max(1.0) as usize;
         let pick_idx = rng.random_range(0..top_count.min(scored.len()));
         Some(valid_moves[scored[pick_idx].0].clone())
@@ -170,6 +203,9 @@ impl MCTSAi {
             })
             .collect();
 
+        let pass_untried: Vec<(u8, u8)> = move_coords.clone();
+        root_children.push(MCTSNode::new_pass(pass_untried));
+
         let simulations = self.difficulty.simulations;
         let current_player = game.current_player();
         let use_heavy_playout = self.difficulty.level >= 4;
@@ -192,18 +228,29 @@ impl MCTSAi {
                     .unwrap_or(0),
             };
 
-            if sim_game.place_stone_fast(
-                root_children[root_idx].move_x,
-                root_children[root_idx].move_y,
-            ) {
+            let node = &root_children[root_idx];
+            let moved = if node.is_pass {
+                sim_game.pass_fast();
+                true
+            } else if sim_game.place_stone_fast(node.move_x, node.move_y) {
+                true
+            } else {
+                continue;
+            };
+
+            if moved {
                 let mut current = &mut root_children[root_idx];
 
                 while current.is_fully_expanded() && !current.children.is_empty() {
                     if let Some(child_idx) = current.best_child_uct() {
-                        if !sim_game.place_stone_fast(
-                            current.children[child_idx].move_x,
-                            current.children[child_idx].move_y,
-                        ) {
+                        let child = &current.children[child_idx];
+                        let moved = if child.is_pass {
+                            sim_game.pass_fast();
+                            true
+                        } else {
+                            sim_game.place_stone_fast(child.move_x, child.move_y)
+                        };
+                        if !moved {
                             break;
                         }
                         current = &mut current.children[child_idx];
@@ -238,6 +285,11 @@ impl MCTSAi {
                     root_children[root_idx].wins += (0.5 - normalized.min(0.5)).max(0.0);
                 }
             }
+        }
+
+        let best = root_children.iter().max_by_key(|n| n.visits).unwrap();
+        if best.is_pass {
+            return None;
         }
 
         select_most_visited(&root_children).map(|(x, y)| Point { x, y })
@@ -339,6 +391,8 @@ fn pick_heuristic_move(
 ) -> Option<(u8, u8)> {
     let board_size = game.board_size().to_u8();
     let center = board_size as f64 / 2.0;
+    let board_area = board_size as u32;
+    let game_progress = game.move_number() as f64 / board_area as f64;
 
     let mut best_tactical: Option<(usize, f64)> = None;
     let mut weights: Vec<f64> = Vec::with_capacity(valid_moves.len());
@@ -380,6 +434,13 @@ fn pick_heuristic_move(
         let dist = ((x as f64 - center).powi(2) + (y as f64 - center).powi(2)).sqrt();
         weight += (center - dist).max(0.0) * 0.1;
 
+        if game_progress > 0.5 {
+            weight *= 0.5;
+        }
+        if game_progress > 0.7 {
+            weight *= 0.3;
+        }
+
         weights.push(weight);
     }
 
@@ -399,6 +460,13 @@ fn pick_heuristic_move(
     let total: f64 = weights.iter().sum();
     if total <= 0.0 {
         return None;
+    }
+
+    if game_progress > 0.5 && best_tactical.is_none() {
+        let pass_probability = (game_progress - 0.5) * 1.5;
+        if rng.random_range(0.0f64..1.0) < pass_probability {
+            return None;
+        }
     }
 
     let mut roll = rng.random_range(0.0..total);
