@@ -1,0 +1,45 @@
+{
+  "id": "e1-4-1",
+  "level": 1,
+  "module": 4,
+  "lesson": 1,
+  "type": "capture_stones",
+  "title": "İleri Ko Kavramı",
+  "description": "Ko ile strateji oluşturun.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 4,
+      "y": 4,
+      "color": "white"
+    },
+    {
+      "x": 5,
+      "y": 4,
+      "color": "white"
+    },
+    {
+      "x": 4,
+      "y": 5,
+      "color": "black"
+    },
+    {
+      "x": 5,
+      "y": 5,
+      "color": "black"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 3,
+      "y": 4,
+      "is_correct": true,
+      "explanation": "Ko tehdidi yarattınız!"
+    }
+  ],
+  "hints": [
+    "Ko durumunda başka taşlarla tehdit edin."
+  ],
+  "difficulty": 3,
+  "stars_required": 1
+}

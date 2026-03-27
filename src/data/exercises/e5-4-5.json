@@ -1,0 +1,35 @@
+{
+  "id": "e5-4-5",
+  "level": 5,
+  "module": 4,
+  "lesson": 5,
+  "type": "endgame",
+  "title": " Yan Alana İndirgeme 2",
+  "description": "İleri indirgeme teknikleri.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 0,
+      "y": 2,
+      "color": "black"
+    },
+    {
+      "x": 1,
+      "y": 2,
+      "color": "black"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 0,
+      "y": 3,
+      "is_correct": true,
+      "explanation": "İndirgeme başarılı!"
+    }
+  ],
+  "hints": [
+    "Skor indirgemesi yapın."
+  ],
+  "difficulty": 4,
+  "stars_required": 1
+}

@@ -1,0 +1,45 @@
+{
+  "id": "e3-4-6",
+  "level": 3,
+  "module": 4,
+  "lesson": 6,
+  "type": "capture_stones",
+  "title": "Kake Uygulama",
+  "description": "Kake tesujisini uygulayın.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 4,
+      "y": 4,
+      "color": "black"
+    },
+    {
+      "x": 4,
+      "y": 5,
+      "color": "black"
+    },
+    {
+      "x": 5,
+      "y": 5,
+      "color": "white"
+    },
+    {
+      "x": 5,
+      "y": 4,
+      "color": "white"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 5,
+      "y": 3,
+      "is_correct": true,
+      "explanation": "Kake!"
+    }
+  ],
+  "hints": [
+    "Taşların etrafından dolaşın."
+  ],
+  "difficulty": 3,
+  "stars_required": 1
+}

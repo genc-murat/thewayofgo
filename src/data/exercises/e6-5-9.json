@@ -1,0 +1,45 @@
+{
+  "id": "e6-5-9",
+  "level": 6,
+  "module": 5,
+  "lesson": 9,
+  "type": "capture_stones",
+  "title": "Profesyonel Kombinasyon",
+  "description": "Uzman kombinasyonu.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 3,
+      "y": 3,
+      "color": "white"
+    },
+    {
+      "x": 4,
+      "y": 3,
+      "color": "white"
+    },
+    {
+      "x": 3,
+      "y": 4,
+      "color": "black"
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "color": "black"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 2,
+      "y": 3,
+      "is_correct": true,
+      "explanation": "Profesyonel hamle!"
+    }
+  ],
+  "hints": [
+    "En iyi hamleyi bulun."
+  ],
+  "difficulty": 4,
+  "stars_required": 1
+}

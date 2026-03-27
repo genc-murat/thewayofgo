@@ -1,0 +1,45 @@
+{
+  "id": "e4-5-5",
+  "level": 4,
+  "module": 5,
+  "lesson": 5,
+  "type": "life_and_death",
+  "title": "Kombinasyon: Kesme+Ko",
+  "description": "Kesme ve Ko kombinasyonu.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 3,
+      "y": 3,
+      "color": "white"
+    },
+    {
+      "x": 4,
+      "y": 3,
+      "color": "white"
+    },
+    {
+      "x": 3,
+      "y": 4,
+      "color": "white"
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "color": "black"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 2,
+      "y": 3,
+      "is_correct": true,
+      "explanation": "Kesme+Ko!"
+    }
+  ],
+  "hints": [
+    "Her iki tekniği birleştirin."
+  ],
+  "difficulty": 4,
+  "stars_required": 1
+}

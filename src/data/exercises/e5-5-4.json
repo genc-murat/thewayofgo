@@ -1,0 +1,35 @@
+{
+  "id": "e5-5-4",
+  "level": 5,
+  "module": 5,
+  "lesson": 4,
+  "type": "endgame",
+  "title": "Mikro Yose Uygulama 2",
+  "description": "İleri yose uygulama.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 0,
+      "y": 0,
+      "color": "black"
+    },
+    {
+      "x": 0,
+      "y": 1,
+      "color": "white"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 1,
+      "y": 0,
+      "is_correct": true,
+      "explanation": "Mikro yose!"
+    }
+  ],
+  "hints": [
+    "Küçük yose değerlerini hesaplayın."
+  ],
+  "difficulty": 4,
+  "stars_required": 1
+}

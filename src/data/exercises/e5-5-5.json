@@ -1,0 +1,45 @@
+{
+  "id": "e5-5-5",
+  "level": 5,
+  "module": 5,
+  "lesson": 5,
+  "type": "life_and_death",
+  "title": "İleri Ko Yaşama",
+  "description": "Karmaşık ko yaşama.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 4,
+      "y": 4,
+      "color": "white"
+    },
+    {
+      "x": 5,
+      "y": 4,
+      "color": "white"
+    },
+    {
+      "x": 4,
+      "y": 5,
+      "color": "black"
+    },
+    {
+      "x": 5,
+      "y": 5,
+      "color": "black"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 3,
+      "y": 4,
+      "is_correct": true,
+      "explanation": "Ko yaşadı!"
+    }
+  ],
+  "hints": [
+    "Ko'da yaşamayı öğrenin."
+  ],
+  "difficulty": 4,
+  "stars_required": 1
+}

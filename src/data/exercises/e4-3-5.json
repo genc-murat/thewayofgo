@@ -1,34 +1,39 @@
 {
-  "id": "e4-3-4",
+  "id": "e4-3-5",
   "level": 4,
   "module": 3,
-  "lesson": 4,
+  "lesson": 5,
   "type": "territorial_control",
-  "title": "Moyo Yaratma Teknikleri",
-  "description": "Büyük moyo oluşturma.",
+  "title": "Moyo Genişletme",
+  "description": "Moyoyu daha da genişletme.",
   "board_size": 9,
   "initial_stones": [
     {
-      "x": 2,
+      "x": 0,
+      "y": 2,
+      "color": "black"
+    },
+    {
+      "x": 1,
       "y": 2,
       "color": "black"
     },
     {
       "x": 2,
-      "y": 3,
+      "y": 2,
       "color": "black"
     }
   ],
   "correct_moves": [
     {
-      "x": 2,
-      "y": 4,
+      "x": 3,
+      "y": 2,
       "is_correct": true,
-      "explanation": "Moyo büyüdü!"
+      "explanation": "Moyo genişledi!"
     }
   ],
   "hints": [
-    "Taşları birbirine bağlayın."
+    "Sınıra ekleyin."
   ],
   "difficulty": 4,
   "stars_required": 1

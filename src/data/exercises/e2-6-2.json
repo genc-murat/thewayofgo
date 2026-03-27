@@ -1,0 +1,51 @@
+{
+  "id": "e2-6-2",
+  "level": 2,
+  "module": 6,
+  "lesson": 2,
+  "type": "life_and_death",
+  "title": "İki Adımlı Yaşama",
+  "description": "İki hamle ile yaşatın.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 3,
+      "y": 3,
+      "color": "black"
+    },
+    {
+      "x": 4,
+      "y": 3,
+      "color": "black"
+    },
+    {
+      "x": 3,
+      "y": 4,
+      "color": "white"
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "color": "white"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 3,
+      "y": 5,
+      "is_correct": true,
+      "explanation": "Adım 1: ilk göz"
+    },
+    {
+      "x": 5,
+      "y": 3,
+      "is_correct": true,
+      "explanation": "Adım 2: ikinci göz!"
+    }
+  ],
+  "hints": [
+    "İki göz için iki adım gerekli."
+  ],
+  "difficulty": 4,
+  "stars_required": 1
+}

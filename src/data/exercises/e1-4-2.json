@@ -1,0 +1,50 @@
+{
+  "id": "e1-4-2",
+  "level": 1,
+  "module": 4,
+  "lesson": 2,
+  "type": "capture_stones",
+  "title": "Ko Çıkış",
+  "description": "Ko'dan çıkış yolu bulun.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 4,
+      "y": 4,
+      "color": "white"
+    },
+    {
+      "x": 5,
+      "y": 4,
+      "color": "white"
+    },
+    {
+      "x": 4,
+      "y": 5,
+      "color": "black"
+    },
+    {
+      "x": 5,
+      "y": 5,
+      "color": "black"
+    },
+    {
+      "x": 6,
+      "y": 4,
+      "color": "black"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 3,
+      "y": 4,
+      "is_correct": true,
+      "explanation": "Ko'dan çıktınız!"
+    }
+  ],
+  "hints": [
+    "Ko dışında özgürlük bulun."
+  ],
+  "difficulty": 3,
+  "stars_required": 1
+}

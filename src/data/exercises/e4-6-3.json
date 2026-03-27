@@ -1,0 +1,51 @@
+{
+  "id": "e4-6-3",
+  "level": 4,
+  "module": 6,
+  "lesson": 3,
+  "type": "life_and_death",
+  "title": "Çift Göz Derinlemesi",
+  "description": "Çift göz detayları.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 3,
+      "y": 3,
+      "color": "black"
+    },
+    {
+      "x": 4,
+      "y": 3,
+      "color": "black"
+    },
+    {
+      "x": 3,
+      "y": 4,
+      "color": "black"
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "color": "black"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 3,
+      "y": 2,
+      "is_correct": true,
+      "explanation": "İkinci göz açıldı!"
+    },
+    {
+      "x": 5,
+      "y": 4,
+      "is_correct": true,
+      "explanation": "İkinci göz!"
+    }
+  ],
+  "hints": [
+    "İki ayrı göz yapın."
+  ],
+  "difficulty": 4,
+  "stars_required": 1
+}

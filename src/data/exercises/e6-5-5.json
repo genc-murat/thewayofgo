@@ -1,0 +1,35 @@
+{
+  "id": "e6-5-5",
+  "level": 6,
+  "module": 5,
+  "lesson": 5,
+  "type": "endgame",
+  "title": "Mikro Yose Detay",
+  "description": "Mikro yose detayları.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 0,
+      "y": 0,
+      "color": "black"
+    },
+    {
+      "x": 0,
+      "y": 1,
+      "color": "white"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 1,
+      "y": 0,
+      "is_correct": true,
+      "explanation": "Micro yose!"
+    }
+  ],
+  "hints": [
+    "Küçük değerleri hesaplayın."
+  ],
+  "difficulty": 4,
+  "stars_required": 1
+}

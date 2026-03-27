@@ -1,0 +1,45 @@
+{
+  "id": "e2-5-5",
+  "level": 2,
+  "module": 5,
+  "lesson": 5,
+  "type": "life_and_death",
+  "title": "Kesme+Yaşama",
+  "description": "Kesme ve yaşama kombinasyonu.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 4,
+      "y": 4,
+      "color": "black"
+    },
+    {
+      "x": 4,
+      "y": 5,
+      "color": "black"
+    },
+    {
+      "x": 5,
+      "y": 5,
+      "color": "white"
+    },
+    {
+      "x": 6,
+      "y": 5,
+      "color": "white"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 5,
+      "y": 4,
+      "is_correct": true,
+      "explanation": "Kesip yaşayın!"
+    }
+  ],
+  "hints": [
+    "Önce kesin, sonra yaşatın."
+  ],
+  "difficulty": 4,
+  "stars_required": 1
+}

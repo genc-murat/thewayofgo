@@ -1,1 +1,40 @@
-{"id": "e1-5-1", "level": 1, "module": 5, "lesson": 1, "type": "place_correct", "title": "Temel Özgürlük", "description": "Boş noktaya taş koyarak özgürlük sayısını artırın.", "board_size": 9, "initial_stones": [{"x": 3, "y": 3, "color": "black"}], "correct_moves": [{"x": 3, "y": 4, "is_correct": true, "explanation": "Doğru! Taşınız artık 3 özgürlüğe sahip. Temel kavram: taş koyarak özgürlük kazanılır."}], "hints": ["Boş noktaya taş koyarak özgürlük sayısını artırın."], "difficulty": 1, "stars_required": 1}
+{
+  "id": "e1-5-1",
+  "level": 1,
+  "module": 5,
+  "lesson": 1,
+  "type": "connect_groups",
+  "title": "Bağlantı Tekrarı 2",
+  "description": "Bağlantı pratiği yapın.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 2,
+      "y": 2,
+      "color": "black"
+    },
+    {
+      "x": 2,
+      "y": 3,
+      "color": "black"
+    },
+    {
+      "x": 3,
+      "y": 2,
+      "color": "white"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 2,
+      "y": 2,
+      "is_correct": true,
+      "explanation": "Bağlantı kurdunuz!"
+    }
+  ],
+  "hints": [
+    "Taşlar arasında köprü kurun."
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

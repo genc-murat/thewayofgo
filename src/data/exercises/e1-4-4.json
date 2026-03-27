@@ -1,0 +1,61 @@
+{
+  "id": "e1-4-4",
+  "level": 1,
+  "module": 4,
+  "lesson": 4,
+  "type": "territorial_control",
+  "title": "Skor Hesaplama 2",
+  "description": "Karmaşık skor hesaplayın.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 2,
+      "y": 2,
+      "color": "black"
+    },
+    {
+      "x": 2,
+      "y": 3,
+      "color": "black"
+    },
+    {
+      "x": 3,
+      "y": 2,
+      "color": "black"
+    },
+    {
+      "x": 6,
+      "y": 6,
+      "color": "white"
+    },
+    {
+      "x": 6,
+      "y": 7,
+      "color": "white"
+    },
+    {
+      "x": 7,
+      "y": 6,
+      "color": "white"
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "color": "black"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 4,
+      "y": 4,
+      "is_correct": true,
+      "explanation": "Skor hesaplandı!"
+    }
+  ],
+  "hints": [
+    "Her bölgeyi ayrı sayın.",
+    "Taş + bölge + komi hesaplayın."
+  ],
+  "difficulty": 3,
+  "stars_required": 1
+}

@@ -1,11 +1,11 @@
 {
-  "id": "e1-5-4",
-  "level": 1,
-  "module": 5,
-  "lesson": 4,
-  "type": "life_and_death",
-  "title": "Grup Tanıma 2",
-  "description": "Grupları tanıyın.",
+  "id": "e4-4-5",
+  "level": 4,
+  "module": 4,
+  "lesson": 5,
+  "type": "territorial_control",
+  "title": "İleri İnvazyon",
+  "description": "Derin invazyon teknikleri.",
   "board_size": 9,
   "initial_stones": [
     {
@@ -27,14 +27,14 @@
   "correct_moves": [
     {
       "x": 2,
-      "y": 2,
+      "y": 4,
       "is_correct": true,
-      "explanation": "Aynı renk taşlar grup oluşturur."
+      "explanation": "Derin invazyon!"
     }
   ],
   "hints": [
-    "Renk ve bağlantıya bakın."
+    "Rakip bölgesine dalın."
   ],
-  "difficulty": 1,
+  "difficulty": 4,
   "stars_required": 1
 }

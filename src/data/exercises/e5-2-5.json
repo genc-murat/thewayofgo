@@ -1,0 +1,40 @@
+{
+  "id": "e5-2-5",
+  "level": 5,
+  "module": 2,
+  "lesson": 5,
+  "type": "opening",
+  "title": "Kiwi-Joseki 2",
+  "description": "Kiwi açılışı varyasyonları.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 4,
+      "y": 4,
+      "color": "white"
+    },
+    {
+      "x": 4,
+      "y": 3,
+      "color": "white"
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "color": "black"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 5,
+      "y": 3,
+      "is_correct": true,
+      "explanation": "Kiwi varyasyonu!"
+    }
+  ],
+  "hints": [
+    "Modern açılışı deneyin."
+  ],
+  "difficulty": 4,
+  "stars_required": 1
+}

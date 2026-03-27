@@ -1,0 +1,40 @@
+{
+  "id": "e6-5-6",
+  "level": 6,
+  "module": 5,
+  "lesson": 6,
+  "type": "capture_stones",
+  "title": "Çoklu Kombinasyon",
+  "description": "Üçlü kombinasyon.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 3,
+      "y": 3,
+      "color": "white"
+    },
+    {
+      "x": 4,
+      "y": 3,
+      "color": "white"
+    },
+    {
+      "x": 3,
+      "y": 4,
+      "color": "black"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 3,
+      "y": 5,
+      "is_correct": true,
+      "explanation": "Üçlü kombinasyon!"
+    }
+  ],
+  "hints": [
+    "Tüm teknikleri birleştirin."
+  ],
+  "difficulty": 4,
+  "stars_required": 1
+}

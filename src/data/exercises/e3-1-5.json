@@ -1,0 +1,40 @@
+{
+  "id": "e3-1-5",
+  "level": 3,
+  "module": 1,
+  "lesson": 5,
+  "type": "opening",
+  "title": "3-3 Kombinasyon",
+  "description": "3-3 bölgesi ile kombinasyon.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 0,
+      "y": 0,
+      "color": "black"
+    },
+    {
+      "x": 0,
+      "y": 1,
+      "color": "white"
+    },
+    {
+      "x": 1,
+      "y": 0,
+      "color": "white"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 1,
+      "y": 1,
+      "is_correct": true,
+      "explanation": "3-3 hücumu!"
+    }
+  ],
+  "hints": [
+    "Köşe 3-3 ten kullanın."
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

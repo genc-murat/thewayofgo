@@ -1,0 +1,35 @@
+{
+  "id": "e6-1-5",
+  "level": 6,
+  "module": 1,
+  "lesson": 5,
+  "type": "endgame",
+  "title": "En Büyük Yose 2",
+  "description": "Maksimum yose değeri.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 0,
+      "y": 0,
+      "color": "black"
+    },
+    {
+      "x": 1,
+      "y": 0,
+      "color": "white"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 0,
+      "y": 1,
+      "is_correct": true,
+      "explanation": "En büyük yose!"
+    }
+  ],
+  "hints": [
+    "Skor değerini maksimize edin."
+  ],
+  "difficulty": 4,
+  "stars_required": 1
+}

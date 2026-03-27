@@ -1,0 +1,52 @@
+{
+  "id": "e2-4-5",
+  "level": 2,
+  "module": 4,
+  "lesson": 5,
+  "type": "endgame",
+  "title": "Çoklu Yose",
+  "description": "Birden fazla yose.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 0,
+      "y": 0,
+      "color": "black"
+    },
+    {
+      "x": 1,
+      "y": 0,
+      "color": "white"
+    },
+    {
+      "x": 8,
+      "y": 8,
+      "color": "white"
+    },
+    {
+      "x": 8,
+      "y": 7,
+      "color": "black"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 0,
+      "y": 1,
+      "is_correct": true,
+      "explanation": "İlk yose!"
+    },
+    {
+      "x": 7,
+      "y": 8,
+      "is_correct": true,
+      "explanation": "İkinci yose!"
+    }
+  ],
+  "hints": [
+    "En büyük yoseyi bulun.",
+    "Skor değerlerini karşılaştırın."
+  ],
+  "difficulty": 3,
+  "stars_required": 1
+}

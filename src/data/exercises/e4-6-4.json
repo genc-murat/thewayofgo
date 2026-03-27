@@ -1,34 +1,39 @@
 {
-  "id": "e4-3-4",
+  "id": "e4-6-4",
   "level": 4,
-  "module": 3,
+  "module": 6,
   "lesson": 4,
   "type": "territorial_control",
-  "title": "Moyo Yaratma Teknikleri",
-  "description": "Büyük moyo oluşturma.",
+  "title": "Stratejik Moyo",
+  "description": "Moyo ile strateji.",
   "board_size": 9,
   "initial_stones": [
     {
-      "x": 2,
+      "x": 1,
+      "y": 1,
+      "color": "black"
+    },
+    {
+      "x": 1,
       "y": 2,
       "color": "black"
     },
     {
       "x": 2,
-      "y": 3,
+      "y": 1,
       "color": "black"
     }
   ],
   "correct_moves": [
     {
-      "x": 2,
-      "y": 4,
+      "x": 0,
+      "y": 0,
       "is_correct": true,
-      "explanation": "Moyo büyüdü!"
+      "explanation": "Stratejik moyo!"
     }
   ],
   "hints": [
-    "Taşları birbirine bağlayın."
+    "Moyo ile baskı kurun."
   ],
   "difficulty": 4,
   "stars_required": 1

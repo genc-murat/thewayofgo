@@ -1,0 +1,37 @@
+{
+  "id": "e1-3-6",
+  "level": 1,
+  "module": 3,
+  "lesson": 6,
+  "type": "opening",
+  "title": "Merkez Açılışı",
+  "description": "Merkezden açılın.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 4,
+      "y": 4,
+      "color": "black"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 3,
+      "y": 3,
+      "is_correct": true,
+      "explanation": "3-3 noktası!"
+    },
+    {
+      "x": 4,
+      "y": 5,
+      "is_correct": true,
+      "explanation": "Taşı takip edin!"
+    }
+  ],
+  "hints": [
+    "Yıldız noktalarını kullanın.",
+    "Merkeze yakın oynayın."
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

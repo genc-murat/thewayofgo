@@ -1,0 +1,51 @@
+{
+  "id": "e4-6-7",
+  "level": 4,
+  "module": 6,
+  "lesson": 7,
+  "type": "life_and_death",
+  "title": "İleri Yaşatma Kombinasyonu",
+  "description": "Karmaşık yaşatma.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 3,
+      "y": 3,
+      "color": "black"
+    },
+    {
+      "x": 4,
+      "y": 3,
+      "color": "black"
+    },
+    {
+      "x": 3,
+      "y": 4,
+      "color": "black"
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "color": "white"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 3,
+      "y": 5,
+      "is_correct": true,
+      "explanation": "Yaşayan grup!"
+    },
+    {
+      "x": 5,
+      "y": 3,
+      "is_correct": true,
+      "explanation": "İkinci göz!"
+    }
+  ],
+  "hints": [
+    "Karmaşık durumda yaşayın."
+  ],
+  "difficulty": 4,
+  "stars_required": 1
+}

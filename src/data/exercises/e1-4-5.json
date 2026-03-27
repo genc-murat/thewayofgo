@@ -1,0 +1,52 @@
+{
+  "id": "e1-4-5",
+  "level": 1,
+  "module": 4,
+  "lesson": 5,
+  "type": "capture_stones",
+  "title": "Çoklu Adım",
+  "description": "İki hamle üst üste yapın.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 3,
+      "y": 3,
+      "color": "white"
+    },
+    {
+      "x": 4,
+      "y": 3,
+      "color": "white"
+    },
+    {
+      "x": 3,
+      "y": 4,
+      "color": "black"
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "color": "black"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 2,
+      "y": 3,
+      "is_correct": true,
+      "explanation": "İlk hamle: kesme"
+    },
+    {
+      "x": 2,
+      "y": 4,
+      "is_correct": true,
+      "explanation": "İkinci hamle: yakalama!"
+    }
+  ],
+  "hints": [
+    "Önce kesin, sonra yakalayın.",
+    "Sırayla ilerleyin."
+  ],
+  "difficulty": 4,
+  "stars_required": 1
+}

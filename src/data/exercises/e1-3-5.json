@@ -1,0 +1,42 @@
+{
+  "id": "e1-3-5",
+  "level": 1,
+  "module": 3,
+  "lesson": 5,
+  "type": "territorial_control",
+  "title": "Kenar Geliştirme",
+  "description": "Kenarları geliştirin.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 0,
+      "y": 1,
+      "color": "black"
+    },
+    {
+      "x": 0,
+      "y": 2,
+      "color": "black"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 0,
+      "y": 3,
+      "is_correct": true,
+      "explanation": "Kenarı geliştirdiniz!"
+    },
+    {
+      "x": 1,
+      "y": 1,
+      "is_correct": true,
+      "explanation": "Güçlü köşe!"
+    }
+  ],
+  "hints": [
+    "Kenar boyunca taş koyun.",
+    "Köşe ile kenara bağlanın."
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

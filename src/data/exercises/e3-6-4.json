@@ -1,0 +1,51 @@
+{
+  "id": "e3-6-4",
+  "level": 3,
+  "module": 6,
+  "lesson": 4,
+  "type": "capture_stones",
+  "title": "Çift Ko",
+  "description": "Birden fazla Ko durumu.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 4,
+      "y": 4,
+      "color": "white"
+    },
+    {
+      "x": 5,
+      "y": 4,
+      "color": "white"
+    },
+    {
+      "x": 4,
+      "y": 5,
+      "color": "black"
+    },
+    {
+      "x": 5,
+      "y": 5,
+      "color": "black"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 3,
+      "y": 4,
+      "is_correct": true,
+      "explanation": "Ko 1"
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "is_correct": true,
+      "explanation": "Ko 2!"
+    }
+  ],
+  "hints": [
+    "Ko durumlarını çözün."
+  ],
+  "difficulty": 4,
+  "stars_required": 1
+}

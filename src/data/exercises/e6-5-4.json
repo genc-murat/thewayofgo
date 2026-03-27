@@ -1,0 +1,35 @@
+{
+  "id": "e6-5-4",
+  "level": 6,
+  "module": 5,
+  "lesson": 4,
+  "type": "territorial_control",
+  "title": "Stratejik Denge",
+  "description": "Dengeli oyun.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 3,
+      "y": 3,
+      "color": "black"
+    },
+    {
+      "x": 5,
+      "y": 5,
+      "color": "white"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 4,
+      "y": 4,
+      "is_correct": true,
+      "explanation": "Denge sağlandı!"
+    }
+  ],
+  "hints": [
+    "Taşlar arasında denge kurun."
+  ],
+  "difficulty": 4,
+  "stars_required": 1
+}

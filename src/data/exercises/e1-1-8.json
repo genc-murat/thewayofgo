@@ -1,0 +1,51 @@
+{
+  "id": "e1-1-8",
+  "level": 1,
+  "module": 1,
+  "lesson": 8,
+  "type": "capture_stones",
+  "title": "Çoklu Yakalama",
+  "description": "Birden fazla taşı yakalayın.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 2,
+      "y": 2,
+      "color": "white"
+    },
+    {
+      "x": 3,
+      "y": 2,
+      "color": "white"
+    },
+    {
+      "x": 2,
+      "y": 3,
+      "color": "white"
+    },
+    {
+      "x": 2,
+      "y": 1,
+      "color": "black"
+    },
+    {
+      "x": 3,
+      "y": 1,
+      "color": "black"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 1,
+      "y": 2,
+      "is_correct": true,
+      "explanation": "Tüm beyaz taşları yakaladınız!"
+    }
+  ],
+  "hints": [
+    "Grubu sıkıştırın.",
+    "Tüm özgürlüklerini alın."
+  ],
+  "difficulty": 3,
+  "stars_required": 1
+}

@@ -1,0 +1,30 @@
+{
+  "id": "e5-5-1",
+  "level": 5,
+  "module": 5,
+  "lesson": 1,
+  "type": "territorial_control",
+  "title": "Planlama Egzersizi",
+  "description": "Uzun vadeli plan.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 4,
+      "y": 4,
+      "color": "black"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 3,
+      "y": 3,
+      "is_correct": true,
+      "explanation": "Plan başladı!"
+    }
+  ],
+  "hints": [
+    "Merkez odaklı plan kurun."
+  ],
+  "difficulty": 4,
+  "stars_required": 1
+}

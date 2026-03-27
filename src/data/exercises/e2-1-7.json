@@ -1,0 +1,51 @@
+{
+  "id": "e2-1-7",
+  "level": 2,
+  "module": 1,
+  "lesson": 7,
+  "type": "capture_stones",
+  "title": "Merdiven Kırıcı 2",
+  "description": "Merdiven kırıcıyı kullanın.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 3,
+      "y": 3,
+      "color": "white"
+    },
+    {
+      "x": 2,
+      "y": 3,
+      "color": "white"
+    },
+    {
+      "x": 3,
+      "y": 4,
+      "color": "black"
+    },
+    {
+      "x": 2,
+      "y": 4,
+      "color": "black"
+    },
+    {
+      "x": 0,
+      "y": 4,
+      "color": "black"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 1,
+      "y": 4,
+      "is_correct": true,
+      "explanation": "Merdiven kırıcı!"
+    }
+  ],
+  "hints": [
+    "Tahtanın kenarına yaklaşın.",
+    "Kırıcıyı doğru yere koyun."
+  ],
+  "difficulty": 3,
+  "stars_required": 1
+}

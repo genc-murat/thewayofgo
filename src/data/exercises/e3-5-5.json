@@ -1,0 +1,46 @@
+{
+  "id": "e3-5-5",
+  "level": 3,
+  "module": 5,
+  "lesson": 5,
+  "type": "territorial_control",
+  "title": "Saldırı Kombinasyonu",
+  "description": "Birden fazla saldırı.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 2,
+      "y": 2,
+      "color": "black"
+    },
+    {
+      "x": 2,
+      "y": 3,
+      "color": "black"
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "color": "white"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 2,
+      "y": 4,
+      "is_correct": true,
+      "explanation": "İlk saldırı!"
+    },
+    {
+      "x": 4,
+      "y": 2,
+      "is_correct": true,
+      "explanation": "İkinci saldırı!"
+    }
+  ],
+  "hints": [
+    "İki yönden baskı kurun."
+  ],
+  "difficulty": 4,
+  "stars_required": 1
+}

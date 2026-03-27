@@ -1,0 +1,45 @@
+{
+  "id": "e3-3-6",
+  "level": 3,
+  "module": 3,
+  "lesson": 6,
+  "type": "endgame",
+  "title": "Yose Sıralama",
+  "description": "Yose sırası öğrenin.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 2,
+      "y": 2,
+      "color": "black"
+    },
+    {
+      "x": 2,
+      "y": 3,
+      "color": "white"
+    },
+    {
+      "x": 6,
+      "y": 6,
+      "color": "white"
+    },
+    {
+      "x": 6,
+      "y": 7,
+      "color": "black"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 1,
+      "y": 2,
+      "is_correct": true,
+      "explanation": "Önce büyük!"
+    }
+  ],
+  "hints": [
+    "Değer sırasına göre oynayın."
+  ],
+  "difficulty": 3,
+  "stars_required": 1
+}

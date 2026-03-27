@@ -1,15 +1,20 @@
 {
-  "id": "e1-5-3",
-  "level": 1,
-  "module": 5,
-  "lesson": 3,
-  "type": "capture_stones",
-  "title": "Özgürlük Sayma 2",
-  "description": "Özgürlük pratiği yapın.",
+  "id": "e6-3-5",
+  "level": 6,
+  "module": 3,
+  "lesson": 5,
+  "type": "territorial_control",
+  "title": "Seten 2",
+  "description": "Merkez kontrolü.",
   "board_size": 9,
   "initial_stones": [
     {
       "x": 4,
+      "y": 4,
+      "color": "black"
+    },
+    {
+      "x": 5,
       "y": 4,
       "color": "black"
     },
@@ -24,12 +29,12 @@
       "x": 3,
       "y": 4,
       "is_correct": true,
-      "explanation": "Özgürlük: 3 nokta!"
+      "explanation": "Seten avantajı!"
     }
   ],
   "hints": [
-    "Her boş noktayı sayın."
+    "Merkezi kontrol edin."
   ],
-  "difficulty": 1,
+  "difficulty": 4,
   "stars_required": 1
 }

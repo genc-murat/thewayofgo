@@ -1,0 +1,61 @@
+{
+  "id": "e2-6-4",
+  "level": 2,
+  "module": 6,
+  "lesson": 4,
+  "type": "capture_stones",
+  "title": "Çoklu Ko",
+  "description": "Birden fazla Ko durumu.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 4,
+      "y": 4,
+      "color": "white"
+    },
+    {
+      "x": 5,
+      "y": 4,
+      "color": "white"
+    },
+    {
+      "x": 4,
+      "y": 5,
+      "color": "black"
+    },
+    {
+      "x": 5,
+      "y": 5,
+      "color": "black"
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "color": "white"
+    },
+    {
+      "x": 3,
+      "y": 4,
+      "color": "white"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 3,
+      "y": 5,
+      "is_correct": true,
+      "explanation": "İlk Ko"
+    },
+    {
+      "x": 6,
+      "y": 4,
+      "is_correct": true,
+      "explanation": "İkinci Ko!"
+    }
+  ],
+  "hints": [
+    "Ko durumlarını çözün."
+  ],
+  "difficulty": 4,
+  "stars_required": 1
+}

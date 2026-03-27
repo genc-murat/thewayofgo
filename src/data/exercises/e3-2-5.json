@@ -1,0 +1,51 @@
+{
+  "id": "e3-2-5",
+  "level": 3,
+  "module": 2,
+  "lesson": 5,
+  "type": "territorial_control",
+  "title": "Grubu İkiye Böl 2",
+  "description": "İleri bölme tekniği.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 2,
+      "y": 2,
+      "color": "black"
+    },
+    {
+      "x": 3,
+      "y": 2,
+      "color": "black"
+    },
+    {
+      "x": 2,
+      "y": 3,
+      "color": "black"
+    },
+    {
+      "x": 5,
+      "y": 3,
+      "color": "white"
+    },
+    {
+      "x": 5,
+      "y": 4,
+      "color": "white"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 4,
+      "y": 3,
+      "is_correct": true,
+      "explanation": "Grubu ikiye böldünüz!"
+    }
+  ],
+  "hints": [
+    "Kesme noktası bulun.",
+    "Rakibi ikiye ayırın."
+  ],
+  "difficulty": 3,
+  "stars_required": 1
+}

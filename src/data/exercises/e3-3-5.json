@@ -1,0 +1,51 @@
+{
+  "id": "e3-3-5",
+  "level": 3,
+  "module": 3,
+  "lesson": 5,
+  "type": "endgame",
+  "title": "Çoklu Yose Hesaplama",
+  "description": "Birden fazla yose hesaplayın.",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 0,
+      "y": 0,
+      "color": "black"
+    },
+    {
+      "x": 0,
+      "y": 1,
+      "color": "black"
+    },
+    {
+      "x": 8,
+      "y": 8,
+      "color": "white"
+    },
+    {
+      "x": 8,
+      "y": 7,
+      "color": "white"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 1,
+      "y": 0,
+      "is_correct": true,
+      "explanation": "Büyük sente!"
+    },
+    {
+      "x": 7,
+      "y": 8,
+      "is_correct": true,
+      "explanation": "Küçük gote!"
+    }
+  ],
+  "hints": [
+    "Sente ve gote karşılaştırın."
+  ],
+  "difficulty": 3,
+  "stars_required": 1
+}
