@@ -1,0 +1,93 @@
+{
+  "id": "l3-5-5",
+  "level": 3,
+  "module": 5,
+  "lesson": 5,
+  "title": "Saldırı Sentezi",
+  "description": "Tüm saldırı tekniklerini birleştirme.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Saldırı Sentezi: Tüm saldırı tekniklerini birleştirme. Bu derste temel kavramları öğreneceksiniz."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {
+          "x": 4,
+          "y": 4,
+          "color": "black"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "color": "white"
+        },
+        {
+          "x": 5,
+          "y": 4,
+          "color": "black"
+        }
+      ],
+      "highlights": [],
+      "annotation": "Saldırı Sentezi"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "Pozisyonu inceleyin"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "white"
+            }
+          ],
+          "text": "Taşlar yerleşti"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "white"
+            },
+            {
+              "x": 5,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "İleri adımları düşünün"
+        }
+      ]
+    }
+  ],
+  "prerequisites": [
+    "l3-5-4"
+  ],
+  "next_lesson": null,
+  "required_exercise": "e3-5-5"
+}

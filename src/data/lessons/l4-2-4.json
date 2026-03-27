@@ -1,0 +1,93 @@
+{
+  "id": "l4-2-4",
+  "level": 4,
+  "module": 2,
+  "lesson": 4,
+  "title": "Moyoyu Değerlendirme",
+  "description": "Moyo değerini hesaplama.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Moyoyu Değerlendirme: Moyo değerini hesaplama. Bu derste temel kavramları öğreneceksiniz."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {
+          "x": 4,
+          "y": 4,
+          "color": "black"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "color": "white"
+        },
+        {
+          "x": 5,
+          "y": 4,
+          "color": "black"
+        }
+      ],
+      "highlights": [],
+      "annotation": "Moyoyu Değerlendirme"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "Pozisyonu inceleyin"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "white"
+            }
+          ],
+          "text": "Taşlar yerleşti"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "white"
+            },
+            {
+              "x": 5,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "İleri adımları düşünün"
+        }
+      ]
+    }
+  ],
+  "prerequisites": [
+    "l4-2-3"
+  ],
+  "next_lesson": "l4-2-5",
+  "required_exercise": "e4-2-4"
+}

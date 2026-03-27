@@ -1,0 +1,93 @@
+{
+  "id": "l4-3-3",
+  "level": 4,
+  "module": 3,
+  "lesson": 3,
+  "title": "Moyo Yaratma Teknikleri",
+  "description": "Büyük moyo oluşturma.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Moyo Yaratma Teknikleri: Büyük moyo oluşturma. Bu derste temel kavramları öğreneceksiniz."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {
+          "x": 4,
+          "y": 4,
+          "color": "black"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "color": "white"
+        },
+        {
+          "x": 5,
+          "y": 4,
+          "color": "black"
+        }
+      ],
+      "highlights": [],
+      "annotation": "Moyo Yaratma Teknikleri"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "Pozisyonu inceleyin"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "white"
+            }
+          ],
+          "text": "Taşlar yerleşti"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "white"
+            },
+            {
+              "x": 5,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "İleri adımları düşünün"
+        }
+      ]
+    }
+  ],
+  "prerequisites": [
+    "l4-3-2"
+  ],
+  "next_lesson": "l4-4-4",
+  "required_exercise": "e4-3-3"
+}

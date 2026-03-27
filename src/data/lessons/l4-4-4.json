@@ -1,0 +1,93 @@
+{
+  "id": "l4-4-4",
+  "level": 4,
+  "module": 4,
+  "lesson": 4,
+  "title": "İnvazyon Savunması",
+  "description": "İnvazyona karşı savunma.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "İnvazyon Savunması: İnvazyona karşı savunma. Bu derste temel kavramları öğreneceksiniz."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {
+          "x": 4,
+          "y": 4,
+          "color": "black"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "color": "white"
+        },
+        {
+          "x": 5,
+          "y": 4,
+          "color": "black"
+        }
+      ],
+      "highlights": [],
+      "annotation": "İnvazyon Savunması"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "Pozisyonu inceleyin"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "white"
+            }
+          ],
+          "text": "Taşlar yerleşti"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "white"
+            },
+            {
+              "x": 5,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "İleri adımları düşünün"
+        }
+      ]
+    }
+  ],
+  "prerequisites": [
+    "l4-4-3"
+  ],
+  "next_lesson": "l4-5-5",
+  "required_exercise": "e4-4-4"
+}

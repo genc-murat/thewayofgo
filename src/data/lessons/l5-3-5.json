@@ -1,0 +1,93 @@
+{
+  "id": "l5-3-5",
+  "level": 5,
+  "module": 3,
+  "lesson": 5,
+  "title": "Taarruz Kombinasyonu",
+  "description": "Birden fazla taarruz.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Taarruz Kombinasyonu: Birden fazla taarruz. Bu derste temel kavramları öğreneceksiniz."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {
+          "x": 4,
+          "y": 4,
+          "color": "black"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "color": "white"
+        },
+        {
+          "x": 5,
+          "y": 4,
+          "color": "black"
+        }
+      ],
+      "highlights": [],
+      "annotation": "Taarruz Kombinasyonu"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "Pozisyonu inceleyin"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "white"
+            }
+          ],
+          "text": "Taşlar yerleşti"
+        },
+        {
+          "stones": [
+            {
+              "x": 4,
+              "y": 4,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "color": "white"
+            },
+            {
+              "x": 5,
+              "y": 4,
+              "color": "black"
+            }
+          ],
+          "text": "İleri adımları düşünün"
+        }
+      ]
+    }
+  ],
+  "prerequisites": [
+    "l5-3-4"
+  ],
+  "next_lesson": null,
+  "required_exercise": "e5-3-5"
+}
