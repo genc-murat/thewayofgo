@@ -30,6 +30,9 @@ pub fn run() {
             ai_get_move,
             ai_place_stone,
             set_ai_difficulty,
+            undo,
+            undo_multiple,
+            get_move_history,
             validate_exercise_move,
         ])
         .run(tauri::generate_context!())

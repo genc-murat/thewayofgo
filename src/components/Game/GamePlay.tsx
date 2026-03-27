@@ -1,17 +1,32 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { useAppStore } from '../../stores/appStore';
 import { Board } from '../Board';
-import type { BoardSize, ScoreResult } from '../../types';
+import type { BoardSize, ScoreResult, MoveRecord } from '../../types';
+
+const COLUMN_LABELS = 'ABCDEFGHJKLMNOPQRST';
+
+function formatMove(record: MoveRecord, index: number): string {
+  const num = index + 1;
+  const color = record.player === 'black' ? 'S' : 'B';
+  if (record.move_type === 'pass') return `${num}. ${color} Pas`;
+  if (record.move_type === 'resign') return `${num}. ${color} Çekil`;
+  const col = COLUMN_LABELS[record.x ?? 0];
+  const row = (record.y ?? 0) + 1;
+  const captures = record.captured_stones.length > 0 ? ` (+${record.captured_stones.length})` : '';
+  return `${num}. ${color} ${col}${row}${captures}`;
+}
 
 export function GamePlay() {
   const {
     game, gameResult, isAiGame, aiDifficulty,
     placeStone, pass: doPass, resign: doResign,
-    aiMove, setView, startAiGame,
+    aiMove, setView, startAiGame, undoMove, getMoveHistory,
   } = useAppStore();
 
   const [showScore, setShowScore] = useState(false);
   const [isThinking, setIsThinking] = useState(false);
+  const [moveHistory, setMoveHistory] = useState<MoveRecord[]>([]);
+  const [showMoveList, setShowMoveList] = useState(false);
   const aiThinkingRef = useRef(false);
 
   useEffect(() => {
@@ -22,22 +37,36 @@ export function GamePlay() {
         await aiMove();
         aiThinkingRef.current = false;
         setIsThinking(false);
+        const history = await getMoveHistory();
+        setMoveHistory(history);
       }, 500);
       return () => clearTimeout(timer);
     }
-  }, [game?.current_player, game?.game_over, isAiGame, aiMove]);
+  }, [game?.current_player, game?.game_over, isAiGame, aiMove, getMoveHistory]);
+
+  useEffect(() => {
+    if (game && !isAiGame) {
+      getMoveHistory().then(setMoveHistory);
+    }
+  }, [game?.move_number, isAiGame, getMoveHistory]);
 
   const handleIntersectionClick = useCallback(async (x: number, y: number) => {
     if (!game || game.game_over) return;
     if (isAiGame && game.current_player === 'white') return;
     const result = await placeStone(x, y);
     if (result?.game_over) setShowScore(true);
-  }, [game, isAiGame, placeStone]);
+    if (isAiGame) {
+      const history = await getMoveHistory();
+      setMoveHistory(history);
+    }
+  }, [game, isAiGame, placeStone, getMoveHistory]);
 
   const handlePass = useCallback(async () => {
     const result = await doPass();
     if (result?.game_over) setShowScore(true);
-  }, [doPass]);
+    const history = await getMoveHistory();
+    setMoveHistory(history);
+  }, [doPass, getMoveHistory]);
 
   const handleResign = useCallback(async () => {
     if (confirm('Oyundan çekilmek istediğinize emin misiniz?')) {
@@ -46,6 +75,21 @@ export function GamePlay() {
       setShowScore(true);
     }
   }, [doResign, isAiGame, game]);
+
+  const handleUndo = useCallback(async () => {
+    if (!game || game.game_over || isThinking) return;
+    if (isAiGame) {
+      await undoMove();
+      await undoMove();
+    } else {
+      await undoMove();
+    }
+    const history = await getMoveHistory();
+    setMoveHistory(history);
+    setShowScore(false);
+    aiThinkingRef.current = false;
+    setIsThinking(false);
+  }, [game, isAiGame, isThinking, undoMove, getMoveHistory]);
 
   if (!game) {
     return (
@@ -92,12 +136,13 @@ export function GamePlay() {
   }
 
   const boardSize = game.board_size as BoardSize;
+  const canUndo = game.move_number > 0 && !isThinking;
 
   return (
     <div className="flex flex-col lg:flex-row gap-8 animate-fade-in">
       <div className="flex-1 flex flex-col items-center">
         <div className="w-full max-w-2xl glass rounded-2xl p-4">
-          <Board size={boardSize} board={game.board} lastMove={game.last_move} onIntersectionClick={handleIntersectionClick} interactive={!game.game_over} showCoordinates={true} />
+          <Board size={boardSize} board={game.board} lastMove={game.last_move} onIntersectionClick={handleIntersectionClick} interactive={!game.game_over} showCoordinates={true} currentPlayer={game.current_player} />
         </div>
       </div>
 
@@ -135,11 +180,18 @@ export function GamePlay() {
         <div className="flex flex-col gap-2">
           {!game.game_over ? (
             <>
-              <button onClick={handlePass} disabled={isAiGame && game.current_player === 'white'}
-                className="flex items-center justify-center gap-2 w-full py-3 rounded-xl glass hover:bg-bg-secondary text-text-primary font-medium transition-all disabled:opacity-30">
-                <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000-2 1 1 0 000 2zm7-1a1 1 0 11-2 0 1 1 0 012 0zm-7.536 5.868a1 1 0 001.016-1.713A3.383 3.383 0 0110 12c1.008 0 1.914.44 2.52 1.155a1 1 0 101.016-1.713A5.383 5.383 0 0010 10a5.383 5.383 0 00-3.536 1.868z" clipRule="evenodd" /></svg>
-                Pas
-              </button>
+              <div className="flex gap-2">
+                <button onClick={handleUndo} disabled={!canUndo}
+                  className="flex items-center justify-center gap-2 flex-1 py-3 rounded-xl glass hover:bg-bg-secondary text-text-primary font-medium transition-all disabled:opacity-30">
+                  <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M7.793 2.232a.75.75 0 01-.025 1.06L3.622 7.25h10.003a5.375 5.375 0 010 10.75H10.75a.75.75 0 010-1.5h2.875a3.875 3.875 0 000-7.75H3.622l4.146 3.957a.75.75 0 01-1.036 1.085l-5.5-5.25a.75.75 0 010-1.085l5.5-5.25a.75.75 0 011.06.025z" clipRule="evenodd" /></svg>
+                  Geri Al
+                </button>
+                <button onClick={handlePass} disabled={isAiGame && game.current_player === 'white'}
+                  className="flex items-center justify-center gap-2 flex-1 py-3 rounded-xl glass hover:bg-bg-secondary text-text-primary font-medium transition-all disabled:opacity-30">
+                  <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000-2 1 1 0 000 2zm7-1a1 1 0 11-2 0 1 1 0 012 0zm-7.536 5.868a1 1 0 001.016-1.713A3.383 3.383 0 0110 12c1.008 0 1.914.44 2.52 1.155a1 1 0 101.016-1.713A5.383 5.383 0 0010 10a5.383 5.383 0 00-3.536 1.868z" clipRule="evenodd" /></svg>
+                  Pas
+                </button>
+              </div>
               <button onClick={handleResign}
                 className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-error/10 hover:bg-error/20 text-error font-medium transition-all border border-error/20">
                 <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M13.477 14.89A6 6 0 015.11 6.524l8.367 8.368zm1.414-1.414L6.524 5.11a6 6 0 008.367 8.367zM18 10a8 8 0 11-16 0 8 8 0 0116 0z" clipRule="evenodd" /></svg>
@@ -152,6 +204,30 @@ export function GamePlay() {
             </button>
           )}
         </div>
+
+        {moveHistory.length > 0 && (
+          <div className="glass rounded-2xl p-4">
+            <button onClick={() => setShowMoveList(!showMoveList)}
+              className="flex items-center justify-between w-full text-sm font-medium text-text-secondary hover:text-text-primary transition-colors">
+              <span>Hamle Geçmişi ({moveHistory.length})</span>
+              <svg className={`w-4 h-4 transition-transform ${showMoveList ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" /></svg>
+            </button>
+            {showMoveList && (
+              <div className="mt-3 max-h-60 overflow-y-auto space-y-0.5 text-xs scrollbar-thin">
+                {moveHistory.map((record, index) => (
+                  <div key={index} className={`flex items-center gap-2 px-2 py-1.5 rounded-lg ${
+                    index === moveHistory.length - 1 ? 'bg-accent/10 text-accent' : 'text-text-secondary'
+                  }`}>
+                    <span className={`w-2 h-2 rounded-full flex-shrink-0 ${
+                      record.player === 'black' ? 'bg-gray-700' : 'bg-gray-200'
+                    }`} />
+                    <span className="font-mono">{formatMove(record, index)}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

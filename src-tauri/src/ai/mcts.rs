@@ -1,5 +1,4 @@
 use rand::{Rng, RngExt};
-use std::collections::HashMap;
 
 use crate::engine::game::GoGame;
 use crate::engine::types::{AIDifficulty, Point, StoneColor};
@@ -7,7 +6,32 @@ use crate::engine::types::{AIDifficulty, Point, StoneColor};
 #[derive(Debug, Clone)]
 enum GameResult {
     Win(StoneColor),
-    Draw,
+}
+
+struct MCTSNode {
+    move_x: u8,
+    move_y: u8,
+    visits: u32,
+    wins: f64,
+    children: Vec<MCTSNode>,
+    untried_moves: Vec<(u8, u8)>,
+}
+
+impl MCTSNode {
+    fn new(moves: Vec<(u8, u8)>, x: u8, y: u8) -> Self {
+        MCTSNode {
+            move_x: x,
+            move_y: y,
+            visits: 0,
+            wins: 0.0,
+            children: Vec::new(),
+            untried_moves: moves,
+        }
+    }
+
+    fn is_fully_expanded(&self) -> bool {
+        self.untried_moves.is_empty()
+    }
 }
 
 pub struct MCTSAi {
@@ -123,51 +147,81 @@ impl MCTSAi {
             return None;
         }
 
-        let mut move_wins: HashMap<(u8, u8), f64> = HashMap::new();
-        let mut move_visits: HashMap<(u8, u8), u32> = HashMap::new();
-        let mut rng = rand::rng();
+        let move_coords: Vec<(u8, u8)> = valid_moves.iter().map(|m| (m.x, m.y)).collect();
+
+        let mut root_children: Vec<MCTSNode> = move_coords
+            .iter()
+            .map(|&(x, y)| MCTSNode::new(Vec::new(), x, y))
+            .collect();
 
         let simulations = self.difficulty.simulations;
         let current_player = game.current_player();
+        let mut rng = rand::rng();
+        let sqrt2 = std::f64::consts::SQRT_2;
 
         for _ in 0..simulations {
             let mut sim_game = game.clone_game();
 
-            let move_idx = rng.random_range(0..valid_moves.len());
-            let test_move = &valid_moves[move_idx];
+            let total_visits_ln = (root_children.iter().map(|c| c.visits as f64).sum::<f64>()).ln();
 
-            if sim_game.place_stone(test_move.x, test_move.y).is_err() {
+            let selected = root_children
+                .iter_mut()
+                .max_by(|a, b| {
+                    let a_val = if a.visits > 0 {
+                        a.wins / a.visits as f64
+                            + sqrt2 * (total_visits_ln / a.visits as f64).sqrt()
+                    } else {
+                        f64::INFINITY
+                    };
+                    let b_val = if b.visits > 0 {
+                        b.wins / b.visits as f64
+                            + sqrt2 * (total_visits_ln / b.visits as f64).sqrt()
+                    } else {
+                        f64::INFINITY
+                    };
+                    a_val
+                        .partial_cmp(&b_val)
+                        .unwrap_or(std::cmp::Ordering::Equal)
+                })
+                .unwrap();
+
+            if sim_game
+                .place_stone(selected.move_x, selected.move_y)
+                .is_err()
+            {
                 continue;
+            }
+
+            if !selected.is_fully_expanded() {
+                let idx = rng.random_range(0..selected.untried_moves.len());
+                let (cx, cy) = selected.untried_moves.swap_remove(idx);
+
+                if sim_game.place_stone(cx, cy).is_err() {
+                    selected.visits += 1;
+                    continue;
+                }
+
+                let child_moves = sim_game
+                    .get_valid_moves()
+                    .iter()
+                    .map(|m| (m.x, m.y))
+                    .collect();
+                selected.children.push(MCTSNode::new(child_moves, cx, cy));
             }
 
             let result = self.random_playout(&mut sim_game, &mut rng);
 
-            let entry = move_wins.entry((test_move.x, test_move.y)).or_insert(0.0);
-            let visit_entry = move_visits.entry((test_move.x, test_move.y)).or_insert(0);
-
-            *visit_entry += 1;
+            selected.visits += 1;
             match result {
-                GameResult::Win(color) if color == current_player => *entry += 1.0,
+                GameResult::Win(color) if color == current_player => selected.wins += 1.0,
                 GameResult::Win(_) => {}
-                GameResult::Draw => *entry += 0.5,
             }
         }
 
-        let best_move = valid_moves
+        root_children
             .iter()
-            .map(|m| {
-                let wins = move_wins.get(&(m.x, m.y)).copied().unwrap_or(0.0);
-                let visits = move_visits.get(&(m.x, m.y)).copied().unwrap_or(0);
-                let win_rate = if visits > 0 {
-                    wins / visits as f64
-                } else {
-                    0.0
-                };
-                (m, win_rate, visits)
-            })
-            .max_by(|a, b| a.1.partial_cmp(&b.1).unwrap_or(std::cmp::Ordering::Equal));
-
-        best_move.map(|(m, _, _)| (m.x, m.y))
+            .max_by_key(|n| n.visits)
+            .map(|n| (n.move_x, n.move_y))
     }
 
     fn random_playout(&self, game: &mut GoGame, rng: &mut impl Rng) -> GameResult {
@@ -192,25 +246,7 @@ impl MCTSAi {
             moves_played += 1;
         }
 
-        let state = game.get_game_state();
-        let mut black_count = 0u32;
-        let mut white_count = 0u32;
-        for row in &state.board {
-            for cell in row {
-                match cell {
-                    Some(StoneColor::Black) => black_count += 1,
-                    Some(StoneColor::White) => white_count += 1,
-                    None => {}
-                }
-            }
-        }
-
-        if black_count > white_count {
-            GameResult::Win(StoneColor::Black)
-        } else if white_count > black_count {
-            GameResult::Win(StoneColor::White)
-        } else {
-            GameResult::Draw
-        }
+        let (winner, _) = game.compute_score();
+        GameResult::Win(winner)
     }
 }

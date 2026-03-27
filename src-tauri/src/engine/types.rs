@@ -89,6 +89,26 @@ pub struct GameState {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct MoveRecord {
+    pub move_type: MoveType,
+    pub x: Option<u8>,
+    pub y: Option<u8>,
+    pub captured_stones: Vec<Point>,
+    pub player: StoneColor,
+    pub board_snapshot: Vec<Vec<Option<StoneColor>>>,
+    pub black_captures: u32,
+    pub white_captures: u32,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum MoveType {
+    Stone,
+    Pass,
+    Resign,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct AIDifficulty {
     pub level: u8,
     pub simulations: u32,

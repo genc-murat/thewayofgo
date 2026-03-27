@@ -4,6 +4,7 @@ import type {
   GameState,
   MoveResult,
   GameStateResponse,
+  MoveRecord,
   Lesson,
   Exercise,
   UserStats,
@@ -52,6 +53,8 @@ interface AppState {
   aiMove: () => Promise<MoveResult | null>;
   setAiDifficulty: (level: number) => Promise<void>;
   startAiGame: (size: number, difficulty: number) => Promise<void>;
+  undoMove: () => Promise<void>;
+  getMoveHistory: () => Promise<MoveRecord[]>;
 
   // Lesson actions
   loadLesson: (lessonId: string) => Promise<void>;
@@ -182,6 +185,24 @@ export const useAppStore = create<AppState>((set, get) => ({
       });
     } catch (e) {
       set({ error: String(e), isLoading: false });
+    }
+  },
+
+  undoMove: async () => {
+    try {
+      const response = await invoke<GameStateResponse>('undo');
+      set({ game: response.state, gameResult: null, error: null });
+    } catch (e) {
+      set({ error: String(e) });
+    }
+  },
+
+  getMoveHistory: async () => {
+    try {
+      return await invoke<MoveRecord[]>('get_move_history');
+    } catch (e) {
+      set({ error: String(e) });
+      return [];
     }
   },
 

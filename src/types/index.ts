@@ -51,6 +51,19 @@ export interface GameStateResponse {
   result: MoveResult | null;
 }
 
+export type MoveType = 'stone' | 'pass' | 'resign';
+
+export interface MoveRecord {
+  move_type: MoveType;
+  x: number | null;
+  y: number | null;
+  captured_stones: Point[];
+  player: StoneColor;
+  board_snapshot: (StoneColor | null)[][];
+  black_captures: number;
+  white_captures: number;
+}
+
 // Lesson types
 export interface LessonContent {
   type: 'text' | 'board' | 'animation';

@@ -12,6 +12,7 @@ pub struct GoGame {
     last_move: Option<Point>,
     game_over: bool,
     passes_in_a_row: u8,
+    move_history: Vec<MoveRecord>,
     history: Vec<u64>, // Zobrist-like hash for ko detection
 }
 
@@ -28,6 +29,7 @@ impl GoGame {
             last_move: None,
             game_over: false,
             passes_in_a_row: 0,
+            move_history: Vec::new(),
             history: Vec::new(),
         }
     }
@@ -197,6 +199,18 @@ impl GoGame {
         // Record history
         self.history.push(new_hash);
 
+        // Record move to move_history
+        self.move_history.push(MoveRecord {
+            move_type: MoveType::Stone,
+            x: Some(x),
+            y: Some(y),
+            captured_stones: captured_points.clone(),
+            player: color,
+            board_snapshot: self.board.clone(),
+            black_captures: self.black_captures,
+            white_captures: self.white_captures,
+        });
+
         // Update state
         self.move_number += 1;
         self.passes_in_a_row = 0;
@@ -217,9 +231,10 @@ impl GoGame {
         self.passes_in_a_row += 1;
         self.move_number += 1;
         self.current_player = self.current_player.opposite();
-        self.last_move = None;
 
         let game_over = self.passes_in_a_row >= 2;
+
+        let player_before_pass = self.current_player.opposite();
 
         if game_over {
             self.game_over = true;
@@ -234,6 +249,17 @@ impl GoGame {
             };
         }
 
+        self.move_history.push(MoveRecord {
+            move_type: MoveType::Pass,
+            x: None,
+            y: None,
+            captured_stones: vec![],
+            player: player_before_pass,
+            board_snapshot: self.board.clone(),
+            black_captures: self.black_captures,
+            white_captures: self.white_captures,
+        });
+
         MoveResult {
             success: true,
             captured_stones: vec![],
@@ -244,9 +270,80 @@ impl GoGame {
         }
     }
 
+    pub fn undo(&mut self) -> Result<(), String> {
+        if self.move_history.is_empty() {
+            return Err("No moves to undo".to_string());
+        }
+
+        let last_move_record = self.move_history.pop().unwrap();
+
+        self.board = last_move_record.board_snapshot;
+        self.black_captures = last_move_record.black_captures;
+        self.white_captures = last_move_record.white_captures;
+        self.move_number -= 1;
+
+        match last_move_record.move_type {
+            MoveType::Pass => {
+                self.passes_in_a_row -= 1;
+                self.current_player = last_move_record.player;
+                self.game_over = false;
+            }
+            MoveType::Resign => {
+                self.current_player = last_move_record.player;
+                self.game_over = false;
+            }
+            MoveType::Stone => {
+                self.passes_in_a_row = 0;
+                self.current_player = last_move_record.player;
+                if let Some(point) = self
+                    .move_history
+                    .iter()
+                    .rev()
+                    .find(|m| matches!(m.move_type, MoveType::Stone))
+                {
+                    self.last_move = if let MoveType::Stone = point.move_type {
+                        if let (Some(x), Some(y)) = (point.x, point.y) {
+                            Some(Point { x, y })
+                        } else {
+                            None
+                        }
+                    } else {
+                        None
+                    };
+                } else {
+                    self.last_move = None;
+                }
+            }
+        }
+
+        Ok(())
+    }
+
+    pub fn undo_multiple(&mut self, count: u8) -> Result<(), String> {
+        for _ in 0..count {
+            self.undo()?;
+        }
+        Ok(())
+    }
+
+    pub fn get_move_history(&self) -> Vec<MoveRecord> {
+        self.move_history.clone()
+    }
+
     pub fn resign(&mut self, player: StoneColor) -> MoveResult {
         self.game_over = true;
         let winner = player.opposite();
+
+        self.move_history.push(MoveRecord {
+            move_type: MoveType::Resign,
+            x: None,
+            y: None,
+            captured_stones: vec![],
+            player,
+            board_snapshot: self.board.clone(),
+            black_captures: self.black_captures,
+            white_captures: self.white_captures,
+        });
 
         MoveResult {
             success: true,
@@ -487,6 +584,7 @@ impl GoGame {
             last_move: self.last_move.clone(),
             game_over: self.game_over,
             passes_in_a_row: self.passes_in_a_row,
+            move_history: self.move_history.clone(),
             history: self.history.clone(),
         }
     }

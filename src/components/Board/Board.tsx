@@ -11,6 +11,7 @@ interface BoardProps {
   interactive?: boolean;
   showCoordinates?: boolean;
   className?: string;
+  currentPlayer?: StoneColor;
 }
 
 export function Board({
@@ -23,6 +24,7 @@ export function Board({
   interactive = false,
   showCoordinates = true,
   className = '',
+  currentPlayer = 'black',
 }: BoardProps) {
   const cellSize = 32;
   const padding = showCoordinates ? 32 : 16;
@@ -195,7 +197,9 @@ export function Board({
       {interactive && hoverPoint && !board[hoverPoint.y]?.[hoverPoint.x] && (
         <circle
           cx={toPixel(hoverPoint.x)} cy={toPixel(hoverPoint.y)} r={stoneRadius}
-          fill="rgba(26, 26, 26, 0.3)" stroke="rgba(26, 26, 26, 0.5)" strokeWidth={1}
+          fill={currentPlayer === 'black' ? 'rgba(26, 26, 26, 0.3)' : 'rgba(255, 255, 255, 0.5)'}
+          stroke={currentPlayer === 'black' ? 'rgba(26, 26, 26, 0.5)' : 'rgba(200, 200, 200, 0.7)'}
+          strokeWidth={1}
         />
       )}
     </svg>
