@@ -247,6 +247,54 @@ export async function getCompletedExercises(): Promise<Set<string>> {
   return new Set(results.map(r => r.exercise_id));
 }
 
+export interface ExerciseProgressSummary {
+  completed: boolean;
+  correct: boolean;
+  attempts: number;
+  last_attempt: string | null;
+}
+
+export async function getLastAttemptedExercise(): Promise<string | null> {
+  const database = await getDb();
+  try {
+    const result = await database.select<{ exercise_id: string }[]>(
+      'SELECT exercise_id FROM exercise_progress ORDER BY last_attempt DESC LIMIT 1'
+    );
+    return result[0]?.exercise_id ?? null;
+  } catch (err) {
+    console.warn('[progressDb] getLastAttemptedExercise failed:', err);
+    return null;
+  }
+}
+
+export async function getAllExerciseProgress(): Promise<Map<string, ExerciseProgressSummary>> {
+  const database = await getDb();
+  try {
+    const results = await database.select<{
+      exercise_id: string;
+      completed: boolean;
+      correct: boolean;
+      attempts: number;
+      last_attempt: string | null;
+    }[]>(
+      'SELECT exercise_id, completed, correct, attempts, last_attempt FROM exercise_progress'
+    );
+    const map = new Map<string, ExerciseProgressSummary>();
+    for (const row of results) {
+      map.set(row.exercise_id, {
+        completed: row.completed,
+        correct: row.correct,
+        attempts: row.attempts,
+        last_attempt: row.last_attempt,
+      });
+    }
+    return map;
+  } catch (err) {
+    console.warn('[progressDb] getAllExerciseProgress failed:', err);
+    return new Map();
+  }
+}
+
 export async function getWeakAreas(): Promise<WeakArea[]> {
   const database = await getDb();
 

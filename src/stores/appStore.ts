@@ -14,6 +14,7 @@ import type {
 } from '../types';
 import { recordExerciseAttempt } from '../utils/progressDb';
 import { createBoardFromStones } from '../utils/boardUtils';
+import { EXERCISE_CATALOG } from '../data/exerciseCatalog';
 
 interface AppState {
   // Navigation
@@ -77,8 +78,10 @@ interface AppState {
   prevStep: () => void;
 
   // Exercise actions
+  lastAttemptedExerciseId: string | null;
   loadExercise: (exerciseId: string) => Promise<void>;
   closeExercise: () => void;
+  loadNextExercise: (currentId: string) => void;
   submitExerciseMove: (x: number, y: number) => Promise<void>;
   submitMultiStepMove: (x: number, y: number) => Promise<void>;
   advanceToNextStep: () => void;
@@ -112,6 +115,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   showHint: false,
   hintIndex: 0,
   exerciseResult: null,
+  lastAttemptedExerciseId: null,
 
   // Multi-step exercise state
   currentStepIndex: 0,
@@ -296,6 +300,7 @@ export const useAppStore = create<AppState>((set, get) => ({
         stepBoard,
         stepResults: [],
         allStepsCompleted: false,
+        lastAttemptedExerciseId: exerciseId,
       });
     } catch (e) {
       set({ error: `Failed to load exercise: ${e}`, isLoading: false });
@@ -448,6 +453,14 @@ export const useAppStore = create<AppState>((set, get) => ({
   // Error handling
   setError: (error) => set({ error }),
   bumpPlanVersion: () => set(s => ({ planVersion: s.planVersion + 1 })),
+
+  loadNextExercise: (currentId) => {
+    const idx = EXERCISE_CATALOG.findIndex((e) => e.id === currentId);
+    if (idx >= 0 && idx < EXERCISE_CATALOG.length - 1) {
+      const nextEx = EXERCISE_CATALOG[idx + 1];
+      get().loadExercise(nextEx.id);
+    }
+  },
 }));
 
 
