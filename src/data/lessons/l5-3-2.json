@@ -3,86 +3,121 @@
   "level": 5,
   "module": 3,
   "lesson": 2,
-  "title": "Sek Raisedama",
-  "description": "Sek armament etrafında taarruz.",
-  "duration_minutes": 10,
+  "title": "İleri Sente Kullanımı",
+  "description": "Sente koruma, zorlayıcı hamleler ve kikashi teknikleri. Gote'ye düşmeden baskı kurma sanatı.",
+  "duration_minutes": 15,
   "content": [
     {
       "type": "text",
-      "content": "Sek Raisedama: Sek armament etrafında taarruz. Temel kavramları ve stratejileri öğrenin."
+      "content": "Sente (öncelik) Go'nun en değerli kavramıdır. Sente hamle, rakibi cevap vermeye zorlar ve siz başka yerde oynama hakkını korursunuz. Uzman seviyesinde sente'yi kaybetmemek için kikashi (önce zorlayıcı hamle, sonra tenuki) ve sente exchange (karşılıklı zorlayıcı değişim) teknikleri kritik öneme sahiptir."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 19,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        }
+        { "x": 3, "y": 3, "color": "black" },
+        { "x": 6, "y": 3, "color": "white" },
+        { "x": 2, "y": 6, "color": "white" },
+        { "x": 5, "y": 5, "color": "black" },
+        { "x": 4, "y": 2, "color": "black" }
       ],
-      "highlights": [],
-      "annotation": "Sek Raisedama"
+      "highlights": [
+        { "x": 6, "y": 2, "type": "good" },
+        { "x": 3, "y": 1, "type": "liberty" },
+        { "x": 7, "y": 3, "type": "bad" },
+        { "x": 5, "y": 2, "type": "capture" }
+      ],
+      "annotation": "Sente fırsatı: Siyah (6,2) kikashi – Beyaz cevap vermek zorunda"
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 6, "y": 3, "color": "white" },
+            { "x": 2, "y": 6, "color": "white" },
+            { "x": 5, "y": 5, "color": "black" },
+            { "x": 4, "y": 2, "color": "black" }
           ],
-          "text": "Pozisyon analizi başladı"
+          "text": "Pozisyon: Siyah'ın sağ üst shimari'si tehdit altında."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 6, "y": 3, "color": "white" },
+            { "x": 2, "y": 6, "color": "white" },
+            { "x": 5, "y": 5, "color": "black" },
+            { "x": 4, "y": 2, "color": "black" },
+            { "x": 6, "y": 2, "color": "black" }
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Siyah (6,2) kikashi: Beyaz'ın (6,3) taşı kesilme tehdidi – sente hamle!"
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 6, "y": 3, "color": "white" },
+            { "x": 2, "y": 6, "color": "white" },
+            { "x": 5, "y": 5, "color": "black" },
+            { "x": 4, "y": 2, "color": "black" },
+            { "x": 6, "y": 2, "color": "black" },
+            { "x": 7, "y": 2, "color": "white" }
           ],
-          "text": "Sonraki hamleyi düşünün"
+          "text": "Beyaz cevap verir (7,2): kesilmeyi önler ama Siyah hala sente'de."
+        },
+        {
+          "stones": [
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 6, "y": 3, "color": "white" },
+            { "x": 2, "y": 6, "color": "white" },
+            { "x": 5, "y": 5, "color": "black" },
+            { "x": 4, "y": 2, "color": "black" },
+            { "x": 6, "y": 2, "color": "black" },
+            { "x": 7, "y": 2, "color": "white" },
+            { "x": 5, "y": 7, "color": "black" }
+          ],
+          "text": "Siyah tenuki (5,7) – shimari'sini güçlendirir: kikashi başarılı, sente korundu!"
+        },
+        {
+          "stones": [
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 6, "y": 3, "color": "white" },
+            { "x": 2, "y": 6, "color": "white" },
+            { "x": 5, "y": 5, "color": "black" },
+            { "x": 4, "y": 2, "color": "black" },
+            { "x": 6, "y": 2, "color": "black" },
+            { "x": 7, "y": 2, "color": "white" },
+            { "x": 5, "y": 7, "color": "black" },
+            { "x": 16, "y": 16, "color": "black" }
+          ],
+          "text": "Siyah (16,16) büyük köşe: Sente ile iki yerde kazandı – kikashi'nin gücü!"
         }
       ]
+    },
+    {
+      "type": "text",
+      "content": "Kikashi'nin altın kuralları: (1) Sente hamle erken oynayın – gote'ye dönüşmeden önce, (2) Kikashi'nin rakibi cevap vermeye zorladığından emin olun, aksi takdirde gote'ye düşersiniz, (3) Zorlayıcı hamleler, ana planınızı desteklemeli – rastgele kikashi, sadece rakibe destek sağlar."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        { "x": 16, "y": 3, "color": "black" },
+        { "x": 14, "y": 5, "color": "black" },
+        { "x": 13, "y": 2, "color": "white" },
+        { "x": 17, "y": 6, "color": "white" },
+        { "x": 12, "y": 7, "color": "white" }
+      ],
+      "highlights": [
+        { "x": 15, "y": 2, "type": "good" },
+        { "x": 16, "y": 1, "type": "liberty" },
+        { "x": 14, "y": 2, "type": "bad" },
+        { "x": 15, "y": 5, "type": "good" }
+      ],
+      "annotation": "Sente exchange: Siyah (15,2) peşinden (15,5) – sıralı zorlama hamleleri"
     }
   ],
-  "prerequisites": [
-    "l----1"
-  ],
+  "prerequisites": ["l5-3-1"],
   "next_lesson": "l5-3-3",
   "required_exercise": "e5-3-2"
 }

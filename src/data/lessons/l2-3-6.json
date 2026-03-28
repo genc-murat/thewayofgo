@@ -1,0 +1,114 @@
+{
+  "id": "l2-3-6",
+  "level": 2,
+  "module": 3,
+  "lesson": 6,
+  "title": "Yaşam Koşulları",
+  "description": "İki göz oluşturma detayları ve yaşam için gerekli koşullar.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bir grubun yaşaması için (活き, iki) en az iki gerçek göze ihtiyacı vardır. Bu derste hangi boşluk şekillerinin gerçek göz oluşturabileceğini ve hangilerinin oluşturamayacağını detaylıca inceleyeceğiz."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 3, "y": 0, "color": "black"},
+        {"x": 4, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 2, "y": 1, "color": "black"},
+        {"x": 4, "y": 1, "color": "black"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 4, "y": 2, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 1, "type": "good"},
+        {"x": 3, "y": 1, "type": "good"}
+      ],
+      "annotation": "İki gerçek göz: (1,1) ve (3,1) ayrı ayrı gerçek göz. Bu grup YAŞIYOR."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 6, "y": 4, "color": "black"},
+            {"x": 7, "y": 4, "color": "black"},
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 7, "y": 5, "color": "black"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 7, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah grup: tek boşluk (6,5). Bu TEK göz — grup yaşamak için ikinci göze ihtiyaç duyuyor."
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 6, "y": 4, "color": "black"},
+            {"x": 7, "y": 4, "color": "black"},
+            {"x": 8, "y": 4, "color": "black"},
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 7, "y": 5, "color": "black"},
+            {"x": 8, "y": 5, "color": "black"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 8, "y": 6, "color": "black"}
+          ],
+          "text": "Grup genişledi: Şimdi iki boşluk var: (6,5) ve (8,5)... Ama (8,5) gerçek göz mü? Köşegenleri kontrol edin."
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 6, "y": 4, "color": "black"},
+            {"x": 7, "y": 4, "color": "black"},
+            {"x": 8, "y": 4, "color": "black"},
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 7, "y": 5, "color": "black"},
+            {"x": 8, "y": 5, "color": "black"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 8, "y": 6, "color": "black"}
+          ],
+          "text": "(6,5): 4 kardinal siyah, 4 köşegen siyah = GERÇEK GÖZ. (8,5) diye bir boşluk yok, sorun değil. Ama grup için bir göz yeterli değil — ikinci göz açılmalı."
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 6, "y": 4, "color": "black"},
+            {"x": 7, "y": 4, "color": "black"},
+            {"x": 8, "y": 4, "color": "black"},
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 7, "y": 5, "color": "black"},
+            {"x": 8, "y": 5, "color": "black"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 8, "y": 6, "color": "black"},
+            {"x": 6, "y": 7, "color": "black"},
+            {"x": 8, "y": 7, "color": "black"}
+          ],
+          "text": "Siyah (6,7) ve (8,7) oynayarak alanı genişletti. Şimdi iki ayrı göz alanı var: (6,5) ve (8,7). Grup YAŞIYOR!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Yaşam koşulları özeti:\n1. Grup tamamen kuşatılmış olsa bile iki gerçek göz varsa yaşar\n2. Gözler birbirine AYRI olmalı — tek büyük boşluk sayılmaz\n3. Köşegen kontrolü yapın — sahte gözler güvenli değil\n4. Erken göz açıklığı bırakmak, ileride yaşam şansı verir"
+    }
+  ],
+  "prerequisites": ["l2-3-5"],
+  "next_lesson": "l2-3-7",
+  "required_exercise": "e2-3-6"
+}

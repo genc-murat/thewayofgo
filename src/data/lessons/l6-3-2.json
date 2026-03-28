@@ -3,86 +3,120 @@
   "level": 6,
   "module": 3,
   "lesson": 2,
-  "title": "Mochi",
-  "description": "Taş gruplarını birleştirme.",
-  "duration_minutes": 10,
+  "title": "Grup Birleştirme Stratejileri",
+  "description": "Zayıf grupları birleştirme, stratejik bağlantı teknikleri ve tsugiki (destek) konseptleri. Canlı tutma ve koruma sanatı.",
+  "duration_minutes": 20,
   "content": [
     {
       "type": "text",
-      "content": "Mochi: Taş gruplarını birleştirme. Temel kavramları ve stratejileri öğrenin."
+      "content": "Orta oyunda en kritik beceri, zayıf grupları birleştirmektir. İki ayrı zayıf grup, her biri için ayrı ayrı savunma gerektirir – ama birleştirilirse tek güçlü grup olur. Bu, 'amashi' (güçlü oynama) stratejisinin temelidir. Bagai (bağlantı) hamleleri hem savunma hem saldırı amacı taşıyabilir."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 19,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        }
+        { "x": 4, "y": 13, "color": "black" },
+        { "x": 6, "y": 16, "color": "black" },
+        { "x": 3, "y": 10, "color": "white" },
+        { "x": 5, "y": 11, "color": "white" },
+        { "x": 2, "y": 15, "color": "white" },
+        { "x": 7, "y": 14, "color": "white" }
       ],
-      "highlights": [],
-      "annotation": "Mochi"
+      "highlights": [
+        { "x": 4, "y": 13, "type": "good" },
+        { "x": 6, "y": 16, "type": "good" },
+        { "x": 5, "y": 14, "type": "vital" },
+        { "x": 5, "y": 11, "type": "bad" },
+        { "x": 7, "y": 14, "type": "bad" }
+      ],
+      "annotation": "İki Siyah grubu (4,13) ve (6,16) arasında Boşluk var. Beyaz kesme tehdidiyle iki grubu ayırmak istiyor."
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 4, "y": 13, "color": "black" },
+            { "x": 6, "y": 16, "color": "black" },
+            { "x": 3, "y": 10, "color": "white" },
+            { "x": 5, "y": 11, "color": "white" }
           ],
-          "text": "Pozisyon analizi başladı"
+          "text": "İki Siyah grubu zayıf! Aralarında bağlantı yok. Beyaz (5,11) ile kesme tehdidi oluşturuyor."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            { "x": 4, "y": 13, "color": "black" },
+            { "x": 6, "y": 16, "color": "black" },
+            { "x": 3, "y": 10, "color": "white" },
+            { "x": 5, "y": 11, "color": "white" },
+            { "x": 5, "y": 14, "color": "black" }
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Siyah keima sıçramasıyla iki grubu bağlar! Hem birleştirir hem Beyaz'ın altına etki koyar."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 4, "y": 13, "color": "black" },
+            { "x": 6, "y": 16, "color": "black" },
+            { "x": 3, "y": 10, "color": "white" },
+            { "x": 5, "y": 11, "color": "white" },
+            { "x": 5, "y": 14, "color": "black" },
+            { "x": 2, "y": 15, "color": "white" }
           ],
-          "text": "Sonraki hamleyi düşünün"
+          "text": "Beyaz sol kenara doğru bastırır – Siyah'ın bağlantısını test eder. Baskı artıyor."
+        },
+        {
+          "stones": [
+            { "x": 4, "y": 13, "color": "black" },
+            { "x": 6, "y": 16, "color": "black" },
+            { "x": 3, "y": 10, "color": "white" },
+            { "x": 5, "y": 11, "color": "white" },
+            { "x": 5, "y": 14, "color": "black" },
+            { "x": 2, "y": 15, "color": "white" },
+            { "x": 4, "y": 16, "color": "black" }
+          ],
+          "text": "Siyah tsuke (yapışma) – iki grubu tamamen birleştirir! Artık tek güçlü grup, kolayca yaşar."
+        },
+        {
+          "stones": [
+            { "x": 4, "y": 13, "color": "black" },
+            { "x": 6, "y": 16, "color": "black" },
+            { "x": 3, "y": 10, "color": "white" },
+            { "x": 5, "y": 11, "color": "white" },
+            { "x": 5, "y": 14, "color": "black" },
+            { "x": 2, "y": 15, "color": "white" },
+            { "x": 4, "y": 16, "color": "black" },
+            { "x": 7, "y": 14, "color": "white" }
+          ],
+          "text": "Beyaz son çare olarak sağdan baskı yapar ama Siyah'ın bağlantısı sağlam. Sabaki başarılı! Grup artık savaşa hazır."
         }
       ]
+    },
+    {
+      "type": "text",
+      "content": "Bagai (bağlantı) stratejisinin üç altın kuralı: (1) Erken bağlanın – zayıf grup ne kadar uzun süre ayrı kalırsa, saldırı o kadar artar. (2) Doğal bağlantı noktalarını kullanın – kosumi, keima, ve tsuke en etkili yöntemler. (3) Bağlanırken aynı zamanda etki kazanın – 'sadece bağlanmak' yerine 'bağlanıp güçlenmek' hedefleyin. Bu, профессиональная (profesyonel) seviye fark yaratır."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        { "x": 14, "y": 4, "color": "black" },
+        { "x": 16, "y": 7, "color": "black" },
+        { "x": 12, "y": 3, "color": "white" },
+        { "x": 13, "y": 6, "color": "white" },
+        { "x": 17, "y": 5, "color": "white" },
+        { "x": 15, "y": 5, "color": "black" },
+        { "x": 15, "y": 3, "color": "black" }
+      ],
+      "highlights": [
+        { "x": 15, "y": 5, "type": "good" },
+        { "x": 15, "y": 3, "type": "good" },
+        { "x": 13, "y": 6, "type": "liberty" },
+        { "x": 17, "y": 5, "type": "bad" }
+      ],
+      "annotation": "Siyah iki grubu (14,4) ve (16,7) arasında kemik bağlantı oluşturdu. Beyaz'ın kesme girişimi başarısız."
     }
   ],
-  "prerequisites": [
-    "l----1"
-  ],
+  "prerequisites": ["l6-3-1"],
   "next_lesson": "l6-3-3",
   "required_exercise": "e6-3-2"
 }

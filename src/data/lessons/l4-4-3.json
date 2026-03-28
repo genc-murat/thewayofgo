@@ -4,83 +4,262 @@
   "module": 4,
   "lesson": 3,
   "title": "İleri İnvazyon",
-  "description": "Derin invazyon teknikleri.",
-  "duration_minutes": 10,
+  "description": "Büyük düşman moyolarına derin invazyon yapma, invazyon joseki'leri ve düşman toprağında yaşama teknikleri.",
+  "duration_minutes": 16,
   "content": [
     {
       "type": "text",
-      "content": "İleri İnvazyon: Derin invazyon teknikleri. Bu derste temel kavramları öğreneceksiniz."
+      "content": "İleri invazyon (打入り, uchikomi), düşmanın büyük moyosuna (模様) derinlemesine girerek onu parçalama veya küçültme tekniğidir. İnvazyon için üç koşul: 1) Moyo yeterince büyük olmalı (20+ puan) 2) İnvazyon noktası zayıf olmalı 3) Kaçış yolu olmalı veya orada yaşayabilmelisiniz. Derin invazyon risklidir — doğru okuma (読み) şarttır."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 13,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        },
-        {
-          "x": 5,
-          "y": 4,
-          "color": "black"
-        }
+        {"x": 9, "y": 3, "color": "white"},
+        {"x": 11, "y": 3, "color": "white"},
+        {"x": 9, "y": 6, "color": "white"},
+        {"x": 11, "y": 6, "color": "white"},
+        {"x": 9, "y": 9, "color": "white"},
+        {"x": 11, "y": 9, "color": "white"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 3, "y": 9, "color": "black"},
+        {"x": 6, "y": 6, "color": "black"}
       ],
-      "highlights": [],
-      "annotation": "İleri İnvazyon"
+      "highlights": [
+        {"x": 10, "y": 4, "type": "vital"},
+        {"x": 10, "y": 5, "type": "vital"},
+        {"x": 10, "y": 7, "type": "vital"},
+        {"x": 10, "y": 8, "type": "vital"},
+        {"x": 8, "y": 4, "type": "bad"},
+        {"x": 8, "y": 8, "type": "bad"}
+      ],
+      "annotation": "Beyazın sağ kenar moyosu — (10,4)-(10,8) arası zayıf hat"
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 11, "y": 3, "color": "white"},
+            {"x": 9, "y": 6, "color": "white"},
+            {"x": 11, "y": 6, "color": "white"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 11, "y": 9, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"}
           ],
-          "text": "Pozisyonu inceleyin"
+          "text": "Beyaz sağ kenarda büyük moyo — 25+ puanlık potansiyel. İnvazyon zamanı!"
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 11, "y": 3, "color": "white"},
+            {"x": 9, "y": 6, "color": "white"},
+            {"x": 11, "y": 6, "color": "white"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 11, "y": 9, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 10, "y": 4, "color": "black"}
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Siyah (10,4) derin invazyon! 3-3 noktasına benzer derinlik — joseki başlıyor"
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 11, "y": 3, "color": "white"},
+            {"x": 9, "y": 6, "color": "white"},
+            {"x": 11, "y": 6, "color": "white"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 11, "y": 9, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 10, "y": 4, "color": "black"},
+            {"x": 10, "y": 3, "color": "white"}
           ],
-          "text": "İleri adımları düşünün"
+          "text": "Beyaz (10,3) — üstü kapayarak kuşatma başlıyor"
+        },
+        {
+          "stones": [
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 11, "y": 3, "color": "white"},
+            {"x": 9, "y": 6, "color": "white"},
+            {"x": 11, "y": 6, "color": "white"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 11, "y": 9, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 10, "y": 4, "color": "black"},
+            {"x": 10, "y": 3, "color": "white"},
+            {"x": 10, "y": 5, "color": "black"}
+          ],
+          "text": "Siyah (10,5) — aşağı uzanarak göz alanı oluşturmaya başlıyor"
+        },
+        {
+          "stones": [
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 11, "y": 3, "color": "white"},
+            {"x": 9, "y": 6, "color": "white"},
+            {"x": 11, "y": 6, "color": "white"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 11, "y": 9, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 10, "y": 4, "color": "black"},
+            {"x": 10, "y": 3, "color": "white"},
+            {"x": 10, "y": 5, "color": "black"},
+            {"x": 10, "y": 6, "color": "white"}
+          ],
+          "text": "Beyaz (10,6) — siyahı iyice kuşatıyor, ama siyah göz yapıyor!"
+        },
+        {
+          "stones": [
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 11, "y": 3, "color": "white"},
+            {"x": 9, "y": 6, "color": "white"},
+            {"x": 11, "y": 6, "color": "white"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 11, "y": 9, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 10, "y": 4, "color": "black"},
+            {"x": 10, "y": 3, "color": "white"},
+            {"x": 10, "y": 5, "color": "black"},
+            {"x": 10, "y": 6, "color": "white"},
+            {"x": 9, "y": 5, "color": "black"}
+          ],
+          "text": "Siyah (9,5) — iki göz! Yaşam başarılı. Beyazın moyosu 25 puandan 8 puana düştü!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "İnvazyon joseki'leri (打入り定石): Derin invazyonlarda iki strateji vardır — yaşamak (生き) veya kaçmak (逃げ). Yaşamak: invazyon noktasında iki göz oluşturmak. Kaçmak: kuşatmayı yarıp dışarı çıkmak. Hangisini seçeceğiniz çevre taşların konumuna bağlıdır. Eğer düşman güçlü duvarlarla çevrilmişse yaşamak zorundasınız. Açıklık varsa kaçmak daha güvenlidir."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 3, "y": 3, "color": "white"},
+        {"x": 3, "y": 6, "color": "white"},
+        {"x": 3, "y": 9, "color": "white"},
+        {"x": 6, "y": 3, "color": "white"},
+        {"x": 6, "y": 9, "color": "white"},
+        {"x": 9, "y": 3, "color": "black"},
+        {"x": 9, "y": 9, "color": "black"},
+        {"x": 11, "y": 6, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 4, "type": "vital"},
+        {"x": 4, "y": 5, "type": "vital"},
+        {"x": 5, "y": 5, "type": "vital"},
+        {"x": 4, "y": 7, "type": "vital"},
+        {"x": 5, "y": 6, "type": "good"}
+      ],
+      "annotation": "Beyazın sol kenar moyosu — kaçış stratejisi ile invazyon"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 3, "y": 9, "color": "white"},
+            {"x": 6, "y": 3, "color": "white"},
+            {"x": 6, "y": 9, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 11, "y": 6, "color": "black"}
+          ],
+          "text": "Beyaz sol kenarda büyük framework — ama sağ tarafı açık, kaçış mümkün"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 3, "y": 9, "color": "white"},
+            {"x": 6, "y": 3, "color": "white"},
+            {"x": 6, "y": 9, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 11, "y": 6, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"}
+          ],
+          "text": "Siyah (4,5) — derin invazyon! Ama sağ taraf açık — kaçış stratejisi"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 3, "y": 9, "color": "white"},
+            {"x": 6, "y": 3, "color": "white"},
+            {"x": 6, "y": 9, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 11, "y": 6, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 4, "y": 4, "color": "white"}
+          ],
+          "text": "Beyaz (4,4) — üstü kapatıyor, siyahı sağa itmeye çalışıyor"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 3, "y": 9, "color": "white"},
+            {"x": 6, "y": 3, "color": "white"},
+            {"x": 6, "y": 9, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 11, "y": 6, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 5, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah (5,6) — sağa kaçış! Framework'ü ikiye böldü"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 3, "y": 9, "color": "white"},
+            {"x": 6, "y": 3, "color": "white"},
+            {"x": 6, "y": 9, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 11, "y": 6, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 5, "y": 7, "color": "white"}
+          ],
+          "text": "Beyaz (5,7) — takip ediyor ama siyah (6,6) ile kendi taşına bağlanabilir"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 3, "y": 9, "color": "white"},
+            {"x": 6, "y": 3, "color": "white"},
+            {"x": 6, "y": 9, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 11, "y": 6, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 7, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah (7,6) — kaçış başarılı! Beyazın moyosu parçalandı, invazyon karlı!"
         }
       ]
     }

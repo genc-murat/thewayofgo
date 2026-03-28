@@ -1,0 +1,113 @@
+{
+  "id": "l6-5-8",
+  "level": 6,
+  "module": 5,
+  "lesson": 8,
+  "title": "Profesyonel Oyun Analizi 1",
+  "description": "Klasik bir profesyonel oyunun baştan sona detaylı analizi.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bu derste, Go tarihine geçmiş klasik bir profesyonel oyunu hamle hamle analiz edeceğiz. Oyuncunun her kararının arkasındaki düşünce sürecini anlamak, kendi oyun anlayışınızı derinleştirecektir. Seçilen oyun, Shusaku'nun ünlü 'Shusaku no Igo' serisinden bir mücadeledir."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 16, "y": 16, "color": "white"},
+        {"x": 15, "y": 3, "color": "black"},
+        {"x": 3, "y": 15, "color": "white"},
+        {"x": 16, "y": 9, "color": "black"},
+        {"x": 9, "y": 16, "color": "white"},
+        {"x": 9, "y": 3, "color": "black"},
+        {"x": 3, "y": 9, "color": "white"},
+        {"x": 13, "y": 3, "color": "black"},
+        {"x": 6, "y": 16, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 10, "y": 9, "type": "territory"},
+        {"x": 13, "y": 9, "type": "good"}
+      ],
+      "annotation": "Klasik oyun analizi - Shusaku stili açılış"
+    },
+    {
+      "type": "text",
+      "content": "Analiz yöntemi: Her hamle için üç soru sorun: 1) Neden burası? (motivasyon), 2) Başka nereye oynanabilirdi? (alternatifler), 3) Sonuç ne oldu? (değerlendirme). Bu yöntemle her oyunu bir ders olarak kullanabilirsiniz."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 16, "y": 16, "color": "white"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 3, "y": 15, "color": "white"}
+          ],
+          "text": "İlk 4 hamle - niyō sage (karşılıklı köşe) stratejisi"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 16, "y": 16, "color": "white"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 3, "y": 15, "color": "white"},
+            {"x": 16, "y": 9, "color": "black"},
+            {"x": 9, "y": 16, "color": "white"}
+          ],
+          "text": "Kenar yaklaşımı - Shusaku'nun sağ kenar vizyonu"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 16, "y": 16, "color": "white"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 3, "y": 15, "color": "white"},
+            {"x": 16, "y": 9, "color": "black"},
+            {"x": 9, "y": 16, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 3, "y": 9, "color": "white"}
+          ],
+          "text": "Her kenar doldu - büyük moyo yarışı başlıyor"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 16, "y": 16, "color": "white"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 3, "y": 15, "color": "white"},
+            {"x": 16, "y": 9, "color": "black"},
+            {"x": 9, "y": 16, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 3, "y": 9, "color": "white"},
+            {"x": 13, "y": 3, "color": "black"},
+            {"x": 6, "y": 16, "color": "white"}
+          ],
+          "text": "Shusaku'un ünlü hamlesi - üst kenarı güçlendirirken sağ kenarı da destekler"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 16, "y": 16, "color": "white"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 3, "y": 15, "color": "white"},
+            {"x": 16, "y": 9, "color": "black"},
+            {"x": 9, "y": 16, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 3, "y": 9, "color": "white"},
+            {"x": 13, "y": 3, "color": "black"},
+            {"x": 6, "y": 16, "color": "white"},
+            {"x": 10, "y": 9, "color": "black"},
+            {"x": 13, "y": 9, "color": "white"}
+          ],
+          "text": "Klasik oyunun orta oyununa geçiş - Shusaku'un derin planı meyvesini veriyor"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l6-5-7"],
+  "next_lesson": "l6-5-9",
+  "required_exercise": null
+}

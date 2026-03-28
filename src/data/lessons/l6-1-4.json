@@ -1,0 +1,120 @@
+{
+  "id": "l6-1-4",
+  "level": 6,
+  "module": 1,
+  "lesson": 4,
+  "title": "Pro Oyun Analizi: Orta Oyun İncelemesi",
+  "description": "Profesyonel oyunların chūban (orta oyun) aşamasını derinlemesine analiz etme.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Chūban (orta oyun), Go'nun en karmaşık ve yaratıcı aşamasıdır. Profesyoneller bu aşamada derin okuma, tesuji ve stratejik vizyonlarını sergiler. Bu derste, pro oyunların orta oyun mücadelelerini analiz ederek ustalık seviyesinde oyun anlayışı geliştireceksiniz."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 5, "color": "white"},
+        {"x": 6, "y": 3, "color": "black"},
+        {"x": 3, "y": 6, "color": "white"},
+        {"x": 9, "y": 3, "color": "black"},
+        {"x": 9, "y": 9, "color": "white"},
+        {"x": 15, "y": 3, "color": "black"},
+        {"x": 3, "y": 15, "color": "white"},
+        {"x": 15, "y": 15, "color": "black"},
+        {"x": 16, "y": 13, "color": "white"},
+        {"x": 13, "y": 16, "color": "black"},
+        {"x": 10, "y": 6, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 5, "y": 4, "type": "good"},
+        {"x": 11, "y": 9, "type": "territory"}
+      ],
+      "annotation": "Pro chūban - karmaşık savaş pozisyonu"
+    },
+    {
+      "type": "text",
+      "content": "Chūban analizi yaparken dikkat edin: Semeai (grup savaşı) potansiyeli, sabaki (hafif yaşama) fırsatları, shinogi (zor durumdan çıkma) hamleleri. Profesyoneller her hamlede birden fazla amaç (nitō) güder."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 3, "y": 15, "color": "white"},
+            {"x": 15, "y": 15, "color": "black"}
+          ],
+          "text": "Orta oyun başlangıcı - gruplar henüz temas etmiyor"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 3, "y": 15, "color": "white"},
+            {"x": 15, "y": 15, "color": "black"},
+            {"x": 10, "y": 6, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"}
+          ],
+          "text": "Temas başlıyor - beyaz üst bölgeye girer"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 3, "y": 15, "color": "white"},
+            {"x": 15, "y": 15, "color": "black"},
+            {"x": 10, "y": 6, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 16, "y": 13, "color": "white"},
+            {"x": 13, "y": 16, "color": "black"}
+          ],
+          "text": "Savaş yoğunlaşıyor - her iki taraf da güçleniyor"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 3, "y": 15, "color": "white"},
+            {"x": 15, "y": 15, "color": "black"},
+            {"x": 10, "y": 6, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 16, "y": 13, "color": "white"},
+            {"x": 13, "y": 16, "color": "black"},
+            {"x": 11, "y": 10, "color": "black"},
+            {"x": 8, "y": 7, "color": "white"}
+          ],
+          "text": "Kritik hamle - siyah tesuji ile avantaj sağlıyor"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 3, "y": 15, "color": "white"},
+            {"x": 15, "y": 15, "color": "black"},
+            {"x": 10, "y": 6, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 16, "y": 13, "color": "white"},
+            {"x": 13, "y": 16, "color": "black"},
+            {"x": 11, "y": 10, "color": "black"},
+            {"x": 8, "y": 7, "color": "white"},
+            {"x": 12, "y": 9, "color": "black"},
+            {"x": 7, "y": 10, "color": "white"}
+          ],
+          "text": "Orta oyun sonucu - pozisyon değerlendirmesi yapın"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l6-1-3"],
+  "next_lesson": "l6-1-5",
+  "required_exercise": null
+}

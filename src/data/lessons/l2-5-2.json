@@ -1,0 +1,172 @@
+{
+  "id": "l2-5-2",
+  "level": 2,
+  "module": 5,
+  "lesson": 2,
+  "title": "Yakalama Pratiği 2",
+  "description": "Grup yakalama alıştırmaları. Bağlı taş gruplarını çevirerek yakalamayı pratik yapın.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bu derste daha büyük grupları yakalama pratiği yapacağız. Bir grup bağlı taşlardan oluşur ve tüm grup birlikte yakalanır. Grubun tüm özgürlüklerini kapatmanız gerekir."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 1, "y": 1, "color": "white"},
+        {"x": 2, "y": 1, "color": "white"},
+        {"x": 2, "y": 2, "color": "white"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 3, "y": 1, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 3, "type": "capture"}
+      ],
+      "annotation": "Problem 1: 3 taşlık beyaz grubun son özgürlüğü (2,3). Siyah buraya oynayarak grubu yakalar."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"}
+          ],
+          "text": "Beyaz grup (3 taş) köşeye yakın. Grubun tek özgürlüğü (2,3)."
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"}
+          ],
+          "text": "Siyah (2,3) oynadı! Beyaz grubun son özgürlüğü kapatıldı - 3 taş yakalandı!",
+          "captured": [{"x": 1, "y": 1}, {"x": 2, "y": 1}, {"x": 2, "y": 2}]
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"}
+          ],
+          "text": "Beyaz grup tahtadan kaldırıldı. Siyah güçlü bir şekil oluşturdu."
+        }
+      ]
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 5, "y": 7, "color": "white"},
+        {"x": 6, "y": 7, "color": "white"},
+        {"x": 7, "y": 7, "color": "white"},
+        {"x": 4, "y": 7, "color": "black"},
+        {"x": 5, "y": 6, "color": "black"},
+        {"x": 6, "y": 6, "color": "black"},
+        {"x": 7, "y": 6, "color": "black"},
+        {"x": 8, "y": 7, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 5, "y": 8, "type": "capture"},
+        {"x": 6, "y": 8, "type": "liberty"},
+        {"x": 7, "y": 8, "type": "liberty"}
+      ],
+      "annotation": "Problem 2: Beyaz grup kenara sıkışmış. 3 özgürlüğü kaldı: (5,8), (6,8), (7,8)."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"},
+            {"x": 7, "y": 7, "color": "white"},
+            {"x": 4, "y": 7, "color": "black"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 8, "y": 7, "color": "black"}
+          ],
+          "text": "3 beyaz taş kenarda. Özgürlükleri: (5,8), (6,8), (7,8). Kenar özgürlükleri zaten yok."
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"},
+            {"x": 7, "y": 7, "color": "white"},
+            {"x": 4, "y": 7, "color": "black"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 8, "y": 7, "color": "black"},
+            {"x": 6, "y": 8, "color": "black"}
+          ],
+          "text": "Siyah (6,8) oynadı. Özgürlük sayısı 2'ye düştü."
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"},
+            {"x": 7, "y": 7, "color": "white"},
+            {"x": 4, "y": 7, "color": "black"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 8, "y": 7, "color": "black"},
+            {"x": 6, "y": 8, "color": "black"},
+            {"x": 5, "y": 8, "color": "black"}
+          ],
+          "text": "Siyah (5,8) oynadı. Beyaz grubun tek özgürlüğü (7,8) kaldı. Atari!"
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"},
+            {"x": 7, "y": 7, "color": "white"},
+            {"x": 4, "y": 7, "color": "black"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 8, "y": 7, "color": "black"},
+            {"x": 6, "y": 8, "color": "black"},
+            {"x": 5, "y": 8, "color": "black"},
+            {"x": 7, "y": 8, "color": "black"}
+          ],
+          "text": "Siyah (7,8) oynadı! Beyaz grubun son özgürlüğü kapatıldı - 3 taş yakalandı!",
+          "captured": [{"x": 5, "y": 7}, {"x": 6, "y": 7}, {"x": 7, "y": 7}]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Grup yakalama stratejisi: Büyük grupları yakalamak için sabırlı olun. Önce grubun kaç özgürlüğü olduğunu sayın, sonra özgürlükleri tek tek kapatın. Kenar ve köşeler yakalamayı kolaylaştırır çünkü özgürlükler zaten sınırlıdır."
+    }
+  ],
+  "prerequisites": ["l2-5-1"],
+  "next_lesson": "l2-5-3",
+  "required_exercise": null
+}

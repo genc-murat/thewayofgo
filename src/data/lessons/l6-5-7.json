@@ -1,0 +1,84 @@
+{
+  "id": "l6-5-7",
+  "level": 6,
+  "module": 5,
+  "lesson": 7,
+  "title": "Yaratıcı Oyun",
+  "description": "Standart kalıpların ötesine geçen yaratıcı ve özgün hamle teknikleri.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Yaratıcı oyun (sōzōtekina go), joseki ve kalıpların ötesine geçip, pozisyona özel özgün hamleler bulma sanatıdır. Bazen en iyi hamle kitaplarda yazmayan hamledir. Go Seigen ve Fujisawa Shuko gibi ustalar, yaratıcılıklarıyla Go tarihini değiştirdi."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 5, "y": 2, "color": "white"},
+        {"x": 2, "y": 5, "color": "black"},
+        {"x": 9, "y": 3, "color": "white"},
+        {"x": 15, "y": 15, "color": "black"},
+        {"x": 16, "y": 13, "color": "white"},
+        {"x": 9, "y": 9, "color": "black"},
+        {"x": 3, "y": 15, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 4, "type": "good"},
+        {"x": 3, "y": 4, "type": "bad"}
+      ],
+      "annotation": "Yaratıcı oyun örneği - standart dışı hamle düşünün"
+    },
+    {
+      "type": "text",
+      "content": "Yaratıcı düşünce teknikleri: 1) Gyaku kangaeru - ters düşünme, normalden kaçının, 2) Sōten - uzak noktaya oynama, 3) Haengma - hızlı hareket (Koreli Go'dan). Standart joseki'nin kötü olduğu durumları tanıyın ve cesur olun."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 2, "color": "white"}
+          ],
+          "text": "Köşe yaklaşımı - standart joseki mi, yaratıcı hamle mi?"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 2, "color": "white"},
+            {"x": 2, "y": 5, "color": "black"}
+          ],
+          "text": "Standart hamle yerine - siyah yaratıcı genişleme yapar"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 2, "color": "white"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 9, "y": 9, "color": "black"}
+          ],
+          "text": "Tengen yaklaşımı - etkileyici vizyon!"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 2, "color": "white"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 15, "y": 15, "color": "black"},
+            {"x": 16, "y": 13, "color": "white"},
+            {"x": 3, "y": 15, "color": "white"}
+          ],
+          "text": "Yaratıcı fuseki tamamlandı - standart olmayan ama etkili!"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l6-5-6"],
+  "next_lesson": "l6-5-8",
+  "required_exercise": null
+}

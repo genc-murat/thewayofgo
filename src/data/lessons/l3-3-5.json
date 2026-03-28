@@ -4,83 +4,260 @@
   "module": 3,
   "lesson": 5,
   "title": "İleri Yose Hesaplama",
-  "description": "Çoklu yose hesaplama.",
-  "duration_minutes": 10,
+  "description": "Miai sayımı (同等値計算), gyaku sente (逆先手) kavramı ve yose değerlerini karşılaştırarak en büyük son oyun hamlesini belirleme teknikleri.",
+  "duration_minutes": 18,
   "content": [
     {
       "type": "text",
-      "content": "İleri Yose Hesaplama: Çoklu yose hesaplama. Bu derste temel kavramları öğreneceksiniz."
+      "content": "Yose (收官) aşamasında doğru hamle sırası oyunu kazandırır. Miai sayımı (見合い計算, miai keisan): bir hamlenin deiri değerini hesaplarken kazandığınız ve rakibin kaybettiği puanları toplarsınız. Örnek: siyah A noktasına oynayarak 2 toprak kazanırsa ve beyaz A'ya oynayarak 2 toprak kazanırsa, bu hamlenin deiri değeri = 2 + 2 = 4 puan. Gyaku sente (逆先手) ise rakibin sente hamlesini önceden oynayarak gote'ye çevirmektir — bu, hamlenin değerini ikiye katlar! Bu derste bu iki ileri tekniği öğreneceksiniz."
     },
     {
       "type": "board",
       "size": 9,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        },
-        {
-          "x": 5,
-          "y": 4,
-          "color": "black"
-        }
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 1, "y": 1, "color": "black"},
+        {"x": 6, "y": 2, "color": "white"},
+        {"x": 7, "y": 2, "color": "white"},
+        {"x": 8, "y": 2, "color": "white"},
+        {"x": 7, "y": 1, "color": "white"},
+        {"x": 8, "y": 1, "color": "white"},
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 8, "y": 0, "color": "white"},
+        {"x": 7, "y": 0, "color": "white"}
       ],
-      "highlights": [],
-      "annotation": "İleri Yose Hesaplama"
+      "highlights": [
+        {"x": 3, "y": 2, "type": "vital"},
+        {"x": 5, "y": 2, "type": "vital"},
+        {"x": 3, "y": 1, "type": "territory"},
+        {"x": 4, "y": 1, "type": "territory"},
+        {"x": 5, "y": 1, "type": "territory"}
+      ],
+      "annotation": "Alt kenar miai pozisyonu — (3,2) ve (5,2) eşdeğer gote yose hamleleri, deiri değeri: 3 puan"
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 7, "y": 2, "color": "white"},
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 7, "y": 1, "color": "white"},
+            {"x": 8, "y": 1, "color": "white"},
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 8, "y": 0, "color": "white"},
+            {"x": 7, "y": 0, "color": "white"}
           ],
-          "text": "Pozisyonu inceleyin"
+          "text": "Alt kenar yose pozisyonu — (3,2) ve (5,2) miai noktaları. Her birinin deiri değeri: 3 puan"
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 7, "y": 2, "color": "white"},
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 7, "y": 1, "color": "white"},
+            {"x": 8, "y": 1, "color": "white"},
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 8, "y": 0, "color": "white"},
+            {"x": 7, "y": 0, "color": "white"},
+            {"x": 3, "y": 2, "color": "black"}
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Siyah (3,2) — gote! Sol tarafı kapattı, 1 toprak kazandı + beyaz 2 toprak kaybetti = 3 puan"
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 7, "y": 2, "color": "white"},
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 7, "y": 1, "color": "white"},
+            {"x": 8, "y": 1, "color": "white"},
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 8, "y": 0, "color": "white"},
+            {"x": 7, "y": 0, "color": "white"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 5, "y": 2, "color": "white"}
           ],
-          "text": "İleri adımları düşünün"
+          "text": "Beyaz (5,2) ile miai cevap verir — sağ tarafı kapattı. Miai sonucu: net sıfır, doğru denge!"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 7, "y": 2, "color": "white"},
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 7, "y": 1, "color": "white"},
+            {"x": 8, "y": 1, "color": "white"},
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 8, "y": 0, "color": "white"},
+            {"x": 7, "y": 0, "color": "white"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 5, "y": 2, "color": "white"},
+            {"x": 2, "y": 4, "color": "black"}
+          ],
+          "text": "Siyah şimdi (2,4) sente hamlesini oynar — beyaz (3,4) cevap vermek zorunda! Sente = ücretsiz puan"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 7, "y": 2, "color": "white"},
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 7, "y": 1, "color": "white"},
+            {"x": 8, "y": 1, "color": "white"},
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 8, "y": 0, "color": "white"},
+            {"x": 7, "y": 0, "color": "white"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 5, "y": 2, "color": "white"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 3, "y": 4, "color": "white"}
+          ],
+          "text": "Beyaz (3,4) cevap — sente doğrulandı! Siyah miai + sente ile toplam 5 puan kazanç sağladı"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Gyaku sente (逆先手) prensibi: Eğer rakip bir noktaya sente oynayacaksa, siz o noktayı önce oynayarak rakibin sentesini gote'ye çevirirsiniz. Gyaku sente'nin değeri = orijinal sente değeri × 2, çünkü hem rakibin hamlesini engeller hem de kendi başınıza oynamış olursunuz. Kural: büyük gyaku sente hamleleri her zaman küçük gote hamlelerden önceliklidir."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 6, "y": 3, "color": "white"},
+        {"x": 6, "y": 2, "color": "white"},
+        {"x": 2, "y": 6, "color": "black"},
+        {"x": 3, "y": 6, "color": "black"},
+        {"x": 2, "y": 7, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 3, "y": 3, "type": "vital"},
+        {"x": 4, "y": 3, "type": "vital"},
+        {"x": 3, "y": 2, "type": "territory"},
+        {"x": 4, "y": 2, "type": "territory"},
+        {"x": 4, "y": 4, "type": "bad"}
+      ],
+      "annotation": "Gyaku sente pozisyonu — beyaz (4,3) sente tehdidi, siyah (3,3) ile engellemeli"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 6, "y": 3, "color": "white"},
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"}
+          ],
+          "text": "Orta sınır pozisyonu — beyaz (4,3) oynarsa sente olur, siyah (3,3) cevap vermek zorunda kalır"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 6, "y": 3, "color": "white"},
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"}
+          ],
+          "text": "Gyaku sente! Siyah (3,3) oynar — beyazın sente tehdidini gote'ye çevirdi, 4 puanlık hamle!"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 6, "y": 3, "color": "white"},
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 7, "y": 5, "color": "white"}
+          ],
+          "text": "Beyaz başka yerde gote oynamak zorunda — gyaku sente çift değerli: 4 puan + initiatif (先手権) korundu"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 6, "y": 3, "color": "white"},
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 4, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah (4,6) ile yukarıdaki toprağını da güçlendirir — gyaku sente + pekiştirme = toplam 6 puan kazanç!"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 6, "y": 3, "color": "white"},
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 5, "y": 7, "color": "white"}
+          ],
+          "text": "Beyaz (5,7) — son büyük yose. Siyah gyaku sente sayesinde 6 puanlık avantaj sağladı. Doğru yose sırası kazandı!"
         }
       ]
     }
@@ -88,6 +265,6 @@
   "prerequisites": [
     "l3-3-4"
   ],
-  "next_lesson": null,
+  "next_lesson": "l3-3-6",
   "required_exercise": "e3-3-5"
 }

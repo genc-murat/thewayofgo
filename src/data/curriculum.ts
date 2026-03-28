@@ -29,7 +29,7 @@ export const LEVELS: LevelDef[] = [
     title: 'Temel Teknikler',
     description: 'Yakalama teknikleri, bağlantılar ve tsumego',
     modules: [
-      { id: 1, title: 'Esir Etme Teknikleri', lessonCount: 8 },
+      { id: 1, title: 'Esir Etme Teknikleri', lessonCount: 11 },
       { id: 2, title: 'Bağlantı Kurma', lessonCount: 4 },
       { id: 3, title: 'Tsumego (Yaşam ve Ölüm)', lessonCount: 8 },
       { id: 4, title: 'Oyun Sonu (Yose)', lessonCount: 6 },
@@ -43,7 +43,7 @@ export const LEVELS: LevelDef[] = [
     description: 'Strateji ve taktikler',
     modules: [
       { id: 1, title: 'Açılış (Fuseki)', lessonCount: 6 },
-      { id: 2, title: 'Orta Oyun', lessonCount: 7 },
+      { id: 2, title: 'Orta Oyun', lessonCount: 10 },
       { id: 3, title: 'Bitiriş (Yose)', lessonCount: 6 },
       { id: 4, title: 'Tesuji Kalıpları', lessonCount: 7 },
       { id: 5, title: 'Saldırı Savunma', lessonCount: 7 },
@@ -58,7 +58,7 @@ export const LEVELS: LevelDef[] = [
       { id: 1, title: 'Joseki', lessonCount: 5 },
       { id: 2, title: 'Etki Alanları', lessonCount: 6 },
       { id: 3, title: 'Kalınlaştırma', lessonCount: 5 },
-      { id: 4, title: 'İstila', lessonCount: 6 },
+      { id: 4, title: 'İstila', lessonCount: 9 },
       { id: 5, title: 'Sentez', lessonCount: 6 },
       { id: 6, title: 'Derinlemesine', lessonCount: 7 },
     ],

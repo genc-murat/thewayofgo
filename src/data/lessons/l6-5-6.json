@@ -1,0 +1,106 @@
+{
+  "id": "l6-5-6",
+  "level": 6,
+  "module": 5,
+  "lesson": 6,
+  "title": "Pozisyonel Yargı",
+  "description": "Karmaşık pozisyonlarda doğru yargı verme ve karar alma yeteneği.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Pozisyonel yargı (ichigenTEki handan), bir oyunun gidişatını doğru okuma ve uygun stratejiyi belirleme yeteneğidir. Hangi gruba yatırım yapmalı? Hangi savaşten kaçınmalı? Bu sorulara doğru yanıt vermek, usta ile amatör arasındaki en büyük farktır."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 5, "color": "white"},
+        {"x": 6, "y": 2, "color": "black"},
+        {"x": 9, "y": 3, "color": "white"},
+        {"x": 15, "y": 3, "color": "black"},
+        {"x": 16, "y": 5, "color": "white"},
+        {"x": 3, "y": 15, "color": "black"},
+        {"x": 9, "y": 15, "color": "white"},
+        {"x": 15, "y": 15, "color": "black"},
+        {"x": 9, "y": 9, "color": "white"},
+        {"x": 6, "y": 6, "color": "black"},
+        {"x": 12, "y": 12, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 5, "y": 3, "type": "good"},
+        {"x": 12, "y": 3, "type": "bad"}
+      ],
+      "annotation": "Pozisyonel yargı - nereye yatırım yapmalı?"
+    },
+    {
+      "type": "text",
+      "content": "Pozisyonel yargıda üç prensip: 1) Jōzu o sente ni suru - acil hamleyi önce oynatan taraf kazanır, 2) Dondon sagaru - geri çekilmek bazen en iyi ilerlemedir, 3) Kurai o miru - pozisyonun ağırlığını hissedin. Hafif (karui) ve ağır (omoi) taşları ayırt edin."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 3, "y": 15, "color": "black"},
+            {"x": 15, "y": 15, "color": "white"}
+          ],
+          "text": "Pozisyon analizi - her bölgenin ağırlığını değerlendirin"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 3, "y": 15, "color": "black"},
+            {"x": 15, "y": 15, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 6, "y": 2, "color": "black"}
+          ],
+          "text": "Sol üst köşe gergin - yatırım yapmalı mıyız?"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 3, "y": 15, "color": "black"},
+            {"x": 15, "y": 15, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 6, "y": 2, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 12, "y": 12, "color": "white"}
+          ],
+          "text": "Doğru yargı: siyah hafif oynar, başka yerde yatırım yapar"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 3, "y": 15, "color": "black"},
+            {"x": 15, "y": 15, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 6, "y": 2, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 12, "y": 12, "color": "white"},
+            {"x": 16, "y": 5, "color": "white"},
+            {"x": 5, "y": 3, "color": "black"}
+          ],
+          "text": "Yargı doğru sonuç veriyor - siyah öne geçiyor"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l6-5-5"],
+  "next_lesson": "l6-5-7",
+  "required_exercise": null
+}

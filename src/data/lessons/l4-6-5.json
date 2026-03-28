@@ -1,0 +1,99 @@
+{
+  "id": "l4-6-5",
+  "level": 4,
+  "module": 6,
+  "lesson": 5,
+  "title": "Bütünleşik Strateji 1",
+  "description": "Fuseki'den yose'ye tüm aşamaları birleştiren strateji planlama.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bütünleşik strateji, oyunun her aşamasını birbirine bağlayan genel plandır. Fuseki'de açılış kalıpları, chuban'da etki ve istila, yose'de bölge hesaplaması - hepsi birbirini etkiler. Bu derste tam bir oyun stratejisi oluşturacağız."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 9, "y": 9, "color": "black"},
+        {"x": 10, "y": 9, "color": "white"},
+        {"x": 9, "y": 10, "color": "white"},
+        {"x": 6, "y": 3, "color": "black"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 6, "y": 9, "color": "white"},
+        {"x": 6, "y": 6, "color": "black"},
+        {"x": 4, "y": 6, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 6, "y": 6, "type": "good"},
+        {"x": 4, "y": 6, "type": "good"},
+        {"x": 7, "y": 5, "type": "territory"},
+        {"x": 5, "y": 7, "type": "territory"}
+      ],
+      "annotation": "Bütünleşik strateji: köşeler + kenarlar + merkez"
+    },
+    {
+      "type": "text",
+      "content": "Strateji bileşenleri: 1) Fuseki planı: hangi köşelerde hangi joseki 2) Chuban planı: etki alanları nereye 3) Savunma planı: zayıf gruplar nasıl korunur 4) Yose planı: büyük yose hamleleri öncelik sırası. Her bileşen diğerini desteklemeli."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 9, "y": 9, "color": "black"}
+          ],
+          "text": "Fuseki: Siyah diyagonal köşeleri seçti"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 10, "y": 9, "color": "white"},
+            {"x": 9, "y": 10, "color": "white"}
+          ],
+          "text": "İki köşede josekiler gelişiyor"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 10, "y": 9, "color": "white"},
+            {"x": 9, "y": 10, "color": "white"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 6, "y": 9, "color": "white"}
+          ],
+          "text": "Kenar hamleleri - chuban başlıyor"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 10, "y": 9, "color": "white"},
+            {"x": 9, "y": 10, "color": "white"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 6, "y": 9, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah merkez + sol kenar = bütünleşik moyo!"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l4-6-4"],
+  "next_lesson": "l4-6-6",
+  "required_exercise": null
+}

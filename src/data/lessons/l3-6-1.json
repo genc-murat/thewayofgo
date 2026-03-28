@@ -1,0 +1,124 @@
+{
+  "id": "l3-6-1",
+  "level": 3,
+  "module": 6,
+  "lesson": 1,
+  "title": "İleri Yaşam Problemleri 1",
+  "description": "Karmaşık iç boşluk şekillerinde hayati nokta bulma.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "İleri tsumego'da (詰碁), tamamen kuşatılmış grupların yaşamak için hangi noktayı oynaması gerektiğini bulmak esastır. Hayati nokta (急所, kyūsho), grubun yaşam ile ölüm arasındaki farkı belirleyen tek hamledir."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 1, "y": 1, "color": "white"},
+        {"x": 2, "y": 1, "color": "white"},
+        {"x": 3, "y": 1, "color": "white"},
+        {"x": 4, "y": 1, "color": "white"},
+        {"x": 1, "y": 2, "color": "white"},
+        {"x": 4, "y": 2, "color": "white"},
+        {"x": 1, "y": 3, "color": "white"},
+        {"x": 4, "y": 3, "color": "white"},
+        {"x": 1, "y": 4, "color": "white"},
+        {"x": 2, "y": 4, "color": "white"},
+        {"x": 3, "y": 4, "color": "white"},
+        {"x": 4, "y": 4, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 3, "type": "good"},
+        {"x": 3, "y": 2, "type": "good"}
+      ],
+      "annotation": "Dört boş noktalı şekil: (2,2),(3,2),(2,3),(3,3). Hayati nokta neresi?"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 4, "y": 1, "color": "white"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"},
+            {"x": 2, "y": 4, "color": "white"},
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 4, "y": 4, "color": "white"}
+          ],
+          "text": "Beyaz grup 2x2 iç boşluğa sahip: (2,2),(3,2),(2,3),(3,3). Beyaz hamle sırasındaysa nereye oynamalı?"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 4, "y": 1, "color": "white"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"},
+            {"x": 2, "y": 4, "color": "white"},
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"}
+          ],
+          "text": "Beyaz (2,2) oynadı! Kalan boşluklar: (3,2),(2,3),(3,3). Siyah (3,3) oynarsa bent three oluşur — ama beyaz hayati noktayı alır."
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 4, "y": 1, "color": "white"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"},
+            {"x": 2, "y": 4, "color": "white"},
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"}
+          ],
+          "text": "Siyah (3,3) oynadı. Kalan: (3,2),(2,3). Beyaz (2,3) oynarsa (3,2) tek göz — yeterli değil."
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 4, "y": 1, "color": "white"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"},
+            {"x": 2, "y": 4, "color": "white"},
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 2, "color": "white"}
+          ],
+          "text": "Beyaz (3,2) oynadı — iki göz! (2,3) ve hiçbir yer. Hayır — sadece (2,3) boşluk kaldı, tek göz. 2x2'ye köşeden oynamak Ölüm getirir!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "2x2 kare kuralı: Tamamen kuşatılmış 2x2 iç boşlukta, beyaz (köşe) oynarsa bent three kalır ve ÖLÜ. Ama siyah önce oynarsa köşeyi alıp beyazı öldürür. Sıra kimdeyse o kazanır!"
+    }
+  ],
+  "prerequisites": ["l3-5-7"],
+  "next_lesson": "l3-6-2",
+  "required_exercise": null
+}

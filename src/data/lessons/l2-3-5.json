@@ -3,91 +3,192 @@
   "level": 2,
   "module": 3,
   "lesson": 5,
-  "title": "İleri Tsumego",
-  "description": "Karmaşık yaşatma teknikleri.",
-  "duration_minutes": 10,
+  "title": "İleri Tsumego Problemleri",
+  "description": "Çok hamleli yaşam-ölüm (tsumego) problemleri, hayati noktalar (koten) ve göz yapan tesuji hamlelerini öğrenin.",
+  "duration_minutes": 14,
   "content": [
     {
       "type": "text",
-      "content": "İleri Tsumego: Karmaşık yaşatma teknikleri. Bu derste temel kavramları öğreneceksiniz."
+      "content": "Tsumego (生活と死の問題), Go'nun en derin problemleridir. Bu derste ileri düzey yaşam-ölüm hesaplaması öğreneceksiniz: (1) grup yaşatmak için hayati nokta (koten) bulma, (2) göz yapan tesuji (zekice hamle) teknikleri, (3) rakibin grubunu öldürmek için nakade (ölüm noktası) hamleleri. Ana kural: Bir grup yaşamak için iki göz (me) yapmalıdır. Hayati nokta, hem saldırıda hem savunmada belirleyicidir!"
     },
     {
       "type": "board",
       "size": 9,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        },
-        {
-          "x": 5,
-          "y": 4,
-          "color": "black"
-        }
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 2, "y": 0, "color": "white"},
+        {"x": 2, "y": 1, "color": "white"},
+        {"x": 0, "y": 3, "color": "white"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 1, "y": 4, "color": "white"}
       ],
-      "highlights": [],
-      "annotation": "İleri Tsumego"
+      "highlights": [
+        {"x": 1, "y": 1, "type": "vital"},
+        {"x": 1, "y": 2, "type": "liberty"}
+      ],
+      "annotation": "Siyah köşe grubu çevrildi! Hayati nokta (koten) (1,1)'dir — Siyah burayı oynarsa iki göz yapar, Beyaz oynarsa nakade ile grup ölür."
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 0, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 0, "y": 3, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"}
           ],
-          "text": "Pozisyonu inceleyin"
+          "highlights": [{"x": 1, "y": 1, "type": "vital"}],
+          "text": "Problem: Siyah köşe grubu çevrildi. İç boşluklar: (1,1) ve (1,2). Siyah'ın hamlesi — hayati noktayı bulun!"
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 2, "y": 0, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 0, "y": 3, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"}
           ],
-          "text": "Taşlar yerleşti"
+          "highlights": [
+            {"x": 0, "y": 0, "type": "good"},
+            {"x": 1, "y": 2, "type": "good"}
+          ],
+          "text": "Siyah (1,1) — tesuji! Şimdi iki ayrı göz bölgesi oluştu: (0,0) köşe gözü ve (1,2) iç gözü. Grup yaşıyor!"
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 0, "y": 3, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"}
           ],
-          "text": "İleri adımları düşünün"
+          "highlights": [
+            {"x": 1, "y": 2, "type": "good"}
+          ],
+          "text": "Beyaz son çare (0,0)'ı doldurdu ama Siyah zaten iki göze sahip: (1,2) hâlâ boş. Beyaz (1,2)'ye oynayamaz — kendi intiharı olur. Siyah yaşıyor!"
         }
       ]
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 2, "y": 0, "color": "white"},
+        {"x": 2, "y": 1, "color": "white"},
+        {"x": 0, "y": 3, "color": "white"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 1, "y": 4, "color": "white"},
+        {"x": 1, "y": 1, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 0, "y": 0, "type": "bad"},
+        {"x": 1, "y": 2, "type": "bad"}
+      ],
+      "annotation": "Beyaz önce (1,1) nakade oynadı! Siyah grubun içi tek büyük boşluğa dönüştü — sahte göz (fake eye). Grup ÖLDÜ."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 0, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 0, "y": 3, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"},
+            {"x": 1, "y": 1, "color": "white"}
+          ],
+          "highlights": [{"x": 1, "y": 2, "type": "bad"}, {"x": 0, "y": 0, "type": "bad"}],
+          "text": "Beyaz (1,1) nakade hamlesi! Siah'ın iç boşlukları tek bir bölgede birleşti: (0,0) ve (1,2). Tek göz = ölüm."
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 0, "y": 3, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"},
+            {"x": 1, "y": 1, "color": "white"}
+          ],
+          "text": "Siyah çaresiz (0,0)'ı doldurdu. Tek boşluk (1,2) kaldı — Beyaz (1,2)'ye oynayacak ve Siyah grup tamamen ölecek."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 0, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 0, "y": 3, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"},
+            {"x": 1, "y": 1, "color": "white"},
+            {"x": 1, "y": 2, "color": "white"}
+          ],
+          "captured": [
+            {"x": 1, "y": 0},
+            {"x": 0, "y": 1},
+            {"x": 0, "y": 2},
+            {"x": 2, "y": 2},
+            {"x": 1, "y": 3},
+            {"x": 0, "y": 0}
+          ],
+          "highlights": [{"x": 1, "y": 2, "type": "bad"}],
+          "text": "Beyaz (1,2) — Siyah grubun son özgürlüğü kapandı! 6 Siyah taş yakalandı. Nakade başarılı — hayati noktayı kaçırmak grubun ölümü demek."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Tsumego'nun altın kuralı: Her zaman hayati noktayı (koten) önce bulun! Aynı nokta saldırıda nakade (öldürme), savunmada tesuji (yaşatma) işlevi görür. İki göz (me) yapabilen grup yaşar, yapamayan ölür. Çok hamleli tsumego çözerken tüm varyantları okuyun — bazen ilk hamle obvious değil, birkaç hamle derin okuma gerekir. Sente hamlelerle rakibi zorlayın ve gote kalmaktan kaçının!"
     }
   ],
-  "prerequisites": [
-    "l2-3-4"
-  ],
-  "next_lesson": null,
+  "prerequisites": ["l2-3-4"],
+  "next_lesson": "l2-3-6",
   "required_exercise": "e2-3-5"
 }

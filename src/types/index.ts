@@ -116,7 +116,10 @@ export type ExerciseType =
   | 'endgame'
   | 'opening'
   | 'tesuji'
-  | 'reading_comprehension';
+  | 'reading_comprehension'
+  | 'shape_recognition'
+  | 'move_evaluation'
+  | 'position_judgment';
 
 export interface MoveOption {
   x: number;
@@ -212,7 +215,7 @@ export interface SRSCardInfo {
 // Study plan types
 export interface StudyPlanItemData {
   id: string;
-  type: 'review' | 'lesson' | 'exercise' | 'game';
+  type: 'review' | 'lesson' | 'exercise' | 'game' | 'daily_problem';
   title: string;
   description: string;
   estimated_minutes: number;

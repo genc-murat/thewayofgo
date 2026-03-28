@@ -4,83 +4,273 @@
   "module": 2,
   "lesson": 3,
   "title": "Etki Hesaplama",
-  "description": "Taş etkisini ölçme teknikleri.",
-  "duration_minutes": 10,
+  "description": "Taşların etki alanını (影響力) ölçme, kalınlığı (厚さ) değerlendirme ve etkiyi toprağa dönüştürme teknikleri.",
+  "duration_minutes": 16,
   "content": [
     {
       "type": "text",
-      "content": "Etki Hesaplama: Taş etkisini ölçme teknikleri. Bu derste temel kavramları öğreneceksiniz."
+      "content": "Etki (影響力, eikyōryoku), taşların tahta üzerindeki görünmez gücüdür. Kalınlık (厚さ, atsusa) güçlü, sarsılmaz bir duvarın yaydığı güçlü etkidir. Etki hesaplama kuralları: 1) Tek bir taşın etki alanı yaklaşık 2 hat (iken) mesafedir 2) Kalın duvar (厚壁, kōkabe) 4-5 hat mesafeye etki eder 3) Zayıf taşların (弱石, jowaku ishi) etki alanı küçüktür ve güvenilmez 4) İki kalın duvar birbirine bakarsa aradaki alan etki çatışma bölgesi (影響力衝突) olur. Kalınlık tek başına puan vermez — onu toprağa (地, ji) dönüştürmeniz gerekir."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 13,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        },
-        {
-          "x": 5,
-          "y": 4,
-          "color": "black"
-        }
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 2, "y": 5, "color": "black"},
+        {"x": 2, "y": 6, "color": "black"},
+        {"x": 2, "y": 7, "color": "black"},
+        {"x": 2, "y": 8, "color": "black"},
+        {"x": 2, "y": 9, "color": "black"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 3, "y": 9, "color": "black"},
+        {"x": 1, "y": 5, "color": "black"},
+        {"x": 9, "y": 3, "color": "white"},
+        {"x": 10, "y": 6, "color": "white"},
+        {"x": 9, "y": 9, "color": "white"}
       ],
-      "highlights": [],
-      "annotation": "Etki Hesaplama"
+      "highlights": [
+        {"x": 5, "y": 5, "type": "good"},
+        {"x": 5, "y": 7, "type": "good"},
+        {"x": 4, "y": 6, "type": "territory"},
+        {"x": 5, "y": 6, "type": "territory"},
+        {"x": 3, "y": 6, "type": "territory"},
+        {"x": 1, "y": 6, "type": "bad"}
+      ],
+      "annotation": "Siyah kalınlık duvarı — etki alanı sağa doğru 4-5 hat yayılır, (1,6) çok yakın = kötü"
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 2, "y": 8, "color": "black"},
+            {"x": 2, "y": 9, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 10, "y": 6, "color": "white"},
+            {"x": 9, "y": 9, "color": "white"}
           ],
-          "text": "Pozisyonu inceleyin"
+          "text": "Siyah sol kenarda güçlü kalınlık duvarı (厚壁) — etki sağa 4-5 satır yayılır"
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 2, "y": 8, "color": "black"},
+            {"x": 2, "y": 9, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 10, "y": 6, "color": "white"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 5, "y": 6, "color": "black"}
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Siyah (5,6) — kalınlığı kullanarak toprak iddiası! Etki toprağa dönüşüyor (地化, jika)"
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 2, "y": 8, "color": "black"},
+            {"x": 2, "y": 9, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 10, "y": 6, "color": "white"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 7, "y": 5, "color": "white"}
           ],
-          "text": "İleri adımları düşünün"
+          "text": "Beyaz (7,5) — etkiyi azaltmaya çalışıyor (削り, kezuri), ama siyah kalınlık hala baskın"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 2, "y": 8, "color": "black"},
+            {"x": 2, "y": 9, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 10, "y": 6, "color": "white"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 5, "y": 4, "color": "black"}
+          ],
+          "text": "Siyah (5,4) — üst toprak iddiasını güçlendirir, kalınlığa yaslanarak (厚さに寄り) genişler"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 2, "y": 8, "color": "black"},
+            {"x": 2, "y": 9, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 10, "y": 6, "color": "white"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 5, "y": 8, "color": "black"}
+          ],
+          "text": "Siyah (5,8) — alt toprak da güvende! Kalınlık 18+ puanlık toprağa dönüştü (地化 başarılı)"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Etki çatışma bölgesi (影響力衝突領域): iki kalın duvar birbirine baktığında, aradaki merkez alan her iki oyuncunun etki alanında olur. Bu bölgeyi kontrol eden oyuncu büyük avantaj kazanır. Strateji: rakibin kalınlığına yakın oynamayın (etkisi altında kalırsınız), kendi kalınlığınızdan yararlanarak çatışma bölgesine doğru genişleyin. Kural: kalınlıktan uzaklaşarak (厚さから離れて) oynamak, kalınlığı verimli kullanmanın anahtarıdır."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 5, "y": 1, "color": "black"},
+        {"x": 6, "y": 1, "color": "black"},
+        {"x": 7, "y": 1, "color": "black"},
+        {"x": 8, "y": 1, "color": "black"},
+        {"x": 6, "y": 2, "color": "black"},
+        {"x": 7, "y": 2, "color": "black"},
+        {"x": 5, "y": 11, "color": "white"},
+        {"x": 6, "y": 11, "color": "white"},
+        {"x": 7, "y": 11, "color": "white"},
+        {"x": 8, "y": 11, "color": "white"},
+        {"x": 6, "y": 10, "color": "white"},
+        {"x": 7, "y": 10, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 6, "y": 5, "type": "vital"},
+        {"x": 7, "y": 6, "type": "vital"},
+        {"x": 6, "y": 7, "type": "vital"},
+        {"x": 7, "y": 5, "type": "territory"},
+        {"x": 6, "y": 6, "type": "territory"}
+      ],
+      "annotation": "Etki çatışma bölgesi — iki kalın duvar arasındaki kritik alan, kontrol eden kazanır"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 5, "y": 1, "color": "black"},
+            {"x": 6, "y": 1, "color": "black"},
+            {"x": 7, "y": 1, "color": "black"},
+            {"x": 8, "y": 1, "color": "black"},
+            {"x": 6, "y": 2, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 5, "y": 11, "color": "white"},
+            {"x": 6, "y": 11, "color": "white"},
+            {"x": 7, "y": 11, "color": "white"},
+            {"x": 8, "y": 11, "color": "white"},
+            {"x": 6, "y": 10, "color": "white"},
+            {"x": 7, "y": 10, "color": "white"}
+          ],
+          "text": "İki kalın duvar karşı karşıya — merkez (6,5)-(7,7) etki çatışma bölgesi"
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 1, "color": "black"},
+            {"x": 6, "y": 1, "color": "black"},
+            {"x": 7, "y": 1, "color": "black"},
+            {"x": 8, "y": 1, "color": "black"},
+            {"x": 6, "y": 2, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 5, "y": 11, "color": "white"},
+            {"x": 6, "y": 11, "color": "white"},
+            {"x": 7, "y": 11, "color": "white"},
+            {"x": 8, "y": 11, "color": "white"},
+            {"x": 6, "y": 10, "color": "white"},
+            {"x": 7, "y": 10, "color": "white"},
+            {"x": 6, "y": 5, "color": "black"}
+          ],
+          "text": "Siyah (6,5) — çatışma bölgesine giriyor! Kalınlıktan 3 hat mesafede, ideal pozisyon"
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 1, "color": "black"},
+            {"x": 6, "y": 1, "color": "black"},
+            {"x": 7, "y": 1, "color": "black"},
+            {"x": 8, "y": 1, "color": "black"},
+            {"x": 6, "y": 2, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 5, "y": 11, "color": "white"},
+            {"x": 6, "y": 11, "color": "white"},
+            {"x": 7, "y": 11, "color": "white"},
+            {"x": 8, "y": 11, "color": "white"},
+            {"x": 6, "y": 10, "color": "white"},
+            {"x": 7, "y": 10, "color": "white"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 7, "y": 7, "color": "white"}
+          ],
+          "text": "Beyaz (7,7) — karşıdan etki ile cevap veriyor, çatışma bölgesi bölünmeye başlıyor"
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 1, "color": "black"},
+            {"x": 6, "y": 1, "color": "black"},
+            {"x": 7, "y": 1, "color": "black"},
+            {"x": 8, "y": 1, "color": "black"},
+            {"x": 6, "y": 2, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 5, "y": 11, "color": "white"},
+            {"x": 6, "y": 11, "color": "white"},
+            {"x": 7, "y": 11, "color": "white"},
+            {"x": 8, "y": 11, "color": "white"},
+            {"x": 6, "y": 10, "color": "white"},
+            {"x": 7, "y": 10, "color": "white"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 7, "y": 7, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah (6,6) — bağlantı! Çatışma bölgesini kendi lehine belirledi, merkez kontrolü sağladı"
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 1, "color": "black"},
+            {"x": 6, "y": 1, "color": "black"},
+            {"x": 7, "y": 1, "color": "black"},
+            {"x": 8, "y": 1, "color": "black"},
+            {"x": 6, "y": 2, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 5, "y": 11, "color": "white"},
+            {"x": 6, "y": 11, "color": "white"},
+            {"x": 7, "y": 11, "color": "white"},
+            {"x": 8, "y": 11, "color": "white"},
+            {"x": 6, "y": 10, "color": "white"},
+            {"x": 7, "y": 10, "color": "white"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 7, "y": 7, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 6, "y": 8, "color": "white"}
+          ],
+          "text": "Beyaz (6,8) ile bölgeyi paylaştırıyor ama siyah alt-merkez kontrolünü sağlamlaştırdı. Etki hesaplaması doğru!"
         }
       ]
     }

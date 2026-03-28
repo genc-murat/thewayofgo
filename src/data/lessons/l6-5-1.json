@@ -1,0 +1,102 @@
+{
+  "id": "l6-5-1",
+  "level": 6,
+  "module": 5,
+  "lesson": 1,
+  "title": "Usta Seviye Açılış Stratejileri",
+  "description": "Profesyonel seviye fuseki anlayışı ve modern açılış teorisi.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Usta seviye fuseki, sadece köşe joseki oynamak değil, tüm tahtayı bir bütün olarak değerlendirmektir. Modern Go teorisinde, açılışın amacı bölge elde etmekten ziyade, chūban'da avantajlı pozisyon oluşturmaktır. Bu derste, en güncel profesyonel açılış stratejilerini öğreneceksiniz."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 9, "y": 3, "color": "white"},
+        {"x": 15, "y": 3, "color": "black"},
+        {"x": 3, "y": 9, "color": "white"},
+        {"x": 9, "y": 9, "color": "black"},
+        {"x": 15, "y": 9, "color": "white"},
+        {"x": 3, "y": 15, "color": "black"},
+        {"x": 9, "y": 15, "color": "white"},
+        {"x": 15, "y": 15, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 6, "y": 6, "type": "territory"},
+        {"x": 12, "y": 12, "type": "territory"}
+      ],
+      "annotation": "Modern fuseki - tüm hoshi noktalarının kontrolü"
+    },
+    {
+      "type": "text",
+      "content": "Modern açılışta üç yaklaşım: 1) Kobayashi stili - etki odaklı, 2) Takemiya stili - büyük bölge (moyo) odaklı, 3) Cho stili - dengeli ve esnek. Her stilin avantaj ve dezavantajlarını bilin ve kendi oyununuza uygun olanı seçin."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 16, "y": 4, "color": "white"}
+          ],
+          "text": "Modern açılış - 3-3 ve 4-4 köşe kombinasyonu"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 16, "y": 4, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 3, "y": 16, "color": "white"}
+          ],
+          "text": "Kenar yaklaşımı - üst kenar siyahın, sol kenar beyazın"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 16, "y": 4, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 3, "y": 16, "color": "white"},
+            {"x": 16, "y": 16, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"}
+          ],
+          "text": "Tengen hamlesi - merkez vizyonu"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 16, "y": 4, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 3, "y": 16, "color": "white"},
+            {"x": 16, "y": 16, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 13, "y": 13, "color": "white"}
+          ],
+          "text": "Etki dağılımı - her taş birden fazla bölgeye katkı sağlıyor"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 16, "y": 4, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 3, "y": 16, "color": "white"},
+            {"x": 16, "y": 16, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 13, "y": 13, "color": "white"},
+            {"x": 2, "y": 9, "color": "black"},
+            {"x": 17, "y": 9, "color": "white"}
+          ],
+          "text": "Fuseki tamamlandı - chūban için hazır mısınız?"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l6-4-5"],
+  "next_lesson": "l6-5-2",
+  "required_exercise": null
+}

@@ -1,0 +1,117 @@
+{
+  "id": "l4-6-6",
+  "level": 4,
+  "module": 6,
+  "lesson": 6,
+  "title": "Bütünleşik Strateji 2",
+  "description": "Karmaşık oyun pozisyonlarında stratejik kararlar alma.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bu derste karmaşık bir pozisyonda stratejik kararlar alacağız. İstila mı, savunma mı? Sente fırsatını kullanmak mı, yoksa tenuki (başka yere oynamak) mı? Her karar, okuma derinliğine ve pozisyon değerlendirmesine dayanır."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 10, "y": 2, "color": "black"},
+        {"x": 9, "y": 2, "color": "white"},
+        {"x": 10, "y": 3, "color": "white"},
+        {"x": 2, "y": 10, "color": "white"},
+        {"x": 10, "y": 10, "color": "white"},
+        {"x": 6, "y": 4, "color": "black"},
+        {"x": 6, "y": 8, "color": "black"},
+        {"x": 4, "y": 6, "color": "black"},
+        {"x": 7, "y": 6, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 6, "y": 4, "type": "good"},
+        {"x": 6, "y": 8, "type": "good"},
+        {"x": 7, "y": 6, "type": "bad"},
+        {"x": 5, "y": 5, "type": "territory"}
+      ],
+      "annotation": "Siyah merkezde güçlü ama beyaz köşeleri tuttu"
+    },
+    {
+      "type": "text",
+      "content": "Stratejik karar noktaları: 1) İstila: Beyazın köşe bölgesini bölmek mi? 2) Savunma: Merkez moyoyu kesinleştirmek mi? 3) Tenuki: Büyük yose hamlesi almak mı? Her seçeneğin risk ve ödülünü hesaplayın."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 10, "y": 2, "color": "black"},
+            {"x": 9, "y": 2, "color": "white"},
+            {"x": 10, "y": 3, "color": "white"},
+            {"x": 2, "y": 10, "color": "white"},
+            {"x": 10, "y": 10, "color": "white"}
+          ],
+          "text": "Dört köşe josekileri tamamlandı"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 10, "y": 2, "color": "black"},
+            {"x": 9, "y": 2, "color": "white"},
+            {"x": 10, "y": 3, "color": "white"},
+            {"x": 2, "y": 10, "color": "white"},
+            {"x": 10, "y": 10, "color": "white"},
+            {"x": 6, "y": 4, "color": "black"},
+            {"x": 6, "y": 8, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah merkez üçgeni ile büyük moyo oluşturdu"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 10, "y": 2, "color": "black"},
+            {"x": 9, "y": 2, "color": "white"},
+            {"x": 10, "y": 3, "color": "white"},
+            {"x": 2, "y": 10, "color": "white"},
+            {"x": 10, "y": 10, "color": "white"},
+            {"x": 6, "y": 4, "color": "black"},
+            {"x": 6, "y": 8, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 7, "y": 6, "color": "white"}
+          ],
+          "text": "Beyaz siyahın moyosunu bölmek için istila ediyor!"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 10, "y": 2, "color": "black"},
+            {"x": 9, "y": 2, "color": "white"},
+            {"x": 10, "y": 3, "color": "white"},
+            {"x": 2, "y": 10, "color": "white"},
+            {"x": 10, "y": 10, "color": "white"},
+            {"x": 6, "y": 4, "color": "black"},
+            {"x": 6, "y": 8, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 7, "y": 6, "color": "white"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 7, "y": 7, "color": "white"}
+          ],
+          "text": "Siyah istilacıyı sıkıştırıyor - sente hamle!"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l4-6-5"],
+  "next_lesson": "l4-6-7",
+  "required_exercise": null
+}

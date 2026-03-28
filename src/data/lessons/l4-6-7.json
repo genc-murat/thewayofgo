@@ -1,0 +1,132 @@
+{
+  "id": "l4-6-7",
+  "level": 4,
+  "module": 6,
+  "lesson": 7,
+  "title": "Seviye 4 Final Sınavı",
+  "description": "Seviye 4'ün tüm konularını kapsayan kapsamlı sınav.",
+  "duration_minutes": 15,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bu final sınavı, Seviye 4'te öğrendiğiniz tüm konuları test eder: joseki kalıpları, etki alanları, kalınlaştırma, istila stratejileri, derin okuma ve bütünleşik strateji. Her soruyu dikkatle analiz edin."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 10, "y": 10, "color": "black"},
+        {"x": 9, "y": 10, "color": "white"},
+        {"x": 10, "y": 9, "color": "white"},
+        {"x": 9, "y": 9, "color": "black"},
+        {"x": 6, "y": 3, "color": "black"},
+        {"x": 6, "y": 9, "color": "white"},
+        {"x": 3, "y": 6, "color": "black"},
+        {"x": 9, "y": 6, "color": "white"},
+        {"x": 6, "y": 6, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 6, "y": 6, "type": "good"},
+        {"x": 5, "y": 4, "type": "territory"},
+        {"x": 7, "y": 4, "type": "territory"},
+        {"x": 5, "y": 8, "type": "liberty"},
+        {"x": 7, "y": 8, "type": "liberty"}
+      ],
+      "annotation": "Final: Tüm seviye 4 konularını uygulayın"
+    },
+    {
+      "type": "text",
+      "content": "Sınav soruları: 1) Her iki köşede hangi joseki oynandı? 2) Siyahın merkez hamlesi iyi bir strateji mi? 3) Beyaz nereden istila yapmalı? 4) Hangi taraf kalınlaştırma avantajına sahip? 5) 5 hamle derin okuma ile en iyi hamleyi bulun."
+    },
+    {
+      "type": "text",
+      "content": "Tebrikler! Seviye 4'ü tamamlamak üzeresiniz. Öğrendikleriniz: Joseki kalıpları, etki alanları, kalınlaştırma teknikleri, istila stratejileri, derin okuma ve bütünleşik strateji. Seviye 5'te daha ileri konseptler sizi bekliyor!"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 10, "y": 10, "color": "black"}
+          ],
+          "text": "Soru 1: Bu açılış hangi fuseki stratejisi?"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 10, "y": 10, "color": "black"},
+            {"x": 9, "y": 10, "color": "white"},
+            {"x": 10, "y": 9, "color": "white"},
+            {"x": 9, "y": 9, "color": "black"}
+          ],
+          "text": "Soru 2: İki köşede aynı joseki - bu iyi mi?"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 10, "y": 10, "color": "black"},
+            {"x": 9, "y": 10, "color": "white"},
+            {"x": 10, "y": 9, "color": "white"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 6, "y": 9, "color": "white"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 9, "y": 6, "color": "white"}
+          ],
+          "text": "Soru 3: Kenar hamleleri - etki alanları nasıl?"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 10, "y": 10, "color": "black"},
+            {"x": 9, "y": 10, "color": "white"},
+            {"x": 10, "y": 9, "color": "white"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 6, "y": 9, "color": "white"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 9, "y": 6, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"}
+          ],
+          "text": "Soru 4: Siyah tengen oynadı - beyaz ne yapmalı?"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 10, "y": 10, "color": "black"},
+            {"x": 9, "y": 10, "color": "white"},
+            {"x": 10, "y": 9, "color": "white"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 6, "y": 9, "color": "white"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 9, "y": 6, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 5, "y": 7, "color": "white"}
+          ],
+          "text": "Soru 5: Beyaz istila ediyor - 5 hamle okuyun!"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l4-6-6"],
+  "next_lesson": "l5-1-1",
+  "required_exercise": null
+}

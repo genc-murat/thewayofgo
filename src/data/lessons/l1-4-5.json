@@ -1,0 +1,78 @@
+{
+  "id": "l1-4-5",
+  "level": 1,
+  "module": 4,
+  "lesson": 5,
+  "title": "Komi Nedir?",
+  "description": "Beyaz'ın avantajı ve dengenin sağlanması için komi kavramını öğrenin.",
+  "duration_minutes": 7,
+  "content": [
+    {
+      "type": "text",
+      "content": "Go'da siyah her zaman ilk hamleyi yapar. Bu, siyaha belirgin bir avantaj sağlar — ilk hamle yaklaşık 6-7 puan değerindedir. Bu avantajı dengelemek için beyaza ekstra puan verilir. Bu ekstra puana 'komi' (コミ) denir."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 4, "y": 4, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 4, "type": "good"}
+      ],
+      "annotation": "Siyah ilk hamleyi yaptı — bu yaklaşık 6-7 puanlık avantaj sağlar"
+    },
+    {
+      "type": "text",
+      "content": "Komi değerleri:\n• 9x9 tahtada: Genellikle 5.5 veya 7.5\n• 13x13 tahtada: Genellikle 6.5\n• 19x19 tahtada: 6.5 (en yaygın) veya 7.5\n\nKomi yarım puan (.5) içerir, böylece beraberlik imkansız olur."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 4, "y": 4, "color": "black"}
+          ],
+          "text": "5 hamle sonrası: Siyah 3 taş, beyaz 2 taş. Siyah'ın bir hamle avantajı var."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"}
+          ],
+          "text": "6 hamle sonrası: Dengeli görünüyor. Ama siyah ilk hamle avantajını hâlâ taşıyor."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"}
+          ],
+          "text": "Oyun sonunda diyelim ki siyah 30 puan, beyaz 24 puan aldı. Komi olmadan siyah kazanırdı. Komi (6.5) ile: Beyaz = 24 + 6.5 = 30.5. Beyaz kazandı! (0.5 farkla)"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Komi olmadan siyah her zaman kazanan strateji geliştirebilirdi. Komi, oyunu adil hale getirir. Profesyonel turnuvalarda komi değeri, istatistiksel analizlerle belirlenir."
+    },
+    {
+      "type": "text",
+      "content": "Not: Bazı Go sunucularında 'komi'siz oyunlar oynanabilir. Bu durumda siyah büyük avantajlıdır ve genellikle sadece eğitim amaçlı kullanılır."
+    }
+  ],
+  "prerequisites": ["l1-4-4"],
+  "next_lesson": "l1-4-6",
+  "required_exercise": "e1-4-5"
+}

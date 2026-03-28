@@ -1,0 +1,116 @@
+{
+  "id": "l1-2-7",
+  "level": 1,
+  "module": 2,
+  "lesson": 7,
+  "title": "İki Göz Kuralı",
+  "description": "Bir grubun yaşaması için iki gerçek göze sahip olması gerektiğini öğrenin.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Go'nun en önemli kurallarından biri: Bir grup, iki gerçek göze sahipse asla yakalanamaz. Buna 'iki göz kuralı' (二目, ni-moku) denir. İki gözlü bir gruba rakip oynayamaz çünkü her iki gözü aynı anda doldurmak intihar olurdu."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 3, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 3, "y": 1, "color": "black"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 0, "y": 3, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 3, "y": 3, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 1, "type": "good"},
+        {"x": 1, "y": 2, "type": "good"}
+      ],
+      "annotation": "İki gerçek göz: (1,1) ve (1,2). Bu grup asla yakalanamaz — yaşıyor (活き, iki)!)"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 7, "y": 5, "color": "black"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 6, "y": 7, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"}
+          ],
+          "text": "Siyah grup tek gözlü: (6,6). Eğer beyaz (6,6) oynarsa, grubun tüm özgürlükleri kapanır."
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 7, "y": 5, "color": "black"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 6, "y": 7, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"}
+          ],
+          "captured": [{"x": 5, "y": 5}, {"x": 6, "y": 5}, {"x": 7, "y": 5}, {"x": 5, "y": 6}, {"x": 7, "y": 6}, {"x": 5, "y": 7}, {"x": 6, "y": 7}, {"x": 7, "y": 7}],
+          "text": "Beyaz (6,6) oynadı — tek göz doldu, siyah grup yakalandı! Tek göz yeterli değil."
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 1, "color": "black"},
+            {"x": 6, "y": 1, "color": "black"},
+            {"x": 7, "y": 1, "color": "black"},
+            {"x": 8, "y": 1, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 8, "y": 2, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 8, "y": 3, "color": "black"}
+          ],
+          "text": "İki gözlü grup: (6,2) ve (7,2) boşlukları gerçek göz. Beyaz (6,2) oynayabilir mi?"
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 1, "color": "black"},
+            {"x": 6, "y": 1, "color": "black"},
+            {"x": 7, "y": 1, "color": "black"},
+            {"x": 8, "y": 1, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 8, "y": 2, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 8, "y": 3, "color": "black"},
+            {"x": 6, "y": 2, "color": "white"}
+          ],
+          "text": "Beyaz (6,2) oynadı... ama siyah grup hâlâ (7,2) gözüyle yaşıyor! Beyaz taşın kendisi sıfır özgürlükte — intihar! Bu hamle YASAKTIR."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "İki göz kuralının sırrı: Rakip bir gözü doldurmaya kalkarsa, kendi taşının bir özgürlüğü olmaz (diğer göz hâlâ boş). Bu yüzden iki gözlü gruba oynamak intihar kuralı nedeniyle imkansızdır."
+    },
+    {
+      "type": "text",
+      "content": "Pratik ipucu: Oyun sırasında grubunuzu oluştururken iki göz açıklığı bırakmaya dikkat edin. Çok küçük alan kalmışsa, rakip 'seki' (karşılıklı yaşama) hariç grubunuzu öldürebilir."
+    }
+  ],
+  "prerequisites": ["l1-2-6"],
+  "next_lesson": "l1-2-8",
+  "required_exercise": "e1-2-7"
+}

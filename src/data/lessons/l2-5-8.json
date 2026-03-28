@@ -1,0 +1,186 @@
+{
+  "id": "l2-5-8",
+  "level": 2,
+  "module": 5,
+  "lesson": 8,
+  "title": "Seviye 2 Genel Pratik",
+  "description": "Seviye 2'nin tüm konularını kapsayan karma pratik. Merdiven, ağ, kesme, bağlantı ve tsumego problemleri.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bu ders Seviye 2'nin genel bir tekrarıdır. Merdiven (shicho), ağ (geta), kesme (kiri), bağlantı (tsugi) ve tsumego gibi tüm konuları pratik yapacağız. Her problem farklı bir beceri test eder."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 5, "y": 5, "color": "white"},
+        {"x": 4, "y": 5, "color": "black"},
+        {"x": 5, "y": 4, "color": "black"},
+        {"x": 6, "y": 6, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 6, "y": 5, "type": "capture"},
+        {"x": 5, "y": 6, "type": "liberty"}
+      ],
+      "annotation": "Problem 1 - Merdiven: Beyaz taşın kaçış yolu var mı? Siyah merdiven başlatabilir mi?"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"}
+          ],
+          "text": "Beyaz taş (5,5) atari durumunda. Kaçış: (6,5) veya (5,6). Siyah merdiven başlatıyor."
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"}
+          ],
+          "text": "Beyaz (5,6) kaçtı. Siyah (6,5) ile merdiven devam ediyor - tekrar atari!"
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 5, "y": 7, "color": "black"}
+          ],
+          "text": "Beyaz (6,7) kaçtı. Siyah (5,7) ile merdiven zig-zag devam ediyor."
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"},
+            {"x": 7, "y": 7, "color": "white"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 7, "y": 6, "color": "black"}
+          ],
+          "text": "Beyaz (7,7) kaçtı. Siyah (7,6) ile kovalamaca sürüyor."
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"},
+            {"x": 7, "y": 7, "color": "white"},
+            {"x": 7, "y": 8, "color": "white"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 6, "y": 8, "color": "black"}
+          ],
+          "text": "Beyaz kenara ulaştı (7,8) ama siyah (6,8) ile son özgürlüğü kapattı! 5 taş yakalandı!",
+          "captured": [{"x": 5, "y": 5}, {"x": 5, "y": 6}, {"x": 6, "y": 7}, {"x": 7, "y": 7}, {"x": 7, "y": 8}]
+        }
+      ]
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 3, "y": 6, "color": "white"},
+        {"x": 4, "y": 7, "color": "white"},
+        {"x": 2, "y": 7, "color": "black"},
+        {"x": 3, "y": 7, "color": "black"},
+        {"x": 5, "y": 7, "color": "black"},
+        {"x": 4, "y": 6, "color": "black"},
+        {"x": 4, "y": 8, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 5, "type": "good"},
+        {"x": 3, "y": 5, "type": "liberty"}
+      ],
+      "annotation": "Problem 2 - Ağ (Geta): Beyaz taş kaçmaya çalışıyor. Siyah ağ (geta) tekniği ile yakalayabilir."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 4, "y": 7, "color": "white"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 4, "y": 8, "color": "black"}
+          ],
+          "text": "Beyaz grubun özgürlükleri: (3,5) ve (4,5). Kaçış tehlikesi var."
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 4, "y": 7, "color": "white"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 4, "y": 8, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"}
+          ],
+          "text": "Siyah (4,5) oynadı - ağ hamlesi! Beyaz grubun tek özgürlüğü (3,5). Atari!"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 4, "y": 7, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 4, "y": 8, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"}
+          ],
+          "text": "Beyaz (3,5) kaçtı ama siyah ağ zaten kapalı. Grubun yeni özgürlükleri: (2,5) ve (2,6)."
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 4, "y": 7, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 4, "y": 8, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 2, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah (2,6) oynadı! Beyaz grubun son özgürlüğü (2,5) - tekrar atari!",
+          "captured": [{"x": 3, "y": 6}, {"x": 4, "y": 7}, {"x": 3, "y": 5}]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Tebrikler! Seviye 2'nin tüm modüllerini tamamladınız. Merdiven, ağ, kesme, bağlantı, tsumego ve oyun analizi konularını öğrendiniz. Seviye 3'te daha ileri taktikler, şekil kavramları ve的战略 konularını göreceğiz."
+    }
+  ],
+  "prerequisites": ["l2-5-7"],
+  "next_lesson": "l2-6-1",
+  "required_exercise": null
+}

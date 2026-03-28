@@ -1,0 +1,197 @@
+{
+  "id": "l3-2-7",
+  "level": 3,
+  "module": 2,
+  "lesson": 7,
+  "title": "Orta Oyun Stratejileri",
+  "description": "Genel strateji özeti ve orta oyun planlaması.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Orta oyun, Go'nun en karmaşık safhasıdır. Sabir (sabaki) — hafif ve esnek oynama, kyo (güç) — ağır ve güçlü oynama arasındaki dengeyi bulmak gerekir. Bu derste temel orta oyun stratejilerini özetleyeceğiz."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {
+          "x": 1,
+          "y": 1,
+          "color": "black"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "color": "black"
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "color": "black"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "color": "white"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "color": "white"
+        },
+        {
+          "x": 5,
+          "y": 5,
+          "color": "black"
+        },
+        {
+          "x": 7,
+          "y": 7,
+          "color": "white"
+        }
+      ],
+      "highlights": [
+        {
+          "x": 2,
+          "y": 2,
+          "type": "good"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "type": "good"
+        }
+      ],
+      "annotation": "Strateji pozisyonu: Siyah köşede güçlü, beyaz merkezde etki oluşturuyor"
+    },
+    {
+      "type": "text",
+      "content": "Orta oyun stratejileri:\n\n• Hafif oynama (sabaki): Zayıf gruplarınızı ağır savunma yerine hafif kaçışla kurtarın\n• Ağır oynama: Güçlü pozisyonlarınızdan yararlanın, ağır saldırılar yapın\n• Etki (影響力, eikyōryoku): Taşlarınızın boş alana yaydığı kontrol gücünü kullanın\n• Bölme ve fethet: Rakip grupları ayırıp ayrı ayrı saldırın"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {
+              "x": 1,
+              "y": 1,
+              "color": "black"
+            },
+            {
+              "x": 2,
+              "y": 1,
+              "color": "black"
+            },
+            {
+              "x": 1,
+              "y": 2,
+              "color": "black"
+            },
+            {
+              "x": 5,
+              "y": 2,
+              "color": "white"
+            },
+            {
+              "x": 6,
+              "y": 2,
+              "color": "white"
+            }
+          ],
+          "text": "Beyaz iki taşlı duvar oluşturdu. Bu duvarın etkisi (5,1)-(6,3) bölgesine uzanıyor."
+        },
+        {
+          "stones": [
+            {
+              "x": 1,
+              "y": 1,
+              "color": "black"
+            },
+            {
+              "x": 2,
+              "y": 1,
+              "color": "black"
+            },
+            {
+              "x": 1,
+              "y": 2,
+              "color": "black"
+            },
+            {
+              "x": 5,
+              "y": 2,
+              "color": "white"
+            },
+            {
+              "x": 6,
+              "y": 2,
+              "color": "white"
+            },
+            {
+              "x": 7,
+              "y": 1,
+              "color": "black"
+            }
+          ],
+          "text": "Siyah (7,1) oynayarak beyazın etkisini azalttı ve kendi alanını genişletti — iyi strateji!"
+        },
+        {
+          "stones": [
+            {
+              "x": 1,
+              "y": 1,
+              "color": "black"
+            },
+            {
+              "x": 2,
+              "y": 1,
+              "color": "black"
+            },
+            {
+              "x": 1,
+              "y": 2,
+              "color": "black"
+            },
+            {
+              "x": 5,
+              "y": 2,
+              "color": "white"
+            },
+            {
+              "x": 6,
+              "y": 2,
+              "color": "white"
+            },
+            {
+              "x": 7,
+              "y": 1,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 4,
+              "color": "white"
+            },
+            {
+              "x": 3,
+              "y": 5,
+              "color": "black"
+            }
+          ],
+          "text": "Oyun gelişiyor. Siyah (3,5) ile merkezde varlık gösteriyor. Beyaz (4,4) ile etki alanını koruyor."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Orta oyun altın kuralları:\n1. Önce büyük hamleleri oynayın (大場, ōba)\n2. Zayıf grupları ihmal etmeyin\n3. Rakibin iyi şekiller (好形, kōkei) oluşturmasını engelleyin\n4. Etki birliği sağlayın — dağınık taşlar zayıftır\n5. Esnek olun — planınızı pozisyona göre ayarlayın"
+    }
+  ],
+  "prerequisites": [
+    "l3-2-6"
+  ],
+  "next_lesson": "l3-2-8",
+  "required_exercise": null
+}

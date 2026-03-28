@@ -102,6 +102,6 @@
     }
   ],
   "prerequisites": ["l2-4-3"],
-  "next_lesson": null,
+  "next_lesson": "l2-4-5",
   "required_exercise": "e2-4-4"
 }

@@ -1,0 +1,32 @@
+{
+  "id": "e4-5-7",
+  "level": 4,
+  "module": 5,
+  "lesson": 7,
+  "type": "position_judgment",
+  "title": "Avantajı Değerlendirme",
+  "description": "Siyah sağ tarafta etkiye sahip. Bu etkiyi somut toprağa dönüştürecek hamleyi bulun.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 9, "y": 3, "color": "black"},
+    {"x": 11, "y": 3, "color": "black"},
+    {"x": 10, "y": 5, "color": "black"},
+    {"x": 8, "y": 5, "color": "black"},
+    {"x": 2, "y": 9, "color": "white"},
+    {"x": 4, "y": 9, "color": "white"},
+    {"x": 3, "y": 7, "color": "white"},
+    {"x": 3, "y": 11, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 9, "y": 9, "is_correct": true, "explanation": "Doğru! (9,9) ile sağ üst köşeyi alarak etkinizi somut toprağa dönüştürdünüz. Siyah artık açıkça önde!"},
+    {"x": 3, "y": 5, "is_correct": false, "explanation": "Beyazın alanına saldırmak riskli. Etkinizi toprağa dönüştürmek daha güvenli bir strateji."},
+    {"x": 6, "y": 6, "is_correct": false, "explanation": "Merkez hamlesi etkili görünse de somut toprak kazandırmaz. Önce köşeleri sağlamlaştırın."},
+    {"x": 12, "y": 1, "is_correct": false, "explanation": "Bu köşe hamlesi çok küçük. Oyunun gidişatını değiştirmek için daha büyük hamleler var."}
+  ],
+  "hints": [
+    "Siyah'ın sağ taraf etkisini somut toprağa dönüştürün.",
+    "Büyük hamle: etki alanınızı gerçek toprağa çeviren noktayı bulun."
+  ],
+  "difficulty": 4,
+  "stars_required": 3
+}

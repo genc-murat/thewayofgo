@@ -3,86 +3,130 @@
   "level": 5,
   "module": 4,
   "lesson": 3,
-  "title": "Modorı ve Demirı",
-  "description": "Terfi ve terfileri iptal etme.",
-  "duration_minutes": 10,
+  "title": "Geri Alma ve İptal",
+  "description": "Yose'de rakibin hamlesini iptal eden tesuji'ler ve geri alma (modori) teknikleri. Kaçınılmaz görünen sonuçları değiştirme.",
+  "duration_minutes": 15,
   "content": [
     {
       "type": "text",
-      "content": "Modorı ve Demirı: Terfi ve terfileri iptal etme. Temel kavramları ve stratejileri öğrenin."
+      "content": "Yose'de geri alma (modori) ve iptal (torikeshi), rakibin point kazancını sıfırlayan ileri tekniktir. Rakip bir yose hamlesi oynadığında, tesuji ile o hamlenin etkisini nötralize edebilirsiniz. Bu, özellikle küçük yose'lerde game-decisive (oyunu belirleyici) fark yaratabilir. Uzman oyuncular bu fırsatları anında tanır."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 19,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        }
+        { "x": 0, "y": 16, "color": "black" },
+        { "x": 0, "y": 17, "color": "black" },
+        { "x": 0, "y": 18, "color": "black" },
+        { "x": 1, "y": 18, "color": "black" },
+        { "x": 2, "y": 17, "color": "white" },
+        { "x": 2, "y": 18, "color": "white" },
+        { "x": 1, "y": 16, "color": "white" }
       ],
-      "highlights": [],
-      "annotation": "Modorı ve Demirı"
+      "highlights": [
+        { "x": 1, "y": 17, "type": "good" },
+        { "x": 2, "y": 16, "type": "capture" },
+        { "x": 0, "y": 15, "type": "liberty" },
+        { "x": 1, "y": 15, "type": "bad" }
+      ],
+      "annotation": "Modori fırsatı: Siyah (1,17) – Beyaz'ın son hamlesini geri alır"
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 0, "y": 16, "color": "black" },
+            { "x": 0, "y": 17, "color": "black" },
+            { "x": 0, "y": 18, "color": "black" },
+            { "x": 1, "y": 18, "color": "black" },
+            { "x": 2, "y": 17, "color": "white" },
+            { "x": 2, "y": 18, "color": "white" }
           ],
-          "text": "Pozisyon analizi başladı"
+          "text": "Sınır pozisyonu: Beyaz (2,17)+(2,18) Siyah toprağını tehdit ediyor."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            { "x": 0, "y": 16, "color": "black" },
+            { "x": 0, "y": 17, "color": "black" },
+            { "x": 0, "y": 18, "color": "black" },
+            { "x": 1, "y": 18, "color": "black" },
+            { "x": 2, "y": 17, "color": "white" },
+            { "x": 2, "y": 18, "color": "white" },
+            { "x": 1, "y": 16, "color": "white" }
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Beyaz (1,16) kakari: 2 point toprak tehdidi – Siyah cevap vermeli."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 0, "y": 16, "color": "black" },
+            { "x": 0, "y": 17, "color": "black" },
+            { "x": 0, "y": 18, "color": "black" },
+            { "x": 1, "y": 18, "color": "black" },
+            { "x": 2, "y": 17, "color": "white" },
+            { "x": 2, "y": 18, "color": "white" },
+            { "x": 1, "y": 16, "color": "white" },
+            { "x": 1, "y": 17, "color": "black" }
           ],
-          "text": "Sonraki hamleyi düşünün"
+          "text": "Siyah (1,17) modori tesuji'si: Beyaz'ın (1,16) hamlesini nötralize eder!"
+        },
+        {
+          "stones": [
+            { "x": 0, "y": 16, "color": "black" },
+            { "x": 0, "y": 17, "color": "black" },
+            { "x": 0, "y": 18, "color": "black" },
+            { "x": 1, "y": 18, "color": "black" },
+            { "x": 2, "y": 17, "color": "white" },
+            { "x": 2, "y": 18, "color": "white" },
+            { "x": 1, "y": 16, "color": "white" },
+            { "x": 1, "y": 17, "color": "black" },
+            { "x": 2, "y": 16, "color": "black" }
+          ],
+          "captured": [{ "x": 1, "y": 16 }],
+          "text": "Siyah (2,16): Beyaz (1,16) yakalanır! Beyaz'ın kakari'si tamamen iptal edildi."
+        },
+        {
+          "stones": [
+            { "x": 0, "y": 16, "color": "black" },
+            { "x": 0, "y": 17, "color": "black" },
+            { "x": 0, "y": 18, "color": "black" },
+            { "x": 1, "y": 18, "color": "black" },
+            { "x": 2, "y": 17, "color": "white" },
+            { "x": 2, "y": 18, "color": "white" },
+            { "x": 1, "y": 17, "color": "black" },
+            { "x": 2, "y": 16, "color": "black" },
+            { "x": 3, "y": 16, "color": "white" }
+          ],
+          "text": "Beyaz (3,16) ile kaçar ama Siyah toprağını korudu: Modori başarılı – 2 point kurtarıldı!"
         }
       ]
+    },
+    {
+      "type": "text",
+      "content": "Modori tekniklerinin temel prensibi: Rakibin hamlesini 'geri almaktır' (uyeshiro). Sınır çatışmalarında, rakip sızdığında tesuji ile onun taşını kesmek veya yakalamak, kaybedilen toprağı geri kazanır. Bu teknikler özellikle 1. ve 2. hattaki yose çatışmalarında yaygındır."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        { "x": 17, "y": 0, "color": "black" },
+        { "x": 18, "y": 0, "color": "black" },
+        { "x": 18, "y": 1, "color": "black" },
+        { "x": 16, "y": 2, "color": "white" },
+        { "x": 17, "y": 2, "color": "white" },
+        { "x": 18, "y": 3, "color": "white" },
+        { "x": 17, "y": 3, "color": "black" }
+      ],
+      "highlights": [
+        { "x": 16, "y": 1, "type": "good" },
+        { "x": 17, "y": 1, "type": "capture" },
+        { "x": 16, "y": 0, "type": "bad" },
+        { "x": 18, "y": 2, "type": "liberty" }
+      ],
+      "annotation": "İptal tesuji'si: Siyah (16,1) – Beyaz'ın toprak penetrasyonunu keser"
     }
   ],
-  "prerequisites": [
-    "l----2"
-  ],
+  "prerequisites": ["l5-4-2"],
   "next_lesson": "l5-4-4",
   "required_exercise": "e5-4-3"
 }

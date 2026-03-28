@@ -1,0 +1,126 @@
+{
+  "id": "l3-2-10",
+  "level": 3,
+  "module": 2,
+  "lesson": 10,
+  "title": "Şekil (Katachi) Temelleri",
+  "description": "İyi şekil (好形, kōkei) ve kötü şekil (愚形, gukei) arasındaki fark, verimli taş yerleştirme, ponnuki, kapının ağzı ve sağlam şekil oluşturma.",
+  "duration_minutes": 14,
+  "content": [
+    {
+      "type": "text",
+      "content": "Katachi (形), Go'da \"şekil\" anlamına gelir. İyi şekil (好形, kōkei), az taşla çok iş yapan, esnek ve güçlü taş düzenlemesidir. Kötü şekil (愚形, gukei), gereksiz tekrarlar ve verimsiz dizilimlerdir. Şekil bilgisi, taşı nasıl verimli kullanacağınızı belirler."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 5, "y": 4, "color": "white"},
+        {"x": 4, "y": 5, "color": "white"},
+        {"x": 5, "y": 5, "color": "black"},
+        {"x": 7, "y": 4, "color": "black"},
+        {"x": 7, "y": 5, "color": "black"},
+        {"x": 7, "y": 3, "color": "black"},
+        {"x": 2, "y": 4, "color": "white"},
+        {"x": 2, "y": 5, "color": "white"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 2, "y": 6, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 3, "y": 4, "type": "good"},
+        {"x": 3, "y": 5, "type": "good"},
+        {"x": 2, "y": 4, "type": "bad"},
+        {"x": 2, "y": 5, "type": "bad"},
+        {"x": 2, "y": 3, "type": "bad"},
+        {"x": 2, "y": 6, "type": "bad"}
+      ],
+      "annotation": "Sol: Kötü şekil (愚形, gukei) — beyaz dört taş düz duvar, verimsiz. Sağ: İyi şekil (好形, kōkei) — siyah üç taş piramit, güçlü. Ortada ponnuki öncesi durum."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"}
+          ],
+          "text": "Ponnuki (ポン抜き) oluşturma hazırlığı: Siyah merkezde, beyaz iki taşla sarıyor. Şimdi siyahın hamlesi geliyor."
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 5, "y": 5, "color": "black"}
+          ],
+          "text": "Siyah (5,5) oynadı. Beyazın (5,4) taşı ataride! Ponnuki yaklaşıyor."
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "empty"},
+            {"x": 5, "y": 3, "color": "white"}
+          ],
+          "text": "Beyaz (5,3) ile kaçtı, (5,4) düştü. Ponnuki tamamlandı! Siyahın elmas şekli çok güçlü.",
+          "captured": [{"x": 5, "y": 4, "color": "white"}]
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"}
+          ],
+          "text": "Ponnuki sonrası siyah güçlü elmas şekliyle etki alanını genişletiyor. (3,5) ve (4,6) ile kapının ağzı (虎の口, tora no kuchi) oluşuyor — (4,5) beyaz taşı tehlikede!"
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 4, "y": 5, "color": "empty"},
+            {"x": 3, "y": 4, "color": "white"}
+          ],
+          "text": "Beyaz (3,4) ile (4,5) taşını kurtardı ama siyah zaten ponnuki kazancını almış durumda. Güçlü şekil her zaman avantaj sağlar!",
+          "captured": [{"x": 4, "y": 5, "color": "white"}]
+        }
+      ]
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 5, "y": 3, "color": "black"},
+        {"x": 2, "y": 6, "color": "black"},
+        {"x": 3, "y": 6, "color": "black"},
+        {"x": 4, "y": 6, "color": "black"},
+        {"x": 3, "y": 7, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 3, "type": "good"},
+        {"x": 3, "y": 4, "type": "good"},
+        {"x": 3, "y": 5, "type": "good"},
+        {"x": 2, "y": 7, "type": "territory"},
+        {"x": 5, "y": 5, "type": "territory"}
+      ],
+      "annotation": "İyi şekil örnekleri: Üstte üç taş piramit şekli güçlü etki alanı oluşturuyor. Alttaki katı şekil (Solid) güvenli toprak sağlıyor."
+    },
+    {
+      "type": "text",
+      "content": "Temel şekil kavramları:\n\n• Ponnuki (ポン抜き) — bir taşı yakalayıp elmas şekli oluşturma, en güçlü şekillerden biri\n• Tora no kuchi (虎の口) — kapının ağzı, bir noktaya taş koyunca rakip atariye düşer\n• Katı şekil (solid) — sıkı bağlı grup, güvenli ama yavaş\n• Hafif şekil (karui katachi) — esnek, kolay kaçabilir, saldırıdan kurtulma\n• Boş üçgen (空三角, kūsankaku) — en kötü şekil, üç taş bir noktayı boşçe çevreler\n\nAltın kural: Her taşınız bir iş yapmalı. Gereksiz taş verimsiz şekil oluşturur (ダメの形, dame no katachi)."
+    }
+  ],
+  "prerequisites": ["l3-2-9"],
+  "next_lesson": "l3-3-1",
+  "required_exercise": null
+}

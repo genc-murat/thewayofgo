@@ -4,85 +4,210 @@
   "module": 3,
   "lesson": 5,
   "title": "Oyun Analizi",
-  "description": "Oyunu analiz etmeyi öğrenin.",
-  "duration_minutes": 10,
+  "description": "Basit bir 9x9 oyunun adım adım analizini yapın, iyi ve kötü hamleleri tanımayı öğrenin.",
+  "duration_minutes": 15,
   "content": [
     {
       "type": "text",
-      "content": "Oyun Analizi: Oyunu analiz etmeyi öğrenin. Bu derste temel kavramları öğreneceksiniz."
-    },
-    {
-      "type": "board",
-      "size": 9,
-      "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        },
-        {
-          "x": 5,
-          "y": 4,
-          "color": "black"
-        }
-      ],
-      "highlights": [],
-      "annotation": "Oyun Analizi"
+      "content": "Bir Go oyununu analiz edebilmek, gelişmenin en önemli adımıdır. Japonca'da oyun analizine 'kanso' (感想 - izlenim) denir. Bu derste 9x9 tahtada oynanmış kısa bir oyunun kritik anlarını inceleyeceğiz. Her hamlenin neden iyi veya kötü olduğunu anlamak, kendi oyununuzu geliştirmenin anahtarıdır."
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 2, "y": 2, "color": "black"}
           ],
-          "text": "Pozisyonu inceleyin"
+          "text": "Hamle 1: Siyah (2,2) - 3-3 noktası. Klasik açılış! Köşeyi güvence altına alan sağlam hamle. Japonca'da bu noktaya 'sansan' (三三) denir."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"}
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Hamle 2: Beyaz (6,6) - karşı köşe 3-3. Dengeli yanıt. Her iki oyuncu da birer köşe aldı."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 2, "y": 6, "color": "black"}
           ],
-          "text": "İleri adımları düşünün"
+          "text": "Hamle 3: Siyah (2,6) - ikinci köşe. İyi hamle! Siyah sol tarafın iki köşesini de kontrol altına aldı."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 4, "y": 4, "color": "white"}
+          ],
+          "text": "Hamle 4: Beyaz (4,4) - merkez (tengen)! Bu hamle tüm tahtaya etki eder. 9x9'da merkez kontrolü çok değerlidir."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 6, "y": 2, "color": "black"}
+          ],
+          "text": "Hamle 5: Siyah (6,2) - son köşe. Siyah üç köşeyi de aldı! Bu açılışta siyah avantajlı başladı."
         }
       ]
+    },
+    {
+      "type": "text",
+      "content": "Açılış değerlendirmesi: Siyah üç köşe kapatarak güçlü başladı (sente tarzı). Beyaz merkez aldı ama köşe kontrolü siyahta. 9x9'da köşeler çok değerlidir çünkü az taşla büyük bölge oluşturur. Beyazın açılışta en az bir köşeye gitmesi daha iyi olurdu."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 6, "y": 6, "color": "white"},
+        {"x": 2, "y": 6, "color": "black"},
+        {"x": 4, "y": 4, "color": "white"},
+        {"x": 6, "y": 2, "color": "black"},
+        {"x": 3, "y": 3, "color": "white"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 2, "y": 1, "color": "black"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 1, "y": 6, "color": "black"},
+        {"x": 2, "y": 5, "color": "black"},
+        {"x": 5, "y": 5, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 3, "y": 2, "type": "bad"},
+        {"x": 2, "y": 2, "type": "good"},
+        {"x": 3, "y": 3, "type": "vital"}
+      ],
+      "annotation": "Oyun ortası: Beyaz (3,2) yanlış hamle! Siyah grubu tehdit etmek yerine kendi bölgesini yapmalıydı. Siyah (1,2) ve (2,1) ile köşesini sağlamlaştırdı."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 6, "y": 2, "color": "black"},
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 6, "y": 4, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"}
+          ],
+          "text": "Oyun sonuna doğru: Beyaz (5,6) ve (5,4) ile merkezden sağ alt köşeye doğru genişledi. Siyah (6,4) ve (6,3) ile sağ üst köşesini savundu. Şimdi kritik an!"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 6, "y": 2, "color": "black"},
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 6, "y": 4, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 7, "y": 6, "color": "white"},
+            {"x": 7, "y": 7, "color": "white"},
+            {"x": 8, "y": 7, "color": "white"},
+            {"x": 7, "y": 8, "color": "white"},
+            {"x": 8, "y": 6, "color": "black"}
+          ],
+          "text": "Beyaz sağ alt bölgeyi kapatıyor: (7,6)-(7,7)-(8,7)-(7,8) ile büyük bölge oluşturdu! Siyah (8,6) ile biraz azalttı ama yeterli değil."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 6, "y": 2, "color": "black"},
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 6, "y": 4, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 7, "y": 6, "color": "white"},
+            {"x": 7, "y": 7, "color": "white"},
+            {"x": 8, "y": 7, "color": "white"},
+            {"x": 7, "y": 8, "color": "white"},
+            {"x": 8, "y": 6, "color": "black"},
+            {"x": 0, "y": 4, "color": "black"},
+            {"x": 0, "y": 5, "color": "black"},
+            {"x": 1, "y": 4, "color": "black"},
+            {"x": 1, "y": 5, "color": "black"}
+          ],
+          "text": "Siyah sol kenarı güçlendirdi: (0,4)-(0,5)-(1,4)-(1,5) ile sol alt bölgeyi kapatmaya çalışıyor. Ancak gote hamleler - beyaz bunları yanıtlamak zorunda değil."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 6, "y": 2, "color": "black"},
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 6, "y": 4, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 7, "y": 6, "color": "white"},
+            {"x": 7, "y": 7, "color": "white"},
+            {"x": 8, "y": 7, "color": "white"},
+            {"x": 7, "y": 8, "color": "white"},
+            {"x": 8, "y": 6, "color": "black"},
+            {"x": 0, "y": 4, "color": "black"},
+            {"x": 0, "y": 5, "color": "black"},
+            {"x": 1, "y": 4, "color": "black"},
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 8, "y": 8, "color": "white"}
+          ],
+          "text": "Son hamle: Beyaz (8,8) - köşe! Oyun bitti. Şimdi skor zamanı."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Oyun analizi özeti: Siyah açılışta üç köşe alarak iyi başladı ama oyun ortasında gote hamleler oynadı. Beyaz'ın en büyük hatası açılışta sadece bir köşe almasıydı, ancak oyun ortasında merkez kontrolü ile telafi etti. Beyaz'ın (3,2) hamlesi gereksizdi - bunun yerine (6,2) köşesine gitmesi daha iyi olurdu. Siyah'ın en iyi hamlesi (6,2) ile son köşeyi kapmak oldu. Bu tür analizler yaparak 'yomu' (読む - okuma) yeteneğinizi geliştirin."
+    },
+    {
+      "type": "text",
+      "content": "Analiz ipuçları:\n1. Açılışta her oyuncu en az 1-2 köşe almalıdır\n2. Sente hamleler (rakibi yanıtlayana) gote hamlelerden (yanıtsız bırakılabilen) daha değerlidir\n3. Tsumego (詰碁) pozisyonlarını doğru okumak, yaşam-ölüm mücadelelerinde belirleyicidir\n4. Oyun sonu: en büyük bölgeyi yapan kazanır - her boş nokta değerlidir!"
     }
   ],
   "prerequisites": [

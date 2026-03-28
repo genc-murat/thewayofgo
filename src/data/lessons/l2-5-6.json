@@ -1,0 +1,168 @@
+{
+  "id": "l2-5-6",
+  "level": 2,
+  "module": 5,
+  "lesson": 6,
+  "title": "Basit Tsumego 2",
+  "description": "İki hamlelik yaşam-ölüm problemleri. Daha derin hesaplama gerektiren tsumego problemleri.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bu derste iki hamlelik tsumego problemleri çözeceğiz. Bu problemler daha derin okuma (yomu) gerektirir. İlk hamleyi ve rakibin en iyi cevabını düşünmelisiniz. İpucu: Her zaman rakibin en güçlü cevabını varsayın!"
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 6, "color": "white"},
+        {"x": 0, "y": 7, "color": "white"},
+        {"x": 0, "y": 8, "color": "white"},
+        {"x": 1, "y": 6, "color": "black"},
+        {"x": 1, "y": 7, "color": "black"},
+        {"x": 1, "y": 8, "color": "black"},
+        {"x": 2, "y": 7, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 6, "type": "capture"},
+        {"x": 2, "y": 8, "type": "liberty"}
+      ],
+      "annotation": "Tsumego 3: Beyaz grup köşede sıkışmış. Siyah doğru sırayla oynayarak grubu yakalayabilir."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 0, "y": 6, "color": "white"},
+            {"x": 0, "y": 7, "color": "white"},
+            {"x": 0, "y": 8, "color": "white"},
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 1, "y": 7, "color": "black"},
+            {"x": 1, "y": 8, "color": "black"},
+            {"x": 2, "y": 7, "color": "white"}
+          ],
+          "text": "Beyaz grubun özgürlükleri: (2,6) ve (2,8). İki özgürlük var."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 6, "color": "white"},
+            {"x": 0, "y": 7, "color": "white"},
+            {"x": 0, "y": 8, "color": "white"},
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 1, "y": 7, "color": "black"},
+            {"x": 1, "y": 8, "color": "black"},
+            {"x": 2, "y": 7, "color": "white"},
+            {"x": 2, "y": 8, "color": "black"}
+          ],
+          "text": "Siyah (2,8) oynadı - önce alt özgürlüğü kapattı. Beyaz grubun tek özgürlüğü (2,6)."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 6, "color": "white"},
+            {"x": 0, "y": 7, "color": "white"},
+            {"x": 0, "y": 8, "color": "white"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 1, "y": 7, "color": "black"},
+            {"x": 1, "y": 8, "color": "black"},
+            {"x": 2, "y": 7, "color": "white"},
+            {"x": 2, "y": 8, "color": "black"}
+          ],
+          "text": "Beyaz (2,6) kaçtı. Ama grubun yeni özgürlükleri sadece (3,6). Atari tekrar!"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 6, "color": "white"},
+            {"x": 0, "y": 7, "color": "white"},
+            {"x": 0, "y": 8, "color": "white"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 1, "y": 7, "color": "black"},
+            {"x": 1, "y": 8, "color": "black"},
+            {"x": 2, "y": 7, "color": "white"},
+            {"x": 2, "y": 8, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah (3,6) oynadı! Beyaz grubun tüm özgürlükleri kapatıldı - 5 taş yakalandı!",
+          "captured": [{"x": 0, "y": 6}, {"x": 0, "y": 7}, {"x": 0, "y": 8}, {"x": 2, "y": 6}, {"x": 2, "y": 7}]
+        }
+      ]
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 5, "y": 0, "color": "black"},
+        {"x": 5, "y": 1, "color": "black"},
+        {"x": 6, "y": 1, "color": "white"},
+        {"x": 6, "y": 0, "color": "white"},
+        {"x": 7, "y": 1, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 0, "type": "good"},
+        {"x": 4, "y": 1, "type": "good"},
+        {"x": 5, "y": 2, "type": "liberty"}
+      ],
+      "annotation": "Tsumego 4: Siyah grup kenarda. Beyaz grubu yakalamak istiyor. Siyah nereye oynayarak yaşatır?"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 5, "y": 0, "color": "black"},
+            {"x": 5, "y": 1, "color": "black"},
+            {"x": 6, "y": 1, "color": "white"},
+            {"x": 6, "y": 0, "color": "white"},
+            {"x": 7, "y": 1, "color": "white"}
+          ],
+          "text": "Siyah grubun özgürlükleri: (4,0), (4,1) ve (5,2). Beyaz grubun ise: (7,0) ve (6,2)."
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 0, "color": "black"},
+            {"x": 5, "y": 1, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 6, "y": 1, "color": "white"},
+            {"x": 6, "y": 0, "color": "white"},
+            {"x": 7, "y": 1, "color": "white"}
+          ],
+          "text": "Siyah (5,2) oynayarak grubu genişletti. Özgürlükler arttı: (4,0), (4,1), (4,2) ve (5,3)."
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 0, "color": "black"},
+            {"x": 5, "y": 1, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 6, "y": 1, "color": "white"},
+            {"x": 6, "y": 0, "color": "white"},
+            {"x": 7, "y": 1, "color": "white"},
+            {"x": 6, "y": 2, "color": "white"}
+          ],
+          "text": "Beyaz (6,2) oynayarak siyahı tehdit etti. Ama siyah grubun 3 özgürlüğü var."
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 0, "color": "black"},
+            {"x": 5, "y": 1, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 4, "y": 1, "color": "black"},
+            {"x": 6, "y": 1, "color": "white"},
+            {"x": 6, "y": 0, "color": "white"},
+            {"x": 7, "y": 1, "color": "white"},
+            {"x": 6, "y": 2, "color": "white"}
+          ],
+          "text": "Siyah (4,1) oynadı - bağlantı ve genişleme! Siyah grup artık çok güçlü. Yaşam başarılı!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "İki hamlelik tsumego çözme yöntemi: 1) Tüm olası hamleleri düşünün. 2) Her hamle için rakibin en iyi cevabını hesaplayın. 3) Sizin ikinci hamlenizle sonuca ulaşın. 4) En iyi sonucu veren ilk hamleyi seçin. Bu yönteme 'okuma' (yomu) denir."
+    }
+  ],
+  "prerequisites": ["l2-5-5"],
+  "next_lesson": "l2-5-7",
+  "required_exercise": null
+}

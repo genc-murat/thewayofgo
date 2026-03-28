@@ -1,0 +1,104 @@
+{
+  "id": "l2-1-7",
+  "level": 2,
+  "module": 1,
+  "lesson": 7,
+  "title": "Çift Atarı",
+  "description": "Farklı yönlerde aynı anda atari tekniğini öğrenin.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Çift atari (double atari), tek bir hamleyle iki ayrı düşman grubu aynı anda atariye sokma tekniğidir. Rakip bir grubu kurtarabilir ama ikisini aynı anda kurtaramaz — bu yüzden mutlaka bir taş kaybeder."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 2, "y": 2, "color": "white"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 4, "y": 2, "color": "white"},
+        {"x": 4, "y": 3, "color": "white"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 5, "y": 2, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 3, "y": 2, "type": "good"}
+      ],
+      "annotation": "Çift atari noktası: Siyah (3,2) oynarsa hem sol beyaz grubu hem sağ beyaz grubu ataride!"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"}
+          ],
+          "text": "İki ayrı beyaz grup var. Sol grup: özgürlük (2,1),(1,3),(2,4). Sağ grup: özgürlük (4,1),(5,3),(4,4)."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"}
+          ],
+          "text": "Siyah (3,2) oynadı! Sol beyaz grubun özgürlüğü (2,1),(1,3),(2,4) — (3,2) kapanmadı. Ama sağ grup: (4,1),(5,3),(4,4). Aslında (3,2) sol grubun bir özgürlüğünü kesti ve sağ grubun da bir özgürlüğünü kesti."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"}
+          ],
+          "captured": [{"x": 4, "y": 2}],
+          "text": "Beyaz (2,1) oynayarak sol grubu kurtardı ama sağ gruptaki (4,2) yakalandı! Çift atari başarılı."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Çift atari taktiği: Hedefiniz, iki düşman grubu arasında kalan boş noktayı bulmaktır. Bu nokta her iki gruba da komşu olmalıdır. Böylece tek hamlede her iki gruba da bir özgürlük kaybettirirsiniz."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 5, "color": "white"},
+        {"x": 0, "y": 6, "color": "white"},
+        {"x": 2, "y": 5, "color": "white"},
+        {"x": 2, "y": 6, "color": "white"},
+        {"x": 0, "y": 4, "color": "black"},
+        {"x": 1, "y": 7, "color": "black"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 3, "y": 5, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 5, "type": "good"}
+      ],
+      "annotation": "Kenar çift atarisi: Siyah (1,5) oynarsa iki beyaz grubu da atariye düşer"
+    },
+    {
+      "type": "text",
+      "content": "Çift atari, özellikle kenarda ve köşede etkilidir çünkü taşların kaçış alanı zaten sınırlıdır. Bu tekniği kullanırken rakibin her iki grubu için kaçış yolu olup olmadığını kontrol edin."
+    }
+  ],
+  "prerequisites": ["l2-1-6"],
+  "next_lesson": "l2-1-8",
+  "required_exercise": "e2-1-7"
+}

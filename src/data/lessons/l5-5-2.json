@@ -1,0 +1,101 @@
+{
+  "id": "l5-5-2",
+  "level": 5,
+  "module": 5,
+  "lesson": 2,
+  "title": "Uzun Vadeli Strateji",
+  "description": "50-100 hamle öncesini planlayan uzun vadeli stratejik düşünce yapısı.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Uzun vadeli strateji (chōki senryaku), Go'yu büyük usta yapan yetenektir. Fuseki'de attığınız bir taş, 80 hamle sonra oyunu kazanmanızı sağlayabilir. Bu derste, taşların uzun vadeli etkisini değerlendirmeyi ve stratejik vizyon geliştirmeyi öğreneceksiniz."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 16, "y": 16, "color": "white"},
+        {"x": 16, "y": 4, "color": "black"},
+        {"x": 4, "y": 16, "color": "white"},
+        {"x": 10, "y": 4, "color": "black"},
+        {"x": 4, "y": 10, "color": "white"},
+        {"x": 10, "y": 16, "color": "black"},
+        {"x": 16, "y": 10, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 10, "y": 10, "type": "good"},
+        {"x": 7, "y": 7, "type": "territory"}
+      ],
+      "annotation": "Chōki senryaku - uzun vadeli etki alanları"
+    },
+    {
+      "type": "text",
+      "content": "Uzun vadeli stratejinin temel kavramları: Aji (potansiyel), aji keshi (potansiyel yok etme - genellikle kötü), furikawari (değiş-tokuş), ve hineri (baskı). İyi bir stratejist, taşların gizli potansiyelini (aji) korur ve doğru zamanda kullanır."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 3, "y": 5, "color": "black"},
+        {"x": 5, "y": 5, "color": "white"},
+        {"x": 2, "y": 7, "color": "black"},
+        {"x": 7, "y": 3, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 4, "type": "liberty"},
+        {"x": 3, "y": 4, "type": "bad"}
+      ],
+      "annotation": "Aji koruma örneği - erken hamle potansiyeli yok eder mi?"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"}
+          ],
+          "text": "Joseki başlangıcı - uzun vadeli sonuçları düşünün"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"}
+          ],
+          "text": "Joseki devamı - aji hâlâ korunuyor"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 2, "y": 7, "color": "black"}
+          ],
+          "text": "Siyah etkisini genişletir - uzun vadeli baskı (atsumi)"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 7, "y": 3, "color": "white"},
+            {"x": 8, "y": 5, "color": "black"}
+          ],
+          "text": "Strateji meyvesini veriyor - siyahın baskısı artıyor"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l5-5-1"],
+  "next_lesson": "l5-5-3",
+  "required_exercise": null
+}

@@ -1,0 +1,110 @@
+{
+  "id": "l4-4-5",
+  "level": 4,
+  "module": 4,
+  "lesson": 5,
+  "title": "İstila Stratejileri 1",
+  "description": "Rakibin moyosunu istila etme teknikleri.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "İstila (invasion), rakibin büyük moyo veya etki alanının içine taş yerleştirerek onu parçalama stratejisidir. Doğru zamanda ve doğru noktaya yapılan istila oyunun gidişatını değiştirebilir. Ancak kötü istila, taşınızın esir alınmasına neden olabilir."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 8, "y": 2, "color": "white"},
+        {"x": 10, "y": 2, "color": "white"},
+        {"x": 12, "y": 2, "color": "white"},
+        {"x": 8, "y": 4, "color": "white"},
+        {"x": 10, "y": 4, "color": "white"},
+        {"x": 12, "y": 4, "color": "white"},
+        {"x": 6, "y": 3, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 9, "y": 3, "type": "good"},
+        {"x": 9, "y": 1, "type": "bad"}
+      ],
+      "annotation": "Siyah beyazın moyosuna nereden istila etmeli?"
+    },
+    {
+      "type": "text",
+      "content": "İstila noktası seçimi: 1) Zayıf halka (weak point) arayın 2) Kaçış yolunuz olduğundan emin olun 3) Rakibin kalın tarafından uzak durun. İdeal istila noktası, iki düşman taşı arasındaki boşluktur (marginal area)."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 10, "y": 2, "color": "white"},
+            {"x": 12, "y": 2, "color": "white"},
+            {"x": 8, "y": 4, "color": "white"},
+            {"x": 10, "y": 4, "color": "white"},
+            {"x": 12, "y": 4, "color": "white"}
+          ],
+          "text": "Beyaz sağ üstte geniş bir moyo kurdu"
+        },
+        {
+          "stones": [
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 10, "y": 2, "color": "white"},
+            {"x": 12, "y": 2, "color": "white"},
+            {"x": 8, "y": 4, "color": "white"},
+            {"x": 10, "y": 4, "color": "white"},
+            {"x": 12, "y": 4, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"}
+          ],
+          "text": "Siyah aradaki zayıf noktaya istila ediyor"
+        },
+        {
+          "stones": [
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 10, "y": 2, "color": "white"},
+            {"x": 12, "y": 2, "color": "white"},
+            {"x": 8, "y": 4, "color": "white"},
+            {"x": 10, "y": 4, "color": "white"},
+            {"x": 12, "y": 4, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 9, "y": 2, "color": "white"}
+          ],
+          "text": "Beyaz karşı saldırıyor"
+        },
+        {
+          "stones": [
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 10, "y": 2, "color": "white"},
+            {"x": 12, "y": 2, "color": "white"},
+            {"x": 8, "y": 4, "color": "white"},
+            {"x": 10, "y": 4, "color": "white"},
+            {"x": 12, "y": 4, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 9, "y": 2, "color": "white"},
+            {"x": 8, "y": 3, "color": "black"}
+          ],
+          "text": "Siyah kenara doğru kaçıyor ve yaşıyor"
+        },
+        {
+          "stones": [
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 10, "y": 2, "color": "white"},
+            {"x": 12, "y": 2, "color": "white"},
+            {"x": 8, "y": 4, "color": "white"},
+            {"x": 10, "y": 4, "color": "white"},
+            {"x": 12, "y": 4, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 9, "y": 2, "color": "white"},
+            {"x": 8, "y": 3, "color": "black"},
+            {"x": 10, "y": 3, "color": "white"}
+          ],
+          "text": "Beyaz siyahı çeviriyor ama siyah moyoyu böldü!"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l4-4-4"],
+  "next_lesson": "l4-4-6",
+  "required_exercise": null
+}

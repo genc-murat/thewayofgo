@@ -1,0 +1,128 @@
+{
+  "id": "l6-5-10",
+  "level": 6,
+  "module": 5,
+  "lesson": 10,
+  "title": "Usta Seviye Sentez: Tüm Kavramların Bütünleşimi",
+  "description": "Öğrenilen tüm ustalık kavramlarını tek bir oyun içinde birleştirme ve uygulama.",
+  "duration_minutes": 15,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bu son ders, tüm Usta seviye modüllerinin sentezini yapıyor. Pro oyun analizi, AI stratejileri, turnuva hazırlık ve mentörlük bilgilerinizi tek bir bütünsel anlayışa dönüştüreceksiniz. Go'da ustalık (meijin), her kavramı doğal olarak birleştirebilmekten geçer."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 16, "color": "white"},
+        {"x": 16, "y": 3, "color": "black"},
+        {"x": 16, "y": 16, "color": "white"},
+        {"x": 14, "y": 2, "color": "black"},
+        {"x": 2, "y": 5, "color": "white"},
+        {"x": 10, "y": 3, "color": "black"},
+        {"x": 3, "y": 10, "color": "white"},
+        {"x": 9, "y": 16, "color": "black"},
+        {"x": 14, "y": 10, "color": "white"},
+        {"x": 6, "y": 14, "color": "black"},
+        {"x": 11, "y": 5, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 5, "y": 8, "type": "good"},
+        {"x": 13, "y": 14, "type": "territory"},
+        {"x": 8, "y": 11, "type": "vital"}
+      ],
+      "annotation": "Karmaşık orta oyun - tüm ustalık kavramlarını birleştirin"
+    },
+    {
+      "type": "text",
+      "content": "Usta seviye oyuncunun düşünce yapısı: 1) Fuseki'de AI'dan öğrendiğiniz büyük vizyonu uygulayın, 2) Chūban'da pro oyunlarından aldığınız ilhamla yaratıcı hamleler bulun, 3) Yose'de turnuva disipliniyle hassas hesaplama yapın. Her aşamada mentörlük vizyonunuzla pozisyonu değerlendirin."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 16, "color": "white"},
+            {"x": 16, "y": 3, "color": "black"},
+            {"x": 16, "y": 16, "color": "white"}
+          ],
+          "text": "Açılış - AI ve geleneksel bilgeliğin sentezi"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 16, "color": "white"},
+            {"x": 16, "y": 3, "color": "black"},
+            {"x": 16, "y": 16, "color": "white"},
+            {"x": 14, "y": 2, "color": "black"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 10, "y": 3, "color": "black"},
+            {"x": 3, "y": 10, "color": "white"}
+          ],
+          "text": "Erken orta oyun - etkili genişleme ve yön duygusu"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 16, "color": "white"},
+            {"x": 16, "y": 3, "color": "black"},
+            {"x": 16, "y": 16, "color": "white"},
+            {"x": 14, "y": 2, "color": "black"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 10, "y": 3, "color": "black"},
+            {"x": 3, "y": 10, "color": "white"},
+            {"x": 9, "y": 16, "color": "black"},
+            {"x": 14, "y": 10, "color": "white"}
+          ],
+          "text": "Karmaşık chūban - savaş ve strateji dengesi"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 16, "color": "white"},
+            {"x": 16, "y": 3, "color": "black"},
+            {"x": 16, "y": 16, "color": "white"},
+            {"x": 14, "y": 2, "color": "black"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 10, "y": 3, "color": "black"},
+            {"x": 3, "y": 10, "color": "white"},
+            {"x": 9, "y": 16, "color": "black"},
+            {"x": 14, "y": 10, "color": "white"},
+            {"x": 6, "y": 14, "color": "black"},
+            {"x": 11, "y": 5, "color": "white"}
+          ],
+          "text": "Geç oyun - hassas yose hesaplaması ve son değerlendirme"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 16, "color": "white"},
+            {"x": 16, "y": 3, "color": "black"},
+            {"x": 16, "y": 16, "color": "white"},
+            {"x": 14, "y": 2, "color": "black"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 10, "y": 3, "color": "black"},
+            {"x": 3, "y": 10, "color": "white"},
+            {"x": 9, "y": 16, "color": "black"},
+            {"x": 14, "y": 10, "color": "white"},
+            {"x": 6, "y": 14, "color": "black"},
+            {"x": 11, "y": 5, "color": "white"},
+            {"x": 5, "y": 8, "color": "black"},
+            {"x": 13, "y": 14, "color": "white"}
+          ],
+          "text": "Final pozisyonu - tüm kavramların ustalıkla birleştirilmesi"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Tebrikler! Usta seviye eğitim programını tamamladınız. Bundan sonra sürekli gelişim için: her gün tsumego çözün, profesyonel oyunları analiz edin, AI ile çalışın ve daha az deneyimli oyunculara mentörlük yapın. Go yolculuğunuz (Go no michi) asla bitmez — her oyun yeni bir keşiftir. Ganbatte!"
+    }
+  ],
+  "prerequisites": ["l6-5-9"],
+  "next_lesson": null,
+  "required_exercise": null
+}

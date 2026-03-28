@@ -4,85 +4,100 @@
   "module": 3,
   "lesson": 4,
   "title": "Sankaku ve Shimari",
-  "description": "Üçgen ve köşe kontrolü.",
-  "duration_minutes": 10,
+  "description": "Sankaku (üçgen) savunma kalıbı ve gelişmiş shimari (köşe kapatma) teknikleri. Köşe çatışmalarında uzman yaklaşımı.",
+  "duration_minutes": 15,
   "content": [
     {
       "type": "text",
-      "content": "Sankaku ve Shimari: Üçgen ve köşe kontrolü. Temel kavramları ve stratejileri öğrenin."
+      "content": "Sankaku (üçgen şekli) ve shimari (köşe kapatma), Go'nun en zarif yapı taşlarıdır. Uzman seviyesinde doğru shimari seçimi – 4-4+5-3 (kosumi), 3-4+5-3 (ikken), veya 4-4+6-3 (nikken) – oyun planına göre yapılır. Sankaku ise hem savunmada hem saldırıda hayat kurtaran bir şekil (katachi) olarak kullanılır."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 19,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        }
+        { "x": 3, "y": 3, "color": "black" },
+        { "x": 5, "y": 2, "color": "black" },
+        { "x": 2, "y": 5, "color": "black" },
+        { "x": 16, "y": 3, "color": "white" },
+        { "x": 14, "y": 2, "color": "white" }
       ],
-      "highlights": [],
-      "annotation": "Sankaku ve Shimari"
+      "highlights": [
+        { "x": 4, "y": 4, "type": "good" },
+        { "x": 3, "y": 5, "type": "territory" },
+        { "x": 5, "y": 4, "type": "liberty" },
+        { "x": 1, "y": 3, "type": "bad" }
+      ],
+      "annotation": "Mükemmel sankaku shimari: (3,3)+(5,2)+(2,5) üçgeni – köşe tamamen güvenli"
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 3, "y": 3, "color": "black" }
           ],
-          "text": "Pozisyon analizi başladı"
+          "text": "Siyah (3,3) köşe star noktası: shimari temeli atılır."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 16, "y": 3, "color": "white" }
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Beyaz karşı köşe: Siyah shimari tamamlamak için acele etmeli."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 16, "y": 3, "color": "white" },
+            { "x": 5, "y": 2, "color": "black" }
           ],
-          "text": "Sonraki hamleyi düşünün"
+          "text": "Siyah (5,2) ikken-tobi shimari: sağlam köşe toprağı + kenar genişleme."
+        },
+        {
+          "stones": [
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 16, "y": 3, "color": "white" },
+            { "x": 5, "y": 2, "color": "black" },
+            { "x": 14, "y": 2, "color": "white" }
+          ],
+          "text": "Beyaz kendi köşe shimari'sine başlar."
+        },
+        {
+          "stones": [
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 16, "y": 3, "color": "white" },
+            { "x": 5, "y": 2, "color": "black" },
+            { "x": 14, "y": 2, "color": "white" },
+            { "x": 2, "y": 5, "color": "black" }
+          ],
+          "text": "Siyah (2,5) sankaku tamamlar: üç taş üçgen oluşturur – 12+ point köşe toprağı güvence altında!"
         }
       ]
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        { "x": 3, "y": 3, "color": "black" },
+        { "x": 5, "y": 4, "color": "black" },
+        { "x": 16, "y": 16, "color": "white" },
+        { "x": 14, "y": 16, "color": "white" },
+        { "x": 4, "y": 6, "color": "white" }
+      ],
+      "highlights": [
+        { "x": 2, "y": 5, "type": "good" },
+        { "x": 6, "y": 2, "type": "good" },
+        { "x": 4, "y": 2, "type": "liberty" },
+        { "x": 3, "y": 6, "type": "bad" }
+      ],
+      "annotation": "Kosumi shimari (3,3)+(5,4): Beyaz (4,6) kakari'sine karşı (2,5) veya (6,2) tepkisi"
+    },
+    {
+      "type": "text",
+      "content": "Kakari'ye (köşe yaklaşımı) karşı shimari savunmasında iki seçenek vardır: (2,5) kosumi ile köşeyi kapatır ve sol kenara yönelir, (6,2) ile üst kenara genişler. Uzman seçimi, tahtanın diğer tarafındaki pozisyona göre yapılır. Eğer sol kenar önemliyse (2,5), üst kenar önemliyse (6,2) oynanır. Her iki hamle de shimari'yi korur ve toprağı güvence altına alır."
     }
   ],
-  "prerequisites": [
-    "l----3"
-  ],
-  "next_lesson": "l5-3",
+  "prerequisites": ["l5-3-3"],
+  "next_lesson": "l5-3-5",
   "required_exercise": "e5-3-4"
 }

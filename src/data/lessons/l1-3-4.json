@@ -3,86 +3,190 @@
   "level": 1,
   "module": 3,
   "lesson": 4,
-  "title": "İleri Skorlama Yöntemları",
-  "description": "Kapsamlı skor hesaplama.",
-  "duration_minutes": 10,
+  "title": "İleri Skorlama Yöntemleri",
+  "description": "Bölge sayma, esir hesaplama, komi ve kazananı belirleme yöntemlerini öğrenin.",
+  "duration_minutes": 14,
   "content": [
     {
       "type": "text",
-      "content": "İleri Skorlama Yöntemları: Kapsamlı skor hesaplama. Bu derste temel kavramları öğreneceksiniz."
+      "content": "Go oyunu bittiğinde skor hesaplanmalıdır. Japonca'da skor hesaplamaya 'moyo' (模様) dan territory sayımına geçiş denir. İki ana skorlama sistemi vardır: Japonca 'hane sayımı' (territory scoring) ve Çince 'alan sayımı' (area scoring). Bu derste 9x9 tahtada Japonca sistemiyle skor hesaplamayı öğreneceksiniz."
     },
     {
       "type": "board",
       "size": 9,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        },
-        {
-          "x": 5,
-          "y": 4,
-          "color": "black"
-        }
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 2, "y": 1, "color": "black"},
+        {"x": 6, "y": 6, "color": "white"},
+        {"x": 6, "y": 7, "color": "white"},
+        {"x": 6, "y": 8, "color": "white"},
+        {"x": 7, "y": 6, "color": "white"},
+        {"x": 8, "y": 6, "color": "white"},
+        {"x": 7, "y": 8, "color": "white"},
+        {"x": 8, "y": 8, "color": "white"},
+        {"x": 8, "y": 7, "color": "white"}
       ],
-      "highlights": [],
-      "annotation": "İleri Skorlama Yöntemları"
+      "highlights": [
+        {"x": 0, "y": 3, "type": "territory"},
+        {"x": 1, "y": 1, "type": "territory"},
+        {"x": 3, "y": 0, "type": "territory"},
+        {"x": 3, "y": 1, "type": "territory"},
+        {"x": 7, "y": 7, "type": "vital"},
+        {"x": 6, "y": 5, "type": "vital"},
+        {"x": 8, "y": 5, "type": "vital"},
+        {"x": 5, "y": 6, "type": "vital"},
+        {"x": 5, "y": 8, "type": "vital"}
+      ],
+      "annotation": "Siyah sol üst bölgede bölge kurdu, beyaz sağ alt bölgede. Sarı noktalar siyah bölge, mor noktalar beyazın olası bölge sınırları."
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"},
+            {"x": 6, "y": 8, "color": "white"},
+            {"x": 7, "y": 6, "color": "white"},
+            {"x": 8, "y": 6, "color": "white"},
+            {"x": 7, "y": 8, "color": "white"},
+            {"x": 8, "y": 8, "color": "white"},
+            {"x": 8, "y": 7, "color": "white"}
           ],
-          "text": "Pozisyonu inceleyin"
+          "text": "Oyun bitti. Şimdi skor hesaplayacağız. Adım 1: Her iki oyuncunun bölgelerini belirle."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"},
+            {"x": 6, "y": 8, "color": "white"},
+            {"x": 7, "y": 6, "color": "white"},
+            {"x": 8, "y": 6, "color": "white"},
+            {"x": 7, "y": 8, "color": "white"},
+            {"x": 8, "y": 8, "color": "white"},
+            {"x": 8, "y": 7, "color": "white"}
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Adım 2: Siyahın bölgesi: (1,1) = 1 boş nokta, (0,3) = 1 boş nokta, (3,0)+(3,1) = 2 boş nokta. Toplam: 4 bölge puanı."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"},
+            {"x": 6, "y": 8, "color": "white"},
+            {"x": 7, "y": 6, "color": "white"},
+            {"x": 8, "y": 6, "color": "white"},
+            {"x": 7, "y": 8, "color": "white"},
+            {"x": 8, "y": 8, "color": "white"},
+            {"x": 8, "y": 7, "color": "white"}
           ],
-          "text": "İleri adımları düşünün"
+          "text": "Adım 3: Beyazın bölgesi: (7,7) = 1 boş nokta. Kenar ve köşe tarafından sınırlanan beyaz bölge daha küçük. Toplam: 1 bölge puanı."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"},
+            {"x": 6, "y": 8, "color": "white"},
+            {"x": 7, "y": 6, "color": "white"},
+            {"x": 8, "y": 6, "color": "white"},
+            {"x": 7, "y": 8, "color": "white"},
+            {"x": 8, "y": 8, "color": "white"},
+            {"x": 8, "y": 7, "color": "white"}
+          ],
+          "text": "Adım 4: Esirler yok. Komi = 6.5 (beyazın avantajı). Sonuç: Siyah 4 bölge vs Beyaz 1 bölge + 6.5 komi = 7.5. Beyaz 3.5 farkla kazanır!"
         }
       ]
+    },
+    {
+      "type": "text",
+      "content": "Komi (コミ), beyazın ikinci hamle dezavantajını dengelemek için aldığı ekstra puandır. Japonca kurallarında komi genellikle 6.5 puandır. Yarım puan (.5) beraberliği engeller. Siyah 7 bölge, beyaz 1 bölge yapsa bile, komi sayesinde beyaz 7.5 puana ulaşır ve kazanır. Bu yüzden siyahın daha agresif oynaması gerekir."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 3, "y": 0, "color": "black"},
+        {"x": 4, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 0, "y": 3, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 4, "y": 1, "color": "black"},
+        {"x": 4, "y": 2, "color": "black"},
+        {"x": 1, "y": 1, "color": "white"},
+        {"x": 2, "y": 1, "color": "white"},
+        {"x": 3, "y": 1, "color": "white"},
+        {"x": 1, "y": 2, "color": "white"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 6, "y": 5, "color": "white"},
+        {"x": 6, "y": 6, "color": "white"},
+        {"x": 6, "y": 7, "color": "white"},
+        {"x": 6, "y": 8, "color": "white"},
+        {"x": 7, "y": 5, "color": "white"},
+        {"x": 8, "y": 5, "color": "white"},
+        {"x": 7, "y": 8, "color": "white"},
+        {"x": 8, "y": 8, "color": "white"},
+        {"x": 8, "y": 6, "color": "white"},
+        {"x": 8, "y": 7, "color": "white"},
+        {"x": 7, "y": 7, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 1, "type": "bad"},
+        {"x": 2, "y": 1, "type": "bad"},
+        {"x": 3, "y": 1, "type": "bad"},
+        {"x": 1, "y": 2, "type": "bad"},
+        {"x": 3, "y": 2, "type": "bad"},
+        {"x": 2, "y": 2, "type": "territory"},
+        {"x": 7, "y": 6, "type": "territory"}
+      ],
+      "annotation": "Siyah 3 beyaz taşı esir aldı (kırmızı) + sol üst bölge. Beyaz sağ alt bölge + merkez. Komi ile hesaplayın!"
+    },
+    {
+      "type": "text",
+      "content": "Hesaplama özeti: Siyah bölge = 1 (2,2 boş nokta) + 5 esir = 6 puan. Beyaz bölge = 2 (7,6) + 0 esir + 6.5 komi = 8.5 puan. Beyaz 2.5 farkla kazanır! Skorlama formülü: Toplam = Bölge + Esirler (+ Komi beyaz için). Her esir taşı 1 puandır. Japonya kurallarında ölü taşlar tahtadan kaldırılır ve esir olarak sayılır."
     }
   ],
   "prerequisites": [

@@ -1,0 +1,303 @@
+{
+  "id": "l4-4-6",
+  "level": 4,
+  "module": 4,
+  "lesson": 6,
+  "title": "İstila Stratejileri 2",
+  "description": "İstila sonrası gelişim ve savunma stratejileri.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "İstila başarılı olduktan sonra, yaşama (life) veya kaçma (escape) stratejisi seçmelisiniz. İstila taşının amacı moyoyu parçalamaktır - eğer rakip moyoyu korumak için birçok hamle harcarsa, sizin istilanız sente olmuş demektir."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {
+          "x": 0,
+          "y": 6,
+          "color": "black"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "color": "black"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "color": "black"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "color": "black"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "color": "black"
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "color": "black"
+        },
+        {
+          "x": 2,
+          "y": 9,
+          "color": "black"
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "color": "white"
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "color": "white"
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "color": "white"
+        }
+      ],
+      "highlights": [
+        {
+          "x": 3,
+          "y": 9,
+          "type": "capture"
+        },
+        {
+          "x": 4,
+          "y": 10,
+          "type": "liberty"
+        }
+      ],
+      "annotation": "Beyaz istilası sonucu - yaşama veya kaçma?"
+    },
+    {
+      "type": "text",
+      "content": "İstila sonrası seçenekler: 1) Göz (eye) yaparak canlı kalma 2) Merkeze doğru kaçma 3) Rakip taşı takas (trade) etme. Hangi seçeneğin iyi olduğunu okumak (yomu) ileri düzey yetenek gerektirir."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {
+              "x": 0,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 1,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 2,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 3,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 5,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 3,
+              "y": 8,
+              "color": "white"
+            }
+          ],
+          "text": "Beyaz siyahın büyük moyosuna istila etti"
+        },
+        {
+          "stones": [
+            {
+              "x": 0,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 1,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 2,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 3,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 5,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 2,
+              "y": 9,
+              "color": "black"
+            },
+            {
+              "x": 3,
+              "y": 8,
+              "color": "white"
+            },
+            {
+              "x": 4,
+              "y": 9,
+              "color": "white"
+            }
+          ],
+          "text": "Beyaz ikinci taşla şekil oluşturuyor"
+        },
+        {
+          "stones": [
+            {
+              "x": 0,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 1,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 2,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 3,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 5,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 2,
+              "y": 9,
+              "color": "black"
+            },
+            {
+              "x": 3,
+              "y": 8,
+              "color": "white"
+            },
+            {
+              "x": 4,
+              "y": 9,
+              "color": "white"
+            },
+            {
+              "x": 5,
+              "y": 8,
+              "color": "white"
+            }
+          ],
+          "text": "Beyaz üç taşla güçlendi"
+        },
+        {
+          "stones": [
+            {
+              "x": 0,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 1,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 2,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 3,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 5,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 2,
+              "y": 9,
+              "color": "black"
+            },
+            {
+              "x": 3,
+              "y": 8,
+              "color": "white"
+            },
+            {
+              "x": 4,
+              "y": 9,
+              "color": "white"
+            },
+            {
+              "x": 5,
+              "y": 8,
+              "color": "white"
+            },
+            {
+              "x": 4,
+              "y": 8,
+              "color": "black"
+            }
+          ],
+          "text": "Siyah beyazı bölgeye hapsetmeye çalışıyor"
+        }
+      ]
+    }
+  ],
+  "prerequisites": [
+    "l4-4-5"
+  ],
+  "next_lesson": "l4-4-7",
+  "required_exercise": null
+}

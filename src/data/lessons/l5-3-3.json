@@ -3,86 +3,106 @@
   "level": 5,
   "module": 3,
   "lesson": 3,
-  "title": "Çift Yüz Sente",
-  "description": "İki yönden baskı kurma teknikleri.",
-  "duration_minutes": 10,
+  "title": "Çift Yönlü Baskı",
+  "description": "İki yönden eşzamanlı baskı kurarak rakibi zor durumda bırakma. Ryōten pressure tesuji'leri.",
+  "duration_minutes": 15,
   "content": [
     {
       "type": "text",
-      "content": "Çift Yüz Sente: İki yönden baskı kurma teknikleri. Temel kavramları ve stratejileri öğrenin."
+      "content": "Çift yönlü baskı (ryōten atsu), bir taşın veya grubun iki farklı yönde aynı anda tehdit edilmesidir. Rakip bir yöne savunursa, diğer yöndeki zayıflık sömürülür. Bu teknik özellikle chuban (orta oyun) aşamasında, zayıf gruplara karşı son derece etkilidir. Uzman seviyesinde bu fırsatları yaratmak ve değerlendirmek kritik beceridir."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 19,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        }
+        { "x": 10, "y": 4, "color": "white" },
+        { "x": 8, "y": 6, "color": "black" },
+        { "x": 12, "y": 6, "color": "black" },
+        { "x": 6, "y": 3, "color": "black" },
+        { "x": 14, "y": 3, "color": "black" }
       ],
-      "highlights": [],
-      "annotation": "Çift Yüz Sente"
+      "highlights": [
+        { "x": 9, "y": 5, "type": "good" },
+        { "x": 11, "y": 5, "type": "good" },
+        { "x": 10, "y": 2, "type": "liberty" },
+        { "x": 10, "y": 6, "type": "bad" }
+      ],
+      "annotation": "Beyaz (10,4) iki Siyah taşı arasında: çift yönlü baskı fırsatı"
+    },
+    {
+      "type": "text",
+      "content": "Beyaz (10,4) taşı Siyah'ın (8,6) ve (12,6) taşları arasında sıkışmış. Siyah hem soldan (9,5) hem sağdan (11,5) baskı uygulayabilir. Beyaz bir yöne kaçarsa, Siyah diğer yönden keser. Bu çift tehdit durumu Go'da 'ryōdan' (iki kılıç) olarak bilinir."
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 10, "y": 4, "color": "white" },
+            { "x": 8, "y": 6, "color": "black" },
+            { "x": 12, "y": 6, "color": "black" },
+            { "x": 6, "y": 3, "color": "black" },
+            { "x": 14, "y": 3, "color": "black" }
           ],
-          "text": "Pozisyon analizi başladı"
+          "text": "Pozisyon: Beyaz (10,4) yalnız – iki Siyah duvarı arasında."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            { "x": 10, "y": 4, "color": "white" },
+            { "x": 8, "y": 6, "color": "black" },
+            { "x": 12, "y": 6, "color": "black" },
+            { "x": 6, "y": 3, "color": "black" },
+            { "x": 14, "y": 3, "color": "black" },
+            { "x": 9, "y": 5, "color": "black" }
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Siyah (9,5) sol baskı: Beyaz'ın kaçış yolu sınırlanır."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 10, "y": 4, "color": "white" },
+            { "x": 8, "y": 6, "color": "black" },
+            { "x": 12, "y": 6, "color": "black" },
+            { "x": 6, "y": 3, "color": "black" },
+            { "x": 14, "y": 3, "color": "black" },
+            { "x": 9, "y": 5, "color": "black" },
+            { "x": 10, "y": 6, "color": "white" }
           ],
-          "text": "Sonraki hamleyi düşünün"
+          "text": "Beyaz (10,6) sağa kaçar: ama Siyah diğer kapıyı kapatır!"
+        },
+        {
+          "stones": [
+            { "x": 10, "y": 4, "color": "white" },
+            { "x": 8, "y": 6, "color": "black" },
+            { "x": 12, "y": 6, "color": "black" },
+            { "x": 6, "y": 3, "color": "black" },
+            { "x": 14, "y": 3, "color": "black" },
+            { "x": 9, "y": 5, "color": "black" },
+            { "x": 10, "y": 6, "color": "white" },
+            { "x": 11, "y": 5, "color": "black" }
+          ],
+          "text": "Siyah (11,5) sağ baskı: Beyaz çembere alındı – iki yönlü baskı tamamlandı!"
+        },
+        {
+          "stones": [
+            { "x": 8, "y": 6, "color": "black" },
+            { "x": 12, "y": 6, "color": "black" },
+            { "x": 6, "y": 3, "color": "black" },
+            { "x": 14, "y": 3, "color": "black" },
+            { "x": 9, "y": 5, "color": "black" },
+            { "x": 11, "y": 5, "color": "black" },
+            { "x": 10, "y": 5, "color": "white" }
+          ],
+          "captured": [{ "x": 10, "y": 4 }, { "x": 10, "y": 6 }],
+          "text": "Beyaz son çare (10,5): Siyah (10,4) atari ile yakalar – çift yönlü baskı başarılı, iki taş ele geçirildi!"
         }
       ]
+    },
+    {
+      "type": "text",
+      "content": "Çift yönlü baskı kurarken dikkat: (1) Her iki yöndeki tehdit gerçek olmalı – rakip bir yöne savunurken diğer yöndeki fırsatı kaçırmayın, (2) Baskıyı sıralı uygulayın – önce bir yön, sonra diğer, (3) Hasu (kötü hamle) oynamaktan kaçının – her baskı hamlesi kendi başına anlamlı olmalı."
     }
   ],
-  "prerequisites": [
-    "l----2"
-  ],
-  "next_lesson": "l5-4-4",
+  "prerequisites": ["l5-3-2"],
+  "next_lesson": "l5-3-4",
   "required_exercise": "e5-3-3"
 }

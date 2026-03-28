@@ -1,0 +1,72 @@
+{
+  "id": "l3-5-6",
+  "level": 3,
+  "module": 5,
+  "lesson": 6,
+  "title": "Savunma Planlama",
+  "description": "Grup savunma stratejileri ve önceliklendirme.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Savunma, saldırı kadar önemlidir. Hangi grupların savunulması gerektiğini, hangilerinin feda edilebileceğini bilmek, güçlü bir oyun planının temelidir. Her grubun değerini ve savunma maliyetini değerlendirmeyi öğrenin."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 1, "y": 1, "color": "black"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 0, "y": 1, "color": "white"},
+        {"x": 0, "y": 2, "color": "white"},
+        {"x": 0, "y": 3, "color": "white"},
+        {"x": 2, "y": 0, "color": "white"},
+        {"x": 6, "y": 6, "color": "black"},
+        {"x": 7, "y": 7, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 0, "type": "bad"},
+        {"x": 1, "y": 4, "type": "liberty"}
+      ],
+      "annotation": "Savunma kararı: Siyah (1,1-3) grubu tehdit altında. (6,6)-(7,7) grubu güvenli mi?"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 0, "y": 1, "color": "white"},
+            {"x": 0, "y": 2, "color": "white"},
+            {"x": 0, "y": 3, "color": "white"},
+            {"x": 2, "y": 0, "color": "white"}
+          ],
+          "text": "Siyah grup: özgürlükleri (1,0), (2,1), (2,2), (2,3), (1,4). Beyaz (1,0) oynarsa atari! Savunmak mı, başka yerde oynamak mı?"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 1, "y": 4, "color": "black"},
+            {"x": 0, "y": 1, "color": "white"},
+            {"x": 0, "y": 2, "color": "white"},
+            {"x": 0, "y": 3, "color": "white"},
+            {"x": 2, "y": 0, "color": "white"}
+          ],
+          "text": "Siyah (1,4) oynayarak gruba katıldı. Özgürlükler arttı: (2,4), (1,5), (2,1), (2,2), (2,3). Güvende!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Savunma önceliklendirme:\n1. Yaşam için kritik gruplar → mutlaka savunun\n2. Büyük değerli gruplar → genellikle savunun\n3. Küçük feda edilebilir gruplar → gerektiğinde bırakın\n4. Hafif gruplar → sabaki (esnek kaçış) ile kurtarın\n\nUnutmayın: Her grubu savunmaya çalışmak, diğer yerlerde fırsatları kaçırmanıza neden olur."
+    }
+  ],
+  "prerequisites": ["l3-5-5"],
+  "next_lesson": "l3-5-7",
+  "required_exercise": null
+}

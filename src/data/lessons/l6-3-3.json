@@ -3,86 +3,131 @@
   "level": 6,
   "module": 3,
   "lesson": 3,
-  "title": "Hoshi Atama",
-  "description": "Yıldız noktalarının stratejik kullanımı.",
-  "duration_minutes": 10,
+  "title": "Yıldız Noktası Stratejileri",
+  "description": "Hoshi (yıldız noktası) bazlı stratejiler, san-san (3-3) invazyon savunması ve yıldız noktası etrafında moyo inşası.",
+  "duration_minutes": 25,
   "content": [
     {
       "type": "text",
-      "content": "Hoshi Atama: Yıldız noktalarının stratejik kullanımı. Temel kavramları ve stratejileri öğrenin."
+      "content": "Hoshi (4-4 yıldız noktası), modern Go'nun en popüler açılışıdır. Avantajı: hızlı gelişim ve köşe+kenar bütünlüğü. Riski: san-san (3-3 noktası) invazyonuna açık. Usta seviyesinde hoshi'nin gücünü ve zayıflığını bilmek, hem saldırı hem savunma için kritiktir. Moyo inşası hoshi merkezlidir."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 19,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        }
+        { "x": 3, "y": 3, "color": "black" },
+        { "x": 15, "y": 15, "color": "white" },
+        { "x": 15, "y": 3, "color": "black" },
+        { "x": 3, "y": 15, "color": "white" },
+        { "x": 9, "y": 3, "color": "black" },
+        { "x": 3, "y": 9, "color": "white" },
+        { "x": 2, "y": 5, "color": "black" },
+        { "x": 16, "y": 5, "color": "white" }
       ],
-      "highlights": [],
-      "annotation": "Hoshi Atama"
+      "highlights": [
+        { "x": 3, "y": 3, "type": "good" },
+        { "x": 15, "y": 3, "type": "good" },
+        { "x": 9, "y": 3, "type": "good" },
+        { "x": 2, "y": 5, "type": "good" },
+        { "x": 9, "y": 9, "type": "territory" }
+      ],
+      "annotation": "Siyah üç hoshi + kenar uzatması: Üst kenar boyunca büyük moyo. Beyaz'ın san-san invazyonu kaçınılmaz."
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 15, "y": 15, "color": "white" },
+            { "x": 15, "y": 3, "color": "black" },
+            { "x": 3, "y": 15, "color": "white" },
+            { "x": 9, "y": 3, "color": "black" }
           ],
-          "text": "Pozisyon analizi başladı"
+          "text": "1-5: Siyah üç hoshi üst kenarda! Büyük moyo çerçevesi. Klasik 'Chinese Opening' tarzı."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 15, "y": 15, "color": "white" },
+            { "x": 15, "y": 3, "color": "black" },
+            { "x": 3, "y": 15, "color": "white" },
+            { "x": 9, "y": 3, "color": "black" },
+            { "x": 3, "y": 9, "color": "white" }
           ],
-          "text": "Taşlar yerleşti"
+          "text": "6: Beyaz sol kenar hoshi – Siyah'ın moyo'suna karşı kendi bölgesini kurar."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 15, "y": 15, "color": "white" },
+            { "x": 15, "y": 3, "color": "black" },
+            { "x": 3, "y": 15, "color": "white" },
+            { "x": 9, "y": 3, "color": "black" },
+            { "x": 3, "y": 9, "color": "white" },
+            { "x": 2, "y": 5, "color": "black" },
+            { "x": 16, "y": 5, "color": "white" }
           ],
-          "text": "Sonraki hamleyi düşünün"
+          "text": "7-8: Her iki taraf kenarları güçlendirir. Siyah sol-üst köşeyi de shimari ile sağlam tutar."
+        },
+        {
+          "stones": [
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 15, "y": 15, "color": "white" },
+            { "x": 15, "y": 3, "color": "black" },
+            { "x": 3, "y": 15, "color": "white" },
+            { "x": 9, "y": 3, "color": "black" },
+            { "x": 3, "y": 9, "color": "white" },
+            { "x": 2, "y": 5, "color": "black" },
+            { "x": 16, "y": 5, "color": "white" },
+            { "x": 4, "y": 2, "color": "black" }
+          ],
+          "text": "9: Siyah üst kenarı mühürler! Moyo ~40 puan büyüklüğünde. Beyaz ne yapmalı?"
+        },
+        {
+          "stones": [
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 15, "y": 15, "color": "white" },
+            { "x": 15, "y": 3, "color": "black" },
+            { "x": 3, "y": 15, "color": "white" },
+            { "x": 9, "y": 3, "color": "black" },
+            { "x": 3, "y": 9, "color": "white" },
+            { "x": 2, "y": 5, "color": "black" },
+            { "x": 16, "y": 5, "color": "white" },
+            { "x": 4, "y": 2, "color": "black" },
+            { "x": 3, "y": 1, "color": "white" }
+          ],
+          "text": "10: Beyaz san-san invazyon! Hoshi'nin zayıflığı – köşe ~6 puan vermek zorunda. Ama Siyah dış duvar alır!"
         }
       ]
+    },
+    {
+      "type": "text",
+      "content": "San-san invazyonunda prensip: 'Köşeyi ver, duvarı al.' Siyah hoshi açtığında 3-3 invazyonunu kabul edip dış duvar inşa etmek, çoğu durumda en iyi stratejidir. Bu duvar, kenardaki diğer taşlarınızla birleşerek moyo'yu gerçek bölgeye çevirir. Ama dikkat: eğer rakibin invazyonu moyo'nuzu parçalıyorsa, erken savunma (kake) daha iyi olabilir."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        { "x": 15, "y": 3, "color": "black" },
+        { "x": 14, "y": 2, "color": "white" },
+        { "x": 16, "y": 2, "color": "black" },
+        { "x": 14, "y": 3, "color": "white" },
+        { "x": 16, "y": 4, "color": "black" },
+        { "x": 15, "y": 2, "color": "white" },
+        { "x": 17, "y": 4, "color": "black" },
+        { "x": 14, "y": 1, "color": "white" }
+      ],
+      "highlights": [
+        { "x": 16, "y": 4, "type": "good" },
+        { "x": 17, "y": 4, "type": "good" },
+        { "x": 15, "y": 2, "type": "capture" },
+        { "x": 14, "y": 1, "type": "territory" }
+      ],
+      "annotation": "Hoshi san-san invazyon sonucu: Beyaz köşede yaşadı (~7 puan), Siyah sağlam dış duvar kazandı. Duvar daha değerli!"
     }
   ],
-  "prerequisites": [
-    "l----2"
-  ],
-  "next_lesson": "l6-4-4",
+  "prerequisites": ["l6-3-2"],
+  "next_lesson": "l6-3-4",
   "required_exercise": "e6-3-3"
 }

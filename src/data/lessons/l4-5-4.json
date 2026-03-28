@@ -1,0 +1,105 @@
+{
+  "id": "l4-5-4",
+  "level": 4,
+  "module": 5,
+  "lesson": 4,
+  "title": "Sentez: Oyun Planı Oluşturma",
+  "description": "Tüm konseptleri birleştirerek tam oyun planı oluşturma.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "İyi bir oyun planı fusekiden yose'ye kadar tüm aşamaları kapsar. Joseki kalıpları köşeleri, etki alanları kenarları, kalınlık merkez kontrolünü belirler. Bu dersin sonunda tam bir oyun planı oluşturabileceksiniz."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "white"},
+        {"x": 9, "y": 9, "color": "black"},
+        {"x": 8, "y": 10, "color": "white"},
+        {"x": 3, "y": 9, "color": "black"},
+        {"x": 9, "y": 3, "color": "white"},
+        {"x": 6, "y": 6, "color": "black"},
+        {"x": 6, "y": 3, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 6, "y": 6, "type": "good"},
+        {"x": 4, "y": 5, "type": "territory"},
+        {"x": 8, "y": 7, "type": "territory"},
+        {"x": 6, "y": 3, "type": "bad"}
+      ],
+      "annotation": "Dört köşe josekisi + merkez planlaması"
+    },
+    {
+      "type": "text",
+      "content": "Oyun planı adımları: 1) Fuseki: 4 köşeyi joseki ile açın 2) Chuban: Etki alanlarını genişletin veya istila edin 3) Yose: Bölgeleri kesinleştirin. Her aşamada sente hamleleri kollayın ve rakibin gote hamlelerini cezalandırın."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 9, "y": 9, "color": "black"}
+          ],
+          "text": "Siyah iki köşeyi hoshu (yıldız) noktasında açtı"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 8, "y": 10, "color": "white"}
+          ],
+          "text": "Dört köşede josekiler başlıyor"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 8, "y": 10, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah tengen (merkez) hamlesiyle planı uyguluyor"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 8, "y": 10, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 6, "y": 3, "color": "white"}
+          ],
+          "text": "Beyaz üst kenarı bölerek karşı plan uyguluyor"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 8, "y": 10, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 6, "y": 3, "color": "white"},
+            {"x": 6, "y": 9, "color": "black"}
+          ],
+          "text": "Siyah alt kenarı da güçlendirerek büyük moyo oluşturuyor!"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l4-5-3"],
+  "next_lesson": "l4-5-5",
+  "required_exercise": null
+}

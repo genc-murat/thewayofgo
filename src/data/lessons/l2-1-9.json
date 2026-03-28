@@ -1,0 +1,123 @@
+{
+  "id": "l2-1-9",
+  "level": 2,
+  "module": 1,
+  "lesson": 9,
+  "title": "Snapback (Geri Çevirme)",
+  "description": "Snapback tekniğini öğrenin: bir taşı feda ederek daha fazla taş yakalama stratejisi.",
+  "duration_minutes": 8,
+  "content": [
+    {
+      "type": "text",
+      "content": "Snapback (uta-gaeshi), Go'daki en zarif yakalama tekniklerinden biridir. Temel fikir: bir taşınızı bilerek rakibin almasına izin verirsiniz, ancak rakip aldığı anda geri alınır ve daha fazla taş kazanırsınız. Bu teknik, rakibin taşını bir 'kapan' (trap) içine sokar."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 2, "y": 2, "color": "white"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 2, "y": 4, "color": "white"},
+        {"x": 1, "y": 3, "color": "white"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 3, "type": "vital"}
+      ],
+      "annotation": "Snapback pozisyonu: Siyah (2,3) oynarsa beyaz alabilir, ama siyah geri alır"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 2, "y": 4, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"}
+          ],
+          "text": "Beyaz grubun üç özgürlüğü var, siyah snapback hazırlıyor"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 2, "y": 4, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"}
+          ],
+          "text": "Siyah (2,3) oynadı - atari! Beyaz alabilir mi?"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "white"}
+          ],
+          "captured": [{"x": 2, "y": 3, "color": "black"}],
+          "text": "Beyaz siyah taşı aldı! Ama dikkat..."
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "white"}
+          ],
+          "highlights": [{"x": 2, "y": 2, "type": "liberty"}, {"x": 2, "y": 4, "type": "liberty"}, {"x": 1, "y": 3, "type": "liberty"}],
+          "text": "Beyaz taşın üç özgürlüğü yok! Siyah (2,2) veya (2,4) oynayabilir"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 2, "y": 2, "color": "black"}
+          ],
+          "text": "Siyah (2,2) oynadı - snapback! Beyaz taş yeniden ataride"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"}
+          ],
+          "captured": [{"x": 2, "y": 3}],
+          "text": "Siyah beyaz taşı yakaladı! Snapback başarılı - bir taş verdik, bir taş aldık"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Snapback'ın gücü şurada yatar: rakip taş aldığında, o taşı yerleştirmek zorunda kalır ve bu yeni taş da hemen tehdit altındadır. Snapback genellikle merdiven (shichou) durmadığında alternatif olarak kullanılır. Anahtar nokta: snapback hazırlamadan önce, rakibin alacağı taşın çevresinde kendi taşlarınızın yeterince kuvvetli olduğundan emin olun."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 5, "y": 5, "color": "white"},
+        {"x": 6, "y": 6, "color": "black"},
+        {"x": 5, "y": 7, "color": "white"},
+        {"x": 4, "y": 6, "color": "white"},
+        {"x": 6, "y": 5, "color": "black"},
+        {"x": 7, "y": 6, "color": "black"},
+        {"x": 6, "y": 7, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 5, "y": 6, "type": "good"}
+      ],
+      "annotation": "İkinci snapback örneği: farklı yönde benzer teknik"
+    }
+  ],
+  "prerequisites": ["l2-1-8"],
+  "next_lesson": "l2-1-10",
+  "required_exercise": null
+}

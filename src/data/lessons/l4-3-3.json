@@ -4,83 +4,278 @@
   "module": 3,
   "lesson": 3,
   "title": "Moyo Yaratma Teknikleri",
-  "description": "Büyük moyo oluşturma.",
-  "duration_minutes": 10,
+  "description": "Kalınlığı (厚さ) kullanarak büyük moyo (模様) oluşturma, kenar genişlemeleri ve merkez kontrolü ile çerçeve inşaatı.",
+  "duration_minutes": 17,
   "content": [
     {
       "type": "text",
-      "content": "Moyo Yaratma Teknikleri: Büyük moyo oluşturma. Bu derste temel kavramları öğreneceksiniz."
+      "content": "Moyo (模様) yaratmanın üç temel tekniği: 1) Kalınlıktan (厚さ, atsusa) yararlanarak geniş hamleler oynamak — kalınlığa yakın değil, kalınlığın koruduğu mesafeye oynamak 2) Büyük kenar genişlemeleri (振り幅, furibahaba) ile çerçeve kurmak 3) Merkez taşlarıyla çerçeveyi birleştirmek. En önemli ilke: kalınlık sizi korur — ondan uzaklaşın ve genişleyin! Kalınlığa çok yakın oynamak en yaygın hatalardandır. Kalınlık zaten o bölgeyi kontrol eder, siz etki alanının ucuna doğru genişleyin."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 13,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        },
-        {
-          "x": 5,
-          "y": 4,
-          "color": "black"
-        }
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 2, "y": 5, "color": "black"},
+        {"x": 2, "y": 6, "color": "black"},
+        {"x": 2, "y": 7, "color": "black"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 3, "y": 7, "color": "black"},
+        {"x": 9, "y": 9, "color": "white"},
+        {"x": 10, "y": 10, "color": "white"},
+        {"x": 11, "y": 3, "color": "white"}
       ],
-      "highlights": [],
-      "annotation": "Moyo Yaratma Teknikleri"
+      "highlights": [
+        {"x": 5, "y": 3, "type": "good"},
+        {"x": 6, "y": 5, "type": "good"},
+        {"x": 4, "y": 5, "type": "territory"},
+        {"x": 3, "y": 5, "type": "territory"},
+        {"x": 1, "y": 5, "type": "bad"},
+        {"x": 3, "y": 6, "type": "bad"}
+      ],
+      "annotation": "Kalınlıktan moyo oluşturma — (5,3) ve (6,5) ideal genişleme noktaları, (1,5) ve (3,6) çok yakın = kötü"
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 10, "y": 10, "color": "white"},
+            {"x": 11, "y": 3, "color": "white"}
           ],
-          "text": "Pozisyonu inceleyin"
+          "text": "Siyah sol üstte kalın grup (厚い石) oluşturdu — şimdi kalınlığı kullanarak moyo genişletme zamanı"
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 10, "y": 10, "color": "white"},
+            {"x": 11, "y": 3, "color": "white"},
+            {"x": 5, "y": 3, "color": "black"}
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Siyah (5,3) — kalınlıktan bir atlama (飛び, tobi)! Üst kenar boyunca çerçeve (枠, waku) başlıyor"
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 10, "y": 10, "color": "white"},
+            {"x": 11, "y": 3, "color": "white"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"}
           ],
-          "text": "İleri adımları düşünün"
+          "text": "Beyaz (9,3) — siyahın genişlemesini sınırlamaya çalışıyor (制限, seigen)"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 10, "y": 10, "color": "white"},
+            {"x": 11, "y": 3, "color": "white"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 6, "y": 5, "color": "black"}
+          ],
+          "text": "Siyah (6,5) — merkez genişlemesi! Üst kenar + merkez birleşerek büyük moyo oluşuyor"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 10, "y": 10, "color": "white"},
+            {"x": 11, "y": 3, "color": "white"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 8, "y": 5, "color": "white"}
+          ],
+          "text": "Beyaz (8,5) — moyoyu ikiye bölmeye çalışıyor (分割, bunraku)"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 10, "y": 10, "color": "white"},
+            {"x": 11, "y": 3, "color": "white"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 8, "y": 5, "color": "white"},
+            {"x": 7, "y": 4, "color": "black"}
+          ],
+          "text": "Siyah (7,4) — bağlantı (連絡, renraku)! Moyoyu birleştirerek 30+ puanlık çerçeve tamamlandı"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Moyo yaratırken üç yaygın hata (悪手, aku): 1) Kalınlığa çok yakın oynamak (厚さに近すぎ) — kalınlık zaten orayı korur, daha uzağa gidin 2) Çok hızlı kapatmak — moyo açıkken genişleyin, erken kapatmak potansiyeli sınırlar 3) Savunmayı unutmak — büyük moyo göz alıcıdır ama bir invazyonla (打入り) çökebilir. Altın kural: genişleme (拡大) ve savunma (守り) arasındaki dengeyi koruyun. Her genişleme hamlesinde 'Rakip bu açıklıktan girebilir mi?' diye sorun."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 2, "y": 9, "color": "black"},
+        {"x": 3, "y": 9, "color": "black"},
+        {"x": 4, "y": 9, "color": "black"},
+        {"x": 5, "y": 9, "color": "black"},
+        {"x": 6, "y": 9, "color": "black"},
+        {"x": 7, "y": 9, "color": "black"},
+        {"x": 3, "y": 10, "color": "black"},
+        {"x": 6, "y": 10, "color": "black"},
+        {"x": 9, "y": 3, "color": "white"},
+        {"x": 11, "y": 6, "color": "white"},
+        {"x": 10, "y": 11, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 3, "y": 7, "type": "good"},
+        {"x": 5, "y": 7, "type": "good"},
+        {"x": 7, "y": 7, "type": "good"},
+        {"x": 4, "y": 8, "type": "territory"},
+        {"x": 5, "y": 8, "type": "territory"},
+        {"x": 6, "y": 8, "type": "territory"},
+        {"x": 2, "y": 8, "type": "bad"}
+      ],
+      "annotation": "Alt kenar duvarından moyo — (3,7), (5,7), (7,7) ideal genişleme, (2,8) çok yakın = kötü"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 9, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 4, "y": 9, "color": "black"},
+            {"x": 5, "y": 9, "color": "black"},
+            {"x": 6, "y": 9, "color": "black"},
+            {"x": 7, "y": 9, "color": "black"},
+            {"x": 3, "y": 10, "color": "black"},
+            {"x": 6, "y": 10, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 11, "y": 6, "color": "white"},
+            {"x": 10, "y": 11, "color": "white"}
+          ],
+          "text": "Siyah alt kenarda güçlü duvar — şimdi yukarı doğru moyo genişletme zamanı"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 9, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 4, "y": 9, "color": "black"},
+            {"x": 5, "y": 9, "color": "black"},
+            {"x": 6, "y": 9, "color": "black"},
+            {"x": 7, "y": 9, "color": "black"},
+            {"x": 3, "y": 10, "color": "black"},
+            {"x": 6, "y": 10, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 11, "y": 6, "color": "white"},
+            {"x": 10, "y": 11, "color": "white"},
+            {"x": 5, "y": 7, "color": "black"}
+          ],
+          "text": "Siyah (5,7) — merkezden genişleme! Duvarın etkisiyle büyük moyo çerçevesi oluşuyor"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 9, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 4, "y": 9, "color": "black"},
+            {"x": 5, "y": 9, "color": "black"},
+            {"x": 6, "y": 9, "color": "black"},
+            {"x": 7, "y": 9, "color": "black"},
+            {"x": 3, "y": 10, "color": "black"},
+            {"x": 6, "y": 10, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 11, "y": 6, "color": "white"},
+            {"x": 10, "y": 11, "color": "white"},
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"}
+          ],
+          "text": "Siyah (3,7) — sol tarafı da kapatarak üçgen şeklinde moyo! 25+ puanlık potansiyel"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 9, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 4, "y": 9, "color": "black"},
+            {"x": 5, "y": 9, "color": "black"},
+            {"x": 6, "y": 9, "color": "black"},
+            {"x": 7, "y": 9, "color": "black"},
+            {"x": 3, "y": 10, "color": "black"},
+            {"x": 6, "y": 10, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 11, "y": 6, "color": "white"},
+            {"x": 10, "y": 11, "color": "white"},
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 6, "y": 5, "color": "white"}
+          ],
+          "text": "Beyaz (6,5) — moyonun en açık noktasına giriyor! Siyah acele etmemeli"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 9, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 4, "y": 9, "color": "black"},
+            {"x": 5, "y": 9, "color": "black"},
+            {"x": 6, "y": 9, "color": "black"},
+            {"x": 7, "y": 9, "color": "black"},
+            {"x": 3, "y": 10, "color": "black"},
+            {"x": 6, "y": 10, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 11, "y": 6, "color": "white"},
+            {"x": 10, "y": 11, "color": "white"},
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 7, "y": 7, "color": "black"}
+          ],
+          "text": "Siyah (7,7) — sağ tarafı kapatır! Beyaz sıkıştı, siyah 18 puan toprak güvende tuttu"
         }
       ]
     }
@@ -88,6 +283,6 @@
   "prerequisites": [
     "l4-3-2"
   ],
-  "next_lesson": "l4-4-4",
+  "next_lesson": "l4-3-4",
   "required_exercise": "e4-3-3"
 }

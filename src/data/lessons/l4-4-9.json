@@ -1,0 +1,226 @@
+{
+  "id": "l4-4-9",
+  "level": 4,
+  "module": 4,
+  "lesson": 9,
+  "title": "Moyo (Potansiyel Alan) Yönetimi",
+  "description": "Büyük çerçeveleri yönetme, moyoyu savunma vs genişletme ve moyoyu toprağa dönüştürme.",
+  "duration_minutes": 14,
+  "content": [
+    {
+      "type": "text",
+      "content": "Moyo (etki alanı / potansiyel toprak), henüz kesin olmayan ancak kontrol edilebilecek geniş bölgedir. Moyo yönetiminin üç aşaması vardır: 1) Kurulum (setup) - geniş çerçeve oluşturma 2) Genişletme veya Savunma kararı 3) Toprak (territory) dönüşümü. Ana kural: moyoyu erken toprağa çevirmek küçümsenecek ama geç kalmak rakibe azaltma (reduction) fırsatı verir."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 0, "y": 3, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 1, "y": 5, "color": "black"},
+        {"x": 3, "y": 5, "color": "black"},
+        {"x": 0, "y": 7, "color": "black"},
+        {"x": 2, "y": 7, "color": "black"},
+        {"x": 4, "y": 7, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 4, "type": "territory"},
+        {"x": 3, "y": 4, "type": "territory"},
+        {"x": 2, "y": 5, "type": "vital"},
+        {"x": 1, "y": 6, "type": "liberty"},
+        {"x": 3, "y": 6, "type": "good"}
+      ],
+      "annotation": "Siyahın güneybatı moyosu: kalın duvarlar arasında büyük potansiyel alan"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 0, "y": 7, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 4, "y": 7, "color": "black"}
+          ],
+          "text": "Siyah geniş bir moyo çerçevesi kurdu - 20+ potansiyel puan"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 0, "y": 7, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 4, "y": 7, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"}
+          ],
+          "text": "Siyah merkezi noktayı doldurarak moyoyu güçlendiriyor (jōzu)"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 0, "y": 7, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 4, "y": 7, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 3, "y": 4, "color": "white"}
+          ],
+          "text": "Beyaz azaltma girişimi - moyonun içine hafifçe giriyor"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 0, "y": 7, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 4, "y": 7, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 3, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah sente ile kapatıyor - moyoyu toprağa dönüştürüyor!"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 0, "y": 7, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 4, "y": 7, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 1, "y": 4, "color": "black"}
+          ],
+          "text": "Moyo güvenli toprağa dönüştü! Beyaz sadece küçük bir azaltma yapabildi"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Moyo savunmasında Kake (örtme) ve Tsuke (yapışma) teknikleri kritiktir. Rakip azaltmaya geldiğinde: 1) Hemen karşılama (hane) 2) Sente ile başka yerde oynayarak baskı yapma 3) Moyonun bir kısmını verip geri kalanını kesinleştirme. İyi Kaisei (pozisyon okuma) yeteneği, moyonun ne zaman kapatılacağını belirler."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 8, "y": 8, "color": "black"},
+        {"x": 10, "y": 8, "color": "black"},
+        {"x": 12, "y": 8, "color": "black"},
+        {"x": 8, "y": 10, "color": "black"},
+        {"x": 10, "y": 10, "color": "black"},
+        {"x": 12, "y": 10, "color": "black"},
+        {"x": 6, "y": 9, "color": "white"},
+        {"x": 6, "y": 7, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 9, "y": 9, "type": "vital"},
+        {"x": 11, "y": 9, "type": "vital"},
+        {"x": 7, "y": 9, "type": "good"},
+        {"x": 9, "y": 7, "type": "territory"},
+        {"x": 11, "y": 7, "type": "territory"}
+      ],
+      "annotation": "Genişletme vs savunma: Siyah moyosunu büyütmeli mi yoksa kapatmalı mı?"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 8, "y": 8, "color": "black"},
+            {"x": 10, "y": 8, "color": "black"},
+            {"x": 12, "y": 8, "color": "black"},
+            {"x": 8, "y": 10, "color": "black"},
+            {"x": 10, "y": 10, "color": "black"},
+            {"x": 12, "y": 10, "color": "black"},
+            {"x": 6, "y": 9, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"}
+          ],
+          "text": "Siyah sağ altta güçlü bir moyo kurdu, beyaz sol tarafta tehdit oluşturuyor"
+        },
+        {
+          "stones": [
+            {"x": 8, "y": 8, "color": "black"},
+            {"x": 10, "y": 8, "color": "black"},
+            {"x": 12, "y": 8, "color": "black"},
+            {"x": 8, "y": 10, "color": "black"},
+            {"x": 10, "y": 10, "color": "black"},
+            {"x": 12, "y": 10, "color": "black"},
+            {"x": 6, "y": 9, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"},
+            {"x": 7, "y": 9, "color": "black"}
+          ],
+          "text": "Siyah genişletmeyi seçiyor - moyoyu büyütüyor (moyo kakari)"
+        },
+        {
+          "stones": [
+            {"x": 8, "y": 8, "color": "black"},
+            {"x": 10, "y": 8, "color": "black"},
+            {"x": 12, "y": 8, "color": "black"},
+            {"x": 8, "y": 10, "color": "black"},
+            {"x": 10, "y": 10, "color": "black"},
+            {"x": 12, "y": 10, "color": "black"},
+            {"x": 6, "y": 9, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"},
+            {"x": 7, "y": 9, "color": "black"},
+            {"x": 7, "y": 8, "color": "white"}
+          ],
+          "text": "Beyaz karşı koyuyor - aradaki çatışma kritik"
+        },
+        {
+          "stones": [
+            {"x": 8, "y": 8, "color": "black"},
+            {"x": 10, "y": 8, "color": "black"},
+            {"x": 12, "y": 8, "color": "black"},
+            {"x": 8, "y": 10, "color": "black"},
+            {"x": 10, "y": 10, "color": "black"},
+            {"x": 12, "y": 10, "color": "black"},
+            {"x": 6, "y": 9, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"},
+            {"x": 7, "y": 9, "color": "black"},
+            {"x": 7, "y": 8, "color": "white"},
+            {"x": 9, "y": 9, "color": "black"}
+          ],
+          "text": "Siyah merkezî noktayı kapatıyor - moyo toprağa dönüşüyor!"
+        },
+        {
+          "stones": [
+            {"x": 8, "y": 8, "color": "black"},
+            {"x": 10, "y": 8, "color": "black"},
+            {"x": 12, "y": 8, "color": "black"},
+            {"x": 8, "y": 10, "color": "black"},
+            {"x": 10, "y": 10, "color": "black"},
+            {"x": 12, "y": 10, "color": "black"},
+            {"x": 6, "y": 9, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"},
+            {"x": 7, "y": 9, "color": "black"},
+            {"x": 7, "y": 8, "color": "white"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 11, "y": 9, "color": "black"}
+          ],
+          "text": "Tam kapanış! Siyah moyoyu yaklaşık 25 puanlık güvenli toprağa dönüştürdü"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l4-4-8"],
+  "next_lesson": "l4-5-1",
+  "required_exercise": null
+}

@@ -1,0 +1,149 @@
+{
+  "id": "l2-5-4",
+  "level": 2,
+  "module": 5,
+  "lesson": 4,
+  "title": "Kaçış Pratiği",
+  "description": "Atari durumundaki taşları kurtarma teknikleri. Kaçış yolları bulmayı ve doğru savunma hamlelerini pratik yapın.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Atari durumundaki taşları kurtarmak (kaçış) kritik bir beceridir. Her zaman kaçmanın en iyi yol olmadığını unutmayın - bazen taşı feda edip başka yerde oynamak daha iyidir. Ama bu derste kaçış tekniklerini pratik yapacağız."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 3, "y": 7, "color": "black"},
+        {"x": 2, "y": 7, "color": "white"},
+        {"x": 4, "y": 7, "color": "white"},
+        {"x": 3, "y": 6, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 3, "y": 8, "type": "liberty"},
+        {"x": 3, "y": 8, "type": "good"}
+      ],
+      "annotation": "Problem 1: Siyah taş atari durumunda. Tek özgürlüğü (3,8). Kenara kaçarak kurtulabilir."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 2, "y": 7, "color": "white"},
+            {"x": 4, "y": 7, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"}
+          ],
+          "text": "Siyah taş (3,7) atari durumunda. Tek özgürlüğü (3,8) - tahta kenarı."
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 3, "y": 8, "color": "black"},
+            {"x": 2, "y": 7, "color": "white"},
+            {"x": 4, "y": 7, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"}
+          ],
+          "text": "Siyah (3,8) oynayarak kaçtı. Grubun 3 yeni özgürlüğü var: (2,8), (4,8) ve... kenar!"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 3, "y": 8, "color": "black"},
+            {"x": 2, "y": 7, "color": "white"},
+            {"x": 4, "y": 7, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 2, "y": 8, "color": "white"}
+          ],
+          "text": "Beyaz (2,8) oynadı ama siyah grubun hâlâ 2 özgürlüğü var. Kaçış başarılı!"
+        }
+      ]
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 1, "y": 4, "color": "black"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 3, "y": 4, "color": "white"},
+        {"x": 0, "y": 4, "color": "white"},
+        {"x": 1, "y": 3, "color": "white"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 0, "y": 2, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 5, "type": "good"},
+        {"x": 2, "y": 5, "type": "good"}
+      ],
+      "annotation": "Problem 2: Siyah grup atari durumunda. (1,5) veya (2,5) oynayarak hem kaçabilir hem de kendi grubunuzu güçlendirebilirsiniz."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 1, "y": 4, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 0, "y": 4, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 0, "y": 2, "color": "black"}
+          ],
+          "text": "Siyah grup (1,4)-(2,4) atari durumunda. Özgürlükleri: (1,5) ve (2,5)."
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 4, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 0, "y": 4, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 0, "y": 2, "color": "black"}
+          ],
+          "text": "Siyah (1,5) oynadı - özgürlükleri genişledi! Grup artık 3 özgürlükle güvende."
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 4, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 0, "y": 4, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 0, "y": 3, "color": "white"}
+          ],
+          "text": "Beyaz (0,3) oynayarak baskıyı artırdı. Ama siyah grubun hâlâ 2 özgürlüğü var."
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 4, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 0, "y": 4, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 0, "y": 3, "color": "white"}
+          ],
+          "text": "Siyah (2,5) oynayarak grubu tamamen güvenceye aldı. Kaçış başarılı!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Kaçış ipuçları: 1) Her zaman kaçışın mümkün olup olmadığını kontrol edin. 2) Eğer kaçış sizi daha kötü bir duruma sokuyorsa, taşı feda edin. 3) Kaçarken aynı zamanda kendi grubunuzu genişletin ve özgürlükleri artırın. 4) Dost taşlara doğru kaçmak bağlantı şansı yaratır."
+    }
+  ],
+  "prerequisites": ["l2-5-3"],
+  "next_lesson": "l2-5-5",
+  "required_exercise": null
+}

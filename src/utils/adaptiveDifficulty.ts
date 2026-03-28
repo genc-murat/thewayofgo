@@ -128,7 +128,12 @@ export function getTypeDisplayName(type: string): string {
     tesuji: 'Tesuji',
     reading_comprehension: 'Okuma',
     multi_step: 'Çok Adımlı',
+    shape_recognition: 'Şekil Tanıma',
+    move_evaluation: 'Hamle Değerlendirme',
+    position_judgment: 'Pozisyon Yargılama',
+    daily_problem: 'Günlük Problem',
   };
+
   return typeNames[type] ?? type;
 }
 
@@ -146,6 +151,9 @@ export function getTypeKeyFromDisplayName(displayName: string): string {
     'Tesuji': 'tesuji',
     'Okuma': 'reading_comprehension',
     'Çok Adımlı': 'multi_step',
+    'Şekil Tanıma': 'shape_recognition',
+    'Hamle Değerlendirme': 'move_evaluation',
+    'Pozisyon Yargılama': 'position_judgment',
   };
   return reverseNames[displayName] ?? displayName;
 }

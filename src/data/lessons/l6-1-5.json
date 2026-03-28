@@ -1,0 +1,107 @@
+{
+  "id": "l6-1-5",
+  "level": 6,
+  "module": 1,
+  "lesson": 5,
+  "title": "Pro Oyun Analizi: Oyun Sonu İncelemesi",
+  "description": "Profesyonel oyunların yose (oyun sonu) aşamasını derinlemesine analiz etme.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Yose (oyun sonu), profesyonel seviyesinde en büyük farkın oluştuğu aşamadır. 0.5 puanlık bir fark bile oyun sonunda kazanç veya kayıp anlamına gelebilir. Bu derste, profesyonellerin yose sıralaması ve hassas hesaplama tekniklerini inceleyeceksiniz."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "white"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 2, "y": 0, "color": "white"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 3, "y": 0, "color": "white"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 1, "y": 1, "color": "white"},
+        {"x": 5, "y": 0, "color": "black"},
+        {"x": 5, "y": 1, "color": "white"},
+        {"x": 6, "y": 0, "color": "black"},
+        {"x": 7, "y": 0, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 0, "type": "capture"},
+        {"x": 4, "y": 0, "type": "territory"}
+      ],
+      "annotation": "Pro yose - hassas sınır belirleme ve sıralama"
+    },
+    {
+      "type": "text",
+      "content": "Yose değerlendirmesinde miai (denge) ilkesi kritiktir. İki eşdeğer nokta varsa, rakip birini alırken siz diğerini alırsınız. Ōban (büyük yose hamlesi) ile koban (küçük yose hamlesi) arasındaki farkı doğru belirleyin. Sente (önce oynanan) yose hamlelerini önceliklendirin."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "white"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 2, "y": 0, "color": "white"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"}
+          ],
+          "text": "Yose pozisyonu - sınır çizgileri henüz net değil"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "white"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 2, "y": 0, "color": "white"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 3, "y": 0, "color": "white"},
+            {"x": 1, "y": 1, "color": "white"}
+          ],
+          "text": "Sente yose - beyaz önce büyük hamleyi alır"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "white"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 2, "y": 0, "color": "white"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 3, "y": 0, "color": "white"},
+            {"x": 1, "y": 1, "color": "white"},
+            {"x": 5, "y": 0, "color": "black"},
+            {"x": 5, "y": 1, "color": "white"}
+          ],
+          "text": "Siyah karşı yose oynar - miai dengesi"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "white"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 2, "y": 0, "color": "white"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 3, "y": 0, "color": "white"},
+            {"x": 1, "y": 1, "color": "white"},
+            {"x": 5, "y": 0, "color": "black"},
+            {"x": 5, "y": 1, "color": "white"},
+            {"x": 6, "y": 0, "color": "black"},
+            {"x": 7, "y": 0, "color": "white"},
+            {"x": 4, "y": 0, "color": "black"}
+          ],
+          "text": "Son yose hamleleri - her puan kritik"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l6-1-4"],
+  "next_lesson": "l6-2-1",
+  "required_exercise": null
+}

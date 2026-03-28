@@ -1,0 +1,159 @@
+{
+  "id": "l1-3-6",
+  "level": 1,
+  "module": 3,
+  "lesson": 6,
+  "title": "İlk Oyun Sonu",
+  "description": "Oyunu bitirme, pass, skor hesaplama ve oyun sonu prosedürünü öğrenin.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Go oyunu her iki oyuncu da 'pass' (pas geç) dediğinde biter. Pas, hamle yapmak istemediğinizi belirtir. Üst üste iki pas = oyun sonu. Artık skor hesaplama zamanı!"
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 3, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 3, "y": 1, "color": "black"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 0, "y": 3, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 5, "y": 5, "color": "white"},
+        {"x": 6, "y": 5, "color": "white"},
+        {"x": 7, "y": 5, "color": "white"},
+        {"x": 8, "y": 5, "color": "white"},
+        {"x": 5, "y": 6, "color": "white"},
+        {"x": 8, "y": 6, "color": "white"},
+        {"x": 5, "y": 7, "color": "white"},
+        {"x": 8, "y": 7, "color": "white"},
+        {"x": 5, "y": 8, "color": "white"},
+        {"x": 6, "y": 8, "color": "white"},
+        {"x": 7, "y": 8, "color": "white"},
+        {"x": 8, "y": 8, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 1, "type": "territory"},
+        {"x": 2, "y": 1, "type": "territory"},
+        {"x": 1, "y": 2, "type": "territory"},
+        {"x": 2, "y": 2, "type": "territory"},
+        {"x": 6, "y": 6, "type": "territory"},
+        {"x": 7, "y": 6, "type": "territory"},
+        {"x": 6, "y": 7, "type": "territory"},
+        {"x": 7, "y": 7, "type": "territory"}
+      ],
+      "annotation": "Oyun sonu: Siyah bölge (sol üst) = 4 alan, Beyaz bölge (sağ alt) = 4 alan"
+    },
+    {
+      "type": "text",
+      "content": "Skor hesaplama yöntemi: Bölge sayma (Chinese scoring) — Her boş kesişim noktası sizin alanınızdaysa 1 puan. Tahtadaki taşlar da 1'er puan değerinde. Yakalanan taşlar rakibe eklenir."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 3, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 8, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 8, "y": 6, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 8, "y": 7, "color": "white"},
+            {"x": 5, "y": 8, "color": "white"},
+            {"x": 6, "y": 8, "color": "white"},
+            {"x": 7, "y": 8, "color": "white"},
+            {"x": 8, "y": 8, "color": "white"}
+          ],
+          "text": "İki oyuncu da pass dedi. Oyun bitti! Şimdi alanları sayalım."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 3, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 8, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 8, "y": 6, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 8, "y": 7, "color": "white"},
+            {"x": 5, "y": 8, "color": "white"},
+            {"x": 6, "y": 8, "color": "white"},
+            {"x": 7, "y": 8, "color": "white"},
+            {"x": 8, "y": 8, "color": "white"}
+          ],
+          "text": "Siyah: 12 taş + 4 alan = 16 puan. Beyaz: 12 taş + 4 alan = 16 puan. Berabere mi?"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 3, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 8, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 8, "y": 6, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 8, "y": 7, "color": "white"},
+            {"x": 5, "y": 8, "color": "white"},
+            {"x": 6, "y": 8, "color": "white"},
+            {"x": 7, "y": 8, "color": "white"},
+            {"x": 8, "y": 8, "color": "white"}
+          ],
+          "text": "Komi (6.5) eklenir: Beyaz toplam = 16 + 6.5 = 22.5. Siyah = 16. Beyaz kazanır! Komi hakkında daha fazla bilgi bir sonraki modülde."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Oyun sonu adımları: (1) Her iki oyuncu pass der, (2) Ölü taşlar belirlenip kaldırılır, (3) Alanlar sayılır, (4) Komi eklenir, (5) Kazanan ilan edilir. İyi oyun!"
+    }
+  ],
+  "prerequisites": ["l1-3-5"],
+  "next_lesson": "l1-4-1",
+  "required_exercise": "e1-3-6"
+}

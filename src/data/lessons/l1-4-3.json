@@ -1,0 +1,128 @@
+{
+  "id": "l1-4-3",
+  "level": 1,
+  "module": 4,
+  "lesson": 3,
+  "title": "Ko Tehditleri",
+  "description": "Ko sırasında başka yerde oynama stratejisini öğrenin.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Ko kuralı yüzünden rakip taşı hemen geri alamazsınız. Önce tahtada başka bir yerde oynamak zorundasınız. Bu hamleye 'ko tehdidi' (ko threat) denir. Ko tehdidi, rakibin yanıt vermek zorunda kaldığı büyük bir hamledir."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 1, "y": 1, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 1, "color": "black"},
+        {"x": 2, "y": 1, "color": "black"},
+        {"x": 1, "y": 2, "color": "white"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 6, "y": 6, "color": "black"},
+        {"x": 7, "y": 6, "color": "white"},
+        {"x": 7, "y": 5, "color": "white"},
+        {"x": 7, "y": 7, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 6, "y": 5, "type": "good"},
+        {"x": 2, "y": 1, "type": "capture"}
+      ],
+      "annotation": "Ko tehdidi: Beyaz ko'yu alamaz ama (6,5)'te büyük bir tehdit oluşturabilir"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 7, "y": 6, "color": "white"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 7, "y": 7, "color": "white"}
+          ],
+          "text": "Siyah ko'yu kazandı. Beyaz hemen geri alamaz. Beyaz bir ko tehdidi arıyor..."
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 7, "y": 6, "color": "white"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 7, "y": 7, "color": "white"},
+            {"x": 6, "y": 5, "color": "white"}
+          ],
+          "text": "Beyaz ko tehdidi: (6,5) oynadı! Siyah (6,6) grubu tehdit altında. Siyah yanıt vermek zorunda."
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 7, "y": 6, "color": "white"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 7, "y": 7, "color": "white"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 6, "y": 7, "color": "black"}
+          ],
+          "text": "Siyah ko tehdidine yanıt verdi: (6,7). Şimdi beyaz ko'yu geri alabilir!"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 7, "y": 6, "color": "white"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 7, "y": 7, "color": "white"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 6, "y": 7, "color": "black"}
+          ],
+          "captured": [{"x": 2, "y": 1}],
+          "text": "Beyaz ko'yu geri aldı! Ko döngüsü devam ediyor. Siyah da yeni bir ko tehdidi bulmalı."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "İyi bir ko tehdidi, rakibin görmezden gelemeyeceği kadar büyük olmalıdır. Bir grubu tehdit etmek, büyük bölge kazanmak veya önemli bir noktayı ele geçirmek iyi ko tehditleridir."
+    },
+    {
+      "type": "text",
+      "content": "Ko tehdidi sayısı önemlidir: Daha fazla ko tehdidine sahip olan oyuncu genellikle ko'yu kazanır. Bu yüzden oyunun erken safhasında ko tehditlerini korumak stratejik bir avantaj sağlar."
+    }
+  ],
+  "prerequisites": ["l1-4-2"],
+  "next_lesson": "l1-4-4",
+  "required_exercise": "e1-4-3"
+}

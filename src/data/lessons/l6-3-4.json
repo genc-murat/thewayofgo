@@ -3,86 +3,131 @@
   "level": 6,
   "module": 3,
   "lesson": 4,
-  "title": "Nihon Ki-In Kalite",
-  "description": "Japon profesyonel kalite.",
-  "duration_minutes": 10,
+  "title": "Profesyonel Kalite Oyun",
+  "description": "Temiz şekil (katachi) oluşturma, verimli profesyonel hamleler ve suji (akıcı stil) geliştirme. Her hamlenin maksimum etki yapması.",
+  "duration_minutes": 20,
   "content": [
     {
       "type": "text",
-      "content": "Nihon Ki-In Kalite: Japon profesyonel kalite. Temel kavramları ve stratejileri öğrenin."
+      "content": "Profesyonel kalite, her hamlenin 'gereksiz' olmamasıdır. Amatör 5 hamlede yaptığı işi, profesyonel 3 hamlede yapar. Bu fark, katachi (şekil) bilgisi, kikashi (zorlama) zamanlaması ve aji (potansiyel) değerlendirmesinden gelir. 'Katachi ga ii' (güzel şekil) sadece estetik değil, pratik üstünlüktür."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 19,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        }
+        { "x": 4, "y": 4, "color": "black" },
+        { "x": 6, "y": 3, "color": "white" },
+        { "x": 3, "y": 6, "color": "black" },
+        { "x": 5, "y": 7, "color": "white" },
+        { "x": 2, "y": 4, "color": "black" },
+        { "x": 7, "y": 5, "color": "white" },
+        { "x": 4, "y": 7, "color": "black" },
+        { "x": 6, "y": 6, "color": "white" }
       ],
-      "highlights": [],
-      "annotation": "Nihon Ki-In Kalite"
+      "highlights": [
+        { "x": 4, "y": 4, "type": "good" },
+        { "x": 3, "y": 6, "type": "good" },
+        { "x": 2, "y": 4, "type": "good" },
+        { "x": 4, "y": 7, "type": "good" },
+        { "x": 6, "y": 3, "type": "bad" },
+        { "x": 7, "y": 5, "type": "bad" }
+      ],
+      "annotation": "Şekil karşılaştırması: Siyah'ın şekli mükemmel (ikken-tobi + support), Beyaz'ın şekli ağır ve verimsiz."
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 4, "y": 4, "color": "black" },
+            { "x": 6, "y": 3, "color": "white" }
           ],
-          "text": "Pozisyon analizi başladı"
+          "text": "Siyah komoku, Beyaz yakın yaklaşım. Yerel savaş başlıyor."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            { "x": 4, "y": 4, "color": "black" },
+            { "x": 6, "y": 3, "color": "white" },
+            { "x": 3, "y": 6, "color": "black" }
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Siyah kosumi – profesyonel hamle! Köşeyi korur + dışa etki + şekil güzel. Üç iş bir hamlede."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 4, "y": 4, "color": "black" },
+            { "x": 6, "y": 3, "color": "white" },
+            { "x": 3, "y": 6, "color": "black" },
+            { "x": 5, "y": 7, "color": "white" }
           ],
-          "text": "Sonraki hamleyi düşünün"
+          "text": "Beyaz nobi – ama bu hamle ağır (omoi). Daha iyi seçenek: keima sıçraması (5,5)."
+        },
+        {
+          "stones": [
+            { "x": 4, "y": 4, "color": "black" },
+            { "x": 6, "y": 3, "color": "white" },
+            { "x": 3, "y": 6, "color": "black" },
+            { "x": 5, "y": 7, "color": "white" },
+            { "x": 2, "y": 4, "color": "black" },
+            { "x": 7, "y": 5, "color": "white" }
+          ],
+          "text": "Siyah shimari genişletir (2,4) – sağlam! Beyaz (7,5) ağır taş – kagem (boş üçgen) riski taşıyor."
+        },
+        {
+          "stones": [
+            { "x": 4, "y": 4, "color": "black" },
+            { "x": 6, "y": 3, "color": "white" },
+            { "x": 3, "y": 6, "color": "black" },
+            { "x": 5, "y": 7, "color": "white" },
+            { "x": 2, "y": 4, "color": "black" },
+            { "x": 7, "y": 5, "color": "white" },
+            { "x": 4, "y": 7, "color": "black" }
+          ],
+          "text": "Siyah mükemmel katachi tamamlar! Her taş birbirini destekliyor. Beyaz'ın taşları ise birbirinden kopuk."
+        },
+        {
+          "stones": [
+            { "x": 4, "y": 4, "color": "black" },
+            { "x": 6, "y": 3, "color": "white" },
+            { "x": 3, "y": 6, "color": "black" },
+            { "x": 5, "y": 7, "color": "white" },
+            { "x": 2, "y": 4, "color": "black" },
+            { "x": 7, "y": 5, "color": "white" },
+            { "x": 4, "y": 7, "color": "black" },
+            { "x": 6, "y": 6, "color": "white" }
+          ],
+          "text": "Beyaz挣扎 (mücadele) eder – (6,6) ile Siyah'ın arasına girer ama Siyah'ın şekli esnek. Sabaki ile çıkar!"
         }
       ]
+    },
+    {
+      "type": "text",
+      "content": "Katachi (şekil) kalitesinin ölçütü: (1) Her taşın en az iki işlevi olmalı – hem savunma hem saldırı. (2) Kagem (boş üçgen) kaçının – Go'nun en kötü şekli. (3) İkken-tobi (bir boşluk sıçrama) ve keima (at sıçraması) tercih edin – hem hızlı hem güvenli. (4) Düşmanınızın kötü şeklini sömürün – ağır taşları hedefleyin."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        { "x": 14, "y": 14, "color": "black" },
+        { "x": 16, "y": 13, "color": "black" },
+        { "x": 13, "y": 16, "color": "black" },
+        { "x": 15, "y": 16, "color": "black" },
+        { "x": 12, "y": 14, "color": "white" },
+        { "x": 14, "y": 12, "color": "white" },
+        { "x": 17, "y": 15, "color": "white" },
+        { "x": 14, "y": 17, "color": "white" }
+      ],
+      "highlights": [
+        { "x": 14, "y": 14, "type": "good" },
+        { "x": 16, "y": 13, "type": "good" },
+        { "x": 13, "y": 16, "type": "good" },
+        { "x": 15, "y": 16, "type": "good" },
+        { "x": 12, "y": 14, "type": "vital" },
+        { "x": 17, "y": 15, "type": "liberty" }
+      ],
+      "annotation": "Siyah'ın şekli esnek ve verimli – her taş bağlantılı. Beyaz'ın taşları dağınık – birleştirilmeye çalışırken değerli hamleler harcayacak."
     }
   ],
-  "prerequisites": [
-    "l----3"
-  ],
-  "next_lesson": "l6-3",
+  "prerequisites": ["l6-3-3"],
+  "next_lesson": "l6-3-5",
   "required_exercise": "e6-3-4"
 }

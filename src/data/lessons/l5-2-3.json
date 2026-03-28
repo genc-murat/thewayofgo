@@ -4,85 +4,131 @@
   "module": 2,
   "lesson": 3,
   "title": "Merkez ve Kenar Dengesi",
-  "description": "Merkez ve kenar dengesini kurmayı öğrenin.",
-  "duration_minutes": 10,
+  "description": "Merkez (tengen) etki alanı ile kenar toprağı arasındaki stratejik denge. Moyo ve terezium hesaplaması.",
+  "duration_minutes": 15,
   "content": [
     {
       "type": "text",
-      "content": "Merkez ve Kenar Dengesi: Merkez ve kenar dengesini kurmayı öğrenin. Temel kavramları ve stratejileri öğrenin."
+      "content": "Go'da merkez (chūō) ve kenar (hen) arasında doğru dengeyi kurmak, uzman seviyesinin en önemli becerilerinden biridir. Kenar toprak (torihikō) erken güvenlik sağlarken, merkez etki (Thickness) uzun vadeli potansiyel sunar. Hangi aşamada merkezde oynamak (tengen yakını) ve ne zaman kenarda toprak kazanmak arasındaki karar, oyunun sonucunu belirler."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 19,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        }
+        { "x": 3, "y": 3, "color": "black" },
+        { "x": 3, "y": 16, "color": "black" },
+        { "x": 5, "y": 5, "color": "black" },
+        { "x": 15, "y": 3, "color": "white" },
+        { "x": 16, "y": 15, "color": "white" },
+        { "x": 14, "y": 5, "color": "white" }
       ],
-      "highlights": [],
-      "annotation": "Merkez ve Kenar Dengesi"
+      "highlights": [
+        { "x": 9, "y": 9, "type": "territory" },
+        { "x": 3, "y": 9, "type": "good" },
+        { "x": 9, "y": 3, "type": "good" },
+        { "x": 15, "y": 9, "type": "bad" }
+      ],
+      "annotation": "Siyah sol-tarafta kalın etki (thickness), merkez moyo potansiyeli yüksek"
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 3, "y": 16, "color": "black" },
+            { "x": 5, "y": 5, "color": "black" },
+            { "x": 15, "y": 3, "color": "white" },
+            { "x": 16, "y": 15, "color": "white" },
+            { "x": 14, "y": 5, "color": "white" }
           ],
-          "text": "Pozisyon analizi başladı"
+          "text": "Açılış pozisyonu: Siyah sol-tarafta thickness oluşturdu."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 3, "y": 16, "color": "black" },
+            { "x": 5, "y": 5, "color": "black" },
+            { "x": 15, "y": 3, "color": "white" },
+            { "x": 16, "y": 15, "color": "white" },
+            { "x": 14, "y": 5, "color": "white" },
+            { "x": 7, "y": 9, "color": "black" }
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Siyah merkez Moyosuna başlar: thickness'ten merkez etki yayar."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 3, "y": 16, "color": "black" },
+            { "x": 5, "y": 5, "color": "black" },
+            { "x": 15, "y": 3, "color": "white" },
+            { "x": 16, "y": 15, "color": "white" },
+            { "x": 14, "y": 5, "color": "white" },
+            { "x": 7, "y": 9, "color": "black" },
+            { "x": 10, "y": 6, "color": "white" }
           ],
-          "text": "Sonraki hamleyi düşünün"
+          "text": "Beyaz moyo'ya sızar: (10,6) ile etkiyi böler."
+        },
+        {
+          "stones": [
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 3, "y": 16, "color": "black" },
+            { "x": 5, "y": 5, "color": "black" },
+            { "x": 15, "y": 3, "color": "white" },
+            { "x": 16, "y": 15, "color": "white" },
+            { "x": 14, "y": 5, "color": "white" },
+            { "x": 7, "y": 9, "color": "black" },
+            { "x": 10, "y": 6, "color": "white" },
+            { "x": 9, "y": 10, "color": "black" }
+          ],
+          "text": "Siyah tengen bölgesinde ikinci destek: büyük merkez alanı kontrolü."
+        },
+        {
+          "stones": [
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 3, "y": 16, "color": "black" },
+            { "x": 5, "y": 5, "color": "black" },
+            { "x": 15, "y": 3, "color": "white" },
+            { "x": 16, "y": 15, "color": "white" },
+            { "x": 14, "y": 5, "color": "white" },
+            { "x": 7, "y": 9, "color": "black" },
+            { "x": 10, "y": 6, "color": "white" },
+            { "x": 9, "y": 10, "color": "black" },
+            { "x": 12, "y": 9, "color": "white" }
+          ],
+          "text": "Beyaz sağdan baskı: merkez moyo'su %40 küçüldü – Siyah'ın thickness yetmezliği ortaya çıkar."
         }
       ]
+    },
+    {
+      "type": "text",
+      "content": "Merkez moyo inşa etmek risklidir çünkü rakip her yönden sızabilir. Başarılı merkez stratejisi için: (1) En az bir tarafta kalın etki ( Thickness ) olmalı, (2) Moyoyu çok erken genişletmeyin – rakip sızdığında toprağa dönüştürün, (3) Kenar toprağı ile merkez etkiyi dengeleyin. Saf merkez oyunu genellikle kaybeder."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        { "x": 3, "y": 3, "color": "black" },
+        { "x": 5, "y": 2, "color": "black" },
+        { "x": 2, "y": 5, "color": "black" },
+        { "x": 16, "y": 16, "color": "white" },
+        { "x": 14, "y": 17, "color": "white" },
+        { "x": 17, "y": 14, "color": "white" }
+      ],
+      "highlights": [
+        { "x": 3, "y": 7, "type": "territory" },
+        { "x": 7, "y": 3, "type": "territory" },
+        { "x": 9, "y": 9, "type": "good" },
+        { "x": 5, "y": 5, "type": "liberty" }
+      ],
+      "annotation": "Köşe güvenliği + kenar genişleme: Dengeli yaklaşım – merkez sadece destek amaçlı"
+    },
+    {
+      "type": "text",
+      "content": "En iyi strateji, köşe toprağından başlayıp kenar boyunca genişlemek ve gerektiğinde merkeze uzanmaktır. Siyah (3,3)+(5,2)+(2,5) shimari ile sağlam köşe oluşturduktan sonra (3,7) veya (7,3) noktaları kenar toprağını genişletir. Merkez (9,9) ancak bu temel kurulduktan sonra düşünülür. Önce toprak, sonra etki!"
     }
   ],
-  "prerequisites": [
-    "l----2"
-  ],
+  "prerequisites": ["l5-2-2"],
   "next_lesson": "l5-2-4",
   "required_exercise": "e5-2-3"
 }

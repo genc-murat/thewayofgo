@@ -1,0 +1,91 @@
+{
+  "id": "l4-5-2",
+  "level": 4,
+  "module": 5,
+  "lesson": 2,
+  "title": "Sentez: Joseki + Etki Birleştirme",
+  "description": "Joseki kalıplarını etki alanlarıyla birleştirme stratejisi.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Joseki kalıpları yalıtılmış olarak oynanmaz - her joseki sonucu tahtanın geri kalanına etki eder. Bir joseki seçerken, oluşacak kalınlığın veya etkinin diğer köşelerle nasıl uyum sağlayacağını düşünmelisiniz. Bu, fuseki planlamasının özüdür."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 10, "y": 10, "color": "black"},
+        {"x": 9, "y": 11, "color": "white"},
+        {"x": 6, "y": 6, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 6, "y": 6, "type": "good"},
+        {"x": 4, "y": 4, "type": "territory"},
+        {"x": 8, "y": 8, "type": "territory"}
+      ],
+      "annotation": "Joseki sonuçları merkez hamlesiyle birleştiriliyor"
+    },
+    {
+      "type": "text",
+      "content": "Joseki + etki sentezi: 1) Köşe josekisini bitirin 2) Oluşan kalınlığın yönünü analiz edin 3) Merkez hamlesiyle iki köşenin etkisini birleştirin. Buna 'tengen stratejisi' de denir - merkez büyük moyo oluşturur."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"}
+          ],
+          "text": "Sol üst köşe josekisi tamamlandı"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 10, "y": 10, "color": "black"},
+            {"x": 9, "y": 11, "color": "white"}
+          ],
+          "text": "Sağ alt köşe josekisi de yerleşiyor"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 10, "y": 10, "color": "black"},
+            {"x": 9, "y": 11, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah merkez hamlesiyle iki köşenin etkisini birleştiriyor"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 10, "y": 10, "color": "black"},
+            {"x": 9, "y": 11, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 5, "y": 8, "color": "white"}
+          ],
+          "text": "Beyaz siyahın büyük moyosunu bölmeye çalışıyor"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l4-5-1"],
+  "next_lesson": "l4-5-3",
+  "required_exercise": null
+}

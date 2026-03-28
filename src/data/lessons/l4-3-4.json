@@ -1,0 +1,100 @@
+{
+  "id": "l4-3-4",
+  "level": 4,
+  "module": 3,
+  "lesson": 4,
+  "title": "Kalınlaştırma Pratik 1",
+  "description": "Kalın taşlarla moyo ve etki oluşturma pratiği.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Kalınlık (thickness), güçlü ve kesintiye uğramayan taş dizilerinin yarattığı yapıdır. Kalın taşlar arkalarında geniş bir etki alanı yaratır ve rakibin yaklaşmasını engeller. Kalınlığı moyoya dönüştürmek ileri düzey bir beceridir."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 0, "y": 3, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 10, "y": 9, "color": "white"},
+        {"x": 11, "y": 9, "color": "white"},
+        {"x": 12, "y": 9, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 5, "type": "territory"},
+        {"x": 3, "y": 6, "type": "territory"},
+        {"x": 4, "y": 5, "type": "territory"},
+        {"x": 5, "y": 4, "type": "territory"},
+        {"x": 1, "y": 5, "type": "territory"}
+      ],
+      "annotation": "Siyahın kalın duvarı geniş bir moyo potansiyeli yaratıyor"
+    },
+    {
+      "type": "text",
+      "content": "Kalınlığı kullanmanın üç yolu: 1) Arkasında moyo oluşturmak 2) Saldırı için güçlü dayanak olarak kullanmak 3) Rakibin bölgesini küçültmek. Kalın duvar asla ihmal edilmemeli - her hamlede değer kazanır."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"}
+          ],
+          "text": "Siyah kenar boyunca kalın bir duvar inşa ediyor"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 10, "y": 9, "color": "white"},
+            {"x": 11, "y": 9, "color": "white"},
+            {"x": 12, "y": 9, "color": "white"}
+          ],
+          "text": "Her iki taraf da duvarlarını genişletti"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 10, "y": 9, "color": "white"},
+            {"x": 11, "y": 9, "color": "white"},
+            {"x": 12, "y": 9, "color": "white"}
+          ],
+          "text": "Siyah kalın duvarın önüne taş koyarak moyo genişletiyor"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 10, "y": 9, "color": "white"},
+            {"x": 11, "y": 9, "color": "white"},
+            {"x": 12, "y": 9, "color": "white"},
+            {"x": 4, "y": 7, "color": "white"}
+          ],
+          "text": "Beyaz moyoyu küçültmek için yaklaşıyor"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l4-3-3"],
+  "next_lesson": "l4-3-5",
+  "required_exercise": null
+}

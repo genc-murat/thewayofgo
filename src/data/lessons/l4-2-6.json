@@ -1,0 +1,84 @@
+{
+  "id": "l4-2-6",
+  "level": 4,
+  "module": 2,
+  "lesson": 6,
+  "title": "Etki Alanları Pratik 2",
+  "description": "Karşıt etki alanları arasında denge kurma pratiği.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Fuseki aşamasında etki alanlarını dengede tutmak çok önemlidir. Bir taraf çok güçlenirse, rakip istila (invasion) yapabilir. Etki alanınızı genişletirken zayıf noktaları da korumalı ve sabit (sente) hamleleri tercih etmelisiniz."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 2, "y": 6, "color": "black"},
+        {"x": 6, "y": 2, "color": "black"},
+        {"x": 10, "y": 6, "color": "white"},
+        {"x": 10, "y": 10, "color": "white"},
+        {"x": 6, "y": 10, "color": "white"},
+        {"x": 6, "y": 6, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 4, "type": "good"},
+        {"x": 8, "y": 8, "type": "bad"}
+      ],
+      "annotation": "Merkez kontrolü etki alanlarını birleştirir"
+    },
+    {
+      "type": "text",
+      "content": "Etki alanı çatışmalarında önemli kurallar: 1) Kalın taraf etkiyi korur 2) İnce taraf kaçar veya bağlanır 3) Sente hamleler rakibi yanıtla zorlar. Etkiyi bölgeye dönüştürmek için doğru zamanlama şarttır."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 10, "y": 10, "color": "white"}
+          ],
+          "text": "Köşe josekileri tamamlandı"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 10, "y": 10, "color": "white"},
+            {"x": 10, "y": 6, "color": "white"}
+          ],
+          "text": "Kenar taşları yerleşti - etki alanları oluşuyor"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 6, "y": 2, "color": "black"},
+            {"x": 10, "y": 10, "color": "white"},
+            {"x": 10, "y": 6, "color": "white"},
+            {"x": 6, "y": 10, "color": "white"}
+          ],
+          "text": "Her iki taraf da üçüncü köşeye yöneliyor"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 6, "y": 2, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 10, "y": 10, "color": "white"},
+            {"x": 10, "y": 6, "color": "white"},
+            {"x": 6, "y": 10, "color": "white"}
+          ],
+          "text": "Siyah merkez hamlesiyle etkiyi birleştirdi!"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l4-2-5"],
+  "next_lesson": "l4-3-1",
+  "required_exercise": null
+}

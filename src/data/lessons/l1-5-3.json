@@ -1,0 +1,117 @@
+{
+  "id": "l1-5-3",
+  "level": 1,
+  "module": 5,
+  "lesson": 3,
+  "title": "Seviye 1 Genel Tekrar - Gruplar ve Gözler",
+  "description": "Grup bağlantıları, göz oluşturma ve iki göz kuralının tekrarı.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Gruplar ve gözler, Go'da hayatta kalmanın anahtarıdır. Bağlı taşlar grup oluşturur. Bir grubun yaşaması için en az iki gerçek göze ihtiyacı vardır."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 3, "y": 0, "color": "black"},
+        {"x": 4, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 4, "y": 1, "color": "black"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 4, "y": 2, "color": "black"},
+        {"x": 0, "y": 3, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 1, "type": "good"},
+        {"x": 3, "y": 1, "type": "good"},
+        {"x": 1, "y": 2, "type": "bad"},
+        {"x": 2, "y": 1, "type": "bad"}
+      ],
+      "annotation": "Grup bağlantıları: Siyah duvar oluşturdu. (1,1) ve (3,1) göz adayları. (2,1) doldurulursa göz bozulur."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"}
+          ],
+          "text": "Siyah 3x2 grup oluşturdu. İçeride (1,1) boşluğu var — tek göz adayı."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 0, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"}
+          ],
+          "text": "Grup genişledi. İçeride iki boşluk: (1,1) göz adayı. Ama ikinci göz nerede?"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 3, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"}
+          ],
+          "text": "Şimdi iki boşluk: (1,1) ve (2,1) — ama bunlar TEK bir boşluk sayılırlar çünkü birbirine bağlı. İkisini ayırmak gerekiyor."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 3, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"}
+          ],
+          "text": "İdeal: (1,1) ve (2,1) ayrı gözler! (1,1) = gerçek göz, (2,1) = gerçek göz. Grup YAŞIYOR!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Özet: Bağlı taşlar = grup. Gerçek göz = tüm kardinal + en az 3 köşegen komşu aynı renk. İki gerçek göz = yaşayan grup. Sahte göz sayılmaz!"
+    }
+  ],
+  "prerequisites": ["l1-5-2"],
+  "next_lesson": "l1-5-4",
+  "required_exercise": null
+}

@@ -1,0 +1,98 @@
+{
+  "id": "l4-6-2",
+  "level": 4,
+  "module": 6,
+  "lesson": 2,
+  "title": "Derin Okuma 2",
+  "description": "Çoklu varyasyon analizi ve en iyi hamleyi seçme.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bu derste aynı pozisyon için birden fazla varyasyon (fuvar) okuyacağız. Her varyasyon farklı bir stratejiyi temsil eder: saldırgan, savunmacı ve esnek. Amaç, tüm varyasyonları okuyup en iyi sonucu veren hamleyi seçmektir."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 8, "y": 2, "color": "white"},
+        {"x": 9, "y": 2, "color": "white"},
+        {"x": 8, "y": 3, "color": "white"},
+        {"x": 6, "y": 5, "color": "black"},
+        {"x": 7, "y": 5, "color": "black"},
+        {"x": 8, "y": 5, "color": "white"},
+        {"x": 7, "y": 4, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 8, "y": 4, "type": "capture"},
+        {"x": 6, "y": 4, "type": "liberty"},
+        {"x": 9, "y": 3, "type": "good"}
+      ],
+      "annotation": "3 varyasyon: saldırı, savunma, esnek - hangisi en iyi?"
+    },
+    {
+      "type": "text",
+      "content": "Çoklu varyasyon okuma adımları: 1) Varyasyon A: Doğrudan saldırı (atari) 2) Varyasyon B: Savunma ve güçlenme 3) Varyasyon C: Başka yönde hamle (tenuki). Her varyasyonu en az 5 hamle okuyun, sonuçları puanlayın."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 9, "y": 2, "color": "white"},
+            {"x": 8, "y": 3, "color": "white"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 7, "y": 5, "color": "black"}
+          ],
+          "text": "Beyaz sağ kenarda güçlü, siyah merkezde toplanıyor"
+        },
+        {
+          "stones": [
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 9, "y": 2, "color": "white"},
+            {"x": 8, "y": 3, "color": "white"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 7, "y": 5, "color": "black"},
+            {"x": 8, "y": 5, "color": "white"},
+            {"x": 7, "y": 4, "color": "black"}
+          ],
+          "text": "Varyasyon A: Siyah saldırıyor, beyaz karşı duruyor"
+        },
+        {
+          "stones": [
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 9, "y": 2, "color": "white"},
+            {"x": 8, "y": 3, "color": "white"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 7, "y": 5, "color": "black"},
+            {"x": 8, "y": 5, "color": "white"},
+            {"x": 7, "y": 4, "color": "black"},
+            {"x": 8, "y": 4, "color": "black"},
+            {"x": 7, "y": 3, "color": "white"}
+          ],
+          "text": "Siyah kesik (kiri) yaptı! Beyaz atari'de"
+        },
+        {
+          "stones": [
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 9, "y": 2, "color": "white"},
+            {"x": 8, "y": 3, "color": "white"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 7, "y": 5, "color": "black"},
+            {"x": 8, "y": 5, "color": "white"},
+            {"x": 7, "y": 4, "color": "black"},
+            {"x": 8, "y": 4, "color": "black"},
+            {"x": 7, "y": 3, "color": "white"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 7, "y": 6, "color": "black"}
+          ],
+          "text": "Varyasyon B: Beyaz kaçıyor, siyah üstün pozisyon kazandı"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l4-6-1"],
+  "next_lesson": "l4-6-3",
+  "required_exercise": null
+}

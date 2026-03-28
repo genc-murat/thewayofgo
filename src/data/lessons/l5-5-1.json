@@ -1,0 +1,95 @@
+{
+  "id": "l5-5-1",
+  "level": 5,
+  "module": 5,
+  "lesson": 1,
+  "title": "Oyun Planı Oluşturma",
+  "description": "Fuseki'den yose'ye kadar tutarlı bir oyun planı oluşturma yöntemleri.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Oyun planı (taikyaku keikaku), Go'nun en önemli yeteneklerinden biridir. Profesyonel oyuncular her hamleyi genel bir strateji çerçevesinde oynar. Planınız olmazsa, iyi hamleler bile kötü sonuçlar doğurabilir. Bu derste, sağlam bir oyun planı oluşturmayı öğreneceksiniz."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 15, "y": 15, "color": "white"},
+        {"x": 15, "y": 3, "color": "black"},
+        {"x": 3, "y": 15, "color": "white"},
+        {"x": 9, "y": 9, "color": "black"},
+        {"x": 3, "y": 9, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 9, "y": 3, "type": "territory"},
+        {"x": 9, "y": 15, "type": "territory"},
+        {"x": 15, "y": 9, "type": "territory"}
+      ],
+      "annotation": "Fuseki planı - büyük bölgeleri belirleyin ve önceliklendirin"
+    },
+    {
+      "type": "text",
+      "content": "İyi bir planın üç öğesi vardır: 1) Kōhō (büyük noktalar) - en büyük bölge hamleleri, 2) Jōzu (acil noktalar) - savunma veya saldırı gerektiren yerler, 3) Yūdō (etkili noktalar) - birden fazla amaca hizmet eden hamleler. Bu üçünü doğru önceliklendirin."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 15, "y": 15, "color": "white"}
+          ],
+          "text": "Açılış - her köşede bir taş, genel denge kuruldu"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 15, "y": 15, "color": "white"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 3, "y": 15, "color": "white"}
+          ],
+          "text": "Dört köşe doldu - kenar planlaması başlar"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 15, "y": 15, "color": "white"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 3, "y": 15, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"}
+          ],
+          "text": "Siyah üst kenarı hedefler (moyo) - bölge vizyonu"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 15, "y": 15, "color": "white"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 3, "y": 15, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 9, "y": 15, "color": "white"}
+          ],
+          "text": "Beyaz karşı plan yapar - planlar çatışıyor"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 15, "y": 15, "color": "white"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 3, "y": 15, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 9, "y": 15, "color": "white"},
+            {"x": 16, "y": 9, "color": "black"},
+            {"x": 2, "y": 9, "color": "white"}
+          ],
+          "text": "Kenar genişlemeleri - oyun planı şekilleniyor"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l5-4-5"],
+  "next_lesson": "l5-5-2",
+  "required_exercise": null
+}

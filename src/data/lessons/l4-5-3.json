@@ -1,0 +1,96 @@
+{
+  "id": "l4-5-3",
+  "level": 4,
+  "module": 5,
+  "lesson": 3,
+  "title": "Sentez: Moyo + İstila Dengesi",
+  "description": "Moyo kurma ve istila riski arasındaki dengeyi yönetme.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Büyük moyo kurmak çekici gelir ama istila riskini artırır. İyi bir fuseki, moyo büyüklüğü ile savunulabilirlik arasında denge kurar. Moyo ne kadar genişse, istila noktaları da o kadar çok olur. Optimum moyo boyutunu bulmak üstalık gerektirir."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 2, "y": 10, "color": "black"},
+        {"x": 4, "y": 10, "color": "black"},
+        {"x": 6, "y": 10, "color": "black"},
+        {"x": 2, "y": 8, "color": "black"},
+        {"x": 6, "y": 8, "color": "black"},
+        {"x": 4, "y": 7, "color": "white"},
+        {"x": 9, "y": 3, "color": "white"},
+        {"x": 11, "y": 3, "color": "white"},
+        {"x": 10, "y": 5, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 9, "type": "territory"},
+        {"x": 3, "y": 8, "type": "territory"},
+        {"x": 5, "y": 8, "type": "territory"},
+        {"x": 4, "y": 7, "type": "bad"}
+      ],
+      "annotation": "Siyahın moyosu: güçlü ama istila edildi"
+    },
+    {
+      "type": "text",
+      "content": "Moyo-istila dengesi kuralları: 1) Moyo kenarda 3 satırdan dar olmalı 2) Savunma noktaları önceden belirlenmeli 3) İstila durumunda takas (exchange) planı hazır olmalı. Büyük moyo savunmak yerine, moyoyu bölgeye dönüştürmek daha güvenlidir."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 10, "color": "black"},
+            {"x": 4, "y": 10, "color": "black"},
+            {"x": 6, "y": 10, "color": "black"},
+            {"x": 2, "y": 8, "color": "black"},
+            {"x": 6, "y": 8, "color": "black"}
+          ],
+          "text": "Siyah alt kenarda geniş bir moyo kurdu"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 10, "color": "black"},
+            {"x": 4, "y": 10, "color": "black"},
+            {"x": 6, "y": 10, "color": "black"},
+            {"x": 2, "y": 8, "color": "black"},
+            {"x": 6, "y": 8, "color": "black"},
+            {"x": 4, "y": 7, "color": "white"}
+          ],
+          "text": "Beyaz moyonun merkezine istila ediyor!"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 10, "color": "black"},
+            {"x": 4, "y": 10, "color": "black"},
+            {"x": 6, "y": 10, "color": "black"},
+            {"x": 2, "y": 8, "color": "black"},
+            {"x": 6, "y": 8, "color": "black"},
+            {"x": 4, "y": 7, "color": "white"},
+            {"x": 3, "y": 7, "color": "black"}
+          ],
+          "text": "Siyah istilacı taşı sıkıştırmaya başlıyor"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 10, "color": "black"},
+            {"x": 4, "y": 10, "color": "black"},
+            {"x": 6, "y": 10, "color": "black"},
+            {"x": 2, "y": 8, "color": "black"},
+            {"x": 6, "y": 8, "color": "black"},
+            {"x": 4, "y": 7, "color": "white"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 4, "y": 6, "color": "white"}
+          ],
+          "text": "Beyaz kaçıyor ama siyah moyoyu bölgeye dönüştürüyor"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l4-5-2"],
+  "next_lesson": "l4-5-4",
+  "required_exercise": null
+}

@@ -1,0 +1,104 @@
+{
+  "id": "l6-5-3",
+  "level": 6,
+  "module": 5,
+  "lesson": 3,
+  "title": "Usta Seviye Oyun Sonu",
+  "description": "Profesyonel seviye yose tekniği ve hassas hesaplama.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Usta seviye yose, 0.25 puanlık farkları bile hesaplama yeteneğidir. Profesyoneller yose sıralamasını (junjo) matematiksel kesinlikle belirler. Bu derste, sente/gote analizi, miai ilkesi ve hassas skor hesaplama tekniklerini ustalık seviyesinde öğreneceksiniz."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 0, "y": 3, "color": "black"},
+        {"x": 1, "y": 3, "color": "white"},
+        {"x": 0, "y": 4, "color": "black"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 0, "y": 5, "color": "black"},
+        {"x": 3, "y": 3, "color": "white"},
+        {"x": 0, "y": 6, "color": "black"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 0, "y": 9, "color": "black"},
+        {"x": 6, "y": 3, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 3, "type": "territory"},
+        {"x": 1, "y": 4, "type": "liberty"}
+      ],
+      "annotation": "Usta yose - sente/gote analizi ve doğru sıralama"
+    },
+    {
+      "type": "text",
+      "content": "Yose hesaplamada deiri (giriş/çıkış) değerini hesaplayın: Bir hamlenin hem saldırı hem savunma değerini toplayın. Örneğin, 2 puanlık bölge kazandıran ve rakibin 3 puanlık bölgesini yok eden hamle 5 puan deiri değerindedir. Büyük deiri değerli hamleleri önce oynayın."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 0, "y": 4, "color": "black"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 0, "y": 5, "color": "black"},
+            {"x": 3, "y": 3, "color": "white"}
+          ],
+          "text": "Yose pozisyonu - hangi hamle sente?"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 0, "y": 4, "color": "black"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 0, "y": 5, "color": "black"},
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 0, "y": 6, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"}
+          ],
+          "text": "Sente yose! Siyah sınır çizer, beyaz yanıt vermek zorunda"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 0, "y": 4, "color": "black"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 0, "y": 5, "color": "black"},
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 0, "y": 6, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 0, "y": 9, "color": "black"},
+            {"x": 6, "y": 3, "color": "white"}
+          ],
+          "text": "İkinci sente yose - sıralama doğru devam ediyor"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 0, "y": 4, "color": "black"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 0, "y": 5, "color": "black"},
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 0, "y": 6, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 0, "y": 9, "color": "black"},
+            {"x": 6, "y": 3, "color": "white"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 1, "y": 4, "color": "white"}
+          ],
+          "text": "Gote yose hamleleri - sıralama tamamlandı, skor netleşiyor"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l6-5-2"],
+  "next_lesson": "l6-5-4",
+  "required_exercise": null
+}

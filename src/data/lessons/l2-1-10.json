@@ -1,0 +1,129 @@
+{
+  "id": "l2-1-10",
+  "level": 2,
+  "module": 1,
+  "lesson": 10,
+  "title": "Ağ (Geta)",
+  "description": "Geta (ağ) tekniğini öğrenin: atari yapmadan rakip taşları sıkıştırarak yakalama.",
+  "duration_minutes": 8,
+  "content": [
+    {
+      "type": "text",
+      "content": "Geta (ağ), atari yapmadan rakip taşları yakalamanın en etkili yoludur. Merdiven (shichou) ile yakalayamadığınız taşları geta ile yakalayabilirsiniz. Fikir basit: rakip taşın tüm kaçış yollarını kesin, ama doğrudan atari yapmayın - bunun yerine bir 'ağ' oluşturun."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 4, "y": 2, "color": "white"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 5, "y": 3, "color": "black"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 6, "y": 4, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 3, "type": "good"}
+      ],
+      "annotation": "Geta pozisyonu: Siyah (4,3) oynayarak ağı kuruyor"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"}
+          ],
+          "text": "Beyaz taş kaçmaya çalışıyor. Merdiven burada çalışmaz."
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"}
+          ],
+          "text": "Siyah ağı kuruyor! (4,3) hamlesi beyazın ileriye kaçışını kesti"
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 3, "y": 1, "color": "white"}
+          ],
+          "text": "Beyaz (3,1) kaçtı ama ağ sıkışıyor"
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 6, "y": 4, "color": "black"}
+          ],
+          "text": "Siyah yanları da kapatıyor - ağ tamamlanıyor"
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 6, "y": 4, "color": "black"},
+            {"x": 2, "y": 1, "color": "white"}
+          ],
+          "text": "Beyaz kaçmaya devam ediyor ama ağ gittikçe daralıyor"
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 6, "y": 4, "color": "black"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"}
+          ],
+          "text": "Siyah ağı tamamladı! Beyaz taşlar kaçamaz - geta başarılı"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Geta tekniğinin anahtarı, rakip taşın kaçış yönlerini önceden hesaplamaktır. Merdiven boyunca taşların sonuna kadar takip edilmesi gerekirken, geta'da ağ bir kez kurulduğunda kaçış imkansızdır. Özellikle merdiven kırıcı (shichou-yaburi) taşların bulunduğu durumlarda geta tercih edilir."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 6, "y": 2, "color": "white"},
+        {"x": 5, "y": 3, "color": "black"},
+        {"x": 7, "y": 3, "color": "black"},
+        {"x": 6, "y": 4, "color": "black"},
+        {"x": 4, "y": 2, "color": "black"},
+        {"x": 8, "y": 2, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 6, "y": 3, "type": "good"},
+        {"x": 6, "y": 2, "type": "capture"}
+      ],
+      "annotation": "Köşede geta: Beyaz taşın kaçışı yok, siyah ağı kurdu"
+    },
+    {
+      "type": "text",
+      "content": "Geta ve merdiven arasındaki fark: Merdiven (shichou) zigzag şeklinde tahta boyunca uzanır ve bir merdiven kırıcı varsa başarısız olur. Geta ise yerel kalır ve kırılamaz. Bu yüzden ileri düzey oyuncular merdiven yerine geta'yı tercih eder. Pratik yaparken önce merdivenin çalışıp çalışmadığını kontrol edin, çalışmıyorsa geta arayın."
+    }
+  ],
+  "prerequisites": ["l2-1-9"],
+  "next_lesson": "l2-1-11",
+  "required_exercise": null
+}

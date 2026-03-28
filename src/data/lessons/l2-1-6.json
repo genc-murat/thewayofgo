@@ -3,91 +3,199 @@
   "level": 2,
   "module": 1,
   "lesson": 6,
-  "title": "İleri Merdiven",
-  "description": "Merdiven varyasyonları ve stratejileri.",
-  "duration_minutes": 10,
+  "title": "İleri Merdiven Teknikleri",
+  "description": "Kırılan merdivenler, merdiven kırıcı (hazamono) taşlar ve 9x9 tahta genelinde merdiven okuma (shichou o yomu) becerilerini geliştirin.",
+  "duration_minutes": 15,
   "content": [
     {
       "type": "text",
-      "content": "İleri Merdiven: Merdiven varyasyonları ve stratejileri. Bu derste temel kavramları öğreneceksiniz."
+      "content": "Shichou (merdiven), rakip taşlarını zigzag şeklinde tahtanın kenarına kadar kovalama tekniğidir. Ancak her merdiven başarıya ulaşmaz! Bu derste üç kritik konuyu öğreneceksiniz: (1) 9x9 tahtada tamamlanan merdiven kovalamacası, (2) merdiven kırıcı (hazamono) taşların merdiveni nasıl bozduğunu, (3) merdiven başlatmadan önce tahtanın tamamını okuma (shichou o yomu) becerisi. 9x9 tahtada merdiven çok hızlı kenara ulaşır — her hamle kritiktir!"
     },
     {
       "type": "board",
       "size": 9,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        },
-        {
-          "x": 5,
-          "y": 4,
-          "color": "black"
-        }
+        {"x": 1, "y": 6, "color": "black"},
+        {"x": 2, "y": 5, "color": "black"},
+        {"x": 2, "y": 6, "color": "white"}
       ],
-      "highlights": [],
-      "annotation": "İleri Merdiven"
+      "highlights": [
+        {"x": 3, "y": 6, "type": "liberty"},
+        {"x": 2, "y": 7, "type": "liberty"}
+      ],
+      "annotation": "Beyaz (2,6) taşının 2 özgürlüğü var. Siyah (2,7) atari ile merdiven başlatabilir. Zigzag paterni tahta kenarına kadar sürer."
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 2, "y": 6, "color": "white"}
           ],
-          "text": "Pozisyonu inceleyin"
+          "text": "Başlangıç: Beyaz (2,6) taşının özgürlükleri (3,6) ve (2,7). Siyah merdiven başlatacak."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 2, "y": 7, "color": "black"}
           ],
-          "text": "Taşlar yerleşti"
+          "highlights": [{"x": 3, "y": 6, "type": "liberty"}],
+          "text": "Siyah (2,7) — Atari! Beyaz'ın tek özgürlüğü (3,6)'da kaldı. Kaçmak zorunda."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 3, "y": 7, "color": "black"}
           ],
-          "text": "İleri adımları düşünün"
+          "text": "Beyaz (3,6)'ya kaçtı. Siyah (3,7) ile bir tarafı kapattı — zigzag paterni başlıyor!"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 4, "y": 7, "color": "white"},
+            {"x": 4, "y": 6, "color": "black"}
+          ],
+          "text": "Beyaz (4,7)'ye uzadı. Siyah (4,6) ile tekrar atari verdi. Kovalamaca sürüyor."
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 4, "y": 7, "color": "white"},
+            {"x": 5, "y": 8, "color": "white"},
+            {"x": 5, "y": 6, "color": "black"}
+          ],
+          "text": "Merdiven kenara yaklaşıyor! Beyaz (5,8)'e kaçtı, Siyah (5,6) kapadı. Beyaz'ın özgürlükleri azalıyor."
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 6, "y": 7, "color": "black"}
+          ],
+          "captured": [
+            {"x": 2, "y": 6},
+            {"x": 3, "y": 6},
+            {"x": 4, "y": 7},
+            {"x": 5, "y": 8}
+          ],
+          "highlights": [{"x": 6, "y": 7, "type": "good"}],
+          "text": "Siyah (6,7) son darbe! Beyaz taşlar tahta kenarında yakalandı. Başarılı shichou — Siyah 4 taş kazandı!"
         }
       ]
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 1, "y": 6, "color": "black"},
+        {"x": 2, "y": 5, "color": "black"},
+        {"x": 2, "y": 6, "color": "white"},
+        {"x": 5, "y": 7, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 5, "y": 7, "type": "bad"},
+        {"x": 3, "y": 6, "type": "liberty"},
+        {"x": 2, "y": 7, "type": "liberty"}
+      ],
+      "annotation": "Beyaz'ın (5,7) taşı merdiven kırıcı (hazamono)! Merdiven bu taşa ulaştığında Beyaz kaçışı bağlanacak ve merdiven bozulacak."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"}
+          ],
+          "highlights": [{"x": 5, "y": 7, "type": "bad"}],
+          "text": "Aynı başlangıç ama tahtada Beyaz'ın (5,7) merdiven kırıcı taşı var. Siyah yine merdiven başlatıyor..."
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 4, "y": 7, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"}
+          ],
+          "text": "Merdiven ilerliyor: Beyaz (3,6)→(4,7)'ye kaçtı. Merdiven kırıcı taşı (5,7)'e yaklaşıyor!"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 4, "y": 7, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 5, "y": 8, "color": "black"}
+          ],
+          "text": "Beyaz (5,6)'ya uzadı ve (5,7) kırıcı taşa bağlandı! Beyaz grubun özgürlükleri arttı. Siyah (5,8) ile kapatmaya çalıştı."
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 5, "y": 8, "color": "black"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 4, "y": 7, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"}
+          ],
+          "highlights": [
+            {"x": 6, "y": 6, "type": "liberty"},
+            {"x": 6, "y": 7, "type": "liberty"},
+            {"x": 5, "y": 5, "type": "liberty"}
+          ],
+          "text": "FELAKET! Beyaz grubun artık 3+ özgürlüğü var: (6,6), (6,7), (5,5). Merdiven KIRILDI! Siyah çok değerli taş kaybetti."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Merdiven okuma (shichou o yomu) Go'nun en hayati becerilerinden biridir. Altın kural: Merdiven başlatmadan ÖNCE tahtanın tamamını kontrol edin! Rakibin merdiven yoluna denk gelen bir taşı varsa (hazamono), merdiven başarısız olur ve siz değerli taşlar kaybedersiniz. 9x9 tahtada merdiven en fazla 4-5 hamlede kenara ulaşır — her hamlede kırıcı taş kontrolü yapın. Merdiven kıracağını önceden göremeyen oyuncular büyük kayıplar yaşar."
     }
   ],
-  "prerequisites": [
-    "l2-1-5"
-  ],
-  "next_lesson": null,
+  "prerequisites": ["l2-1-5"],
+  "next_lesson": "l2-1-7",
   "required_exercise": "e2-1-6"
 }

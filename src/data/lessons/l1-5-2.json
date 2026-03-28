@@ -1,0 +1,106 @@
+{
+  "id": "l1-5-2",
+  "level": 1,
+  "module": 5,
+  "lesson": 2,
+  "title": "Seviye 1 Genel Tekrar - Yakalama ve Özgürlük",
+  "description": "Özgürlük, yakalama, atari ve grup kavramlarının tekrarı.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Özgürlük kavramı Go'nun kalbidir. Bir taşın boş komşu noktaları onun özgürlükleridir. Tüm özgürlükler kapatılırsa taş yakalanır. Gruplar bağlı taşların birleşimidir ve özgürlüklerini paylaşırlar."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 2, "y": 4, "color": "white"},
+        {"x": 5, "y": 4, "color": "white"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 4, "y": 2, "color": "white"},
+        {"x": 3, "y": 5, "color": "white"},
+        {"x": 4, "y": 5, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 3, "y": 3, "type": "capture"},
+        {"x": 4, "y": 3, "type": "capture"},
+        {"x": 3, "y": 4, "type": "capture"},
+        {"x": 4, "y": 4, "type": "capture"}
+      ],
+      "annotation": "Siyah 2x2 grup tamamen çevrildi — sıfır özgürlük, yakalandı!"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"}
+          ],
+          "text": "Siyah 2x2 grup: 4 taş birbirine bağlı. Özgürlükleri: (2,3),(5,3),(2,4),(5,4),(3,2),(4,2),(3,5),(4,5) = 8 özgürlük."
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 2, "y": 4, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 4, "y": 2, "color": "white"}
+          ],
+          "text": "Beyaz 6 taş koydu. Siyah grubun 2 özgürlüğü kaldı: (3,5) ve (4,5). Atari durumuna yakın!"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 2, "y": 4, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"}
+          ],
+          "text": "Beyaz (3,5) oynadı. Siyah grubun son özgürlüğü (4,5). ATARİ!"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 2, "y": 4, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"}
+          ],
+          "captured": [{"x": 3, "y": 3}, {"x": 4, "y": 3}, {"x": 3, "y": 4}, {"x": 4, "y": 4}],
+          "text": "Beyaz (4,5) oynadı! Siyah 2x2 grubun tüm özgürlükleri kapatıldı — 4 taş yakalandı!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Hatırlatma: Bağlı grupların özgürlükleri toplanır. Daha büyük grup = daha fazla özgürlük = daha güvenli. Ama dikkat — büyük grup yakalanırsa daha çok taş kaybedilir!"
+    }
+  ],
+  "prerequisites": ["l1-5-1"],
+  "next_lesson": "l1-5-3",
+  "required_exercise": "e1-5-2"
+}

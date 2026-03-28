@@ -1,0 +1,213 @@
+{
+  "id": "l4-4-8",
+  "level": 4,
+  "module": 4,
+  "lesson": 8,
+  "title": "Fedakarlık (Sacrifice) Teknikleri",
+  "description": "Taş feda ederek büyük kazanç sağlama, sıkıştırma hamleleri ve atma teknikleri.",
+  "duration_minutes": 14,
+  "content": [
+    {
+      "type": "text",
+      "content": "Go'da en zarif stratejilerden biri Suteishi (feda taşı) kullanmaktır. Bir veya daha fazla taşı bilerek rakibe esir ettirerek, karşılığında daha büyük kazanç elde edersiniz. Bu teknikler arasında Squeeze (sıkıştırma), Furikawari (takas) ve Nagashi (akıtmalı feda) en önemli olanlarıdır. İleri düzey oyuncular feda taşlarını doğal bir silah olarak kullanır."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 2, "color": "black"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 5, "y": 1, "color": "white"},
+        {"x": 3, "y": 1, "color": "white"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 6, "y": 4, "color": "white"},
+        {"x": 4, "y": 5, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 2, "type": "bad"},
+        {"x": 4, "y": 1, "type": "vital"},
+        {"x": 3, "y": 2, "type": "liberty"},
+        {"x": 5, "y": 2, "type": "good"}
+      ],
+      "annotation": "Suteishi: Siyah taşını feda ederek dış etki (thickness) kazanabilir mi?"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 2, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 5, "y": 1, "color": "white"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 6, "y": 4, "color": "white"}
+          ],
+          "text": "Pozisyon: Siyah iki taşı zayıf durumda, ama bir plan var"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 2, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 5, "y": 1, "color": "white"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 6, "y": 4, "color": "white"},
+            {"x": 4, "y": 1, "color": "black"}
+          ],
+          "text": "Siyah atama (throw-in) yapıyor - taşını feda ediyor!"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 5, "y": 1, "color": "white"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 6, "y": 4, "color": "white"},
+            {"x": 4, "y": 1, "color": "white"},
+            {"x": 4, "y": 2, "color": "white"}
+          ],
+          "text": "Beyaz iki siyah taşı esir aldı... ama siyahın planı çalışıyor",
+          "captured": [{"x": 4, "y": 2, "color": "black"}, {"x": 4, "y": 1, "color": "black"}]
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 5, "y": 1, "color": "white"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 6, "y": 4, "color": "white"},
+            {"x": 4, "y": 1, "color": "white"},
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 4, "y": 3, "color": "black"}
+          ],
+          "text": "Siyah şimdi aradaki kilit noktaya oynuyor - squeeze başlıyor!"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 5, "y": 1, "color": "white"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 6, "y": 4, "color": "white"},
+            {"x": 4, "y": 1, "color": "white"},
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"}
+          ],
+          "text": "Siyah dışarıda kusursuz kalınlık (kosa) kazandı - 2 taş feda, devasa etki!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Suteishi tekniklerinin temel prensipleri: 1) Feda edilecek taşın Son (liberty) sayısını kasıtlı azaltın 2) Esir alma sonrası rakibin şeklini (katachi) bozacak boşluklar bırakın 3) Kazanacağınız etki (thickness) veya topra (territory) fedadan çok daha değerli olmalı. Squeeze tekniğinde rakip dar bir alana sıkıştırılırken siz geniş dış etki kazanırsınız."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 1, "y": 5, "color": "black"},
+        {"x": 2, "y": 6, "color": "black"},
+        {"x": 1, "y": 7, "color": "white"},
+        {"x": 3, "y": 5, "color": "white"},
+        {"x": 2, "y": 8, "color": "white"},
+        {"x": 0, "y": 6, "color": "white"},
+        {"x": 4, "y": 6, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 6, "type": "bad"},
+        {"x": 2, "y": 7, "type": "vital"},
+        {"x": 1, "y": 6, "type": "liberty"},
+        {"x": 3, "y": 6, "type": "good"},
+        {"x": 3, "y": 7, "type": "territory"}
+      ],
+      "annotation": "Nagashi fedakarlık: Siyah taşını akıtarak büyük bölge kazanma"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 1, "y": 7, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 2, "y": 8, "color": "white"},
+            {"x": 0, "y": 6, "color": "white"},
+            {"x": 4, "y": 6, "color": "black"}
+          ],
+          "text": "Siyahın taşı baskı altında - görünüşte zor durumda"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 2, "y": 6, "color": "black"},
+            {"x": 1, "y": 7, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 2, "y": 8, "color": "white"},
+            {"x": 0, "y": 6, "color": "white"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"}
+          ],
+          "text": "Siyah nagashi (akıtma) hamlesi - taşı bağlamadan akıtıyor"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 1, "y": 7, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 2, "y": 8, "color": "white"},
+            {"x": 0, "y": 6, "color": "white"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 3, "y": 7, "color": "white"}
+          ],
+          "text": "Beyaz siyahı esir aldı... ama siyahın asıl amacı başka",
+          "captured": [{"x": 2, "y": 6, "color": "black"}]
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 1, "y": 7, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 2, "y": 8, "color": "white"},
+            {"x": 0, "y": 6, "color": "white"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 3, "y": 7, "color": "white"},
+            {"x": 3, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah boşluğa oynayarak büyük toprak (territory) kazandı!"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 1, "y": 7, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 2, "y": 8, "color": "white"},
+            {"x": 0, "y": 6, "color": "white"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 3, "y": 7, "color": "white"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"}
+          ],
+          "text": "1 taş feda, karşılığında kusursuz duvar ve toprak - mükemmel furikawari!"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l4-4-7"],
+  "next_lesson": "l4-4-9",
+  "required_exercise": null
+}

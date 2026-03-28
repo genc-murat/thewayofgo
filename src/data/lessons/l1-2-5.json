@@ -4,90 +4,142 @@
   "module": 2,
   "lesson": 5,
   "title": "Grubu Kurtarma Taktikleri",
-  "description": "Canlı grup nasıl kurtarılır.",
-  "duration_minutes": 10,
+  "description": "Atari'den kaçış, dost taşlara bağlanma ve kaçarken göz yapma taktiklerini öğrenin.",
+  "duration_minutes": 12,
   "content": [
     {
       "type": "text",
-      "content": "Grubu Kurtarma Taktikleri: Canlı grup nasıl kurtarılır. Bu derste temel kavramları öğreneceksiniz."
+      "content": "Go'da atari (当たり) durumuna düşen bir grup her zaman ölmez! Bir grubu kurtarmanın üç temel yolu vardır: özgürlük kazanarak kaçmak, dost taşlara bağlanmak ve kaçarken göz (me) oluşturmak. Japonca'da bu konsept 'nigiri' - canlı tutma mücadelesi olarak bilinir. Bu derste her üç tekniği de örneklerle göreceğiz."
     },
     {
       "type": "board",
       "size": 9,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        },
-        {
-          "x": 5,
-          "y": 4,
-          "color": "black"
-        }
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 4, "y": 3, "color": "white"},
+        {"x": 4, "y": 4, "color": "white"},
+        {"x": 2, "y": 5, "color": "white"},
+        {"x": 3, "y": 5, "color": "white"},
+        {"x": 2, "y": 2, "color": "white"}
       ],
-      "highlights": [],
-      "annotation": "Grubu Kurtarma Taktikleri"
+      "highlights": [
+        {"x": 3, "y": 2, "type": "liberty"},
+        {"x": 2, "y": 3, "type": "liberty"},
+        {"x": 2, "y": 4, "type": "liberty"}
+      ],
+      "annotation": "Siyah grup atari'de! 3 özgürlüğü var: (3,2), (2,3) ve (2,4). Doğru hamle kritik."
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"}
           ],
-          "text": "Pozisyonu inceleyin"
+          "text": "Siyah grup atari'de! Beyaz (3,3) ve (3,4)'ü sarstı. Siyahın sadece 3 özgürlüğü kalmış."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"}
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Siyah (2,3) oynayarak özgürlük kazanıyor! Bu hamle hem gruba özgürlük ekler hem de beyaz (2,2)'nin etki alanını sınırlar. Şimdi siyah grubun 3 yeni özgürlüğü var."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 2, "y": 4, "color": "white"}
           ],
-          "text": "İleri adımları düşünün"
+          "text": "Beyaz karşı atak: (2,4) oynayarak siyahı tekrar baskı altına alıyor. Siyah şimdi bağlanarak kaçmalı."
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 2, "y": 4, "color": "white"}
+          ],
+          "text": "Siyah (1,3) oynayarak kenara doğru genişliyor! Her yeni taş özgürlük sağlar. Kenara doğru kaçmak, bir taraftan sınırlı olduğu için dikkatli olunmalıdır."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 2, "y": 4, "color": "white"}
+          ],
+          "text": "Beyaz (1,4) ile bastırmaya çalıştı ama siyah (0,3) oynayarak kenara ulaştı! Siyah grup artık güvende - yeterli özgürlüğe sahip. Başarılı bir kaçış örneği!"
         }
       ]
+    },
+    {
+      "type": "text",
+      "content": "Dost taşlara bağlanmak, kaçışın en güvenli yoludur. İki ayrı siyah grup birbirine bağlanırsa, birleşik grubun özgürlükleri artar ve yakalanması çok zorlaşır. Japonca'da bağlantıya 'tsugi' (継ぎ) denir. Dost taşlardan oluşan sağlam bir duvar, hem savunma hem saldırı için güçlü bir araçtır."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 5, "y": 2, "color": "black"},
+        {"x": 5, "y": 3, "color": "black"},
+        {"x": 6, "y": 4, "color": "white"},
+        {"x": 5, "y": 4, "color": "white"},
+        {"x": 4, "y": 5, "color": "white"},
+        {"x": 6, "y": 6, "color": "black"},
+        {"x": 5, "y": 6, "color": "black"},
+        {"x": 4, "y": 6, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 5, "y": 5, "type": "good"},
+        {"x": 5, "y": 2, "type": "liberty"},
+        {"x": 5, "y": 3, "type": "liberty"},
+        {"x": 6, "y": 6, "type": "liberty"},
+        {"x": 5, "y": 6, "type": "liberty"},
+        {"x": 4, "y": 6, "type": "liberty"}
+      ],
+      "annotation": "Siyahın iki grubu var: üst grup (5,2)-(5,3) ve alt grup (4,6)-(5,6)-(6,6). (5,5) bağlantı noktası iki grubu birleştirir!"
+    },
+    {
+      "type": "text",
+      "content": "En ileri taktik: Kaçarken göz (me) oluşturmak. Eğer kaçan grubunuz yol boyunca bir göz yapabilirse, grup otomatik olarak daha güvenli hale gelir. İki göz yapan bir grup asla yakalanamaz! Bu taktik, tsumego (詰碁 - yaşam-ölüm problemleri) çözmenin temelidir. Grubunuzu kurtarırken 'iki göz hedefini' her zaman aklınızda bulundurun."
     }
   ],
   "prerequisites": [
     "l1-2-4"
   ],
-  "next_lesson": null,
+  "next_lesson": "l1-2-6",
   "required_exercise": "e1-2-5"
 }

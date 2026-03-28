@@ -4,83 +4,217 @@
   "module": 1,
   "lesson": 6,
   "title": "Joseki Uygulama",
-  "description": "Joseki'yi oyunda kullanma.",
-  "duration_minutes": 10,
+  "description": "Köşe joseki'lerini (定石) gerçek oyun bağlamında uygulama, tam tahta durumuna (全盤感) göre joseki seçimi ve stratejik yönelim.",
+  "duration_minutes": 18,
   "content": [
     {
       "type": "text",
-      "content": "Joseki Uygulama: Joseki'yi oyunda kullanma. Bu derste temel kavramları öğreneceksiniz."
+      "content": "Joseki (定石) uygulamada en önemli ilke: köşeyi sabit bir formülle oynamak değil, tam tahta durumuna (全盤感, zenbankan) göre en uygun varyantı seçmektir. Aynı köşede farklı joseki varyantları farklı etki (影響力, eikyōryoku) yönleri yaratır. Eğer sağ kenarda güçlü kalınlığınız varsa, sola doğru etki yapan joseki'yi seçin. Rakibin güçlü duvarı varsa, o duvara yaklaşmaktan kaçının. Joseki bilmek ile joseki'yi doğru uygulamak arasındaki fark, işte bu tam tahta bilincidir."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 13,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        },
-        {
-          "x": 5,
-          "y": 4,
-          "color": "black"
-        }
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 9, "y": 3, "color": "white"},
+        {"x": 3, "y": 9, "color": "black"},
+        {"x": 9, "y": 9, "color": "white"},
+        {"x": 6, "y": 3, "color": "black"},
+        {"x": 5, "y": 5, "color": "white"},
+        {"x": 3, "y": 5, "color": "black"},
+        {"x": 5, "y": 7, "color": "white"}
       ],
-      "highlights": [],
-      "annotation": "Joseki Uygulama"
+      "highlights": [
+        {"x": 2, "y": 4, "type": "good"},
+        {"x": 2, "y": 3, "type": "territory"},
+        {"x": 1, "y": 3, "type": "territory"},
+        {"x": 4, "y": 4, "type": "territory"}
+      ],
+      "annotation": "Sol üst köşe joseki tamamlandı — siyah shimari, beyaz dış etki. Şimdi sağ köşe seçimi kritik"
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"}
           ],
-          "text": "Pozisyonu inceleyin"
+          "text": "Dört hoshi açılışı — şimdi yaklaşma hamleleri (接近, sekkin) başlıyor"
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 6, "y": 3, "color": "black"}
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Siyah (6,3) kenar ortasında genişleme (布石, fuseki) — güçlü etkili hamle"
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"}
           ],
-          "text": "İleri adımları düşünün"
+          "text": "Beyaz (5,5) kakari (掛かり) — siyahın sol üst köşesine yaklaşma, joseki başlıyor"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "black"}
+          ],
+          "text": "Siyah (3,5) keima (桂馬) — köşeyi koruyarak shimari (締まり) oluşturur. Doğru joseki!"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 5, "y": 7, "color": "white"}
+          ],
+          "text": "Beyaz (5,7) — joseki tamamlandı. Siyah köşeyi sağlam tuttu, beyaz dış etki (外勢, gaisei) aldı"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 10, "y": 5, "color": "black"}
+          ],
+          "text": "Siyah (10,5) — tam tahta farkındalığı! Beyazın sağ üst etksini sınırlar, büyük hamle"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Aynı köşede farklı joseki seçenekleri farklı stratejik sonuçlar doğurur. Tsuke (付け) — doğrudan temas ederek saldırgan joseki oynamak, çevre taşlarınız güçlüyse etkilidir. Nobi (伸び) — uzanarak sakin joseki oynamak, dengeli durumlar için uygundur. Hane (ハネ) — köşeyi daraltarak baskı yapmak, toprak odaklı oyunda tercih edilir. Hangisini seçeceğiniz tahtanın genel dengesine (バランス, baransu) bağlıdır."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 3, "y": 9, "color": "black"},
+        {"x": 3, "y": 8, "color": "black"},
+        {"x": 2, "y": 10, "color": "black"},
+        {"x": 9, "y": 9, "color": "white"},
+        {"x": 9, "y": 10, "color": "white"},
+        {"x": 10, "y": 8, "color": "white"},
+        {"x": 5, "y": 9, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 8, "type": "good"},
+        {"x": 4, "y": 10, "type": "good"},
+        {"x": 4, "y": 8, "type": "good"},
+        {"x": 5, "y": 10, "type": "bad"},
+        {"x": 1, "y": 9, "type": "territory"},
+        {"x": 1, "y": 10, "type": "territory"}
+      ],
+      "annotation": "Alt kenar joseki bağlamı — siyah güçlü destekle saldırgan tsuke seçebilir"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 3, "y": 8, "color": "black"},
+            {"x": 2, "y": 10, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 9, "y": 10, "color": "white"},
+            {"x": 10, "y": 8, "color": "white"}
+          ],
+          "text": "Alt kenarda iki taraf — siyah sol altta güçlü (3 taş), beyaz sağ altta güçlü"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 3, "y": 8, "color": "black"},
+            {"x": 2, "y": 10, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 9, "y": 10, "color": "white"},
+            {"x": 10, "y": 8, "color": "white"},
+            {"x": 5, "y": 9, "color": "white"}
+          ],
+          "text": "Beyaz (5,9) kakari — siyahın sol alt alanına yaklaşma"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 3, "y": 8, "color": "black"},
+            {"x": 2, "y": 10, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 9, "y": 10, "color": "white"},
+            {"x": 10, "y": 8, "color": "white"},
+            {"x": 5, "y": 9, "color": "white"},
+            {"x": 4, "y": 10, "color": "black"}
+          ],
+          "text": "Siyah (4,10) tsuke! Çevre taşlar güçlü olduğu için saldırgan joseki varyantı seçti"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 3, "y": 8, "color": "black"},
+            {"x": 2, "y": 10, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 9, "y": 10, "color": "white"},
+            {"x": 10, "y": 8, "color": "white"},
+            {"x": 5, "y": 9, "color": "white"},
+            {"x": 4, "y": 10, "color": "black"},
+            {"x": 5, "y": 10, "color": "white"}
+          ],
+          "text": "Beyaz (5,10) nobi — joseki devam ediyor, siyah tsuke-nobi takası"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 3, "y": 8, "color": "black"},
+            {"x": 2, "y": 10, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 9, "y": 10, "color": "white"},
+            {"x": 10, "y": 8, "color": "white"},
+            {"x": 5, "y": 9, "color": "white"},
+            {"x": 4, "y": 10, "color": "black"},
+            {"x": 5, "y": 10, "color": "white"},
+            {"x": 2, "y": 8, "color": "black"}
+          ],
+          "text": "Siyah (2,8) shimari tamamlar! Çevre taşlarla uyumlu güçlü joseki — sol alt köşe güvende"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 3, "y": 8, "color": "black"},
+            {"x": 2, "y": 10, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 9, "y": 10, "color": "white"},
+            {"x": 10, "y": 8, "color": "white"},
+            {"x": 5, "y": 9, "color": "white"},
+            {"x": 4, "y": 10, "color": "black"},
+            {"x": 5, "y": 10, "color": "white"},
+            {"x": 2, "y": 8, "color": "black"},
+            {"x": 8, "y": 5, "color": "white"}
+          ],
+          "text": "Beyaz (8,5) — merkezdeki büyük noktaya yönelir. Joseki seçimi tam tahta dengesine uygun oldu!"
         }
       ]
     }
@@ -88,6 +222,6 @@
   "prerequisites": [
     "l4-1-5"
   ],
-  "next_lesson": null,
+  "next_lesson": "l4-2-1",
   "required_exercise": "e4-1-6"
 }

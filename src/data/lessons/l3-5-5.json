@@ -4,83 +4,257 @@
   "module": 5,
   "lesson": 5,
   "title": "Saldırı Sentezi",
-  "description": "Tüm saldırı tekniklerini birleştirme.",
-  "duration_minutes": 10,
+  "description": "Atari (当て), geta (網), net (網打ち) ve özgürlük kesme tekniklerini birleştirerek zayıf gruplara karşı çok yönlü saldırılar organize etme.",
+  "duration_minutes": 16,
   "content": [
     {
       "type": "text",
-      "content": "Saldırı Sentezi: Tüm saldırı tekniklerini birleştirme. Bu derste temel kavramları öğreneceksiniz."
+      "content": "Saldırı sentezi (攻めの合成, seme no gōsei), tekniği tek başına kullanmak yerine birden fazla yöntemi zincirleme uygulayarak rakibi kaçışı olmayan bir çember içine almaktır. Temel teknikler: 1) Atari (当て) — doğrudan baskı ile kaçış yönünü belirleme 2) Geta (網) — ağ ile kuşatıp tüm kaçış yollarını kesme 3) Liberty reduction (呼吸点削減) — özgürlükleri tek tek azaltma 4) Semeai (攻め合い) — karşılıklı yaşam savaşı. Bu derslerde okuma (読み, yomi) becerinizi geliştirerek bu teknikleri birlikte kullanmayı öğreneceksiniz."
     },
     {
       "type": "board",
       "size": 9,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        },
-        {
-          "x": 5,
-          "y": 4,
-          "color": "black"
-        }
+        {"x": 3, "y": 1, "color": "black"},
+        {"x": 4, "y": 2, "color": "black"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 6, "y": 5, "color": "black"},
+        {"x": 7, "y": 3, "color": "black"},
+        {"x": 5, "y": 2, "color": "white"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 6, "y": 3, "color": "white"},
+        {"x": 4, "y": 6, "color": "white"},
+        {"x": 5, "y": 7, "color": "white"}
       ],
-      "highlights": [],
-      "annotation": "Saldırı Sentezi"
+      "highlights": [
+        {"x": 5, "y": 4, "type": "vital"},
+        {"x": 4, "y": 3, "type": "liberty"},
+        {"x": 6, "y": 4, "type": "liberty"},
+        {"x": 7, "y": 4, "type": "liberty"}
+      ],
+      "annotation": "Beyaz grup (5,2)-(5,3)-(6,3) zayıf — 3 özgürlük, saldırı hedefi belirlendi"
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 4, "y": 2, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 5, "y": 2, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 6, "y": 3, "color": "white"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"}
           ],
-          "text": "Pozisyonu inceleyin"
+          "text": "Beyaz grup (5,2)-(5,3)-(6,3) zayıf durumda — 3 özgürlük: (4,3), (6,4), (7,4)"
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 4, "y": 2, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 5, "y": 2, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 6, "y": 3, "color": "white"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 4, "y": 3, "color": "black"}
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Siyah (4,3) atari! Sol özgürlüğü kesti — beyaz kaçaçak, özgürlük sayısı 2'ye düştü"
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 4, "y": 2, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 5, "y": 2, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 6, "y": 3, "color": "white"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 6, "y": 2, "color": "white"}
           ],
-          "text": "İleri adımları düşünün"
+          "text": "Beyaz (6,2) ile yukarı kaçmaya çalışıyor — siyah geta (網) hazırlıyor"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 4, "y": 2, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 5, "y": 2, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 6, "y": 3, "color": "white"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 6, "y": 4, "color": "black"}
+          ],
+          "text": "Siyah (6,4) geta! Kuşatma tamamlandı — beyazın tek özgürlüğü (7,4) kaldı"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 4, "y": 2, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 5, "y": 2, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 6, "y": 3, "color": "white"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 6, "y": 4, "color": "black"},
+            {"x": 7, "y": 4, "color": "white"}
+          ],
+          "text": "Beyaz (7,4) ile son özgürlüğe uzanıyor — ama siyah (7,5) atari ile yakalayacak!"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 4, "y": 2, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 6, "y": 4, "color": "black"},
+            {"x": 7, "y": 5, "color": "black"}
+          ],
+          "highlights": [
+            {"x": 5, "y": 2, "type": "capture"},
+            {"x": 5, "y": 3, "type": "capture"},
+            {"x": 6, "y": 2, "type": "capture"},
+            {"x": 6, "y": 3, "type": "capture"},
+            {"x": 7, "y": 4, "type": "capture"}
+          ],
+          "text": "Siyah (7,5) atari — 5 beyaz taş yakalandı! Atari + geta sentezi başarılı, saldırı tamamlandı!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Okuma (読み, yomi) saldırıda en kritik beceridir. Saldırmadan önce 3-4 hamle derinliğine okuyun: 1) Rakip hangi yöne kaçabilir? 2) Kaçış yolu çevredeki taşlarınızla kesilebilir mi? 3) Geta pozisyonu mümkün mü? Eğer rakip iki yöne kaçabiliyorsa, önce bir tarafı kapatın (封じ, fūji), sonra diğer taraftan saldırın. Aceleci saldırı (急攻, kyūkō) genellikle kaçış fırsatı verir — sabırlı kuşatma (辛抱, shinbō) daha etkilidir."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 2, "y": 1, "color": "black"},
+        {"x": 6, "y": 1, "color": "black"},
+        {"x": 7, "y": 2, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 3, "y": 5, "color": "white"},
+        {"x": 4, "y": 5, "color": "white"},
+        {"x": 4, "y": 6, "color": "white"},
+        {"x": 5, "y": 7, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 4, "type": "vital"},
+        {"x": 5, "y": 5, "type": "liberty"},
+        {"x": 5, "y": 6, "type": "liberty"},
+        {"x": 3, "y": 6, "type": "liberty"},
+        {"x": 2, "y": 5, "type": "bad"}
+      ],
+      "annotation": "İkinci hedef: beyaz grubun iki kaçış yönü var — yukarı (5,5) ve sağa (5,6)"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 6, "y": 1, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"}
+          ],
+          "text": "Beyaz grubun iki kaçış yönü: yukarı (5,5) ve sağa (5,6) — okuma kritik"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 6, "y": 1, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 5, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah önce sağ tarafı kapatır: (5,6) fūji (封じ) — kaçış yolu 1 engellendi"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 6, "y": 1, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"}
+          ],
+          "text": "Beyaz (5,5) ile yukarı kaçmaya çalışıyor — ama siyah ikinci kapatmayı hazırlıyor"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 6, "y": 1, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 4, "y": 4, "color": "black"}
+          ],
+          "text": "Siyah (4,4) net! İki kaçış yolu da kapandı — okuma doğru çalıştı"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 6, "y": 1, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 3, "y": 6, "color": "white"}
+          ],
+          "text": "Beyaz son çare (3,6) — siyah (3,3) atari ile yakalayacak! Fūji + net sentezi başarılı!"
         }
       ]
     }
@@ -88,6 +262,6 @@
   "prerequisites": [
     "l3-5-4"
   ],
-  "next_lesson": null,
+  "next_lesson": "l3-5-6",
   "required_exercise": "e3-5-5"
 }

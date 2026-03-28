@@ -1,0 +1,98 @@
+{
+  "id": "l1-5-4",
+  "level": 1,
+  "module": 5,
+  "lesson": 4,
+  "title": "Seviye 1 Sınav",
+  "description": "Tüm Level 1 konularını kapsayan kapsamlı pratik ve değerlendirme.",
+  "duration_minutes": 15,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bu sınav dersi Level 1'in tüm konularını kapsar: özgürlükler, yakalama, atari, gruplar, gözler, ko ve skorlama. Aşağıdaki pozisyonları inceleyin ve kavramları hatırlayın."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 1, "y": 1, "color": "black"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 2, "y": 1, "color": "white"},
+        {"x": 0, "y": 1, "color": "white"},
+        {"x": 1, "y": 0, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 1, "type": "capture"},
+        {"x": 1, "y": 3, "type": "liberty"}
+      ],
+      "annotation": "Soru 1: Siyah taşın kaç özgürlüğü var? Ataride mi?"
+    },
+    {
+      "type": "text",
+      "content": "Cevap 1: Siyah taşın (1,1) özgürlükleri — üst (1,0) beyaz, sol (0,1) beyaz, sağ (2,1) beyaz. Sadece alt (1,2) siyah değil ama (1,3) boş. Grubun (1,1)+(1,2) özgürlükleri: (1,3), (2,2), (0,2). 3 özgürlük — ataride değil."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 5, "y": 5, "color": "black"},
+        {"x": 6, "y": 5, "color": "black"},
+        {"x": 7, "y": 5, "color": "black"},
+        {"x": 5, "y": 6, "color": "black"},
+        {"x": 7, "y": 6, "color": "black"},
+        {"x": 5, "y": 7, "color": "black"},
+        {"x": 6, "y": 7, "color": "black"},
+        {"x": 7, "y": 7, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 6, "y": 6, "type": "good"}
+      ],
+      "annotation": "Soru 2: Bu grup yaşıyor mu? Ne eksik?"
+    },
+    {
+      "type": "text",
+      "content": "Cevap 2: Grubun içi boş (6,6) tek boşluk — bu TEK göz. İki göz gerekli! Beyaz (6,6) oynayarak grubun tüm özgürlüklerini kapatırsa, siyah grup yakalanır. Grup yaşıyor değil — en azından ikinci bir göz açıklığı gerek."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"}
+          ],
+          "text": "Soru 3: Beyaz (2,4) oynadı, siyahı yakaladı. Şimdi siyah (2,4) geri alabilir mi?"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"}
+          ],
+          "text": "Siyah (2,4)'ü boşalttı. Beyaz taşın yakalanması sonucu KO pozisyonu mu oluştu?"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 2, "y": 4, "color": "black"}
+          ],
+          "text": "Cevap 3: Bu bir KO! Beyaz hemen (2,5)'i alamaz — ko kuralı. Başka yerde oynamalı."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Tebrikler! Level 1'in tüm kavramlarını tamamladınız. Özgürlük, yakalama, atari, grup, göz, ko ve skorlama artık bildiğiniz konular. Level 2'de daha gelişmiş teknikler öğreneceksiniz!"
+    }
+  ],
+  "prerequisites": ["l1-5-3"],
+  "next_lesson": "l2-1-1",
+  "required_exercise": null
+}

@@ -1,0 +1,117 @@
+{
+  "id": "l6-5-4",
+  "level": 6,
+  "module": 5,
+  "lesson": 4,
+  "title": "Karmaşık Yaşam-Ölüm",
+  "description": "İleri seviye tsumego ve zor yaşam-ölüm problemleri.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Karmaşık yaşam-ölüm problemleri (katsu-ji to shi-ji), Go'nun en derin okuma gerektiren alanıdır. Bu derste, birden fazla iç tehdit (uchikake), ko savaşı ve nakade (içe indirme) içeren ileri tsumego problemleri çözeceksiniz."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 9, "y": 9, "color": "black"},
+        {"x": 10, "y": 9, "color": "white"},
+        {"x": 9, "y": 10, "color": "white"},
+        {"x": 8, "y": 9, "color": "white"},
+        {"x": 9, "y": 8, "color": "black"},
+        {"x": 10, "y": 8, "color": "white"},
+        {"x": 8, "y": 8, "color": "black"},
+        {"x": 10, "y": 10, "color": "white"},
+        {"x": 8, "y": 10, "color": "black"},
+        {"x": 11, "y": 9, "color": "white"},
+        {"x": 7, "y": 9, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 9, "y": 9, "type": "capture"},
+        {"x": 9, "y": 7, "type": "liberty"}
+      ],
+      "annotation": "Karmaşık tsumego - siyah yaşayabilir mi?"
+    },
+    {
+      "type": "text",
+      "content": "Yaşam-ölüm problemlerinde önemli teknikler: 1) Nakade - rakibin göz oluşumunu bozma, 2) Uchikake - iç tehdit ile hamle zorlama, 3) Irete - içeri girme tesuji'si. İki göz (me) oluşturmak her zaman ana hedeftir, ancak sekiz (seki) de geçerli bir savunma olabilir."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 15, "y": 15, "color": "black"},
+        {"x": 16, "y": 15, "color": "white"},
+        {"x": 15, "y": 16, "color": "white"},
+        {"x": 14, "y": 15, "color": "black"},
+        {"x": 16, "y": 14, "color": "white"},
+        {"x": 14, "y": 14, "color": "black"},
+        {"x": 15, "y": 14, "color": "white"},
+        {"x": 13, "y": 15, "color": "black"},
+        {"x": 16, "y": 16, "color": "white"},
+        {"x": 13, "y": 14, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 14, "y": 16, "type": "good"},
+        {"x": 15, "y": 13, "type": "bad"}
+      ],
+      "annotation": "İkinci problem - ko ile yaşam veya seki"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 15, "y": 15, "color": "black"},
+            {"x": 16, "y": 15, "color": "white"},
+            {"x": 15, "y": 16, "color": "white"}
+          ],
+          "text": "Problem 2 - siyahın yaşam yolu arayın"
+        },
+        {
+          "stones": [
+            {"x": 15, "y": 15, "color": "black"},
+            {"x": 16, "y": 15, "color": "white"},
+            {"x": 15, "y": 16, "color": "white"},
+            {"x": 14, "y": 15, "color": "black"},
+            {"x": 16, "y": 14, "color": "white"}
+          ],
+          "text": "Siyah genişler - beyaz sarışıyor"
+        },
+        {
+          "stones": [
+            {"x": 15, "y": 15, "color": "black"},
+            {"x": 16, "y": 15, "color": "white"},
+            {"x": 15, "y": 16, "color": "white"},
+            {"x": 14, "y": 15, "color": "black"},
+            {"x": 16, "y": 14, "color": "white"},
+            {"x": 14, "y": 14, "color": "black"},
+            {"x": 15, "y": 14, "color": "white"},
+            {"x": 13, "y": 15, "color": "black"}
+          ],
+          "text": "Kritik hamle - nakade tehdidi!"
+        },
+        {
+          "stones": [
+            {"x": 15, "y": 15, "color": "black"},
+            {"x": 16, "y": 15, "color": "white"},
+            {"x": 15, "y": 16, "color": "white"},
+            {"x": 14, "y": 15, "color": "black"},
+            {"x": 16, "y": 14, "color": "white"},
+            {"x": 14, "y": 14, "color": "black"},
+            {"x": 15, "y": 14, "color": "white"},
+            {"x": 13, "y": 15, "color": "black"},
+            {"x": 16, "y": 16, "color": "white"},
+            {"x": 13, "y": 14, "color": "black"},
+            {"x": 14, "y": 16, "color": "black"}
+          ],
+          "text": "Siyah iki göz yapar (me)! Yaşam sağlandı"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l6-5-3"],
+  "next_lesson": "l6-5-5",
+  "required_exercise": null
+}

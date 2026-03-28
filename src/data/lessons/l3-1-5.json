@@ -15,17 +15,35 @@
       "type": "board",
       "size": 9,
       "stones": [
-        {"x": 2, "y": 2, "color": "black"},
-        {"x": 4, "y": 4, "color": "black"}
+        {
+          "x": 2,
+          "y": 2,
+          "color": "black"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "color": "black"
+        }
       ],
       "highlights": [
-        {"x": 2, "y": 2, "type": "territory"},
-        {"x": 4, "y": 4, "type": "territory"}
+        {
+          "x": 2,
+          "y": 2,
+          "type": "territory"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "type": "territory"
+        }
       ],
       "annotation": "İki açılış karşı karşıya"
     }
   ],
-  "prerequisites": ["l3-1-4"],
-  "next_lesson": "l3-2-1",
+  "prerequisites": [
+    "l3-1-4"
+  ],
+  "next_lesson": "l3-1-6",
   "required_exercise": "e3-5-1"
 }

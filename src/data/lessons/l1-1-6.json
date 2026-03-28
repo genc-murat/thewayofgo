@@ -3,91 +3,140 @@
   "level": 1,
   "module": 1,
   "lesson": 6,
-  "title": "İleri Ko Kavramı",
-  "description": "Ko'nun derinlikleri ve ko kuralları.",
-  "duration_minutes": 10,
+  "title": "Ko Kavramlarının Derinlemesine İncelenmesi",
+  "description": "Çift ko durumları, köşe ve kenar ko pozisyonları ve ko tehdidi stratejilerini öğrenin.",
+  "duration_minutes": 12,
   "content": [
     {
       "type": "text",
-      "content": "İleri Ko Kavramı: Ko'nun derinlikleri ve ko kuralları. Bu derste temel kavramları öğreneceksiniz."
+      "content": "Ko (劫), Go'da en derin stratejik kavramlardan biridir. Temel ko kuralını öğrendiniz; şimdi köşede ve kenarda oluşan ko durumlarını, çift ko'yu ve ko tehditlerinin oyun gidişatını nasıl değiştirdiğini inceleyeceğiz. Japonca'da ko tehdidine 'ko threat' (ko no odokushi), ko'yu kazanana 'ko master' denir."
     },
     {
       "type": "board",
       "size": 9,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        },
-        {
-          "x": 5,
-          "y": 4,
-          "color": "black"
-        }
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "white"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 1, "y": 1, "color": "white"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 2, "y": 1, "color": "white"},
+        {"x": 2, "y": 2, "color": "black"}
       ],
-      "highlights": [],
-      "annotation": "İleri Ko Kavramı"
+      "highlights": [
+        {"x": 0, "y": 1, "type": "capture"}
+      ],
+      "annotation": "Köşede ko: (0,1) noktası ko pozisyonu. Köşede ko daha tehlikelidir çünkü kaçış alanı sınırlıdır."
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "white"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 1, "y": 1, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 2, "y": 2, "color": "black"}
           ],
-          "text": "Pozisyonu inceleyin"
+          "text": "Köşe ko pozisyonu: Siyah (0,0) ve (0,2) ile beyaz (1,0) ve (1,1) karşılıklı sıkıştırıyor."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "white"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 1, "y": 1, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 2, "y": 2, "color": "black"}
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Siyah ko'yu alıyor: (0,1) oynayarak beyazın özgürlüğünü kesiyor. Köşede ko almak, kenara göre daha büyük etki yaratır - çevreleyen taşlar duvar görevi görür."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "white"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 1, "y": 1, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"}
           ],
-          "text": "İleri adımları düşünün"
+          "text": "Beyaz ko tehdidi oynuyor: Başka yerde (5,5) hamle yaparak siyahı yanıtlamaya zorluyor. Eğer siyah ko tehdidini yanıtlarsa, beyaz ko'yu geri alabilir."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "white"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 1, "y": 1, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah ko tehdidini yanıtladı (5,6). Şimdi beyaz ko'yu geri alabilir (0,1). Ko döngüsü devam eder - ko'yu kim kazanır, eldeki ko tehditlerinin sayısına bağlıdır."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "white"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 0, "y": 1, "color": "white"},
+            {"x": 1, "y": 1, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "black"}
+          ],
+          "captured": [{"x": 0, "y": 0}],
+          "text": "Beyaz ko'yu geri aldı! Köşede bu tür ko döngüleri oyunun kaderini belirleyebilir. Sente (先手) hamleler, rakibi yanıt vermeye zorlayan hamlelerdir - ko tehditleri genellikle sente oynanır."
         }
       ]
+    },
+    {
+      "type": "text",
+      "content": "Çift ko (double ko), tahtada aynı anda iki bağımsız ko durumunun oluşmasıdır. Bu durumda bir oyuncu sürekli bir ko'yu alarak diğer ko'yu tehdit edebilir. Çift ko, gruptar için hem yaşam hem ölüm yolunu açabilir - bu yüzden 'ko fight' (ko savaşı) sırasında çift ko fark etmek kritik bir yetenektir."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "white"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 1, "y": 1, "color": "white"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 6, "y": 6, "color": "black"},
+        {"x": 7, "y": 6, "color": "white"},
+        {"x": 6, "y": 8, "color": "black"},
+        {"x": 7, "y": 7, "color": "white"},
+        {"x": 7, "y": 8, "color": "black"},
+        {"x": 8, "y": 8, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 0, "y": 1, "type": "capture"},
+        {"x": 6, "y": 7, "type": "capture"}
+      ],
+      "annotation": "Çift ko: Aynı anda iki köşede ko pozisyonu. Bir ko alındığında diğer ko tehdit olarak kullanılabilir - bu 'sonsuz ko' durumu yaratır."
+    },
+    {
+      "type": "text",
+      "content": "Ko tehdit stratejisi: İyi oyuncular, tahtada ko tehdidi olarak kullanabilecekleri hamleleri önceden planlarlar. Gote (後手) hamleler - rakibin yanıtlamak zorunda olmadığı hamleler - zayıf ko tehditleridir. Sente ko tehditleri ise rakibi yanıtlamaya zorlar ve çok daha değerlidir. Ko savaşını kazanmak, genellikle oyunu kazanmak anlamına gelir."
     }
   ],
   "prerequisites": [
     "l1-1-5"
   ],
-  "next_lesson": null,
+  "next_lesson": "l1-1-7",
   "required_exercise": "e1-1-6"
 }

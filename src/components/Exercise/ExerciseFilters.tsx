@@ -13,6 +13,9 @@ const TYPE_COLORS: Record<string, string> = {
   'endgame': 'bg-pink-500/15 text-pink-400 border-pink-500/20',
   'opening': 'bg-teal-500/15 text-teal-400 border-teal-500/20',
   'multi_step': 'bg-indigo-500/15 text-indigo-400 border-indigo-500/20',
+  'shape_recognition': 'bg-lime-500/15 text-lime-400 border-lime-500/20',
+  'move_evaluation': 'bg-violet-500/15 text-violet-400 border-violet-500/20',
+  'position_judgment': 'bg-rose-500/15 text-rose-400 border-rose-500/20',
 };
 
 export { TYPE_COLORS };

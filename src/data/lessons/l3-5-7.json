@@ -1,0 +1,76 @@
+{
+  "id": "l3-5-7",
+  "level": 3,
+  "module": 5,
+  "lesson": 7,
+  "title": "Seviye 3 Saldırı-Savunma Sınavı",
+  "description": "Tüm Level 3 saldırı-savunma konularını kapsayan sınav.",
+  "duration_minutes": 15,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bu sınav, Level 3'ün tüm saldırı ve savunma konularını kapsar: saldırı yönlendirme, zayıf nokta bulma, savunma planlama ve tesuji uygulama."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 1, "y": 2, "color": "white"},
+        {"x": 2, "y": 1, "color": "white"},
+        {"x": 5, "y": 4, "color": "white"},
+        {"x": 4, "y": 5, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 3, "y": 2, "type": "good"},
+        {"x": 4, "y": 3, "type": "good"}
+      ],
+      "annotation": "Sınav 1: Siyahın çapraz dizilimi güçlü mü, zayıf mı? Beyaz nereye saldırmalı?"
+    },
+    {
+      "type": "text",
+      "content": "Cevap 1: Siyahın çapraz dizilimi (kosumi) bağlantısız — aralarındaki boşluklar zayıf noktalar. Beyaz (3,2) veya (4,3) oynayarak siyah grupları ayırabilir."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"}
+          ],
+          "text": "Beyaz (3,2) oynadı — siyahı böldü! (2,2) ve (3,3)-(4,4) ayrı gruplar. Her ikisi de daha zayıf artık."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "black"}
+          ],
+          "text": "Siyah (2,3) ile bağlantı kurmaya çalıştı ama beyaz (3,3) baskısı devam ediyor."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Level 3 tamamlama değerlendirmesi:\n• Açılış (Fuseki) kavramlarını anlıyor musunuz?\n• Orta oyun geçişini yönetebiliyor musunuz?\n• Yose hesaplaması yapabiliyor musunuz?\n• Tesuji kalıplarını tanıyor musunuz?\n• Saldırı ve savunma önceliklerini belirleyebiliyor musunuz?\n\nTebrikler! Level 4'te ileri strateji kavramları ile devam edeceğiz."
+    }
+  ],
+  "prerequisites": ["l3-5-6"],
+  "next_lesson": "l3-6-1",
+  "required_exercise": null
+}

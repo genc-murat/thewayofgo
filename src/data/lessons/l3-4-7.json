@@ -1,0 +1,93 @@
+{
+  "id": "l3-4-7",
+  "level": 3,
+  "module": 4,
+  "lesson": 7,
+  "title": "Tesuji Uygulama 2",
+  "description": "İleri tesuji uygulamaları ve karmaşık pozisyonlar.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bu derste daha karmaşık tesuji problemleri çözeceğiz. Birden fazla tesuji tekniğinin bir arada kullanıldığı pozisyonları inceleyeceğiz."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 1, "y": 2, "color": "white"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 0, "y": 3, "color": "white"},
+        {"x": 4, "y": 2, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 4, "type": "good"}
+      ],
+      "annotation": "Karmaşık tesuji: Siyah (2,2) ve (3,3) bağlı değil ama ortak tesuji fırsatı var."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"}
+          ],
+          "text": "Siyah iki taş atari tehdidinde. Beyaz (6,4) oynarsa siyah (5,5)-(6,5) yakalanır. Tesuji var mı?"
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 7, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah (7,6) oynadı! Bu bir kesme tesuji'si — beyaz (7,5) artık siyahla temas ediyor ve atari tehdidi altında."
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 6, "y": 4, "color": "white"}
+          ],
+          "text": "Beyaz (6,4) oynadı — siyah grubu yakalamaya çalıştı ama siyahın da hamlesi var..."
+        },
+        {
+          "stones": [
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 6, "y": 4, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 6, "y": 6, "color": "white"}
+          ],
+          "captured": [{"x": 7, "y": 5}, {"x": 5, "y": 5}],
+          "text": "Siyah (7,5) kesme — karşılıklı yakalama! Siyah beyaz (7,5)'i ve (5,5)'i yakaladı. Tesuji başarılı!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Karmaşık tesuji çözümünde sabır ve dikkat şarttır. Her hamlenin rakip yanıtını düşünün ve en kötü senaryoda bile en iyi sonucu arayın. Pratik yaptıkça tesuji noktalarını daha hızlı göreceksiniz."
+    }
+  ],
+  "prerequisites": ["l3-4-6"],
+  "next_lesson": "l3-5-1",
+  "required_exercise": null
+}

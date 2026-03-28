@@ -1,0 +1,100 @@
+{
+  "id": "l5-1-5",
+  "level": 5,
+  "module": 1,
+  "lesson": 5,
+  "title": "İleri Okuma: Pratik Problemler",
+  "description": "Çoklu varyasyon ve derin hesaplama becerilerini pekiştiren ileri problemler.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Pratik, okuma becerisini geliştiren en önemli araçtır. Tsumego ( yaşam-ölüm problemleri) çözmek, beyninizin Go pozisyonlarını tanıma ve analiz etme kapasitesini artırır. Bu derste, önceki iki dersin konularını birleştiren karmaşık problemler çözeceksiniz."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 1, "y": 4, "color": "black"},
+        {"x": 4, "y": 4, "color": "white"},
+        {"x": 2, "y": 5, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 1, "type": "capture"},
+        {"x": 3, "y": 1, "type": "liberty"}
+      ],
+      "annotation": "Tsumego problemi - siyahın yaşam yolu var mı?"
+    },
+    {
+      "type": "text",
+      "content": "Her problemi çözerken şu adımları izleyin: 1) Pozisyonu değerlendirin (mushō), 2) Tüm olası ilk hamleleri düşünün (saikō), 3) Her varyasyonu derinlemesine okuyun (yomikiri), 4) En iyi sonucu seçin. Bu yönteme Shiharai Yōhō denir."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 15, "y": 15, "color": "black"},
+        {"x": 16, "y": 15, "color": "white"},
+        {"x": 15, "y": 16, "color": "white"},
+        {"x": 14, "y": 16, "color": "black"},
+        {"x": 16, "y": 14, "color": "white"},
+        {"x": 15, "y": 13, "color": "black"},
+        {"x": 17, "y": 13, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 14, "y": 15, "type": "good"},
+        {"x": 14, "y": 14, "type": "bad"}
+      ],
+      "annotation": "İkinci problem - beyaz grubu için en iyi savunma hamlesini bulun"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 15, "y": 15, "color": "black"},
+            {"x": 16, "y": 15, "color": "white"},
+            {"x": 15, "y": 16, "color": "white"}
+          ],
+          "text": "Problem pozisyonu - yaşam mücadelesi"
+        },
+        {
+          "stones": [
+            {"x": 15, "y": 15, "color": "black"},
+            {"x": 16, "y": 15, "color": "white"},
+            {"x": 15, "y": 16, "color": "white"},
+            {"x": 14, "y": 15, "color": "black"}
+          ],
+          "text": "Siyahın ana hamlesi - iki göz tehdidi (me)"
+        },
+        {
+          "stones": [
+            {"x": 15, "y": 15, "color": "black"},
+            {"x": 16, "y": 15, "color": "white"},
+            {"x": 15, "y": 16, "color": "white"},
+            {"x": 14, "y": 15, "color": "black"},
+            {"x": 15, "y": 14, "color": "white"}
+          ],
+          "text": "Beyaz direnir - derin okuma gerekli"
+        },
+        {
+          "stones": [
+            {"x": 15, "y": 15, "color": "black"},
+            {"x": 16, "y": 15, "color": "white"},
+            {"x": 15, "y": 16, "color": "white"},
+            {"x": 14, "y": 15, "color": "black"},
+            {"x": 15, "y": 14, "color": "white"},
+            {"x": 16, "y": 16, "color": "black"}
+          ],
+          "text": "Siyah tesuji oynar - nakade tehdidi"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l5-1-4"],
+  "next_lesson": "l5-2-1",
+  "required_exercise": null
+}

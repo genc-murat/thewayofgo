@@ -1,0 +1,135 @@
+{
+  "id": "l3-2-8",
+  "level": 3,
+  "module": 2,
+  "lesson": 8,
+  "title": "Sente ve Gote: Derinlemesine İnceleme",
+  "description": "Sente (önayak) ve gote (arkaayak) kavramlarını derinlemesine inceleyerek orta oyunda inisiyatif nasıl korunur ve kullanılır öğrenin.",
+  "duration_minutes": 14,
+  "content": [
+    {
+      "type": "text",
+      "content": "Sente (先手), \"ön el\" anlamına gelir — rakibin cevap vermek zorunda olduğu hamledir. Gote (後手) ise \"arka el\" demektir — rakibin cevap vermesi gerekmeyen, inisiyatifin karşı tarafa geçtiği hamledir. Orta oyunda sente korumak, Go'nun en önemli becerilerinden biridir."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 6, "y": 2, "color": "white"},
+        {"x": 7, "y": 2, "color": "white"},
+        {"x": 6, "y": 3, "color": "white"},
+        {"x": 4, "y": 5, "color": "black"},
+        {"x": 5, "y": 5, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 2, "type": "good"},
+        {"x": 1, "y": 1, "type": "territory"},
+        {"x": 8, "y": 1, "type": "territory"}
+      ],
+      "annotation": "İki taraf köşelerde toprak kurdu. Orta bölge (4,2)-(5,4) sente mücadelesinin alanı."
+    },
+    {
+      "type": "text",
+      "content": "Sente hamlelerin özellikleri:\n\n• Tehdit oluşturur — rakip cevap vermezse kaybeder\n• Sente sırasını korur — hamle sonrası da sizin sıranız kalır\n• Çift tehdit (yōtō) en güçlü sente hamledir\n\nGote hamlelerin özellikleri:\n\n• Rakip cevap vermek zorunda değil\n• İnisiyatif karşı tarafa geçer\n• Büyük gote hamleler (大場, ōba) bazen değerlidir"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 4, "y": 4, "color": "black"}
+          ],
+          "text": "Siyah grup sağlam, beyaz iki taş (5,4)-(5,5) merkezde. Şimdi sente fırsatı dikkatle izleyin."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"}
+          ],
+          "text": "Siyah (5,3) oynadı — beyazın (5,4)-(5,5) grubunu atari ile tehdit ediyor. Bu sente! Beyaz cevap vermek zorunda."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 6, "y": 4, "color": "white"}
+          ],
+          "text": "Beyaz (6,4) ile gruba kaçış liberty ekledi. Sente sırası tekrar siyahta! Şimdi başka yerde büyük hamle oynayabilir."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 6, "y": 4, "color": "white"},
+            {"x": 7, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah (7,6) ile büyük alan hamlesi oynadı — çünkü sente sırası kendisinde! İnisiyatifin gücü budur."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 6, "y": 4, "color": "white"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 3, "y": 6, "color": "white"}
+          ],
+          "text": "Beyaz (3,6) ile karşılık verdi. Siyah sente kullanarak hem tehdit hem alan kazandı. Sente-sonra-büyük-hamle stratejisi başarılı!"
+        }
+      ]
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 5, "y": 2, "color": "black"},
+        {"x": 5, "y": 3, "color": "black"},
+        {"x": 5, "y": 4, "color": "black"},
+        {"x": 6, "y": 4, "color": "white"},
+        {"x": 7, "y": 4, "color": "white"},
+        {"x": 6, "y": 3, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 4, "type": "liberty"},
+        {"x": 5, "y": 5, "type": "liberty"},
+        {"x": 6, "y": 2, "type": "bad"},
+        {"x": 4, "y": 3, "type": "vital"}
+      ],
+      "annotation": "Sente vs gote analizi: (4,4) veya (4,3) sente tehdit noktaları. (6,2) gote oynama — inisiyatif kaybedilir."
+    },
+    {
+      "type": "text",
+      "content": "Sente kullanımının altın kuralları:\n\n1. Sente hamleleri erken kullanmayın — doğru zamanı bekleyin\n2. Sente sırasını koruyun — her sente sonrası büyük hamle oynayın\n3. Gote hamleleri sonraya bırakın — önce tüm sente hamlelerinizi oynayın\n4. Rakibin sentesini gote'ye dönüştürmek (sente-gote değişimi) en büyük stratejik kazançtır\n5. Çift sente (ambiguity) — rakip hangi tarafa cevap vereceğini seçemezse en güçlü hamledir"
+    }
+  ],
+  "prerequisites": ["l3-2-7"],
+  "next_lesson": "l3-2-9",
+  "required_exercise": null
+}

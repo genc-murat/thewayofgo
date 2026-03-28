@@ -1,0 +1,95 @@
+{
+  "id": "l4-6-3",
+  "level": 4,
+  "module": 6,
+  "lesson": 3,
+  "title": "İleri Joseki Uygulaması",
+  "description": "Karmaşık joseki kalıplarını gerçek oyun pozisyonlarına uygulama.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "İleri joseki uygulamalarında temel sorun, doğru joseki'yi seçmektir. Aynı köşede 5-10 farklı joseki oynanabilir. Seçim, tahtadaki diğer taşların konumuna göre yapılır. Komşu köşedeki joseki sonucu, bu köşedeki seçimi etkiler."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 9, "y": 3, "color": "black"},
+        {"x": 9, "y": 2, "color": "white"},
+        {"x": 10, "y": 3, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 3, "type": "good"},
+        {"x": 10, "y": 3, "type": "liberty"},
+        {"x": 4, "y": 2, "type": "territory"}
+      ],
+      "annotation": "Sol köşe josekisi sağ köşe seçimini nasıl etkiler?"
+    },
+    {
+      "type": "text",
+      "content": "Joseki seçim kriterleri: 1) Kalınlığın yönü diğer köşeye bakmalı mı? 2) Etki alanları çakışıyor mu? 3) Bölge mi, etki mi istiyorsunuz? Eğer sol köşede kalınlık kazandıysanız, sağda bölgeye yönelmelisiniz."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"}
+          ],
+          "text": "Sol köşe: kakari josekisi tamamlandı"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 9, "y": 3, "color": "black"}
+          ],
+          "text": "Siyah sol kenarı kalınlaştırdı ve sağ köşeyi açtı"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 9, "y": 2, "color": "white"},
+            {"x": 10, "y": 3, "color": "white"}
+          ],
+          "text": "Sağ köşede farklı joseki başladı - niçin?"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 9, "y": 2, "color": "white"},
+            {"x": 10, "y": 3, "color": "white"},
+            {"x": 8, "y": 2, "color": "black"},
+            {"x": 11, "y": 3, "color": "white"}
+          ],
+          "text": "Joseki tamamlandı: siyah sağ kenarda bölge koruyor"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l4-6-2"],
+  "next_lesson": "l4-6-4",
+  "required_exercise": null
+}

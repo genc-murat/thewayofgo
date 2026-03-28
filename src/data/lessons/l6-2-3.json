@@ -4,85 +4,113 @@
   "module": 2,
   "lesson": 3,
   "title": "İleri Joseki Okuma",
-  "description": "Joseki varyasyonlarını okuyun.",
-  "duration_minutes": 10,
+  "description": "Joseki varyasyonlarının derin analizi, pozisyonel joseki seçimi ve hikihdai (zorlama) hamlelerinin doğru kullanımı.",
+  "duration_minutes": 25,
   "content": [
     {
       "type": "text",
-      "content": "İleri Joseki Okuma: Joseki varyasyonlarını okuyun. Temel kavramları ve stratejileri öğrenin."
+      "content": "Joseki okuma ustalığı, 'bu pozisyonda hangi joseki?' sorusuna cevap verebilmektir. Aynı köşe açılışı farklı全局 (tüm tahta) durumlarında farklı joseki'ler gerektirir. Kifu'da 100+ varyasyon bilen usta, pozisyonel bağlamı okuyarak doğru varyasyonu seçer. Sente (öncelik) ve gote (sonralık) arasındaki denge, joseki seçiminde belirleyicidir."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 19,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        }
+        { "x": 3, "y": 15, "color": "black" },
+        { "x": 2, "y": 13, "color": "white" },
+        { "x": 4, "y": 16, "color": "black" },
+        { "x": 4, "y": 14, "color": "white" },
+        { "x": 5, "y": 17, "color": "black" },
+        { "x": 3, "y": 13, "color": "white" }
       ],
-      "highlights": [],
-      "annotation": "İleri Joseki Okuma"
+      "highlights": [
+        { "x": 4, "y": 16, "type": "good" },
+        { "x": 5, "y": 17, "type": "good" },
+        { "x": 4, "y": 14, "type": "vital" },
+        { "x": 2, "y": 13, "type": "territory" }
+      ],
+      "annotation": "Sol-alt köşe: Siyah shimari varyasyonu – sağlam köşe + kenar kontrolü. Klasik joseki tamamlandı."
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 3, "y": 15, "color": "black" },
+            { "x": 2, "y": 13, "color": "white" }
           ],
-          "text": "Pozisyon analizi başladı"
+          "text": "Siyah komoku (3-4 noktası), Beyaz yüksek kakari. Joseki varyantları başlıyor."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            { "x": 3, "y": 15, "color": "black" },
+            { "x": 2, "y": 13, "color": "white" },
+            { "x": 4, "y": 16, "color": "black" }
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Siyah keima (at sıçraması) – köşeyi sağlam tutar, kenara doğru gelişir. Sağlam varyasyon."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 3, "y": 15, "color": "black" },
+            { "x": 2, "y": 13, "color": "white" },
+            { "x": 4, "y": 16, "color": "black" },
+            { "x": 4, "y": 14, "color": "white" }
           ],
-          "text": "Sonraki hamleyi düşünün"
+          "text": "Beyaz nobi ile bastırır – Siyah'ın kenar gelişimini yavaşlatır. Sabaki girişimi."
+        },
+        {
+          "stones": [
+            { "x": 3, "y": 15, "color": "black" },
+            { "x": 2, "y": 13, "color": "white" },
+            { "x": 4, "y": 16, "color": "black" },
+            { "x": 4, "y": 14, "color": "white" },
+            { "x": 5, "y": 17, "color": "black" }
+          ],
+          "text": "Siyah tenuki yerine kenarı uzatır! Joseki'de sabır – her hamle değerlidir."
+        },
+        {
+          "stones": [
+            { "x": 3, "y": 15, "color": "black" },
+            { "x": 2, "y": 13, "color": "white" },
+            { "x": 4, "y": 16, "color": "black" },
+            { "x": 4, "y": 14, "color": "white" },
+            { "x": 5, "y": 17, "color": "black" },
+            { "x": 3, "y": 13, "color": "white" }
+          ],
+          "text": "Beyaz shimari'yi tamamlar! Sonuç: Siyah ~10 puan bölge, Beyaz ~8 puan + etki. Dengeli joseki."
         }
       ]
+    },
+    {
+      "type": "text",
+      "content": "Varyasyon seçiminde 'context' (bağlam) kraldır. Eğer sağ kenarda güçlü taşınız varsa, köşede dışa bakan joseki seçin – duvarınız kenar taşınızla birleşir. Eğer rakibin kenarda gücü varsa, içe dönük joseki ile toprak alın. Bu prensip 'glokal okuma' olarak bilinir – lokal joseki'yi global stratejiye bağlamak."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        { "x": 16, "y": 16, "color": "black" },
+        { "x": 14, "y": 15, "color": "white" },
+        { "x": 17, "y": 14, "color": "black" },
+        { "x": 17, "y": 16, "color": "white" },
+        { "x": 15, "y": 14, "color": "black" },
+        { "x": 14, "y": 17, "color": "white" },
+        { "x": 16, "y": 14, "color": "black" },
+        { "x": 18, "y": 15, "color": "white" }
+      ],
+      "highlights": [
+        { "x": 15, "y": 14, "type": "good" },
+        { "x": 16, "y": 14, "type": "good" },
+        { "x": 14, "y": 15, "type": "capture" },
+        { "x": 14, "y": 17, "type": "territory" }
+      ],
+      "annotation": "Sağ-alt köşe: Karmaşık savaş joseki'si. Siyah dışa etki, Beyaz köşe toprak aldı. Hangisi üstün? Tahtanın geri kalanına bağlı!"
+    },
+    {
+      "type": "text",
+      "content": "Joseki çalışırken varyasyonları ezberlemek yerine, her hamlenin 'neden' ini anlayın. Profesyoneller 200+ joseki varyasyonu bilir ama her birini sadece mantığı için kullanır. Kikashi (zorlama) hamleleri doğru sırada atılmalıdır – sıra değişirse sonuç tamamen farklı olabilir. Bu, 'yomi' (okuma) derinliğinizi artırır."
     }
   ],
-  "prerequisites": [
-    "l----2"
-  ],
+  "prerequisites": ["l6-2-2"],
   "next_lesson": "l6-2-4",
   "required_exercise": "e6-2-3"
 }

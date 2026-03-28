@@ -1,0 +1,119 @@
+{
+  "id": "l3-6-3",
+  "level": 3,
+  "module": 6,
+  "lesson": 3,
+  "title": "İleri Ölüm Problemleri 1",
+  "description": "Rakip grubu öldürme teknikleri ve hayati nokta bulma.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Rakip grubu öldürmek (殺し, koroshi), onun iki gerçek göz açmasını engellemektir. Saldıran oyuncu olarak hayati noktayı bulup oynamanız gerekir. Savunan oyuncu hayati noktayı alırsa yaşar."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 0, "color": "white"},
+        {"x": 1, "y": 0, "color": "white"},
+        {"x": 2, "y": 0, "color": "white"},
+        {"x": 3, "y": 0, "color": "white"},
+        {"x": 0, "y": 1, "color": "white"},
+        {"x": 3, "y": 1, "color": "white"},
+        {"x": 0, "y": 2, "color": "white"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 0, "y": 3, "color": "white"},
+        {"x": 1, "y": 3, "color": "white"},
+        {"x": 3, "y": 3, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 1, "type": "bad"},
+        {"x": 1, "y": 2, "type": "bad"}
+      ],
+      "annotation": "Ölüm problemi: Beyaz 2x3 iç boşluğa sahip. Siyah nereye oynamalı ki beyaz yaşayamasın?"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "white"},
+            {"x": 1, "y": 0, "color": "white"},
+            {"x": 2, "y": 0, "color": "white"},
+            {"x": 3, "y": 0, "color": "white"},
+            {"x": 0, "y": 1, "color": "white"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 0, "y": 2, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 0, "y": 3, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 3, "y": 3, "color": "white"}
+          ],
+          "text": "Beyaz grubun içi: (1,1),(2,1),(1,2),(2,2),(2,3) — 5 boş nokta. Siyah hamle sırasında — nereye oynamalı?"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "white"},
+            {"x": 1, "y": 0, "color": "white"},
+            {"x": 2, "y": 0, "color": "white"},
+            {"x": 3, "y": 0, "color": "white"},
+            {"x": 0, "y": 1, "color": "white"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 0, "y": 2, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 0, "y": 3, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 2, "y": 2, "color": "black"}
+          ],
+          "text": "Siyah (2,2) oynadı — merkez! Kalan boşluklar: (1,1),(2,1),(1,2),(2,3). Beyaz (1,2) oynarsa iki göz oluşabilir mi?"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "white"},
+            {"x": 1, "y": 0, "color": "white"},
+            {"x": 2, "y": 0, "color": "white"},
+            {"x": 3, "y": 0, "color": "white"},
+            {"x": 0, "y": 1, "color": "white"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 0, "y": 2, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 0, "y": 3, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 1, "y": 2, "color": "white"}
+          ],
+          "text": "Beyaz (1,2) oynadı. Kalan: (1,1),(2,1),(2,3). Siyah (1,1) oynarsa beyazın gözü bozulur!"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "white"},
+            {"x": 1, "y": 0, "color": "white"},
+            {"x": 2, "y": 0, "color": "white"},
+            {"x": 3, "y": 0, "color": "white"},
+            {"x": 0, "y": 1, "color": "white"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 0, "y": 2, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 0, "y": 3, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 2, "y": 1, "color": "black"}
+          ],
+          "text": "Siyah (2,1) oynadı! Beyaz sadece (1,1) ve (2,3) boşluk — ikisi de ayrı ama (1,1) tek göz, (2,3) tek göz. Beyaz ÖLÜ!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Öldürme stratejisi: Hayati nokta, savunan tarafın iki göze bölme noktasıdır. Siz o noktayı alırsanız, rakip şekil bozulur ve göz açamaz. Her zaman rakibin perspektifinden düşünün — nereye oynamak isterlerse oraya siz oynayın."
+    }
+  ],
+  "prerequisites": ["l3-6-2"],
+  "next_lesson": "l3-6-4",
+  "required_exercise": null
+}

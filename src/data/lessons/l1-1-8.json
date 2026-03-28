@@ -1,0 +1,92 @@
+{
+  "id": "l1-1-8",
+  "level": 1,
+  "module": 1,
+  "lesson": 8,
+  "title": "Go Terminolojisi",
+  "description": "Temel Go terimleri ve Japonca kavramlar sözlüğü.",
+  "duration_minutes": 7,
+  "content": [
+    {
+      "type": "text",
+      "content": "Go, yüzyıllar boyunca geliştirilen zengin bir terminolojiye sahiptir. Japonca terimler dünya genelinde kullanılır. Bu derste en temel terimleri öğreneceksiniz."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 6, "y": 2, "color": "white"},
+        {"x": 2, "y": 6, "color": "white"},
+        {"x": 6, "y": 6, "color": "black"},
+        {"x": 4, "y": 4, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 2, "type": "good"},
+        {"x": 6, "y": 6, "type": "good"},
+        {"x": 4, "y": 4, "type": "good"}
+      ],
+      "annotation": "Star noktaları (hoshi) ve köşe yerleşimleri"
+    },
+    {
+      "type": "text",
+      "content": "Temel Terimler:\n\n• Atari (当たり) — Bir taşın son özgürlüğünün kalması, yakalanma tehdidi\n• Liberti (自由) — Bir taşın veya grubun boş komşu noktaları (Japonca: jiyū)\n• Hane (跳ね) — Kenara veya rakip taşın arkasına basma hamlesi\n• Tenuki (手抜き) — Yerel pozisyonu bırakıp başka yerde oynama\n• Sente (先手) — Rakibi yanıt vermeye zorlayan hamle (elinizde kalır)\n• Gote (後手) — Rakibe inisiyatif veren hamle\n• Joseki (定石) — Köşede dengeli, standart hamle dizisi\n• Fuseki (布石) — Oyunun açılış safhası\n• Yose (寄せ) — Oyun sonu safhası, sınır belirlenmesi\n• Tsumego (詰碁) — Yaşam-ölüm problemleri\n• Tesuji (手筋) — Zekice, taktik hamle\n• Sabaki (捌き) — Hafif, esnek şekil oluşturma"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"}
+          ],
+          "text": "Shimari (締まり) — Köşede iki taşla alan kontrolü. Siyah köşeyi sağlamlaştırdı."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 4, "y": 4, "color": "white"}
+          ],
+          "text": "Tengen (天元) — Tahtanın tam merkezi (4,4). Beyaz merkezi claim ediyor."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"}
+          ],
+          "text": "Kakari (掛かり) — Rakip köşeye yaklaşma hamlesi. Beyazın köşesine yaklaşılıyor."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 6, "y": 3, "color": "white"}
+          ],
+          "text": "Kosumi (コスミ) — Çapraz hamle. Beyaz köşegen yönde ilerliyor."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Bu terimler, Go topluluğunda evrensel olarak kullanılır. Derslerimiz boyunca bu terimlerle sık sık karşılaşacaksınız. Başlangıçta hepsini hatırlamanız gerekmez — zamanla doğal olarak öğreneceksiniz!"
+    }
+  ],
+  "prerequisites": ["l1-1-7"],
+  "next_lesson": "l1-2-1",
+  "required_exercise": "e1-1-8"
+}

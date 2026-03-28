@@ -1,0 +1,28 @@
+{
+  "id": "e4-1-7",
+  "level": 4,
+  "module": 1,
+  "lesson": 7,
+  "type": "move_evaluation",
+  "title": "Joseki Değerlendirme",
+  "description": "Standart joseki devamında en doğru hamleyi seçin. Köşe açılışında doğru joseki bilgisini kullanın.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 9, "y": 9, "color": "black"},
+    {"x": 7, "y": 9, "color": "white"},
+    {"x": 3, "y": 3, "color": "white"},
+    {"x": 3, "y": 9, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 9, "y": 7, "is_correct": true, "explanation": "Doğru! (9,7) ile yıldız noktasından kenara uzanarak köşe toprağınızı güvence altına aldınız. Bu standart joseki devamıdır."},
+    {"x": 7, "y": 7, "is_correct": false, "explanation": "Bu hamle beyaz tarafından kesilebilir ve köşe kontrolü kaybolur. Joseki'ye uygun değil."},
+    {"x": 11, "y": 9, "is_correct": false, "explanation": "Kenara çok uzanma köşe toprağını güvenli kılmaz. Beyaz aradan sokulabilir."},
+    {"x": 5, "y": 5, "is_correct": false, "explanation": "Tenuki (başka yere oynama) köşeyi beyaza bırakır. Yaklaşmaya yanıt vermeniz gerekir."}
+  ],
+  "hints": [
+    "Yıldız noktasına yapılan yaklaşmaya standart joseki ile yanıt verin.",
+    "Köşe toprağını güvence altına alacak şekilde kenardan uzanın."
+  ],
+  "difficulty": 4,
+  "stars_required": 3
+}

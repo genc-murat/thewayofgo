@@ -3,86 +3,127 @@
   "level": 6,
   "module": 2,
   "lesson": 2,
-  "title": "Köşe Savaşı",
-  "description": "Köşe mücadeleleri ve tesuji.",
-  "duration_minutes": 10,
+  "title": "Köşe Savaşı Stratejileri",
+  "description": "İleri düzey köşe çatışmaları, karmaşık joseki savaşları ve局部 (chubu) tesuji teknikleri. 3-3 invazyon ve hanedan savaşlarının derinlikleri.",
+  "duration_minutes": 25,
   "content": [
     {
       "type": "text",
-      "content": "Köşe Savaşı: Köşe mücadeleleri ve tesuji. Temel kavramları ve stratejileri öğrenin."
+      "content": "Köşe savaşları, Go'nun en derin tekniktir. Bir köşedeki joseki seçimi, tüm tahtanın stratejisini etkiler. Usta seviyesinde oyuncu sadece 'doğru joseki'yi bilmez, pozisyona uygun joseki'yi seçer. Kake (baskı), nobi (uzatma) ve hane (köşe dönüşü) arasındaki seçim, aji ve sente kavramlarına dayanır."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 19,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        }
+        { "x": 3, "y": 3, "color": "black" },
+        { "x": 5, "y": 2, "color": "white" },
+        { "x": 2, "y": 5, "color": "black" },
+        { "x": 5, "y": 4, "color": "white" },
+        { "x": 3, "y": 1, "color": "black" },
+        { "x": 2, "y": 1, "color": "white" },
+        { "x": 4, "y": 5, "color": "black" }
       ],
-      "highlights": [],
-      "annotation": "Köşe Savaşı"
+      "highlights": [
+        { "x": 3, "y": 3, "type": "good" },
+        { "x": 2, "y": 5, "type": "good" },
+        { "x": 4, "y": 5, "type": "good" },
+        { "x": 5, "y": 2, "type": "vital" },
+        { "x": 3, "y": 1, "type": "liberty" }
+      ],
+      "annotation": "Köşe savaşı: Siyah köşeyi sağlam tutarken dış etki kazanıyor. Beyaz'ın kenar taşı zayıf kalabilir."
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 5, "y": 2, "color": "white" }
           ],
-          "text": "Pozisyon analizi başladı"
+          "text": "Siyah hoshi açılışı, Beyaz düşük kakari (yaklaşım). Köşe savaşı başlıyor."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 5, "y": 2, "color": "white" },
+            { "x": 2, "y": 5, "color": "black" }
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Siyah kosumi (çapraz) – hem köşeyi korur hem dışa etki yayar. Sağlam suji."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 5, "y": 2, "color": "white" },
+            { "x": 2, "y": 5, "color": "black" },
+            { "x": 5, "y": 4, "color": "white" }
           ],
-          "text": "Sonraki hamleyi düşünün"
+          "text": "Beyaz nobi ile kenara doğru uzanır – yaşama çabası, ama henüz iki göz yok."
+        },
+        {
+          "stones": [
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 5, "y": 2, "color": "white" },
+            { "x": 2, "y": 5, "color": "black" },
+            { "x": 5, "y": 4, "color": "white" },
+            { "x": 3, "y": 1, "color": "black" }
+          ],
+          "text": "Siyah hane! Beyaz'ın özgürlüklerini (liberty) sınırlar. Tesuji zamanlaması kritik."
+        },
+        {
+          "stones": [
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 5, "y": 2, "color": "white" },
+            { "x": 2, "y": 5, "color": "black" },
+            { "x": 5, "y": 4, "color": "white" },
+            { "x": 3, "y": 1, "color": "black" },
+            { "x": 2, "y": 1, "color": "white" }
+          ],
+          "text": "Beyaz atari'den kaçar ama Siyah'ın dış etki (thickness) güçlenir. Joseki sonucu: Siyah kotei (üstün)."
+        },
+        {
+          "stones": [
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 5, "y": 2, "color": "white" },
+            { "x": 2, "y": 5, "color": "black" },
+            { "x": 5, "y": 4, "color": "white" },
+            { "x": 3, "y": 1, "color": "black" },
+            { "x": 2, "y": 1, "color": "white" },
+            { "x": 4, "y": 5, "color": "black" }
+          ],
+          "text": "Siyah son hamleyle dış duvarı tamamlar – kudaran (güçlü duvar) oluştu. Bu duvar orta oyunda belirleyici olur!"
         }
       ]
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        { "x": 16, "y": 3, "color": "black" },
+        { "x": 14, "y": 2, "color": "white" },
+        { "x": 17, "y": 5, "color": "black" },
+        { "x": 14, "y": 5, "color": "white" },
+        { "x": 17, "y": 2, "color": "black" },
+        { "x": 13, "y": 3, "color": "white" },
+        { "x": 16, "y": 5, "color": "black" },
+        { "x": 15, "y": 3, "color": "white" },
+        { "x": 17, "y": 6, "color": "black" }
+      ],
+      "highlights": [
+        { "x": 16, "y": 3, "type": "good" },
+        { "x": 17, "y": 5, "type": "good" },
+        { "x": 16, "y": 5, "type": "good" },
+        { "x": 17, "y": 6, "type": "good" },
+        { "x": 14, "y": 2, "type": "bad" },
+        { "x": 14, "y": 5, "type": "bad" }
+      ],
+      "annotation": "Sağ-üst köşe savaşı: Siyah kalın duvar (kabe) oluşturdu. Beyaz köşede ~7 puan aldı ama Siyah'ın duvarı daha değerli."
+    },
+    {
+      "type": "text",
+      "content": "Köşe savaşlarında temel prensip: 'Köşeyi almak mı, dış duvarı almak mı?' Pozisyonun genel durumuna göre karar verin. Eğer kenarda güçlü taşlarınız varsa, köşeyi verip dış duvar almak (gaishi taktiği) daha güçlü olabilir. Eğer rakibin duvarı bir yöne bakıyorsa, köşeyi alıp duvarın değerini düşürün. Bu, miai (karşılıklı değer) hesaplaması gerektirir."
     }
   ],
-  "prerequisites": [
-    "l----1"
-  ],
-  "next_lesson": "l6-3-3",
+  "prerequisites": ["l6-2-1"],
+  "next_lesson": "l6-2-3",
   "required_exercise": "e6-2-2"
 }

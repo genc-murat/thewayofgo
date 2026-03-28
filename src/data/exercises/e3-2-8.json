@@ -1,0 +1,29 @@
+{
+  "id": "e3-2-8",
+  "level": 3,
+  "module": 2,
+  "lesson": 8,
+  "type": "move_evaluation",
+  "title": "En İyi Hamleyi Seçme",
+  "description": "Orta oyun pozisyonunda en etkili hamleyi değerlendirin ve seçin.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 6, "y": 6, "color": "black"},
+    {"x": 6, "y": 2, "color": "white"},
+    {"x": 3, "y": 5, "color": "white"},
+    {"x": 5, "y": 4, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 4, "y": 3, "is_correct": true, "explanation": "Doğru! (4,3) hamlesi merkeze yönelik etki kurar, beyazın (3,5) ve (5,4) taşları arasına baskı yapar ve bölgedeki toprağınızı güçlendirir."},
+    {"x": 0, "y": 0, "is_correct": false, "explanation": "Köşe hamlesi orta oyunda çok küçük. Merkezde daha büyük ve etkili hamleler var."},
+    {"x": 4, "y": 5, "is_correct": false, "explanation": "Bu hamle beyazın alanına girer ve saldırıya açık kalır. Çok riskli!"},
+    {"x": 8, "y": 8, "is_correct": false, "explanation": "Bu köşe hamlesi oyunun ana mücadelesinden çok uzak. Öncelik merkezdedir."}
+  ],
+  "hints": [
+    "Merkeze etki eden ve bölgeyi güçlendiren hamleyi arayın.",
+    "Beyazın iki taşı arasındaki zayıf noktayı değerlendirin."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

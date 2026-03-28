@@ -1,0 +1,86 @@
+{
+  "id": "l6-1-3",
+  "level": 6,
+  "module": 1,
+  "lesson": 3,
+  "title": "Pro Oyun Analizi: Açılış İncelemesi",
+  "description": "Profesyonel oyunların fuseki aşamasını derinlemesine analiz etme.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Profesyonel oyunları incelemek (kansō) Go anlayışınızı derinleştiren en etkili yöntemlerden biridir. Bu derste, ünlü profesyonel oyunların fuseki (açılış) aşamasını analiz ederek, pro seviyesinde açılış stratejilerini öğreneceksiniz."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 15, "y": 15, "color": "white"},
+        {"x": 15, "y": 3, "color": "black"},
+        {"x": 3, "y": 15, "color": "white"},
+        {"x": 3, "y": 9, "color": "black"},
+        {"x": 9, "y": 15, "color": "white"},
+        {"x": 9, "y": 3, "color": "black"},
+        {"x": 15, "y": 9, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 6, "y": 3, "type": "territory"},
+        {"x": 12, "y": 15, "type": "territory"}
+      ],
+      "annotation": "Pro fuseki - Shusaku açılışının modern yorumu"
+    },
+    {
+      "type": "text",
+      "content": "Fuseki analizi yaparken şu soruları sorun: Neden bu köşe? Neden bu nokta? Hangi etki alanı (kiki) hedefleniyor? Rakibin planı ne? Profesyoneller her hamleyi genel strateji (zentai hōsaku) ile uyumlu olarak oynar."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 15, "y": 15, "color": "white"}
+          ],
+          "text": "İlk iki hamle - köşe tercihinin nedenlerini düşünün"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 15, "y": 15, "color": "white"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 3, "y": 15, "color": "white"}
+          ],
+          "text": "Dört köşe - niyō sage (karşılıklı köşe) ilkesi"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 15, "y": 15, "color": "white"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 3, "y": 15, "color": "white"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 9, "y": 15, "color": "white"}
+          ],
+          "text": "Kenar yaklaşım hamleleri - büyük alan yarışı"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 15, "y": 15, "color": "white"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 3, "y": 15, "color": "white"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 9, "y": 15, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 15, "y": 9, "color": "white"}
+          ],
+          "text": "Fuseki tamamlandı - kimin planı daha iyi? Değerlendirin"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l6-1-2"],
+  "next_lesson": "l6-1-4",
+  "required_exercise": null
+}

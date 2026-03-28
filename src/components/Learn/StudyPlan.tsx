@@ -3,10 +3,16 @@ import { useAppStore } from '../../stores/appStore';
 import { getSRSStats } from '../../utils/srs';
 import { getWeakAreas, getDailyProgress } from '../../utils/progressDb';
 import { getNextRecommendedLesson } from '../../utils/lessonPath';
+import {
+  getDailyProblem,
+  getDailyStreak,
+  isDailyCompleted,
+  getDifficultyLabel,
+} from '../../data/dailyProblem';
 
 export interface StudyPlanItem {
   id: string;
-  type: 'review' | 'lesson' | 'exercise' | 'game';
+  type: 'review' | 'lesson' | 'exercise' | 'game' | 'daily_problem';
   title: string;
   description: string;
   estimated_minutes: number;
@@ -20,7 +26,7 @@ interface StudyPlanProps {
 }
 
 export function StudyPlan({ compact = false }: StudyPlanProps) {
-  const { loadLesson, startAiGame, setView } = useAppStore();
+  const { loadLesson, loadExercise, startAiGame, setView } = useAppStore();
   const planVersion = useAppStore(s => s.planVersion);
   const [plan, setPlan] = useState<StudyPlanItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -33,6 +39,31 @@ export function StudyPlan({ compact = false }: StudyPlanProps) {
     setLoading(true);
     try {
       const items: StudyPlanItem[] = [];
+
+      const dailyProblem = getDailyProblem(1);
+      const dailyCompleted = isDailyCompleted();
+      const streak = getDailyStreak();
+      if (dailyProblem && !dailyCompleted) {
+        items.push({
+          id: 'daily-problem',
+          type: 'daily_problem',
+          title: `Günlük Tsumego`,
+          description: `${getDifficultyLabel(dailyProblem.difficulty)} · ${streak.current > 0 ? `${streak.current} günlük seri` : 'Bugünkü problem'}`,
+          estimated_minutes: 5,
+          completed: false,
+          payload: dailyProblem.id,
+        });
+      } else if (dailyCompleted) {
+        items.push({
+          id: 'daily-problem',
+          type: 'daily_problem',
+          title: 'Günlük Tsumego',
+          description: `Tamamlandı! ${streak.current} günlük seri 🔥`,
+          estimated_minutes: 0,
+          completed: true,
+          payload: dailyProblem?.id,
+        });
+      }
 
       const srsStats = await getSRSStats();
       if (srsStats.due_today > 0) {
@@ -104,6 +135,7 @@ export function StudyPlan({ compact = false }: StudyPlanProps) {
     lesson: '📖',
     exercise: '✏️',
     game: '🎮',
+    daily_problem: '📅',
   };
 
   const typeColors: Record<string, string> = {
@@ -111,6 +143,7 @@ export function StudyPlan({ compact = false }: StudyPlanProps) {
     lesson: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/20',
     exercise: 'bg-amber-500/15 text-amber-400 border-amber-500/20',
     game: 'bg-purple-500/15 text-purple-400 border-purple-500/20',
+    daily_problem: 'bg-rose-500/15 text-rose-400 border-rose-500/20',
   };
 
   const totalMinutes = plan.filter(i => !i.completed).reduce((sum, i) => sum + i.estimated_minutes, 0);
@@ -162,10 +195,11 @@ export function StudyPlan({ compact = false }: StudyPlanProps) {
           <button
             key={item.id}
             onClick={() => {
-              if (item.type === 'review') setView('exercise');
+              if (item.type === 'review') setView('srs-review');
               else if (item.type === 'lesson' && item.payload) loadLesson(item.payload);
               else if (item.type === 'exercise') setView('exercise');
               else if (item.type === 'game') startAiGame(9, 2);
+              else if (item.type === 'daily_problem' && item.payload) loadExercise(item.payload);
             }}
             className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all border text-left ${
               item.completed

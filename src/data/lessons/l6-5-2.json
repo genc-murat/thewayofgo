@@ -1,0 +1,115 @@
+{
+  "id": "l6-5-2",
+  "level": 6,
+  "module": 5,
+  "lesson": 2,
+  "title": "Usta Seviye Orta Oyun",
+  "description": "Karmaşık chūban pozisyonlarında ustalık seviyesinde karar verme.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Usta seviye chūban, basit savaş mantığının ötesine geçer. Burada her hamle birden fazla amaca hizmet eder: hem saldırır hem savunur, hem bölge yapar hem etki yaratır. Nitō (çift amaçlı) hamleler, usta oyunun ayırt edici özelliğidir."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 10, "y": 3, "color": "white"},
+        {"x": 16, "y": 4, "color": "black"},
+        {"x": 4, "y": 10, "color": "white"},
+        {"x": 10, "y": 10, "color": "black"},
+        {"x": 16, "y": 10, "color": "white"},
+        {"x": 4, "y": 16, "color": "black"},
+        {"x": 16, "y": 16, "color": "white"},
+        {"x": 7, "y": 7, "color": "black"},
+        {"x": 13, "y": 13, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 10, "y": 7, "type": "good"},
+        {"x": 7, "y": 10, "type": "bad"}
+      ],
+      "annotation": "Usta chūban - her hamlenin birden fazla amaca hizmet etmesi"
+    },
+    {
+      "type": "text",
+      "content": "Chūban'da önemli kavramlar: 1) Kikiuchi - boşluk doldurma ve sınır çizme, 2) Ashi - ayak (temas) hamleleri ile rakibi yönlendirme, 3) Kakae - kucaklama (sarılma) hamleleri ile etki oluşturma. Usta oyuncular rakibin zayıflığını (sujaku) tespit edip ona göre plan yapar."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 10, "y": 3, "color": "white"},
+            {"x": 16, "y": 4, "color": "black"},
+            {"x": 4, "y": 10, "color": "white"},
+            {"x": 10, "y": 10, "color": "black"}
+          ],
+          "text": "Orta oyun başlangıcı - temas noktaları beliriyor"
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 10, "y": 3, "color": "white"},
+            {"x": 16, "y": 4, "color": "black"},
+            {"x": 4, "y": 10, "color": "white"},
+            {"x": 10, "y": 10, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"},
+            {"x": 13, "y": 13, "color": "white"}
+          ],
+          "text": "Çift yönlü yaklaşım - hem etki hem bölge"
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 10, "y": 3, "color": "white"},
+            {"x": 16, "y": 4, "color": "black"},
+            {"x": 4, "y": 10, "color": "white"},
+            {"x": 10, "y": 10, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"},
+            {"x": 13, "y": 13, "color": "white"},
+            {"x": 10, "y": 7, "color": "black"}
+          ],
+          "text": "Nitō hamlesi! Hem saldırıyor hem bölge yapıyor"
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 10, "y": 3, "color": "white"},
+            {"x": 16, "y": 4, "color": "black"},
+            {"x": 4, "y": 10, "color": "white"},
+            {"x": 10, "y": 10, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"},
+            {"x": 13, "y": 13, "color": "white"},
+            {"x": 10, "y": 7, "color": "black"},
+            {"x": 11, "y": 6, "color": "white"},
+            {"x": 16, "y": 10, "color": "black"}
+          ],
+          "text": "Beyaz yanıt verir - usta seviye savaş devam ediyor"
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 10, "y": 3, "color": "white"},
+            {"x": 16, "y": 4, "color": "black"},
+            {"x": 4, "y": 10, "color": "white"},
+            {"x": 10, "y": 10, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"},
+            {"x": 13, "y": 13, "color": "white"},
+            {"x": 10, "y": 7, "color": "black"},
+            {"x": 11, "y": 6, "color": "white"},
+            {"x": 16, "y": 10, "color": "black"},
+            {"x": 4, "y": 16, "color": "white"},
+            {"x": 16, "y": 16, "color": "white"}
+          ],
+          "text": "Chūban sonuçlanıyor - bölge dağılımını değerlendirin"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l6-5-1"],
+  "next_lesson": "l6-5-3",
+  "required_exercise": null
+}

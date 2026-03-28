@@ -4,83 +4,264 @@
   "module": 4,
   "lesson": 4,
   "title": "İnvazyon Savunması",
-  "description": "İnvazyona karşı savunma.",
-  "duration_minutes": 10,
+  "description": "Moyoya yapılan invazyonlara karşı savunma, istilacıyı kuşatma ve aşırı saldırıları cezalandırma.",
+  "duration_minutes": 15,
   "content": [
     {
       "type": "text",
-      "content": "İnvazyon Savunması: İnvazyona karşı savunma. Bu derste temel kavramları öğreneceksiniz."
+      "content": "İnvazyon savunması (守り, mamori), moyonuza giren düşman taşlarını etkisiz hale getirmektir. İki ana strateji: 1) Kuşatma (囲み, kakomoi) — istilacıyı dışarıda bırakıp toprağı güvence altına almak 2) Saldırı — istilacıya baskı yaparak zayıflatmak ve sonunda yakalamak. En önemli ilke: soğukkanlı olun! İstilacıyı hemen yakalamaya çalışmayın, onu dar bir alana hapsedin ve toprak kazancınızı koruyun."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 13,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        },
-        {
-          "x": 5,
-          "y": 4,
-          "color": "black"
-        }
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 3, "y": 6, "color": "black"},
+        {"x": 3, "y": 9, "color": "black"},
+        {"x": 6, "y": 3, "color": "black"},
+        {"x": 6, "y": 9, "color": "black"},
+        {"x": 4, "y": 5, "color": "white"},
+        {"x": 9, "y": 3, "color": "white"},
+        {"x": 9, "y": 9, "color": "white"},
+        {"x": 11, "y": 6, "color": "white"}
       ],
-      "highlights": [],
-      "annotation": "İnvazyon Savunması"
+      "highlights": [
+        {"x": 3, "y": 4, "type": "good"},
+        {"x": 4, "y": 6, "type": "good"},
+        {"x": 5, "y": 5, "type": "vital"},
+        {"x": 4, "y": 4, "type": "bad"},
+        {"x": 5, "y": 4, "type": "liberty"},
+        {"x": 5, "y": 6, "type": "liberty"}
+      ],
+      "annotation": "Beyaz (4,5) invazyonu — siyah doğru kuşatma hamlelerini seçmeli"
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 6, "y": 9, "color": "black"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 11, "y": 6, "color": "white"}
           ],
-          "text": "Pozisyonu inceleyin"
+          "text": "Beyaz (4,5) ile sol kenar moyosuna invazyon! Siyah sakin kalmalı"
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 6, "y": 9, "color": "black"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 11, "y": 6, "color": "white"},
+            {"x": 4, "y": 4, "color": "black"}
           ],
-          "text": "Taşlar yerleşti"
+          "text": "YANLIŞ: Siyah (4,4) — çok yakın! Beyaz (5,4) ile dışarı çıkar. Sabırsız savunma!"
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 6, "y": 9, "color": "black"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 11, "y": 6, "color": "white"},
+            {"x": 5, "y": 5, "color": "black"}
           ],
-          "text": "İleri adımları düşünün"
+          "text": "DOĞRU: Siyah (5,5) — mesafeli kuşatma! Beyazın hareket alanını daraltıyor"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 6, "y": 9, "color": "black"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 11, "y": 6, "color": "white"},
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"}
+          ],
+          "text": "Beyaz (5,4) — sağa kaçmaya çalışıyor"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 6, "y": 9, "color": "black"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 11, "y": 6, "color": "white"},
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 4, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah (4,6) — çember daralıyor! Beyazın sol tarafı da kapatıldı"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 6, "y": 9, "color": "black"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 11, "y": 6, "color": "white"},
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 5, "y": 6, "color": "white"}
+          ],
+          "text": "Beyaz (5,6) — yaşamak için uzanıyor ama sadece küçük bir grup. Siyah moyonun çoğunu korudu!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Aşırı oynama cezası (無理攻め, muri-zeme): İstilacıyı hemen yakalamaya çalışırsanız, genellikle kendi moyonuzu zarara uğratırsınız. Sabırlı kuşatma (辛抱強い囲み) her zaman aceleci saldırıdan üstündür. İstilacı küçük bir grup olarak hayatta kalıyorsa — bu kabul edilebilir! Siz hala büyük toprak kazancındasınız."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 5, "y": 3, "color": "black"},
+        {"x": 7, "y": 3, "color": "black"},
+        {"x": 3, "y": 5, "color": "black"},
+        {"x": 7, "y": 5, "color": "black"},
+        {"x": 3, "y": 7, "color": "black"},
+        {"x": 5, "y": 7, "color": "black"},
+        {"x": 7, "y": 7, "color": "black"},
+        {"x": 5, "y": 4, "color": "white"},
+        {"x": 5, "y": 5, "color": "white"},
+        {"x": 6, "y": 5, "color": "white"},
+        {"x": 10, "y": 10, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 4, "type": "vital"},
+        {"x": 6, "y": 4, "type": "vital"},
+        {"x": 4, "y": 6, "type": "vital"},
+        {"x": 6, "y": 6, "type": "vital"},
+        {"x": 5, "y": 6, "type": "capture"}
+      ],
+      "annotation": "Beyaz aşırı oynama — 3 taş derin invazyon, siyah cezalandırmalı"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 7, "y": 5, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 10, "y": 10, "color": "white"}
+          ],
+          "text": "Beyaz 3 taşla derin invazyon — aşırı cesur! Siyah cezalandırma zamanı"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 7, "y": 5, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 10, "y": 10, "color": "white"},
+            {"x": 4, "y": 4, "color": "black"}
+          ],
+          "text": "Siyah (4,4) — sol üst köşeyi kapatıyor, beyazın özgürlüklerini azaltıyor"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 7, "y": 5, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 10, "y": 10, "color": "white"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 6, "y": 4, "color": "white"}
+          ],
+          "text": "Beyaz (6,4) — sağa kaçmaya çalışıyor"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 7, "y": 5, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 10, "y": 10, "color": "white"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 6, "y": 4, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah (6,6) — sağ tarafı da kapattı! Beyaz tamamen kuşatıldı"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 7, "y": 5, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 10, "y": 10, "color": "white"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 6, "y": 4, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah (4,6) — son kaçış yolu da kapandı! 3 beyaz taş yakalandı, siyah büyük toprak kazandı!"
         }
       ]
     }
@@ -88,6 +269,6 @@
   "prerequisites": [
     "l4-4-3"
   ],
-  "next_lesson": "l4-5-5",
+  "next_lesson": "l4-4-5",
   "required_exercise": "e4-4-4"
 }

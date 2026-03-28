@@ -1,0 +1,115 @@
+{
+  "id": "l2-3-8",
+  "level": 2,
+  "module": 3,
+  "lesson": 8,
+  "title": "Tsumego Genel Tekrar",
+  "description": "Tüm yaşam-ölüm konularının kapsamlı tekrarı.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Tsumego (詰碁), Go'nun yaşam-ölüm problemleridir. Bu derste öğrendiğimiz tüm konuları pratiğe dökeceğiz: gerçek göz, sahte göz, iki göz kuralı, yaşam koşulları ve ölü şekiller."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 2, "y": 1, "color": "black"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 0, "color": "white"},
+        {"x": 3, "y": 1, "color": "white"},
+        {"x": 3, "y": 2, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 1, "type": "good"}
+      ],
+      "annotation": "Problem 1: Siyah grup yaşıyor mu? Boşluk (1,1) — tek göz. İkinci göz yok — ÖLÜ."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 5, "y": 0, "color": "black"},
+            {"x": 6, "y": 0, "color": "black"},
+            {"x": 7, "y": 0, "color": "black"},
+            {"x": 8, "y": 0, "color": "black"},
+            {"x": 5, "y": 1, "color": "black"},
+            {"x": 8, "y": 1, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 6, "y": 2, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 8, "y": 2, "color": "black"}
+          ],
+          "text": "Problem 2: Siyah'ın iç boşluğu: (6,1) ve (7,1) — düz iki boşluk. Siyah nereye oynamalı?"
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 0, "color": "black"},
+            {"x": 6, "y": 0, "color": "black"},
+            {"x": 7, "y": 0, "color": "black"},
+            {"x": 8, "y": 0, "color": "black"},
+            {"x": 5, "y": 1, "color": "black"},
+            {"x": 7, "y": 1, "color": "black"},
+            {"x": 8, "y": 1, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 6, "y": 2, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 8, "y": 2, "color": "black"}
+          ],
+          "text": "Siyah (7,1) oynadı! İki gerçek göz: (6,1) ve (7,1)... Hayır, (6,1) tek boşluk — ama (7,1) doldu. Tek göz kaldı!"
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 0, "color": "black"},
+            {"x": 6, "y": 0, "color": "black"},
+            {"x": 7, "y": 0, "color": "black"},
+            {"x": 8, "y": 0, "color": "black"},
+            {"x": 5, "y": 1, "color": "black"},
+            {"x": 6, "y": 1, "color": "black"},
+            {"x": 8, "y": 1, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 6, "y": 2, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 8, "y": 2, "color": "black"}
+          ],
+          "text": "Siyah (6,1) oynadı! İki gerçek göz: (7,1). Ama yine tek göz — yanlış hamle!"
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 0, "color": "black"},
+            {"x": 6, "y": 0, "color": "black"},
+            {"x": 7, "y": 0, "color": "black"},
+            {"x": 8, "y": 0, "color": "black"},
+            {"x": 5, "y": 1, "color": "black"},
+            {"x": 8, "y": 1, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 6, "y": 2, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 8, "y": 2, "color": "black"},
+            {"x": 6, "y": 1, "color": "white"}
+          ],
+          "text": "Beyaz (6,1) oynadı! Siyahın gözü bozuldu. Siyah (7,1) oynayarak tek göz yapsa bile ikinci yok — ÖLÜ!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Önemli ders: İki boşluklu iç alan, otomatik olarak iki göz anlamına gelmez. Rakip boşluklara oynayarak gözleri bozabilir. Düz iki boşluk güvenli değil — en az düz dört (straight four) veya iki ayrı tek boşluk gerekli."
+    },
+    {
+      "type": "text",
+      "content": "Tsumego çözerken adımlar:\n1. Grubun kaç boşluğu var? Sayın.\n2. Her boşluk gerçek göz mü? Köşegenleri kontrol edin.\n3. Rakip oynasa ne olur? En kötü senaryoyu düşünün.\n4. Siz nereye oynarsanız iki ayrı göz oluşur? Hayati noktayı bulun."
+    }
+  ],
+  "prerequisites": ["l2-3-7"],
+  "next_lesson": "l2-4-1",
+  "required_exercise": "e2-3-8"
+}

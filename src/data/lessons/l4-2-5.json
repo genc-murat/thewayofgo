@@ -1,0 +1,102 @@
+{
+  "id": "l4-2-5",
+  "level": 4,
+  "module": 2,
+  "lesson": 5,
+  "title": "Etki Alanları Pratik 1",
+  "description": "Etki alanlarını okuma ve değerlendirme pratiği yapın.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Etki alanlarını okumak, tahtadaki boş alanların kimin kontrolünde olduğunu anlamaktır. Bir taşın etki alanı, doğrudan sahiplenmediği ama kontrol ettiği bölgeleri kapsar. Sente hamleleri etki alanını genişletirken, gote hamleleri daraltabilir."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 3, "y": 5, "color": "black"},
+        {"x": 5, "y": 3, "color": "black"},
+        {"x": 9, "y": 9, "color": "white"},
+        {"x": 9, "y": 11, "color": "white"},
+        {"x": 11, "y": 9, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 4, "type": "territory"},
+        {"x": 4, "y": 2, "type": "territory"},
+        {"x": 2, "y": 4, "type": "territory"},
+        {"x": 10, "y": 10, "type": "territory"},
+        {"x": 10, "y": 8, "type": "territory"},
+        {"x": 8, "y": 10, "type": "territory"}
+      ],
+      "annotation": "Siyah sol üstte, Beyaz sağ altta etki alanı oluşturuyor"
+    },
+    {
+      "type": "text",
+      "content": "Etki alanı değerlendirirken dikkat edilecekler: 1) Taşların kalınlığı ve bağlantısı 2) Karşı tarafın taşlarının yakınlığı 3) Kenar ve köşelerin desteği. Kalın taşlar daha geniş etki alanına sahiptir."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"}
+          ],
+          "text": "İki taraf da köşe yakınında başladı"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 9, "y": 11, "color": "white"}
+          ],
+          "text": "Her taraf kenar boyunca genişledi"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 9, "y": 11, "color": "white"},
+            {"x": 11, "y": 9, "color": "white"}
+          ],
+          "text": "Üçüncü taşlarla etki alanları belirginleşti"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 9, "y": 11, "color": "white"},
+            {"x": 11, "y": 9, "color": "white"},
+            {"x": 10, "y": 10, "color": "white"}
+          ],
+          "text": "Merkez taşları etkiyi pekiştiriyor"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 9, "y": 11, "color": "white"},
+            {"x": 11, "y": 9, "color": "white"},
+            {"x": 10, "y": 10, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"}
+          ],
+          "text": "Beyaz siyahın etki alanını bölmek için hamle yapıyor"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l4-2-4"],
+  "next_lesson": "l4-2-6",
+  "required_exercise": null
+}

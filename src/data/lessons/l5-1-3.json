@@ -1,0 +1,88 @@
+{
+  "id": "l5-1-3",
+  "level": 5,
+  "module": 1,
+  "lesson": 3,
+  "title": "İleri Okuma: Çoklu Varyasyonlar",
+  "description": "Birden fazla varyasyonu aynı anda okuma ve karşılaştırma teknikleri.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Çoklu varyasyon okuma, bir hamle sonucunda doğabilecek tüm olası dizileri zihinsel olarak hesaplama yeteneğidir. Yōsū o yomu (okuma) beceriniz, oyun seviyenizi doğrudan belirler. Bu derste üç veya daha fazla varyasyonu paralel olarak değerlendirmeyi öğreneceksiniz."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 3, "y": 15, "color": "black"},
+        {"x": 5, "y": 16, "color": "white"},
+        {"x": 2, "y": 13, "color": "black"},
+        {"x": 4, "y": 13, "color": "white"},
+        {"x": 3, "y": 12, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 3, "y": 14, "type": "liberty"},
+        {"x": 2, "y": 14, "type": "liberty"}
+      ],
+      "annotation": "Çoklu varyasyon analizi - üç olası hamle yolunu inceleyin"
+    },
+    {
+      "type": "text",
+      "content": "Kō-battle ve semeai durumlarında çoklu varyasyon okuma kritik önem taşır. Ana varyasyon (honban) ile alternatif varyasyonları (hikae) karşılaştırarak en iyi sonucu bulmalısınız. Her varyasyonda rakibin en güçlü yanıtını (tejina) hesaba katın."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 15, "color": "black"},
+            {"x": 5, "y": 16, "color": "white"}
+          ],
+          "text": "Başlangıç pozisyonu - siyah grubun etrafını inceleyin"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 15, "color": "black"},
+            {"x": 5, "y": 16, "color": "white"},
+            {"x": 3, "y": 14, "color": "black"}
+          ],
+          "text": "Varyasyon A: Siyah bağlanarak kaçar"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 15, "color": "black"},
+            {"x": 5, "y": 16, "color": "white"},
+            {"x": 3, "y": 14, "color": "black"},
+            {"x": 4, "y": 14, "color": "white"}
+          ],
+          "text": "Beyaz atari yapar - siyahın yanıtı kritik"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 15, "color": "black"},
+            {"x": 5, "y": 16, "color": "white"},
+            {"x": 3, "y": 14, "color": "black"},
+            {"x": 4, "y": 14, "color": "white"},
+            {"x": 2, "y": 14, "color": "black"}
+          ],
+          "text": "Varyasyon B: Siyah farklı yöne kaçar"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 15, "color": "black"},
+            {"x": 5, "y": 16, "color": "white"},
+            {"x": 3, "y": 14, "color": "black"},
+            {"x": 4, "y": 14, "color": "white"},
+            {"x": 2, "y": 14, "color": "black"},
+            {"x": 4, "y": 15, "color": "white"}
+          ],
+          "text": "Beyaz keser (kiru) - varyasyonları karşılaştırın"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l5-1-2"],
+  "next_lesson": "l5-1-4",
+  "required_exercise": null
+}

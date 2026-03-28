@@ -1,0 +1,106 @@
+{
+  "id": "l3-6-6",
+  "level": 3,
+  "module": 6,
+  "lesson": 6,
+  "title": "Seviye 3 Tsumego Sınavı",
+  "description": "Tüm Level 3 tsumego konularını kapsayan kapsamlı sınav.",
+  "duration_minutes": 15,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bu sınav, Level 3'ün tüm tsumego konularını kapsar: hayati nokta bulma, yaşam problemleri, ölüm problemleri ve ko yaşam-ölüm. Her pozisyonu dikkatle inceleyin."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 5, "y": 0, "color": "black"},
+        {"x": 6, "y": 0, "color": "black"},
+        {"x": 7, "y": 0, "color": "black"},
+        {"x": 5, "y": 1, "color": "black"},
+        {"x": 7, "y": 1, "color": "black"},
+        {"x": 5, "y": 2, "color": "black"},
+        {"x": 7, "y": 2, "color": "black"},
+        {"x": 5, "y": 3, "color": "black"},
+        {"x": 6, "y": 3, "color": "black"},
+        {"x": 7, "y": 3, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 6, "y": 1, "type": "good"},
+        {"x": 6, "y": 2, "type": "liberty"}
+      ],
+      "annotation": "Sınav 1: Siyah grubun iç boşlukları: (6,1),(6,2). İki göz var mı? Yaşıyor mu?"
+    },
+    {
+      "type": "text",
+      "content": "Cevap 1: İki ayrı boşluk (6,1) ve (6,2) — her ikisinin kardinal komşuları siyah. Köşegenler: (5,0) siyah, (7,0) siyah, (5,3) siyah, (7,3) siyah. İkisi de gerçek göz. Siyah grubu YAŞIYOR."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 0, "y": 5, "color": "black"},
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 0, "y": 6, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 0, "y": 7, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 0, "y": 8, "color": "black"},
+            {"x": 1, "y": 8, "color": "black"},
+            {"x": 2, "y": 8, "color": "black"},
+            {"x": 3, "y": 8, "color": "black"}
+          ],
+          "text": "Sınav 2: Siyah grubun içi: (1,6),(2,6),(1,7),(2,7). 4 boş noktalı kare. Siyah yaşamak için nereye oynamalı?"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 5, "color": "black"},
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 0, "y": 6, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 0, "y": 7, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 0, "y": 8, "color": "black"},
+            {"x": 1, "y": 8, "color": "black"},
+            {"x": 2, "y": 8, "color": "black"},
+            {"x": 3, "y": 8, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"}
+          ],
+          "text": "Siyah (2,7) oynadı — köşe! Kalan: (1,6),(2,6),(1,7). Bent three. Beyaz (1,7) oynarsa siyah (2,6) ile iki göz!"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 5, "color": "black"},
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 0, "y": 6, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 0, "y": 7, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 0, "y": 8, "color": "black"},
+            {"x": 1, "y": 8, "color": "black"},
+            {"x": 2, "y": 8, "color": "black"},
+            {"x": 3, "y": 8, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 1, "y": 7, "color": "black"}
+          ],
+          "text": "Beyaz (1,7) oynadı. Siyah (2,6) ile iki ayrı göz: (1,6) ve (2,6)... (2,6) boş! Siyah YAŞADI!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Tebrikler! Level 3 tamamlandı. Tsumego kavramlarını öğrendiniz: hayati nokta, yaşam problemleri, ölüm problemleri ve ko yaşam-ölüm. Level 4'te ileri strateji kavramları ile devam edeceğiz."
+    }
+  ],
+  "prerequisites": ["l3-6-5"],
+  "next_lesson": "l4-1-1",
+  "required_exercise": null
+}

@@ -1,0 +1,123 @@
+{
+  "id": "l5-5-7",
+  "level": 5,
+  "module": 5,
+  "lesson": 7,
+  "title": "Seviye 5 Final Sınavı",
+  "description": "Seviye 5'in tüm konularını kapsayan kapsamlı final sınavı.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Tebrikler! Seviye 5'in sonuna ulaştınız. Bu final sınavı, ileri okuma, fuseki, chūban stratejisi, yose ve planlama konularındaki bilgilerinizi test edecek. Her problemi dikkatle çözin ve çoklu varyasyonları değerlendirin."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 5, "color": "white"},
+        {"x": 5, "y": 3, "color": "black"},
+        {"x": 3, "y": 6, "color": "white"},
+        {"x": 2, "y": 5, "color": "black"},
+        {"x": 15, "y": 15, "color": "white"},
+        {"x": 15, "y": 3, "color": "black"},
+        {"x": 3, "y": 15, "color": "white"},
+        {"x": 9, "y": 9, "color": "black"},
+        {"x": 16, "y": 9, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 3, "type": "capture"},
+        {"x": 3, "y": 4, "type": "liberty"},
+        {"x": 9, "y": 10, "type": "good"}
+      ],
+      "annotation": "Final sınavı - Soru 1: En iyi hamleyi ve gerekçesini bulun"
+    },
+    {
+      "type": "text",
+      "content": "Sınav kuralları: Her pozisyon için en az 3 varyasyon hesaplayın. Sonucunuzu değerlendirirken jishi (taş gücü), moyo (bölge potansiyeli) ve aji (gizli potansiyel) faktörlerini kullanın. Derin okuma (yomikiri) yapmayı unutmayın."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 15, "y": 3, "color": "black"},
+        {"x": 16, "y": 5, "color": "white"},
+        {"x": 13, "y": 3, "color": "black"},
+        {"x": 15, "y": 6, "color": "white"},
+        {"x": 14, "y": 2, "color": "black"},
+        {"x": 3, "y": 9, "color": "white"},
+        {"x": 9, "y": 3, "color": "black"},
+        {"x": 9, "y": 15, "color": "white"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 15, "y": 15, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 14, "y": 4, "type": "good"},
+        {"x": 17, "y": 4, "type": "bad"}
+      ],
+      "annotation": "Final sınavı - Soru 2: Oyun planı oluşturun ve uygulayın"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 16, "y": 5, "color": "white"},
+            {"x": 13, "y": 3, "color": "black"}
+          ],
+          "text": "Soru 2 pozisyonu - oyun planı gerekiyor"
+        },
+        {
+          "stones": [
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 16, "y": 5, "color": "white"},
+            {"x": 13, "y": 3, "color": "black"},
+            {"x": 14, "y": 4, "color": "black"}
+          ],
+          "text": "Plan adımı 1: Kenar baskısı kurulumu"
+        },
+        {
+          "stones": [
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 16, "y": 5, "color": "white"},
+            {"x": 13, "y": 3, "color": "black"},
+            {"x": 14, "y": 4, "color": "black"},
+            {"x": 17, "y": 3, "color": "white"}
+          ],
+          "text": "Beyaz direnir - varyasyonları derinleştirin"
+        },
+        {
+          "stones": [
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 16, "y": 5, "color": "white"},
+            {"x": 13, "y": 3, "color": "black"},
+            {"x": 14, "y": 4, "color": "black"},
+            {"x": 17, "y": 3, "color": "white"},
+            {"x": 14, "y": 6, "color": "black"},
+            {"x": 13, "y": 7, "color": "white"}
+          ],
+          "text": "Plan devam ediyor - sabaki ile gruptan kurtulun"
+        },
+        {
+          "stones": [
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 16, "y": 5, "color": "white"},
+            {"x": 13, "y": 3, "color": "black"},
+            {"x": 14, "y": 4, "color": "black"},
+            {"x": 17, "y": 3, "color": "white"},
+            {"x": 14, "y": 6, "color": "black"},
+            {"x": 13, "y": 7, "color": "white"},
+            {"x": 15, "y": 8, "color": "black"},
+            {"x": 9, "y": 9, "color": "white"}
+          ],
+          "text": "Final sınavı tamamlanıyor - tebrikler, Seviye 5 bitti!"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l5-5-6"],
+  "next_lesson": "l6-1-1",
+  "required_exercise": null
+}

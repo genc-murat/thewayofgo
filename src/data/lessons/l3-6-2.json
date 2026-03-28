@@ -1,0 +1,133 @@
+{
+  "id": "l3-6-2",
+  "level": 3,
+  "module": 6,
+  "lesson": 2,
+  "title": "İleri Yaşam Problemleri 2",
+  "description": "Düzensiz şekillerde hayati nokta bulma pratiği.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Düzensiz şekillerde yaşam bulmak, ileri tsumego'nun en zor kısmıdır. T şekli, L şekli ve çapraz boşluklar gibi karmaşık durumlarda doğru hamleyi bulmak derin okuma gerektirir."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 4, "y": 2, "color": "black"},
+        {"x": 5, "y": 2, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 5, "y": 3, "color": "black"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 5, "y": 4, "color": "black"},
+        {"x": 2, "y": 5, "color": "black"},
+        {"x": 4, "y": 5, "color": "black"},
+        {"x": 5, "y": 5, "color": "black"},
+        {"x": 1, "y": 2, "color": "white"},
+        {"x": 1, "y": 3, "color": "white"},
+        {"x": 1, "y": 4, "color": "white"},
+        {"x": 1, "y": 5, "color": "white"},
+        {"x": 6, "y": 2, "color": "white"},
+        {"x": 6, "y": 3, "color": "white"},
+        {"x": 6, "y": 4, "color": "white"},
+        {"x": 6, "y": 5, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 3, "type": "good"},
+        {"x": 3, "y": 3, "type": "good"},
+        {"x": 4, "y": 4, "type": "liberty"}
+      ],
+      "annotation": "Beş boş noktalı T şekli: (3,3),(4,3),(3,5),(4,4). Hayati nokta neresi?"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 4, "y": 2, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 5, "y": 5, "color": "black"}
+          ],
+          "text": "Siyah grubun iç boşlukları: (3,3),(4,3),(4,4),(3,5). Siyah yaşamak için nereye oynamalı?"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 4, "y": 2, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"}
+          ],
+          "text": "Siyah (3,3) oynadı! Kalan boşluklar: (4,3),(4,4),(3,5). Beyaz (4,4) oynarsa?"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 4, "y": 2, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "white"}
+          ],
+          "text": "Beyaz (4,3) oynadı. Siyah (3,5) ve (4,4) boşlukları — gerçek göz mü? Siyah (4,4) oynayarak iki ayrı göz oluşturabilir!"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 4, "y": 2, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 4, "y": 3, "color": "white"}
+          ],
+          "text": "Siyah (4,4) oynadı! İki gerçek göz: (3,5) ve (4,3)... Ama (4,3) beyaz dolu! Tek göz (3,5). Hatalı okuma!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "İleri tsumego çözümünde her varyasyonu sonuna kadar okuyun. İlk bakışta doğru görünen hamle, rakip yanıtından sonra başarısız olabilir. Her zaman rakibin en güçlü yanıtını düşünün."
+    }
+  ],
+  "prerequisites": ["l3-6-1"],
+  "next_lesson": "l3-6-3",
+  "required_exercise": null
+}

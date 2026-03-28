@@ -3,86 +3,119 @@
   "level": 6,
   "module": 2,
   "lesson": 4,
-  "title": "Yeni Açılışlar",
-  "description": "Modern açılış trendleri.",
-  "duration_minutes": 10,
+  "title": "Modern Açılış Trendleri",
+  "description": "AI çağının fuseki devrimi, yeni açılış teorileri ve bilgisayar destekli strateji geliştirme. AlphaGo sonrası modern Go anlayışı.",
+  "duration_minutes": 25,
   "content": [
     {
       "type": "text",
-      "content": "Yeni Açılışlar: Modern açılış trendleri. Temel kavramları ve stratejileri öğrenin."
+      "content": "AlphaGo ve KataGo, fuseki anlayışını kökten değiştirdi. Eski 'tabu' sayılan hamleler artık standart oldu: erken 3-3 invazyon, büyük shimai (geniş aralık), ve merkezi odaklı oyun. AI'ın en büyük katkısı, 'sabit doğrular' olmadığını göstermesidir. Her pozisyon benzersizdir ve global değerlendirme (whole-board thinking) her zaman lokal kurallardan üstündür."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 19,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        }
+        { "x": 3, "y": 3, "color": "black" },
+        { "x": 9, "y": 3, "color": "white" },
+        { "x": 15, "y": 15, "color": "black" },
+        { "x": 3, "y": 15, "color": "white" },
+        { "x": 15, "y": 3, "color": "black" },
+        { "x": 9, "y": 15, "color": "white" }
       ],
-      "highlights": [],
-      "annotation": "Yeni Açılışlar"
+      "highlights": [
+        { "x": 3, "y": 3, "type": "good" },
+        { "x": 15, "y": 15, "type": "good" },
+        { "x": 15, "y": 3, "type": "good" },
+        { "x": 9, "y": 3, "type": "territory" },
+        { "x": 9, "y": 15, "type": "territory" },
+        { "x": 9, "y": 9, "type": "vital" }
+      ],
+      "annotation": "AI tarzı açılış: Üç hoshi + üç kenar star noktası. Eski teori 'çok geniş' derdi, AI 'etkili' diyor."
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 9, "y": 3, "color": "white" }
           ],
-          "text": "Pozisyon analizi başladı"
+          "text": "1-2: Siyah 3-3, Beyaz kenar star noktası! AI öncesi bu, 'Siyah köşeyi küçük aldı' denirdi. Artık geçerli."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 9, "y": 3, "color": "white" },
+            { "x": 15, "y": 15, "color": "black" },
+            { "x": 3, "y": 15, "color": "white" }
           ],
-          "text": "Taşlar yerleşti"
+          "text": "3-4: Köşe işgalleri. AI tarzı: her köşeye hızlıca yerleş, kenar savaşına geç."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 9, "y": 3, "color": "white" },
+            { "x": 15, "y": 15, "color": "black" },
+            { "x": 3, "y": 15, "color": "white" },
+            { "x": 15, "y": 3, "color": "black" }
           ],
-          "text": "Sonraki hamleyi düşünün"
+          "text": "5: Siyah çapraz köşe – iki hoshi! AI'ın en sevdiği düzen: çapraz hoshi + hızlı gelişim."
+        },
+        {
+          "stones": [
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 9, "y": 3, "color": "white" },
+            { "x": 15, "y": 15, "color": "black" },
+            { "x": 3, "y": 15, "color": "white" },
+            { "x": 15, "y": 3, "color": "black" },
+            { "x": 9, "y": 15, "color": "white" }
+          ],
+          "text": "6: Beyaz da kenar star noktası! Her iki taraf da hızla büyük noktaları (öncelikli alanlar) kapıyor."
+        },
+        {
+          "stones": [
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 9, "y": 3, "color": "white" },
+            { "x": 15, "y": 15, "color": "black" },
+            { "x": 3, "y": 15, "color": "white" },
+            { "x": 15, "y": 3, "color": "black" },
+            { "x": 9, "y": 15, "color": "white" },
+            { "x": 2, "y": 5, "color": "black" }
+          ],
+          "text": "7: Sirah küçük genişleme – 3-3'ü destekler, kenar baskısını artırır. AI'ın 'early thickness' konsepti!"
         }
       ]
+    },
+    {
+      "type": "text",
+      "content": "AI'ın fuseki devriminin üç temel ilkesi: (1) 3-3 noktası eskiden 'açgözlü'lük sayılırdı, artık standart açılış. (2) Kenar star noktaları (4-4, 4-10) değerli – köşe+kenar bütünlüğü. (3) Merkez (tengen bölgesi) erken oyunda kullanılabilir. Eski kitapların 'asla' dediklerini sorgulayın – AI yeni可能性lar (olanaklar) açtı."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        { "x": 3, "y": 3, "color": "black" },
+        { "x": 9, "y": 3, "color": "white" },
+        { "x": 15, "y": 15, "color": "black" },
+        { "x": 3, "y": 15, "color": "white" },
+        { "x": 15, "y": 3, "color": "black" },
+        { "x": 9, "y": 15, "color": "white" },
+        { "x": 2, "y": 5, "color": "black" },
+        { "x": 16, "y": 13, "color": "white" },
+        { "x": 5, "y": 16, "color": "black" },
+        { "x": 13, "y": 2, "color": "white" }
+      ],
+      "highlights": [
+        { "x": 5, "y": 16, "type": "good" },
+        { "x": 13, "y": 2, "type": "good" },
+        { "x": 9, "y": 9, "type": "vital" },
+        { "x": 2, "y": 5, "type": "territory" },
+        { "x": 16, "y": 13, "type": "territory" }
+      ],
+      "annotation": "AI fuseki 10 hamlede: Dengeli genişleme, her iki taraf da 3 bölge kontrol ediyor. Merkez hâlâ açık!"
     }
   ],
-  "prerequisites": [
-    "l----3"
-  ],
-  "next_lesson": "l6-2",
+  "prerequisites": ["l6-2-3"],
+  "next_lesson": "l6-2-5",
   "required_exercise": "e6-2-4"
 }

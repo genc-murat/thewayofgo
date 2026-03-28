@@ -3,86 +3,112 @@
   "level": 5,
   "module": 2,
   "lesson": 4,
-  "title": "Renszo ve Ikopenia",
-  "description": "İleri düzey fuseki kalıpları.",
-  "duration_minutes": 10,
+  "title": "İleri Fuseki Kalıpları",
+  "description": "Modern fuseki açılışları: Kobayashi, Chinese, mini-Chinese ve Sanrensei kalıplarının derinlemesine analizi.",
+  "duration_minutes": 18,
   "content": [
     {
       "type": "text",
-      "content": "Renszo ve Ikopenia: İleri düzey fuseki kalıpları. Temel kavramları ve stratejileri öğrenin."
+      "content": "Uzman fuseki bilgisi, sadece köşe işgalinden ibaret değildir. Modern profesyonel Go'da Kobayashi açılışı (iki 4-3 köşesi + kenar star), Chinese açılışı (üç yıldız noktası bir tarafta), ve Sanrensei (üç star noktası aynı sırada) gibi sistemler tüm tahta stratejisine göre seçilir. Her kalıbın güçlü ve zayıf yönlerini bilmek şarttır."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 19,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        }
+        { "x": 3, "y": 9, "color": "black" },
+        { "x": 9, "y": 3, "color": "black" },
+        { "x": 15, "y": 3, "color": "black" },
+        { "x": 3, "y": 16, "color": "white" },
+        { "x": 16, "y": 16, "color": "white" }
       ],
-      "highlights": [],
-      "annotation": "Renszo ve Ikopenia"
+      "highlights": [
+        { "x": 9, "y": 9, "type": "territory" },
+        { "x": 15, "y": 9, "type": "good" },
+        { "x": 6, "y": 3, "type": "good" },
+        { "x": 12, "y": 3, "type": "good" }
+      ],
+      "annotation": "Sanrensei: Siyah üç star noktası üst sırada – dev moyo potansiyeli"
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 3, "y": 9, "color": "black" },
+            { "x": 9, "y": 3, "color": "black" },
+            { "x": 15, "y": 3, "color": "black" }
           ],
-          "text": "Pozisyon analizi başladı"
+          "text": "Sanrensei: Siyah üç star (hoshi) üst kenarda – agresif moyo açılışı."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            { "x": 3, "y": 9, "color": "black" },
+            { "x": 9, "y": 3, "color": "black" },
+            { "x": 15, "y": 3, "color": "black" },
+            { "x": 3, "y": 16, "color": "white" }
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Beyaz (3,16) köşe işgali: Sanrensei'ye karşı sağlam toprak stratejisi."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 3, "y": 9, "color": "black" },
+            { "x": 9, "y": 3, "color": "black" },
+            { "x": 15, "y": 3, "color": "black" },
+            { "x": 3, "y": 16, "color": "white" },
+            { "x": 16, "y": 16, "color": "white" }
           ],
-          "text": "Sonraki hamleyi düşünün"
+          "text": "Beyaz iki köşe alır: Siyah'ın moyo'su gerçek toprağa dönüşmeli."
+        },
+        {
+          "stones": [
+            { "x": 3, "y": 9, "color": "black" },
+            { "x": 9, "y": 3, "color": "black" },
+            { "x": 15, "y": 3, "color": "black" },
+            { "x": 3, "y": 16, "color": "white" },
+            { "x": 16, "y": 16, "color": "white" },
+            { "x": 15, "y": 9, "color": "black" }
+          ],
+          "text": "Siyah (15,9) sağ kenar star: moyo üst + sağ kenara genişler – büyük alan kontrolü."
+        },
+        {
+          "stones": [
+            { "x": 3, "y": 9, "color": "black" },
+            { "x": 9, "y": 3, "color": "black" },
+            { "x": 15, "y": 3, "color": "black" },
+            { "x": 3, "y": 16, "color": "white" },
+            { "x": 16, "y": 16, "color": "white" },
+            { "x": 15, "y": 9, "color": "black" },
+            { "x": 10, "y": 9, "color": "white" }
+          ],
+          "text": "Beyaz (10,9) ile merkezden sızma: Sanrensei'nin zayıflığı – içeriden istila riski!"
         }
       ]
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        { "x": 2, "y": 4, "color": "black" },
+        { "x": 4, "y": 16, "color": "black" },
+        { "x": 16, "y": 4, "color": "black" },
+        { "x": 3, "y": 3, "color": "white" },
+        { "x": 15, "y": 15, "color": "white" },
+        { "x": 9, "y": 3, "color": "white" }
+      ],
+      "highlights": [
+        { "x": 4, "y": 10, "type": "good" },
+        { "x": 10, "y": 4, "type": "good" },
+        { "x": 2, "y": 10, "type": "territory" },
+        { "x": 9, "y": 9, "type": "bad" }
+      ],
+      "annotation": "Kobayashi açılışı: 4-3 köşeleri + kenar star – dengeli toprak ve etki"
+    },
+    {
+      "type": "text",
+      "content": "Kobayashi açılışında (2,4) köşesi, 4-3 noktasının bir sıra yukarısındadır. Bu pozisyon hem köşe toprağı hem kenar genişlemesi için idealdir. (4,10) ve (10,4) noktaları Kobayashi'nin devam hamleleridir – kenar boyunca ilerlerken rakip köşelere baskı uygulanır. Chinese açılışına göre daha az agresif ama daha güvenli bir stratejidir."
     }
   ],
-  "prerequisites": [
-    "l----3"
-  ],
-  "next_lesson": "l5-2",
+  "prerequisites": ["l5-2-3"],
+  "next_lesson": "l5-2-5",
   "required_exercise": "e5-2-4"
 }

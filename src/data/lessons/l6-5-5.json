@@ -1,0 +1,103 @@
+{
+  "id": "l6-5-5",
+  "level": 6,
+  "module": 5,
+  "lesson": 5,
+  "title": "Usta Seviye Tesuji",
+  "description": "En zor tesuji problemleri ve yaratıcı hamle bulma teknikleri.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Tesuji (zeki hamle), Go'nun sanat eserleridir. Usta seviye tesuji, normal okumayla bulunamayacak kadar derin ve yaratıcı hamlelerdir. Bu derste, keshi (kesme), watari (bağlantı), tsuke (yapışma) ve hanekomi (sıçrayış) gibi ileri tesuji tekniklerini öğreneceksiniz."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 9, "y": 6, "color": "black"},
+        {"x": 10, "y": 6, "color": "white"},
+        {"x": 9, "y": 7, "color": "white"},
+        {"x": 8, "y": 7, "color": "black"},
+        {"x": 10, "y": 7, "color": "white"},
+        {"x": 8, "y": 6, "color": "black"},
+        {"x": 11, "y": 7, "color": "white"},
+        {"x": 7, "y": 7, "color": "black"},
+        {"x": 10, "y": 5, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 9, "y": 5, "type": "good"},
+        {"x": 10, "y": 8, "type": "capture"}
+      ],
+      "annotation": "Tesuji problemi - siyahın zeki hamlesi ne?"
+    },
+    {
+      "type": "text",
+      "content": "Tesuji bulma teknikleri: 1) Tsuke-koshi (yapış-büz) - rakibe zor hamle yaptırma, 2) Yagura (kale) - sağlam bağlantı tesuji'si, 3) Hanekomi - dar alana sıçrayarak rakibi rahatsız etme. Her tesuji'de rakibin en rahatsız edici yanıtını düşünün."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 9, "y": 6, "color": "black"},
+            {"x": 10, "y": 6, "color": "white"},
+            {"x": 9, "y": 7, "color": "white"}
+          ],
+          "text": "Tesuji pozisyonu - siyah ne yapabilir?"
+        },
+        {
+          "stones": [
+            {"x": 9, "y": 6, "color": "black"},
+            {"x": 10, "y": 6, "color": "white"},
+            {"x": 9, "y": 7, "color": "white"},
+            {"x": 9, "y": 5, "color": "black"}
+          ],
+          "text": "Tsuke! Yapışma hamlesi - rakip rahatsız"
+        },
+        {
+          "stones": [
+            {"x": 9, "y": 6, "color": "black"},
+            {"x": 10, "y": 6, "color": "white"},
+            {"x": 9, "y": 7, "color": "white"},
+            {"x": 9, "y": 5, "color": "black"},
+            {"x": 10, "y": 5, "color": "white"},
+            {"x": 8, "y": 6, "color": "black"}
+          ],
+          "text": "Beyaz yanıt verir - siyah keshi (kesme) hazırlığı"
+        },
+        {
+          "stones": [
+            {"x": 9, "y": 6, "color": "black"},
+            {"x": 10, "y": 6, "color": "white"},
+            {"x": 9, "y": 7, "color": "white"},
+            {"x": 9, "y": 5, "color": "black"},
+            {"x": 10, "y": 5, "color": "white"},
+            {"x": 8, "y": 6, "color": "black"},
+            {"x": 8, "y": 7, "color": "black"},
+            {"x": 10, "y": 7, "color": "white"}
+          ],
+          "text": "Keshi! Siyah keser - beyaz bölündü"
+        },
+        {
+          "stones": [
+            {"x": 9, "y": 6, "color": "black"},
+            {"x": 10, "y": 6, "color": "white"},
+            {"x": 9, "y": 7, "color": "white"},
+            {"x": 9, "y": 5, "color": "black"},
+            {"x": 10, "y": 5, "color": "white"},
+            {"x": 8, "y": 6, "color": "black"},
+            {"x": 8, "y": 7, "color": "black"},
+            {"x": 10, "y": 7, "color": "white"},
+            {"x": 11, "y": 7, "color": "white"},
+            {"x": 7, "y": 7, "color": "black"}
+          ],
+          "text": "Tesuji başarılı! Siyah avantaj sağladı"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l6-5-4"],
+  "next_lesson": "l6-5-6",
+  "required_exercise": null
+}

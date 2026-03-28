@@ -1,0 +1,147 @@
+{
+  "id": "l1-4-6",
+  "level": 1,
+  "module": 4,
+  "lesson": 6,
+  "title": "Oyun Sonu Prosedürü",
+  "description": "Pass, ölü taşları kaldırma, skor hesaplama pratiği.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Oyun sonuna doğru her iki oyuncu da karşılıklı fayda sağlayan hamleler oynamaya başlar. Faydalı hamle kalmadığında 'pass' (pas) derler. Üst üste iki pas = oyun biter."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 3, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 3, "y": 1, "color": "black"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 0, "y": 3, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 1, "y": 2, "color": "white"},
+        {"x": 5, "y": 5, "color": "white"},
+        {"x": 6, "y": 5, "color": "white"},
+        {"x": 7, "y": 5, "color": "white"},
+        {"x": 8, "y": 5, "color": "white"},
+        {"x": 5, "y": 6, "color": "white"},
+        {"x": 8, "y": 6, "color": "white"},
+        {"x": 5, "y": 7, "color": "white"},
+        {"x": 6, "y": 7, "color": "white"},
+        {"x": 7, "y": 7, "color": "white"},
+        {"x": 8, "y": 7, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 1, "type": "territory"},
+        {"x": 2, "y": 1, "type": "territory"},
+        {"x": 1, "y": 2, "type": "bad"},
+        {"x": 2, "y": 3, "type": "territory"},
+        {"x": 6, "y": 6, "type": "territory"},
+        {"x": 7, "y": 6, "type": "territory"}
+      ],
+      "annotation": "Oyun sonu: Beyaz taş (1,2) ölü mü? Siyah (2,2) ile çevrili, göz açamaz — ÖLÜ."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 3, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 8, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 8, "y": 6, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"},
+            {"x": 7, "y": 7, "color": "white"},
+            {"x": 8, "y": 7, "color": "white"}
+          ],
+          "text": "Adım 1: İki pas. Oyun bitti. Ölü taşları belirleyelim."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 3, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 8, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 8, "y": 6, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"},
+            {"x": 7, "y": 7, "color": "white"},
+            {"x": 8, "y": 7, "color": "white"}
+          ],
+          "captured": [{"x": 1, "y": 2}],
+          "text": "Adım 2: Beyaz (1,2) ölü! Göz açamaz. Tahtadan kaldırılır, siyahın tutsak sayısına eklenir."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 3, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 8, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 8, "y": 6, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"},
+            {"x": 7, "y": 7, "color": "white"},
+            {"x": 8, "y": 7, "color": "white"}
+          ],
+          "text": "Adım 3: Siyah alan = (1,1)+(2,1)+(1,2)+(2,3) = 4 puan. + 1 tutsak = 5. Beyaz alan = (6,6)+(7,6) = 2 puan. + Komi 5.5 = 7.5. Siyah kazandı!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Oyun sonu prosedürü özet:\n1. Her iki oyuncu pass der → oyun biter\n2. Ölü taşlar anlaşmayla belirlenir (uyuşmazlık olursa oynanır)\n3. Ölü taşlar kaldırılır ve tutsak sayılır\n4. Her oyuncunun bölgesi sayılır\n5. Tutsaklar ve komi eklenir\n6. Toplam skor karşılaştırılır"
+    }
+  ],
+  "prerequisites": ["l1-4-5"],
+  "next_lesson": "l1-5-1",
+  "required_exercise": "e1-4-6"
+}

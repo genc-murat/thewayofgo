@@ -4,85 +4,107 @@
   "module": 2,
   "lesson": 2,
   "title": "Kenarları Geliştirme",
-  "description": "Kenar taşlarını etkili kullanmayı öğrenin.",
-  "duration_minutes": 10,
+  "description": "Köşe shimari'lerinden kenarlara etkili genişleme. Hiraki, hasami ve tachi teknikleriyle kenar kontrolü.",
+  "duration_minutes": 15,
   "content": [
     {
       "type": "text",
-      "content": "Kenarları Geliştirme: Kenar taşlarını etkili kullanmayı öğrenin. Temel kavramları ve stratejileri öğrenin."
+      "content": "Kenar geliştirme, köşe temelinden başlayarak toprak genişletme sanatıdır. Uzman seviyesinde hiraki (genişleme), nobi (uzanma) ve tobi (sıçrama) arasındaki seçim, rakibin pozisyonuna göre yapılmalıdır. Kenar hamlelerinin her biri hem toprak hem de etki ( Thickness ) üretir."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 19,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        }
+        { "x": 3, "y": 3, "color": "black" },
+        { "x": 5, "y": 4, "color": "black" },
+        { "x": 15, "y": 16, "color": "white" },
+        { "x": 16, "y": 14, "color": "white" }
       ],
-      "highlights": [],
-      "annotation": "Kenarları Geliştirme"
+      "highlights": [
+        { "x": 7, "y": 3, "type": "good" },
+        { "x": 8, "y": 3, "type": "good" },
+        { "x": 6, "y": 3, "type": "territory" },
+        { "x": 9, "y": 3, "type": "territory" }
+      ],
+      "annotation": "Siyah sağ-alt shimari'den kenara hiraki (genişleme) noktaları"
+    },
+    {
+      "type": "text",
+      "content": "Köşede shimari (3,3)+(5,4) oluşturulduktan sonra kenara doğru hiraki yapmak toprağı genişletir. (7,3) noktası ideal hiraki'dir – shimari ile birleşerek sağlam kenar toprağı oluşturur. (8,3) daha geniş ama daha tehlikeli, rakip hasami yapabilir. Uzman seviyesinde rakibin yakınındaki taşların konumuna göre mesafe seçilir."
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 5, "y": 4, "color": "black" }
           ],
-          "text": "Pozisyon analizi başladı"
+          "text": "Siyah köşe shimari: sağlam temel oluşturuldu."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 5, "y": 4, "color": "black" },
+            { "x": 7, "y": 3, "color": "black" }
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Siyah hiraki (7,3): köşe + kenar birleşimi – 15+ point toprak potansiyeli."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 5, "y": 4, "color": "black" },
+            { "x": 7, "y": 3, "color": "black" },
+            { "x": 6, "y": 6, "color": "white" }
           ],
-          "text": "Sonraki hamleyi düşünün"
+          "text": "Beyaz hasami (6,6): kenar genişlemesini sınırlamaya çalışır."
+        },
+        {
+          "stones": [
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 5, "y": 4, "color": "black" },
+            { "x": 7, "y": 3, "color": "black" },
+            { "x": 6, "y": 6, "color": "white" },
+            { "x": 8, "y": 5, "color": "black" }
+          ],
+          "text": "Siyah tachi (8,5): hasami'yi geri iter, iki yönlü etki sağlar."
+        },
+        {
+          "stones": [
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 5, "y": 4, "color": "black" },
+            { "x": 7, "y": 3, "color": "black" },
+            { "x": 6, "y": 6, "color": "white" },
+            { "x": 8, "y": 5, "color": "black" },
+            { "x": 9, "y": 3, "color": "black" }
+          ],
+          "text": "Siyah kenarı tamamlar – (6,6)'daki Beyaz taş yalnız kalır, Siyah büyük kenar toprağı elde eder."
         }
       ]
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        { "x": 16, "y": 16, "color": "black" },
+        { "x": 14, "y": 15, "color": "black" },
+        { "x": 10, "y": 16, "color": "white" },
+        { "x": 3, "y": 3, "color": "white" },
+        { "x": 3, "y": 16, "color": "white" }
+      ],
+      "highlights": [
+        { "x": 12, "y": 16, "type": "good" },
+        { "x": 11, "y": 16, "type": "bad" },
+        { "x": 12, "y": 14, "type": "good" }
+      ],
+      "annotation": "Alt kenar yarışması: Doğru mesafe seçimi kritik – (12,16) iyidir, (11,16) çok yakın"
+    },
+    {
+      "type": "text",
+      "content": "Kenar geliştirmede altın kural: Rakip taş yoksa, büyük adımlarla (tobi) ilerleyin. Rakip taş yakınsa, daha dikkatli (nobi) oynayın. Hasami altında kalmamak için her zaman bağlantı (renraku) hattını koruyun. Kenar star noktaları (4-4 ve 3-3 arası) genellikle en verimli hiraki hedefleridir."
     }
   ],
-  "prerequisites": [
-    "l----1"
-  ],
-  "next_lesson": "l5-3-3",
+  "prerequisites": ["l5-2-1"],
+  "next_lesson": "l5-2-3",
   "required_exercise": "e5-2-2"
 }

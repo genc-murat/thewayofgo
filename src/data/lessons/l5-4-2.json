@@ -3,86 +3,117 @@
   "level": 5,
   "module": 4,
   "lesson": 2,
-  "title": "Ramifications",
-  "description": "Çift sonuçlu yose hesaplaması.",
-  "duration_minutes": 10,
+  "title": "Çift Sonuçlu Yose",
+  "description": "Miai hesaplaması ve çift sonuçlu (gote/gote) yose hamlelerinin değeri. Deiri ve miai counting teknikleri.",
+  "duration_minutes": 15,
   "content": [
     {
       "type": "text",
-      "content": "Ramifications: Çift sonuçlu yose hesaplaması. Temel kavramları ve stratejileri öğrenin."
+      "content": "Yose (son oyun) aşamasında bazı hamleler iki farklı sonuç üretir: Siyah oynarsa X point kazanır, Beyaz oynarsa Y point kazanır. Çift sonuçlu yose'de hamlenin gerçek değeri, her iki sonucun ortalamasıdır. Miai counting ile bu değer hesaplanır: (Siyah kazancı + Beyaz kazancı) / 2 = hamlenin miai değeri."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 19,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        }
+        { "x": 0, "y": 0, "color": "black" },
+        { "x": 0, "y": 1, "color": "black" },
+        { "x": 0, "y": 2, "color": "black" },
+        { "x": 1, "y": 0, "color": "black" },
+        { "x": 2, "y": 0, "color": "black" },
+        { "x": 1, "y": 3, "color": "white" },
+        { "x": 2, "y": 3, "color": "white" },
+        { "x": 3, "y": 3, "color": "white" },
+        { "x": 3, "y": 2, "color": "white" },
+        { "x": 3, "y": 1, "color": "white" },
+        { "x": 3, "y": 0, "color": "white" }
       ],
-      "highlights": [],
-      "annotation": "Ramifications"
+      "highlights": [
+        { "x": 1, "y": 1, "type": "good" },
+        { "x": 2, "y": 1, "type": "territory" },
+        { "x": 1, "y": 2, "type": "territory" },
+        { "x": 2, "y": 2, "type": "capture" }
+      ],
+      "annotation": "Çift sonuçlu yose: (1,1) ve (2,1) – Siyah veya Beyaz oynayabilir, 4 point fark"
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 0, "y": 0, "color": "black" },
+            { "x": 0, "y": 1, "color": "black" },
+            { "x": 0, "y": 2, "color": "black" },
+            { "x": 1, "y": 0, "color": "black" },
+            { "x": 2, "y": 0, "color": "black" },
+            { "x": 1, "y": 3, "color": "white" },
+            { "x": 2, "y": 3, "color": "white" },
+            { "x": 3, "y": 3, "color": "white" },
+            { "x": 3, "y": 2, "color": "white" },
+            { "x": 3, "y": 1, "color": "white" },
+            { "x": 3, "y": 0, "color": "white" }
           ],
-          "text": "Pozisyon analizi başladı"
+          "text": "Sınır pozisyonu: A ve B noktaları (1,1) ve (2,1) – kim oynarsa kazançlı."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            { "x": 0, "y": 0, "color": "black" },
+            { "x": 0, "y": 1, "color": "black" },
+            { "x": 0, "y": 2, "color": "black" },
+            { "x": 1, "y": 0, "color": "black" },
+            { "x": 2, "y": 0, "color": "black" },
+            { "x": 1, "y": 3, "color": "white" },
+            { "x": 2, "y": 3, "color": "white" },
+            { "x": 3, "y": 3, "color": "white" },
+            { "x": 3, "y": 2, "color": "white" },
+            { "x": 3, "y": 1, "color": "white" },
+            { "x": 3, "y": 0, "color": "white" },
+            { "x": 1, "y": 1, "color": "black" }
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Siyah (1,1) oynar: Siyah 3 point toprak kazanır (deiri: 3 point gote)."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 0, "y": 0, "color": "black" },
+            { "x": 0, "y": 1, "color": "black" },
+            { "x": 0, "y": 2, "color": "black" },
+            { "x": 1, "y": 0, "color": "black" },
+            { "x": 2, "y": 0, "color": "black" },
+            { "x": 1, "y": 3, "color": "white" },
+            { "x": 2, "y": 3, "color": "white" },
+            { "x": 3, "y": 3, "color": "white" },
+            { "x": 3, "y": 2, "color": "white" },
+            { "x": 3, "y": 1, "color": "white" },
+            { "x": 3, "y": 0, "color": "white" },
+            { "x": 2, "y": 1, "color": "white" }
           ],
-          "text": "Sonraki hamleyi düşünün"
+          "text": "Alternatif: Beyaz (2,1) oynar: Beyaz 1 point toprak kazanır + Siyah 3 point kaybeder = toplam 4 point fark!"
+        },
+        {
+          "stones": [
+            { "x": 0, "y": 0, "color": "black" },
+            { "x": 0, "y": 1, "color": "black" },
+            { "x": 0, "y": 2, "color": "black" },
+            { "x": 1, "y": 0, "color": "black" },
+            { "x": 2, "y": 0, "color": "black" },
+            { "x": 1, "y": 3, "color": "white" },
+            { "x": 2, "y": 3, "color": "white" },
+            { "x": 3, "y": 3, "color": "white" },
+            { "x": 3, "y": 2, "color": "white" },
+            { "x": 3, "y": 1, "color": "white" },
+            { "x": 3, "y": 0, "color": "white" },
+            { "x": 1, "y": 1, "color": "black" },
+            { "x": 2, "y": 1, "color": "black" }
+          ],
+          "text": "Siyah peşinden (2,1): Miai değeri = (3+4)/2 = 3.5 point – bu büyük yose hamlesi!"
         }
       ]
+    },
+    {
+      "type": "text",
+      "content": "Miai counting kuralı: Eğer Siyah oynarsa X point kazanıyor ve Beyaz oynarsa Y point kazanıyor ise, hamlenin miai değeri (X+Y)/2'dir. Büyük yose hamleleri (miai > 5 point) genellikle erken oynanmalıdır. Sente yose hamleleri her zaman gote yose'den önceliklidir – bedavaya point kazanırsınız."
     }
   ],
-  "prerequisites": [
-    "l----1"
-  ],
+  "prerequisites": ["l5-4-1"],
   "next_lesson": "l5-4-3",
   "required_exercise": "e5-4-2"
 }

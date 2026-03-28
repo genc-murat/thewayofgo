@@ -1,0 +1,123 @@
+{
+  "id": "l1-2-8",
+  "level": 1,
+  "module": 2,
+  "lesson": 8,
+  "title": "Ölü ve Dirik Taşlar",
+  "description": "Hangi taşların yaşayacağını, hangilerinin ölü sayılacağını öğrenin.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Go'da taşlar tahtadan fiziksel olarak kaldırılmadan bile 'ölü' sayılabilir. Ölü taş (死に石, shini-ishi), iki gerçek göz açamayacak kadar sıkışmış taştır. Dirik (yaşayan) taş ise iki göz açabilen veya açma potansiyeli olan taştır."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 2, "y": 1, "color": "black"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 0, "color": "white"},
+        {"x": 3, "y": 1, "color": "white"},
+        {"x": 3, "y": 2, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 1, "type": "good"}
+      ],
+      "annotation": "Dirik grup: Siyah grubun (1,1) gözü var. İkinci göz için yer var mı?"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 7, "y": 6, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 6, "y": 4, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"}
+          ],
+          "text": "Siyah 2x2 blok tamamen çevrildi. İçeride sıfır göz açıklığı var — ÖLÜ grup."
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 7, "y": 6, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 6, "y": 4, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"},
+            {"x": 7, "y": 4, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"}
+          ],
+          "text": "Beyaz grubun özgürlükleri kapanıyor. Siyah dışarıda bir grup oluşturuyor..."
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 7, "y": 6, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 6, "y": 4, "color": "white"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"}
+          ],
+          "captured": [{"x": 5, "y": 5}, {"x": 6, "y": 5}, {"x": 5, "y": 6}, {"x": 6, "y": 6}],
+          "text": "İçteki siyah grup tamamen çevrildi ve yakalandı — ÖLÜ idi, şahir tahtadan kalktı."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Ölü taşları tanımanın yolu: Eğer bir grubun yaşaması için yeterli alan (iki göz) yoksa ve kaçamıyorsa, o grup ölüdür. Oyun sonunda ölü taşlar tutsak olarak sayılır, tahtadan fiziksel kaldırılmalarına gerek yoktur."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 5, "color": "black"},
+        {"x": 1, "y": 5, "color": "black"},
+        {"x": 2, "y": 5, "color": "black"},
+        {"x": 3, "y": 5, "color": "black"},
+        {"x": 0, "y": 6, "color": "black"},
+        {"x": 3, "y": 6, "color": "black"},
+        {"x": 0, "y": 7, "color": "black"},
+        {"x": 1, "y": 7, "color": "black"},
+        {"x": 2, "y": 7, "color": "black"},
+        {"x": 3, "y": 7, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 6, "type": "good"},
+        {"x": 2, "y": 6, "type": "good"}
+      ],
+      "annotation": "DİRİK grup: İki gerçek göz (1,6) ve (2,6). Bu grup asla yakalanamaz."
+    },
+    {
+      "type": "text",
+      "content": "Özet: Bir grubun durumunu değerlendirirken, 'bu grup iki gerçek göz açabilir mi?' sorusunu sorun. Evet ise dirik (yaşıyor), hayır ise ölü. Oyun sonunda ölü gruplar hesaplamaya dahil edilir."
+    }
+  ],
+  "prerequisites": ["l1-2-7"],
+  "next_lesson": "l1-3-1",
+  "required_exercise": "e1-2-8"
+}

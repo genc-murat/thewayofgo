@@ -1,0 +1,119 @@
+{
+  "id": "l4-5-6",
+  "level": 4,
+  "module": 5,
+  "lesson": 6,
+  "title": "Sentez: Tam Oyun Analizi 2",
+  "description": "Oyunun chuban ve yose aşamalarını analiz edin.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "İkinci yarıda chuban (orta oyun) savaşları ve yose (son oyun) hesaplamalarını inceleyeceğiz. Chuban'da etki alanlarını bölgeye dönüştürme mücadelesi verilirken, yose'de her hamlenin nokta değeri hesaplanır."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 1, "y": 1, "color": "black"},
+        {"x": 2, "y": 1, "color": "black"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 2, "y": 2, "color": "white"},
+        {"x": 0, "y": 3, "color": "black"},
+        {"x": 11, "y": 11, "color": "white"},
+        {"x": 10, "y": 11, "color": "white"},
+        {"x": 11, "y": 10, "color": "white"},
+        {"x": 12, "y": 9, "color": "white"},
+        {"x": 7, "y": 3, "color": "black"},
+        {"x": 7, "y": 5, "color": "white"},
+        {"x": 5, "y": 8, "color": "black"},
+        {"x": 8, "y": 8, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 3, "y": 3, "type": "territory"},
+        {"x": 9, "y": 9, "type": "territory"},
+        {"x": 7, "y": 4, "type": "liberty"}
+      ],
+      "annotation": "Chuban'da bölge sınırları belirleniyor"
+    },
+    {
+      "type": "text",
+      "content": "Yose hesaplama: Her yose hamlesinin değeri 'hamle sayısı × bölge büyüklüğü' ile ölçülür. Sente yose hamlesi, rakibi yanıtla zorladığı için değeri iki katıdır. Büyük yose hamlelerinden başlayıp küçüklere doğru ilerleyin."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 11, "y": 11, "color": "white"},
+            {"x": 10, "y": 11, "color": "white"},
+            {"x": 11, "y": 10, "color": "white"},
+            {"x": 12, "y": 9, "color": "white"}
+          ],
+          "text": "İki taraf da köşelerinde bölge kurdu"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 11, "y": 11, "color": "white"},
+            {"x": 10, "y": 11, "color": "white"},
+            {"x": 11, "y": 10, "color": "white"},
+            {"x": 12, "y": 9, "color": "white"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 7, "y": 5, "color": "white"}
+          ],
+          "text": "Kenar mücadelesi - chuban başlıyor"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 11, "y": 11, "color": "white"},
+            {"x": 10, "y": 11, "color": "white"},
+            {"x": 11, "y": 10, "color": "white"},
+            {"x": 12, "y": 9, "color": "white"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 5, "y": 8, "color": "black"},
+            {"x": 8, "y": 8, "color": "white"}
+          ],
+          "text": "Alt kenarda da savaş sürüyor"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 11, "y": 11, "color": "white"},
+            {"x": 10, "y": 11, "color": "white"},
+            {"x": 11, "y": 10, "color": "white"},
+            {"x": 12, "y": 9, "color": "white"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 5, "y": 8, "color": "black"},
+            {"x": 8, "y": 8, "color": "white"},
+            {"x": 6, "y": 3, "color": "black"}
+          ],
+          "text": "Yose başlıyor - büyük hamleler önce oynanır"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l4-5-5"],
+  "next_lesson": "l4-6-1",
+  "required_exercise": null
+}

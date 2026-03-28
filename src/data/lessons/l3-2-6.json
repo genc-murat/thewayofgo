@@ -1,0 +1,80 @@
+{
+  "id": "l3-2-6",
+  "level": 3,
+  "module": 2,
+  "lesson": 6,
+  "title": "Orta Oyun Geçiş",
+  "description": "Açılıştan orta oyuna geçiş stratejisi.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Fuseki (açılış) bittiğinde oyun orta oyun (chūban) safhasına geçer. Bu geçiş kritik öneme sahiptir: köşe josekileri tamamlanmış, kenarlarda büyük taşlar yerleşmiştir. Artık merkez mücadelesi ve etkileşim öncelik kazanır."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 6, "y": 2, "color": "white"},
+        {"x": 2, "y": 6, "color": "white"},
+        {"x": 6, "y": 6, "color": "black"},
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 5, "y": 3, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 3, "y": 5, "type": "good"},
+        {"x": 5, "y": 5, "type": "good"}
+      ],
+      "annotation": "Fuseki sonrası pozisyon: Köşeler doldu, merkez mücadelesi başlıyor. Büyük noktalar (3,5) ve (5,5)."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"}
+          ],
+          "text": "Orta oyun başlıyor. Her iki tarafın da köşeleri ve kenarları var. Merkez büyük hamleler."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 3, "y": 5, "color": "black"}
+          ],
+          "text": "Siyah (3,5) oynadı — hem kendi alanını genişletiyor hem beyazın etkisini sınırlıyor. Sente hamle!"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 5, "y": 5, "color": "white"}
+          ],
+          "text": "Beyaz (5,5) ile yanıt verdi. Alan mücadelesi yoğunlaşıyor."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Geçiş döneminde öncelikler:\n1. Büyük açık noktaları (大場, ōba) kapatin\n2. Zayıf grupları güçlendirin\n3. Rakibin etki alanını azaltın\n4. Merkez kontrolü için mücadele edin\n5. Henüz erken — küçük yose hamlelerinden kaçının"
+    }
+  ],
+  "prerequisites": ["l3-2-5"],
+  "next_lesson": "l3-2-7",
+  "required_exercise": null
+}

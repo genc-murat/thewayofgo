@@ -1,0 +1,100 @@
+{
+  "id": "l1-4-1",
+  "level": 1,
+  "module": 4,
+  "lesson": 1,
+  "title": "Ko Kuralı Nedir?",
+  "description": "Ko kavramını ve sonsuz döngü engelini öğrenin.",
+  "duration_minutes": 8,
+  "content": [
+    {
+      "type": "text",
+      "content": "Ko (劫), Go'daki özel bir durumdur. Bir taş yakalandığında, rakip hemen geri alamıyorsa bu bir ko pozisyonudur. Ko kuralı, sonsuz döngüyü engeller: Bir hamle sonrasında tam aynı tahta durumu oluşuyorsa, o hamleyi yapmak yasaktır."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 1, "y": 1, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 1, "color": "black"},
+        {"x": 1, "y": 2, "color": "white"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 3, "y": 2, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 1, "type": "capture"}
+      ],
+      "annotation": "Ko pozisyonu: Beyaz (2,1) tek özgürlüklü. Siyah yakalayabilir."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"}
+          ],
+          "text": "Beyaz taş (2,1) pozisyonunda. Siyah taşın tek özgürlüğü yok — tam kuşatılmış gibi görünüyor..."
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"}
+          ],
+          "text": "Beyaz taşın (2,1) bir özgürlüğü var: (1,1) değil, (3,1) değil... Aslında siyah (2,1)'i çevirdi ama beyaz da siyah (1,1)'i tehdit ediyor."
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"}
+          ],
+          "captured": [{"x": 2, "y": 1}],
+          "text": "Siyah (2,1) oynayarak beyaz taşı yakaladı! KO oluştu!"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 2, "color": "white"}
+          ],
+          "text": "Şimdi beyaz (1,1)'i yakalamak istiyor... Ama (2,1) az önce siyah tarafından alındı. Aynı pozisyonu tekrarlamak YASAKTIR!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Ko kuralı basitçe: Aynı pozisyonu tekrarlayan hamle yasaktır. Bu, 'positional superko' olarak bilinir. Pratikte, ko sırasında rakip önce başka bir yerde oynamak zorundadır — buna ko tehdidi denir."
+    },
+    {
+      "type": "text",
+      "content": "Ko, Go'nun en ilginç taktik unsurlarından biridir. Doğru ko tehdidi seçimi, oyunun kaderini belirleyebilir. İleri seviye oyuncular ko'ları önceden hesaplar ve ko tehditlerini stratejik olarak kullanır."
+    }
+  ],
+  "prerequisites": ["l1-3-6"],
+  "next_lesson": "l1-4-2",
+  "required_exercise": "e1-4-1"
+}

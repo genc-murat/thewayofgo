@@ -1,0 +1,63 @@
+{
+  "id": "l1-5-1",
+  "level": 1,
+  "module": 5,
+  "lesson": 1,
+  "title": "Seviye 1 Genel Tekrar - Taş Yerleştirme",
+  "description": "Tahta, kesişim noktaları, taş yerleştirme ve temel kavramların tekrarı.",
+  "duration_minutes": 8,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bu derste Level 1'in temel taş yerleştirme kavramlarını tekrar edeceğiz: Tahta yapısı, kesişim noktaları, taş rengi ve sıra kavramları."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 8, "y": 8, "color": "white"},
+        {"x": 2, "y": 6, "color": "white"},
+        {"x": 6, "y": 2, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 0, "y": 0, "type": "good"},
+        {"x": 4, "y": 4, "type": "good"}
+      ],
+      "annotation": "9x9 Go tahtası: 81 kesişim noktası, köşe (2 özgürlük), kenar (3 özgürlük), merkez (4 özgürlük)"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [],
+          "text": "Boş 9x9 tahta. Siyah başlıyor. 81 kesişim noktasına taş yerleştirilebilir."
+        },
+        {
+          "stones": [{"x": 4, "y": 4, "color": "black"}],
+          "text": "Siyah merkeze oynadı — 4 özgürlüklü başlangıç pozisyonu. En esnek nokta."
+        },
+        {
+          "stones": [{"x": 4, "y": 4, "color": "black"}, {"x": 0, "y": 0, "color": "white"}],
+          "text": "Beyaz köşeye oynadı — sadece 2 özgürlük. Köşe taşları kolay yakalanır ama alan kontrolü güçlüdür."
+        },
+        {
+          "stones": [{"x": 4, "y": 4, "color": "black"}, {"x": 0, "y": 0, "color": "white"}, {"x": 6, "y": 2, "color": "black"}],
+          "text": "Siyah bir köşeye daha oynadı. Kenar taşları 3 özgürlüğe sahiptir."
+        },
+        {
+          "stones": [{"x": 4, "y": 4, "color": "black"}, {"x": 0, "y": 0, "color": "white"}, {"x": 6, "y": 2, "color": "black"}, {"x": 2, "y": 6, "color": "white"}],
+          "text": "Her hamle değerlidir! 9x9'da toplam ~50 hamle yapılır. Her kesişim noktası potansiyel puan."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Hatırlatma: Siyah her zaman başlar. Oyuncular sırayla oynar. Bir taş konduğunda hareket ettirilemez. Pass yapılabilir. İki pas = oyun sonu."
+    }
+  ],
+  "prerequisites": ["l1-4-6"],
+  "next_lesson": "l1-5-2",
+  "required_exercise": "e1-5-1"
+}

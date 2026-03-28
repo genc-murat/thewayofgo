@@ -1,0 +1,143 @@
+{
+  "id": "l2-5-3",
+  "level": 2,
+  "module": 5,
+  "lesson": 3,
+  "title": "Bağlantı Pratiği",
+  "description": "Taşları birleştirerek güçlü gruplar oluşturma alıştırmaları. Doğrudan ve dolaylı bağlantıları pratik yapın.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Go'da bağlantı (connection) hayati bir kavramdır. Taşlarınızı birleştirerek daha güçlü gruplar oluşturursunuz. Bağlı taşlar birlikte hareket eder ve daha zayıf hale gelmez. Bu derste doğrudan (çapraz ve düz) ve kosumi (çapraz köşe) bağlantılarını pratik yapacağız."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 5, "y": 3, "color": "black"},
+        {"x": 4, "y": 5, "color": "white"},
+        {"x": 3, "y": 5, "color": "white"},
+        {"x": 2, "y": 4, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 3, "type": "good"},
+        {"x": 4, "y": 4, "type": "bad"}
+      ],
+      "annotation": "Problem 1: Siyah taşları bağlayın. (4,3) doğrudan bağlantı en iyi hamle. (4,4) ise kötü çünkü beyaz kesebilir."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 2, "y": 4, "color": "white"}
+          ],
+          "text": "İki siyah taş (3,3) ve (5,3) arasında bir boşluk var. Beyaz tehdit oluşturuyor."
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 2, "y": 4, "color": "white"}
+          ],
+          "text": "Siyah (4,3) oynadı - doğrudan bağlantı! Üç siyah taş artık güçlü bir grup oluşturuyor."
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 2, "y": 4, "color": "white"},
+            {"x": 4, "y": 4, "color": "white"}
+          ],
+          "text": "Beyaz (4,4) oynayarak rahatsız etmeye çalıştı ama siyah grup hâlâ güçlü. Bağlantı başarılı!"
+        }
+      ]
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 6, "y": 6, "color": "black"},
+        {"x": 7, "y": 7, "color": "black"},
+        {"x": 5, "y": 7, "color": "white"},
+        {"x": 8, "y": 6, "color": "white"},
+        {"x": 7, "y": 5, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 7, "y": 6, "type": "good"},
+        {"x": 6, "y": 7, "type": "good"}
+      ],
+      "annotation": "Problem 2: İki siyah taş çapraz konumda. Kosumi (çapraz köşe) bağlantısı için (7,6) veya (6,7) oynanabilir."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 8, "y": 6, "color": "white"},
+            {"x": 7, "y": 5, "color": "white"}
+          ],
+          "text": "Siyah taşlar (6,6) ve (7,7) çapraz konumda. Aralarındaki bağlantı noktaları: (7,6) ve (6,7)."
+        },
+        {
+          "stones": [
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 8, "y": 6, "color": "white"},
+            {"x": 7, "y": 5, "color": "white"}
+          ],
+          "text": "Siyah (7,6) oynadı - kosumi bağlantısı! Her iki taşla da temas ediyor."
+        },
+        {
+          "stones": [
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 8, "y": 6, "color": "white"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"}
+          ],
+          "text": "Beyaz (6,7) oynayarak kesmeye çalıştı ama siyah grup hâlâ (7,6) üzerinden bağlı."
+        },
+        {
+          "stones": [
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 8, "y": 6, "color": "white"},
+            {"x": 7, "y": 5, "color": "white"},
+            {"x": 6, "y": 7, "color": "white"},
+            {"x": 8, "y": 7, "color": "black"}
+          ],
+          "text": "Siyah (8,7) oynayarak beyaz taşı tehdit etti. Bağlantı sayesinde siyah güçlü kaldı."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Bağlantı kuralları: 1) Doğrudan bağlantı (tsuke) en güvenlidir - taşlar yan yana gelir. 2) Kosumi (çapraz köşe) bağlantısı da güçlüdür - iki taş arasındaki köşeye oynanır. 3) Bir boşluk bırakan bağlantılar (kezuru) risklidir ve rakip tarafından kesilebilir."
+    }
+  ],
+  "prerequisites": ["l2-5-2"],
+  "next_lesson": "l2-5-4",
+  "required_exercise": null
+}

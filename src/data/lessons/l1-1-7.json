@@ -1,0 +1,112 @@
+{
+  "id": "l1-1-7",
+  "level": 1,
+  "module": 1,
+  "lesson": 7,
+  "title": "Atarı Anlama",
+  "description": "Atari kavramını, atariye tepkileri ve atari durumundan kaçışı öğrenin.",
+  "duration_minutes": 8,
+  "content": [
+    {
+      "type": "text",
+      "content": "Atari ( Japonca'da 'tehdit' anlamına gelir), bir taşın veya grubun yalnızca bir özgürlüğü kaldığında oluşur. Eğer rakip bir hamle daha oynarsa, taşınız yakalanır. Atari, Go'daki en temel tehdit kavramıdır."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 3, "y": 4, "color": "white"},
+        {"x": 5, "y": 4, "color": "white"},
+        {"x": 4, "y": 3, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 4, "type": "capture"},
+        {"x": 4, "y": 5, "type": "liberty"}
+      ],
+      "annotation": "Atari! Siyah taşın tek özgürlüğü (4,5) kaldı. Beyaz (4,5) oynarsa siyah yakalanır."
+    },
+    {
+      "type": "text",
+      "content": "Atariye üç şekilde tepki verebilirsiniz: (1) Kaçış — özgürlük kazandıran hamle oynamak, (2) Yakalama — rakibi yakalayarak özgürlük kazanmak, (3) Bağlanma — başka bir gruba katılarak özgürlük kazanmak."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"}
+          ],
+          "text": "Siyah taşın 2 özgürlüğü var: (2,3) ve (2,5). Beyaz o hamle oynamadı, siyah hâlâ güvende."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"},
+            {"x": 2, "y": 5, "color": "white"}
+          ],
+          "text": "Beyaz (2,5) oynadı! Siyah taşın tek özgürlüğü (2,3) kaldı — ATARİ!"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"},
+            {"x": 2, "y": 5, "color": "white"}
+          ],
+          "text": "Siyah kaçış oynadı: (2,3). Grubun artık 3 özgürlüğü var: (1,3), (3,3) ve (2,2). Güvende!"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"}
+          ],
+          "text": "Beyaz tekrar atariye aldı. Siyah grubun özgürlükleri: (1,3) ve (3,3). Yine atari olma riski var."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 1, "y": 4, "color": "white"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"}
+          ],
+          "text": "Siyah (3,3) oynayarak grubunu genişletti. Artık 3 özgürlük var ve güvende."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Atari her zaman kötü değildir! Bazen rakibinize atari vermek (atari tehdidi) onu zor bir konuma sokabilir. Atari vermek ve almak, Go'daki temel mücadele araçlarıdır."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 5, "y": 5, "color": "black"},
+        {"x": 5, "y": 6, "color": "black"},
+        {"x": 6, "y": 5, "color": "white"},
+        {"x": 6, "y": 6, "color": "white"},
+        {"x": 4, "y": 5, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 6, "type": "good"},
+        {"x": 5, "y": 7, "type": "liberty"}
+      ],
+      "annotation": "Siyah atari durumunda. (4,6) oynayarak kaçabilir veya rakibi yakalayabilir."
+    }
+  ],
+  "prerequisites": ["l1-1-6"],
+  "next_lesson": "l1-1-8",
+  "required_exercise": "e1-1-7"
+}

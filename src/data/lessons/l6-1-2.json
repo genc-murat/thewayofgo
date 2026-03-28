@@ -3,91 +3,144 @@
   "level": 6,
   "module": 1,
   "lesson": 2,
-  "title": "Usta Analizi",
-  "description": "Profesyonel analiz teknikleri.",
-  "duration_minutes": 10,
+  "title": "Usta Seviye Oyun Analizi",
+  "description": "Profesyonel oyunların derinlemesine analizi, kalıp okuma ve stratejik vizyon geliştirme. Meijin liglerindeki oyunların nasıl okunacağını öğrenin.",
+  "duration_minutes": 20,
   "content": [
     {
       "type": "text",
-      "content": "Usta Analizi: Profesyonel analiz teknikleri. Bu derste temel kavramları öğreneceksiniz."
+      "content": "Usta seviyesinde oyun analizi, her hamlenin ardındaki niyeti anlamayı gerektirir. Fuseki'de atılan bir taş, 100 hamle sonra yose'de belirleyici olabilir. Profesyonel oyunlarda suji (akıcı stil) ve aji (potansiyel) kavramları kritik rol oynar. Bu derste Honinbo tarzı oyun analizi tekniğini öğreneceğiz."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 19,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        },
-        {
-          "x": 5,
-          "y": 4,
-          "color": "black"
-        }
+        { "x": 3, "y": 15, "color": "black" },
+        { "x": 15, "y": 3, "color": "white" },
+        { "x": 3, "y": 3, "color": "white" },
+        { "x": 15, "y": 15, "color": "black" },
+        { "x": 16, "y": 3, "color": "black" },
+        { "x": 2, "y": 13, "color": "white" },
+        { "x": 9, "y": 3, "color": "black" },
+        { "x": 5, "y": 3, "color": "white" },
+        { "x": 13, "y": 16, "color": "black" },
+        { "x": 3, "y": 9, "color": "white" },
+        { "x": 10, "y": 16, "color": "black" },
+        { "x": 6, "y": 15, "color": "white" }
       ],
-      "highlights": [],
-      "annotation": "Usta Analizi"
+      "highlights": [
+        { "x": 10, "y": 16, "type": "good" },
+        { "x": 13, "y": 16, "type": "good" },
+        { "x": 9, "y": 3, "type": "territory" },
+        { "x": 5, "y": 3, "type": "vital" }
+      ],
+      "annotation": "Siyah üst kenarda moyo oluştururken Beyaz sol tarafa yapılandırıyor. Her iki taraf da aji saklıyor."
+    },
+    {
+      "type": "text",
+      "content": "Bu pozisyonda Siyah'ın (10,16) ve (13,16) hamleleri üst kenar boyunca büyük bir etki alanı (geniş moyo) oluşturuyor. Beyaz'ın (5,3) hamlesi ise köşeyi sağlama alırken Siyah'ın sol üst moyosunu sınırlıyor. Analizde dikkat edilecek nokta: Beyaz'ın (2,13) hamlesi shimari değil, kikashi'dir — gelecekteki A-kesme noktasının aji'sini korur."
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 3, "y": 15, "color": "black" },
+            { "x": 15, "y": 3, "color": "white" },
+            { "x": 3, "y": 3, "color": "white" },
+            { "x": 15, "y": 15, "color": "black" }
           ],
-          "text": "Pozisyonu inceleyin"
+          "text": "1-4: İki hoshi + iki komoku açılışı. Klasik dengeli fuseki."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            { "x": 3, "y": 15, "color": "black" },
+            { "x": 15, "y": 3, "color": "white" },
+            { "x": 3, "y": 3, "color": "white" },
+            { "x": 15, "y": 15, "color": "black" },
+            { "x": 16, "y": 3, "color": "black" },
+            { "x": 2, "y": 13, "color": "white" }
           ],
-          "text": "Taşlar yerleşti"
+          "text": "5: Siyah köşeye yaklaşım (kakari) – Beyaz 6 ile shimari niyetiyle sol kenara genişler."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 3, "y": 15, "color": "black" },
+            { "x": 15, "y": 3, "color": "white" },
+            { "x": 3, "y": 3, "color": "white" },
+            { "x": 15, "y": 15, "color": "black" },
+            { "x": 16, "y": 3, "color": "black" },
+            { "x": 2, "y": 13, "color": "white" },
+            { "x": 9, "y": 3, "color": "black" },
+            { "x": 5, "y": 3, "color": "white" }
           ],
-          "text": "İleri adımları düşünün"
+          "text": "7: Siyah üst kenarın merkezine tenuki! Büyük nokta. 8: Beyaz köşeyi sağlam tutar, aji korur."
+        },
+        {
+          "stones": [
+            { "x": 3, "y": 15, "color": "black" },
+            { "x": 15, "y": 3, "color": "white" },
+            { "x": 3, "y": 3, "color": "white" },
+            { "x": 15, "y": 15, "color": "black" },
+            { "x": 16, "y": 3, "color": "black" },
+            { "x": 2, "y": 13, "color": "white" },
+            { "x": 9, "y": 3, "color": "black" },
+            { "x": 5, "y": 3, "color": "white" },
+            { "x": 13, "y": 16, "color": "black" },
+            { "x": 3, "y": 9, "color": "white" }
+          ],
+          "text": "9: Siyah üst kenarı tamamlar – dev moyo tehdidi! 10: Beyaz sol kenarı güçlendirir, yaşama garantisi arar."
+        },
+        {
+          "stones": [
+            { "x": 3, "y": 15, "color": "black" },
+            { "x": 15, "y": 3, "color": "white" },
+            { "x": 3, "y": 3, "color": "white" },
+            { "x": 15, "y": 15, "color": "black" },
+            { "x": 16, "y": 3, "color": "black" },
+            { "x": 2, "y": 13, "color": "white" },
+            { "x": 9, "y": 3, "color": "black" },
+            { "x": 5, "y": 3, "color": "white" },
+            { "x": 13, "y": 16, "color": "black" },
+            { "x": 3, "y": 9, "color": "white" },
+            { "x": 10, "y": 16, "color": "black" },
+            { "x": 6, "y": 15, "color": "white" }
+          ],
+          "text": "11-12: Siyah moyo'yu alt kenara kadar genişletir, Beyaz(invade) ile sol-alt bölgede yaşama çabası. Stratejik gerilim dorukta!"
         }
       ]
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        { "x": 3, "y": 15, "color": "black" },
+        { "x": 15, "y": 3, "color": "white" },
+        { "x": 3, "y": 3, "color": "white" },
+        { "x": 15, "y": 15, "color": "black" },
+        { "x": 16, "y": 3, "color": "black" },
+        { "x": 2, "y": 13, "color": "white" },
+        { "x": 9, "y": 3, "color": "black" },
+        { "x": 5, "y": 3, "color": "white" },
+        { "x": 13, "y": 16, "color": "black" },
+        { "x": 3, "y": 9, "color": "white" },
+        { "x": 10, "y": 16, "color": "black" },
+        { "x": 6, "y": 15, "color": "white" }
+      ],
+      "highlights": [
+        { "x": 9, "y": 9, "type": "vital" },
+        { "x": 7, "y": 12, "type": "bad" },
+        { "x": 12, "y": 10, "type": "good" },
+        { "x": 16, "y": 9, "type": "territory" }
+      ],
+      "annotation": "Chuban analizi: Siyah'ın sağ taraf moyo'su ~45 puan potansiyel taşıyor. Beyaz merkezde sabaki yapabilir mi?"
+    },
+    {
+      "type": "text",
+      "content": "Usta analizin altın kuralı: 'Oyun sırasında değil, oyun sonra analiz edin.' Her hamle için üç soru sorun: (1) Bu hamle hangi aji'yi kullandı? (2) Hangi yeni aji yarattı? (3) Rakibin en iyi cevabı (fuseki-zuke) neydi? Profesyonel oyun kayıtlarını (kifu) incelemek, pattern recognition (kalıp tanıma) becerinizi geliştirir. Meijin seviyesinde oyuncular 5000+ kifu okumuş olur."
     }
   ],
-  "prerequisites": [
-    "l6-1-1"
-  ],
+  "prerequisites": ["l6-1-1"],
   "next_lesson": "l6-1-3",
   "required_exercise": "e6-1-2"
 }

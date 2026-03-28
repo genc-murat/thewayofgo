@@ -1,0 +1,143 @@
+{
+  "id": "l2-5-1",
+  "level": 2,
+  "module": 5,
+  "lesson": 1,
+  "title": "Yakalama Pratiği 1",
+  "description": "9x9 tahtada temel taş yakalama alıştırmaları. Atari durumundaki taşları yakalamayı pratik yapın.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bu derste temel yakalama (capture) pratikleri yapacağız. Atari durumundaki taşları yakalamak, Go'nun en temel becerilerinden biridir. Her problemi dikkatle inceleyin ve doğru hamleyi bulun."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 6, "y": 2, "color": "white"},
+        {"x": 5, "y": 2, "color": "black"},
+        {"x": 7, "y": 2, "color": "black"},
+        {"x": 6, "y": 1, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 6, "y": 3, "type": "capture"}
+      ],
+      "annotation": "Problem 1: Beyaz taşın son özgürlüğü nerede? (6,3) noktasına oynayarak yakalayın."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 6, "y": 1, "color": "black"}
+          ],
+          "text": "Beyaz taş (6,2) konumunda. Üç tarafı siyah tarafından çevrili. Tek özgürlüğü: (6,3)."
+        },
+        {
+          "stones": [
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 6, "y": 1, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"}
+          ],
+          "text": "Siyah (6,3) oynadı! Beyaz taşın son özgürlüğü kapatıldı.",
+          "captured": [{"x": 6, "y": 2}]
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 6, "y": 1, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"}
+          ],
+          "text": "Beyaz taş yakalandı ve tahtadan kaldırıldı. Siyah 1 puan kazandı."
+        }
+      ]
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 2, "y": 6, "color": "white"},
+        {"x": 3, "y": 6, "color": "white"},
+        {"x": 1, "y": 6, "color": "black"},
+        {"x": 4, "y": 6, "color": "black"},
+        {"x": 2, "y": 5, "color": "black"},
+        {"x": 3, "y": 5, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 7, "type": "capture"},
+        {"x": 3, "y": 7, "type": "liberty"}
+      ],
+      "annotation": "Problem 2: İki beyaz taşın ortak özgürlükleri (2,7) ve (3,7). Hangisi önce kapatılmalı?"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"}
+          ],
+          "text": "İki beyaz taşın 2 özgürlüğü var: (2,7) ve (3,7)."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"}
+          ],
+          "text": "Siyah (2,7) oynadı. Beyaz taşlar artık tek özgürlükle atari durumunda!"
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 3, "y": 7, "color": "white"},
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"}
+          ],
+          "text": "Beyaz (3,7) oynayarak kaçmaya çalıştı. Ama siyahın bir hamlesi daha var..."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 3, "y": 7, "color": "white"},
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 4, "y": 7, "color": "black"}
+          ],
+          "text": "Siyah (4,7) oynadı! Beyaz grubun tüm özgürlükleri kapatıldı - 3 taş yakalandı!",
+          "captured": [{"x": 2, "y": 6}, {"x": 3, "y": 6}, {"x": 3, "y": 7}]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Yakalama ipucu: Her zaman rakip taşların özgürlük sayısını sayın. Tek özgürlük kaldığında atari (atari) vardır - bir hamleyle yakalayabilirsiniz. İki veya daha fazla özgürlük varsa, önce özgürlükleri azaltmanız gerekir."
+    }
+  ],
+  "prerequisites": ["l2-4-6"],
+  "next_lesson": "l2-5-2",
+  "required_exercise": null
+}

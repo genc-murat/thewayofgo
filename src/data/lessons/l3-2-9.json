@@ -1,0 +1,136 @@
+{
+  "id": "l3-2-9",
+  "level": 3,
+  "module": 2,
+  "lesson": 9,
+  "title": "Çift Atarı (Yagura)",
+  "description": "Yagura (turna yuvası) tekniği: aynı anda iki taşı atari ile tehdit ederek tahta kazancı sağlama stratejisi.",
+  "duration_minutes": 13,
+  "content": [
+    {
+      "type": "text",
+      "content": "Yagura (櫓), \"turna yuvası\" anlamına gelen bir Go tekniğidir. Çift atari (二段打ち, nidandouchi) oluşturarak rakibin iki taşı aynı anda tehdit etmesini sağlar. Rakip birini kurtarırken diğeri yakalanır. Bu teknik fedakarlık (捨て石, suteishi) ile birleştiğinde çok güçlü olur."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 3, "y": 3, "color": "white"},
+        {"x": 4, "y": 3, "color": "white"},
+        {"x": 5, "y": 4, "color": "white"},
+        {"x": 4, "y": 5, "color": "black"},
+        {"x": 3, "y": 5, "color": "black"},
+        {"x": 6, "y": 3, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 3, "y": 4, "type": "vital"},
+        {"x": 5, "y": 3, "type": "vital"},
+        {"x": 4, "y": 4, "type": "good"}
+      ],
+      "annotation": "Çift atari fırsatı: Siyah (4,4) oynarsa beyazın iki ayrı grubu aynı anda atariye düşer."
+    },
+    {
+      "type": "text",
+      "content": "Çift atari prensipleri:\n\n• Aynı hamleyle iki ayrı grubu atariye düşürün\n• Rakip birini kurtarırken diğeri yakalanır (furikawari — değiş tokuş)\n• Fedakarlık taşları (捨て石, suteishi) ile önceden hazırlık yapın\n• Çift atari genellikle kesme (kirichigai) noktasında ortaya çıkar\n\nÖnemli: Çift atari fırsatlarını erken fark etmek, orta oyunda büyük avantaj sağlar."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "white"}
+          ],
+          "text": "Beyaz dört taş oluşturdu, siyah iki taş kenarda. Kritik kesme noktasına dikkat edin."
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 4, "y": 3, "color": "black"}
+          ],
+          "text": "Siyah (4,3) fedakarlık hamlesi! Bu taş düşebilir ama amacı başka — çift atari hazırlığı."
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "white"}
+          ],
+          "text": "Beyaz (3,4) ile siyah fedakarlık taşını yakalamaya çalıştı. Şimdi yagura zamanı geldi!"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 2, "color": "white"},
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 4, "y": 3, "color": "empty"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"}
+          ],
+          "text": "Siyah (2,3) ve (5,2) ile çift atari! Beyaz (3,2)-(4,2) grubu VE (4,4) taşı aynı anda ataride. Rakip sadece birini kurtarabilir!",
+          "captured": [{"x": 4, "y": 3, "color": "black"}]
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 3, "y": 3, "color": "empty"},
+            {"x": 3, "y": 2, "color": "empty"},
+            {"x": 4, "y": 4, "color": "empty"}
+          ],
+          "text": "Beyaz (3,1) ile üst grubu kurtardı ama (4,4) ataride kaldı! Siyah çift atari tekniğiyle önemli tahta kazancı sağladı.",
+          "captured": [{"x": 3, "y": 3, "color": "white"}, {"x": 3, "y": 2, "color": "white"}, {"x": 4, "y": 4, "color": "white"}]
+        }
+      ]
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 6, "y": 6, "color": "black"},
+        {"x": 7, "y": 6, "color": "black"},
+        {"x": 6, "y": 7, "color": "white"},
+        {"x": 5, "y": 5, "color": "white"},
+        {"x": 7, "y": 5, "color": "white"},
+        {"x": 5, "y": 6, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 6, "y": 5, "type": "capture"},
+        {"x": 5, "y": 7, "type": "liberty"},
+        {"x": 7, "y": 7, "type": "liberty"}
+      ],
+      "annotation": "Çift atari alıştırması: Siyah (6,5) hem (5,5) hem (7,5) beyaz taşlarını aynı anda atariye sokar. Yagura fırsatını kaçırmayın!"
+    },
+    {
+      "type": "text",
+      "content": "Yagura tekniğinin anahtar noktaları:\n\n1. Fedakarlık taşı (捨て石, suteishi) — kısa vadeli kayıp, uzun vadeli kazanç\n2. Kesme noktası (切り, kiri) — çift atari genellikle burada oluşur\n3. Rakibin kurtarma sırasını (tejun) hesaplayın — hangi taşı kurtaracağını önceden düşünün\n4. Çift atari görünce hemen oynamayın — bazen daha büyük kazanç için bekleyin\n5. Furikawari (取り替え) — taş değişimi sonucunda net kazanç sağladığınızdan emin olun"
+    }
+  ],
+  "prerequisites": ["l3-2-8"],
+  "next_lesson": "l3-2-10",
+  "required_exercise": null
+}

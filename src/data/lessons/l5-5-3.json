@@ -1,0 +1,96 @@
+{
+  "id": "l5-5-3",
+  "level": 5,
+  "module": 5,
+  "lesson": 3,
+  "title": "Pozisyon Değerlendirme Yöntemleri",
+  "description": "Bir Go pozisyonunun kimin lehine olduğunu belirleme teknikleri.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Pozisyon değerlendirme (kyokumen hyōka), her hamle arasında yapılması gereken kritik bir süreçtir. Kim önde? Ne kadar önde? Nerede zayıflıklar var? Bu sorulara doğru cevap vermek, doğru hamle seçiminin temelidir."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 3, "y": 5, "color": "black"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 5, "y": 5, "color": "white"},
+        {"x": 9, "y": 3, "color": "black"},
+        {"x": 15, "y": 3, "color": "white"},
+        {"x": 9, "y": 9, "color": "black"},
+        {"x": 15, "y": 15, "color": "white"},
+        {"x": 3, "y": 15, "color": "black"},
+        {"x": 15, "y": 9, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 6, "y": 4, "type": "territory"},
+        {"x": 12, "y": 12, "type": "territory"}
+      ],
+      "annotation": "Pozisyon değerlendirmesi - bölge sayımı ve etki analizi"
+    },
+    {
+      "type": "text",
+      "content": "Değerlendirme için dört ölçüt: 1) Jishi (taş gücü) - grupların sağlamlığı, 2) Moyo potansiyeli - bölge beklentisi, 3) Aji - gizli potansiyel, 4) Kiki - boşluk ve zayıflık. Bu dört faktörü birlikte değerlendirin."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 15, "y": 15, "color": "white"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 3, "y": 15, "color": "white"}
+          ],
+          "text": "Orta oyun pozisyonu - kim önde?"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 15, "y": 15, "color": "white"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 3, "y": 15, "color": "white"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"}
+          ],
+          "text": "Sol üst köşe değerlendirmesi - siyah sağlam mı?"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 15, "y": 15, "color": "white"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 3, "y": 15, "color": "white"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 15, "y": 3, "color": "white"}
+          ],
+          "text": "Üst kenar analizi - bölge dağılımını hesaplayın"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 15, "y": 15, "color": "white"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 3, "y": 15, "color": "white"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 15, "y": 3, "color": "white"},
+            {"x": 15, "y": 9, "color": "black"},
+            {"x": 5, "y": 15, "color": "white"}
+          ],
+          "text": "Tam değerlendirme - siyah ve beyaz güç dengesi"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l5-5-2"],
+  "next_lesson": "l5-5-4",
+  "required_exercise": null
+}

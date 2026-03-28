@@ -4,83 +4,236 @@
   "module": 2,
   "lesson": 4,
   "title": "Moyoyu Değerlendirme",
-  "description": "Moyo değerini hesaplama.",
-  "duration_minutes": 10,
+  "description": "Moyo (模様) potansiyel toprak değerini hesaplama, güvenlik katsayısı ile değerlendirme ve genişletme-savunma kararı verme.",
+  "duration_minutes": 16,
   "content": [
     {
       "type": "text",
-      "content": "Moyoyu Değerlendirme: Moyo değerini hesaplama. Bu derste temel kavramları öğreneceksiniz."
+      "content": "Moyo (模様), henüz toprak (地, ji) olmamış ama toprak potansiyeli taşıyan geniş etki alanıdır. Moyo değerlendirirken üç soru sorun: 1) Potansiyel toprak ne kadar? 2) Rakip kolayca azaltabilir (削り, kezuri) mi? 3) Savunma maliyeti ne kadar? Güvenlik katsayısı formülü: tamamen kapalı = %90, bir tarafı açık = %60, iki tarafı açık = %30. 30 puanlık moyo × %30 güvenlik = 9 puan gerçek değer. Bazen 10 puanlık kesin toprak, 30 puanlık riskli moyodan daha değerlidir!"
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 13,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        },
-        {
-          "x": 5,
-          "y": 4,
-          "color": "black"
-        }
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 3, "y": 6, "color": "black"},
+        {"x": 3, "y": 9, "color": "black"},
+        {"x": 6, "y": 3, "color": "black"},
+        {"x": 6, "y": 9, "color": "black"},
+        {"x": 9, "y": 3, "color": "white"},
+        {"x": 9, "y": 9, "color": "white"},
+        {"x": 10, "y": 6, "color": "white"}
       ],
-      "highlights": [],
-      "annotation": "Moyoyu Değerlendirme"
+      "highlights": [
+        {"x": 1, "y": 4, "type": "territory"},
+        {"x": 1, "y": 5, "type": "territory"},
+        {"x": 2, "y": 4, "type": "territory"},
+        {"x": 2, "y": 5, "type": "territory"},
+        {"x": 2, "y": 7, "type": "territory"},
+        {"x": 4, "y": 5, "type": "vital"},
+        {"x": 5, "y": 6, "type": "vital"},
+        {"x": 4, "y": 7, "type": "vital"}
+      ],
+      "annotation": "Siyah moyo — sol kenar boyunca 20+ puanlık potansiyel, bir tarafı açık = %60 güvenlik"
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 6, "y": 9, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 10, "y": 6, "color": "white"}
           ],
-          "text": "Pozisyonu inceleyin"
+          "text": "Siyah büyük bir moyo oluşturdu — sol kenar boyunca geniş potansiyel. Değer: 20 puan × %60 = 12 gerçek puan"
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 6, "y": 9, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 10, "y": 6, "color": "white"},
+            {"x": 1, "y": 6, "color": "black"}
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Siyah (1,6) — kenarı genişletiyor! Moyo 25+ puana çıkıyor ama risk artıyor, güvenlik %40'a düşer"
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 6, "y": 9, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 10, "y": 6, "color": "white"},
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 5, "y": 6, "color": "white"}
           ],
-          "text": "İleri adımları düşünün"
+          "text": "Beyaz (5,6) kezuri — moyoyu azaltmak için giriyor! Kritik an: genişletmek mi savunmak mı?"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 6, "y": 9, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 10, "y": 6, "color": "white"},
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 4, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah (4,6) savunma (守り, mamori)! Beyazı moyo dışına itiyor. Akıllıca: 15 puan güvende tuttu"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 6, "y": 9, "color": "black"},
+            {"x": 9, "y": 3, "color": "white"},
+            {"x": 9, "y": 9, "color": "white"},
+            {"x": 10, "y": 6, "color": "white"},
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 7, "y": 6, "color": "white"}
+          ],
+          "text": "Beyaz (7,6) — moyo azaltıldı ama siyah hala 15 puan güvende. Doğru değerlendirme, savunma kazandı!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Genişletme vs savunma kararı (拡大対守り): moyonun güvenlik katsayısı yüksekse (%70+) genişletmeye çalışın. Düşükse (%40-) erken toprağa çevirin. Kritik kural: rakibin invazyon (打入り) tehdidi varsa, genişletmek yerine önce savunun. İki küçük güvenli moyo, bir büyük kırılgan moyodan her zaman daha değerlidir. Moyo değerlendirme, Go'nun en zor ama en önemli becerilerinden biridir."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 5, "y": 3, "color": "black"},
+        {"x": 7, "y": 3, "color": "black"},
+        {"x": 3, "y": 5, "color": "black"},
+        {"x": 3, "y": 7, "color": "black"},
+        {"x": 3, "y": 9, "color": "black"},
+        {"x": 5, "y": 9, "color": "black"},
+        {"x": 9, "y": 6, "color": "white"},
+        {"x": 11, "y": 3, "color": "white"},
+        {"x": 11, "y": 9, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 4, "type": "territory"},
+        {"x": 2, "y": 5, "type": "territory"},
+        {"x": 2, "y": 6, "type": "territory"},
+        {"x": 2, "y": 7, "type": "territory"},
+        {"x": 2, "y": 8, "type": "territory"},
+        {"x": 4, "y": 6, "type": "vital"},
+        {"x": 5, "y": 5, "type": "vital"},
+        {"x": 5, "y": 7, "type": "vital"}
+      ],
+      "annotation": "Güvenli moyo: sol kenar kapalı, üst ve alt sınırları net — yüksek güvenlik katsayısı (%85)"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 5, "y": 9, "color": "black"},
+            {"x": 9, "y": 6, "color": "white"},
+            {"x": 11, "y": 3, "color": "white"},
+            {"x": 11, "y": 9, "color": "white"}
+          ],
+          "text": "Siyah güvenli moyo: sol kenar kapalı, üst-alt sınırları net. 20 puan × %85 = 17 gerçek puan"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 5, "y": 9, "color": "black"},
+            {"x": 9, "y": 6, "color": "white"},
+            {"x": 11, "y": 3, "color": "white"},
+            {"x": 11, "y": 9, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"}
+          ],
+          "text": "Beyaz (5,6) invazyon denemesi — moyonun en zayıf noktası, ama siyah hazır"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 5, "y": 9, "color": "black"},
+            {"x": 9, "y": 6, "color": "white"},
+            {"x": 11, "y": 3, "color": "white"},
+            {"x": 11, "y": 9, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 4, "y": 5, "color": "black"}
+          ],
+          "text": "Siyah (4,5) — kuşatma başlıyor! Moyo savunması doğru okuma (読み) gerektirir"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 5, "y": 9, "color": "black"},
+            {"x": 9, "y": 6, "color": "white"},
+            {"x": 11, "y": 3, "color": "white"},
+            {"x": 11, "y": 9, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 5, "y": 7, "color": "black"}
+          ],
+          "text": "Siyah (5,7) — beyazın iki tarafı da kapandı! Çember daralıyor"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 5, "y": 9, "color": "black"},
+            {"x": 9, "y": 6, "color": "white"},
+            {"x": 11, "y": 3, "color": "white"},
+            {"x": 11, "y": 9, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 4, "y": 7, "color": "white"}
+          ],
+          "text": "Beyaz (4,7) yaşamaya çalışıyor — siyah hala 14 puan toprak güvende. Güvenli moyo savunuldu, değerlendirme doğruydu!"
         }
       ]
     }

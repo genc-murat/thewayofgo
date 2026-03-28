@@ -1,0 +1,164 @@
+{
+  "id": "l4-4-7",
+  "level": 4,
+  "module": 4,
+  "lesson": 7,
+  "title": "İstila vs Azaltma Karşılaştırması",
+  "description": "Derin istila ile hafif azaltma arasındaki fark, risk-getiri analizi ve doğru strateji seçimi.",
+  "duration_minutes": 14,
+  "content": [
+    {
+      "type": "text",
+      "content": "Rakibin büyük moyosu (potential territory) ile karşılaştığınızda iki temel strateji vardır: Shinogi (derin istila) ve Azaltma (reduction). İstila, moyonun içine girerek onu tamamen parçalamayı hedefler - yüksek riskli ama yüksek ödüllüdür. Azaltma ise moyonun kenarından hafifçe sokularak potansiyel alanı küçültür - daha güvenli ama daha küçük kazanç sağlar."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 7, "y": 0, "color": "black"},
+        {"x": 9, "y": 0, "color": "black"},
+        {"x": 11, "y": 0, "color": "black"},
+        {"x": 7, "y": 2, "color": "black"},
+        {"x": 9, "y": 2, "color": "black"},
+        {"x": 11, "y": 2, "color": "black"},
+        {"x": 9, "y": 4, "color": "black"},
+        {"x": 11, "y": 4, "color": "black"},
+        {"x": 7, "y": 6, "color": "black"},
+        {"x": 9, "y": 6, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 8, "y": 3, "type": "good"},
+        {"x": 9, "y": 3, "type": "vital"},
+        {"x": 10, "y": 3, "type": "bad"},
+        {"x": 8, "y": 1, "type": "territory"},
+        {"x": 10, "y": 1, "type": "territory"}
+      ],
+      "annotation": "Siyahın büyük moyosu: A点 azaltma (güvenli), B点 istila (riskli ama büyük ödül), C点 kötü istila (ölüm)"
+    },
+    {
+      "type": "text",
+      "content": "Strateji seçiminde üç faktör belirleyicidir: 1) Moyo büyüklüğü - çok büyükse istila gerekli olabilir 2) Kalınlık (thickness) ilişkisi - kalın moyoya istila tehlikelidir 3) Jou (çevre durumu) - dışarıda destek varsa istila daha güvenlidir. Sabaki (hafif hareket) yeteneği, istilacı için hayati önem taşır."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 7, "y": 0, "color": "black"},
+            {"x": 9, "y": 0, "color": "black"},
+            {"x": 11, "y": 0, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 9, "y": 2, "color": "black"},
+            {"x": 11, "y": 2, "color": "black"},
+            {"x": 9, "y": 4, "color": "black"},
+            {"x": 11, "y": 4, "color": "black"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 9, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah sağ üstte devasa bir moyo kurdu - yaklaşık 30+ potansiyel puan"
+        },
+        {
+          "stones": [
+            {"x": 7, "y": 0, "color": "black"},
+            {"x": 9, "y": 0, "color": "black"},
+            {"x": 11, "y": 0, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 9, "y": 2, "color": "black"},
+            {"x": 11, "y": 2, "color": "black"},
+            {"x": 9, "y": 4, "color": "black"},
+            {"x": 11, "y": 4, "color": "black"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 9, "y": 6, "color": "black"},
+            {"x": 8, "y": 3, "color": "white"}
+          ],
+          "text": "Azaltma seçeneği: Beyaz moyonun kenarına hafifçe giriyor"
+        },
+        {
+          "stones": [
+            {"x": 7, "y": 0, "color": "black"},
+            {"x": 9, "y": 0, "color": "black"},
+            {"x": 11, "y": 0, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 9, "y": 2, "color": "black"},
+            {"x": 11, "y": 2, "color": "black"},
+            {"x": 9, "y": 4, "color": "black"},
+            {"x": 11, "y": 4, "color": "black"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 9, "y": 6, "color": "black"},
+            {"x": 8, "y": 3, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"}
+          ],
+          "text": "Siyah azaltmayı karşılar ama beyaz zaten güvenli"
+        },
+        {
+          "stones": [
+            {"x": 7, "y": 0, "color": "black"},
+            {"x": 9, "y": 0, "color": "black"},
+            {"x": 11, "y": 0, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 9, "y": 2, "color": "black"},
+            {"x": 11, "y": 2, "color": "black"},
+            {"x": 9, "y": 4, "color": "black"},
+            {"x": 11, "y": 4, "color": "black"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 9, "y": 6, "color": "black"},
+            {"x": 8, "y": 3, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 7, "y": 4, "color": "white"}
+          ],
+          "text": "Beyaz sabaki ile hafif kaçar - moyo yaklaşık 15 puana düştü!"
+        },
+        {
+          "stones": [
+            {"x": 7, "y": 0, "color": "black"},
+            {"x": 9, "y": 0, "color": "black"},
+            {"x": 11, "y": 0, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 9, "y": 2, "color": "black"},
+            {"x": 11, "y": 2, "color": "black"},
+            {"x": 9, "y": 4, "color": "black"},
+            {"x": 11, "y": 4, "color": "black"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 9, "y": 6, "color": "black"},
+            {"x": 8, "y": 3, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 7, "y": 4, "color": "white"},
+            {"x": 8, "y": 5, "color": "black"}
+          ],
+          "text": "Siyah kapatır ama beyaz güvenle dışarı çıktı - başarılı azaltma!"
+        }
+      ]
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 7, "y": 0, "color": "black"},
+        {"x": 9, "y": 0, "color": "black"},
+        {"x": 11, "y": 0, "color": "black"},
+        {"x": 7, "y": 2, "color": "black"},
+        {"x": 9, "y": 2, "color": "black"},
+        {"x": 11, "y": 2, "color": "black"},
+        {"x": 9, "y": 4, "color": "black"},
+        {"x": 11, "y": 4, "color": "black"},
+        {"x": 7, "y": 6, "color": "black"},
+        {"x": 9, "y": 6, "color": "black"},
+        {"x": 9, "y": 3, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 9, "y": 3, "type": "vital"},
+        {"x": 8, "y": 2, "type": "liberty"},
+        {"x": 10, "y": 2, "type": "liberty"},
+        {"x": 9, "y": 2, "type": "capture"}
+      ],
+      "annotation": "Derin istila: Beyaz moyonun kalbine giriyor - yüksek risk, yüksek ödül"
+    },
+    {
+      "type": "text",
+      "content": "Karar özeti: Moyo 20 puandan büyükse ve sizinTo (taşlarınız) yeterince destek varsa → Shinogi (istila). Moyo 15-20 puansa ve kalınsa → Azaltma. Her durumda amacı okumak (yomu) esastır: rakibin moyosunu ne kadar harcayabilirsiniz ve ne kadar karşılık verirsiniz? Furikawari (takas) hesabını iyi yapın."
+    }
+  ],
+  "prerequisites": ["l4-4-6"],
+  "next_lesson": "l4-4-8",
+  "required_exercise": null
+}

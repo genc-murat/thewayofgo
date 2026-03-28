@@ -1,0 +1,34 @@
+{
+  "id": "e5-3-6",
+  "level": 5,
+  "module": 3,
+  "lesson": 6,
+  "type": "position_judgment",
+  "title": "Kritik Pozisyon Yargılama",
+  "description": "Karmaşık orta oyun pozisyonunda oyunun gidişatını belirleyecek kritik hamleyi bulun. En büyük etki noktasını değerlendirin.",
+  "board_size": 19,
+  "initial_stones": [
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 9, "y": 3, "color": "black"},
+    {"x": 15, "y": 3, "color": "black"},
+    {"x": 15, "y": 9, "color": "black"},
+    {"x": 6, "y": 6, "color": "black"},
+    {"x": 3, "y": 15, "color": "white"},
+    {"x": 9, "y": 15, "color": "white"},
+    {"x": 15, "y": 15, "color": "white"},
+    {"x": 3, "y": 9, "color": "white"},
+    {"x": 12, "y": 12, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 9, "y": 9, "is_correct": true, "explanation": "Doğru! Tengen (9,9) merkez yıldız noktası tahtadaki en büyük noktadır. Siyah'ın alt ve sağ etkisini birleştirirken beyazın üst etkisini sınırlar."},
+    {"x": 9, "y": 12, "is_correct": false, "explanation": "Beyazın üst alanına girmek riskli. Beyaz çevrede güçlü ve bu taş kuşatılabilir."},
+    {"x": 0, "y": 0, "is_correct": false, "explanation": "Bu köşe hamlesi oyunun akıbetini belirleyecek büyük hamle karşısında çok küçük kalır."},
+    {"x": 18, "y": 18, "is_correct": false, "explanation": "Kenar hamlesi orta oyun mücadelesinde anlamsız. Merkezdeki fırsatı değerlendirin."}
+  ],
+  "hints": [
+    "Siyah'ın sağ ve alt etkisini birleştirecek büyük noktayı bulun.",
+    "Tengen (merkez yıldız noktası) hem saldırı hem savunma için güçlü bir noktadır."
+  ],
+  "difficulty": 5,
+  "stars_required": 4
+}

@@ -1,0 +1,110 @@
+{
+  "id": "l4-6-1",
+  "level": 4,
+  "module": 6,
+  "lesson": 1,
+  "title": "Derin Okuma 1",
+  "description": "5+ hamlelik varyasyonları derinlemesine okuma pratiği.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Derin okuma (yomu), bir hamlenin sonuçlarını 5 veya daha fazla hamle ileriye götürme yeteneğidir. Profesyonel oyuncular 20+ hamle okuyabilir. Bu derste 5-7 hamlelik varyasyonları analiz ederek okuma derinliğinizi artıracağız."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 5, "y": 5, "color": "black"},
+        {"x": 6, "y": 5, "color": "white"},
+        {"x": 5, "y": 6, "color": "white"},
+        {"x": 6, "y": 6, "color": "black"},
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 7, "y": 7, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 5, "y": 7, "type": "liberty"},
+        {"x": 6, "y": 4, "type": "liberty"},
+        {"x": 4, "y": 5, "type": "capture"}
+      ],
+      "annotation": "5+ hamle okuma: siyah NE yapmalı?"
+    },
+    {
+      "type": "text",
+      "content": "Derin okuma tekniği: 1) Birinci varyasyon: 'en doğal hamle' 2) İkinci varyasyon: 'en agresif hamle' 3) Üçüncü varyasyon: 'en pasif hamle'. Her varyasyonu sonuna kadar okuyun ve sonuçları karşılaştırın."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"}
+          ],
+          "text": "Merkezde çapraz karşılaşma - varyasyon 1 başlıyor"
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 7, "y": 6, "color": "white"}
+          ],
+          "text": "2. hamle: her iki taraf da destek taşı oynadı"
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 7, "y": 6, "color": "white"},
+            {"x": 6, "y": 4, "color": "black"},
+            {"x": 5, "y": 7, "color": "white"}
+          ],
+          "text": "3. hamle: baskı artıyor"
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 7, "y": 6, "color": "white"},
+            {"x": 6, "y": 4, "color": "black"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 7, "y": 7, "color": "white"}
+          ],
+          "text": "4. hamle: kenarlara doğru genişleme"
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 7, "y": 6, "color": "white"},
+            {"x": 6, "y": 4, "color": "black"},
+            {"x": 5, "y": 7, "color": "white"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 7, "y": 7, "color": "white"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 8, "y": 6, "color": "white"}
+          ],
+          "text": "5. hamle: sonuç - eşit pozisyon mu, yoksa kim üstün?"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l4-5-6"],
+  "next_lesson": "l4-6-2",
+  "required_exercise": null
+}

@@ -1,0 +1,217 @@
+{
+  "id": "l2-6-2",
+  "level": 2,
+  "module": 6,
+  "lesson": 2,
+  "title": "Çok Adımlı Problemler 2",
+  "description": "Karşı hamleli çok adımlı problemler.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Gerçek oyunlarda rakibiniz her zaman istediğiniz cevabı vermez. Karşı hamleli çok adımlı problemlerde, rakibin en iyi savunmasına karşı bile işe yarayan bir dizi bulmalısınız. Buna \"rakibin direnci\" denir — rakibiniz elinden geleni yapacaktır."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 1, "y": 2, "color": "white"},
+        {"x": 2, "y": 2, "color": "white"},
+        {"x": 1, "y": 1, "color": "white"},
+        {"x": 3, "y": 3, "color": "white"},
+        {"x": 0, "y": 3, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 0, "y": 2, "type": "bad"},
+        {"x": 3, "y": 1, "type": "good"}
+      ],
+      "annotation": "Siyah (1,3)-(2,3)-(3,2) grubu tehlikede. Beyaz (1,2)-(2,2)-(1,1) grubu ile karşı karşıya. Doğru dizi bulmalı!"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 1, "y": 1, "color": "white"},
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 0, "y": 3, "color": "white"}
+          ],
+          "text": "Siyah grubun özgürlükleri: (3,1). Beyaz grubun özgürlükleri: (2,1), (3,2) siyah tarafından dolu. Karmaşık savaş!"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 1, "y": 1, "color": "white"},
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 0, "y": 3, "color": "white"},
+            {"x": 3, "y": 1, "color": "black"}
+          ],
+          "text": "1. Hamle: Siyah (3,1) oynar — hem kendi özgürlüğünü artırır hem beyaz (1,2)-(2,2) grubuna baskı yapar!"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 1, "y": 1, "color": "white"},
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 0, "y": 3, "color": "white"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 2, "y": 1, "color": "white"}
+          ],
+          "text": "Beyaz (2,1) ile savunur — özgürlük verdi. Beyaz grup şimdi güçlendi ama siyahın planı devam ediyor."
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 1, "y": 1, "color": "white"},
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 0, "y": 3, "color": "white"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 0, "y": 2, "color": "black"}
+          ],
+          "text": "3. Hamle: Siyah (0,2) oynar! Beyaz (1,2)-(1,1) grubunun özgürlüğünü kesiyor. Çift atari tehlikesi!"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 1, "y": 1, "color": "white"},
+            {"x": 3, "y": 3, "color": "white"},
+            {"x": 0, "y": 3, "color": "white"},
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 0, "y": 2, "color": "black"}
+          ],
+          "captured": [
+            {"x": 1, "y": 2}
+          ],
+          "text": "Beyaz (1,2) kurtarmaya çalışsa bile siyah (1,2) çevresinde baskı devam eder. Siyah dizi başarıyla rakip savunmasını aştı!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Karşı hamle analizi: Her çok adımlı problemde 3 varyantı kontrol edin: 1) Doğru dizi (rakibin en iyi savunmasına karşı), 2) Yanlış dizi (ne olur?), 3) Rakibin alternatif cevapları. Buna \"varyant hesabı\" denir."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 5, "y": 5, "color": "black"},
+        {"x": 6, "y": 5, "color": "black"},
+        {"x": 5, "y": 4, "color": "white"},
+        {"x": 7, "y": 4, "color": "white"},
+        {"x": 6, "y": 6, "color": "white"},
+        {"x": 4, "y": 5, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 6, "y": 4, "type": "bad"},
+        {"x": 7, "y": 5, "type": "good"},
+        {"x": 5, "y": 6, "type": "liberty"}
+      ],
+      "annotation": "Siyah grup (5,5)-(6,5) sıkışık durumda. Doğru hamle dizisi bulun. Yanlış hamle (6,4) self-atari olur!"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 7, "y": 4, "color": "white"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"}
+          ],
+          "text": "Siyah grubun özgürlükleri: (7,5) ve (5,6). Beyaz her taraftan sarıyor. Doğru dizi kritik!"
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 7, "y": 4, "color": "white"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 7, "y": 5, "color": "black"}
+          ],
+          "text": "1. Hamle: Siyah (7,5) oynar! Beyaz (7,4) ile bağlantısını kesiyor ve özgürlük aldı."
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 7, "y": 4, "color": "white"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 7, "y": 5, "color": "black"},
+            {"x": 5, "y": 6, "color": "white"}
+          ],
+          "text": "Beyaz (5,6) ile siyahın son özgürlüğünü kapatmaya çalıştı. Atari! Siyah ne yapacak?"
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 7, "y": 4, "color": "white"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 7, "y": 5, "color": "black"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 6, "y": 4, "color": "black"}
+          ],
+          "text": "2. Hamle: Siyah (6,4) oynayarak beyaz (5,4)-(7,4) arasını böldü! Şimdi beyaz (5,4) yalnız kaldı."
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 7, "y": 4, "color": "white"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 7, "y": 5, "color": "black"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 6, "y": 4, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"}
+          ],
+          "captured": [
+            {"x": 5, "y": 4}
+          ],
+          "text": "3. Hamle: Siyah (6,3) — beyaz (5,4) yakalandı! Siyah 3 hamlelik dizi ile hem savundu hem rakip taşı yakaladı!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Önemli: Çok adımlı problemlerde sabırlı olun. İlk hamle her zaman en bariz olanı değildir. Bazen \"sessiz\" bir hamle (tesuji olmayan ama hazırlık yapan) en iyisidir. Yomu becerinizi geliştirmek için her gün tsumego (yaşam-ölüm problemleri) çözmelisiniz."
+    }
+  ],
+  "prerequisites": ["l2-6-1"],
+  "next_lesson": "l2-6-3",
+  "required_exercise": null
+}

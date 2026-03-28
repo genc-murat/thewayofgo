@@ -1,0 +1,123 @@
+{
+  "id": "l5-5-6",
+  "level": 5,
+  "module": 5,
+  "lesson": 6,
+  "title": "Tam Oyun Planlama Pratiği",
+  "description": "Bir oyunun başından sonuna kadar plan yaparak oynama pratiği.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Tam oyun planlama pratiği (zengo keikaku renshū), öğrendiğiniz tüm planlama kavramlarını gerçek oyun senaryolarında uygulama fırsatıdır. Fuseki'den chūban'ya, chūban'dan yose'ye tutarlı bir planla oyun yönetmeyi deneyin."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 16, "y": 3, "color": "white"},
+        {"x": 9, "y": 3, "color": "black"},
+        {"x": 3, "y": 16, "color": "white"},
+        {"x": 16, "y": 16, "color": "black"},
+        {"x": 9, "y": 16, "color": "white"},
+        {"x": 3, "y": 9, "color": "black"},
+        {"x": 16, "y": 9, "color": "white"},
+        {"x": 9, "y": 9, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 6, "y": 6, "type": "good"},
+        {"x": 12, "y": 12, "type": "good"}
+      ],
+      "annotation": "Tam oyun analizi - her aşamada planınızı değerlendirin"
+    },
+    {
+      "type": "text",
+      "content": "Oyun planınızı her 10-15 hamlede bir yeniden değerlendirin. Kyūdo (acil hamle) listesi oluşturun: 1) Savunma gerektiren gruplar, 2) Saldırı fırsatları, 3) Büyük bölge hamleleri. Bu listeyi her hamle öncesi güncelleyin."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 16, "y": 3, "color": "white"},
+            {"x": 16, "y": 16, "color": "black"},
+            {"x": 3, "y": 16, "color": "white"}
+          ],
+          "text": "Fuseki - dört köşe, plan oluşturun"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 16, "y": 3, "color": "white"},
+            {"x": 16, "y": 16, "color": "black"},
+            {"x": 3, "y": 16, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 9, "y": 16, "color": "white"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 16, "y": 9, "color": "white"}
+          ],
+          "text": "Kenarlar doldu - chūban planlaması başlıyor"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 16, "y": 3, "color": "white"},
+            {"x": 16, "y": 16, "color": "black"},
+            {"x": 3, "y": 16, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 9, "y": 16, "color": "white"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 16, "y": 9, "color": "white"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 12, "y": 12, "color": "black"}
+          ],
+          "text": "Orta oyun - merkez kontrolü için mücadele"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 16, "y": 3, "color": "white"},
+            {"x": 16, "y": 16, "color": "black"},
+            {"x": 3, "y": 16, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 9, "y": 16, "color": "white"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 16, "y": 9, "color": "white"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 12, "y": 12, "color": "black"},
+            {"x": 6, "y": 12, "color": "white"},
+            {"x": 12, "y": 6, "color": "black"}
+          ],
+          "text": "Bölgeler belirginleşiyor - yose planlaması yapın"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 16, "y": 3, "color": "white"},
+            {"x": 16, "y": 16, "color": "black"},
+            {"x": 3, "y": 16, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 9, "y": 16, "color": "white"},
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 16, "y": 9, "color": "white"},
+            {"x": 9, "y": 9, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 12, "y": 12, "color": "black"},
+            {"x": 6, "y": 12, "color": "white"},
+            {"x": 12, "y": 6, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 4, "y": 5, "color": "black"}
+          ],
+          "text": "Yose başladı - planınızın meyvesini toplayın"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l5-5-5"],
+  "next_lesson": "l5-5-7",
+  "required_exercise": null
+}

@@ -1,0 +1,201 @@
+{
+  "id": "l2-6-1",
+  "level": 2,
+  "module": 6,
+  "lesson": 1,
+  "title": "Çok Adımlı Problemler 1",
+  "description": "Birden fazla hamle gerektiren problem çözme tekniği.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Çok adımlı problemler (multi-step problems), tek bir hamleyle çözülemeyen, 2-3 hamlelik diziler gerektiren pozisyonlardır. Bu tür problemleri çözmek için \"yomu\" (okuma) becerisi gerekir — zihninizde hamleleri önceden görmelisiniz. Bu dersimizde 2-3 hamlelik basit çok adımlı problemler öğreneceğiz."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 6, "y": 2, "color": "white"},
+        {"x": 7, "y": 2, "color": "white"},
+        {"x": 6, "y": 3, "color": "black"},
+        {"x": 7, "y": 3, "color": "black"},
+        {"x": 5, "y": 2, "color": "black"},
+        {"x": 8, "y": 1, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 8, "y": 2, "type": "good"},
+        {"x": 5, "y": 1, "type": "liberty"}
+      ],
+      "annotation": "Beyaz grupta 2 taş (6,2)-(7,2) var. Siyah bu grubu yakalamak için 2 hamlelik bir dizi planlamalı. (8,2) ilk hamle adayı."
+    },
+    {
+      "type": "text",
+      "content": "İlk kural: Hedefinizi belirleyin. Hangi taşı/grubu yakalamak istiyorsunuz? Beyaz (6,2)-(7,2) grubunun özgürlüklerini sayın. Sağda (8,2), solda siyah taş var. Yukarıda (6,1) ve (7,1). Özgürlükleri kapatmak için doğru sırayla oynamalısınız."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 7, "y": 2, "color": "white"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 8, "y": 1, "color": "white"}
+          ],
+          "text": "Beyaz (6,2)-(7,2) grubunun özgürlükleri: (7,1), (8,2). Siyah yakalamak istiyor."
+        },
+        {
+          "stones": [
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 7, "y": 2, "color": "white"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 8, "y": 1, "color": "white"},
+            {"x": 7, "y": 1, "color": "black"}
+          ],
+          "text": "1. Hamle: Siyah (7,1) oynar — beyaz grupta sadece (8,2) özgürlüğü kaldı. Atari!"
+        },
+        {
+          "stones": [
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 7, "y": 2, "color": "white"},
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 8, "y": 1, "color": "white"},
+            {"x": 7, "y": 1, "color": "black"}
+          ],
+          "text": "Beyaz (8,2) oynayarak kaçmaya çalıştı. Özgürlükler: (8,3) — ama dikkat!"
+        },
+        {
+          "stones": [
+            {"x": 6, "y": 2, "color": "white"},
+            {"x": 7, "y": 2, "color": "white"},
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 8, "y": 1, "color": "white"},
+            {"x": 7, "y": 1, "color": "black"},
+            {"x": 8, "y": 3, "color": "black"}
+          ],
+          "captured": [
+            {"x": 6, "y": 2},
+            {"x": 7, "y": 2},
+            {"x": 8, "y": 2}
+          ],
+          "text": "2. Hamle: Siyah (8,3) oynar! 3 beyaz taşın son özgürlüğü kapatıldı — yakalandı!"
+        },
+        {
+          "stones": [
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 8, "y": 1, "color": "white"},
+            {"x": 7, "y": 1, "color": "black"},
+            {"x": 8, "y": 3, "color": "black"}
+          ],
+          "text": "Sonuç: Siyah 3 taş yakaladı. İki hamlelik dizi başarıyla tamamlandı!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Önemli prensip: Her zaman rakibin en iyi cevabını düşünün. Beyaz kaçmak için (8,2) oynayacaktır. Bu yüzden siyahın ikinci hamlesi buna hazırlıklı olmalıdır. Yomu yaparken: 1) Hedef belirle, 2) İlk hamleyi oyna, 3) Rakibin cevabını tahmin et, 4) Son hamleyi planla."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 1, "y": 6, "color": "white"},
+        {"x": 2, "y": 6, "color": "white"},
+        {"x": 3, "y": 6, "color": "white"},
+        {"x": 1, "y": 7, "color": "black"},
+        {"x": 3, "y": 7, "color": "black"},
+        {"x": 0, "y": 5, "color": "black"},
+        {"x": 4, "y": 5, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 7, "type": "good"},
+        {"x": 4, "y": 6, "type": "capture"}
+      ],
+      "annotation": "3'lü beyaz grubun özgürlükleri: (0,6), (4,6), (2,7). Siyah (2,7) ile atari verip sonra yakalayabilir."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 1, "y": 6, "color": "white"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 1, "y": 7, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 0, "y": 5, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"}
+          ],
+          "text": "Beyaz 3'lü grup (1,6)-(2,6)-(3,6). Özgürlükler: (0,6), (4,6), (2,7)."
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 6, "color": "white"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 1, "y": 7, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 0, "y": 5, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"}
+          ],
+          "text": "1. Hamle: Siyah (2,7) atari! Beyaz grubun 2 özgürlüğü kaldı: (0,6) ve (4,6)."
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 6, "color": "white"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 1, "y": 7, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 0, "y": 5, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"}
+          ],
+          "text": "Beyaz (4,6) oynayarak kaçtı. Şimdi özgürlük: sadece (0,6)!"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 6, "color": "white"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 1, "y": 7, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 0, "y": 5, "color": "black"},
+            {"x": 4, "y": 5, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 0, "y": 6, "color": "black"}
+          ],
+          "captured": [
+            {"x": 1, "y": 6},
+            {"x": 2, "y": 6},
+            {"x": 3, "y": 6},
+            {"x": 4, "y": 6}
+          ],
+          "text": "2. Hamle: Siyah (0,6) oynar! 4 beyaz taş yakalandı. Çok adımlı dizi başarılı!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Yomu ipuçları: Hamleleri zihninizde canlandırırken her zaman rakibin en güçlü cevabını varsayın. Eğer rakip zayıf bir cevap verirse, daha da kolaylaşır. Ama en iyisini varsayarak hazırlıklı olun. Bu yaklaşım Go'da \"yomu\" (okuma) disiplininin temelidir."
+    }
+  ],
+  "prerequisites": ["l2-5-8"],
+  "next_lesson": "l2-6-2",
+  "required_exercise": null
+}

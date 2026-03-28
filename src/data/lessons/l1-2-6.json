@@ -1,0 +1,95 @@
+{
+  "id": "l1-2-6",
+  "level": 1,
+  "module": 2,
+  "lesson": 6,
+  "title": "Göz Çeşitleri",
+  "description": "Gerçek göz ve sahte göz arasındaki farkları detaylıca öğrenin.",
+  "duration_minutes": 8,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bir önceki derste gerçek göz ve sahte göz kavramlarını görmüştük. Şimdi bu farkı daha detaylı inceleyelim. Göz (me), bir grubun içindeki boşluklardır. Ancak her boşluk gerçek göz değildir."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 1, "y": 1, "color": "black"},
+        {"x": 2, "y": 1, "color": "black"},
+        {"x": 3, "y": 1, "color": "black"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 3, "y": 3, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 2, "type": "liberty"}
+      ],
+      "annotation": "Gerçek göz: (2,2) noktası — 4 kardinal ve 4 köşegen komşusu da siyah"
+    },
+    {
+      "type": "text",
+      "content": "Gerçek göz kuralları: Merkezdeki boşluğun 4 kardinal (üst, alt, sol, sağ) komşusu kendi taşınız olmalı. Ayrıca 4 köşegen komşusunun en az 3'ü kendi renginizde olmalı. Köşedeki bir boşlukta 4 köşegenin hepsi, kenarda 3'ü, ortada en az 3'ü kendi renginizde olmalı."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 1, "y": 7, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 0, "y": 5, "color": "white"},
+            {"x": 4, "y": 7, "color": "white"}
+          ],
+          "text": "Kenar yakınında göz: (2,6) noktasının kardinal komşuları siyah. Köşegenlerden ikisi beyaz — sahte göz olabilir mi?"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 2, "y": 5, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 1, "y": 6, "color": "black"},
+            {"x": 3, "y": 6, "color": "black"},
+            {"x": 1, "y": 7, "color": "black"},
+            {"x": 2, "y": 7, "color": "black"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 0, "y": 5, "color": "white"},
+            {"x": 4, "y": 7, "color": "white"},
+            {"x": 1, "y": 4, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"}
+          ],
+          "text": "Siyah üst köşegenleri doldurdu. Şimdi (2,6) 3/4 köşegen siyah — gerçek göz!"
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 1, "color": "black"},
+            {"x": 6, "y": 1, "color": "black"},
+            {"x": 7, "y": 1, "color": "black"},
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 5, "y": 3, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 7, "y": 3, "color": "black"},
+            {"x": 6, "y": 2, "color": "white"}
+          ],
+          "text": "SAHTE GÖZ: (6,2) beyaz! Bu boşluk gerçek göz değil — rakip zaten orada."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Sahte göz tehlikesi: Eğer grubunuz iki göz sanıyorsa ama biri sahte gözse, grup ölü sayılır. Her zaman gerçek göz sayısını doğrulayın! Özellikle köşegenlerdeki düşman taşlarına dikkat edin."
+    }
+  ],
+  "prerequisites": ["l1-2-5"],
+  "next_lesson": "l1-2-7",
+  "required_exercise": "e1-2-6"
+}

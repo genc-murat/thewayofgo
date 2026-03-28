@@ -118,6 +118,6 @@
     }
   ],
   "prerequisites": ["l2-3-3"],
-  "next_lesson": "l2-4-1",
+  "next_lesson": "l2-3-5",
   "required_exercise": "e2-3-4"
 }

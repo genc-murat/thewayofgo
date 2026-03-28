@@ -1,0 +1,197 @@
+{
+  "id": "l2-1-8",
+  "level": 2,
+  "module": 1,
+  "lesson": 8,
+  "title": "Yakalama Teknikleri Genel Tekrar",
+  "description": "Tüm yakalama tekniklerinin özeti ve karşılaştırması.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bu derste öğrendiğimiz tüm yakalama tekniklerini özetleyelim: Merdiven (shicho), Ağ (geta), Snapback (geri çevirme) ve Çift Atari. Her tekniğin en güçlü olduğu durumları karşılaştıracağız."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {
+          "x": 1,
+          "y": 1,
+          "color": "white"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "color": "black"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "color": "black"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "color": "black"
+        }
+      ],
+      "highlights": [
+        {
+          "x": 1,
+          "y": 2,
+          "type": "capture"
+        }
+      ],
+      "annotation": "Merdiven (Shicho): Beyaz kaçtıkça siyah her adımda bir özgürlük keser. Kenara doğru zig-zag kovalar."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {
+          "x": 5,
+          "y": 3,
+          "color": "white"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "color": "black"
+        },
+        {
+          "x": 5,
+          "y": 2,
+          "color": "black"
+        },
+        {
+          "x": 6,
+          "y": 4,
+          "color": "black"
+        }
+      ],
+      "highlights": [
+        {
+          "x": 6,
+          "y": 2,
+          "type": "good"
+        }
+      ],
+      "annotation": "Ağ (Geta): Siyah (6,2) oynarsa beyazın tüm kaçış yolları kesilir — merdiven kırıcı olsa bile."
+    },
+    {
+      "type": "text",
+      "content": "Teknik karşılaştırması:\n\n• Merdiven (Shicho): Açık alanlarda etkili, ama merdiven kırıcı taş varsa başarısız olur\n• Ağ (Geta): Merdivenin çalışmadığı durumlarda kullanılır, rakibi ağ ile çevreler\n• Snapback: Yakalanan taş geri alınamaz — rakip hamle bırakmış olur\n• Çift Atari: İki grubu aynı anda tehdit eder, rakip ikisini birden kurtaramaz"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {
+              "x": 3,
+              "y": 6,
+              "color": "white"
+            },
+            {
+              "x": 2,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 3,
+              "y": 5,
+              "color": "black"
+            }
+          ],
+          "text": "Snapback pozisyonu: Beyazın tek özgürlüğü (4,6). Siyah yakalayabilir."
+        },
+        {
+          "stones": [
+            {
+              "x": 2,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 3,
+              "y": 5,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 6,
+              "color": "black"
+            }
+          ],
+          "captured": [
+            {
+              "x": 3,
+              "y": 6
+            }
+          ],
+          "text": "Siyah (4,6) oynadı, beyaz yakalandı. Beyaz (3,6)'yı geri almak ister..."
+        },
+        {
+          "stones": [
+            {
+              "x": 2,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 3,
+              "y": 5,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 6,
+              "color": "black"
+            },
+            {
+              "x": 3,
+              "y": 6,
+              "color": "white"
+            }
+          ],
+          "text": "Beyaz (3,6) oynadı ama siyah taşın sadece bir özgürlüğü var... Siyah tekrar yakalayabilir!"
+        },
+        {
+          "stones": [
+            {
+              "x": 3,
+              "y": 5,
+              "color": "black"
+            },
+            {
+              "x": 4,
+              "y": 6,
+              "color": "black"
+            }
+          ],
+          "captured": [
+            {
+              "x": 2,
+              "y": 6
+            },
+            {
+              "x": 3,
+              "y": 6
+            }
+          ],
+          "text": "Siyah (2,5) veya (3,7) ile tekrar yakaladı! Snapback — beyaz iki taş kaybetti."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Hangi tekniği kullanacağınıza karar verirken: Rakip taşın kaç özgürlüğü var? Kaçış yolu var mı? Merdiven kırıcı taş var mı? Bunları değerlendirerek en uygun tekniği seçin. Pratik yaptıkça doğru tekniği seçme hızınız artacaktır."
+    }
+  ],
+  "prerequisites": [
+    "l2-1-7"
+  ],
+  "next_lesson": "l2-1-9",
+  "required_exercise": "e2-1-8"
+}

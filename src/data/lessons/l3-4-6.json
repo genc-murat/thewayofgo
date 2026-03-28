@@ -1,0 +1,80 @@
+{
+  "id": "l3-4-6",
+  "level": 3,
+  "module": 4,
+  "lesson": 6,
+  "title": "Tesuji Uygulama 1",
+  "description": "Öğrenilen tesuji kalıplarını pratik pozisyonlarda uygulama.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Tesuji (手筋), Go'daki zekice taktik hamlelerdir. Bu derste öğrendiğimiz tesuji kalıplarını gerçek oyun pozisyonlarında uygulayacağız. Her pozisyon için en iyi tesuji'yi bulmaya çalışın."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 1, "y": 1, "color": "white"},
+        {"x": 2, "y": 1, "color": "white"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 3, "y": 1, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 0, "type": "good"},
+        {"x": 2, "y": 0, "type": "good"}
+      ],
+      "annotation": "Tesuji problemi: Beyaz iki taş ataride mi? Siyah hangi hamle hem saldırır hem savunur?"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"}
+          ],
+          "text": "Pozisyon: Siyah (5,5) çevrildi. Özgürlükler: (6,5) yok, (5,6) yok, (4,5) yok, (5,4) yok... Hepsi beyaz! Sadece kaçış yolu..."
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 6, "y": 4, "color": "black"}
+          ],
+          "text": "Siyah (6,4) oynadı! Bu bir tesuji — beyaz (6,5) artık ataride ve siyah grubun özgürlüğü arttı."
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 6, "y": 5, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 6, "y": 6, "color": "black"},
+            {"x": 6, "y": 4, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"}
+          ],
+          "text": "Beyaz (5,3) ile yanıtladı. Siyah hala sıkışık ama (6,4) tesuji'si önemli özgürlük kazandırdı."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Tesuji uygulama ipuçları:\n1. Her pozisyon için en az 3 olası hamle düşünün\n2. Rakibin en güçlü yanıtını hesaba katın\n3. Tesuji genellikle görünmeyen noktada olur — sıradan hamleleri denemeyin\n4. Çift anlamlı hamleler (hem saldırı hem savunma) en güçlü tesujilerdir"
+    }
+  ],
+  "prerequisites": ["l3-4-5"],
+  "next_lesson": "l3-4-7",
+  "required_exercise": null
+}

@@ -1,0 +1,216 @@
+{
+  "id": "l2-6-3",
+  "level": 2,
+  "module": 6,
+  "lesson": 3,
+  "title": "Okuma Pratiği",
+  "description": "Hamle okuma becerisini geliştirme pratiği.",
+  "duration_minutes": 15,
+  "content": [
+    {
+      "type": "text",
+      "content": "Yomu (okuma), Go'da en önemli becerilerden biridir. Hamleleri tahta üzerinde oynamadan önce zihninizde görmek demektir. İyi bir yomu becerisi: 1) Doğru hamleyi hızlı bulur, 2) Rakibin en iyi cevabını tahmin eder, 3) 3-5 hamle sonrasını planlar. Bu derste yomu pratiği yapacağız."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 2, "y": 1, "color": "white"},
+        {"x": 2, "y": 2, "color": "white"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 3, "y": 1, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 0, "type": "good"},
+        {"x": 1, "y": 1, "type": "liberty"},
+        {"x": 3, "y": 0, "type": "bad"}
+      ],
+      "annotation": "Yomu pratiği 1: Beyaz (2,1)-(2,2) grubu. Siyah çevirmiş. 3+ hamle okuyarak doğru dizi bulun."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 3, "y": 1, "color": "white"}
+          ],
+          "text": "Durumu okuyun: Beyaz (2,1)-(2,2)-(3,1) grubun özgürlükleri nedir? (2,0), (1,1). Siyah yakalamak istiyor."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 1, "y": 1, "color": "black"}
+          ],
+          "text": "1. Hamle: Siyah (1,1) atari! Beyaz grubun tek özgürlüğü (2,0)."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 2, "y": 0, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 1, "y": 1, "color": "black"}
+          ],
+          "text": "Beyaz (2,0) oynayarak kaçtı! Şimdi özgürlükler: (1,0) bağlantısı kopmuş, beyaz grup genişledi."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 3, "y": 1, "color": "white"},
+            {"x": 2, "y": 0, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 3, "y": 0, "color": "black"}
+          ],
+          "text": "2. Hamle: Siyah (3,0) — beyaz grupta (3,1)-(2,0) kısmı atariye düştü! Şimdi (2,0) ve (3,1) tehdit altında."
+        },
+        {
+          "stones": [
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 2, "y": 0, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 3, "y": 0, "color": "black"}
+          ],
+          "captured": [
+            {"x": 3, "y": 1}
+          ],
+          "text": "3. Hamle sonucu: Beyaz (3,1) yakalandı! 3 hamlelik yomu doğru çalıştı. Grup zayıfladı."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Yomu geliştirme yöntemi: Problemi çözmeden önce 10 saniye düşünün. Zihninizde: 1) Tüm olası ilk hamleleri listeyin, 2) Her biri için rakibin cevabını düşünün, 3) 3. hamleyi planlayın. Taşları yerleştirmeden önce tüm diziyi \"görmeye\" çalışın."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 5, "y": 7, "color": "black"},
+        {"x": 6, "y": 7, "color": "black"},
+        {"x": 7, "y": 7, "color": "black"},
+        {"x": 5, "y": 8, "color": "white"},
+        {"x": 7, "y": 8, "color": "white"},
+        {"x": 6, "y": 6, "color": "white"},
+        {"x": 8, "y": 6, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 6, "y": 8, "type": "good"},
+        {"x": 8, "y": 7, "type": "capture"},
+        {"x": 4, "y": 7, "type": "liberty"}
+      ],
+      "annotation": "Yomu pratiği 2: Siyah (5,7)-(6,7)-(7,7) 3'lü grup. Beyaz çevrelemiş. Kaç hamle gerekiyor?"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 6, "y": 7, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"},
+            {"x": 5, "y": 8, "color": "white"},
+            {"x": 7, "y": 8, "color": "white"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 8, "y": 6, "color": "white"}
+          ],
+          "text": "Siyah grubun özgürlükleri: (4,7), (8,7), (6,8). Beyaz (6,6)-(8,6) ve kenar taşları ile sarıyor. Okuyun!"
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 6, "y": 7, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"},
+            {"x": 5, "y": 8, "color": "white"},
+            {"x": 7, "y": 8, "color": "white"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 8, "y": 6, "color": "white"},
+            {"x": 6, "y": 8, "color": "black"}
+          ],
+          "text": "1. Hamle: Siyah (6,8) bağlantı noktası! Beyaz (5,8)-(7,8) arasını kesti. Beyazın cevabını okuyun."
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 6, "y": 7, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"},
+            {"x": 5, "y": 8, "color": "white"},
+            {"x": 7, "y": 8, "color": "white"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 8, "y": 6, "color": "white"},
+            {"x": 6, "y": 8, "color": "black"},
+            {"x": 8, "y": 7, "color": "white"}
+          ],
+          "text": "Beyaz (8,7) oynayarak siyahın özgürlüğünü kesti. Siyah grubun özgürlüğü: sadece (4,7). Kritik an!"
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 6, "y": 7, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"},
+            {"x": 5, "y": 8, "color": "white"},
+            {"x": 7, "y": 8, "color": "white"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 8, "y": 6, "color": "white"},
+            {"x": 6, "y": 8, "color": "black"},
+            {"x": 8, "y": 7, "color": "white"},
+            {"x": 4, "y": 7, "color": "black"}
+          ],
+          "captured": [
+            {"x": 5, "y": 8}
+          ],
+          "text": "2. Hamle: Siyah (4,7) oynayarak beyaz (5,8) taşını kesti! Beyaz (5,8) artık yalnız — özgürlüğü yok, yakalandı!"
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 6, "y": 7, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"},
+            {"x": 7, "y": 8, "color": "white"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 8, "y": 6, "color": "white"},
+            {"x": 6, "y": 8, "color": "black"},
+            {"x": 8, "y": 7, "color": "white"},
+            {"x": 4, "y": 7, "color": "black"}
+          ],
+          "text": "Sonuç: Siyah (5,8) yakaladı, grubu rahatladı. Özgürlükler arttı: (5,8) boşaldı. Yomu başarılı!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Yomu seviyeleri: Başlangıç (1-2 hamle ileri) → Orta (3-4 hamle ileri) → İleri (5+ hamle ileri). Profesyonel oyuncular 20+ hamle ileri okuyabilir. Her gün en az 3-5 tsumego çözerek yomu becerinizi geliştirin. Zamanla hızınız ve doğruluğunuz artacaktır."
+    }
+  ],
+  "prerequisites": ["l2-6-2"],
+  "next_lesson": "l2-6-4",
+  "required_exercise": null
+}

@@ -1,0 +1,95 @@
+{
+  "id": "l1-4-2",
+  "level": 1,
+  "module": 4,
+  "lesson": 2,
+  "title": "Ko Örnekleri",
+  "description": "Basit ko durumları ve farklı tahta bölümlerinde ko karşılaşmaları.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Ko pozisyonları farklı şekillerde ortaya çıkabilir. Köşede, kenarda veya ortada ko olabilir. Her durumda aynı kural geçerlidir: Aynı tahta durumunu tekrarlamak yasaktır."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "white"},
+        {"x": 0, "y": 1, "color": "white"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 2, "y": 1, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 1, "type": "capture"}
+      ],
+      "annotation": "Köşe ko'su: (1,1) boşluğunda ko mücadelesi var"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "white"},
+            {"x": 0, "y": 1, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 1, "y": 1, "color": "white"}
+          ],
+          "text": "Köşe ko'su: Beyaz (1,1) taş var. Siyah bu taşı çevrelemiş durumda."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "white"},
+            {"x": 0, "y": 1, "color": "white"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"}
+          ],
+          "captured": [{"x": 1, "y": 1}],
+          "text": "Siyah (1,1) oynayarak beyaz taşı yakaladı! Ko başladı."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "white"},
+            {"x": 0, "y": 1, "color": "white"},
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 1, "y": 2, "color": "black"},
+            {"x": 2, "y": 1, "color": "black"}
+          ],
+          "text": "Beyaz hemen (0,1)'i almayı deniyor ama... aynı pozisyon oluşur! YASAK. Beyaz önce başka yerde oynamalı."
+        }
+      ]
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 4, "y": 4, "color": "white"},
+        {"x": 5, "y": 5, "color": "black"},
+        {"x": 6, "y": 4, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 5, "y": 4, "type": "capture"}
+      ],
+      "annotation": "Orta tahta ko'su: (5,4) boşluğunda potansiyel ko pozisyonu"
+    },
+    {
+      "type": "text",
+      "content": "Ko tanıma: Eğer bir yakalama sonucu tek boşluk kalırsa ve rakip o boşluğa oynayarak aynı şekilde geri alabilirse, bu bir ko'dur. Ko'nun belirleyici özelliği 'karşılıklı tek taş yakalama' dır."
+    },
+    {
+      "type": "text",
+      "content": "İpucu: Ko durumlarını önceden fark etmek, oyun planınızı buna göre ayarlamanızı sağlar. Ko sırasında başka yerde 'ko tehdidi' oynamak, taktik bir karardır."
+    }
+  ],
+  "prerequisites": ["l1-4-1"],
+  "next_lesson": "l1-4-3",
+  "required_exercise": "e1-4-2"
+}

@@ -3,86 +3,137 @@
   "level": 6,
   "module": 4,
   "lesson": 2,
-  "title": "Onarı ve Kısaltma",
-  "description": "Skor optimizasyonu teknikleri.",
-  "duration_minutes": 10,
+  "title": "Skor Optimizasyonu",
+  "description": "Bölge maksimizasyonu, profesyonel yose tekniği ve hassas puan hesaplama. Her hamlenin puan değerini bilmek.",
+  "duration_minutes": 25,
   "content": [
     {
       "type": "text",
-      "content": "Onarı ve Kısaltma: Skor optimizasyonu teknikleri. Temel kavramları ve stratejileri öğrenin."
+      "content": "Skor optimizasyonu, yose'de (oyun sonu) her hamlenin tam puan değerini bilmektir. Profesyoneller, 'bu hamle 2.5 puan mı, 3 puan mı?' sorusuna saniyeler içinde cevap verir. Bu beceri, deiri (giriş-çıkış hesabı) ve miai (karşılıklı değer) kavramlarına dayanır. Usta seviyesinde 0.5 puanlık fark oyunu belirleyebilir."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 19,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        }
+        { "x": 2, "y": 2, "color": "black" },
+        { "x": 3, "y": 2, "color": "black" },
+        { "x": 2, "y": 3, "color": "black" },
+        { "x": 1, "y": 1, "color": "white" },
+        { "x": 4, "y": 1, "color": "white" },
+        { "x": 1, "y": 4, "color": "white" },
+        { "x": 5, "y": 2, "color": "white" },
+        { "x": 2, "y": 5, "color": "white" }
       ],
-      "highlights": [],
-      "annotation": "Onarı ve Kısaltma"
+      "highlights": [
+        { "x": 1, "y": 2, "type": "vital" },
+        { "x": 2, "y": 1, "type": "vital" },
+        { "x": 3, "y": 3, "type": "territory" },
+        { "x": 1, "y": 1, "type": "bad" }
+      ],
+      "annotation": "Sol-alt köşe yose: Siyah'ın bölgesi ~4 puan. Beyaz'ın (1,2) veya (2,1) hamlesi 2 puan çalar – hangisi daha büyük?"
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 2, "y": 2, "color": "black" },
+            { "x": 3, "y": 2, "color": "black" },
+            { "x": 2, "y": 3, "color": "black" },
+            { "x": 1, "y": 1, "color": "white" },
+            { "x": 4, "y": 1, "color": "white" },
+            { "x": 1, "y": 4, "color": "white" }
           ],
-          "text": "Pozisyon analizi başladı"
+          "text": "Yose pozisyonu: Siyah sol-alt köşede bölge koruyor. Beyaz'ın iki入侵 (istila) noktası var."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            { "x": 2, "y": 2, "color": "black" },
+            { "x": 3, "y": 2, "color": "black" },
+            { "x": 2, "y": 3, "color": "black" },
+            { "x": 1, "y": 1, "color": "white" },
+            { "x": 4, "y": 1, "color": "white" },
+            { "x": 1, "y": 4, "color": "white" },
+            { "x": 5, "y": 2, "color": "white" },
+            { "x": 2, "y": 5, "color": "white" }
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Beyaz iki kenar baskısı yapar – Siyah'ın bölgesini küçültür. Her hamle ~2 puan (deiri hesabı)."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 2, "y": 2, "color": "black" },
+            { "x": 3, "y": 2, "color": "black" },
+            { "x": 2, "y": 3, "color": "black" },
+            { "x": 1, "y": 1, "color": "white" },
+            { "x": 4, "y": 1, "color": "white" },
+            { "x": 1, "y": 4, "color": "white" },
+            { "x": 5, "y": 2, "color": "white" },
+            { "x": 2, "y": 5, "color": "white" },
+            { "x": 3, "y": 3, "color": "black" }
           ],
-          "text": "Sonraki hamleyi düşünün"
+          "text": "Siyah en büyük yose hamlesi! (3,3) ile bölgeyi sağlamlaştırır – sente (öncelikli) hamle."
+        },
+        {
+          "stones": [
+            { "x": 2, "y": 2, "color": "black" },
+            { "x": 3, "y": 2, "color": "black" },
+            { "x": 2, "y": 3, "color": "black" },
+            { "x": 1, "y": 1, "color": "white" },
+            { "x": 4, "y": 1, "color": "white" },
+            { "x": 1, "y": 4, "color": "white" },
+            { "x": 5, "y": 2, "color": "white" },
+            { "x": 2, "y": 5, "color": "white" },
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 2, "y": 1, "color": "white" }
+          ],
+          "text": "Beyaz küçük yose – (2,1) atar. 1 puanlık hamle. Siyah doğru sırada oynadı!"
+        },
+        {
+          "stones": [
+            { "x": 2, "y": 2, "color": "black" },
+            { "x": 3, "y": 2, "color": "black" },
+            { "x": 2, "y": 3, "color": "black" },
+            { "x": 1, "y": 1, "color": "white" },
+            { "x": 4, "y": 1, "color": "white" },
+            { "x": 1, "y": 4, "color": "white" },
+            { "x": 5, "y": 2, "color": "white" },
+            { "x": 2, "y": 5, "color": "white" },
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 2, "y": 1, "color": "white" },
+            { "x": 1, "y": 2, "color": "black" }
+          ],
+          "text": "Siyah son savunma – (1,2) ile bölgeyi tamamen kapatır. Profesyonel yose: doğru sıra = maksimum puan!"
         }
       ]
+    },
+    {
+      "type": "text",
+      "content": "Deiri (giriş-çıkış) hesaplama: Bir hamlenin değeri = (sizin kazancınız) + (rakibin kaybı). Örnek: Bir hamle sizin 3 puan kazanmanızı ve rakibin 2 puan kaybetmesini sağlarsa, deiri değeri = 5 puan. Usta oyuncular tüm yose hamlelerini deiri değerine göre sıralar ve en büyüğünden başlar."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        { "x": 16, "y": 16, "color": "black" },
+        { "x": 17, "y": 15, "color": "black" },
+        { "x": 16, "y": 17, "color": "black" },
+        { "x": 15, "y": 16, "color": "black" },
+        { "x": 14, "y": 14, "color": "white" },
+        { "x": 17, "y": 14, "color": "white" },
+        { "x": 14, "y": 17, "color": "white" },
+        { "x": 18, "y": 17, "color": "white" }
+      ],
+      "highlights": [
+        { "x": 16, "y": 16, "type": "good" },
+        { "x": 17, "y": 15, "type": "good" },
+        { "x": 15, "y": 15, "type": "vital" },
+        { "x": 18, "y": 16, "type": "vital" },
+        { "x": 16, "y": 18, "type": "territory" }
+      ],
+      "annotation": "Sağ-alt yose: Siyah ~8 puan bölge koruyor. Beyaz'ın (15,15) veya (18,16) hamlesi 3 puanlık – en büyük yose burada!"
     }
   ],
-  "prerequisites": [
-    "l----1"
-  ],
+  "prerequisites": ["l6-4-1"],
   "next_lesson": "l6-4-3",
   "required_exercise": "e6-4-2"
 }

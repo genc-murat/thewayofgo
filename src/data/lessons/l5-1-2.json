@@ -4,90 +4,127 @@
   "module": 1,
   "lesson": 2,
   "title": "İleri Seviye Planlama",
-  "description": "Uzun vadeli strateji.",
-  "duration_minutes": 10,
+  "description": "Uzman seviyesinde uzun vadeli strateji ve oyun boyunca planlama. Honinbo liglerindeki gibi tüm tahtayı okumayı öğrenin.",
+  "duration_minutes": 15,
   "content": [
     {
       "type": "text",
-      "content": "İleri Seviye Planlama: Uzun vadeli strateji. Bu derste temel kavramları öğreneceksiniz."
+      "content": "Uzman seviyesinde her hamle gelecekteki 20-30 hamleyi planlamalıdır. Fuseki'den chuban'ya, chuban'dan yose'ye geçişte tutarlı bir strateji (kikashi dahil) izlemek oyunun kaderini belirler. Bu derste tüm tahta vizyonu (zen başa anlama) geliştireceğiz."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 19,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        },
-        {
-          "x": 5,
-          "y": 4,
-          "color": "black"
-        }
+        { "x": 3, "y": 3, "color": "black" },
+        { "x": 15, "y": 3, "color": "white" },
+        { "x": 3, "y": 15, "color": "white" },
+        { "x": 15, "y": 15, "color": "black" },
+        { "x": 9, "y": 3, "color": "black" },
+        { "x": 3, "y": 9, "color": "white" },
+        { "x": 16, "y": 5, "color": "black" },
+        { "x": 5, "y": 16, "color": "white" }
       ],
-      "highlights": [],
-      "annotation": "İleri Seviye Planlama"
+      "highlights": [
+        { "x": 9, "y": 9, "type": "territory" },
+        { "x": 3, "y": 3, "type": "good" },
+        { "x": 15, "y": 15, "type": "good" },
+        { "x": 9, "y": 3, "type": "good" }
+      ],
+      "annotation": "Dört köşe + kenar taşları: Siyah sağ-alt ve üst-kenar odaklı, Beyaz sol-alt köşe + sol kenar"
+    },
+    {
+      "type": "text",
+      "content": "Bu fuseki pozisyonunda Siyah üç köşe kontrolü hedefliyor: sağ-alt (15,15), üst-kenar (9,3) ve sağ-üst (16,5). Beyaz sol-tarafta toprak kazanırken Siyah sağ-tarafta büyük moyo inşa ediyor. Uzman planlama, bu stratejik akışı erken safhada okuyabilmektir."
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 15, "y": 3, "color": "white" },
+            { "x": 3, "y": 15, "color": "white" },
+            { "x": 15, "y": 15, "color": "black" }
           ],
-          "text": "Pozisyonu inceleyin"
+          "text": "1-4: Klasik köşe işgali (hoshi). Dengeli başlangıç."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 15, "y": 3, "color": "white" },
+            { "x": 3, "y": 15, "color": "white" },
+            { "x": 15, "y": 15, "color": "black" },
+            { "x": 9, "y": 3, "color": "black" }
           ],
-          "text": "Taşlar yerleşti"
+          "text": "5: Siyah üst kenar star noktası – büyük moyo temeli (kakari'ye karşı gauge)."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 15, "y": 3, "color": "white" },
+            { "x": 3, "y": 15, "color": "white" },
+            { "x": 15, "y": 15, "color": "black" },
+            { "x": 9, "y": 3, "color": "black" },
+            { "x": 3, "y": 9, "color": "white" }
           ],
-          "text": "İleri adımları düşünün"
+          "text": "6: Beyaz sol kenarı genişletir – shimari oluşturma niyeti."
+        },
+        {
+          "stones": [
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 15, "y": 3, "color": "white" },
+            { "x": 3, "y": 15, "color": "white" },
+            { "x": 15, "y": 15, "color": "black" },
+            { "x": 9, "y": 3, "color": "black" },
+            { "x": 3, "y": 9, "color": "white" },
+            { "x": 16, "y": 5, "color": "black" }
+          ],
+          "text": "7: Siyah sağ-üst yaklaşımı – köşe + kenar bütünlüğü (tenuki yerine yerel güç)."
+        },
+        {
+          "stones": [
+            { "x": 3, "y": 3, "color": "black" },
+            { "x": 15, "y": 3, "color": "white" },
+            { "x": 3, "y": 15, "color": "white" },
+            { "x": 15, "y": 15, "color": "black" },
+            { "x": 9, "y": 3, "color": "black" },
+            { "x": 3, "y": 9, "color": "white" },
+            { "x": 16, "y": 5, "color": "black" },
+            { "x": 5, "y": 16, "color": "white" }
+          ],
+          "text": "8: Beyaz sol-alt köşeye shimari – her iki taraf da stratejik planını gerçekleştiriyor."
         }
       ]
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        { "x": 3, "y": 3, "color": "black" },
+        { "x": 15, "y": 3, "color": "white" },
+        { "x": 3, "y": 15, "color": "white" },
+        { "x": 15, "y": 15, "color": "black" },
+        { "x": 9, "y": 3, "color": "black" },
+        { "x": 3, "y": 9, "color": "white" },
+        { "x": 16, "y": 5, "color": "black" },
+        { "x": 5, "y": 16, "color": "white" },
+        { "x": 14, "y": 9, "color": "black" },
+        { "x": 9, "y": 14, "color": "white" }
+      ],
+      "highlights": [
+        { "x": 9, "y": 9, "type": "territory" },
+        { "x": 14, "y": 9, "type": "good" },
+        { "x": 9, "y": 14, "type": "good" },
+        { "x": 12, "y": 6, "type": "bad" }
+      ],
+      "annotation": "Orta oyun planı: Siyah sağ-tarafta moyo genişletir, Beyaz merkezden siranui (etki) yayar"
+    },
+    {
+      "type": "text",
+      "content": "Planlamada kilit prensip: 'Şimdi nerede oynamalıyım?' sorusu yerine 'Sonraki 30 hamlede nerede olmak istiyorum?' sorusunu sorun. ErkenFuseki'de büyük alanları işgal edin, chuban'da zayıf grupları hedefleyin, yose'de hassas hesaplama yapın. Kikashi (zorlayıcı hamleler) rakibin planını bozarken kendi stratejinizi korur."
     }
   ],
-  "prerequisites": [
-    "l5-1-1"
-  ],
+  "prerequisites": ["l5-1-1"],
   "next_lesson": "l5-1-3",
   "required_exercise": "e5-1-2"
 }

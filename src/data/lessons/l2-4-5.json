@@ -4,90 +4,147 @@
   "module": 4,
   "lesson": 5,
   "title": "Yose Skor Hesaplama",
-  "description": "Yose'de puan hesaplama.",
-  "duration_minutes": 10,
+  "description": "Son oyun (yose) hamlelerinin puan değerini hesaplama, sente ve gote yose ayrımı ve endgame hamle karşılaştırma tekniklerini öğrenin.",
+  "duration_minutes": 13,
   "content": [
     {
       "type": "text",
-      "content": "Yose Skor Hesaplama: Yose'de puan hesaplama. Bu derste temel kavramları öğreneceksiniz."
+      "content": "Yose (終仕), oyunun son aşamasıdır ve doğru hamle sıralaması kazanmayı belirler. Bu derste şunları öğreneceksiniz: (1) Yose hamlelerinin puan değerini hesaplama — her hamle kaç puan eder? (2) Sente yose (önce el) vs gote yose (sonra el) ayrımı — rakip yanıt vermek zorundaysa sente, değilse gote. (3) Önce büyük yose, sonra küçük yose oynama ilkesi. Doğru yose sıralaması 5-10 puan fark yaratabilir!"
     },
     {
       "type": "board",
       "size": 9,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        },
-        {
-          "x": 5,
-          "y": 4,
-          "color": "black"
-        }
+        {"x": 0, "y": 4, "color": "black"},
+        {"x": 1, "y": 4, "color": "black"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 5, "y": 4, "color": "black"},
+        {"x": 0, "y": 6, "color": "white"},
+        {"x": 1, "y": 6, "color": "white"},
+        {"x": 2, "y": 6, "color": "white"},
+        {"x": 3, "y": 6, "color": "white"},
+        {"x": 4, "y": 6, "color": "white"},
+        {"x": 5, "y": 6, "color": "white"}
       ],
-      "highlights": [],
-      "annotation": "Yose Skor Hesaplama"
+      "highlights": [
+        {"x": 3, "y": 5, "type": "vital"},
+        {"x": 1, "y": 5, "type": "territory"},
+        {"x": 2, "y": 5, "type": "territory"},
+        {"x": 4, "y": 5, "type": "territory"}
+      ],
+      "annotation": "Siyah duvar (satır 4) ve Beyaz duvar (satır 6) arasında 6 boşluk var (satır 5). Bu noktalar yose döneminde bölge belirler. (3,5) hayati nokta — çift anlamlı sınır."
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 0, "y": 4, "color": "black"},
+            {"x": 1, "y": 4, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 0, "y": 6, "color": "white"},
+            {"x": 1, "y": 6, "color": "white"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"}
           ],
-          "text": "Pozisyonu inceleyin"
+          "text": "Yose pozisyonu: Satır 5'teki 6 boşluk bölge sınırı. Kim bunları doldurursa puan alır. Sente hamleleri değerlendiriyoruz."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            {"x": 0, "y": 4, "color": "black"},
+            {"x": 1, "y": 4, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 0, "y": 6, "color": "white"},
+            {"x": 1, "y": 6, "color": "white"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 3, "y": 5, "color": "black"}
           ],
-          "text": "Taşlar yerleşti"
+          "highlights": [{"x": 3, "y": 5, "type": "good"}],
+          "text": "SENTE: Siyah (3,5) — merkez sınırı kapladı! Beyaz yanıt vermek zorunda, yoksa Siyah tüm satır 5'i alır. Sente çünkü rakip cevap vermek zorunda."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 0, "y": 4, "color": "black"},
+            {"x": 1, "y": 4, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 0, "y": 6, "color": "white"},
+            {"x": 1, "y": 6, "color": "white"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 4, "y": 5, "color": "white"}
           ],
-          "text": "İleri adımları düşünün"
+          "text": "Beyaz (4,5) yanıt verdi — sınırı korudu. Siyah 2 puan kazandı (3,5 bölge + Beyaz'ın 1 bölgesini engelledi). Sente yose değeri: ~2 puan."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 4, "color": "black"},
+            {"x": 1, "y": 4, "color": "black"},
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 0, "y": 6, "color": "white"},
+            {"x": 1, "y": 6, "color": "white"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 3, "y": 6, "color": "white"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 5, "y": 6, "color": "white"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 1, "y": 5, "color": "black"}
+          ],
+          "highlights": [{"x": 1, "y": 5, "type": "good"}],
+          "text": "Siyah tekrar sente ile (1,5) — başka bir sınır hamlesi. Beyaz yine yanıt vermek zorunda. Siyah sırayla tüm büyük yose noktalarını alıyor."
         }
       ]
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 6, "y": 4, "color": "black"},
+        {"x": 7, "y": 4, "color": "black"},
+        {"x": 6, "y": 6, "color": "white"},
+        {"x": 7, "y": 6, "color": "white"},
+        {"x": 8, "y": 4, "color": "black"},
+        {"x": 8, "y": 6, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 7, "y": 5, "type": "territory"},
+        {"x": 6, "y": 5, "type": "territory"},
+        {"x": 8, "y": 5, "type": "territory"}
+      ],
+      "annotation": "Gote yose örneği: Kenar bölgesinde 3 boşluk. Kim (7,5) oynarsa 1 puanlık bölge kazanır ama rakip yanıt vermek zorunda DEĞİL — gote yose."
+    },
+    {
+      "type": "text",
+      "content": "Yose hesaplama yöntemi: Bir hamlenin değerini hesaplamak için 'oyun öncesi' ve 'hamle sonrası' puan farkına bakın. Sente yose (rakip cevap vermek zorunda) her zaman gote yose'den (rakip serbest) önceliklidir. Kural: Önce sente yose oynayın, sonra en büyük gote yose'u seçin. 9x9 tahtada tek bir yose hatası 2-3 puan kaybettirir — bu da galibiyet ile mağlubiyet arasındaki fark olabilir!"
+    },
+    {
+      "type": "text",
+      "content": "Pratik ipucu: Yose'de hamle değerlerini 'gomoku sayacı' ile hesaplayın. Siyah ve Beyaz için en büyük hamleyi ayrı ayrı değerlendirin, farkı alın. Örneğin: Siyah (A) oynarsa +3 puan, Beyaz (A) oynarsa +2 puan → hamle değeri = 3+2 = 5 puan (çift taraflı). Yose okuma becerisi, orta seviye ile ileri seviye arasındaki en büyük farktır!"
     }
   ],
-  "prerequisites": [
-    "l2-4-4"
-  ],
-  "next_lesson": null,
+  "prerequisites": ["l2-4-4"],
+  "next_lesson": "l2-4-6",
   "required_exercise": "e2-4-5"
 }

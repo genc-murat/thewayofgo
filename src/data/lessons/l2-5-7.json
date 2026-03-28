@@ -1,0 +1,156 @@
+{
+  "id": "l2-5-7",
+  "level": 2,
+  "module": 5,
+  "lesson": 7,
+  "title": "Küçük Oyun Analizi",
+  "description": "9x9 tahtada tam bir oyunun adım adım analizi. Açılış, orta oyun ve yose aşamalarını inceleyin.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bu derste 9x9 tahtada oynanan kısa bir oyunun tamamını adım adım inceleyeceğiz. Açılış (fuseki), orta oyun savaşları ve oyun sonu (yose) aşamalarını göreceğiz. Her aşamada hangi stratejilerin kullanıldığına dikkat edin."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 2, "y": 6, "color": "white"},
+        {"x": 6, "y": 2, "color": "black"},
+        {"x": 6, "y": 6, "color": "white"},
+        {"x": 2, "y": 2, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 4, "type": "good"},
+        {"x": 6, "y": 2, "type": "good"},
+        {"x": 2, "y": 2, "type": "good"},
+        {"x": 2, "y": 6, "type": "territory"},
+        {"x": 6, "y": 6, "type": "territory"}
+      ],
+      "annotation": "Açılış (Fuseki): Her taraf bir köşeye oynadı. 9x9'da açılış çok hızlı biter."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "black"}
+          ],
+          "text": "Hamle 1: Siyah merkez (4,4) oynadı - tengen. 9x9'da en güçlü açılış hamlesi."
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 2, "y": 6, "color": "white"}
+          ],
+          "text": "Hamle 2: Beyaz sol alt köşeye (2,6) oynadı. Bölge iddiası."
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 6, "y": 2, "color": "black"}
+          ],
+          "text": "Hamle 3: Siyah sağ üst köşeye (6,2) oynadı. Dengeli bir dağılım."
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 6, "y": 2, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"}
+          ],
+          "text": "Hamle 4: Beyaz sağ alt köşeye (6,6) oynadı. Her taraf iki köşe aldı."
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 6, "y": 2, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 2, "y": 2, "color": "black"}
+          ],
+          "text": "Hamle 5: Siyah sol üst köşeye (2,2) oynadı. Açılış tamamlandı - siyah 3 köşe, beyaz 2 köşe."
+        }
+      ]
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 2, "y": 6, "color": "white"},
+        {"x": 6, "y": 2, "color": "black"},
+        {"x": 6, "y": 6, "color": "white"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 5, "color": "white"},
+        {"x": 5, "y": 5, "color": "black"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 6, "color": "white"},
+        {"x": 4, "y": 2, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 4, "type": "good"},
+        {"x": 3, "y": 5, "type": "bad"},
+        {"x": 5, "y": 3, "type": "bad"}
+      ],
+      "annotation": "Orta oyun: Taraflar merkez etrafında savaşıyor. Beyaz (3,5) ve (5,3) siyah merkezine yaklaşıyor."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 6, "y": 2, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 5, "y": 5, "color": "black"}
+          ],
+          "text": "Orta oyun başladı. Beyaz (3,5) ile siyah alanına sızdı. Siyah (5,5) ile hem savunma hem etkileme oynadı."
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 6, "y": 2, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"}
+          ],
+          "text": "Beyaz (5,3) ile üst bölgeye girdi. Siyah (3,3) ile dengede tuttu."
+        },
+        {
+          "stones": [
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 2, "y": 6, "color": "white"},
+            {"x": 6, "y": 2, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 2, "y": 2, "color": "black"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 4, "y": 2, "color": "black"}
+          ],
+          "text": "Beyaz (4,6) alt bölgeyi, siyah (4,2) üst bölgeyi güçlendirdi. Oyun çıkışsız - yose aşamasına geçiliyor."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Oyun analizi özeti: 9x9 tahtada açılış 4-6 hamlede biter. Merkez (tengen) çok güçlü bir hamledir. Orta oyunda bölge sınırlarını çizin ve rakibin sızmasını önleyin. Yose aşamasında büyük hamleleri önce oynayın."
+    }
+  ],
+  "prerequisites": ["l2-5-6"],
+  "next_lesson": "l2-5-8",
+  "required_exercise": null
+}

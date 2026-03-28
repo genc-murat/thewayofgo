@@ -1,0 +1,113 @@
+{
+  "id": "l3-6-4",
+  "level": 3,
+  "module": 6,
+  "lesson": 4,
+  "title": "İleri Ölüm Problemleri 2",
+  "description": "Göz alanı azaltma ve sahte göz sömürme teknikleri.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Göz alanını azaltmak (減らす, herasu), rakip grubun iç boşluğunu daraltarak yaşam şansını ortadan kaldırmaktır. Sahte gözleri sömürmek de önemli bir öldürme tekniğidir."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 5, "color": "white"},
+        {"x": 1, "y": 5, "color": "white"},
+        {"x": 2, "y": 5, "color": "white"},
+        {"x": 3, "y": 5, "color": "white"},
+        {"x": 4, "y": 5, "color": "white"},
+        {"x": 0, "y": 6, "color": "white"},
+        {"x": 4, "y": 6, "color": "white"},
+        {"x": 0, "y": 7, "color": "white"},
+        {"x": 2, "y": 7, "color": "white"},
+        {"x": 4, "y": 7, "color": "white"},
+        {"x": 0, "y": 8, "color": "white"},
+        {"x": 1, "y": 8, "color": "white"},
+        {"x": 3, "y": 8, "color": "white"},
+        {"x": 4, "y": 8, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 6, "type": "bad"},
+        {"x": 3, "y": 6, "type": "bad"},
+        {"x": 2, "y": 6, "type": "good"}
+      ],
+      "annotation": "Sahte göz pozisyonu: (1,7) boş ama köşegen kontrolü zayıf. Siyah nereye oynamalı?"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 0, "y": 5, "color": "white"},
+            {"x": 1, "y": 5, "color": "white"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 0, "y": 6, "color": "white"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 0, "y": 7, "color": "white"},
+            {"x": 2, "y": 7, "color": "white"},
+            {"x": 4, "y": 7, "color": "white"},
+            {"x": 0, "y": 8, "color": "white"},
+            {"x": 1, "y": 8, "color": "white"},
+            {"x": 3, "y": 8, "color": "white"},
+            {"x": 4, "y": 8, "color": "white"}
+          ],
+          "text": "Beyaz grubun iç boşlukları: (1,6),(2,6),(3,6),(1,7),(3,7). 5 boş nokta — düz üç mü, daha karmaşık mı?"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 5, "color": "white"},
+            {"x": 1, "y": 5, "color": "white"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 0, "y": 6, "color": "white"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 0, "y": 7, "color": "white"},
+            {"x": 2, "y": 7, "color": "white"},
+            {"x": 4, "y": 7, "color": "white"},
+            {"x": 0, "y": 8, "color": "white"},
+            {"x": 1, "y": 8, "color": "white"},
+            {"x": 3, "y": 8, "color": "white"},
+            {"x": 4, "y": 8, "color": "white"},
+            {"x": 2, "y": 6, "color": "black"}
+          ],
+          "text": "Siyah (2,6) oynadı — merkez! Kalan: (1,6),(3,6),(1,7),(3,7). Beyaz (1,7) oynarsa?"
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 5, "color": "white"},
+            {"x": 1, "y": 5, "color": "white"},
+            {"x": 2, "y": 5, "color": "white"},
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 4, "y": 5, "color": "white"},
+            {"x": 0, "y": 6, "color": "white"},
+            {"x": 4, "y": 6, "color": "white"},
+            {"x": 0, "y": 7, "color": "white"},
+            {"x": 1, "y": 7, "color": "white"},
+            {"x": 2, "y": 7, "color": "white"},
+            {"x": 4, "y": 7, "color": "white"},
+            {"x": 0, "y": 8, "color": "white"},
+            {"x": 1, "y": 8, "color": "white"},
+            {"x": 3, "y": 8, "color": "white"},
+            {"x": 4, "y": 8, "color": "white"},
+            {"x": 2, "y": 6, "color": "black"}
+          ],
+          "text": "Beyaz (1,7) oynadı. Kalan: (1,6),(3,6),(3,7). Siyah (3,6) oynarsa beyaz sadece (3,7) ile tek göz. ÖLÜ!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Göz azaltma tekniği: İç boşluğa oynayarak rakibin göz alanını daraltın. Merkez noktasını almak, şekli bölünemez hale getirir. Sahte gözlere dikkat — gerçek göz gibi görünür ama değildir."
+    }
+  ],
+  "prerequisites": ["l3-6-3"],
+  "next_lesson": "l3-6-5",
+  "required_exercise": null
+}

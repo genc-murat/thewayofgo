@@ -1,0 +1,100 @@
+{
+  "id": "l6-5-9",
+  "level": 6,
+  "module": 5,
+  "lesson": 9,
+  "title": "Profesyonel Oyun Analizi 2",
+  "description": "Modern bir profesyonel oyunun baştan sona detaylı analizi.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bu derste, modern Go döneminin en etkileyici oyunlarından birini analiz edeceğiz. AI (Leela Zero, KataGo) döneminin etkisiyle oluşan yeni anlayışı, geleneksel Go bilgeliğiyle karşılaştıracağız. Modern profesyoneller, AI önerilerini anlayarak kendi oyunlarına entegre ediyor."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 16, "color": "white"},
+        {"x": 16, "y": 3, "color": "black"},
+        {"x": 16, "y": 16, "color": "white"},
+        {"x": 14, "y": 2, "color": "black"},
+        {"x": 2, "y": 4, "color": "white"},
+        {"x": 9, "y": 3, "color": "black"},
+        {"x": 3, "y": 9, "color": "white"},
+        {"x": 10, "y": 9, "color": "black"},
+        {"x": 9, "y": 10, "color": "white"},
+        {"x": 11, "y": 7, "color": "black"},
+        {"x": 6, "y": 13, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 5, "y": 3, "type": "good"},
+        {"x": 14, "y": 10, "type": "territory"}
+      ],
+      "annotation": "Modern oyun analizi - AI etkili fuseki"
+    },
+    {
+      "type": "text",
+      "content": "Modern Go'da önemli değişimler: 1) 3-3 açılışı daha değerli, 2) Uzak yaklaşım (tōjikai) daha sık kullanılıyor, 3) Büyük moyo yerine çok yönlü etki tercih ediliyor. AI'nın önerdiği 'anlaşılmaz' hamlelerin arkasındaki mantığı anlamaya çalışın."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 16, "color": "white"},
+            {"x": 16, "y": 3, "color": "black"},
+            {"x": 16, "y": 16, "color": "white"}
+          ],
+          "text": "Modern açılış - asimetrik köşe yaklaşımı"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 16, "color": "white"},
+            {"x": 16, "y": 3, "color": "black"},
+            {"x": 16, "y": 16, "color": "white"},
+            {"x": 14, "y": 2, "color": "black"},
+            {"x": 2, "y": 4, "color": "white"}
+          ],
+          "text": "Uzak kenar hamleleri - AI tarzı büyük vizyon"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 16, "color": "white"},
+            {"x": 16, "y": 3, "color": "black"},
+            {"x": 16, "y": 16, "color": "white"},
+            {"x": 14, "y": 2, "color": "black"},
+            {"x": 2, "y": 4, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 3, "y": 9, "color": "white"}
+          ],
+          "text": "Merkez yaklaşımı - modern etki anlayışı"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 16, "color": "white"},
+            {"x": 16, "y": 3, "color": "black"},
+            {"x": 16, "y": 16, "color": "white"},
+            {"x": 14, "y": 2, "color": "black"},
+            {"x": 2, "y": 4, "color": "white"},
+            {"x": 9, "y": 3, "color": "black"},
+            {"x": 3, "y": 9, "color": "white"},
+            {"x": 10, "y": 9, "color": "black"},
+            {"x": 9, "y": 10, "color": "white"},
+            {"x": 11, "y": 7, "color": "black"},
+            {"x": 6, "y": 13, "color": "white"}
+          ],
+          "text": "Modern chūban - çok yönlü hamleler ile esnek pozisyon"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l6-5-8"],
+  "next_lesson": "l6-5-10",
+  "required_exercise": null
+}

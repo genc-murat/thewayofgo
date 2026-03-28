@@ -1,0 +1,99 @@
+{
+  "id": "l4-3-5",
+  "level": 4,
+  "module": 3,
+  "lesson": 5,
+  "title": "Kalınlaştırma Pratik 2",
+  "description": "Kalınlık ve incelik arasındaki dengeyi öğrenin.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Kalınlık (katsu) her zaman avantaj değildir. Bazen kalın duvar karşısında incelik (karui) esnekliği ile üstünlük sağlanabilir. Kalın taşlar ağır ve yavaş, ince taşlar ise hafif ve hızlıdır. Bu dengeyi anlamak yose ve chuban aşamalarında kritiktir."
+    },
+    {
+      "type": "board",
+      "size": 13,
+      "stones": [
+        {"x": 1, "y": 1, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 1, "y": 5, "color": "black"},
+        {"x": 1, "y": 7, "color": "black"},
+        {"x": 1, "y": 9, "color": "black"},
+        {"x": 5, "y": 4, "color": "white"},
+        {"x": 7, "y": 6, "color": "white"},
+        {"x": 9, "y": 4, "color": "white"},
+        {"x": 6, "y": 8, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 5, "type": "good"},
+        {"x": 6, "y": 8, "type": "good"},
+        {"x": 7, "y": 6, "type": "liberty"}
+      ],
+      "annotation": "Siyah kalın sol kenar vs Beyaz esnek merkez taşları"
+    },
+    {
+      "type": "text",
+      "content": "Kalınlık stratejisi kuralları: 1) Kalın duvarın önünden oynayın, arkasından değil 2) Kalınlığı saldırı kalkanı olarak kullanın 3) Kalın duvarla rakip taşları sıkıştırın. Unutmayın: kalınlık tek başına puan vermez, kullanılması gerekir."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 7, "y": 6, "color": "white"}
+          ],
+          "text": "Siyah sol kenarı kalınlaştırıyor, Beyaz merkezde esnek"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 1, "y": 7, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 7, "y": 6, "color": "white"},
+            {"x": 9, "y": 4, "color": "white"}
+          ],
+          "text": "Siyah duvar uzuyor, Beyaz sağa yöneliyor"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 1, "y": 7, "color": "black"},
+            {"x": 1, "y": 9, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 7, "y": 6, "color": "white"},
+            {"x": 9, "y": 4, "color": "white"}
+          ],
+          "text": "Siyah kalın duvarı kullanarak merkezde etki yaratıyor"
+        },
+        {
+          "stones": [
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 1, "y": 5, "color": "black"},
+            {"x": 1, "y": 7, "color": "black"},
+            {"x": 1, "y": 9, "color": "black"},
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 5, "y": 4, "color": "white"},
+            {"x": 7, "y": 6, "color": "white"},
+            {"x": 9, "y": 4, "color": "white"},
+            {"x": 6, "y": 8, "color": "white"}
+          ],
+          "text": "Beyaz esnek hamleyle siyahın etki alanına sızıyor"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l4-3-4"],
+  "next_lesson": "l4-4-1",
+  "required_exercise": null
+}

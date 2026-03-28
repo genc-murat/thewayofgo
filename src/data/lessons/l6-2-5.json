@@ -88,6 +88,6 @@
   "prerequisites": [
     "l6-2-4"
   ],
-  "next_lesson": null,
+  "next_lesson": "l6-3-1",
   "required_exercise": "e6-2-5"
 }

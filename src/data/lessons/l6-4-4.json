@@ -3,86 +3,158 @@
   "level": 6,
   "module": 4,
   "lesson": 4,
-  "title": "Profesyonel Sonu",
-  "description": "Profesyonel oyun sonu analizi.",
-  "duration_minutes": 10,
+  "title": "Profesyonel Oyun Sonu Tekniği",
+  "description": "Profesyonel seviye yose tekniği, yakın oyunları kazanma stratejisi ve半目 (yarım göz) hassasiyetinde hesaplama.",
+  "duration_minutes": 25,
   "content": [
     {
       "type": "text",
-      "content": "Profesyonel Sonu: Profesyonel oyun sonu analizi. Temel kavramları ve stratejileri öğrenin."
+      "content": "Profesyonel yose tekniği, yakın oyunları kazanma sanatıdır. 0.5 puanlık fark, amatör oyunlarda şans olarak görünür ama profesyonel seviyede hesaplanmış sonuçtur. Ko-threat (ko tehdidi) yönetimi, dame (işe yaramaz nokta) sıralaması ve son teki (teki –连接) hamleler, profesyonel yose'nin ince ayrıntılarıdır."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 19,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        }
+        { "x": 2, "y": 13, "color": "black" },
+        { "x": 3, "y": 13, "color": "black" },
+        { "x": 2, "y": 12, "color": "black" },
+        { "x": 3, "y": 12, "color": "black" },
+        { "x": 1, "y": 11, "color": "white" },
+        { "x": 4, "y": 11, "color": "white" },
+        { "x": 1, "y": 14, "color": "white" },
+        { "x": 4, "y": 14, "color": "white" },
+        { "x": 2, "y": 15, "color": "white" },
+        { "x": 3, "y": 15, "color": "white" }
       ],
-      "highlights": [],
-      "annotation": "Profesyonel Sonu"
+      "highlights": [
+        { "x": 2, "y": 14, "type": "vital" },
+        { "x": 3, "y": 14, "type": "vital" },
+        { "x": 1, "y": 13, "type": "vital" },
+        { "x": 4, "y": 13, "type": "vital" },
+        { "x": 2, "y": 13, "type": "territory" },
+        { "x": 3, "y": 13, "type": "territory" }
+      ],
+      "annotation": "Sol kenar kritik yose: Siyah'ın 2 puan bölgesi tam ortada. Her kenar noktası 0.5 puan – doğru sıra oyunu belirleyebilir!"
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 2, "y": 13, "color": "black" },
+            { "x": 3, "y": 13, "color": "black" },
+            { "x": 2, "y": 12, "color": "black" },
+            { "x": 3, "y": 12, "color": "black" },
+            { "x": 1, "y": 11, "color": "white" },
+            { "x": 4, "y": 11, "color": "white" },
+            { "x": 1, "y": 14, "color": "white" },
+            { "x": 4, "y": 14, "color": "white" },
+            { "x": 2, "y": 15, "color": "white" },
+            { "x": 3, "y": 15, "color": "white" }
           ],
-          "text": "Pozisyon analizi başladı"
+          "text": "Pozisyon: Siyah dört taş ile bölge koruyor. Dört sınır noktası (vital) – her biri 0.5 puan değerinde."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            { "x": 2, "y": 13, "color": "black" },
+            { "x": 3, "y": 13, "color": "black" },
+            { "x": 2, "y": 12, "color": "black" },
+            { "x": 3, "y": 12, "color": "black" },
+            { "x": 1, "y": 11, "color": "white" },
+            { "x": 4, "y": 11, "color": "white" },
+            { "x": 1, "y": 14, "color": "white" },
+            { "x": 4, "y": 14, "color": "white" },
+            { "x": 2, "y": 15, "color": "white" },
+            { "x": 3, "y": 15, "color": "white" },
+            { "x": 2, "y": 14, "color": "black" }
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Siyah en büyük nokta! (2,14) hem bölgeyi büyütür hem Beyaz'ın girişini engeller. Sente!"
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 2, "y": 13, "color": "black" },
+            { "x": 3, "y": 13, "color": "black" },
+            { "x": 2, "y": 12, "color": "black" },
+            { "x": 3, "y": 12, "color": "black" },
+            { "x": 1, "y": 11, "color": "white" },
+            { "x": 4, "y": 11, "color": "white" },
+            { "x": 1, "y": 14, "color": "white" },
+            { "x": 4, "y": 14, "color": "white" },
+            { "x": 2, "y": 15, "color": "white" },
+            { "x": 3, "y": 15, "color": "white" },
+            { "x": 2, "y": 14, "color": "black" },
+            { "x": 3, "y": 14, "color": "white" }
           ],
-          "text": "Sonraki hamleyi düşünün"
+          "text": "Beyaz cevap – (3,14) ile sınırı çizer. 1 puanlık değişim. Sente doğru kullanıldı!"
+        },
+        {
+          "stones": [
+            { "x": 2, "y": 13, "color": "black" },
+            { "x": 3, "y": 13, "color": "black" },
+            { "x": 2, "y": 12, "color": "black" },
+            { "x": 3, "y": 12, "color": "black" },
+            { "x": 1, "y": 11, "color": "white" },
+            { "x": 4, "y": 11, "color": "white" },
+            { "x": 1, "y": 14, "color": "white" },
+            { "x": 4, "y": 14, "color": "white" },
+            { "x": 2, "y": 15, "color": "white" },
+            { "x": 3, "y": 15, "color": "white" },
+            { "x": 2, "y": 14, "color": "black" },
+            { "x": 3, "y": 14, "color": "white" },
+            { "x": 1, "y": 13, "color": "black" }
+          ],
+          "text": "Siyah sol tarafı da mühürler – (1,13). Her sınır noktası kapatıldı. Bölge tamamen güvenli!"
+        },
+        {
+          "stones": [
+            { "x": 2, "y": 13, "color": "black" },
+            { "x": 3, "y": 13, "color": "black" },
+            { "x": 2, "y": 12, "color": "black" },
+            { "x": 3, "y": 12, "color": "black" },
+            { "x": 1, "y": 11, "color": "white" },
+            { "x": 4, "y": 11, "color": "white" },
+            { "x": 1, "y": 14, "color": "white" },
+            { "x": 4, "y": 14, "color": "white" },
+            { "x": 2, "y": 15, "color": "white" },
+            { "x": 3, "y": 15, "color": "white" },
+            { "x": 2, "y": 14, "color": "black" },
+            { "x": 3, "y": 14, "color": "white" },
+            { "x": 1, "y": 13, "color": "black" },
+            { "x": 4, "y": 13, "color": "white" }
+          ],
+          "text": "Beyaz son sınır noktasını da kapatır – dengeli değişim. Profesyonel yose: 0.5 puanlık fark bile hesaplanır!"
         }
       ]
+    },
+    {
+      "type": "text",
+      "content": "Yarım puanlık oyunlarda (hanmoku) ko-threat yönetimi oyunu belirler. Kural: 'Ko'ya girmeden önce yeterli ko-threat biriktirin.' Dame (boş nokta) hamleleri bile doğru sırada oynanmalıdır – ters sırada oynanırsa rakip ekstra ko-threat kazanabilir. Profesyoneller oyun sonunda bile 'damezumari' (özgürlük eksikliği) tuzağına düşmemek için dikkatli oynar."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        { "x": 16, "y": 13, "color": "black" },
+        { "x": 17, "y": 13, "color": "black" },
+        { "x": 16, "y": 12, "color": "black" },
+        { "x": 15, "y": 11, "color": "white" },
+        { "x": 18, "y": 12, "color": "white" },
+        { "x": 15, "y": 14, "color": "white" },
+        { "x": 17, "y": 14, "color": "white" },
+        { "x": 18, "y": 14, "color": "white" },
+        { "x": 16, "y": 15, "color": "white" }
+      ],
+      "highlights": [
+        { "x": 17, "y": 12, "type": "vital" },
+        { "x": 16, "y": 14, "type": "vital" },
+        { "x": 16, "y": 13, "type": "good" },
+        { "x": 17, "y": 13, "type": "good" },
+        { "x": 16, "y": 15, "type": "capture" }
+      ],
+      "annotation": "Ko-fight senaryosu! Siyah'ın bölgesinde ko oluştu. Ko-threat'ler ve dame sıralaması oyunu belirleyecek."
     }
   ],
-  "prerequisites": [
-    "l----3"
-  ],
-  "next_lesson": "l6",
+  "prerequisites": ["l6-4-3"],
+  "next_lesson": "l6-4-5",
   "required_exercise": "e6-4-4"
 }

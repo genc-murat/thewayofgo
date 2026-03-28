@@ -1,0 +1,93 @@
+{
+  "id": "l5-5-4",
+  "level": 5,
+  "module": 5,
+  "lesson": 4,
+  "title": "Zamanlama ve Öncelik",
+  "description": "Doğru hamleyi doğru zamanda oynama sanatı - sende ve mahai.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Go'da zamanlama (taimingu), hamlenin ne kadar iyi olduğundan daha önemlidir. Doğru hamleyi yanlış zamanda oynamak, yanlış hamle oynamak kadar kötüdür. Bu derste, sende (önce oyna) ve mahai (geç oyna) kavramlarını öğreneceksiniz."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        {"x": 3, "y": 9, "color": "black"},
+        {"x": 5, "y": 9, "color": "white"},
+        {"x": 3, "y": 7, "color": "black"},
+        {"x": 5, "y": 11, "color": "white"},
+        {"x": 15, "y": 3, "color": "black"},
+        {"x": 15, "y": 15, "color": "white"},
+        {"x": 16, "y": 5, "color": "black"},
+        {"x": 16, "y": 13, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 4, "y": 9, "type": "good"},
+        {"x": 9, "y": 9, "type": "territory"}
+      ],
+      "annotation": "Zamanlama örneği - nereye önce oynamalı?"
+    },
+    {
+      "type": "text",
+      "content": "Öncelik hiyerarşisi: 1) Atari kaçış veya kritik savunma (hiki), 2) Büyük bölge hamleleri (ōban), 3) Etki genişletme (kōchiku), 4) Joseki tamamlama. Bu sıralama her pozisyonda değişebilir, ancak genel bir kılavuzdur. Kikai (fırsat) hamlelerini asla kaçırmayın."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 5, "y": 9, "color": "white"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 15, "y": 15, "color": "white"}
+          ],
+          "text": "İki açık bölge var - hangisine önce oynamalı?"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 5, "y": 9, "color": "white"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 15, "y": 15, "color": "white"},
+            {"x": 5, "y": 11, "color": "white"}
+          ],
+          "text": "Beyaz sol kenarı güçlendirir - şimdi acil hamle (sende) gerekiyor"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 5, "y": 9, "color": "white"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 15, "y": 15, "color": "white"},
+            {"x": 5, "y": 11, "color": "white"},
+            {"x": 4, "y": 8, "color": "black"}
+          ],
+          "text": "Siyah sende oynar - zamanlama kritik!"
+        },
+        {
+          "stones": [
+            {"x": 3, "y": 9, "color": "black"},
+            {"x": 5, "y": 9, "color": "white"},
+            {"x": 3, "y": 7, "color": "black"},
+            {"x": 15, "y": 3, "color": "black"},
+            {"x": 15, "y": 15, "color": "white"},
+            {"x": 5, "y": 11, "color": "white"},
+            {"x": 4, "y": 8, "color": "black"},
+            {"x": 16, "y": 5, "color": "black"},
+            {"x": 16, "y": 13, "color": "white"}
+          ],
+          "text": "Doğru zamanlama ile siyah her iki bölgede de avantaj sağlar"
+        }
+      ]
+    }
+  ],
+  "prerequisites": ["l5-5-3"],
+  "next_lesson": "l5-5-5",
+  "required_exercise": null
+}

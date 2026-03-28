@@ -1,0 +1,96 @@
+{
+  "id": "l3-3-6",
+  "level": 3,
+  "module": 3,
+  "lesson": 6,
+  "title": "Büyük Yose",
+  "description": "Büyük oyun sonu hamleleri ve önceliklendirme.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Büyük yose (大寄せ, ōyose), oyun sonunda yüksek puan değerine sahip hamlelerdir. Bir yose hamlesinin değeri, hem saldırı hem savunma değerinin toplamıdır. Büyük yose hamlelerini doğru sıralamak, oyunun kaderini belirleyebilir."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 3, "y": 0, "color": "white"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 3, "y": 1, "color": "white"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 0, "y": 3, "color": "black"},
+        {"x": 3, "y": 3, "color": "white"},
+        {"x": 1, "y": 3, "color": "white"},
+        {"x": 2, "y": 3, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 1, "type": "territory"},
+        {"x": 2, "y": 1, "type": "territory"},
+        {"x": 1, "y": 2, "type": "territory"},
+        {"x": 2, "y": 2, "type": "territory"},
+        {"x": 1, "y": 4, "type": "good"},
+        {"x": 2, "y": 4, "type": "good"}
+      ],
+      "annotation": "Büyük yose: (1,4) ve (2,4) noktaları siyah için ~4 puan değerinde边界 hamleler"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 5, "y": 0, "color": "white"},
+            {"x": 6, "y": 0, "color": "white"},
+            {"x": 7, "y": 0, "color": "white"},
+            {"x": 8, "y": 0, "color": "white"},
+            {"x": 5, "y": 1, "color": "white"},
+            {"x": 8, "y": 1, "color": "black"},
+            {"x": 5, "y": 2, "color": "white"},
+            {"x": 7, "y": 2, "color": "black"}
+          ],
+          "text": "Yose pozisyonu: Beyaz sınır çizgisi oluşturmuş. Siyah (8,1) ve (7,2) ile sınırı itiyor."
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 0, "color": "white"},
+            {"x": 6, "y": 0, "color": "white"},
+            {"x": 7, "y": 0, "color": "white"},
+            {"x": 8, "y": 0, "color": "white"},
+            {"x": 5, "y": 1, "color": "white"},
+            {"x": 8, "y": 1, "color": "black"},
+            {"x": 5, "y": 2, "color": "white"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"}
+          ],
+          "text": "Siyah (6,3) oynadı — büyük yose! Sınırı güneye itti ve 2-3 puan kazandı."
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 0, "color": "white"},
+            {"x": 6, "y": 0, "color": "white"},
+            {"x": 7, "y": 0, "color": "white"},
+            {"x": 8, "y": 0, "color": "white"},
+            {"x": 5, "y": 1, "color": "white"},
+            {"x": 8, "y": 1, "color": "black"},
+            {"x": 5, "y": 2, "color": "white"},
+            {"x": 7, "y": 2, "color": "black"},
+            {"x": 6, "y": 3, "color": "black"},
+            {"x": 7, "y": 3, "color": "white"}
+          ],
+          "text": "Beyaz (7,3) ile sınırı geri itti. Yose mücadelesi devam ediyor."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Yose değerlendirme: Bir yose hamlesinin değeri = saldırı değeri + savunma değeri. Örneğin, 2 puanlık saldırı + 2 puanlık savunma = 4 puanlık hamle. Büyük yose hamlelerini önce oynayın, küçük yose hamlelerini sonraya bırakın."
+    }
+  ],
+  "prerequisites": ["l3-3-5"],
+  "next_lesson": "l3-4-1",
+  "required_exercise": null
+}

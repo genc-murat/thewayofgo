@@ -4,90 +4,246 @@
   "module": 4,
   "lesson": 6,
   "title": "Oyun Sonu Taktikleri",
-  "description": "Oyun sonu ince noktalar.",
-  "duration_minutes": 10,
+  "description": "Dame noktaları, son sayım prosedürü, geçiş (pass) kuralları ve yakın biten oyunların sonuçlandırmasını öğrenin.",
+  "duration_minutes": 12,
   "content": [
     {
       "type": "text",
-      "content": "Oyun Sonu Taktikleri: Oyun sonu ince noktalar. Bu derste temel kavramları öğreneceksiniz."
+      "content": "Go oyununun sonu (終局 - shuukyoku) özel kurallar gerektirir. Bu derste şunları öğreneceksiniz: (1) Dame (駄目) — hiçbir oyuncunun bölgesi olmayan nötr noktaları doldurma, (2) sayım prosedürü — Çin kuralı (taş sayısı + bölge) ile Japon kuralı (sadece bölge), (3) pass (geçiş) hamlesi ve oyun bitişi, (4) yakın oyunlarda her hamlenin kritik önemi. Doğru oyun sonu yönetimi, kazanılan oyunları kaybetmemenin anahtarıdır!"
     },
     {
       "type": "board",
       "size": 9,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        },
-        {
-          "x": 5,
-          "y": 4,
-          "color": "black"
-        }
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 3, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 1, "y": 1, "color": "black"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 0, "y": 3, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 5, "y": 0, "color": "white"},
+        {"x": 6, "y": 0, "color": "white"},
+        {"x": 7, "y": 0, "color": "white"},
+        {"x": 8, "y": 0, "color": "white"},
+        {"x": 8, "y": 1, "color": "white"},
+        {"x": 7, "y": 1, "color": "white"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 6, "y": 3, "color": "white"},
+        {"x": 7, "y": 3, "color": "white"},
+        {"x": 8, "y": 3, "color": "white"},
+        {"x": 8, "y": 2, "color": "white"},
+        {"x": 4, "y": 1, "color": "black"},
+        {"x": 4, "y": 2, "color": "white"},
+        {"x": 4, "y": 0, "color": "white"}
       ],
-      "highlights": [],
-      "annotation": "Oyun Sonu Taktikleri"
+      "highlights": [
+        {"x": 4, "y": 3, "type": "vital"},
+        {"x": 2, "y": 1, "type": "territory"},
+        {"x": 3, "y": 1, "type": "territory"},
+        {"x": 2, "y": 2, "type": "territory"},
+        {"x": 3, "y": 2, "type": "territory"},
+        {"x": 5, "y": 1, "type": "territory"},
+        {"x": 6, "y": 1, "type": "territory"},
+        {"x": 5, "y": 2, "type": "territory"},
+        {"x": 6, "y": 2, "type": "territory"}
+      ],
+      "annotation": "Oyun sonu pozisyonu: Siyah bölge (sol-orta) ve Beyaz bölge (sağ-orta) belli. (4,3) dame noktası — iki bölge arasında nötr. Bölgeler renkli gösteriliyor."
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 3, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 0, "color": "white"},
+            {"x": 6, "y": 0, "color": "white"},
+            {"x": 7, "y": 0, "color": "white"},
+            {"x": 8, "y": 0, "color": "white"},
+            {"x": 8, "y": 1, "color": "white"},
+            {"x": 7, "y": 1, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 6, "y": 3, "color": "white"},
+            {"x": 7, "y": 3, "color": "white"},
+            {"x": 8, "y": 3, "color": "white"},
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 4, "y": 1, "color": "black"},
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 4, "y": 0, "color": "white"}
           ],
-          "text": "Pozisyonu inceleyin"
+          "highlights": [{"x": 4, "y": 3, "type": "vital"}],
+          "text": "Oyun sonu! Bölgeler belirlendi. (4,3) bir dame — iki bölge arasında, kimseye ait değil. Dame noktaları doldurulmalı."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 3, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 5, "y": 0, "color": "white"},
+            {"x": 6, "y": 0, "color": "white"},
+            {"x": 7, "y": 0, "color": "white"},
+            {"x": 8, "y": 0, "color": "white"},
+            {"x": 8, "y": 1, "color": "white"},
+            {"x": 7, "y": 1, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 6, "y": 3, "color": "white"},
+            {"x": 7, "y": 3, "color": "white"},
+            {"x": 8, "y": 3, "color": "white"},
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 4, "y": 1, "color": "black"},
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 4, "y": 0, "color": "white"}
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Siyah dame noktası (4,3)'ü doldurdu. Çin kuralında bu 1 puanlık taş ekler. Dame'leri doldurmak skoru etkiler!"
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 3, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 5, "y": 0, "color": "white"},
+            {"x": 6, "y": 0, "color": "white"},
+            {"x": 7, "y": 0, "color": "white"},
+            {"x": 8, "y": 0, "color": "white"},
+            {"x": 8, "y": 1, "color": "white"},
+            {"x": 7, "y": 1, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 6, "y": 3, "color": "white"},
+            {"x": 7, "y": 3, "color": "white"},
+            {"x": 8, "y": 3, "color": "white"},
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 4, "y": 1, "color": "black"},
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 4, "y": 0, "color": "white"}
           ],
-          "text": "İleri adımları düşünün"
+          "highlights": [
+            {"x": 2, "y": 1, "type": "territory"},
+            {"x": 3, "y": 1, "type": "territory"},
+            {"x": 2, "y": 2, "type": "territory"},
+            {"x": 3, "y": 2, "type": "territory"}
+          ],
+          "text": "SAYIM BAŞLADI! Siyah bölge: (2,1), (3,1), (2,2), (3,2) = 4 boşluk. Siyah taş sayısı: 13. Çin kuralı toplam: 13 + 4 = 17 puan."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "black"},
+            {"x": 1, "y": 0, "color": "black"},
+            {"x": 2, "y": 0, "color": "black"},
+            {"x": 3, "y": 0, "color": "black"},
+            {"x": 0, "y": 1, "color": "black"},
+            {"x": 1, "y": 1, "color": "black"},
+            {"x": 0, "y": 2, "color": "black"},
+            {"x": 0, "y": 3, "color": "black"},
+            {"x": 1, "y": 3, "color": "black"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 5, "y": 0, "color": "white"},
+            {"x": 6, "y": 0, "color": "white"},
+            {"x": 7, "y": 0, "color": "white"},
+            {"x": 8, "y": 0, "color": "white"},
+            {"x": 8, "y": 1, "color": "white"},
+            {"x": 7, "y": 1, "color": "white"},
+            {"x": 5, "y": 3, "color": "white"},
+            {"x": 6, "y": 3, "color": "white"},
+            {"x": 7, "y": 3, "color": "white"},
+            {"x": 8, "y": 3, "color": "white"},
+            {"x": 8, "y": 2, "color": "white"},
+            {"x": 4, "y": 1, "color": "black"},
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 4, "y": 0, "color": "white"}
+          ],
+          "highlights": [
+            {"x": 5, "y": 1, "type": "territory"},
+            {"x": 6, "y": 1, "type": "territory"},
+            {"x": 5, "y": 2, "type": "territory"},
+            {"x": 6, "y": 2, "type": "territory"}
+          ],
+          "text": "Beyaz bölge: (5,1), (6,1), (5,2), (6,2) = 4 boşluk. Beyaz taş sayısı: 14 (komi dahil: +6.5). Çin kuralı: 14 + 4 + 3.75 = 21.75. Beyaz kazanıyor!"
         }
       ]
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 3, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 1, "y": 1, "color": "black"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 0, "y": 3, "color": "black"},
+        {"x": 1, "y": 3, "color": "black"},
+        {"x": 2, "y": 3, "color": "black"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 4, "y": 1, "color": "black"},
+        {"x": 5, "y": 0, "color": "white"},
+        {"x": 6, "y": 0, "color": "white"},
+        {"x": 7, "y": 0, "color": "white"},
+        {"x": 8, "y": 0, "color": "white"},
+        {"x": 8, "y": 1, "color": "white"},
+        {"x": 7, "y": 1, "color": "white"},
+        {"x": 4, "y": 0, "color": "white"},
+        {"x": 4, "y": 2, "color": "white"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 6, "y": 3, "color": "white"},
+        {"x": 7, "y": 3, "color": "white"},
+        {"x": 8, "y": 3, "color": "white"},
+        {"x": 8, "y": 2, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 2, "y": 1, "type": "territory"},
+        {"x": 3, "y": 1, "type": "territory"},
+        {"x": 2, "y": 2, "type": "territory"},
+        {"x": 3, "y": 2, "type": "territory"},
+        {"x": 5, "y": 1, "type": "territory"},
+        {"x": 6, "y": 1, "type": "territory"},
+        {"x": 5, "y": 2, "type": "territory"},
+        {"x": 6, "y": 2, "type": "territory"}
+      ],
+      "annotation": "Tüm dame'ler dolduruldu, bölgeler netleşti. İki oyuncu da 'pass' dedi — oyun bitti. Son sayım: Siyah bölge 4 + Beyaz bölge 4."
+    },
+    {
+      "type": "text",
+      "content": "Oyun sonu prosedürü adım adım: (1) Tüm dame noktalarını doldurun — bunlar puan vermez ama doğru sayım için gerekli. (2) Ölü taşları belirleyin — anlaşmazlık olursa oynamaya devam edin. (3) Her iki oyuncu art arda 'pass' dediğinde oyun biter. (4) Sayım: Çin kuralında (taşlar + bölge), Japon kuralında (sadece bölge + esirler). (5) Komi (白の帖): Beyaz'a telafi olarak eklenir (genelde 6.5 puan). Yakın oyunlarda her dame noktası bile fark yaratabilir!"
     }
   ],
-  "prerequisites": [
-    "l2-4-5"
-  ],
-  "next_lesson": null,
+  "prerequisites": ["l2-4-5"],
+  "next_lesson": "l2-5-1",
   "required_exercise": "e2-4-6"
 }

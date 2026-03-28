@@ -3,86 +3,137 @@
   "level": 6,
   "module": 4,
   "lesson": 3,
-  "title": "Son Hamle Tahmini",
-  "description": "Kimson hamle hesaplaması.",
-  "duration_minutes": 10,
+  "title": "Son Hamle Hesaplama",
+  "description": "Hassas oyun sonu sayımı, optimal hamle sırası ve sente/gote değerlendirmesi. Profesyonel seviye yose hesaplama tekniği.",
+  "duration_minutes": 25,
   "content": [
     {
       "type": "text",
-      "content": "Son Hamle Tahmini: Kimson hamle hesaplaması. Temel kavramları ve stratejileri öğrenin."
+      "content": "Yose'de hamle sırası oyunu kazandırır veya kaybettirir. Sente (öncelikli) hamleler önce oynanır – rakip cevap vermek zorunda. Gote (sonralık) hamleler sonra oynanır – rakip başka yerde oynayabilir. Usta seviyesinde tüm yose noktalarını double-counting (çift sayım) ile hesaplayıp doğru sıralama yapmak kritik beceridir."
     },
     {
       "type": "board",
-      "size": 9,
+      "size": 19,
       "stones": [
-        {
-          "x": 4,
-          "y": 4,
-          "color": "black"
-        },
-        {
-          "x": 4,
-          "y": 5,
-          "color": "white"
-        }
+        { "x": 2, "y": 7, "color": "black" },
+        { "x": 3, "y": 7, "color": "black" },
+        { "x": 2, "y": 6, "color": "black" },
+        { "x": 1, "y": 5, "color": "white" },
+        { "x": 4, "y": 6, "color": "white" },
+        { "x": 1, "y": 8, "color": "white" },
+        { "x": 5, "y": 7, "color": "white" },
+        { "x": 2, "y": 9, "color": "white" },
+        { "x": 3, "y": 9, "color": "white" }
       ],
-      "highlights": [],
-      "annotation": "Son Hamle Tahmini"
+      "highlights": [
+        { "x": 1, "y": 7, "type": "vital" },
+        { "x": 2, "y": 8, "type": "vital" },
+        { "x": 3, "y": 8, "type": "vital" },
+        { "x": 2, "y": 7, "type": "good" },
+        { "x": 3, "y": 7, "type": "good" }
+      ],
+      "annotation": "Sol kenar yose: Siyah'ın bölgesi ~6 puan. Beyaz üç入境 (giriş) noktası ile bastırıyor. Hangisi sente?"
     },
     {
       "type": "animation",
       "steps": [
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 2, "y": 7, "color": "black" },
+            { "x": 3, "y": 7, "color": "black" },
+            { "x": 2, "y": 6, "color": "black" },
+            { "x": 1, "y": 5, "color": "white" },
+            { "x": 4, "y": 6, "color": "white" },
+            { "x": 1, "y": 8, "color": "white" }
           ],
-          "text": "Pozisyon analizi başladı"
+          "text": "Yose pozisyonu: Siyah kenar bölgesini koruyor. Beyaz'ın birden fazla baskı noktası var."
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            }
+            { "x": 2, "y": 7, "color": "black" },
+            { "x": 3, "y": 7, "color": "black" },
+            { "x": 2, "y": 6, "color": "black" },
+            { "x": 1, "y": 5, "color": "white" },
+            { "x": 4, "y": 6, "color": "white" },
+            { "x": 1, "y": 8, "color": "white" },
+            { "x": 2, "y": 8, "color": "white" }
           ],
-          "text": "Taşlar yerleşti"
+          "text": "Beyaz SENTE hamle! (2,8) – Siyah cevap vermek zorunda (bölge açılır). 3 puanlık sente!"
         },
         {
           "stones": [
-            {
-              "x": 4,
-              "y": 4,
-              "color": "black"
-            },
-            {
-              "x": 4,
-              "y": 5,
-              "color": "white"
-            },
-            {
-              "x": 5,
-              "y": 4,
-              "color": "black"
-            }
+            { "x": 2, "y": 7, "color": "black" },
+            { "x": 3, "y": 7, "color": "black" },
+            { "x": 2, "y": 6, "color": "black" },
+            { "x": 1, "y": 5, "color": "white" },
+            { "x": 4, "y": 6, "color": "white" },
+            { "x": 1, "y": 8, "color": "white" },
+            { "x": 2, "y": 8, "color": "white" },
+            { "x": 3, "y": 8, "color": "black" }
           ],
-          "text": "Sonraki hamleyi düşünün"
+          "text": "Siyah cevap verir (3,8) – bölgeyi kapatır. Ama Beyaz sente ile 1 puan kazandı!"
+        },
+        {
+          "stones": [
+            { "x": 2, "y": 7, "color": "black" },
+            { "x": 3, "y": 7, "color": "black" },
+            { "x": 2, "y": 6, "color": "black" },
+            { "x": 1, "y": 5, "color": "white" },
+            { "x": 4, "y": 6, "color": "white" },
+            { "x": 1, "y": 8, "color": "white" },
+            { "x": 2, "y": 8, "color": "white" },
+            { "x": 3, "y": 8, "color": "black" },
+            { "x": 5, "y": 7, "color": "white" },
+            { "x": 2, "y": 9, "color": "white" },
+            { "x": 3, "y": 9, "color": "white" }
+          ],
+          "text": "Beyaz gote hamleleri oynar – (5,7) ve (2,9)/(3,9). Her biri ~1.5 puan. Sente önce, gote sonra!"
+        },
+        {
+          "stones": [
+            { "x": 2, "y": 7, "color": "black" },
+            { "x": 3, "y": 7, "color": "black" },
+            { "x": 2, "y": 6, "color": "black" },
+            { "x": 1, "y": 5, "color": "white" },
+            { "x": 4, "y": 6, "color": "white" },
+            { "x": 1, "y": 8, "color": "white" },
+            { "x": 2, "y": 8, "color": "white" },
+            { "x": 3, "y": 8, "color": "black" },
+            { "x": 5, "y": 7, "color": "white" },
+            { "x": 2, "y": 9, "color": "white" },
+            { "x": 3, "y": 9, "color": "white" },
+            { "x": 1, "y": 7, "color": "black" }
+          ],
+          "text": "Siyah son yose hamlesi – (1,7) bölgeyi tamamen mühürler. Doğru sıralama ile Siyah 1.5 puan tasarruf etti!"
         }
       ]
+    },
+    {
+      "type": "text",
+      "content": "Yose hesaplamada 'reverse sente' kavramı: Rakibin sente hamlesini gote olarak oynamak! Örnek: Rakibin 3 puanlık sente hamlesi varsa, siz önce o noktayı kapatarak onun sente'sini engellerseniz, bu 'reverse sente' 3 puan değerinde olur. Profesyoneller her yose noktasını 'sente mi? gote mi? reverse sente mı?' olarak sınıflandırır."
+    },
+    {
+      "type": "board",
+      "size": 19,
+      "stones": [
+        { "x": 16, "y": 7, "color": "black" },
+        { "x": 17, "y": 7, "color": "black" },
+        { "x": 16, "y": 8, "color": "black" },
+        { "x": 15, "y": 6, "color": "white" },
+        { "x": 18, "y": 6, "color": "white" },
+        { "x": 15, "y": 9, "color": "white" },
+        { "x": 17, "y": 9, "color": "white" }
+      ],
+      "highlights": [
+        { "x": 18, "y": 7, "type": "vital" },
+        { "x": 16, "y": 9, "type": "vital" },
+        { "x": 17, "y": 8, "type": "good" },
+        { "x": 16, "y": 7, "type": "good" }
+      ],
+      "annotation": "Sağ kenar yose: Siyah bölge ~5 puan koruyor. (18,7) ve (16,9) miai – biri sente, diğeri gote. Doğru sıralama kritik!"
     }
   ],
-  "prerequisites": [
-    "l----2"
-  ],
+  "prerequisites": ["l6-4-2"],
   "next_lesson": "l6-4-4",
   "required_exercise": "e6-4-3"
 }

@@ -1,0 +1,99 @@
+{
+  "id": "l3-6-5",
+  "level": 3,
+  "module": 6,
+  "lesson": 5,
+  "title": "Ko ile İlgili Yaşam-Ölüm",
+  "description": "Ko kullanarak yaşam veya öldürme teknikleri.",
+  "duration_minutes": 12,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bazı tsumego pozisyonları ko (劫) ile çözülür. Grup ko ile yaşayabilir — buna 'ko yaşam' (劫活, katsu-iki) denir. Ya da ko ile öldürülebilir — 'ko ölüm' (劫死, katsu-shini). Ko'da yaşam, kesin yaşam değil ama ko'yu kazanırsanız yaşam demektir."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 0, "color": "white"},
+        {"x": 1, "y": 0, "color": "white"},
+        {"x": 2, "y": 0, "color": "white"},
+        {"x": 0, "y": 1, "color": "white"},
+        {"x": 2, "y": 1, "color": "white"},
+        {"x": 0, "y": 2, "color": "white"},
+        {"x": 2, "y": 2, "color": "white"},
+        {"x": 0, "y": 3, "color": "white"},
+        {"x": 1, "y": 3, "color": "white"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 1, "y": 1, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 2, "type": "good"}
+      ],
+      "annotation": "Ko pozisyonu: Beyaz (1,2) oynarsa ne olur? Ko yaşam mı, kesin yaşam mı?"
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "white"},
+            {"x": 1, "y": 0, "color": "white"},
+            {"x": 2, "y": 0, "color": "white"},
+            {"x": 0, "y": 1, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 0, "y": 2, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 0, "y": 3, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 1, "y": 1, "color": "black"}
+          ],
+          "text": "Beyaz (1,2) boş, siyah (1,1) dolu. Beyaz (1,2) oynarsa siyah tek özgürlük — atari. Ama siyah (1,1) yoksa..."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "white"},
+            {"x": 1, "y": 0, "color": "white"},
+            {"x": 2, "y": 0, "color": "white"},
+            {"x": 0, "y": 1, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 0, "y": 2, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 0, "y": 3, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 1, "y": 2, "color": "white"}
+          ],
+          "captured": [{"x": 1, "y": 1}],
+          "text": "Beyaz (1,2) oynadı ve siyah (1,1) yakalandı! Ko oluştu. Siyah (1,1) geri alamaz — önce ko tehdidi gerekli."
+        },
+        {
+          "stones": [
+            {"x": 0, "y": 0, "color": "white"},
+            {"x": 1, "y": 0, "color": "white"},
+            {"x": 2, "y": 0, "color": "white"},
+            {"x": 0, "y": 1, "color": "white"},
+            {"x": 2, "y": 1, "color": "white"},
+            {"x": 0, "y": 2, "color": "white"},
+            {"x": 2, "y": 2, "color": "white"},
+            {"x": 0, "y": 3, "color": "white"},
+            {"x": 1, "y": 3, "color": "white"},
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 1, "y": 2, "color": "white"},
+            {"x": 1, "y": 1, "color": "black"}
+          ],
+          "captured": [{"x": 1, "y": 2}],
+          "text": "Siyah ko tehditi oynayıp sonra (1,1) oynadı — beyaz (1,2) yakalandı! Ko yaşam: Beyaz ko'yu kaybederse ölür."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Ko tsumego kuralları:\n• Ko yaşam (劫活): Ko'yu kazanırsanız yaşarsınız, kaybederseniz ölürsünüz\n• Ko ölüm (劫死): Ko'yu kazanırsanız rakibi öldürürsünüz\n• Seki (相互生): Her iki taraf da yaşar, kimse oynayamaz\n\nKo sonuçları, kesin sonuçlardan daha zayıftır — ko tehdidi sayısı ve büyüklüğü sonucu belirler."
+    }
+  ],
+  "prerequisites": ["l3-6-4"],
+  "next_lesson": "l3-6-6",
+  "required_exercise": null
+}

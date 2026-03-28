@@ -1,0 +1,106 @@
+{
+  "id": "l2-3-7",
+  "level": 2,
+  "module": 3,
+  "lesson": 7,
+  "title": "Ölü Şekiller",
+  "description": "Yaşayamayan şekiller ve ölü şekillerin tanınması.",
+  "duration_minutes": 10,
+  "content": [
+    {
+      "type": "text",
+      "content": "Bazı iç boşluk şekilleri, kim oynarsa oynasın asla iki gerçek göze ayrılamaz. Bu şekiller tamamen kuşatıldığında ölüdür. En yaygın ölü şekilleri öğrenmek, tsumego çözerken hız kazanmanızı sağlar."
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 2, "y": 2, "color": "white"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 4, "y": 2, "color": "white"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 4, "y": 3, "color": "white"},
+        {"x": 2, "y": 4, "color": "white"},
+        {"x": 3, "y": 4, "color": "white"},
+        {"x": 4, "y": 4, "color": "white"}
+      ],
+      "highlights": [
+        {"x": 3, "y": 3, "type": "bad"}
+      ],
+      "annotation": "Düz üç (straight three): 3 boş nokta düz çizgide. Beyaz bile oynasa sadece 1 göz oluşur — ÖLÜ."
+    },
+    {
+      "type": "animation",
+      "steps": [
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 7, "y": 5, "color": "black"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 6, "y": 7, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"}
+          ],
+          "text": "Beyaz'ın iç boşluğu: (6,6) tek nokta. Beyaz (6,6) oynarsa ne olur?"
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 7, "y": 5, "color": "black"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 6, "y": 6, "color": "white"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 6, "y": 7, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"}
+          ],
+          "text": "Beyaz (6,6) oynadı. Bu bir göz! Ama sadece TEK göz — ikinci göz yok. Grup hâlâ ölü."
+        },
+        {
+          "stones": [
+            {"x": 5, "y": 5, "color": "black"},
+            {"x": 6, "y": 5, "color": "black"},
+            {"x": 7, "y": 5, "color": "black"},
+            {"x": 5, "y": 6, "color": "black"},
+            {"x": 7, "y": 6, "color": "black"},
+            {"x": 5, "y": 7, "color": "black"},
+            {"x": 6, "y": 7, "color": "black"},
+            {"x": 7, "y": 7, "color": "black"}
+          ],
+          "text": "Beyaz pas geçti. Siyah (6,6) oynayabilir — beyaz grubun son özgürlüğü kapanır. ÖLÜ grup!"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "content": "Ölü şekiller listesi (tamamen kuşatıldığında):\n\n• Düz üç (straight three): 3 boş nokta düz çizgide — ÖLÜ\n• L şekli (bent three): 3 boş nokta L şeklinde — ÖLÜ\n• 2x2 kare: 4 boş nokta kare — ÖLÜ (köşeye oynayınca bent three kalır)\n• Düz dört (straight four): 4 boş nokta düz — YAŞIYOR (ortayı doldurunca iki göz)\n• L şekli dört (bent four): 4 boş nokta L — GENELDE YAŞIYOR"
+    },
+    {
+      "type": "board",
+      "size": 9,
+      "stones": [
+        {"x": 0, "y": 4, "color": "black"},
+        {"x": 1, "y": 4, "color": "black"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 0, "y": 5, "color": "black"},
+        {"x": 3, "y": 5, "color": "black"},
+        {"x": 0, "y": 6, "color": "black"},
+        {"x": 1, "y": 6, "color": "black"},
+        {"x": 2, "y": 6, "color": "black"},
+        {"x": 3, "y": 6, "color": "black"}
+      ],
+      "highlights": [
+        {"x": 1, "y": 5, "type": "good"},
+        {"x": 2, "y": 5, "type": "good"}
+      ],
+      "annotation": "Dört boş nokta (straight four): YAŞIYOR! Siyah (1,5) veya (2,5) oynayarak iki gerçek göz oluşturabilir."
+    }
+  ],
+  "prerequisites": ["l2-3-6"],
+  "next_lesson": "l2-3-8",
+  "required_exercise": "e2-3-7"
+}
