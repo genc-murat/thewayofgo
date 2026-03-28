@@ -127,6 +127,25 @@ export function getTypeDisplayName(type: string): string {
     opening: 'Açılış',
     tesuji: 'Tesuji',
     reading_comprehension: 'Okuma',
+    multi_step: 'Çok Adımlı',
   };
   return typeNames[type] ?? type;
+}
+
+export function getTypeKeyFromDisplayName(displayName: string): string {
+  const reverseNames: Record<string, string> = {
+    'Doğru Hamle': 'place_correct',
+    'Taş Yakalama': 'capture_stones',
+    'Grup Savunma': 'defend_group',
+    'Yaşam ve Ölüm': 'life_and_death',
+    'Grup Bağlama': 'connect_groups',
+    'Grup Kesme': 'cut_groups',
+    'Alan Kontrolü': 'territorial_control',
+    'Bitiriş': 'endgame',
+    'Açılış': 'opening',
+    'Tesuji': 'tesuji',
+    'Okuma': 'reading_comprehension',
+    'Çok Adımlı': 'multi_step',
+  };
+  return reverseNames[displayName] ?? displayName;
 }

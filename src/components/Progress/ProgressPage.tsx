@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
-import { getUserStats, getWeakAreas, getStreak, getDailyProgress } from '../../utils/progressDb';
+import { getUserStats, getWeakAreas, getStreak, getDailyProgress, getDailyActivityHeatmap, getBookmarks, getAccuracyOverTime } from '../../utils/progressDb';
 import { getTypeDisplayName, canAdvanceLevel } from '../../utils/adaptiveDifficulty';
 import type { WeakArea } from '../../utils/progressDb';
 import { useAppStore } from '../../stores/appStore';
 import { getSRSStats, type SRSStats } from '../../utils/srs';
 import { getActiveGoals, type Goal } from '../../utils/goals';
 import { getDetailedWeaknessProfile, type DetailedWeakness } from '../../utils/weaknessEngine';
+import { ActivityHeatmap } from './ActivityHeatmap';
+import { MistakeReview } from './MistakeReview';
+import { LearningCurve } from './LearningCurve';
+import { AchievementsPanel } from './AchievementsPanel';
 
 interface StatsData {
   total_lessons_completed: number;
@@ -29,16 +33,22 @@ export function ProgressPage() {
   const [srsStats, setSrsStats] = useState<SRSStats>({ total_cards: 0, due_today: 0, learned: 0, learning: 0, lapsed: 0 });
   const [goals, setGoals] = useState<Goal[]>([]);
   const [detailedWeakness, setDetailedWeakness] = useState<DetailedWeakness[]>([]);
+  const [heatmapData, setHeatmapData] = useState<{ date: string; count: number }[]>([]);
+  const [bookmarks, setBookmarks] = useState<{ item_id: string; item_type: string; created_at: string; note: string | null }[]>([]);
+  const [accuracyData, setAccuracyData] = useState<{ date: string; accuracy: number }[]>([]);
 
   useEffect(() => {
-    getUserStats().then(setStats).catch(() => {});
-    getWeakAreas().then(setWeakAreas).catch(() => {});
-    getStreak().then(setStreak).catch(() => {});
-    getDailyProgress().then(setDaily).catch(() => {});
-    canAdvanceLevel(currentLevel).then(setCanAdvance).catch(() => {});
-    getSRSStats().then(setSrsStats).catch(() => {});
-    getActiveGoals().then(setGoals).catch(() => {});
-    getDetailedWeaknessProfile().then(setDetailedWeakness).catch(() => {});
+    getUserStats().then(setStats).catch(err => console.warn('[Progress] getUserStats failed:', err));
+    getWeakAreas().then(setWeakAreas).catch(err => console.warn('[Progress] getWeakAreas failed:', err));
+    getStreak().then(setStreak).catch(err => console.warn('[Progress] getStreak failed:', err));
+    getDailyProgress().then(setDaily).catch(err => console.warn('[Progress] getDailyProgress failed:', err));
+    canAdvanceLevel(currentLevel).then(setCanAdvance).catch(err => console.warn('[Progress] canAdvanceLevel failed:', err));
+    getSRSStats().then(setSrsStats).catch(err => console.warn('[Progress] getSRSStats failed:', err));
+    getActiveGoals().then(setGoals).catch(err => console.warn('[Progress] getActiveGoals failed:', err));
+    getDetailedWeaknessProfile().then(setDetailedWeakness).catch(err => console.warn('[Progress] getDetailedWeaknessProfile failed:', err));
+    getDailyActivityHeatmap(365).then(setHeatmapData).catch(err => console.warn('[Progress] getDailyActivityHeatmap failed:', err));
+    getBookmarks().then(setBookmarks).catch(err => console.warn('[Progress] getBookmarks failed:', err));
+    getAccuracyOverTime(30).then(setAccuracyData).catch(err => console.warn('[Progress] getAccuracyOverTime failed:', err));
   }, []);
 
   const statItems = [
@@ -112,7 +122,7 @@ export function ProgressPage() {
           </div>
           {srsStats.due_today > 0 && (
             <button
-              onClick={() => setView('exercise')}
+              onClick={() => setView('srs-review')}
               className="mt-4 w-full btn-primary py-2.5 rounded-xl text-sm font-medium"
             >
               {srsStats.due_today} Kart Tekrar Et
@@ -147,6 +157,49 @@ export function ProgressPage() {
           </div>
         </div>
       </div>
+
+      {/* Activity Heatmap */}
+      <ActivityHeatmap data={heatmapData} />
+
+      {/* Learning Curve */}
+      <LearningCurve data={accuracyData} />
+
+      {/* Mistake Review */}
+      <MistakeReview />
+
+      {/* Bookmarks */}
+      {bookmarks.length > 0 && (
+        <div className="glass rounded-2xl p-6 border border-glass-border">
+          <div className="flex items-center justify-between mb-5">
+            <h3 className="font-bold text-lg">İşaretlenenler</h3>
+            <span className="text-sm text-text-secondary">{bookmarks.length} öğe</span>
+          </div>
+          <div className="space-y-2">
+            {bookmarks.slice(0, 5).map((b) => (
+              <button
+                key={b.item_id}
+                onClick={() => {
+                  if (b.item_type === 'exercise') {
+                    useAppStore.getState().loadExercise(b.item_id);
+                  } else {
+                    useAppStore.getState().loadLesson(b.item_id);
+                  }
+                }}
+                className="w-full flex items-center gap-3 p-3 rounded-xl bg-bg-primary/40 border border-glass-border hover:border-accent/30 transition-all text-left"
+              >
+                <span className="text-amber-400">★</span>
+                <div className="flex-1 min-w-0">
+                  <div className="text-sm font-medium truncate">{b.item_id}</div>
+                  <div className="text-xs text-text-secondary">{b.item_type === 'exercise' ? 'Alıştırma' : 'Ders'}</div>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Achievements */}
+      <AchievementsPanel />
 
       {/* Action buttons */}
       <div className="flex gap-3">

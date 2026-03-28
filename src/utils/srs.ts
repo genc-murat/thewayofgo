@@ -41,7 +41,8 @@ export async function getNextReviewCards(limit: number = 20): Promise<SRSCard[]>
       [now, limit]
     );
     return results;
-  } catch {
+  } catch (err) {
+    console.warn('[srs] getNextReviewCards failed:', err);
     return [];
   }
 }
@@ -87,8 +88,8 @@ export async function recordSRSCardResult(cardId: string, correct: boolean): Pro
        WHERE card_id = $7`,
       [ease_factor, interval_days, repetitions, nextReview.toISOString(), now.toISOString(), lapses, cardId]
     );
-  } catch {
-    // Non-critical
+  } catch (err) {
+    console.warn('[srs] recordSRSCardResult failed:', err);
   }
 }
 
@@ -125,7 +126,8 @@ export async function getSRSStats(): Promise<SRSStats> {
       learning: total - learned,
       lapsed,
     };
-  } catch {
+  } catch (err) {
+    console.warn('[srs] getSRSStats failed:', err);
     return { total_cards: 0, due_today: 0, learned: 0, learning: 0, lapsed: 0 };
   }
 }
@@ -147,8 +149,8 @@ export async function syncExerciseToSRS(exerciseId: string, exerciseType: string
         [exerciseId, exerciseType, nextReview.toISOString()]
       );
     }
-  } catch {
-    // Non-critical
+  } catch (err) {
+    console.warn('[srs] syncExerciseToSRS failed:', err);
   }
 }
 
@@ -161,7 +163,8 @@ export async function getSRSCardInfo(cardId: string): Promise<SRSCard | null> {
       [cardId]
     );
     return results[0] ?? null;
-  } catch {
+  } catch (err) {
+    console.warn('[srs] getSRSCardInfo failed:', err);
     return null;
   }
 }

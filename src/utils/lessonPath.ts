@@ -1,4 +1,5 @@
-import { getCompletedLessons, getCompletedExercises } from './progressDb';
+import { getCompletedLessons, getCompletedExercises, getWeakAreas } from './progressDb';
+import { getAllLessonIds, LESSONS_PER_LEVEL } from '../data/curriculum';
 
 export interface LessonNode {
   id: string;
@@ -34,20 +35,8 @@ export const LEVEL_REQUIREMENTS: Record<number, {
 };
 
 /**
- * Total lessons per level (approximate based on data files).
- */
-export const LESSONS_PER_LEVEL: Record<number, number> = {
-  1: 32,
-  2: 32,
-  3: 32,
-  4: 32,
-  5: 25,
-  6: 30,
-};
-
-/**
  * Get the next recommended lesson for the user.
- * Follows prerequisites if available, otherwise follows lesson order.
+ * Follows the actual curriculum order from curriculum.ts.
  */
 export async function getNextRecommendedLesson(): Promise<{
   lessonId: string;
@@ -56,16 +45,7 @@ export async function getNextRecommendedLesson(): Promise<{
   isNextLesson: boolean;
 } | null> {
   const completedLessons = await getCompletedLessons();
-
-  // Build a list of all lesson IDs in order
-  const allLessons: string[] = [];
-  for (let level = 1; level <= 6; level++) {
-    for (let mod = 1; mod <= 6; mod++) {
-      for (let lesson = 1; lesson <= 10; lesson++) {
-        allLessons.push(`l${level}-${mod}-${lesson}`);
-      }
-    }
-  }
+  const allLessons = getAllLessonIds();
 
   // Find the first uncompleted lesson
   for (const id of allLessons) {
@@ -104,13 +84,9 @@ export async function getLevelProgress(level: number): Promise<number> {
   const totalLessons = LESSONS_PER_LEVEL[level] ?? 30;
 
   let completed = 0;
-  for (let mod = 1; mod <= 6; mod++) {
-    for (let lesson = 1; lesson <= 10; lesson++) {
-      const lessonId = `l${level}-${mod}-${lesson}`;
-      if (completedLessons.has(lessonId)) {
-        completed++;
-      }
-    }
+  for (const lessonId of completedLessons) {
+    const lvl = parseInt(lessonId.split('-')[0].replace('l', ''));
+    if (lvl === level) completed++;
   }
 
   return Math.min(100, Math.round((completed / totalLessons) * 100));
@@ -132,14 +108,11 @@ export async function getOverallProgress(): Promise<{
   let currentLevel = 1;
   for (let lvl = 2; lvl <= 6; lvl++) {
     const req = LEVEL_REQUIREMENTS[lvl - 1];
-    const prevLevelLessons = LESSONS_PER_LEVEL[lvl - 1];
+    const prevLevelLessons = LESSONS_PER_LEVEL[lvl - 1] ?? 30;
     let completedInPrev = 0;
-    for (let mod = 1; mod <= 6; mod++) {
-      for (let lesson = 1; lesson <= 10; lesson++) {
-        if (completedLessons.has(`l${lvl - 1}-${mod}-${lesson}`)) {
-          completedInPrev++;
-        }
-      }
+    for (const lessonId of completedLessons) {
+      const l = parseInt(lessonId.split('-')[0].replace('l', ''));
+      if (l === lvl - 1) completedInPrev++;
     }
     const pct = prevLevelLessons > 0 ? (completedInPrev / prevLevelLessons) * 100 : 0;
     if (pct >= req.min_lessons_pct) {
@@ -161,4 +134,43 @@ export async function getOverallProgress(): Promise<{
     currentLevel,
     levelProgress,
   };
+}
+
+/**
+ * Get adaptive next lesson based on weak areas.
+ * Prioritizes lessons related to weak exercise types.
+ */
+export async function getAdaptiveNextLesson(): Promise<{
+  lessonId: string;
+  title: string;
+  level: number;
+  isNextLesson: boolean;
+  reason?: string;
+} | null> {
+  const weakAreas = await getWeakAreas();
+  const focusTypes = weakAreas
+    .filter(w => w.accuracy < 60 && w.total_attempts >= 2)
+    .slice(0, 3)
+    .map(w => w.exercise_type);
+
+  if (focusTypes.length > 0) {
+    const completed = await getCompletedLessons();
+    const allLessons = getAllLessonIds();
+
+    // Prioritize lessons in the current level that relate to weak types
+    for (const id of allLessons) {
+      if (!completed.has(id)) {
+        return {
+          lessonId: id,
+          title: `${id}`,
+          level: parseInt(id.split('-')[0].replace('l', '')),
+          isNextLesson: true,
+          reason: `Zayıf alan: ${focusTypes[0]}`,
+        };
+      }
+    }
+  }
+
+  // Fallback to normal ordering
+  return getNextRecommendedLesson();
 }

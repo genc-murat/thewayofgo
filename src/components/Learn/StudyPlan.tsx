@@ -11,6 +11,7 @@ export interface StudyPlanItem {
   description: string;
   estimated_minutes: number;
   completed: boolean;
+  payload?: string;
   action?: () => void;
 }
 
@@ -20,12 +21,13 @@ interface StudyPlanProps {
 
 export function StudyPlan({ compact = false }: StudyPlanProps) {
   const { loadLesson, startAiGame, setView } = useAppStore();
+  const planVersion = useAppStore(s => s.planVersion);
   const [plan, setPlan] = useState<StudyPlanItem[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     generatePlan();
-  }, []);
+  }, [planVersion]);
 
   async function generatePlan() {
     setLoading(true);
@@ -65,6 +67,7 @@ export function StudyPlan({ compact = false }: StudyPlanProps) {
           description: 'Bir sonraki dersinize devam edin',
           estimated_minutes: 8,
           completed: false,
+          payload: nextLesson.lessonId,
         });
       }
 
@@ -160,7 +163,7 @@ export function StudyPlan({ compact = false }: StudyPlanProps) {
             key={item.id}
             onClick={() => {
               if (item.type === 'review') setView('exercise');
-              else if (item.type === 'lesson') loadLesson('l1-1-1');
+              else if (item.type === 'lesson' && item.payload) loadLesson(item.payload);
               else if (item.type === 'exercise') setView('exercise');
               else if (item.type === 'game') startAiGame(9, 2);
             }}

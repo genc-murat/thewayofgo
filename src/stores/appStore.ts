@@ -17,7 +17,7 @@ import { createBoardFromStones } from '../utils/boardUtils';
 
 interface AppState {
   // Navigation
-  currentView: 'home' | 'learn' | 'play' | 'exercise' | 'progress' | 'settings';
+  currentView: 'home' | 'learn' | 'play' | 'exercise' | 'progress' | 'settings' | 'srs-review';
   currentLevel: number;
   currentModule: number;
 
@@ -48,6 +48,8 @@ interface AppState {
   // Progress
   stats: UserStats | null;
   streak: { current: number; best: number } | null;
+  planVersion: number;
+  bumpPlanVersion: () => void;
 
   // UI
   isLoading: boolean;
@@ -120,6 +122,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   // Progress
   stats: null,
   streak: null,
+  planVersion: 0,
 
   // UI
   isLoading: false,
@@ -337,7 +340,7 @@ export const useAppStore = create<AppState>((set, get) => ({
         currentExercise.type,
         result.correct,
         0
-      ).catch(() => {});
+      ).then(() => get().bumpPlanVersion()).catch((err) => console.warn('Exercise record failed:', err));
     } catch (e) {
       set({ error: String(e), isLoading: false });
     }
@@ -385,7 +388,7 @@ export const useAppStore = create<AppState>((set, get) => ({
             currentExercise.type,
             true,
             0
-          ).catch(() => {});
+          ).then(() => get().bumpPlanVersion()).catch((err) => console.warn('Exercise record failed:', err));
         } else {
           // Move to next step
           set({
@@ -407,7 +410,7 @@ export const useAppStore = create<AppState>((set, get) => ({
           currentExercise.type,
           false,
           0
-        ).catch(() => {});
+        ).then(() => get().bumpPlanVersion()).catch((err) => console.warn('Exercise record failed:', err));
       }
     } catch (e) {
       set({ error: String(e), isLoading: false });
@@ -444,6 +447,7 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   // Error handling
   setError: (error) => set({ error }),
+  bumpPlanVersion: () => set(s => ({ planVersion: s.planVersion + 1 })),
 }));
 
 

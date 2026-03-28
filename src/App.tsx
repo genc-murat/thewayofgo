@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Layout } from './components/Layout';
 import { HomePage } from './components/Home';
 import { LessonViewer } from './components/Lesson';
@@ -7,12 +7,15 @@ import { GamePlay } from './components/Game';
 import { ExerciseView } from './components/Exercise';
 import { ProgressPage } from './components/Progress';
 import { SettingsPage } from './components/Settings';
+import { ReviewSession } from './components/SRS';
+import { OnboardingWizard, shouldShowOnboarding } from './components/Onboarding/OnboardingWizard';
 import { useAppStore } from './stores/appStore';
 import { soundEngine } from './utils/soundEngine';
 import { applyTheme, getStoredTheme } from './utils/themes';
 
 function App() {
   const currentView = useAppStore((state) => state.currentView);
+  const [showOnboarding, setShowOnboarding] = useState(() => shouldShowOnboarding());
 
   useEffect(() => {
     applyTheme(getStoredTheme());
@@ -38,12 +41,19 @@ function App() {
         return <ProgressPage />;
       case 'settings':
         return <SettingsPage />;
+      case 'srs-review':
+        return <ReviewSession />;
       default:
         return <HomePage />;
     }
   };
 
-  return <Layout>{renderView()}</Layout>;
+  return (
+    <>
+      {showOnboarding && <OnboardingWizard onComplete={() => setShowOnboarding(false)} />}
+      <Layout>{renderView()}</Layout>
+    </>
+  );
 }
 
 export default App;

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAppStore } from '../../stores/appStore';
 import { getOverallProgress, getNextRecommendedLesson } from '../../utils/lessonPath';
 import { StudyPlan } from '../Learn/StudyPlan';
+import { LEVELS } from '../../data/curriculum';
 
 const LEVEL_COLORS = [
   'from-amber-500/20 to-amber-600/5 border-amber-500/30',
@@ -39,84 +40,6 @@ const LEVEL_ICONS = [
   <svg key="l6" className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor"><path d="M5 2a2 2 0 00-2 2v14l3.5-2 3.5 2 3.5-2 3.5 2V4a2 2 0 00-2-2H5zm4.707 3.707a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L8.414 9H10a3 3 0 013 3v1a1 1 0 102 0v-1a5 5 0 00-5-5H8.414l1.293-1.293z" /></svg>,
 ];
 
-const LEVELS = [
-  {
-    id: 1,
-    title: 'Başlangıç',
-    description: "Go'nun temellerini öğrenin",
-    modules: [
-      { id: 1, title: "Go'nun Temelleri", lessons: 8, completed: 2 },
-      { id: 2, title: 'Temel Kavramlar', lessons: 8, completed: 0 },
-      { id: 3, title: 'İlk Oyununuz', lessons: 6, completed: 0 },
-      { id: 4, title: 'Ko ve Skor', lessons: 6, completed: 0 },
-      { id: 5, title: 'Tekrar', lessons: 4, completed: 0 },
-    ],
-  },
-  {
-    id: 2,
-    title: 'Temel Teknikler',
-    description: 'Yakalama teknikleri, bağlantılar ve tsumego',
-    modules: [
-      { id: 1, title: 'Esir Etme Teknikleri', lessons: 8, completed: 0 },
-      { id: 2, title: 'Bağlantı Kurma', lessons: 4, completed: 0 },
-      { id: 3, title: 'Tsumego (Yaşam ve Ölüm)', lessons: 8, completed: 0 },
-      { id: 4, title: 'Oyun Sonu (Yose)', lessons: 6, completed: 0 },
-      { id: 5, title: 'Uygulama', lessons: 8, completed: 0 },
-      { id: 6, title: 'Çok Adımlı', lessons: 4, completed: 0 },
-    ],
-  },
-  {
-    id: 3,
-    title: 'Orta Seviye',
-    description: 'Strateji ve taktikler',
-    modules: [
-      { id: 1, title: 'Açılış (Fuseki)', lessons: 6, completed: 0 },
-      { id: 2, title: 'Orta Oyun', lessons: 7, completed: 0 },
-      { id: 3, title: 'Bitiriş (Yose)', lessons: 6, completed: 0 },
-      { id: 4, title: 'Tesuji Kalıpları', lessons: 7, completed: 0 },
-      { id: 5, title: 'Saldırı Savunma', lessons: 7, completed: 0 },
-      { id: 6, title: 'İleri Tsumego', lessons: 6, completed: 0 },
-    ],
-  },
-  {
-    id: 4,
-    title: 'İleri Seviye',
-    description: 'Derin strateji',
-    modules: [
-      { id: 1, title: 'Joseki', lessons: 5, completed: 0 },
-      { id: 2, title: 'Etki Alanları', lessons: 6, completed: 0 },
-      { id: 3, title: 'Kalınlaştırma', lessons: 5, completed: 0 },
-      { id: 4, title: 'İstila', lessons: 6, completed: 0 },
-      { id: 5, title: 'Sentez', lessons: 6, completed: 0 },
-      { id: 6, title: 'Derinlemesine', lessons: 7, completed: 0 },
-    ],
-  },
-  {
-    id: 5,
-    title: 'Uzman',
-    description: 'Profesyonel seviye kavramlar',
-    modules: [
-      { id: 1, title: 'İleri Okuma', lessons: 5, completed: 0 },
-      { id: 2, title: 'Sabırlı Oyun', lessons: 5, completed: 0 },
-      { id: 3, title: 'Denge', lessons: 5, completed: 0 },
-      { id: 4, title: 'Karmaşık Dövüşler', lessons: 5, completed: 0 },
-      { id: 5, title: 'Planlama', lessons: 7, completed: 0 },
-    ],
-  },
-  {
-    id: 6,
-    title: 'Usta',
-    description: 'Pro seviye eğitim',
-    modules: [
-      { id: 1, title: 'Pro Oyun Analizi', lessons: 5, completed: 0 },
-      { id: 2, title: 'AI Stratejileri', lessons: 5, completed: 0 },
-      { id: 3, title: 'Turnuva Hazırlık', lessons: 5, completed: 0 },
-      { id: 4, title: 'Mentörlük', lessons: 5, completed: 0 },
-      { id: 5, title: 'Usta Seviye', lessons: 10, completed: 0 },
-    ],
-  },
-];
-
 export function HomePage() {
   const { startAiGame, loadLesson, setLevel } = useAppStore();
   const [progress, setProgress] = useState<{
@@ -131,10 +54,10 @@ export function HomePage() {
   } | null>(null);
 
   useEffect(() => {
-    getOverallProgress().then(setProgress).catch(() => {});
+    getOverallProgress().then(setProgress).catch(err => console.warn('[Home] getOverallProgress failed:', err));
     getNextRecommendedLesson().then((result) => {
       if (result) setNextLesson({ lessonId: result.lessonId, level: result.level });
-    }).catch(() => {});
+    }).catch(err => console.warn('[Home] getNextRecommendedLesson failed:', err));
   }, []);
 
   const continueLessonId = nextLesson?.lessonId ?? 'l1-1-1';
@@ -192,8 +115,8 @@ export function HomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {LEVELS.map((level, idx) => {
-            const totalLessons = level.modules.reduce((sum, m) => sum + m.lessons, 0);
-            const completedLessons = level.modules.reduce((sum, m) => sum + m.completed, 0);
+            const totalLessons = level.modules.reduce((sum, m) => sum + m.lessonCount, 0);
+            const completedLessons = 0; // Real progress comes from DB below
             // Use real progress if available
             const realProgress = progress?.levelProgress?.[level.id] ?? 0;
             const progressPct = realProgress > 0 ? realProgress : (totalLessons > 0 ? (completedLessons / totalLessons) * 100 : 0);

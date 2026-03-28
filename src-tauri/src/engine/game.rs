@@ -41,6 +41,16 @@ impl GoGame {
         }
     }
 
+    pub fn from_board_state(size: BoardSize, stones: &[(u8, u8, StoneColor)], komi: f32) -> Self {
+        let mut game = GoGame::new(size, komi);
+        for &(x, y, color) in stones {
+            if (x as usize) < game.board_size as usize && (y as usize) < game.board_size as usize {
+                game.board[y as usize][x as usize] = Some(color);
+            }
+        }
+        game
+    }
+
     pub fn board_size(&self) -> BoardSize {
         BoardSize::from_u8(self.board_size).unwrap()
     }

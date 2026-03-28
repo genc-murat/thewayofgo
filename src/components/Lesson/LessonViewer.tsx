@@ -1,8 +1,9 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useAppStore } from '../../stores/appStore';
 import { Board } from '../Board';
 import type { BoardSize, Exercise, Highlight } from '../../types';
 import { createBoardFromStones } from '../../utils/boardUtils';
+import { recordLessonCompletion } from '../../utils/progressDb';
 
 export function LessonViewer() {
   const { currentLesson, lessonStep, nextStep, prevStep, setView, loadLesson } = useAppStore();
@@ -12,6 +13,7 @@ export function LessonViewer() {
   const [exerciseResult, setExerciseResult] = useState<{ correct: boolean; explanation: string } | null>(null);
   const [hintsShown, setHintsShown] = useState(0);
   const [animDirection, setAnimDirection] = useState<'forward' | 'backward'>('forward');
+  const lessonStartTime = useRef(Date.now());
 
   useEffect(() => {
     setExerciseCompleted(false);
@@ -19,7 +21,20 @@ export function LessonViewer() {
     setExercise(null);
     setExerciseResult(null);
     setHintsShown(0);
+    lessonStartTime.current = Date.now();
   }, [currentLesson?.id]);
+
+  const handleLessonComplete = useCallback(async () => {
+    if (!currentLesson) return;
+    const timeSeconds = Math.round((Date.now() - lessonStartTime.current) / 1000);
+    const stars = exerciseCompleted && hintsShown === 0 ? 3 : exerciseCompleted ? 2 : 1;
+    try {
+      await recordLessonCompletion(currentLesson.id, stars, timeSeconds);
+      useAppStore.getState().bumpPlanVersion();
+    } catch (err) {
+      console.warn('Failed to record lesson completion:', err);
+    }
+  }, [currentLesson, exerciseCompleted, hintsShown]);
 
   useEffect(() => {
     if (showExercise && currentLesson?.required_exercise && !exercise) {
@@ -162,7 +177,7 @@ export function LessonViewer() {
 
             {exerciseCompleted && (
               <button
-                onClick={() => { if (currentLesson.next_lesson) loadLesson(currentLesson.next_lesson); else setView('home'); }}
+                onClick={() => { handleLessonComplete(); if (currentLesson.next_lesson) loadLesson(currentLesson.next_lesson); else setView('home'); }}
                 className="btn-primary w-full py-3.5 rounded-xl text-base"
               >
                 {currentLesson.next_lesson ? 'Sonraki Ders →' : 'Seviyeyi Tamamla ✓'}
@@ -267,12 +282,12 @@ export function LessonViewer() {
               Alıştırmaya Geç
             </button>
           ) : currentLesson.next_lesson ? (
-            <button onClick={() => loadLesson(currentLesson.next_lesson!)} className="btn-primary flex items-center gap-2 px-6 py-2.5 rounded-xl">
+            <button onClick={() => { handleLessonComplete(); loadLesson(currentLesson.next_lesson!); }} className="btn-primary flex items-center gap-2 px-6 py-2.5 rounded-xl">
               Sonraki Ders
               <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
             </button>
           ) : (
-            <button onClick={() => setView('home')} className="btn-primary flex items-center gap-2 px-6 py-2.5 rounded-xl">
+            <button onClick={() => { handleLessonComplete(); setView('home'); }} className="btn-primary flex items-center gap-2 px-6 py-2.5 rounded-xl">
               Tamamla ✓
             </button>
           )

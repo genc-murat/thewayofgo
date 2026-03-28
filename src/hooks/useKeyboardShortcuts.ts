@@ -20,6 +20,13 @@ const SHORTCUTS: KeyboardShortcut[] = [
   { key: 'ArrowRight', action: 'next', context: 'lesson', description: 'Sonraki Adım' },
   { key: ' ', action: 'next', context: 'lesson', description: 'Sonraki Adım' },
   { key: 'h', action: 'hint', context: 'exercise', description: 'İpucu Göster' },
+  { key: 'Enter', action: 'submit', context: 'exercise', description: 'Cevapla' },
+  { key: 'n', action: 'next-exercise', context: 'exercise', description: 'Sonraki Alıştırma' },
+  { key: 'r', action: 'retry', context: 'exercise', description: 'Tekrar Dene' },
+  { key: 's', action: 'bookmark', context: 'exercise', description: 'İşaretle' },
+  { key: '1', action: 'select-1', context: 'exercise', description: '1. Seçenek' },
+  { key: '2', action: 'select-2', context: 'exercise', description: '2. Seçenek' },
+  { key: '3', action: 'select-3', context: 'exercise', description: '3. Seçenek' },
   { key: 'z', ctrl: true, action: 'undo-global', context: 'global', description: 'Geri Al (Global)' },
 ];
 

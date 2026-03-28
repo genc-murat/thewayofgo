@@ -73,11 +73,13 @@ export async function getDetailedWeaknessProfile(): Promise<DetailedWeakness[]> 
 
     if (results.length === 0) return [];
 
+    const RECENT_WINDOW = 20;
     const typeMap = new Map<string, {
       total: number;
       correct: number;
       levelStats: Map<number, { attempts: number; correct: number }>;
       recent: { correct: number; total: number };
+      recentCount: number;
     }>();
 
     for (const row of results) {
@@ -86,20 +88,24 @@ export async function getDetailedWeaknessProfile(): Promise<DetailedWeakness[]> 
         correct: 0,
         levelStats: new Map(),
         recent: { correct: 0, total: 0 },
+        recentCount: 0,
       };
 
-      existing.total += row.attempts;
+      existing.total += 1;
       if (row.correct) existing.correct += 1;
 
       const levelMatch = row.exercise_id.match(/e(\d+)-/);
       const level = levelMatch ? parseInt(levelMatch[1]) : 1;
       const lvl = existing.levelStats.get(level) ?? { attempts: 0, correct: 0 };
-      lvl.attempts += row.attempts;
+      lvl.attempts += 1;
       if (row.correct) lvl.correct += 1;
       existing.levelStats.set(level, lvl);
 
-      existing.recent.total += 1;
-      if (row.correct) existing.recent.correct += 1;
+      if (existing.recentCount < RECENT_WINDOW) {
+        existing.recent.total += 1;
+        if (row.correct) existing.recent.correct += 1;
+        existing.recentCount += 1;
+      }
 
       typeMap.set(row.exercise_type, existing);
     }
@@ -128,7 +134,8 @@ export async function getDetailedWeaknessProfile(): Promise<DetailedWeakness[]> 
 
     detailed.sort((a, b) => a.overall_accuracy - b.overall_accuracy);
     return detailed;
-  } catch {
+  } catch (err) {
+    console.warn('[weaknessEngine] getDetailedWeaknessProfile failed:', err);
     return [];
   }
 }
@@ -155,8 +162,7 @@ export async function getRecommendedExercises(count: number = 5): Promise<Exerci
 
     for (let i = 0; i < Math.ceil(count / focusTypes.length); i++) {
       const level = levels[i % levels.length];
-      const prefix = type === 'capture_stones' ? 'e' : 'e';
-      const exerciseId = `${prefix}${level}-${Math.floor(i / 2) + 1}-${(i % 6) + 1}`;
+      const exerciseId = `e${level}-${Math.floor(i / 2) + 1}-${(i % 6) + 1}`;
       recommendations.push({
         exercise_id: exerciseId,
         exercise_type: type,

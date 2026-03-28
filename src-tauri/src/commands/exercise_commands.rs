@@ -1,3 +1,7 @@
+use crate::engine::{
+    game::GoGame,
+    types::{BoardSize, StoneColor},
+};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -79,8 +83,39 @@ pub fn validate_exercise_move(
     let exercise: ExerciseConfig = serde_json::from_str(&exercise_json)
         .map_err(|e| format!("Invalid exercise JSON: {}", e))?;
 
+    // Check if move is in the expected options first
     for correct_move in &exercise.correct_moves {
         if correct_move.x == x && correct_move.y == y {
+            // Additionally validate with the engine that the move is legal
+            let stones: Vec<(u8, u8, StoneColor)> = exercise
+                .initial_stones
+                .iter()
+                .map(|s| {
+                    let color = if s.color == "black" {
+                        StoneColor::Black
+                    } else {
+                        StoneColor::White
+                    };
+                    (s.x, s.y, color)
+                })
+                .collect();
+            let board_size = BoardSize::from_u8(exercise.board_size)
+                .map_err(|e| format!("Invalid board size: {}", e))?;
+            let mut game = GoGame::from_board_state(board_size, &stones, 6.5);
+
+            if let Err(e) = game.place_stone(x, y) {
+                return Ok(ExerciseResult {
+                    correct: false,
+                    explanation: format!("Bu hamle Go kurallarına göre geçersiz: {}", e),
+                    best_move: exercise
+                        .correct_moves
+                        .iter()
+                        .find(|m| m.is_correct)
+                        .map(|m| (m.x, m.y)),
+                    shown_consequences: false,
+                });
+            }
+
             return Ok(ExerciseResult {
                 correct: correct_move.is_correct,
                 explanation: correct_move.explanation.clone(),
@@ -98,17 +133,45 @@ pub fn validate_exercise_move(
         }
     }
 
-    // Move not in options - try to determine if it's valid
-    Ok(ExerciseResult {
-        correct: false,
-        explanation: "Bu hamle beklenen seçenekler arasında değil.".to_string(),
-        best_move: exercise
-            .correct_moves
-            .iter()
-            .find(|m| m.is_correct)
-            .map(|m| (m.x, m.y)),
-        shown_consequences: false,
-    })
+    // Move not in options - validate with engine
+    let stones: Vec<(u8, u8, StoneColor)> = exercise
+        .initial_stones
+        .iter()
+        .map(|s| {
+            let color = if s.color == "black" {
+                StoneColor::Black
+            } else {
+                StoneColor::White
+            };
+            (s.x, s.y, color)
+        })
+        .collect();
+    let board_size = BoardSize::from_u8(exercise.board_size)
+        .map_err(|e| format!("Invalid board size: {}", e))?;
+    let mut game = GoGame::from_board_state(board_size, &stones, 6.5);
+
+    match game.place_stone(x, y) {
+        Ok(_) => Ok(ExerciseResult {
+            correct: false,
+            explanation: "Geçerli bir Go hamlesi ama beklenen çözüm değil.".to_string(),
+            best_move: exercise
+                .correct_moves
+                .iter()
+                .find(|m| m.is_correct)
+                .map(|m| (m.x, m.y)),
+            shown_consequences: false,
+        }),
+        Err(e) => Ok(ExerciseResult {
+            correct: false,
+            explanation: format!("Geçersiz hamle: {}", e),
+            best_move: exercise
+                .correct_moves
+                .iter()
+                .find(|m| m.is_correct)
+                .map(|m| (m.x, m.y)),
+            shown_consequences: false,
+        }),
+    }
 }
 
 #[tauri::command]
