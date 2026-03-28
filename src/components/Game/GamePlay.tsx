@@ -1,8 +1,11 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { useAppStore } from '../../stores/appStore';
 import { Board } from '../Board';
+import { GameReview } from './GameReview';
 import { invoke } from '@tauri-apps/api/core';
 import { getSavedGames, formatGameResult, formatDuration, saveGame } from '../../utils/gameHistory';
+import { soundEngine } from '../../utils/soundEngine';
+import { useKeyboardShortcuts } from '../../hooks/useKeyboardShortcuts';
 import type { BoardSize, ScoreResult, MoveRecord, Point, AIStyle } from '../../types';
 import type { SavedGame } from '../../utils/gameHistory';
 
@@ -35,7 +38,21 @@ export function GamePlay() {
   const [recentGames, setRecentGames] = useState<SavedGame[]>([]);
   const [lastMoveAnalysis, setLastMoveAnalysis] = useState<string | null>(null);
   const [selectedKomi, setSelectedKomi] = useState(6.5);
+  const [showReview, setShowReview] = useState(false);
   const aiThinkingRef = useRef(false);
+
+  useKeyboardShortcuts({
+    context: 'game',
+    enabled: !game?.game_over && !showReview,
+    onAction: (action) => {
+      switch (action) {
+        case 'undo': handleUndo(); break;
+        case 'pass': handlePass(); break;
+        case 'resign': handleResign(); break;
+        case 'toggle-valid-moves': setShowValidMoves(v => !v); break;
+      }
+    },
+  });
 
   // Load recent games on mount
   useEffect(() => {
@@ -106,7 +123,17 @@ export function GamePlay() {
     if (!game || game.game_over) return;
     if (isAiGame && game.current_player === 'white') return;
     const result = await placeStone(x, y);
-    if (result?.game_over) setShowScore(true);
+    if (result) {
+      if (result.captured_stones.length > 0) {
+        soundEngine.play('stone_capture');
+      } else if (result.success) {
+        soundEngine.play('stone_place');
+      }
+    }
+    if (result?.game_over) {
+      setShowScore(true);
+      soundEngine.play('game_over');
+    }
     if (isAiGame) {
       const history = await getMoveHistory();
       setMoveHistory(history);
@@ -119,8 +146,12 @@ export function GamePlay() {
   }, [game, isAiGame, placeStone, getMoveHistory]);
 
   const handlePass = useCallback(async () => {
+    soundEngine.play('pass');
     const result = await doPass();
-    if (result?.game_over) setShowScore(true);
+    if (result?.game_over) {
+      setShowScore(true);
+      soundEngine.play('game_over');
+    }
     const history = await getMoveHistory();
     setMoveHistory(history);
   }, [doPass, getMoveHistory]);
@@ -173,7 +204,7 @@ export function GamePlay() {
         <div className="glass rounded-2xl p-6">
           <p className="text-sm text-text-secondary mb-3 font-medium text-center">Zorluk Seviyesi</p>
           <div className="flex gap-2">
-            {[1, 2, 3, 4, 5].map((level) => (
+            {[1, 2, 3, 4, 5, 6, 7].map((level) => (
               <button key={level} onClick={() => useAppStore.getState().setAiDifficulty(level)}
                 className={`w-12 h-12 rounded-xl font-bold text-lg transition-all ${
                   aiDifficulty === level
@@ -185,7 +216,7 @@ export function GamePlay() {
             ))}
           </div>
           <div className="flex justify-between mt-2 text-[10px] text-text-secondary px-1">
-            <span>Kolay</span><span>Zor</span>
+            <span>Kolay</span><span>Uzman</span>
           </div>
         </div>
 
@@ -266,6 +297,10 @@ export function GamePlay() {
   const boardSize = game.board_size as BoardSize;
   const canUndo = game.move_number > 0 && !isThinking;
 
+  if (showReview && moveHistory.length > 0) {
+    return <GameReview moveHistory={moveHistory} onClose={() => setShowReview(false)} />;
+  }
+
   return (
     <div className="flex flex-col lg:flex-row gap-8 animate-fade-in">
       <div className="flex-1 flex flex-col items-center">
@@ -344,9 +379,17 @@ export function GamePlay() {
               </button>
             </>
           ) : (
-            <button onClick={() => setView('home')} className="btn-primary w-full py-3 rounded-xl">
-              Ana Sayfaya Dön
-            </button>
+            <div className="flex flex-col gap-2">
+              {moveHistory.length > 0 && (
+                <button onClick={() => setShowReview(true)} className="btn-primary w-full py-3 rounded-xl flex items-center justify-center gap-2">
+                  <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" /></svg>
+                  Oyunu İzle
+                </button>
+              )}
+              <button onClick={() => setView('home')} className="btn-ghost w-full py-3 rounded-xl">
+                Ana Sayfaya Dön
+              </button>
+            </div>
           )}
         </div>
 

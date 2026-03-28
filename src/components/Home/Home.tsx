@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAppStore } from '../../stores/appStore';
 import { getOverallProgress, getNextRecommendedLesson } from '../../utils/lessonPath';
+import { StudyPlan } from '../Learn/StudyPlan';
 
 const LEVEL_COLORS = [
   'from-amber-500/20 to-amber-600/5 border-amber-500/30',
@@ -174,6 +175,11 @@ export function HomePage() {
             </button>
           </div>
         </div>
+      </section>
+
+      {/* Study Plan */}
+      <section>
+        <StudyPlan />
       </section>
 
       {/* Level overview */}

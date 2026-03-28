@@ -27,10 +27,11 @@ pub struct GameRecord {
 }
 
 pub fn get_migrations() -> Vec<Migration> {
-    vec![Migration {
-        version: 1,
-        description: "create_initial_tables",
-        sql: r#"
+    vec![
+        Migration {
+            version: 1,
+            description: "create_initial_tables",
+            sql: r#"
                 CREATE TABLE IF NOT EXISTS user_progress (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     lesson_id TEXT NOT NULL UNIQUE,
@@ -69,6 +70,34 @@ pub fn get_migrations() -> Vec<Migration> {
                     played_at TEXT NOT NULL DEFAULT (datetime('now'))
                 );
             "#,
-        kind: MigrationKind::Up,
-    }]
+            kind: MigrationKind::Up,
+        },
+        Migration {
+            version: 2,
+            description: "add_srs_and_goals_tables",
+            sql: r#"
+                CREATE TABLE IF NOT EXISTS srs_cards (
+                    card_id TEXT PRIMARY KEY,
+                    exercise_type TEXT NOT NULL,
+                    ease_factor REAL DEFAULT 2.5,
+                    interval_days REAL DEFAULT 0,
+                    repetitions INTEGER DEFAULT 0,
+                    next_review TEXT NOT NULL,
+                    last_review TEXT,
+                    lapses INTEGER DEFAULT 0
+                );
+
+                CREATE TABLE IF NOT EXISTS goals (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    goal_type TEXT NOT NULL,
+                    target_value INTEGER NOT NULL,
+                    current_value INTEGER DEFAULT 0,
+                    deadline TEXT,
+                    completed BOOLEAN DEFAULT 0,
+                    created_at TEXT NOT NULL
+                );
+            "#,
+            kind: MigrationKind::Up,
+        },
+    ]
 }

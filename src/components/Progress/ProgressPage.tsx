@@ -3,6 +3,9 @@ import { getUserStats, getWeakAreas, getStreak, getDailyProgress } from '../../u
 import { getTypeDisplayName, canAdvanceLevel } from '../../utils/adaptiveDifficulty';
 import type { WeakArea } from '../../utils/progressDb';
 import { useAppStore } from '../../stores/appStore';
+import { getSRSStats, type SRSStats } from '../../utils/srs';
+import { getActiveGoals, type Goal } from '../../utils/goals';
+import { getDetailedWeaknessProfile, type DetailedWeakness } from '../../utils/weaknessEngine';
 
 interface StatsData {
   total_lessons_completed: number;
@@ -23,6 +26,9 @@ export function ProgressPage() {
   const [streak, setStreak] = useState({ current: 0, best: 0 });
   const [daily, setDaily] = useState({ exercises: 0, lessons: 0 });
   const [canAdvance, setCanAdvance] = useState({ canAdvance: false, progress: 0, required: 80, message: '' });
+  const [srsStats, setSrsStats] = useState<SRSStats>({ total_cards: 0, due_today: 0, learned: 0, learning: 0, lapsed: 0 });
+  const [goals, setGoals] = useState<Goal[]>([]);
+  const [detailedWeakness, setDetailedWeakness] = useState<DetailedWeakness[]>([]);
 
   useEffect(() => {
     getUserStats().then(setStats).catch(() => {});
@@ -30,6 +36,9 @@ export function ProgressPage() {
     getStreak().then(setStreak).catch(() => {});
     getDailyProgress().then(setDaily).catch(() => {});
     canAdvanceLevel(currentLevel).then(setCanAdvance).catch(() => {});
+    getSRSStats().then(setSrsStats).catch(() => {});
+    getActiveGoals().then(setGoals).catch(() => {});
+    getDetailedWeaknessProfile().then(setDetailedWeakness).catch(() => {});
   }, []);
 
   const statItems = [
@@ -77,7 +86,52 @@ export function ProgressPage() {
       )}
 
       {/* Weak Areas */}
-      <WeakAreasPanel weakAreas={weakAreas} />
+      <WeakAreasPanel weakAreas={weakAreas} detailedWeakness={detailedWeakness} />
+
+      {/* SRS Stats */}
+      {srsStats.total_cards > 0 && (
+        <div className="glass rounded-2xl p-6 border border-glass-border">
+          <h3 className="font-bold text-lg mb-5">Aralıklı Tekrar (SRS)</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="text-center p-3 rounded-xl bg-bg-primary/40">
+              <div className="text-2xl font-bold text-accent">{srsStats.due_today}</div>
+              <div className="text-xs text-text-secondary">Bugün Tekrar</div>
+            </div>
+            <div className="text-center p-3 rounded-xl bg-bg-primary/40">
+              <div className="text-2xl font-bold text-emerald-400">{srsStats.learned}</div>
+              <div className="text-xs text-text-secondary">Öğrenildi</div>
+            </div>
+            <div className="text-center p-3 rounded-xl bg-bg-primary/40">
+              <div className="text-2xl font-bold text-blue-400">{srsStats.learning}</div>
+              <div className="text-xs text-text-secondary">Öğreniliyor</div>
+            </div>
+            <div className="text-center p-3 rounded-xl bg-bg-primary/40">
+              <div className="text-2xl font-bold text-text-primary">{srsStats.total_cards}</div>
+              <div className="text-xs text-text-secondary">Toplam Kart</div>
+            </div>
+          </div>
+          {srsStats.due_today > 0 && (
+            <button
+              onClick={() => setView('exercise')}
+              className="mt-4 w-full btn-primary py-2.5 rounded-xl text-sm font-medium"
+            >
+              {srsStats.due_today} Kart Tekrar Et
+            </button>
+          )}
+        </div>
+      )}
+
+      {/* Goals */}
+      {goals.length > 0 && (
+        <div className="glass rounded-2xl p-6 border border-glass-border">
+          <h3 className="font-bold text-lg mb-5">Aktif Hedefler</h3>
+          <div className="space-y-3">
+            {goals.map((goal) => (
+              <GoalCard key={goal.id} goal={goal} />
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Daily goal */}
       <div className="glass rounded-2xl p-6 border border-glass-border">
@@ -107,7 +161,7 @@ export function ProgressPage() {
   );
 }
 
-function WeakAreasPanel({ weakAreas }: { weakAreas: WeakArea[] }) {
+function WeakAreasPanel({ weakAreas, detailedWeakness }: { weakAreas: WeakArea[]; detailedWeakness: DetailedWeakness[] }) {
   if (weakAreas.length === 0) {
     return (
       <div className="glass rounded-2xl p-6 border border-glass-border">
@@ -131,30 +185,83 @@ function WeakAreasPanel({ weakAreas }: { weakAreas: WeakArea[] }) {
     return 'low';
   }
 
+  const trendIcons: Record<string, string> = {
+    improving: '↑',
+    declining: '↓',
+    stable: '→',
+  };
+
+  const trendColors: Record<string, string> = {
+    improving: 'text-success',
+    declining: 'text-error',
+    stable: 'text-text-secondary',
+  };
+
   return (
     <div className="glass rounded-2xl p-6 border border-glass-border">
       <h3 className="font-bold text-lg mb-4">Zayıf Noktalar</h3>
       <div className="space-y-4">
-        {weakAreas.map((area) => (
-          <div key={area.exercise_type} className="p-4 rounded-xl bg-bg-primary/40">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium">{getTypeDisplayName(area.exercise_type)}</span>
-              <span className={`text-xs font-semibold ${area.accuracy >= 75 ? 'text-success' : area.accuracy >= 50 ? 'text-warning' : 'text-error'}`}>
-                %{Math.round(area.accuracy)} başarı
-              </span>
+        {weakAreas.map((area) => {
+          const detail = detailedWeakness.find(d => d.exercise_type === area.exercise_type);
+          const trend = detail?.trend ?? 'stable';
+          return (
+            <div key={area.exercise_type} className="p-4 rounded-xl bg-bg-primary/40">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm font-medium">{getTypeDisplayName(area.exercise_type)}</span>
+                <div className="flex items-center gap-2">
+                  {detail && (
+                    <span className={`text-sm ${trendColors[trend]}`}>{trendIcons[trend]}</span>
+                  )}
+                  <span className={`text-xs font-semibold ${area.accuracy >= 75 ? 'text-success' : area.accuracy >= 50 ? 'text-warning' : 'text-error'}`}>
+                    %{Math.round(area.accuracy)} başarı
+                  </span>
+                </div>
+              </div>
+              <div className="h-2 bg-bg-primary/60 rounded-full overflow-hidden">
+                <div
+                  className={`h-full ${accuracyColors[getAccuracyLevel(area.accuracy)]} rounded-full transition-all duration-1000`}
+                  style={{ width: `${area.accuracy}%` }}
+                />
+              </div>
+              <div className="text-xs text-text-secondary mt-1">
+                {area.total_attempts} deneme, {area.correct_attempts} doğru
+                {detail && detail.recent_accuracy !== area.accuracy && (
+                  <span className="ml-2">• Son: %{Math.round(detail.recent_accuracy)}</span>
+                )}
+              </div>
             </div>
-            <div className="h-2 bg-bg-primary/60 rounded-full overflow-hidden">
-              <div
-                className={`h-full ${accuracyColors[getAccuracyLevel(area.accuracy)]} rounded-full transition-all duration-1000`}
-                style={{ width: `${area.accuracy}%` }}
-              />
-            </div>
-            <div className="text-xs text-text-secondary mt-1">
-              {area.total_attempts} deneme, {area.correct_attempts} doğru
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
+    </div>
+  );
+}
+
+function GoalCard({ goal }: { goal: Goal }) {
+  const pct = goal.target_value > 0
+    ? Math.min(100, Math.round((goal.current_value / goal.target_value) * 100))
+    : 0;
+
+  const typeLabels: Record<string, string> = {
+    daily_exercises: 'Günlük Alıştırma',
+    weekly_lessons: 'Haftalık Ders',
+    level_complete: 'Seviye Tamamlama',
+    custom: 'Özel Hedef',
+  };
+
+  return (
+    <div className="p-4 rounded-xl bg-bg-primary/40">
+      <div className="flex items-center justify-between mb-2">
+        <span className="text-sm font-medium">{typeLabels[goal.goal_type] ?? goal.goal_type}</span>
+        <span className="text-xs text-text-secondary">{goal.current_value}/{goal.target_value}</span>
+      </div>
+      <div className="h-2 bg-bg-primary/60 rounded-full overflow-hidden">
+        <div
+          className={`h-full rounded-full transition-all duration-1000 ${pct >= 100 ? 'bg-success' : 'bg-accent'}`}
+          style={{ width: `${pct}%` }}
+        />
+      </div>
+      <div className="text-xs text-text-secondary mt-1">%{pct} tamamlandı</div>
     </div>
   );
 }

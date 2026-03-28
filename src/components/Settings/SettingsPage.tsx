@@ -1,10 +1,17 @@
 import { useState, useEffect } from 'react';
+import { THEMES, applyTheme, getStoredTheme, storeTheme } from '../../utils/themes';
+import { soundEngine } from '../../utils/soundEngine';
+import { getShortcutsForContext } from '../../hooks/useKeyboardShortcuts';
 
 interface SettingsState {
   komi: number;
   showValidMovesDefault: boolean;
   showLastMove: boolean;
   autoSaveGames: boolean;
+  soundEnabled: boolean;
+  soundVolume: number;
+  theme: string;
+  showKeyboardHints: boolean;
 }
 
 const DEFAULT_SETTINGS: SettingsState = {
@@ -12,6 +19,10 @@ const DEFAULT_SETTINGS: SettingsState = {
   showValidMovesDefault: false,
   showLastMove: true,
   autoSaveGames: true,
+  soundEnabled: true,
+  soundVolume: 0.5,
+  theme: 'dark',
+  showKeyboardHints: true,
 };
 
 function loadSettings(): SettingsState {
@@ -38,14 +49,32 @@ export function SettingsPage() {
   const [settings, setSettings] = useState<SettingsState>(DEFAULT_SETTINGS);
 
   useEffect(() => {
-    setSettings(loadSettings());
+    const loaded = loadSettings();
+    loaded.theme = getStoredTheme();
+    loaded.soundEnabled = soundEngine.isEnabled();
+    loaded.soundVolume = soundEngine.getVolume();
+    setSettings(loaded);
+    applyTheme(loaded.theme);
   }, []);
 
   const update = <K extends keyof SettingsState>(key: K, value: SettingsState[K]) => {
     const newSettings = { ...settings, [key]: value };
     setSettings(newSettings);
     saveSettings(newSettings);
+
+    if (key === 'theme') {
+      applyTheme(value as string);
+      storeTheme(value as string);
+    }
+    if (key === 'soundEnabled') {
+      soundEngine.setEnabled(value as boolean);
+    }
+    if (key === 'soundVolume') {
+      soundEngine.setVolume(value as number);
+    }
   };
+
+  const gameShortcuts = getShortcutsForContext('game');
 
   return (
     <div className="max-w-2xl mx-auto space-y-8 animate-fade-in">
@@ -110,6 +139,82 @@ export function SettingsPage() {
         </SettingRow>
       </div>
 
+      {/* Theme Settings */}
+      <div className="glass rounded-2xl p-6 border border-glass-border space-y-6">
+        <h3 className="font-bold text-lg">Tema</h3>
+
+        <div className="grid grid-cols-2 gap-3">
+          {Object.values(THEMES).map((theme) => (
+            <button
+              key={theme.id}
+              onClick={() => update('theme', theme.id)}
+              className={`p-4 rounded-xl text-left transition-all border ${
+                settings.theme === theme.id
+                  ? 'bg-accent/10 border-accent/40 ring-1 ring-accent/30'
+                  : 'glass border-transparent hover:bg-bg-secondary'
+              }`}
+            >
+              <div className="flex items-center gap-3 mb-2">
+                <div className="flex gap-1">
+                  <div className="w-4 h-4 rounded-full" style={{ background: theme.colors.accent }} />
+                  <div className="w-4 h-4 rounded-full" style={{ background: theme.colors.surface1 }} />
+                  <div className="w-4 h-4 rounded-full" style={{ background: theme.colors.bgCard }} />
+                </div>
+              </div>
+              <div className="text-sm font-semibold">{theme.name}</div>
+              <div className="text-xs text-text-secondary">{theme.description}</div>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Sound Settings */}
+      <div className="glass rounded-2xl p-6 border border-glass-border space-y-6">
+        <h3 className="font-bold text-lg">Ses</h3>
+
+        <SettingRow
+          label="Ses Efektleri"
+          description="Taş yerleştirme ve diğer ses efektleri"
+        >
+          <ToggleSwitch
+            checked={settings.soundEnabled}
+            onChange={(val) => update('soundEnabled', val)}
+          />
+        </SettingRow>
+
+        <SettingRow
+          label="Ses Seviyesi"
+          description="Ses efektlerinin yüksekliği"
+        >
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.1"
+            value={settings.soundVolume}
+            onChange={(e) => update('soundVolume', parseFloat(e.target.value))}
+            className="w-24 accent-accent"
+            disabled={!settings.soundEnabled}
+          />
+        </SettingRow>
+      </div>
+
+      {/* Keyboard Shortcuts */}
+      <div className="glass rounded-2xl p-6 border border-glass-border space-y-4">
+        <h3 className="font-bold text-lg">Klavye Kısayolları</h3>
+
+        <div className="space-y-2">
+          {gameShortcuts.map((shortcut, idx) => (
+            <div key={idx} className="flex items-center justify-between text-sm">
+              <span className="text-text-secondary">{shortcut.description}</span>
+              <kbd className="px-2 py-1 rounded-lg bg-bg-primary/60 text-text-primary font-mono text-xs">
+                {shortcut.ctrl ? 'Ctrl+' : ''}{shortcut.key === ' ' ? 'Space' : shortcut.key}
+              </kbd>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Data Management */}
       <div className="glass rounded-2xl p-6 border border-glass-border space-y-4">
         <h3 className="font-bold text-lg">Veri Yönetimi</h3>
@@ -137,7 +242,7 @@ export function SettingsPage() {
         <div className="space-y-2 text-sm text-text-secondary">
           <p><strong className="text-text-primary">The Way of Go</strong> — Go öğrenmenin en iyi yolu</p>
           <p>Tauri + React + Rust ile geliştirildi</p>
-          <p>MCTS yapay zeka motoru ile 5 zorluk seviyesi</p>
+          <p>MCTS yapay zeka motoru ile 7 zorluk seviyesi</p>
           <p>220+ alıştırma, 115 ders, 6 seviye müfredat</p>
         </div>
       </div>

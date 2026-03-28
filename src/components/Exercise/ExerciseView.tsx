@@ -4,6 +4,7 @@ import { Board } from '../Board';
 import type { BoardSize, Highlight } from '../../types';
 import { getAdaptiveDifficulty, getTypeDisplayName, type DifficultyRecommendation } from '../../utils/adaptiveDifficulty';
 import { createBoardFromStones } from '../../utils/boardUtils';
+import { getNextReviewCards, getSRSStats, type SRSCard } from '../../utils/srs';
 
 const EXERCISE_CATALOG = [
   { id: 'e1-1-1', level: 1, module: 1, title: 'İlk Hamle', type: 'Doğru Hamle', difficulty: 1 },
@@ -251,9 +252,13 @@ export function ExerciseView() {
   const [filterLevel, setFilterLevel] = useState<number | null>(null);
   const [filterType, setFilterType] = useState<string | null>(null);
   const [recommendation, setRecommendation] = useState<DifficultyRecommendation | null>(null);
+  const [reviewCards, setReviewCards] = useState<SRSCard[]>([]);
+  const [srsStats, setSrsStats] = useState({ total_cards: 0, due_today: 0, learned: 0, learning: 0, lapsed: 0 });
 
   useEffect(() => {
     getAdaptiveDifficulty(2).then(setRecommendation).catch(() => {});
+    getNextReviewCards(20).then(setReviewCards).catch(() => {});
+    getSRSStats().then(setSrsStats).catch(() => {});
   }, []);
 
   const filteredCatalog = useMemo(() => {
@@ -281,6 +286,31 @@ export function ExerciseView() {
         <h2 className="text-3xl font-bold mb-2">Alıştırmalar</h2>
         <p className="text-text-secondary">Seviye ve türe göre filtreleyerek çalışın ({EXERCISE_CATALOG.length} alıştırma)</p>
       </div>
+
+      {/* SRS Review Mode */}
+      {srsStats.due_today > 0 && (
+        <div className="glass rounded-2xl p-6 border border-info/20 bg-info/5">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <span className="text-2xl">🔄</span>
+              <div>
+                <h3 className="font-bold">Bugünün Tekrarı ({srsStats.due_today})</h3>
+                <p className="text-sm text-text-secondary">Aralıklı tekrar kartlarınız hazır</p>
+              </div>
+            </div>
+            <button
+              onClick={() => {
+                if (reviewCards.length > 0) {
+                  loadExercise(reviewCards[0].card_id);
+                }
+              }}
+              className="btn-primary px-6 py-2.5 rounded-xl text-sm font-medium"
+            >
+              Tekrara Başla
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Recommended section */}
       {recommendedExercises.length > 0 && (

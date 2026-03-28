@@ -1,5 +1,6 @@
 use rand::seq::SliceRandom;
 use rand::RngExt;
+use serde::{Deserialize, Serialize};
 
 use crate::ai::styles::{get_style_weights, StyleWeights};
 use crate::engine::game::GoGame;
@@ -7,6 +8,23 @@ use crate::engine::types::{AIDifficulty, AIStyle, Point, StoneColor};
 
 const EXPLORATION_CONSTANT: f64 = 1.414;
 const RAVE_K: f64 = 2000.0;
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct MoveCandidate {
+    pub x: u8,
+    pub y: u8,
+    pub visits: u32,
+    pub win_rate: f64,
+    pub is_best: bool,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SearchAnalysis {
+    pub candidates: Vec<MoveCandidate>,
+    pub best_variation: Vec<Point>,
+    pub evaluation: f64,
+    pub total_simulations: u32,
+}
 
 struct MCTSNode {
     move_x: u8,
@@ -479,6 +497,281 @@ impl MCTSAi {
         }
 
         select_most_visited(&root_children).map(|(x, y)| Point { x, y })
+    }
+
+    pub fn analyze_position(&mut self, game: &GoGame) -> Option<SearchAnalysis> {
+        let valid_moves = game.get_valid_moves();
+        if valid_moves.is_empty() {
+            return None;
+        }
+
+        let move_coords: Vec<(u8, u8)> = valid_moves.iter().map(|m| (m.x, m.y)).collect();
+        let mut root_children: Vec<MCTSNode> = move_coords
+            .iter()
+            .enumerate()
+            .map(|(i, &(x, y))| {
+                let untried: Vec<(u8, u8)> = move_coords
+                    .iter()
+                    .enumerate()
+                    .filter(|(j, _)| *j != i)
+                    .map(|(_, &c)| c)
+                    .collect();
+                let mut rng = rand::rng();
+                let mut untried = untried;
+                untried.shuffle(&mut rng);
+                MCTSNode::new(x, y, untried, game.board_hash())
+            })
+            .collect();
+
+        let pass_untried: Vec<(u8, u8)> = move_coords.clone();
+        root_children.push(MCTSNode::new_pass(pass_untried, game.board_hash()));
+
+        let simulations = self.difficulty.simulations.clamp(500, 5000);
+        let current_player = game.current_player();
+        let use_heavy_playout = self.difficulty.level >= 4;
+        let mut rng = rand::rng();
+
+        for _ in 0..simulations {
+            let mut sim_game = game.clone_for_simulation();
+
+            let root_idx = match root_children.iter().position(|c| c.visits == 0) {
+                Some(idx) => idx,
+                None => root_children
+                    .iter()
+                    .enumerate()
+                    .max_by(|(_, a), (_, b)| {
+                        a.rave_uct_value(total_root_visits(&root_children))
+                            .partial_cmp(&b.rave_uct_value(total_root_visits(&root_children)))
+                            .unwrap_or(std::cmp::Ordering::Equal)
+                    })
+                    .map(|(i, _)| i)
+                    .unwrap_or(0),
+            };
+
+            let node = &root_children[root_idx];
+            let moved = if node.is_pass {
+                sim_game.pass_fast();
+                true
+            } else if sim_game.place_stone_fast(node.move_x, node.move_y) {
+                true
+            } else {
+                continue;
+            };
+
+            let mut black_moves: Vec<(u8, u8)> = Vec::new();
+            let mut white_moves: Vec<(u8, u8)> = Vec::new();
+
+            if !root_children[root_idx].is_pass {
+                if current_player == StoneColor::Black {
+                    black_moves.push((
+                        root_children[root_idx].move_x,
+                        root_children[root_idx].move_y,
+                    ));
+                } else {
+                    white_moves.push((
+                        root_children[root_idx].move_x,
+                        root_children[root_idx].move_y,
+                    ));
+                }
+            }
+
+            if moved {
+                let mut current = &mut root_children[root_idx];
+
+                while current.is_fully_expanded() && !current.children.is_empty() {
+                    if let Some(child_idx) = current.best_child_uct() {
+                        let child = &current.children[child_idx];
+                        let moved = if child.is_pass {
+                            sim_game.pass_fast();
+                            true
+                        } else if sim_game.place_stone_fast(child.move_x, child.move_y) {
+                            true
+                        } else {
+                            break;
+                        };
+                        if !moved {
+                            break;
+                        }
+                        current = &mut current.children[child_idx];
+                    } else {
+                        break;
+                    }
+                }
+
+                if !current.is_fully_expanded() && !current.untried_moves.is_empty() {
+                    let move_idx = rng.random_range(0..current.untried_moves.len());
+                    let (cx, cy) = current.untried_moves.swap_remove(move_idx);
+                    if sim_game.place_stone_fast(cx, cy) {
+                        let child_valid = get_valid_moves_fast(&sim_game);
+                        let child = MCTSNode::new(cx, cy, child_valid, sim_game.board_hash());
+                        current.children.push(child);
+                    }
+                }
+
+                let result = if use_heavy_playout {
+                    heavy_playout(
+                        &mut sim_game,
+                        &mut rng,
+                        &self.style_weights,
+                        &mut black_moves,
+                        &mut white_moves,
+                    )
+                } else {
+                    light_playout(
+                        &mut sim_game,
+                        &mut rng,
+                        &self.style_weights,
+                        &mut black_moves,
+                        &mut white_moves,
+                    )
+                };
+
+                root_children[root_idx].visits += 1;
+                let board_area = (sim_game.board_size().to_u8() as f64).powi(2);
+                let normalized = result.margin as f64 / board_area * 0.5;
+                if result.winner == current_player {
+                    root_children[root_idx].wins += 0.5 + normalized.min(0.5);
+                } else {
+                    root_children[root_idx].wins += (0.5 - normalized.min(0.5)).max(0.0);
+                }
+
+                let player_moves = if current_player == StoneColor::Black {
+                    &black_moves
+                } else {
+                    &white_moves
+                };
+                for child in root_children.iter_mut() {
+                    if child.is_pass {
+                        continue;
+                    }
+                    if player_moves.contains(&(child.move_x, child.move_y)) {
+                        child.rave_visits += 1;
+                        if result.winner == current_player {
+                            child.rave_wins += 1.0;
+                        }
+                    }
+                }
+            }
+        }
+
+        let total_sims: u32 = root_children.iter().map(|c| c.visits).sum();
+        let mut candidates: Vec<MoveCandidate> = root_children
+            .iter()
+            .filter(|c| !c.is_pass && c.visits > 0)
+            .map(|c| MoveCandidate {
+                x: c.move_x,
+                y: c.move_y,
+                visits: c.visits,
+                win_rate: if c.visits > 0 {
+                    c.wins / c.visits as f64
+                } else {
+                    0.0
+                },
+                is_best: false,
+            })
+            .collect();
+
+        candidates.sort_by(|a, b| b.visits.cmp(&a.visits));
+        candidates.truncate(5);
+        if let Some(first) = candidates.first_mut() {
+            first.is_best = true;
+        }
+
+        let best_child = root_children
+            .iter()
+            .filter(|c| !c.is_pass)
+            .max_by_key(|c| c.visits)?;
+        let evaluation = if best_child.visits > 0 {
+            best_child.wins / best_child.visits as f64
+        } else {
+            0.5
+        };
+
+        let mut best_variation = Vec::new();
+        if let Some(best) = root_children
+            .iter()
+            .filter(|c| !c.is_pass)
+            .max_by_key(|c| c.visits)
+        {
+            best_variation.push(Point {
+                x: best.move_x,
+                y: best.move_y,
+            });
+            let mut current = best;
+            while let Some(next) = current.children.iter().max_by_key(|c| c.visits) {
+                if next.visits < 2 {
+                    break;
+                }
+                if !next.is_pass {
+                    best_variation.push(Point {
+                        x: next.move_x,
+                        y: next.move_y,
+                    });
+                }
+                if best_variation.len() >= 5 {
+                    break;
+                }
+                current = next;
+            }
+        }
+
+        Some(SearchAnalysis {
+            candidates,
+            best_variation,
+            evaluation,
+            total_simulations: total_sims,
+        })
+    }
+
+    pub fn generate_commentary(&self, game: &GoGame, x: u8, y: u8) -> Option<String> {
+        if self.difficulty.style != AIStyle::Educational {
+            return None;
+        }
+
+        let board_size = game.board_size().to_u8();
+        let mut parts: Vec<String> = Vec::new();
+
+        let captures = game.would_capture_count(x, y);
+        if captures > 0 {
+            parts.push(format!("Bu hamle {} taşı yakalıyor.", captures));
+        }
+
+        if game.creates_atari(x, y) {
+            parts.push("Rakibi atari durumuna getiriyor.".to_string());
+        }
+
+        if game.is_self_atari(x, y) {
+            parts.push("Dikkat: Kendi taşlarınızı atari durumuna sokuyor.".to_string());
+        }
+
+        let connections = game.connects_friendly_groups(x, y);
+        if connections > 1 {
+            parts.push(format!("{} grubu birleştiriyor.", connections));
+        }
+
+        let center = board_size as f64 / 2.0;
+        let dist = ((x as f64 - center).powi(2) + (y as f64 - center).powi(2)).sqrt();
+        if dist < center * 0.4 {
+            parts.push("Merkezde etki alanı oluşturuyor.".to_string());
+        }
+
+        let edge_dist = x.min(y).min(board_size - 1 - x).min(board_size - 1 - y);
+        if edge_dist == 0 {
+            parts.push("Kenar bölgesinde.".to_string());
+        } else if edge_dist <= 2 {
+            parts.push("Köşe/kenar yakınında stratejik konum.".to_string());
+        }
+
+        let liberties = game.get_group_liberties_at(x, y);
+        if liberties > 0 && liberties <= 2 {
+            parts.push(format!("Bu grubun {} özgürlüğü var.", liberties));
+        }
+
+        if parts.is_empty() {
+            parts.push("Stratejik bir hamle. Pozisyonu değerlendirin.".to_string());
+        }
+
+        Some(parts.join(" "))
     }
 }
 

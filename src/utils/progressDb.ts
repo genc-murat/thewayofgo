@@ -119,6 +119,13 @@ export async function recordExerciseAttempt(
   } catch {
     // Non-critical
   }
+
+  // Sync to SRS (fire-and-forget)
+  import('./srs').then(({ syncExerciseToSRS, recordSRSCardResult }) => {
+    syncExerciseToSRS(exerciseId, exerciseType).then(() => {
+      recordSRSCardResult(exerciseId, correct).catch(() => {});
+    }).catch(() => {});
+  }).catch(() => {});
 }
 
 export async function recordLessonCompletion(

@@ -362,3 +362,22 @@
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }
+
+@keyframes stonePlace {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes stoneCapture {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+.animate-stone-place {
+  animation: stonePlace 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-stone-capture {
+  animation: stoneCapture 0.15s ease-in forwards;
+}

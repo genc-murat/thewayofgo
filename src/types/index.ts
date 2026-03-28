@@ -196,3 +196,41 @@ export interface Streak {
   best: number;
   last_date: string | null;
 }
+
+// SRS types
+export interface SRSCardInfo {
+  card_id: string;
+  exercise_type: string;
+  ease_factor: number;
+  interval_days: number;
+  repetitions: number;
+  next_review: string;
+  last_review: string | null;
+  lapses: number;
+}
+
+// Study plan types
+export interface StudyPlanItemData {
+  id: string;
+  type: 'review' | 'lesson' | 'exercise' | 'game';
+  title: string;
+  description: string;
+  estimated_minutes: number;
+  completed: boolean;
+}
+
+// AI Analysis types
+export interface MoveCandidate {
+  x: number;
+  y: number;
+  visits: number;
+  win_rate: number;
+  is_best: boolean;
+}
+
+export interface SearchAnalysis {
+  candidates: MoveCandidate[];
+  best_variation: { x: number; y: number }[];
+  evaluation: number;
+  total_simulations: number;
+}

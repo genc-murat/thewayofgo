@@ -277,18 +277,88 @@ pub fn analyze_move(state: State<AppState>, x: u8, y: u8) -> Result<MoveAnalysis
         tactics.push(format!("Grup özgürlükleri: {}", liberties));
     }
 
+    // Game stage analysis
+    let move_number = game.move_number();
+    let board_size = game.board_size().to_u8();
+    let board_area = (board_size as u32).pow(2);
+    let progress = move_number as f32 / board_area as f32;
+
+    let stage_comment = if progress < 0.15 {
+        "Açılış aşamasında"
+    } else if progress < 0.5 {
+        "Orta oyunda"
+    } else {
+        "Bitiriş aşamasında"
+    };
+
     // Generate explanation
     let explanation = if tactics.is_empty() {
-        "Stratejik bir hamle. Pozisyonu değerlendirin.".to_string()
+        format!("{} stratejik bir hamle. Pozisyonu değerlendirin.", stage_comment)
     } else {
-        tactics.join(" | ")
+        format!("{}: {}", stage_comment, tactics.join(" | "))
     };
 
     let confidence = if score > 20 { 95 } else if score > 10 { 80 } else if score > 0 { 65 } else if score > -10 { 50 } else { 35 };
 
+    // Educational commentary
+    let ai = state.ai.lock().map_err(|e| e.to_string())?;
+    let educational_commentary = ai.generate_commentary(game, x, y);
+
+    let full_explanation = match educational_commentary {
+        Some(commentary) => format!("{}\n{}", explanation, commentary),
+        None => explanation,
+    };
+
     Ok(MoveAnalysis {
-        explanation,
+        explanation: full_explanation,
         confidence,
         tactics,
     })
+}
+
+#[derive(Debug, Clone, serde::Serialize)]
+pub struct PositionAnalysis {
+    pub candidates: Vec<MoveCandidateResponse>,
+    pub best_variation: Vec<Point>,
+    pub evaluation: f64,
+    pub total_simulations: u32,
+}
+
+#[derive(Debug, Clone, serde::Serialize)]
+pub struct MoveCandidateResponse {
+    pub x: u8,
+    pub y: u8,
+    pub visits: u32,
+    pub win_rate: f64,
+    pub is_best: bool,
+}
+
+#[tauri::command]
+pub async fn get_position_analysis(state: State<'_, AppState>) -> Result<PositionAnalysis, String> {
+    let game_mutex = state.game.clone();
+    let ai_mutex = state.ai.clone();
+
+    let handle = std::thread::spawn(move || {
+        let game_guard = game_mutex.lock().map_err(|e: std::sync::PoisonError<_>| e.to_string())?;
+        let game = game_guard.as_ref().ok_or("No active game")?;
+
+        let mut ai_guard = ai_mutex.lock().map_err(|e: std::sync::PoisonError<_>| e.to_string())?;
+        match ai_guard.analyze_position(game) {
+            Some(analysis) => Ok(PositionAnalysis {
+                candidates: analysis.candidates.into_iter().map(|c| MoveCandidateResponse {
+                    x: c.x,
+                    y: c.y,
+                    visits: c.visits,
+                    win_rate: c.win_rate,
+                    is_best: c.is_best,
+                }).collect(),
+                best_variation: analysis.best_variation,
+                evaluation: analysis.evaluation,
+                total_simulations: analysis.total_simulations,
+            }),
+            None => Err("No analysis available".to_string()),
+        }
+    });
+
+    handle.join().map_err(|e| format!("AI thread panicked: {:?}", e))?
 }

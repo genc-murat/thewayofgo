@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState } from 'react';
+import React, { useMemo, useCallback, useState, useRef } from 'react';
 import type { BoardSize, StoneColor, Point, Highlight } from '../../types';
 
 interface BoardProps {
@@ -13,6 +13,7 @@ interface BoardProps {
   showCoordinates?: boolean;
   className?: string;
   currentPlayer?: StoneColor;
+  animateStones?: boolean;
 }
 
 export function Board({
@@ -27,6 +28,7 @@ export function Board({
   showCoordinates = true,
   className = '',
   currentPlayer = 'black',
+  animateStones = true,
 }: BoardProps) {
   const cellSize = 32;
   const padding = showCoordinates ? 32 : 16;
@@ -34,6 +36,31 @@ export function Board({
   const boardPixels = cellSize * (size - 1) + padding * 2;
 
   const [hoverPoint, setHoverPoint] = useState<Point | null>(null);
+  const prevBoardRef = useRef<string>('');
+
+  const boardHash = useMemo(() => {
+    return board.map(row => row.map(c => c ?? '.').join('')).join('');
+  }, [board]);
+
+  const newStones = useMemo(() => {
+    if (!animateStones) return new Set<string>();
+    const prev = prevBoardRef.current;
+    const stones = new Set<string>();
+    if (prev && prev !== boardHash) {
+      for (let y = 0; y < size; y++) {
+        for (let x = 0; x < size; x++) {
+          const idx = y * size + x;
+          const oldChar = prev[idx] ?? '.';
+          const newChar = boardHash[idx] ?? '.';
+          if (oldChar === '.' && newChar !== '.') {
+            stones.add(`${x},${y}`);
+          }
+        }
+      }
+    }
+    prevBoardRef.current = boardHash;
+    return stones;
+  }, [boardHash, size, animateStones]);
 
   const validMoveSet = useMemo(() => {
     if (!showValidMoves) return null;
@@ -205,14 +232,15 @@ export function Board({
         row.map((cell, x) => {
           if (!cell) return null;
           const isLast = lastMove?.x === x && lastMove?.y === y;
+          const isNew = newStones.has(`${x},${y}`);
           return (
-            <g key={`stone-${x}-${y}`} filter="url(#stone-shadow)">
+            <g key={`stone-${x}-${y}`} filter="url(#stone-shadow)" className={isNew ? 'animate-stone-place' : ''}>
               <circle cx={toPixel(x)} cy={toPixel(y)} r={stoneRadius} fill={cell === 'black' ? 'url(#stone-black-grad)' : 'url(#stone-white-grad)'} />
               <circle cx={toPixel(x)} cy={toPixel(y)} r={stoneRadius} fill={cell === 'black' ? 'url(#stone-black-shine)' : 'url(#stone-white-shine)'} />
               {isLast && (
                 <circle
                   cx={toPixel(x)} cy={toPixel(y)} r={stoneRadius * 0.32}
-                  fill="none" stroke={cell === 'black' ? '#f59e0b' : '#f59e0b'} strokeWidth={2}
+                  fill="none" stroke="#f59e0b" strokeWidth={2}
                   opacity={0.9}
                 />
               )}
