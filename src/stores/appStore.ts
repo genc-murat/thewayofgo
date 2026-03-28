@@ -18,7 +18,7 @@ import { EXERCISE_CATALOG } from '../data/exerciseCatalog';
 
 interface AppState {
   // Navigation
-  currentView: 'home' | 'learn' | 'play' | 'exercise' | 'progress' | 'settings' | 'srs-review';
+  currentView: 'home' | 'learn' | 'play' | 'exercise' | 'progress' | 'settings' | 'srs-review' | 'position-editor';
   currentLevel: number;
   currentModule: number;
 
@@ -71,6 +71,14 @@ interface AppState {
   startAiGame: (size: number, difficulty: number, style?: AIStyle, komi?: number) => Promise<void>;
   undoMove: () => Promise<void>;
   getMoveHistory: () => Promise<MoveRecord[]>;
+  createGameFromPosition: (
+    size: number,
+    stones: { x: number; y: number; color: StoneColor }[],
+    currentPlayer: StoneColor,
+    komi?: number,
+    blackCaptures?: number,
+    whiteCaptures?: number,
+  ) => Promise<void>;
 
   // Lesson actions
   loadLesson: (lessonId: string) => Promise<void>;
@@ -247,6 +255,30 @@ export const useAppStore = create<AppState>((set, get) => ({
     } catch (e) {
       set({ error: String(e) });
       return [];
+    }
+  },
+
+  createGameFromPosition: async (size, stones, currentPlayer, komi, blackCaptures, whiteCaptures) => {
+    set({ isLoading: true, error: null });
+    try {
+      const stoneTuples = stones.map(s => [s.x, s.y, s.color] as [number, number, string]);
+      const response = await invoke<GameStateResponse>('create_game_from_position', {
+        size,
+        stones: stoneTuples,
+        currentPlayer,
+        komi,
+        blackCaptures,
+        whiteCaptures,
+      });
+      set({
+        game: response.state,
+        gameResult: null,
+        isLoading: false,
+        isAiGame: true,
+        currentView: 'play',
+      });
+    } catch (e) {
+      set({ error: String(e), isLoading: false });
     }
   },
 

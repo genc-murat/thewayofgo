@@ -362,3 +362,51 @@ pub async fn get_position_analysis(state: State<'_, AppState>) -> Result<Positio
 
     handle.join().map_err(|e| format!("AI thread panicked: {:?}", e))?
 }
+
+#[tauri::command]
+pub fn create_game_from_position(
+    state: State<AppState>,
+    size: u8,
+    stones: Vec<(u8, u8, String)>,
+    current_player: String,
+    komi: Option<f32>,
+    black_captures: Option<u32>,
+    white_captures: Option<u32>,
+) -> Result<GameStateResponse, String> {
+    let board_size = BoardSize::from_u8(size)?;
+    let player = match current_player.as_str() {
+        "black" => StoneColor::Black,
+        "white" => StoneColor::White,
+        _ => return Err("Invalid current player color".to_string()),
+    };
+
+    let parsed_stones: Vec<(u8, u8, StoneColor)> = stones
+        .into_iter()
+        .map(|(x, y, color)| {
+            let c = match color.as_str() {
+                "black" => StoneColor::Black,
+                "white" => StoneColor::White,
+                _ => return Err(format!("Invalid stone color: {}", color)),
+            };
+            Ok((x, y, c))
+        })
+        .collect::<Result<Vec<_>, String>>()?;
+
+    let game = GoGame::from_position(
+        board_size,
+        &parsed_stones,
+        player,
+        komi.unwrap_or(6.5),
+        black_captures.unwrap_or(0),
+        white_captures.unwrap_or(0),
+    );
+    let game_state = game.get_game_state();
+
+    let mut guard = state.game.lock().map_err(|e| e.to_string())?;
+    *guard = Some(game);
+
+    Ok(GameStateResponse {
+        state: game_state,
+        result: None,
+    })
+}

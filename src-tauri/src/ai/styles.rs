@@ -15,6 +15,11 @@ pub struct StyleWeights {
     pub base_atari_bonus: f64,
     pub base_capture_bonus: f64,
     pub connection_bonus_per: f64,
+    pub eye_penalty: f64,
+    pub ladder_bonus: f64,
+    pub influence_weight: f64,
+    pub group_health_weight: f64,
+    pub shape_weight: f64,
 }
 
 pub fn get_style_weights(style: AIStyle) -> StyleWeights {
@@ -34,6 +39,11 @@ pub fn get_style_weights(style: AIStyle) -> StyleWeights {
             base_atari_bonus: 4.0,
             base_capture_bonus: 10.0,
             connection_bonus_per: 0.1,
+            eye_penalty: -20.0,
+            ladder_bonus: 50.0,
+            influence_weight: 0.3,
+            group_health_weight: 0.5,
+            shape_weight: 1.0,
         },
         AIStyle::Aggressive => StyleWeights {
             capture_mult: 25.0,
@@ -50,6 +60,11 @@ pub fn get_style_weights(style: AIStyle) -> StyleWeights {
             base_atari_bonus: 4.0,
             base_capture_bonus: 10.0,
             connection_bonus_per: 0.1,
+            eye_penalty: -15.0,
+            ladder_bonus: 60.0,
+            influence_weight: 0.2,
+            group_health_weight: 0.3,
+            shape_weight: 0.5,
         },
         AIStyle::Defensive => StyleWeights {
             capture_mult: 8.0,
@@ -66,6 +81,11 @@ pub fn get_style_weights(style: AIStyle) -> StyleWeights {
             base_atari_bonus: 4.0,
             base_capture_bonus: 10.0,
             connection_bonus_per: 0.1,
+            eye_penalty: -25.0,
+            ladder_bonus: 40.0,
+            influence_weight: 0.4,
+            group_health_weight: 0.8,
+            shape_weight: 1.5,
         },
         AIStyle::Educational => StyleWeights {
             capture_mult: 12.0,
@@ -82,6 +102,11 @@ pub fn get_style_weights(style: AIStyle) -> StyleWeights {
             base_atari_bonus: 4.0,
             base_capture_bonus: 10.0,
             connection_bonus_per: 0.1,
+            eye_penalty: -22.0,
+            ladder_bonus: 55.0,
+            influence_weight: 0.35,
+            group_health_weight: 0.6,
+            shape_weight: 1.2,
         },
     }
 }

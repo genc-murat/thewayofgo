@@ -41,7 +41,7 @@ const LEVEL_ICONS = [
 ];
 
 export function HomePage() {
-  const { startAiGame, loadLesson, setLevel } = useAppStore();
+  const { startAiGame, loadLesson, setLevel, setView } = useAppStore();
   const [progress, setProgress] = useState<{
     lessonsCompleted: number;
     exercisesCorrect: number;
@@ -193,7 +193,7 @@ export function HomePage() {
           <h3 className="text-2xl font-bold">Hızlı Oyun</h3>
           <div className="flex-1 h-px bg-glass-border" />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {[
             { size: 9, label: '9x9 Başlangıç', desc: 'Hızlı oyun, ~10 dk', color: 'border-emerald-500/30' },
             { size: 13, label: '13x13 Orta', desc: 'Orta uzunluk, ~25 dk', color: 'border-blue-500/30' },
@@ -212,6 +212,17 @@ export function HomePage() {
               </div>
             </button>
           ))}
+          <button
+            onClick={() => setView('position-editor')}
+            className="glass rounded-2xl p-6 text-left card-hover border border-amber-500/30 transition-all"
+          >
+            <div className="text-3xl font-bold mb-1 text-text-primary">Pozisyon</div>
+            <p className="text-sm text-text-secondary">Özel konum kur, AI ile oyna</p>
+            <div className="mt-4 flex items-center gap-2 text-accent text-sm font-medium">
+              <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" /></svg>
+              Düzenle
+            </div>
+          </button>
         </div>
       </section>
     </div>

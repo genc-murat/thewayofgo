@@ -1,5 +1,6 @@
 use std::collections::HashSet;
 
+use super::board_utils;
 use super::types::*;
 
 pub struct GoGame {
@@ -51,6 +52,32 @@ impl GoGame {
         game
     }
 
+    pub fn from_position(
+        size: BoardSize,
+        stones: &[(u8, u8, StoneColor)],
+        current_player: StoneColor,
+        komi: f32,
+        black_captures: u32,
+        white_captures: u32,
+    ) -> Self {
+        let mut game = GoGame::from_board_state(size, stones, komi);
+        game.current_player = current_player;
+        game.black_captures = black_captures;
+        game.white_captures = white_captures;
+        game.current_hash = game.compute_hash();
+        game
+    }
+
+    pub fn set_current_player(&mut self, player: StoneColor) {
+        self.current_player = player;
+        self.current_hash = self.compute_hash();
+    }
+
+    pub fn set_captures(&mut self, black: u32, white: u32) {
+        self.black_captures = black;
+        self.white_captures = white;
+    }
+
     pub fn board_size(&self) -> BoardSize {
         BoardSize::from_u8(self.board_size).unwrap()
     }
@@ -71,82 +98,16 @@ impl GoGame {
         self.current_hash
     }
 
-    fn neighbors(&self, x: u8, y: u8) -> [(bool, u8, u8); 4] {
-        let size = self.board_size;
-        let mut result = [(false, 0u8, 0u8); 4];
-        let mut idx = 0;
-        if x > 0 {
-            result[idx] = (true, x - 1, y);
-            idx += 1;
-        }
-        if x < size - 1 {
-            result[idx] = (true, x + 1, y);
-            idx += 1;
-        }
-        if y > 0 {
-            result[idx] = (true, x, y - 1);
-            idx += 1;
-        }
-        if y < size - 1 {
-            result[idx] = (true, x, y + 1);
-            idx += 1;
-        }
-        let _ = idx;
-        result
-    }
-
-    fn neighbors_iter(&self, x: u8, y: u8) -> impl Iterator<Item = (u8, u8)> + '_ {
-        self.neighbors(x, y).into_iter().filter_map(
-            |(valid, nx, ny)| {
-                if valid {
-                    Some((nx, ny))
-                } else {
-                    None
-                }
-            },
-        )
+    fn neighbors_iter(&self, x: u8, y: u8) -> impl Iterator<Item = (u8, u8)> {
+        board_utils::neighbors(x, y, self.board_size).into_iter()
     }
 
     fn get_group(&self, x: u8, y: u8) -> HashSet<(u8, u8)> {
-        let color = match self.board[y as usize][x as usize] {
-            Some(c) => c,
-            None => return HashSet::new(),
-        };
-
-        let mut group = HashSet::new();
-        let mut stack = vec![(x, y)];
-
-        while let Some((cx, cy)) = stack.pop() {
-            if group.contains(&(cx, cy)) {
-                continue;
-            }
-            if self.board[cy as usize][cx as usize] != Some(color) {
-                continue;
-            }
-            group.insert((cx, cy));
-
-            for (nx, ny) in self.neighbors_iter(cx, cy) {
-                if !group.contains(&(nx, ny)) {
-                    stack.push((nx, ny));
-                }
-            }
-        }
-
-        group
+        board_utils::get_group(&self.board, x, y, self.board_size)
     }
 
     fn count_liberties(&self, group: &HashSet<(u8, u8)>) -> usize {
-        let mut liberties = HashSet::new();
-
-        for &(x, y) in group {
-            for (nx, ny) in self.neighbors_iter(x, y) {
-                if self.board[ny as usize][nx as usize].is_none() {
-                    liberties.insert((nx, ny));
-                }
-            }
-        }
-
-        liberties.len()
+        board_utils::count_liberties(&self.board, group, self.board_size)
     }
 
     fn find_captures(&self, x: u8, y: u8, color: StoneColor) -> Vec<(u8, u8)> {

@@ -21,6 +21,7 @@ pub fn run() {
         .manage(AppState::default())
         .invoke_handler(tauri::generate_handler![
             create_game,
+            create_game_from_position,
             place_stone,
             pass,
             resign,
@@ -37,6 +38,7 @@ pub fn run() {
             validate_exercise_move,
             validate_multi_step_move,
             analyze_move,
+            get_position_analysis,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

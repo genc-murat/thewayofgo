@@ -1,8 +1,15 @@
 use rand::seq::SliceRandom;
 use rand::RngExt;
+use rayon::prelude::*;
 use serde::{Deserialize, Serialize};
 
+use crate::ai::eyes::{is_eye, is_false_eye};
+use crate::ai::influence::{compute_influence_map, get_influence_at};
+use crate::ai::joseki::JosekiBook;
+use crate::ai::ladder::{read_ladder, LadderResult};
+use crate::ai::shapes::evaluate_shape;
 use crate::ai::styles::{get_style_weights, StyleWeights};
+use crate::engine::board_utils;
 use crate::engine::game::GoGame;
 use crate::engine::types::{AIDifficulty, AIStyle, Point, StoneColor};
 
@@ -26,6 +33,7 @@ pub struct SearchAnalysis {
     pub total_simulations: u32,
 }
 
+#[derive(Debug, Clone)]
 struct MCTSNode {
     move_x: u8,
     move_y: u8,
@@ -117,6 +125,7 @@ pub struct MCTSAi {
     difficulty: AIDifficulty,
     style_weights: StyleWeights,
     root: Option<MCTSNode>,
+    joseki_book: JosekiBook,
 }
 
 impl MCTSAi {
@@ -126,6 +135,7 @@ impl MCTSAi {
             difficulty,
             style_weights,
             root: None,
+            joseki_book: JosekiBook::new(),
         }
     }
 
@@ -141,6 +151,47 @@ impl MCTSAi {
         let valid_moves = game.get_valid_moves();
         if valid_moves.is_empty() {
             return None;
+        }
+
+        // Joseki lookup in opening phase
+        let board_size = game.board_size().to_u8();
+        let move_number = game.move_number();
+        let opening_threshold = match board_size {
+            9 => 8,
+            13 => 12,
+            _ => 15,
+        };
+        if move_number < opening_threshold {
+            let board = game.get_board_state();
+            let current_player = game.current_player();
+            if let Some(entries) = self.joseki_book.lookup(&board, current_player, board_size) {
+                let mut rng = rand::rng();
+                // Filter to valid moves only
+                let valid_entries: Vec<&_> = entries
+                    .iter()
+                    .filter(|e| valid_moves.iter().any(|m| m.x == e.x && m.y == e.y))
+                    .collect();
+                if !valid_entries.is_empty() {
+                    // Weighted random selection
+                    let total_weight: f64 = valid_entries.iter().map(|e| e.weight).sum();
+                    let mut roll = rng.random_range(0.0..total_weight);
+                    for entry in &valid_entries {
+                        roll -= entry.weight;
+                        if roll <= 0.0 {
+                            return Some(Point {
+                                x: entry.x,
+                                y: entry.y,
+                            });
+                        }
+                    }
+                    // Fallback to last
+                    let last = valid_entries.last().unwrap();
+                    return Some(Point {
+                        x: last.x,
+                        y: last.y,
+                    });
+                }
+            }
         }
 
         if self.difficulty.level == 1 || self.difficulty.simulations == 0 {
@@ -174,11 +225,47 @@ impl MCTSAi {
         let w = &self.style_weights;
         let current_player = game.current_player();
 
+        let influence_map = compute_influence_map(game);
+
         let mut scored: Vec<(usize, f64)> = valid_moves
             .iter()
             .enumerate()
             .map(|(i, m)| {
                 let mut score = 0.0f64;
+
+                // Eye penalty: don't fill own eyes
+                if is_eye(game, m.x, m.y, current_player) {
+                    score += w.eye_penalty;
+                }
+
+                // Ladder bonus/penalty
+                let ladder_result = read_ladder(game, m.x, m.y, current_player);
+                match ladder_result {
+                    LadderResult::Captures => {
+                        score += w.ladder_bonus;
+                    }
+                    LadderResult::Escapes => {
+                        score -= w.ladder_bonus;
+                    }
+                    LadderResult::NotALadder => {}
+                }
+
+                // Influence-based scoring
+                let influence = get_influence_at(&influence_map, m.x, m.y);
+                let opponent_influence = if current_player == StoneColor::Black {
+                    -influence
+                } else {
+                    influence
+                };
+                score += opponent_influence * w.influence_weight;
+
+                // Group health evaluation
+                let group_health = evaluate_group_health(game, m.x, m.y);
+                score += group_health * w.group_health_weight;
+
+                // Shape evaluation
+                let shape_score = evaluate_shape(game, m.x, m.y);
+                score += shape_score * w.shape_weight;
 
                 let captures = game.would_capture_count(m.x, m.y);
                 if captures > 0 {
@@ -211,6 +298,11 @@ impl MCTSAi {
                     score += w.edge_penalty_second;
                 } else if edge_dist == 2 || edge_dist == 3 {
                     score += 2.0;
+                }
+
+                // Corner/joseki for small boards in opening
+                if board_size == 9 && move_number < 5 {
+                    score += corner_bonus(m.x, m.y, board_size);
                 }
 
                 if w.proximity_weight != 0.0 {
@@ -324,156 +416,54 @@ impl MCTSAi {
         let simulations = self.difficulty.simulations;
         let current_player = game.current_player();
         let use_heavy_playout = self.difficulty.level >= 4;
-        let mut rng = rand::rng();
+        let style_weights = &self.style_weights;
 
-        // Track moves played per simulation for RAVE updates
-        for _ in 0..simulations {
-            let mut sim_game = game.clone_for_simulation();
+        // Parallel execution for high simulation counts
+        if simulations >= 1000 {
+            let num_threads = std::thread::available_parallelism()
+                .map(|n| n.get())
+                .unwrap_or(4)
+                .min(8);
+            let sims_per_thread = simulations / num_threads as u32;
+            let extra_sims = simulations % num_threads as u32;
 
-            let root_idx = match root_children.iter().position(|c| c.visits == 0) {
-                Some(idx) => idx,
-                None => root_children
-                    .iter()
-                    .enumerate()
-                    .max_by(|(_, a), (_, b)| {
-                        a.rave_uct_value(total_root_visits(&root_children))
-                            .partial_cmp(&b.rave_uct_value(total_root_visits(&root_children)))
-                            .unwrap_or(std::cmp::Ordering::Equal)
-                    })
-                    .map(|(i, _)| i)
-                    .unwrap_or(0),
-            };
+            let results: Vec<Vec<MCTSNode>> = (0..num_threads)
+                .into_par_iter()
+                .map(|thread_id| {
+                    let mut local_children = root_children.clone();
+                    let sims = sims_per_thread + if thread_id == 0 { extra_sims } else { 0 };
+                    run_simulations(
+                        &mut local_children,
+                        game,
+                        sims,
+                        current_player,
+                        use_heavy_playout,
+                        style_weights,
+                    );
+                    local_children
+                })
+                .collect();
 
-            let node = &root_children[root_idx];
-            let moved = if node.is_pass {
-                sim_game.pass_fast();
-                true
-            } else if sim_game.place_stone_fast(node.move_x, node.move_y) {
-                true
-            } else {
-                continue;
-            };
-
-            // Track moves played by each color for RAVE
-            let mut black_moves: Vec<(u8, u8)> = Vec::new();
-            let mut white_moves: Vec<(u8, u8)> = Vec::new();
-
-            // Record the root move
-            if !root_children[root_idx].is_pass {
-                if current_player == StoneColor::Black {
-                    black_moves.push((
-                        root_children[root_idx].move_x,
-                        root_children[root_idx].move_y,
-                    ));
-                } else {
-                    white_moves.push((
-                        root_children[root_idx].move_x,
-                        root_children[root_idx].move_y,
-                    ));
+            // Merge results: sum visits, wins, rave_visits, rave_wins
+            for thread_children in results {
+                for (local, global) in thread_children.iter().zip(root_children.iter_mut()) {
+                    global.visits += local.visits;
+                    global.wins += local.wins;
+                    global.rave_visits += local.rave_visits;
+                    global.rave_wins += local.rave_wins;
                 }
             }
-
-            if moved {
-                let mut current = &mut root_children[root_idx];
-
-                while current.is_fully_expanded() && !current.children.is_empty() {
-                    if let Some(child_idx) = current.best_child_uct() {
-                        let child = &current.children[child_idx];
-                        let moved = if child.is_pass {
-                            sim_game.pass_fast();
-                            true
-                        } else if sim_game.place_stone_fast(child.move_x, child.move_y) {
-                            // Track move for RAVE
-                            let player_before = if sim_game.current_player() == StoneColor::White {
-                                StoneColor::Black
-                            } else {
-                                StoneColor::White
-                            };
-                            if player_before == StoneColor::Black {
-                                black_moves.push((child.move_x, child.move_y));
-                            } else {
-                                white_moves.push((child.move_x, child.move_y));
-                            }
-                            true
-                        } else {
-                            break;
-                        };
-                        if !moved {
-                            break;
-                        }
-                        current = &mut current.children[child_idx];
-                    } else {
-                        break;
-                    }
-                }
-
-                if !current.is_fully_expanded() && !current.untried_moves.is_empty() {
-                    let move_idx = rng.random_range(0..current.untried_moves.len());
-                    let (cx, cy) = current.untried_moves.swap_remove(move_idx);
-
-                    if sim_game.place_stone_fast(cx, cy) {
-                        let player_before = if sim_game.current_player() == StoneColor::White {
-                            StoneColor::Black
-                        } else {
-                            StoneColor::White
-                        };
-                        if player_before == StoneColor::Black {
-                            black_moves.push((cx, cy));
-                        } else {
-                            white_moves.push((cx, cy));
-                        }
-
-                        let child_valid = get_valid_moves_fast(&sim_game);
-                        let child = MCTSNode::new(cx, cy, child_valid, sim_game.board_hash());
-                        current.children.push(child);
-                    }
-                }
-
-                let result = if use_heavy_playout {
-                    heavy_playout(
-                        &mut sim_game,
-                        &mut rng,
-                        &self.style_weights,
-                        &mut black_moves,
-                        &mut white_moves,
-                    )
-                } else {
-                    light_playout(
-                        &mut sim_game,
-                        &mut rng,
-                        &self.style_weights,
-                        &mut black_moves,
-                        &mut white_moves,
-                    )
-                };
-
-                root_children[root_idx].visits += 1;
-                let board_area = (sim_game.board_size().to_u8() as f64).powi(2);
-                let normalized = result.margin as f64 / board_area * 0.5;
-                if result.winner == current_player {
-                    root_children[root_idx].wins += 0.5 + normalized.min(0.5);
-                } else {
-                    root_children[root_idx].wins += (0.5 - normalized.min(0.5)).max(0.0);
-                }
-
-                // RAVE update: for root children, update rave stats if the move was played
-                // by the same color as the current player in the playout
-                let player_moves = if current_player == StoneColor::Black {
-                    &black_moves
-                } else {
-                    &white_moves
-                };
-                for child in root_children.iter_mut() {
-                    if child.is_pass {
-                        continue;
-                    }
-                    if player_moves.contains(&(child.move_x, child.move_y)) {
-                        child.rave_visits += 1;
-                        if result.winner == current_player {
-                            child.rave_wins += 1.0;
-                        }
-                    }
-                }
+        } else {
+            let mut rng = rand::rng();
+            for _ in 0..simulations {
+                run_simulation_single(
+                    &mut root_children,
+                    game,
+                    &mut rng,
+                    current_player,
+                    use_heavy_playout,
+                    style_weights,
+                );
             }
         }
 
@@ -729,6 +719,7 @@ impl MCTSAi {
         }
 
         let board_size = game.board_size().to_u8();
+        let current_player = game.current_player();
         let mut parts: Vec<String> = Vec::new();
 
         let captures = game.would_capture_count(x, y);
@@ -749,6 +740,52 @@ impl MCTSAi {
             parts.push(format!("{} grubu birleştiriyor.", connections));
         }
 
+        // Eye commentary
+        if is_eye(game, x, y, current_player) {
+            if is_false_eye(game, x, y, current_player) {
+                parts.push("Bu nokta sahte göz olabilir, dikkatli olun.".to_string());
+            } else {
+                parts.push("Bu nokta kendi gözünüz, buraya oynamayın.".to_string());
+            }
+        }
+
+        // Ladder commentary
+        let ladder_result = read_ladder(game, x, y, current_player);
+        match ladder_result {
+            LadderResult::Captures => {
+                parts.push(
+                    "Bu hamle ladder (merdiven) ile taşı yakalıyor! Kesin sonuç.".to_string(),
+                );
+            }
+            LadderResult::Escapes => {
+                parts.push("Bu hamle ladder'dan kaçmayı başarıyor, taş kurtuluyor.".to_string());
+            }
+            LadderResult::NotALadder => {}
+        }
+
+        // Shape commentary
+        let shape_score = evaluate_shape(game, x, y);
+        if shape_score > 3.0 {
+            parts.push("İyi şekil oluşturuyor (kosumi/hane/keima).".to_string());
+        } else if shape_score < -3.0 {
+            parts.push("Kötü şekil oluşturuyor, boş üçgen veya donkey bridge riski.".to_string());
+        }
+
+        // Group health commentary
+        let board = game.get_board_state();
+        if board[y as usize][x as usize].is_none() {
+            let mut test_board = board.clone();
+            test_board[y as usize][x as usize] = Some(current_player);
+            let group = board_utils::get_group(&test_board, x, y, board_size);
+            let lib_count = board_utils::count_liberties(&test_board, &group, board_size);
+
+            if lib_count == 1 {
+                parts.push("Dikkat: Bu grup tehlikeli, sadece 1 özgürlük var!".to_string());
+            } else if lib_count == 2 {
+                parts.push("Bu grubun sadece 2 özgürlüğü var, atari riski taşıyor.".to_string());
+            }
+        }
+
         let center = board_size as f64 / 2.0;
         let dist = ((x as f64 - center).powi(2) + (y as f64 - center).powi(2)).sqrt();
         if dist < center * 0.4 {
@@ -767,6 +804,19 @@ impl MCTSAi {
             parts.push(format!("Bu grubun {} özgürlüğü var.", liberties));
         }
 
+        // Joseki commentary
+        if game.move_number() < 15 {
+            let board = game.get_board_state();
+            let board_size = game.board_size().to_u8();
+            if let Some(entries) = self.joseki_book.lookup(&board, current_player, board_size) {
+                if let Some(entry) = entries.iter().find(|e| e.x == x && e.y == y) {
+                    if let Some(ref name) = entry.name {
+                        parts.push(format!("Açılış kitabı hamlesi: {}.", name));
+                    }
+                }
+            }
+        }
+
         if parts.is_empty() {
             parts.push("Stratejik bir hamle. Pozisyonu değerlendirin.".to_string());
         }
@@ -782,6 +832,179 @@ struct PlayoutResult {
 
 fn total_root_visits(children: &[MCTSNode]) -> u32 {
     children.iter().map(|c| c.visits).sum()
+}
+
+fn run_simulations(
+    root_children: &mut [MCTSNode],
+    game: &GoGame,
+    simulations: u32,
+    current_player: StoneColor,
+    use_heavy_playout: bool,
+    style_weights: &StyleWeights,
+) {
+    let mut rng = rand::rng();
+    for _ in 0..simulations {
+        run_simulation_single(
+            root_children,
+            game,
+            &mut rng,
+            current_player,
+            use_heavy_playout,
+            style_weights,
+        );
+    }
+}
+
+fn run_simulation_single(
+    root_children: &mut [MCTSNode],
+    game: &GoGame,
+    rng: &mut impl RngExt,
+    current_player: StoneColor,
+    use_heavy_playout: bool,
+    style_weights: &StyleWeights,
+) {
+    let mut sim_game = game.clone_for_simulation();
+
+    let root_idx = match root_children.iter().position(|c| c.visits == 0) {
+        Some(idx) => idx,
+        None => root_children
+            .iter()
+            .enumerate()
+            .max_by(|(_, a), (_, b)| {
+                a.rave_uct_value(total_root_visits(root_children))
+                    .partial_cmp(&b.rave_uct_value(total_root_visits(root_children)))
+                    .unwrap_or(std::cmp::Ordering::Equal)
+            })
+            .map(|(i, _)| i)
+            .unwrap_or(0),
+    };
+
+    let node = &root_children[root_idx];
+    let moved = if node.is_pass {
+        sim_game.pass_fast();
+        true
+    } else if sim_game.place_stone_fast(node.move_x, node.move_y) {
+        true
+    } else {
+        return;
+    };
+
+    let mut black_moves: Vec<(u8, u8)> = Vec::new();
+    let mut white_moves: Vec<(u8, u8)> = Vec::new();
+
+    if !root_children[root_idx].is_pass {
+        if current_player == StoneColor::Black {
+            black_moves.push((
+                root_children[root_idx].move_x,
+                root_children[root_idx].move_y,
+            ));
+        } else {
+            white_moves.push((
+                root_children[root_idx].move_x,
+                root_children[root_idx].move_y,
+            ));
+        }
+    }
+
+    if moved {
+        let mut current = &mut root_children[root_idx];
+
+        while current.is_fully_expanded() && !current.children.is_empty() {
+            if let Some(child_idx) = current.best_child_uct() {
+                let child = &current.children[child_idx];
+                let moved = if child.is_pass {
+                    sim_game.pass_fast();
+                    true
+                } else if sim_game.place_stone_fast(child.move_x, child.move_y) {
+                    let player_before = if sim_game.current_player() == StoneColor::White {
+                        StoneColor::Black
+                    } else {
+                        StoneColor::White
+                    };
+                    if player_before == StoneColor::Black {
+                        black_moves.push((child.move_x, child.move_y));
+                    } else {
+                        white_moves.push((child.move_x, child.move_y));
+                    }
+                    true
+                } else {
+                    break;
+                };
+                if !moved {
+                    break;
+                }
+                current = &mut current.children[child_idx];
+            } else {
+                break;
+            }
+        }
+
+        if !current.is_fully_expanded() && !current.untried_moves.is_empty() {
+            let move_idx = rng.random_range(0..current.untried_moves.len());
+            let (cx, cy) = current.untried_moves.swap_remove(move_idx);
+
+            if sim_game.place_stone_fast(cx, cy) {
+                let player_before = if sim_game.current_player() == StoneColor::White {
+                    StoneColor::Black
+                } else {
+                    StoneColor::White
+                };
+                if player_before == StoneColor::Black {
+                    black_moves.push((cx, cy));
+                } else {
+                    white_moves.push((cx, cy));
+                }
+
+                let child_valid = get_valid_moves_fast(&sim_game);
+                let child = MCTSNode::new(cx, cy, child_valid, sim_game.board_hash());
+                current.children.push(child);
+            }
+        }
+
+        let result = if use_heavy_playout {
+            heavy_playout(
+                &mut sim_game,
+                rng,
+                style_weights,
+                &mut black_moves,
+                &mut white_moves,
+            )
+        } else {
+            light_playout(
+                &mut sim_game,
+                rng,
+                style_weights,
+                &mut black_moves,
+                &mut white_moves,
+            )
+        };
+
+        root_children[root_idx].visits += 1;
+        let board_area = (sim_game.board_size().to_u8() as f64).powi(2);
+        let normalized = result.margin as f64 / board_area * 0.5;
+        if result.winner == current_player {
+            root_children[root_idx].wins += 0.5 + normalized.min(0.5);
+        } else {
+            root_children[root_idx].wins += (0.5 - normalized.min(0.5)).max(0.0);
+        }
+
+        let player_moves = if current_player == StoneColor::Black {
+            &black_moves
+        } else {
+            &white_moves
+        };
+        for child in root_children.iter_mut() {
+            if child.is_pass {
+                continue;
+            }
+            if player_moves.contains(&(child.move_x, child.move_y)) {
+                child.rave_visits += 1;
+                if result.winner == current_player {
+                    child.rave_wins += 1.0;
+                }
+            }
+        }
+    }
 }
 
 fn get_valid_moves_fast(game: &GoGame) -> Vec<(u8, u8)> {
@@ -899,16 +1122,39 @@ fn pick_heuristic_move(
     let center = board_size as f64 / 2.0;
     let board_area = board_size as u32;
     let game_progress = game.move_number() as f64 / board_area as f64;
+    let current_player = game.current_player();
+
+    let influence_map = compute_influence_map(game);
 
     let mut best_tactical: Option<(usize, f64)> = None;
+    let mut best_ladder_capture: Option<usize> = None;
     let mut wts: Vec<f64> = Vec::with_capacity(valid_moves.len());
 
     for (i, &(x, y)) in valid_moves.iter().enumerate() {
+        // Eye penalty: strongly avoid filling own eyes
+        if is_eye(game, x, y, current_player) {
+            wts.push(0.01);
+            continue;
+        }
+
         let captures = game.would_capture_count(x, y);
         let atari = game.creates_atari(x, y);
         let self_atari = game.is_self_atari(x, y);
 
         let mut weight = 1.0f64;
+
+        // Ladder detection
+        let ladder_result = read_ladder(game, x, y, current_player);
+        match ladder_result {
+            LadderResult::Captures => {
+                weight += weights.ladder_bonus;
+                best_ladder_capture = Some(i);
+            }
+            LadderResult::Escapes => {
+                weight *= 0.1;
+            }
+            LadderResult::NotALadder => {}
+        }
 
         if captures > 0 {
             weight += weights.base_capture_bonus * captures as f64;
@@ -927,6 +1173,19 @@ fn pick_heuristic_move(
         if self_atari {
             weight *= 0.15;
         }
+
+        // Influence-based adjustment
+        let influence = get_influence_at(&influence_map, x, y);
+        let opponent_influence = if current_player == StoneColor::Black {
+            -influence
+        } else {
+            influence
+        };
+        weight += opponent_influence * weights.influence_weight;
+
+        // Shape evaluation
+        let shape_score = evaluate_shape(game, x, y);
+        weight += shape_score * weights.shape_weight * 0.1;
 
         let edge_dist = x.min(y).min(board_size - 1 - x).min(board_size - 1 - y);
         if edge_dist == 0 {
@@ -948,6 +1207,13 @@ fn pick_heuristic_move(
         }
 
         wts.push(weight);
+    }
+
+    // Prioritize ladder captures
+    if let Some(idx) = best_ladder_capture {
+        if force_tactical || rng.random_range(0.0f64..1.0) < 0.95 {
+            return Some(valid_moves[idx]);
+        }
     }
 
     if force_tactical {
@@ -988,6 +1254,83 @@ fn pick_heuristic_move(
     }
 
     valid_moves.last().copied()
+}
+
+fn evaluate_group_health(game: &GoGame, x: u8, y: u8) -> f64 {
+    let color = game.current_player();
+    let board = game.get_board_state();
+    let size = game.board_size().to_u8();
+
+    if board[y as usize][x as usize].is_some() {
+        return 0.0;
+    }
+
+    let mut test_board = board.clone();
+    test_board[y as usize][x as usize] = Some(color);
+
+    let group = board_utils::get_group(&test_board, x, y, size);
+    let lib_count = board_utils::count_liberties(&test_board, &group, size);
+    let group_size = group.len();
+
+    let liberty_score = match lib_count {
+        0 => -10.0,
+        1 => -10.0,
+        2 => -3.0,
+        3 => 1.0,
+        _ => 2.0,
+    };
+
+    let size_bonus = (group_size as f64).sqrt() * 0.5;
+
+    liberty_score + size_bonus
+}
+
+fn corner_bonus(x: u8, y: u8, board_size: u8) -> f64 {
+    let corners = [(3, 3), (3, 4), (4, 3), (4, 4)];
+    let near_corners = [
+        (2, 2),
+        (2, 3),
+        (2, 4),
+        (2, 5),
+        (3, 2),
+        (4, 2),
+        (5, 2),
+        (3, 5),
+        (4, 5),
+        (5, 5),
+        (5, 3),
+        (5, 4),
+    ];
+
+    let bs = board_size as i16;
+    let px = x as i16;
+    let py = y as i16;
+
+    let mut score = 0.0f64;
+
+    for &(cx, cy) in &corners {
+        let dist = ((px - cx as i16).abs() + (py - cy as i16).abs()) as f64;
+        if dist <= 1.0 {
+            score += 3.0;
+        }
+    }
+
+    for &(cx, cy) in &near_corners {
+        let mirrored = [
+            (cx, cy),
+            (bs - 1 - cx, cy),
+            (cx, bs - 1 - cy),
+            (bs - 1 - cx, bs - 1 - cy),
+        ];
+        for &(mx, my) in &mirrored {
+            let dist = ((px - mx).abs() + (py - my).abs()) as f64;
+            if dist <= 1.0 {
+                score += 1.5;
+            }
+        }
+    }
+
+    score
 }
 
 fn compute_proximity_score(

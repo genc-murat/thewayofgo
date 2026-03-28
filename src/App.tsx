@@ -8,6 +8,7 @@ import { ExerciseView } from './components/Exercise';
 import { ProgressPage } from './components/Progress';
 import { SettingsPage } from './components/Settings';
 import { ReviewSession } from './components/SRS';
+import { PositionEditor } from './components/PositionEditor';
 import { OnboardingWizard, shouldShowOnboarding } from './components/Onboarding/OnboardingWizard';
 import { useAppStore } from './stores/appStore';
 import { soundEngine } from './utils/soundEngine';
@@ -43,6 +44,8 @@ function App() {
         return <SettingsPage />;
       case 'srs-review':
         return <ReviewSession />;
+      case 'position-editor':
+        return <PositionEditor />;
       default:
         return <HomePage />;
     }
