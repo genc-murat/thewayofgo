@@ -6,7 +6,7 @@ import { invoke } from '@tauri-apps/api/core';
 import { getSavedGames, formatGameResult, formatDuration, saveGame } from '../../utils/gameHistory';
 import { soundEngine } from '../../utils/soundEngine';
 import { useKeyboardShortcuts } from '../../hooks/useKeyboardShortcuts';
-import type { BoardSize, ScoreResult, MoveRecord, Point, AIStyle } from '../../types';
+import type { BoardSize, ScoreResult, MoveRecord, Point, AIStyle, HeatmapEntry, KataPositionAnalysis, ScoreEstimate } from '../../types';
 import type { SavedGame } from '../../utils/gameHistory';
 
 const COLUMN_LABELS = 'ABCDEFGHJKLMNOPQRST';
@@ -37,8 +37,18 @@ export function GamePlay() {
   const [validMoves, setValidMoves] = useState<Point[]>([]);
   const [recentGames, setRecentGames] = useState<SavedGame[]>([]);
   const [lastMoveAnalysis, setLastMoveAnalysis] = useState<string | null>(null);
+  const [lastMoveQuality, setLastMoveQuality] = useState<string | null>(null);
   const [selectedKomi, setSelectedKomi] = useState(6.5);
   const [showReview, setShowReview] = useState(false);
+
+  // KataGo state
+  const [heatmap, setHeatmap] = useState<HeatmapEntry[]>([]);
+  const [showHeatmap, setShowHeatmap] = useState(false);
+  const [scoreEstimate, setScoreEstimate] = useState<ScoreEstimate | null>(null);
+  const [suggestion, setSuggestion] = useState<{ move: string; x: number; y: number } | null>(null);
+  const [showSuggestionToast, setShowSuggestionToast] = useState(false);
+  const [katagoLoading, setKatagoLoading] = useState(false);
+
   const aiThinkingRef = useRef(false);
 
   useKeyboardShortcuts({
@@ -53,6 +63,83 @@ export function GamePlay() {
       }
     },
   });
+
+  const { useKataGo } = useAppStore();
+
+  // Fetch KataGo heatmap analysis
+  const fetchKatagoAnalysis = useCallback(async () => {
+    if (!useKataGo || !game || game.game_over) return;
+    setKatagoLoading(true);
+    try {
+      const analysis = await invoke<KataPositionAnalysis>('get_katago_analysis');
+      // Sort by win_rate descending to assign rank, take top 5
+      const sorted = [...analysis.evaluations]
+        .filter(e => e.x < game.board_size && e.y < game.board_size)
+        .sort((a, b) => b.win_rate - a.win_rate);
+      const topMoves = sorted.slice(0, 5);
+      const entries: HeatmapEntry[] = topMoves.map((e, idx) => ({
+        x: e.x,
+        y: e.y,
+        win_rate: e.win_rate,
+        score_mean: e.score_mean,
+        visits: e.visits,
+        quality: e.quality,
+        is_best: idx === 0,
+        rank: idx + 1,
+      }));
+      setHeatmap(entries);
+      setScoreEstimate({
+        score_mean: analysis.score_mean,
+        turn: analysis.turn,
+      });
+    } catch {
+      setHeatmap([]);
+    }
+    setKatagoLoading(false);
+  }, [useKataGo, game?.move_number, game?.game_over, game?.board_size]);
+
+  // Fetch KataGo analysis when heatmap is toggled on or move changes
+  useEffect(() => {
+    if (showHeatmap && useKataGo && game && !game.game_over) {
+      fetchKatagoAnalysis();
+    }
+  }, [showHeatmap, game?.move_number, fetchKatagoAnalysis]);
+
+  // Analyze last move with KataGo for quality classification
+  const analyzeMoveWithKatago = useCallback(async (x: number, y: number) => {
+    if (!useKataGo || !game || game.game_over) return;
+    try {
+      const evalResult = await invoke<{ quality: string; win_rate: number; score_mean: number }>(
+        'get_katago_move_evaluation', { x, y }
+      );
+      setLastMoveQuality(evalResult.quality);
+
+      const qualityLabels: Record<string, string> = {
+        best: 'En İyi Hamle',
+        good: 'İyi Hamle',
+        acceptable: 'Kabul Edilebilir',
+        mistake: 'Hata',
+        blunder: 'Büyük Hata',
+      };
+      const label = qualityLabels[evalResult.quality] || evalResult.quality;
+      const wr = (evalResult.win_rate * 100).toFixed(1);
+      setLastMoveAnalysis(prev =>
+        prev ? `${prev}\n[KataGo] ${label} (Kazanma: %${wr})` : `[KataGo] ${label} (Kazanma: %${wr})`
+      );
+
+      // Show suggestion for bad moves
+      if ((evalResult.quality === 'mistake' || evalResult.quality === 'blunder') && showHeatmap) {
+        const bestEntry = heatmap.find(h => h.is_best);
+        if (bestEntry) {
+          setSuggestion({ move: `(${bestEntry.x}, ${bestEntry.y})`, x: bestEntry.x, y: bestEntry.y });
+          setShowSuggestionToast(true);
+          setTimeout(() => setShowSuggestionToast(false), 5000);
+        }
+      }
+    } catch {
+      // KataGo analysis failed, ignore
+    }
+  }, [useKataGo, game?.move_number, game?.game_over, showHeatmap, heatmap]);
 
   // Load recent games on mount
   useEffect(() => {
@@ -80,6 +167,9 @@ export function GamePlay() {
               y: lastMove.y,
             }).then(analysis => {
               setLastMoveAnalysis(analysis.explanation);
+              if (useKataGo) {
+                analyzeMoveWithKatago(lastMove.x!, lastMove.y!);
+              }
             }).catch(() => {});
           }
         }
@@ -141,9 +231,15 @@ export function GamePlay() {
 
     // Analyze human's move
     invoke<{ explanation: string; confidence: number }>('analyze_move', { x, y })
-      .then(analysis => setLastMoveAnalysis(analysis.explanation))
+      .then(analysis => {
+        setLastMoveAnalysis(analysis.explanation);
+        // KataGo evaluation if enabled
+        if (useKataGo) {
+          analyzeMoveWithKatago(x, y);
+        }
+      })
       .catch(() => {});
-  }, [game, isAiGame, placeStone, getMoveHistory]);
+  }, [game, isAiGame, placeStone, getMoveHistory, useKataGo, analyzeMoveWithKatago]);
 
   const handlePass = useCallback(async () => {
     soundEngine.play('pass');
@@ -305,7 +401,7 @@ export function GamePlay() {
     <div className="flex flex-col lg:flex-row gap-8 animate-fade-in">
       <div className="flex-1 flex flex-col items-center">
         <div className="w-full max-w-2xl glass rounded-2xl p-4">
-          <Board size={boardSize} board={game.board} lastMove={game.last_move} validMoves={validMoves} showValidMoves={showValidMoves} onIntersectionClick={handleIntersectionClick} interactive={!game.game_over} showCoordinates={true} currentPlayer={game.current_player} />
+          <Board size={boardSize} board={game.board} lastMove={game.last_move} validMoves={validMoves} showValidMoves={showValidMoves} heatmap={showHeatmap ? heatmap : []} onIntersectionClick={handleIntersectionClick} interactive={!game.game_over} showCoordinates={true} currentPlayer={game.current_player} />
         </div>
       </div>
 
@@ -316,6 +412,14 @@ export function GamePlay() {
             <div className="flex flex-col items-center gap-1">
               <span className="text-xs text-text-secondary font-medium">HAMLE</span>
               <span className="text-2xl font-bold text-text-primary">{game.move_number}</span>
+              {scoreEstimate && (
+                <div className="mt-1 text-center">
+                  <span className="text-[10px] text-text-secondary font-medium">Skor Tahmini</span>
+                  <div className={`text-sm font-bold ${scoreEstimate.score_mean > 0.5 ? 'text-success' : scoreEstimate.score_mean < -0.5 ? 'text-error' : 'text-text-secondary'}`}>
+                    {scoreEstimate.score_mean > 0 ? 'S' : 'B'} {Math.abs(scoreEstimate.score_mean).toFixed(1)}
+                  </div>
+                </div>
+              )}
             </div>
             <PlayerInfo color="white" captures={game.white_captures} isActive={game.current_player === 'white'} isAi={isAiGame} aiStyle={aiStyle} />
           </div>
@@ -340,8 +444,25 @@ export function GamePlay() {
           {/* AI Move Analysis */}
           {isAiGame && lastMoveAnalysis && !game.game_over && (
             <div className="mt-3 p-3 rounded-xl bg-info/5 border border-info/20">
-              <div className="text-[10px] font-semibold text-info mb-1">AI Analizi</div>
-              <p className="text-xs text-text-secondary">{lastMoveAnalysis}</p>
+              <div className="flex items-center justify-between mb-1">
+                <div className="text-[10px] font-semibold text-info">AI Analizi</div>
+                {lastMoveQuality && useKataGo && (
+                  <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded-md ${
+                    lastMoveQuality === 'best' ? 'bg-success/20 text-success' :
+                    lastMoveQuality === 'good' ? 'bg-success/10 text-success/80' :
+                    lastMoveQuality === 'acceptable' ? 'bg-info/10 text-info' :
+                    lastMoveQuality === 'mistake' ? 'bg-warning/10 text-warning' :
+                    'bg-error/10 text-error'
+                  }`}>
+                    {lastMoveQuality === 'best' ? 'En İyi' :
+                     lastMoveQuality === 'good' ? 'İyi' :
+                     lastMoveQuality === 'acceptable' ? 'Kabul' :
+                     lastMoveQuality === 'mistake' ? 'Hata' :
+                     lastMoveQuality === 'blunder' ? 'Büyük Hata' : lastMoveQuality}
+                  </span>
+                )}
+              </div>
+              <p className="text-xs text-text-secondary whitespace-pre-line">{lastMoveAnalysis}</p>
             </div>
           )}
         </div>
@@ -372,6 +493,18 @@ export function GamePlay() {
                 <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z" /><path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" /></svg>
                 {showValidMoves ? 'Hamle Yardımını Gizle' : 'Geçerli Hamleleri Göster'}
               </button>
+              {useKataGo && (
+                <button onClick={() => setShowHeatmap(v => !v)}
+                  disabled={katagoLoading}
+                  className={`flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-medium transition-all border ${
+                    showHeatmap
+                      ? 'bg-success/10 text-success border-success/30'
+                      : 'glass text-text-secondary hover:text-text-primary border-transparent'
+                  } ${katagoLoading ? 'opacity-50' : ''}`}>
+                  <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zM6.5 10a3.5 3.5 0 117 0 3.5 3.5 0 01-7 0z" /></svg>
+                  {katagoLoading ? 'Analiz ediliyor...' : showHeatmap ? 'Isı Haritasını Gizle' : 'Isı Haritası'}
+                </button>
+              )}
               <button onClick={handleResign}
                 className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-error/10 hover:bg-error/20 text-error font-medium transition-all border border-error/20">
                 <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M13.477 14.89A6 6 0 015.11 6.524l8.367 8.368zm1.414-1.414L6.524 5.11a6 6 0 008.367 8.367zM18 10a8 8 0 11-16 0 8 8 0 0116 0z" clipRule="evenodd" /></svg>
@@ -417,6 +550,24 @@ export function GamePlay() {
           </div>
         )}
       </div>
+
+      {/* KataGo Suggestion Toast */}
+      {showSuggestionToast && suggestion && (
+        <div className="fixed bottom-6 right-6 z-50 glass rounded-2xl p-4 shadow-lg border border-accent/30 animate-slide-up max-w-xs">
+          <div className="flex items-start gap-3">
+            <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+              <svg className="w-4 h-4 text-accent" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" /></svg>
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-text-primary">Önerilen Hamle</p>
+              <p className="text-xs text-text-secondary mt-1">KataGo bu konumu öneriyor: <strong>{suggestion.move}</strong></p>
+            </div>
+            <button onClick={() => setShowSuggestionToast(false)} className="text-text-secondary hover:text-text-primary ml-auto">
+              <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

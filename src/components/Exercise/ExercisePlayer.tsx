@@ -5,6 +5,7 @@ import { ExercisePlayerSidebar } from './ExercisePlayerSidebar';
 import { TYPE_COLORS } from './ExerciseFilters';
 import { getTypeDisplayName } from '../../utils/adaptiveDifficulty';
 import { createBoardFromStones } from '../../utils/boardUtils';
+import { invoke } from '@tauri-apps/api/core';
 import type { BoardSize, Highlight } from '../../types';
 import type { ExerciseAttempt } from '../../utils/progressDb';
 
@@ -16,8 +17,11 @@ export function ExercisePlayer() {
     submitMultiStepMove, advanceToNextStep, loadNextExercise,
   } = useAppStore();
 
+  const { useKataGo } = useAppStore();
   const [bookmarked, setBookmarked] = useState(false);
   const [exerciseHistory, setExerciseHistory] = useState<ExerciseAttempt[]>([]);
+  const [katagoHint, setKatagoHint] = useState<{ x: number; y: number; move_str: string } | null>(null);
+  const [katagoHintLoading, setKatagoHintLoading] = useState(false);
   const isMultiStep = currentExercise?.steps && currentExercise.steps.length > 0;
 
   useEffect(() => {
@@ -57,6 +61,26 @@ export function ExercisePlayer() {
     loadNextExercise(currentExercise.id);
   }, [currentExercise, loadNextExercise]);
 
+  const handleKatagoHint = useCallback(async () => {
+    if (!currentExercise || katagoHintLoading) return;
+    setKatagoHintLoading(true);
+    try {
+      const stones = currentExercise.initial_stones.map(s => [s.x, s.y, s.color] as [number, number, string]);
+      const result = await invoke<{ x: number; y: number; move_str: string }>(
+        'get_katago_exercise_hint',
+        {
+          stones,
+          boardSize: currentExercise.board_size,
+          currentPlayer: 'black',
+        }
+      );
+      setKatagoHint(result);
+    } catch {
+      // KataGo not available
+    }
+    setKatagoHintLoading(false);
+  }, [currentExercise, katagoHintLoading]);
+
   if (!currentExercise) return null;
 
   const boardSize = currentExercise.board_size as BoardSize;
@@ -74,6 +98,9 @@ export function ExercisePlayer() {
   }
   if (isMultiStep && lastStepResult && !lastStepResult.correct && lastStepResult.best_move) {
     highlights.push({ x: lastStepResult.best_move[0], y: lastStepResult.best_move[1], type: 'good' });
+  }
+  if (katagoHint && !exerciseResult && !(isMultiStep && lastStepResult && !lastStepResult.correct)) {
+    highlights.push({ x: katagoHint.x, y: katagoHint.y, type: 'territory' });
   }
 
   const hints = isMultiStep && currentStep?.hints ? currentStep.hints : currentExercise.hints;
@@ -172,6 +199,28 @@ export function ExercisePlayer() {
           onNextExercise={handleNextExercise}
           onAdvanceStep={advanceToNextStep}
         />
+
+        {/* KataGo Hint Button */}
+        {useKataGo && !exerciseResult && !(isMultiStep && allStepsCompleted) && (
+          <div className="mt-4">
+            <button
+              onClick={handleKatagoHint}
+              disabled={katagoHintLoading}
+              className={`w-full py-2.5 rounded-xl text-sm font-medium transition-all border ${
+                katagoHint
+                  ? 'bg-info/10 text-info border-info/30'
+                  : 'glass text-text-secondary hover:text-text-primary border-transparent'
+              } ${katagoHintLoading ? 'opacity-50' : ''}`}
+            >
+              {katagoHintLoading ? 'Analiz ediliyor...' : katagoHint ? 'KataGo İpucu (gösteriliyor)' : 'KataGo İpucu'}
+            </button>
+            {katagoHint && (
+              <p className="text-xs text-text-secondary mt-2 text-center">
+                KataGo önerisi: <strong>{katagoHint.move_str}</strong> konumunda
+              </p>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

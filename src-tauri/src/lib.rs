@@ -42,6 +42,9 @@ pub fn run() {
             validate_multi_step_move,
             analyze_move,
             get_position_analysis,
+            get_katago_analysis,
+            get_katago_move_evaluation,
+            get_katago_exercise_hint,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

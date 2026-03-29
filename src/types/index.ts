@@ -331,6 +331,41 @@ export interface ReadingLadder {
 // Variant types
 export type VariationCategory = 'corner' | 'life_death' | 'capture' | 'fuseki' | 'endgame' | 'tesuji' | 'joseki';
 
+// KataGo analysis types
+export interface KataMoveEvaluation {
+  move_str: string;
+  x: number;
+  y: number;
+  visits: number;
+  win_rate: number;
+  score_mean: number;
+  is_best: boolean;
+  quality: 'best' | 'good' | 'acceptable' | 'mistake' | 'blunder' | 'unknown';
+}
+
+export interface KataPositionAnalysis {
+  evaluations: KataMoveEvaluation[];
+  best_move: string;
+  score_mean: number;
+  turn: string;
+}
+
+export interface HeatmapEntry {
+  x: number;
+  y: number;
+  win_rate: number;
+  score_mean: number;
+  visits: number;
+  quality: string;
+  is_best: boolean;
+  rank: number;
+}
+
+export interface ScoreEstimate {
+  score_mean: number;
+  turn: string;
+}
+
 export interface VariationPosition {
   id: string;
   title: string;

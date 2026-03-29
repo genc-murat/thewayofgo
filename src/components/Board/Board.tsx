@@ -1,11 +1,12 @@
 import React, { useMemo, useCallback, useState, useRef } from 'react';
-import type { BoardSize, StoneColor, Point, Highlight } from '../../types';
+import type { BoardSize, StoneColor, Point, Highlight, HeatmapEntry } from '../../types';
 
 interface BoardProps {
   size: BoardSize;
   board: (StoneColor | null)[][];
   lastMove?: Point | null;
   highlights?: Highlight[];
+  heatmap?: HeatmapEntry[];
   validMoves?: Point[];
   showValidMoves?: boolean;
   onIntersectionClick?: (x: number, y: number) => void;
@@ -21,6 +22,7 @@ export function Board({
   board,
   lastMove,
   highlights = [],
+  heatmap = [],
   validMoves = [],
   showValidMoves = false,
   onIntersectionClick,
@@ -225,6 +227,96 @@ export function Board({
             fill={colorMap[h.type]}
             opacity={0.5}
           />
+        );
+      })}
+
+      {/* KataGo heatmap overlay — top 5 moves */}
+      {heatmap.length > 0 && heatmap.map((entry, i) => {
+        if (entry.x >= size || entry.y >= size) return null;
+        const wr = Math.max(0, Math.min(1, entry.win_rate));
+        const r = Math.round(255 * (1 - wr));
+        const g = Math.round(200 * wr + 40);
+        const b = 30;
+        const isTop = entry.rank <= 5;
+        const opacity = entry.is_best ? 0.65 : isTop ? 0.5 : 0.3;
+        const halfCell = cellSize / 2;
+        const px = toPixel(entry.x);
+        const py = toPixel(entry.y);
+        const fontSize = cellSize * 0.32;
+        const scoreStr = entry.score_mean >= 0 ? `+${entry.score_mean.toFixed(1)}` : entry.score_mean.toFixed(1);
+        const wrPct = (wr * 100).toFixed(0);
+
+        return (
+          <g key={`heatmap-${entry.x}-${entry.y}-${i}`}>
+            <rect
+              x={px - halfCell}
+              y={py - halfCell}
+              width={cellSize}
+              height={cellSize}
+              fill={`rgb(${r},${g},${b})`}
+              opacity={opacity}
+              rx={3}
+            />
+            {isTop && (
+              <>
+                {/* Rank badge */}
+                <circle
+                  cx={px - halfCell * 0.55}
+                  cy={py - halfCell * 0.55}
+                  r={cellSize * 0.2}
+                  fill={entry.is_best ? '#f59e0b' : '#1e293b'}
+                  stroke="#fff"
+                  strokeWidth={0.8}
+                />
+                <text
+                  x={px - halfCell * 0.55}
+                  y={py - halfCell * 0.55 + fontSize * 0.35}
+                  textAnchor="middle"
+                  fontSize={fontSize * 0.8}
+                  fill="#fff"
+                  fontFamily="system-ui, sans-serif"
+                  fontWeight={700}
+                >
+                  {entry.rank}
+                </text>
+                {/* Win rate % */}
+                <text
+                  x={px}
+                  y={py + fontSize * 0.2}
+                  textAnchor="middle"
+                  fontSize={fontSize}
+                  fill="#fff"
+                  fontFamily="system-ui, sans-serif"
+                  fontWeight={700}
+                  stroke="#000"
+                  strokeWidth={0.5}
+                  paintOrder="stroke"
+                >
+                  {wrPct}%
+                </text>
+                {/* Score */}
+                <text
+                  x={px}
+                  y={py + fontSize * 1.1}
+                  textAnchor="middle"
+                  fontSize={fontSize * 0.7}
+                  fill="#fff"
+                  fontFamily="system-ui, sans-serif"
+                  fontWeight={600}
+                  stroke="#000"
+                  strokeWidth={0.4}
+                  paintOrder="stroke"
+                >
+                  {scoreStr}
+                </text>
+                {/* Tooltip title for hover */}
+                <title>{`#${entry.rank} ${entry.score_mean >= 0 ? 'S' : 'B'} ${Math.abs(entry.score_mean).toFixed(1)} | %${wrPct} kazanma | ${entry.visits} ziyaret`}</title>
+              </>
+            )}
+            {!isTop && (
+              <title>{`%${wrPct} kazanma | ${scoreStr} | ${entry.visits} ziyaret`}</title>
+            )}
+          </g>
         );
       })}
 
