@@ -179,5 +179,340 @@
         "move_annotations": ["Köşe alır", "Karşılık", "Güven"]
       }
     ]
+  },
+  {
+    "id": "corner-5",
+    "title": "Takamoku Müdafa",
+    "description": "5-3 noktasına yapılmış taşa karşı istila varyantları",
+    "level": 3,
+    "category": "corner",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 3, "y": 2, "color": "black" },
+      { "x": 6, "y": 6, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Kosumi yaklaşım",
+        "is_best": true,
+        "moves": [
+          { "x": 5, "y": 2, "color": "white" },
+          { "x": 4, "y": 3, "color": "black" },
+          { "x": 5, "y": 4, "color": "white" },
+          { "x": 2, "y": 4, "color": "black" }
+        ],
+        "result_description": "Beyaz kosumi ile yaklaşır, siyah karşılık verir. Dengeli sonuç.",
+        "evaluation": "good",
+        "move_annotations": ["Kosumi yaklaşım", "Karşılık", "Beyaz genişler", "Siyah köşe"]
+      },
+      {
+        "id": "B",
+        "label": "Direkt alta oynama",
+        "is_best": false,
+        "moves": [
+          { "x": 4, "y": 2, "color": "white" },
+          { "x": 3, "y": 3, "color": "black" }
+        ],
+        "result_description": "Beyaz çok yakın oynar, siyah basitleştirir.",
+        "evaluation": "bad",
+        "move_annotations": ["Çok yakın", "Siyah rahatlar"]
+      }
+    ]
+  },
+  {
+    "id": "corner-6",
+    "title": "Mokuhazushi İstila",
+    "description": "5-2 noktasına yapılan saldırı ve savunma",
+    "level": 4,
+    "category": "corner",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 3, "y": 2, "color": "black" },
+      { "x": 2, "y": 6, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Pincer saldırısı",
+        "is_best": true,
+        "moves": [
+          { "x": 5, "y": 3, "color": "white" },
+          { "x": 2, "y": 2, "color": "black" },
+          { "x": 3, "y": 4, "color": "white" },
+          { "x": 1, "y": 3, "color": "black" }
+        ],
+        "result_description": "Beyaz pincer ile siyahı hedefler, karmaşık savaş başlar.",
+        "evaluation": "good",
+        "move_annotations": ["Pincer", "3-3 istila", "Beyaz takip", "Siyah köşe"]
+      },
+      {
+        "id": "B",
+        "label": "Basit yaklaşım",
+        "is_best": false,
+        "moves": [
+          { "x": 4, "y": 2, "color": "white" },
+          { "x": 2, "y": 3, "color": "black" }
+        ],
+        "result_description": "Beyaz basit yaklaşır, siyah köşeyi alır.",
+        "evaluation": "neutral",
+        "move_annotations": ["Basit yaklaşım", "Köşe alındı"]
+      }
+    ],
+    "quiz": {
+      "question": "Mokuhazushi taşına en etkili saldırı hangisidir?",
+      "correct_variation_id": "A",
+      "hint": "Çift kanat tuzağı düşünün"
+    }
+  },
+  {
+    "id": "corner-7",
+    "title": "Köşe Keima Saldırı",
+    "description": "Keima şeklinde köşe saldırısı ve savunma",
+    "level": 4,
+    "category": "corner",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 6, "y": 2, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Keima yaklaşım",
+        "is_best": true,
+        "moves": [
+          { "x": 4, "y": 1, "color": "white" },
+          { "x": 3, "y": 1, "color": "black" },
+          { "x": 5, "y": 2, "color": "white" },
+          { "x": 3, "y": 3, "color": "black" }
+        ],
+        "result_description": "Beyaz keima ile yaklaşır, siyah kosumi ile karşılık verir. Savaş dengeli.",
+        "evaluation": "good",
+        "move_annotations": ["Keima", "Taş altı", "Beyaz genişler", "Kosumi karşılık"]
+      },
+      {
+        "id": "B",
+        "label": "Direkt hane",
+        "is_best": false,
+        "moves": [
+          { "x": 5, "y": 2, "color": "white" },
+          { "x": 4, "y": 2, "color": "black" }
+        ],
+        "result_description": "Beyaz hane atar ama siyah basitleştirir.",
+        "evaluation": "bad",
+        "move_annotations": ["Hane", "Siyah bağlanır"]
+      }
+    ]
+  },
+  {
+    "id": "corner-8",
+    "title": "Çift Hoshi İstila",
+    "description": "İki köşede hoshi taşlarına karşı strateji",
+    "level": 5,
+    "category": "corner",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 4, "y": 4, "color": "black" },
+      { "x": 4, "y": 8, "color": "black" },
+      { "x": 8, "y": 4, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Köşe istila",
+        "is_best": true,
+        "moves": [
+          { "x": 6, "y": 6, "color": "white" },
+          { "x": 6, "y": 8, "color": "black" },
+          { "x": 2, "y": 2, "color": "white" }
+        ],
+        "result_description": "Beyaz köşeyi istila eder, siyah diğer köşeyi korur. Dengeli.",
+        "evaluation": "good",
+        "move_annotations": ["Köşe giriş", "Siyah karşılık", "Beyaz köşe"]
+      },
+      {
+        "id": "B",
+        "label": "Merkez odağı",
+        "is_best": false,
+        "moves": [
+          { "x": 3, "y": 3, "color": "white" },
+          { "x": 5, "y": 5, "color": "black" }
+        ],
+        "result_description": "Beyaz merkeze odaklanır, siyah köşeleri alır.",
+        "evaluation": "neutral",
+        "move_annotations": ["Merkez", "Köşe boş"]
+      }
+    ]
+  },
+  {
+    "id": "corner-9",
+    "title": "İki Nokta Atlama Köşe İstila",
+    "description": "İki nokta atlama ile köşe istilası",
+    "level": 2,
+    "category": "corner",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 6, "y": 6, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "İki nokta atlama",
+        "is_best": true,
+        "moves": [
+          { "x": 4, "y": 2, "color": "white" },
+          { "x": 3, "y": 2, "color": "black" },
+          { "x": 5, "y": 3, "color": "white" },
+          { "x": 2, "y": 3, "color": "black" }
+        ],
+        "result_description": "Beyaz iki nokta atlayarak yaklaşır, siyah kosumi ile karşılık verir. Dengeli köşe savaşı.",
+        "evaluation": "good",
+        "move_annotations": ["İki nokta atlama", "Karşılık", "Genişleme", "Köşe güvencesi"]
+      },
+      {
+        "id": "B",
+        "label": "Tek nokta yaklaşım",
+        "is_best": false,
+        "moves": [
+          { "x": 3, "y": 2, "color": "white" },
+          { "x": 2, "y": 3, "color": "black" }
+        ],
+        "result_description": "Beyaz tek noktaya yaklaşır, siyah kolayca köşeyi savunur.",
+        "evaluation": "bad",
+        "move_annotations": ["Yakın yaklaşım", "Siyah savunur"]
+      }
+    ]
+  },
+  {
+    "id": "corner-10",
+    "title": "3-5 Noktası Köşe Yaklaşım",
+    "description": "3-5 noktasına yapılmış taşa karşı yaklaşım",
+    "level": 3,
+    "category": "corner",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 3, "color": "black" },
+      { "x": 6, "y": 6, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Keima yaklaşım",
+        "is_best": true,
+        "moves": [
+          { "x": 5, "y": 2, "color": "white" },
+          { "x": 4, "y": 2, "color": "black" },
+          { "x": 5, "y": 4, "color": "white" },
+          { "x": 3, "y": 4, "color": "black" }
+        ],
+        "result_description": "Beyaz keima ile yaklaşır, siyah karşılık verir. Dengeli köşe paylaşımı.",
+        "evaluation": "good",
+        "move_annotations": ["Keima", "Karşılık", "Beyaz genişler", "Siyah köşe"]
+      },
+      {
+        "id": "B",
+        "label": "Direkt taş altı",
+        "is_best": false,
+        "moves": [
+          { "x": 3, "y": 2, "color": "white" },
+          { "x": 2, "y": 2, "color": "black" }
+        ],
+        "result_description": "Beyaz çok yakın oynar, siyah kolayca savunur.",
+        "evaluation": "neutral",
+        "move_annotations": ["Çok yakın", "Basit karşılık"]
+      }
+    ]
+  },
+  {
+    "id": "corner-11",
+    "title": "4-5 Noktası Pincer Savaş",
+    "description": "4-5 noktasına pincer saldırısı",
+    "level": 4,
+    "category": "corner",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 3, "y": 2, "color": "black" },
+      { "x": 6, "y": 2, "color": "white" },
+      { "x": 2, "y": 6, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Üst pincer",
+        "is_best": true,
+        "moves": [
+          { "x": 5, "y": 1, "color": "black" },
+          { "x": 4, "y": 1, "color": "white" },
+          { "x": 5, "y": 3, "color": "black" },
+          { "x": 4, "y": 3, "color": "white" }
+        ],
+        "result_description": "Siyah üst pincer ile beyazı hedefler. Karmaşık savaş başlar, sonuç belirsiz.",
+        "evaluation": "good",
+        "move_annotations": ["Pincer", "Beyaz karşılık", "Siyah devam", "Kesme"]
+      },
+      {
+        "id": "B",
+        "label": "Alt pincer",
+        "is_best": false,
+        "moves": [
+          { "x": 5, "y": 3, "color": "black" },
+          { "x": 4, "y": 2, "color": "white" }
+        ],
+        "result_description": "Siyah alt pincer dener ama beyaz basitleştirir.",
+        "evaluation": "neutral",
+        "move_annotations": ["Alt pincer", "Beyaz kaçar"]
+      }
+    ],
+    "quiz": {
+      "question": "Bu pozisyonda siyahın en etkili pincer hamlesi hangisidir?",
+      "correct_variation_id": "A",
+      "hint": "Yukarıdan pincer düşünün"
+    }
+  },
+  {
+    "id": "corner-12",
+    "title": "Karmaşık Köşe Savaşı",
+    "description": "Çok taşlı karmaşık köşe savaşı pozisyonu",
+    "level": 5,
+    "category": "corner",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 4, "y": 2, "color": "white" },
+      { "x": 3, "y": 3, "color": "black" },
+      { "x": 5, "y": 3, "color": "white" },
+      { "x": 2, "y": 4, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Köşe baskısı",
+        "is_best": true,
+        "moves": [
+          { "x": 3, "y": 2, "color": "black" },
+          { "x": 4, "y": 3, "color": "white" },
+          { "x": 2, "y": 1, "color": "black" },
+          { "x": 5, "y": 2, "color": "white" },
+          { "x": 1, "y": 2, "color": "black" }
+        ],
+        "result_description": "Siyah köşede baskıyı artırır, beyaz dışarı çıkmak zorunda kalır. Siyah köşeyi alır.",
+        "evaluation": "good",
+        "move_annotations": ["Köşe baskısı", "Beyaz karşılık", "Siyah devam", "Beyaz kaçar", "Köşe alındı"]
+      },
+      {
+        "id": "B",
+        "label": "Merkez odağı",
+        "is_best": false,
+        "moves": [
+          { "x": 4, "y": 4, "color": "black" },
+          { "x": 3, "y": 2, "color": "white" }
+        ],
+        "result_description": "Siyah merkeze oynar, beyaz köşeyi alır.",
+        "evaluation": "bad",
+        "move_annotations": ["Merkez", "Beyaz köşe alır"]
+      }
+    ]
   }
 ]

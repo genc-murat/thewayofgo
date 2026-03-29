@@ -1,0 +1,341 @@
+[
+  {
+    "id": "joseki-1",
+    "title": "Temel 3-4 Komoku Joseki",
+    "description": "Komoku taşına karşı temel joseki varyantları",
+    "level": 2,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Kosumi karşılık",
+        "is_best": true,
+        "moves": [
+          { "x": 6, "y": 2, "color": "white" },
+          { "x": 4, "y": 2, "color": "black" },
+          { "x": 5, "y": 3, "color": "white" },
+          { "x": 3, "y": 3, "color": "black" }
+        ],
+        "result_description": "Siyah kosumi ile karşılık verir, beyaz genişler. Dengeli joseki.",
+        "evaluation": "good",
+        "move_annotations": ["Yaklaşım", "Kosumi", "Beyaz genişler", "Siyah güvence"]
+      },
+      {
+        "id": "B",
+        "label": "Direkt yaklaşım",
+        "is_best": false,
+        "moves": [
+          { "x": 6, "y": 2, "color": "white" },
+          { "x": 5, "y": 2, "color": "black" }
+        ],
+        "result_description": "Siyah çok yakın oynar, beyaz köşeyi basitleştirir.",
+        "evaluation": "bad",
+        "move_annotations": ["Yaklaşım", "Çok yakın - zayıf"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-2",
+    "title": "4-4 Hoshi Joseki",
+    "description": "Hoshi taşına karşı standart joseki",
+    "level": 2,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 4, "y": 4, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "3-3 istila",
+        "is_best": true,
+        "moves": [
+          { "x": 6, "y": 4, "color": "white" },
+          { "x": 2, "y": 2, "color": "white" },
+          { "x": 3, "y": 2, "color": "black" },
+          { "x": 2, "y": 3, "color": "white" },
+          { "x": 3, "y": 3, "color": "black" }
+        ],
+        "result_description": "Beyaz köşeye yaklaşır, sonra 3-3'e istila eder. Standart joseki.",
+        "evaluation": "good",
+        "move_annotations": ["Yaklaşım", "Karşılık", "3-3 istila", "Savunma", "Köşe paylaşıldı"]
+      },
+      {
+        "id": "B",
+        "label": "Erken merkez",
+        "is_best": false,
+        "moves": [
+          { "x": 4, "y": 6, "color": "white" },
+          { "x": 4, "y": 4, "color": "black" }
+        ],
+        "result_description": "Beyaz merkeze oynar, siyah köşeyi alır.",
+        "evaluation": "neutral",
+        "move_annotations": ["Merkez", "Köşe boş"]
+      }
+    ],
+    "quiz": {
+      "question": "Hoshi taşına karşı en iyi yaklaşım hangisidir?",
+      "correct_variation_id": "A",
+      "hint": "Köşeye doğru yaklaşın"
+    }
+  },
+  {
+    "id": "joseki-3",
+    "title": "Kosumi Approach Joseki",
+    "description": "Kosumi yaklaşımına karşı joseki varyantları",
+    "level": 3,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 3, "y": 3, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Hane karşılık",
+        "is_best": true,
+        "moves": [
+          { "x": 4, "y": 2, "color": "black" },
+          { "x": 2, "y": 3, "color": "white" },
+          { "x": 3, "y": 2, "color": "black" },
+          { "x": 1, "y": 2, "color": "white" }
+        ],
+        "result_description": "Siyah hane ile karşılık verir, beyaz köşeye çekilir. Siyah dış duvar elde eder.",
+        "evaluation": "good",
+        "move_annotations": ["Hane", "Köşeye çekilme", "Bağlantı", "Köşe tamamlandı"]
+      },
+      {
+        "id": "B",
+        "label": "Direkt bağlanma",
+        "is_best": false,
+        "moves": [
+          { "x": 1, "y": 2, "color": "black" },
+          { "x": 4, "y": 2, "color": "white" }
+        ],
+        "result_description": "Siyah hemen bağlanır, beyaz güçlü dış etki kazanır.",
+        "evaluation": "bad",
+        "move_annotations": ["Zayıf bağlanma", "Beyaz etki"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-4",
+    "title": "Keima Approach Joseki",
+    "description": "Keima yaklaşımına karşı joseki varyantları",
+    "level": 3,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 5, "y": 2, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Pincer karşılık",
+        "is_best": true,
+        "moves": [
+          { "x": 3, "y": 1, "color": "black" },
+          { "x": 4, "y": 1, "color": "white" },
+          { "x": 3, "y": 3, "color": "black" },
+          { "x": 2, "y": 3, "color": "white" }
+        ],
+        "result_description": "Siyah pincer ile beyazı hedefler, karmaşık joseki başlar. Sonuç dengeli.",
+        "evaluation": "good",
+        "move_annotations": ["Pincer", "Beyaz karşılık", "Siyah devam", "Köşeye çekilme"]
+      },
+      {
+        "id": "B",
+        "label": "Basit savunma",
+        "is_best": false,
+        "moves": [
+          { "x": 2, "y": 1, "color": "black" },
+          { "x": 4, "y": 2, "color": "white" }
+        ],
+        "result_description": "Siyah basit savunur, beyaz etkili köşe pozisyonu kazanır.",
+        "evaluation": "neutral",
+        "move_annotations": ["Savunma", "Beyaz iyi"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-5",
+    "title": "One-Space Approach Joseki",
+    "description": "Tek boşluk yaklaşımına karşı joseki",
+    "level": 3,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 5, "y": 2, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Kosumi savunma",
+        "is_best": true,
+        "moves": [
+          { "x": 3, "y": 2, "color": "black" },
+          { "x": 4, "y": 2, "color": "white" },
+          { "x": 2, "y": 3, "color": "black" },
+          { "x": 4, "y": 3, "color": "white" }
+        ],
+        "result_description": "Siyah kosumi ile köşeyi savunur, beyaz kenara genişler. Eşit joseki.",
+        "evaluation": "good",
+        "move_annotations": ["Savunma", "Beyaz yaklaşır", "Güçlü kosumi", "Genişleme"]
+      },
+      {
+        "id": "B",
+        "label": "Doğrudan kesme",
+        "is_best": false,
+        "moves": [
+          { "x": 4, "y": 2, "color": "black" },
+          { "x": 3, "y": 2, "color": "white" }
+        ],
+        "result_description": "Siyah doğrudan keser ama beyaz köşeyi alır.",
+        "evaluation": "bad",
+        "move_annotations": ["Kesme", "Beyaz köşe alır"]
+      }
+    ],
+    "quiz": {
+      "question": "Bu joseki'de siyahın en iyi devamı nedir?",
+      "correct_variation_id": "A",
+      "hint": "Köşeyi güvence altına alın"
+    }
+  },
+  {
+    "id": "joseki-6",
+    "title": "Taisha Joseki",
+    "description": "Taisha joseki - karmaşık varyasyonlar",
+    "level": 4,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 5, "y": 3, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Taisha dal",
+        "is_best": true,
+        "moves": [
+          { "x": 4, "y": 2, "color": "black" },
+          { "x": 3, "y": 3, "color": "white" },
+          { "x": 4, "y": 3, "color": "black" },
+          { "x": 3, "y": 4, "color": "white" },
+          { "x": 2, "y": 4, "color": "black" }
+        ],
+        "result_description": "Siyah taisha dalını takip eder, karmaşık savaş başlar. Dengeli sonuç.",
+        "evaluation": "good",
+        "move_annotations": ["Taisha", "Beyaz keser", "Siyah devam", "Beyaz genişler", "Köşeye çekilme"]
+      },
+      {
+        "id": "B",
+        "label": "Basit çekilme",
+        "is_best": false,
+        "moves": [
+          { "x": 3, "y": 2, "color": "black" },
+          { "x": 4, "y": 3, "color": "white" }
+        ],
+        "result_description": "Siyah basit çekilir, beyaz güçlü pozisyon kazanır.",
+        "evaluation": "bad",
+        "move_annotations": ["Zayıf", "Beyaz iyi"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-7",
+    "title": "Magic Sword Joseki",
+    "description": "Sihirli Kılıç joseki - güçlü dış duvar",
+    "level": 4,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 4, "y": 2, "color": "white" },
+      { "x": 3, "y": 3, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Sihirli kılıç",
+        "is_best": true,
+        "moves": [
+          { "x": 3, "y": 2, "color": "white" },
+          { "x": 2, "y": 1, "color": "black" },
+          { "x": 4, "y": 1, "color": "white" },
+          { "x": 3, "y": 1, "color": "black" }
+        ],
+        "result_description": "Siyah sihirli kılıç josekisini oynar, güçlü dış duvar elde eder. Beyaz köşeyi alır.",
+        "evaluation": "good",
+        "move_annotations": ["Beyaz keser", "Köşeye çekilme", "Beyaz devam", "Duvar oluştu"]
+      },
+      {
+        "id": "B",
+        "label": "Koşarak kaçma",
+        "is_best": false,
+        "moves": [
+          { "x": 2, "y": 3, "color": "black" },
+          { "x": 3, "y": 2, "color": "white" }
+        ],
+        "result_description": "Siyah kaçar, beyaz köşeyi ve kenarı kontrol eder.",
+        "evaluation": "neutral",
+        "move_annotations": ["Kaçış", "Beyaz kontrol"]
+      }
+    ],
+    "quiz": {
+      "question": "Magic Sword josekisinde siyah ne kazanır?",
+      "correct_variation_id": "A",
+      "hint": "Dış duvara dikkat edin"
+    }
+  },
+  {
+    "id": "joseki-8",
+    "title": "Avalanche Joseki",
+    "description": "Çığ joseki - en karmaşık joseki varyasyonları",
+    "level": 5,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 4, "y": 3, "color": "white" },
+      { "x": 3, "y": 2, "color": "black" },
+      { "x": 3, "y": 4, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Büyük çığ",
+        "is_best": true,
+        "moves": [
+          { "x": 4, "y": 2, "color": "black" },
+          { "x": 2, "y": 3, "color": "white" },
+          { "x": 3, "y": 3, "color": "black" },
+          { "x": 4, "y": 4, "color": "white" },
+          { "x": 5, "y": 3, "color": "black" }
+        ],
+        "result_description": "Siyah büyük çığ josekisini oynar, karmaşık savaş sonucunda dengeli pozisyon elde eder.",
+        "evaluation": "good",
+        "move_annotations": ["Çığ başlar", "Beyaz karşılık", "Kesme", "Beyaz devam", "Dengeli sonuç"]
+      },
+      {
+        "id": "B",
+        "label": "Küçük çığ",
+        "is_best": false,
+        "moves": [
+          { "x": 2, "y": 3, "color": "black" },
+          { "x": 4, "y": 2, "color": "white" }
+        ],
+        "result_description": "Siyah küçük çığ oynar, beyaz daha iyi pozisyon kazanır.",
+        "evaluation": "bad",
+        "move_annotations": ["Zayıf varyant", "Beyaz iyi"]
+      }
+    ]
+  }
+]

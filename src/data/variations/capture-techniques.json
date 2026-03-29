@@ -7,8 +7,16 @@
     "category": "capture",
     "board_size": 9,
     "initial_stones": [
-      { "x": 2, "y": 2, "color": "black" },
-      { "x": 3, "y": 3, "color": "white" }
+      {
+        "x": 2,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 3,
+        "y": 3,
+        "color": "white"
+      }
     ],
     "variations": [
       {
@@ -16,29 +24,76 @@
         "label": "Merdiven",
         "is_best": true,
         "moves": [
-          { "x": 2, "y": 3, "color": "black" },
-          { "x": 4, "y": 4, "color": "white" },
-          { "x": 4, "y": 3, "color": "black" },
-          { "x": 5, "y": 5, "color": "white" },
-          { "x": 5, "y": 3, "color": "black" },
-          { "x": 6, "y": 6, "color": "white" },
-          { "x": 6, "y": 3, "color": "black" }
+          {
+            "x": 2,
+            "y": 3,
+            "color": "black"
+          },
+          {
+            "x": 4,
+            "y": 4,
+            "color": "white"
+          },
+          {
+            "x": 4,
+            "y": 3,
+            "color": "black"
+          },
+          {
+            "x": 5,
+            "y": 5,
+            "color": "white"
+          },
+          {
+            "x": 5,
+            "y": 3,
+            "color": "black"
+          },
+          {
+            "x": 6,
+            "y": 6,
+            "color": "white"
+          },
+          {
+            "x": 6,
+            "y": 3,
+            "color": "black"
+          }
         ],
         "result_description": "Siyah beyaz taşları kenara doğru iter, merdiven tekniğiyle esir alır.",
         "evaluation": "good",
-        "move_annotations": ["Merdiven başlar", "Zigzag", "Devam", "Sürdür", "Yaklaşıyor", "Sona yakın", "Esir!"]
+        "move_annotations": [
+          "Merdiven başlar",
+          "Zigzag",
+          "Devam",
+          "Sürdür",
+          "Yaklaşıyor",
+          "Sona yakın",
+          "Esir!"
+        ]
       },
       {
         "id": "B",
         "label": "Yanlış takip",
         "is_best": false,
         "moves": [
-          { "x": 2, "y": 3, "color": "black" },
-          { "x": 3, "y": 4, "color": "white" }
+          {
+            "x": 2,
+            "y": 3,
+            "color": "black"
+          },
+          {
+            "x": 3,
+            "y": 4,
+            "color": "white"
+          }
         ],
         "result_description": "Siyah yanlış yönde kovalar, beyaz kaçar.",
         "evaluation": "bad",
-        "move_annotations": ["Doğru başlangıç", "Yanlış takip"]
+        "move_annotations": [
+          "Doğru başlangıç",
+          "Yanlış takip"
+        ]
       }
     ],
     "quiz": {
@@ -55,10 +110,26 @@
     "category": "capture",
     "board_size": 9,
     "initial_stones": [
-      { "x": 3, "y": 3, "color": "white" },
-      { "x": 2, "y": 2, "color": "black" },
-      { "x": 4, "y": 2, "color": "black" },
-      { "x": 1, "y": 4, "color": "black" }
+      {
+        "x": 3,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 4,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 1,
+        "y": 4,
+        "color": "black"
+      }
     ],
     "variations": [
       {
@@ -66,22 +137,46 @@
         "label": "Ağ kurulumu",
         "is_best": true,
         "moves": [
-          { "x": 4, "y": 4, "color": "black" },
-          { "x": 3, "y": 5, "color": "white" },
-          { "x": 2, "y": 4, "color": "black" }
+          {
+            "x": 4,
+            "y": 4,
+            "color": "black"
+          },
+          {
+            "x": 3,
+            "y": 5,
+            "color": "white"
+          },
+          {
+            "x": 2,
+            "y": 4,
+            "color": "black"
+          }
         ],
         "result_description": "Siyah beyaz taşı ağ tuzağına düşürür, kaçış yolu yok.",
         "evaluation": "good",
-        "move_annotations": ["Ağ kapatılır", "Son kaçış denemesi", "Ağ tamamlandı"]
+        "move_annotations": [
+          "Ağ kapatılır",
+          "Son kaçış denemesi",
+          "Ağ tamamlandı"
+        ]
       },
       {
         "id": "B",
         "label": "Direkt temas",
         "is_best": false,
-        "moves": [{ "x": 3, "y": 2, "color": "black" }],
+        "moves": [
+          {
+            "x": 3,
+            "y": 2,
+            "color": "black"
+          }
+        ],
         "result_description": "Siyah doğrudan yaklaşır ama beyaz bağlantı kurabilir.",
         "evaluation": "neutral",
-        "move_annotations": ["Zayıf yaklaşım"]
+        "move_annotations": [
+          "Zayıf yaklaşım"
+        ]
       }
     ]
   },
@@ -93,13 +188,41 @@
     "category": "capture",
     "board_size": 9,
     "initial_stones": [
-      { "x": 3, "y": 3, "color": "white" },
-      { "x": 4, "y": 3, "color": "white" },
-      { "x": 3, "y": 4, "color": "black" },
-      { "x": 4, "y": 4, "color": "black" },
-      { "x": 5, "y": 4, "color": "black" },
-      { "x": 3, "y": 5, "color": "black" },
-      { "x": 5, "y": 3, "color": "black" }
+      {
+        "x": 3,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 4,
+        "color": "black"
+      },
+      {
+        "x": 4,
+        "y": 4,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 4,
+        "color": "black"
+      },
+      {
+        "x": 3,
+        "y": 5,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 3,
+        "color": "black"
+      }
     ],
     "variations": [
       {
@@ -107,22 +230,931 @@
         "label": "Snapback",
         "is_best": true,
         "moves": [
-          { "x": 4, "y": 4, "color": "white" },
-          { "x": 3, "y": 3, "color": "black" }
+          {
+            "x": 4,
+            "y": 4,
+            "color": "white"
+          },
+          {
+            "x": 3,
+            "y": 3,
+            "color": "black"
+          }
         ],
         "result_description": "Siyah snapback ile beyaz taşları esir alır.",
         "evaluation": "good",
-        "move_annotations": ["Beyaz oynar", "Snapback!"]
+        "move_annotations": [
+          "Beyaz oynar",
+          "Snapback!"
+        ]
       },
       {
         "id": "B",
         "label": "Bağlanmaya çalışma",
         "is_best": false,
-        "moves": [{ "x": 2, "y": 3, "color": "black" }],
+        "moves": [
+          {
+            "x": 2,
+            "y": 3,
+            "color": "black"
+          }
+        ],
         "result_description": "Siyah bağlantıyı denese de beyaz kurtulur.",
         "evaluation": "bad",
-        "move_annotations": ["Zayıf hamle"]
+        "move_annotations": [
+          "Zayıf hamle"
+        ]
       }
     ]
+  },
+  {
+    "id": "capture-4",
+    "title": "Double Atari",
+    "description": "İki grubu aynı anda atariye sokma",
+    "level": 3,
+    "category": "capture",
+    "board_size": 9,
+    "initial_stones": [
+      {
+        "x": 3,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 5,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 3,
+        "y": 4,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 4,
+        "color": "black"
+      },
+      {
+        "x": 4,
+        "y": 5,
+        "color": "black"
+      }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Çift atari",
+        "is_best": true,
+        "moves": [
+          {
+            "x": 4,
+            "y": 3,
+            "color": "black"
+          },
+          {
+            "x": 3,
+            "y": 3,
+            "color": "white"
+          },
+          {
+            "x": 4,
+            "y": 4,
+            "color": "black"
+          }
+        ],
+        "result_description": "Siyah 4,3'e oynayarak iki beyaz grubu birden atariye sokar.",
+        "evaluation": "good",
+        "move_annotations": [
+          "Çift atari!",
+          "Beyaz birini kurtarır",
+          "Diğer taş esir"
+        ]
+      },
+      {
+        "id": "B",
+        "label": "Tek taşı alma",
+        "is_best": false,
+        "moves": [
+          {
+            "x": 4,
+            "y": 4,
+            "color": "black"
+          },
+          {
+            "x": 4,
+            "y": 3,
+            "color": "white"
+          }
+        ],
+        "result_description": "Siyah tek taş peşinde koşar, beyaz diğer taşı kurtarır.",
+        "evaluation": "bad",
+        "move_annotations": [
+          "Tek taş",
+          "Beyaz kaçar"
+        ]
+      }
+    ],
+    "quiz": {
+      "question": "Bu pozisyonda iki beyaz grubu birden nasıl atariye sokabilirsiniz?",
+      "correct_variation_id": "A",
+      "hint": "İki beyaz taşın ortasına bakın"
+    }
+  },
+  {
+    "id": "capture-5",
+    "title": "Connect and Die",
+    "description": "Bağlanmaya çalışan grubu keserek esir alma",
+    "level": 4,
+    "category": "capture",
+    "board_size": 9,
+    "initial_stones": [
+      {
+        "x": 3,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 5,
+        "y": 4,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 2,
+        "y": 4,
+        "color": "black"
+      },
+      {
+        "x": 3,
+        "y": 5,
+        "color": "black"
+      },
+      {
+        "x": 4,
+        "y": 5,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 5,
+        "color": "black"
+      },
+      {
+        "x": 6,
+        "y": 4,
+        "color": "black"
+      }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Kes ve al",
+        "is_best": true,
+        "moves": [
+          {
+            "x": 4,
+            "y": 4,
+            "color": "black"
+          },
+          {
+            "x": 3,
+            "y": 4,
+            "color": "white"
+          },
+          {
+            "x": 5,
+            "y": 3,
+            "color": "black"
+          }
+        ],
+        "result_description": "Siyah beyazı keser, bağlanma girişimi başarısız olur ve taşlar esir alınır.",
+        "evaluation": "good",
+        "move_annotations": [
+          "Kesme",
+          "Beyaz bağlanmaya çalışır",
+          "Esir alındı"
+        ]
+      },
+      {
+        "id": "B",
+        "label": "Kovalamaca",
+        "is_best": false,
+        "moves": [
+          {
+            "x": 6,
+            "y": 3,
+            "color": "black"
+          },
+          {
+            "x": 4,
+            "y": 4,
+            "color": "white"
+          }
+        ],
+        "result_description": "Siyah yanlış yönden saldırır, beyaz bağlanır.",
+        "evaluation": "bad",
+        "move_annotations": [
+          "Yanlış yön",
+          "Beyaz bağlanır"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "capture-6",
+    "title": "Throw-in Esir",
+    "description": "Taş feda ederek grup esir alma tekniği",
+    "level": 4,
+    "category": "capture",
+    "board_size": 9,
+    "initial_stones": [
+      {
+        "x": 3,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 4,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 2,
+        "y": 4,
+        "color": "black"
+      },
+      {
+        "x": 3,
+        "y": 5,
+        "color": "black"
+      },
+      {
+        "x": 4,
+        "y": 5,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 4,
+        "color": "black"
+      }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Throw-in",
+        "is_best": true,
+        "moves": [
+          {
+            "x": 4,
+            "y": 4,
+            "color": "black"
+          },
+          {
+            "x": 4,
+            "y": 4,
+            "color": "white"
+          },
+          {
+            "x": 5,
+            "y": 3,
+            "color": "black"
+          }
+        ],
+        "result_description": "Siyah taşını feda eder, beyazın özgürlüğünü kısıtlar ve esir alır.",
+        "evaluation": "good",
+        "move_annotations": [
+          "Feda taş",
+          "Beyaz alır",
+          "Esir!"
+        ]
+      },
+      {
+        "id": "B",
+        "label": "Direkt saldırı",
+        "is_best": false,
+        "moves": [
+          {
+            "x": 5,
+            "y": 3,
+            "color": "black"
+          },
+          {
+            "x": 4,
+            "y": 4,
+            "color": "white"
+          }
+        ],
+        "result_description": "Siyah doğrudan saldırır ama beyaz kaçar.",
+        "evaluation": "neutral",
+        "move_annotations": [
+          "Doğrudan",
+          "Beyaz kurtulur"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "capture-7",
+    "title": "Semeai (Özgürlük Savaşı)",
+    "description": "İki grubun özgürlük savaşı - rakipten önce alma",
+    "level": 5,
+    "category": "capture",
+    "board_size": 9,
+    "initial_stones": [
+      {
+        "x": 3,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 5,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 4,
+        "color": "white"
+      },
+      {
+        "x": 5,
+        "y": 4,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 2,
+        "y": 4,
+        "color": "black"
+      },
+      {
+        "x": 2,
+        "y": 5,
+        "color": "black"
+      },
+      {
+        "x": 3,
+        "y": 5,
+        "color": "black"
+      },
+      {
+        "x": 4,
+        "y": 5,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 5,
+        "color": "black"
+      }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Liberty kazanma",
+        "is_best": true,
+        "moves": [
+          {
+            "x": 4,
+            "y": 4,
+            "color": "black"
+          },
+          {
+            "x": 6,
+            "y": 4,
+            "color": "white"
+          },
+          {
+            "x": 6,
+            "y": 3,
+            "color": "black"
+          },
+          {
+            "x": 6,
+            "y": 5,
+            "color": "white"
+          },
+          {
+            "x": 3,
+            "y": 2,
+            "color": "black"
+          }
+        ],
+        "result_description": "Siyah özgürlük sayısını artırır ve beyazdan önce esir alır.",
+        "evaluation": "good",
+        "move_annotations": [
+          "Liberty +1",
+          "Beyaz karşılık",
+          "Devam",
+          "Beyaz son hamle",
+          "Siyah alır!"
+        ]
+      },
+      {
+        "id": "B",
+        "label": "Yanlış sıralama",
+        "is_best": false,
+        "moves": [
+          {
+            "x": 6,
+            "y": 3,
+            "color": "black"
+          },
+          {
+            "x": 4,
+            "y": 4,
+            "color": "white"
+          }
+        ],
+        "result_description": "Siyah yanlış sıralama yapar, beyaz önce esir alır.",
+        "evaluation": "bad",
+        "move_annotations": [
+          "Yanlış sıra",
+          "Beyaz alır"
+        ]
+      }
+    ],
+    "quiz": {
+      "question": "Semeai'de kazanmak için neye dikkat etmelisiniz?",
+      "correct_variation_id": "A",
+      "hint": "Özgürlük sayısını artırın"
+    }
+  },
+  {
+    "id": "capture-8",
+    "title": "Shicho (Ladder) Kontrol",
+    "description": "Merdiven tekniği ile taş esir alma kontrolü",
+    "level": 2,
+    "category": "capture",
+    "board_size": 9,
+    "initial_stones": [
+      {
+        "x": 3,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 4,
+        "y": 2,
+        "color": "black"
+      }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Doğru merdiven yönü",
+        "is_best": true,
+        "moves": [
+          {
+            "x": 2,
+            "y": 3,
+            "color": "black"
+          },
+          {
+            "x": 4,
+            "y": 4,
+            "color": "white"
+          },
+          {
+            "x": 4,
+            "y": 3,
+            "color": "black"
+          },
+          {
+            "x": 5,
+            "y": 5,
+            "color": "white"
+          },
+          {
+            "x": 5,
+            "y": 3,
+            "color": "black"
+          }
+        ],
+        "result_description": "Siyah beyaz taşı duvara doğru iter, merdiven başarılı.",
+        "evaluation": "good",
+        "move_annotations": [
+          "Merdiven başlar",
+          "Zigzag",
+          "Devam",
+          "Sürdür",
+          "Yaklaşıyor"
+        ]
+      },
+      {
+        "id": "B",
+        "label": "Yanlış yön",
+        "is_best": false,
+        "moves": [
+          {
+            "x": 4,
+            "y": 3,
+            "color": "black"
+          },
+          {
+            "x": 2,
+            "y": 4,
+            "color": "white"
+          }
+        ],
+        "result_description": "Siyah yanlış yönde kovalar, beyaz kaçar.",
+        "evaluation": "bad",
+        "move_annotations": [
+          "Yanlış yön",
+          "Beyaz kurtulur"
+        ]
+      }
+    ],
+    "quiz": {
+      "question": "Merdiven tekniğinde taşı hangi yöne sürmelisiniz?",
+      "correct_variation_id": "A",
+      "hint": "Taşı duvara doğru sürün"
+    }
+  },
+  {
+    "id": "capture-9",
+    "title": "Loose Ladder",
+    "description": "Serbest merdiven tekniği",
+    "level": 3,
+    "category": "capture",
+    "board_size": 9,
+    "initial_stones": [
+      {
+        "x": 3,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 1,
+        "y": 4,
+        "color": "black"
+      }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Loose ladder",
+        "is_best": true,
+        "moves": [
+          {
+            "x": 3,
+            "y": 2,
+            "color": "black"
+          },
+          {
+            "x": 4,
+            "y": 4,
+            "color": "white"
+          },
+          {
+            "x": 4,
+            "y": 3,
+            "color": "black"
+          },
+          {
+            "x": 5,
+            "y": 5,
+            "color": "white"
+          },
+          {
+            "x": 5,
+            "y": 4,
+            "color": "black"
+          }
+        ],
+        "result_description": "Siyah serbest merdiven ile beyazı kenara iter, esir alır.",
+        "evaluation": "good",
+        "move_annotations": [
+          "Loose ladder",
+          "Beyaz kaçar",
+          "Devam",
+          "Beyaz dener",
+          "Esir!"
+        ]
+      },
+      {
+        "id": "B",
+        "label": "Sıkı takip",
+        "is_best": false,
+        "moves": [
+          {
+            "x": 3,
+            "y": 2,
+            "color": "black"
+          },
+          {
+            "x": 3,
+            "y": 4,
+            "color": "white"
+          }
+        ],
+        "result_description": "Siyah sıkı takip eder ama beyaz bağlantı kurar.",
+        "evaluation": "neutral",
+        "move_annotations": [
+          "Sıkı takip",
+          "Beyaz bağlanır"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "capture-10",
+    "title": "Crane's Nest Tesuji",
+    "description": "Turna yuvası tesuji ile esir alma",
+    "level": 4,
+    "category": "capture",
+    "board_size": 9,
+    "initial_stones": [
+      {
+        "x": 3,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 4,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 2,
+        "y": 4,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 4,
+        "y": 5,
+        "color": "black"
+      },
+      {
+        "x": 3,
+        "y": 5,
+        "color": "black"
+      }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Crane's nest",
+        "is_best": true,
+        "moves": [
+          {
+            "x": 4,
+            "y": 4,
+            "color": "black"
+          },
+          {
+            "x": 5,
+            "y": 4,
+            "color": "white"
+          },
+          {
+            "x": 3,
+            "y": 2,
+            "color": "black"
+          }
+        ],
+        "result_description": "Siyah crane's nest tesuji ile beyazı tuzağa düşürür, kaçış yok.",
+        "evaluation": "good",
+        "move_annotations": [
+          "Crane's nest",
+          "Beyaz dener",
+          "Tuzak kapandı"
+        ]
+      },
+      {
+        "id": "B",
+        "label": "Basit kuşatma",
+        "is_best": false,
+        "moves": [
+          {
+            "x": 3,
+            "y": 2,
+            "color": "black"
+          },
+          {
+            "x": 4,
+            "y": 4,
+            "color": "white"
+          }
+        ],
+        "result_description": "Siyah basit kuşatır ama beyaz kaçar.",
+        "evaluation": "bad",
+        "move_annotations": [
+          "Basit",
+          "Beyaz kurtulur"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "capture-11",
+    "title": "Multiple Liberty Capture",
+    "description": "Çok özgürlüklü grubu esir alma",
+    "level": 5,
+    "category": "capture",
+    "board_size": 9,
+    "initial_stones": [
+      {
+        "x": 3,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 5,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 4,
+        "color": "white"
+      },
+      {
+        "x": 5,
+        "y": 4,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 2,
+        "y": 4,
+        "color": "black"
+      },
+      {
+        "x": 2,
+        "y": 5,
+        "color": "black"
+      },
+      {
+        "x": 3,
+        "y": 5,
+        "color": "black"
+      },
+      {
+        "x": 4,
+        "y": 5,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 5,
+        "color": "black"
+      },
+      {
+        "x": 6,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 6,
+        "y": 4,
+        "color": "black"
+      }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Özgürlük azaltma",
+        "is_best": true,
+        "moves": [
+          {
+            "x": 4,
+            "y": 4,
+            "color": "black"
+          },
+          {
+            "x": 3,
+            "y": 2,
+            "color": "white"
+          },
+          {
+            "x": 5,
+            "y": 2,
+            "color": "black"
+          },
+          {
+            "x": 4,
+            "y": 2,
+            "color": "white"
+          },
+          {
+            "x": 3,
+            "y": 4,
+            "color": "black"
+          }
+        ],
+        "result_description": "Siyah beyaz grubun özgürlüklerini sırayla azaltır, sonunda esir alır.",
+        "evaluation": "good",
+        "move_annotations": [
+          "Liberty -1",
+          "Beyaz karşılık",
+          "Devam",
+          "Beyaz son deneme",
+          "Esir!"
+        ]
+      },
+      {
+        "id": "B",
+        "label": "Rastgele saldırı",
+        "is_best": false,
+        "moves": [
+          {
+            "x": 4,
+            "y": 4,
+            "color": "black"
+          },
+          {
+            "x": 4,
+            "y": 2,
+            "color": "white"
+          }
+        ],
+        "result_description": "Siyah rastgele saldırır, beyaz bağlantı kurar.",
+        "evaluation": "bad",
+        "move_annotations": [
+          "Rastgele",
+          "Beyaz bağlanır"
+        ]
+      }
+    ],
+    "quiz": {
+      "question": "Çok özgürlüklü grubu esir almak için ne yapmalısınız?",
+      "correct_variation_id": "A",
+      "hint": "Özgürlükleri sırayla azaltın"
+    }
   }
 ]

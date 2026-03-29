@@ -329,7 +329,7 @@ export interface ReadingLadder {
 }
 
 // Variant types
-export type VariationCategory = 'corner' | 'life_death' | 'capture' | 'fuseki' | 'endgame' | 'tesuji';
+export type VariationCategory = 'corner' | 'life_death' | 'capture' | 'fuseki' | 'endgame' | 'tesuji' | 'joseki';
 
 export interface VariationPosition {
   id: string;

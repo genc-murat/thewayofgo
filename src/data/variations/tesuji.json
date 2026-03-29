@@ -135,5 +135,366 @@
         "move_annotations": ["Erken saldırı", "Kaçış"]
       }
     ]
+  },
+  {
+    "id": "tesuji-4",
+    "title": "Hane Tesuji",
+    "description": "Köşe ve kenarda hane hamlesiyle avantaj kazanma",
+    "level": 3,
+    "category": "tesuji",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 3, "y": 2, "color": "white" },
+      { "x": 4, "y": 2, "color": "white" },
+      { "x": 2, "y": 3, "color": "black" },
+      { "x": 2, "y": 4, "color": "black" },
+      { "x": 5, "y": 3, "color": "black" },
+      { "x": 5, "y": 4, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "İç hane",
+        "is_best": true,
+        "moves": [
+          { "x": 3, "y": 3, "color": "black" },
+          { "x": 4, "y": 3, "color": "white" },
+          { "x": 3, "y": 4, "color": "black" }
+        ],
+        "result_description": "Siyah iç hane ile beyazı keser, güçlü pozisyon elde eder.",
+        "evaluation": "good",
+        "move_annotations": ["İç hane", "Beyaz karşılık", "Kesme başarılı"]
+      },
+      {
+        "id": "B",
+        "label": "Dış hane",
+        "is_best": false,
+        "moves": [
+          { "x": 4, "y": 3, "color": "black" },
+          { "x": 3, "y": 3, "color": "white" }
+        ],
+        "result_description": "Siyah dış hane atar ama beyaz basitleştirir.",
+        "evaluation": "neutral",
+        "move_annotations": ["Dış hane", "Beyaz bağlanır"]
+      }
+    ]
+  },
+  {
+    "id": "tesuji-5",
+    "title": "Wedge (Kama) Tesuji",
+    "description": "İki taş arasına kama girerek kesme",
+    "level": 4,
+    "category": "tesuji",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 3, "y": 3, "color": "white" },
+      { "x": 4, "y": 4, "color": "white" },
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 2, "y": 4, "color": "black" },
+      { "x": 5, "y": 3, "color": "black" },
+      { "x": 5, "y": 5, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Kama",
+        "is_best": true,
+        "moves": [
+          { "x": 3, "y": 4, "color": "black" },
+          { "x": 4, "y": 3, "color": "white" },
+          { "x": 4, "y": 5, "color": "black" }
+        ],
+        "result_description": "Siyah kama ile beyazı keser, iki zayıf grup yaratır.",
+        "evaluation": "good",
+        "move_annotations": ["Kama!", "Beyaz karşılık", "Kesme tamam"]
+      },
+      {
+        "id": "B",
+        "label": "Bağlanmaya çalışır",
+        "is_best": false,
+        "moves": [
+          { "x": 4, "y": 3, "color": "black" },
+          { "x": 3, "y": 4, "color": "white" }
+        ],
+        "result_description": "Siyah bağlanmaya çalışır ama beyaz keser.",
+        "evaluation": "bad",
+        "move_annotations": ["Zayıf", "Beyaz keser"]
+      }
+    ],
+    "quiz": {
+      "question": "Bu pozisyonda kama tesuji nereye oynanır?",
+      "correct_variation_id": "A",
+      "hint": "İki beyaz taşın arasındaki boşluğa bakın"
+    }
+  },
+  {
+    "id": "tesuji-6",
+    "title": "Cross-Cut Tesuji",
+    "description": "Çapraz kesme ile avantaj kazanma",
+    "level": 4,
+    "category": "tesuji",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 3, "y": 3, "color": "white" },
+      { "x": 4, "y": 4, "color": "white" },
+      { "x": 4, "y": 3, "color": "black" },
+      { "x": 3, "y": 4, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Köşeye hane",
+        "is_best": true,
+        "moves": [
+          { "x": 2, "y": 2, "color": "black" },
+          { "x": 5, "y": 5, "color": "white" },
+          { "x": 5, "y": 2, "color": "black" }
+        ],
+        "result_description": "Siyah çapraz kesmeden sonra hane ile güçlü şekil oluşturur.",
+        "evaluation": "good",
+        "move_annotations": ["Hane", "Beyaz karşılık", "Güçlü şekil"]
+      },
+      {
+        "id": "B",
+        "label": "Düz bağla",
+        "is_best": false,
+        "moves": [
+          { "x": 3, "y": 2, "color": "black" },
+          { "x": 4, "y": 5, "color": "white" }
+        ],
+        "result_description": "Siyah düz bağlar, beyaz da bağlanır. Eşit sonuç.",
+        "evaluation": "neutral",
+        "move_annotations": ["Düz", "Eşit"]
+      }
+    ]
+  },
+  {
+    "id": "tesuji-7",
+    "title": "Turn (Magari) Tesuji",
+    "description": "Dönüş hamlesiyle rakibi şaşırtma",
+    "level": 5,
+    "category": "tesuji",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 3, "y": 2, "color": "white" },
+      { "x": 4, "y": 2, "color": "white" },
+      { "x": 5, "y": 3, "color": "white" },
+      { "x": 2, "y": 3, "color": "black" },
+      { "x": 2, "y": 4, "color": "black" },
+      { "x": 3, "y": 5, "color": "black" },
+      { "x": 4, "y": 5, "color": "black" },
+      { "x": 6, "y": 4, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Magari dönüş",
+        "is_best": true,
+        "moves": [
+          { "x": 4, "y": 3, "color": "black" },
+          { "x": 3, "y": 3, "color": "white" },
+          { "x": 3, "y": 4, "color": "black" },
+          { "x": 4, "y": 4, "color": "white" },
+          { "x": 5, "y": 4, "color": "black" }
+        ],
+        "result_description": "Siyah magari dönüşüyle beyazı tuzağa düşürür. Kaçış yolu kapanır.",
+        "evaluation": "good",
+        "move_annotations": ["İlk hamle", "Beyaz karşılık", "Dönüş", "Beyaz dener", "Tuzak kapandı"]
+      },
+      {
+        "id": "B",
+        "label": "Düz kovalama",
+        "is_best": false,
+        "moves": [
+          { "x": 5, "y": 4, "color": "black" },
+          { "x": 4, "y": 3, "color": "white" }
+        ],
+        "result_description": "Siyah düz kovalar, beyaz kaçar.",
+        "evaluation": "bad",
+        "move_annotations": ["Düz", "Beyaz kurtulur"]
+      }
+    ]
+  },
+  {
+    "id": "tesuji-8",
+    "title": "Clamp Tesuji",
+    "description": "Kelepçe tesuji ile rakibi sıkıştırma",
+    "level": 2,
+    "category": "tesuji",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 3, "y": 3, "color": "white" },
+      { "x": 4, "y": 3, "color": "white" },
+      { "x": 2, "y": 3, "color": "black" },
+      { "x": 5, "y": 3, "color": "black" },
+      { "x": 3, "y": 4, "color": "black" },
+      { "x": 4, "y": 4, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Kelepçe",
+        "is_best": true,
+        "moves": [
+          { "x": 3, "y": 2, "color": "black" },
+          { "x": 4, "y": 2, "color": "white" },
+          { "x": 4, "y": 5, "color": "black" }
+        ],
+        "result_description": "Siyah kelepçe tesuji ile beyazı sıkıştırır, özgürlükleri kısıtlar.",
+        "evaluation": "good",
+        "move_annotations": ["Kelepçe!", "Beyaz karşılık", "Sıkıştırma"]
+      },
+      {
+        "id": "B",
+        "label": "Direkt kesme",
+        "is_best": false,
+        "moves": [
+          { "x": 3, "y": 2, "color": "black" },
+          { "x": 4, "y": 5, "color": "white" }
+        ],
+        "result_description": "Siyah doğrudan keser ama beyaz bağlantı kurar.",
+        "evaluation": "neutral",
+        "move_annotations": ["Basit", "Beyaz bağlanır"]
+      }
+    ]
+  },
+  {
+    "id": "tesuji-9",
+    "title": "Attachment Tesuji",
+    "description": "Temas hamlesi ile avantaj kazanma",
+    "level": 3,
+    "category": "tesuji",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 3, "y": 3, "color": "white" },
+      { "x": 2, "y": 3, "color": "black" },
+      { "x": 2, "y": 4, "color": "black" },
+      { "x": 4, "y": 4, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Temas hane",
+        "is_best": true,
+        "moves": [
+          { "x": 4, "y": 3, "color": "black" },
+          { "x": 3, "y": 2, "color": "white" },
+          { "x": 3, "y": 4, "color": "black" }
+        ],
+        "result_description": "Siyah temas hamlesiyle beyazı sıkıştırır, güçlü pozisyon elde eder.",
+        "evaluation": "good",
+        "move_annotations": ["Temas!", "Beyaz karşılık", "Kesme başarılı"]
+      },
+      {
+        "id": "B",
+        "label": "Uzaktan oynama",
+        "is_best": false,
+        "moves": [
+          { "x": 5, "y": 3, "color": "black" },
+          { "x": 3, "y": 2, "color": "white" }
+        ],
+        "result_description": "Siyah uzaktan oynar, beyaz rahatça savunur.",
+        "evaluation": "bad",
+        "move_annotations": ["Uzak", "Beyaz rahat"]
+      }
+    ]
+  },
+  {
+    "id": "tesuji-10",
+    "title": "Monkey Jump",
+    "description": "Mayın atlama tesuji ile büyük avantaj kazanma",
+    "level": 4,
+    "category": "tesuji",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 0, "color": "black" },
+      { "x": 3, "y": 0, "color": "black" },
+      { "x": 4, "y": 0, "color": "black" },
+      { "x": 2, "y": 1, "color": "white" },
+      { "x": 3, "y": 1, "color": "white" },
+      { "x": 4, "y": 1, "color": "white" },
+      { "x": 5, "y": 1, "color": "white" },
+      { "x": 1, "y": 2, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Mayın atlama",
+        "is_best": true,
+        "moves": [
+          { "x": 5, "y": 2, "color": "black" },
+          { "x": 6, "y": 1, "color": "white" },
+          { "x": 5, "y": 0, "color": "black" }
+        ],
+        "result_description": "Siyah monkey jump ile beyaz sınırına derinlemesine girer, büyük puan kazanır.",
+        "evaluation": "good",
+        "move_annotations": ["Monkey jump!", "Beyaz savunur", "Sente kazanır"]
+      },
+      {
+        "id": "B",
+        "label": "Yüzey hamlesi",
+        "is_best": false,
+        "moves": [
+          { "x": 5, "y": 0, "color": "black" },
+          { "x": 5, "y": 2, "color": "white" }
+        ],
+        "result_description": "Siyah yüzeyden oynar, beyaz savunur. Az puan kazanır.",
+        "evaluation": "neutral",
+        "move_annotations": ["Yüzey", "Beyaz savunur"]
+      }
+    ],
+    "quiz": {
+      "question": "Monkey jump hamlesi neden bu kadar güçlüdür?",
+      "correct_variation_id": "A",
+      "hint": "Derinlemesine girerek puan farkını düşünün"
+    }
+  },
+  {
+    "id": "tesuji-11",
+    "title": "Door Tesuji",
+    "description": "Kapı tesuji ile rakibi engelleme",
+    "level": 5,
+    "category": "tesuji",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 3, "y": 3, "color": "white" },
+      { "x": 4, "y": 3, "color": "white" },
+      { "x": 3, "y": 4, "color": "white" },
+      { "x": 5, "y": 4, "color": "white" },
+      { "x": 2, "y": 3, "color": "black" },
+      { "x": 2, "y": 4, "color": "black" },
+      { "x": 3, "y": 5, "color": "black" },
+      { "x": 4, "y": 5, "color": "black" },
+      { "x": 5, "y": 5, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Kapama",
+        "is_best": true,
+        "moves": [
+          { "x": 4, "y": 4, "color": "black" },
+          { "x": 5, "y": 3, "color": "white" },
+          { "x": 5, "y": 2, "color": "black" },
+          { "x": 3, "y": 2, "color": "white" },
+          { "x": 4, "y": 2, "color": "black" }
+        ],
+        "result_description": "Siyah kapı tesuji ile beyazın çıkışını kapatır, grubu tuzağa düşürür.",
+        "evaluation": "good",
+        "move_annotations": ["Kapı!", "Beyaz dener", "Siyah kapatır", "Beyaz son deneme", "Tuzak tamam"]
+      },
+      {
+        "id": "B",
+        "label": "Açık kapı",
+        "is_best": false,
+        "moves": [
+          { "x": 4, "y": 4, "color": "black" },
+          { "x": 4, "y": 2, "color": "white" }
+        ],
+        "result_description": "Siyah kapıyı kapatmaz, beyaz kaçar.",
+        "evaluation": "bad",
+        "move_annotations": ["Eksik", "Beyaz kaçar"]
+      }
+    ]
   }
 ]

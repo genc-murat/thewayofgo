@@ -1,0 +1,407 @@
+[
+  {
+    "id": "endgame-1",
+    "title": "Köşe Endgame - Sente",
+    "description": "Köşe bölgesinde sente ile puan kazanma",
+    "level": 2,
+    "category": "endgame",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 1, "y": 0, "color": "black" },
+      { "x": 2, "y": 0, "color": "black" },
+      { "x": 0, "y": 1, "color": "black" },
+      { "x": 1, "y": 1, "color": "white" },
+      { "x": 2, "y": 1, "color": "white" },
+      { "x": 0, "y": 2, "color": "black" },
+      { "x": 1, "y": 2, "color": "white" },
+      { "x": 2, "y": 2, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Sente hane",
+        "is_best": true,
+        "moves": [
+          { "x": 0, "y": 0, "color": "black" },
+          { "x": 3, "y": 0, "color": "white" },
+          { "x": 1, "y": 3, "color": "black" }
+        ],
+        "result_description": "Siyah sente ile oynar, beyaz cevap vermek zorunda kalır. Siyah 2 puan kazanır.",
+        "evaluation": "good",
+        "move_annotations": ["Sente hane", "Beyaz cevap", "Gote kazanır"]
+      },
+      {
+        "id": "B",
+        "label": "Gote oynama",
+        "is_best": false,
+        "moves": [
+          { "x": 3, "y": 1, "color": "black" },
+          { "x": 0, "y": 0, "color": "white" }
+        ],
+        "result_description": "Siyah gote oynar, beyaz sente alır ve başka yerde oynar.",
+        "evaluation": "bad",
+        "move_annotations": ["Gote hamle", "Beyaz sente alır"]
+      }
+    ],
+    "quiz": {
+      "question": "Bu endgame pozisyonunda sente nasıl kazanılır?",
+      "correct_variation_id": "A",
+      "hint": "Köşenin en iç noktasına bakın"
+    }
+  },
+  {
+    "id": "endgame-2",
+    "title": "Kenar Endgame - 1. Sıra",
+    "description": "Kenarda birinci sıra hamleleriyle puan hesaplama",
+    "level": 3,
+    "category": "endgame",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 0, "color": "black" },
+      { "x": 3, "y": 0, "color": "black" },
+      { "x": 4, "y": 0, "color": "black" },
+      { "x": 5, "y": 0, "color": "black" },
+      { "x": 6, "y": 0, "color": "black" },
+      { "x": 2, "y": 1, "color": "white" },
+      { "x": 3, "y": 1, "color": "white" },
+      { "x": 4, "y": 1, "color": "white" },
+      { "x": 5, "y": 1, "color": "white" },
+      { "x": 6, "y": 1, "color": "white" },
+      { "x": 7, "y": 0, "color": "black" },
+      { "x": 7, "y": 1, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "1-2 noktası",
+        "is_best": true,
+        "moves": [
+          { "x": 1, "y": 0, "color": "black" },
+          { "x": 1, "y": 1, "color": "white" }
+        ],
+        "result_description": "Siyah 1. sıra tamamlar, beyaz karşılık verir. Dengeli değişim.",
+        "evaluation": "good",
+        "move_annotations": ["1. sıra", "Beyaz karşılık"]
+      },
+      {
+        "id": "B",
+        "label": "Çok erken oynama",
+        "is_best": false,
+        "moves": [
+          { "x": 0, "y": 0, "color": "black" },
+          { "x": 1, "y": 0, "color": "white" }
+        ],
+        "result_description": "Siyah çok ucuza satar, beyaz daha fazla puan kazanır.",
+        "evaluation": "bad",
+        "move_annotations": ["Ucuz hamle", "Beyaz kazanır"]
+      }
+    ]
+  },
+  {
+    "id": "endgame-3",
+    "title": "Hane Endgame",
+    "description": "Rakip sınırına hane atarak puan artırma",
+    "level": 4,
+    "category": "endgame",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 3, "y": 3, "color": "black" },
+      { "x": 4, "y": 3, "color": "black" },
+      { "x": 5, "y": 3, "color": "black" },
+      { "x": 3, "y": 4, "color": "black" },
+      { "x": 5, "y": 4, "color": "black" },
+      { "x": 3, "y": 5, "color": "black" },
+      { "x": 4, "y": 5, "color": "black" },
+      { "x": 5, "y": 5, "color": "black" },
+      { "x": 6, "y": 3, "color": "white" },
+      { "x": 6, "y": 4, "color": "white" },
+      { "x": 6, "y": 5, "color": "white" },
+      { "x": 6, "y": 6, "color": "white" },
+      { "x": 5, "y": 6, "color": "white" },
+      { "x": 4, "y": 6, "color": "white" },
+      { "x": 3, "y": 6, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Hane ile sınır",
+        "is_best": true,
+        "moves": [
+          { "x": 6, "y": 2, "color": "black" },
+          { "x": 7, "y": 2, "color": "white" },
+          { "x": 2, "y": 6, "color": "black" }
+        ],
+        "result_description": "Siyah hane atarak sınırını genişletir, 4 puanlık fark yaratır.",
+        "evaluation": "good",
+        "move_annotations": ["Hane", "Beyaz savunur", "Sente"]
+      },
+      {
+        "id": "B",
+        "label": "Düz bağlantı",
+        "is_best": false,
+        "moves": [
+          { "x": 7, "y": 4, "color": "black" },
+          { "x": 7, "y": 5, "color": "white" }
+        ],
+        "result_description": "Siyah düz bağlanır ama sente kaybeder.",
+        "evaluation": "neutral",
+        "move_annotations": ["Düz hamle", "Gote"]
+      }
+    ],
+    "quiz": {
+      "question": "Bu endgame pozisyonunda en değerli hamle hangisidir?",
+      "correct_variation_id": "A",
+      "hint": "Rakibin sınırına hane düşünün"
+    }
+  },
+  {
+    "id": "endgame-4",
+    "title": "Tenyugiai - Son Hamle Yarışı",
+    "description": "Oyun sonunda sente yarışı ve değer sıralaması",
+    "level": 5,
+    "category": "endgame",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 1, "y": 1, "color": "black" },
+      { "x": 2, "y": 1, "color": "black" },
+      { "x": 1, "y": 2, "color": "black" },
+      { "x": 7, "y": 1, "color": "white" },
+      { "x": 6, "y": 1, "color": "white" },
+      { "x": 7, "y": 2, "color": "white" },
+      { "x": 1, "y": 7, "color": "black" },
+      { "x": 2, "y": 7, "color": "black" },
+      { "x": 7, "y": 7, "color": "white" },
+      { "x": 6, "y": 7, "color": "white" },
+      { "x": 0, "y": 4, "color": "black" },
+      { "x": 8, "y": 4, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Büyük endgame önce",
+        "is_best": true,
+        "moves": [
+          { "x": 0, "y": 0, "color": "black" },
+          { "x": 8, "y": 0, "color": "white" },
+          { "x": 0, "y": 8, "color": "black" },
+          { "x": 8, "y": 8, "color": "white" }
+        ],
+        "result_description": "Siyah büyük endgame hamlelerini önce oynar, toplam fark 6 puan olur.",
+        "evaluation": "good",
+        "move_annotations": ["Büyük köşe", "Karşılık", "Diğer köşe", "Son hamle"]
+      },
+      {
+        "id": "B",
+        "label": "Küçük önce oynama",
+        "is_best": false,
+        "moves": [
+          { "x": 3, "y": 1, "color": "black" },
+          { "x": 0, "y": 0, "color": "white" }
+        ],
+        "result_description": "Siyah küçük hamleyle başlar, beyaz büyük hamleyi alır.",
+        "evaluation": "bad",
+        "move_annotations": ["Küçük hamle", "Beyaz büyük alır"]
+      }
+    ]
+  },
+  {
+    "id": "endgame-5",
+    "title": "1-2 Noktası Endgame",
+    "description": "1-2 noktasında endgame tekniği",
+    "level": 2,
+    "category": "endgame",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 1, "y": 0, "color": "black" },
+      { "x": 2, "y": 0, "color": "black" },
+      { "x": 0, "y": 1, "color": "black" },
+      { "x": 1, "y": 1, "color": "white" },
+      { "x": 2, "y": 1, "color": "white" },
+      { "x": 0, "y": 2, "color": "black" },
+      { "x": 2, "y": 2, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "1-2 noktası",
+        "is_best": true,
+        "moves": [
+          { "x": 1, "y": 2, "color": "black" },
+          { "x": 0, "y": 0, "color": "white" },
+          { "x": 3, "y": 0, "color": "black" }
+        ],
+        "result_description": "Siyah 1-2 noktasına oynar, beyaz karşılık verir. Siyah 2 puan kazanır.",
+        "evaluation": "good",
+        "move_annotations": ["1-2 noktası", "Beyaz karşılık", "Sente"]
+      },
+      {
+        "id": "B",
+        "label": "Düz hamle",
+        "is_best": false,
+        "moves": [
+          { "x": 3, "y": 0, "color": "black" },
+          { "x": 1, "y": 2, "color": "white" }
+        ],
+        "result_description": "Siyah düz oynar, beyaz sente alır ve daha fazla puan kazanır.",
+        "evaluation": "bad",
+        "move_annotations": ["Düz", "Beyaz sente alır"]
+      }
+    ],
+    "quiz": {
+      "question": "Bu endgame pozisyonunda en değerli hamle hangisidir?",
+      "correct_variation_id": "A",
+      "hint": "1-2 noktasına bakın"
+    }
+  },
+  {
+    "id": "endgame-6",
+    "title": "2. Sıra Endgame",
+    "description": "İkinci sıra hamleleriyle puan artırma",
+    "level": 3,
+    "category": "endgame",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 1, "color": "black" },
+      { "x": 3, "y": 1, "color": "black" },
+      { "x": 4, "y": 1, "color": "black" },
+      { "x": 2, "y": 2, "color": "white" },
+      { "x": 3, "y": 2, "color": "white" },
+      { "x": 4, "y": 2, "color": "white" },
+      { "x": 5, "y": 1, "color": "black" },
+      { "x": 5, "y": 2, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "2. sıra hane",
+        "is_best": true,
+        "moves": [
+          { "x": 1, "y": 1, "color": "black" },
+          { "x": 1, "y": 2, "color": "white" },
+          { "x": 6, "y": 1, "color": "black" }
+        ],
+        "result_description": "Siyah 2. sıradan hane atar, beyaz karşılık verir. Siyah 3 puan kazanır.",
+        "evaluation": "good",
+        "move_annotations": ["2. sıra", "Beyaz karşılık", "Sente"]
+      },
+      {
+        "id": "B",
+        "label": "1. sıra",
+        "is_best": false,
+        "moves": [
+          { "x": 1, "y": 0, "color": "black" },
+          { "x": 6, "y": 0, "color": "white" }
+        ],
+        "result_description": "Siyah 1. sıradan oynar, beyaz daha büyük hamleyi alır.",
+        "evaluation": "neutral",
+        "move_annotations": ["1. sıra", "Beyaz büyük alır"]
+      }
+    ]
+  },
+  {
+    "id": "endgame-7",
+    "title": "Köşe Bağlantısı Endgame",
+    "description": "Köşe bağlantısı ile puan artırma",
+    "level": 4,
+    "category": "endgame",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 0, "y": 0, "color": "black" },
+      { "x": 1, "y": 0, "color": "black" },
+      { "x": 0, "y": 1, "color": "black" },
+      { "x": 2, "y": 1, "color": "white" },
+      { "x": 1, "y": 2, "color": "white" },
+      { "x": 2, "y": 2, "color": "white" },
+      { "x": 0, "y": 3, "color": "black" },
+      { "x": 3, "y": 0, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Köşe bağlantı",
+        "is_best": true,
+        "moves": [
+          { "x": 1, "y": 1, "color": "black" },
+          { "x": 2, "y": 0, "color": "white" },
+          { "x": 0, "y": 2, "color": "black" }
+        ],
+        "result_description": "Siyah köşe bağlantısını kurar, toprak güvence altına alınır. 4 puanlık fark.",
+        "evaluation": "good",
+        "move_annotations": ["Bağlantı", "Beyaz karşılık", "Köşe tamamlandı"]
+      },
+      {
+        "id": "B",
+        "label": "Düz sınır",
+        "is_best": false,
+        "moves": [
+          { "x": 2, "y": 0, "color": "black" },
+          { "x": 1, "y": 1, "color": "white" }
+        ],
+        "result_description": "Siyah düz oynar, beyaz köşeye sızar.",
+        "evaluation": "bad",
+        "move_annotations": ["Düz", "Beyaz sızar"]
+      }
+    ],
+    "quiz": {
+      "question": "Bu endgame'de köşe bağlantısını nasıl kurarsınız?",
+      "correct_variation_id": "A",
+      "hint": "İç köşeye bakın"
+    }
+  },
+  {
+    "id": "endgame-8",
+    "title": "Komplex Sente/Gote Yarışı",
+    "description": "Karmaşık sente/gote dengesi ile oyun sonu",
+    "level": 5,
+    "category": "endgame",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 1, "y": 1, "color": "black" },
+      { "x": 2, "y": 1, "color": "black" },
+      { "x": 1, "y": 2, "color": "black" },
+      { "x": 7, "y": 1, "color": "white" },
+      { "x": 6, "y": 1, "color": "white" },
+      { "x": 7, "y": 2, "color": "white" },
+      { "x": 1, "y": 7, "color": "black" },
+      { "x": 2, "y": 7, "color": "black" },
+      { "x": 7, "y": 7, "color": "white" },
+      { "x": 6, "y": 7, "color": "white" },
+      { "x": 0, "y": 4, "color": "black" },
+      { "x": 8, "y": 4, "color": "white" },
+      { "x": 3, "y": 3, "color": "black" },
+      { "x": 5, "y": 5, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Doğru sente sırası",
+        "is_best": true,
+        "moves": [
+          { "x": 0, "y": 0, "color": "black" },
+          { "x": 8, "y": 0, "color": "white" },
+          { "x": 0, "y": 8, "color": "black" },
+          { "x": 8, "y": 8, "color": "white" },
+          { "x": 3, "y": 1, "color": "black" },
+          { "x": 5, "y": 7, "color": "white" }
+        ],
+        "result_description": "Siyah doğru sırayla sente hamlelerini oynar, toplam fark 8 puan olur.",
+        "evaluation": "good",
+        "move_annotations": ["Büyük köşe", "Karşılık", "Diğer köşe", "Karşılık", "Orta değer", "Son hamle"]
+      },
+      {
+        "id": "B",
+        "label": "Yanlış sıralama",
+        "is_best": false,
+        "moves": [
+          { "x": 3, "y": 1, "color": "black" },
+          { "x": 0, "y": 0, "color": "white" },
+          { "x": 5, "y": 7, "color": "black" },
+          { "x": 8, "y": 8, "color": "white" }
+        ],
+        "result_description": "Siyah yanlış sıralama yapar, beyaz büyük hamleleri alır. Fark sadece 2 puan.",
+        "evaluation": "bad",
+        "move_annotations": ["Küçük önce", "Beyaz büyük alır", "Devam", "Beyaz son büyük"]
+      }
+    ]
+  }
+]

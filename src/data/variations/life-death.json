@@ -7,33 +7,81 @@
     "category": "life_death",
     "board_size": 9,
     "initial_stones": [
-      { "x": 2, "y": 2, "color": "black" },
-      { "x": 3, "y": 2, "color": "black" },
-      { "x": 4, "y": 2, "color": "black" },
-      { "x": 2, "y": 3, "color": "black" },
-      { "x": 4, "y": 3, "color": "black" },
-      { "x": 2, "y": 4, "color": "black" },
-      { "x": 3, "y": 4, "color": "black" },
-      { "x": 4, "y": 4, "color": "black" }
+      {
+        "x": 2,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 3,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 4,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 2,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 4,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 2,
+        "y": 4,
+        "color": "black"
+      },
+      {
+        "x": 3,
+        "y": 4,
+        "color": "black"
+      },
+      {
+        "x": 4,
+        "y": 4,
+        "color": "black"
+      }
     ],
     "variations": [
       {
         "id": "A",
         "label": "Merkez göz",
         "is_best": true,
-        "moves": [{ "x": 3, "y": 3, "color": "black" }],
+        "moves": [
+          {
+            "x": 3,
+            "y": 3,
+            "color": "black"
+          }
+        ],
         "result_description": "Siyah iki göz oluşturur, grup canlı kalır.",
         "evaluation": "good",
-        "move_annotations": ["İki göz oluştu"]
+        "move_annotations": [
+          "İki göz oluştu"
+        ]
       },
       {
         "id": "B",
         "label": "Dış nokta",
         "is_best": false,
-        "moves": [{ "x": 5, "y": 3, "color": "black" }],
+        "moves": [
+          {
+            "x": 5,
+            "y": 3,
+            "color": "black"
+          }
+        ],
         "result_description": "Siyah tek göz yapar, beyaz 3,3'e oynarsa öldürebilir.",
         "evaluation": "bad",
-        "move_annotations": ["Yanlış nokta"]
+        "move_annotations": [
+          "Yanlış nokta"
+        ]
       }
     ],
     "quiz": {
@@ -50,19 +98,71 @@
     "category": "life_death",
     "board_size": 9,
     "initial_stones": [
-      { "x": 1, "y": 1, "color": "white" },
-      { "x": 2, "y": 1, "color": "white" },
-      { "x": 3, "y": 1, "color": "white" },
-      { "x": 1, "y": 2, "color": "white" },
-      { "x": 3, "y": 2, "color": "white" },
-      { "x": 1, "y": 3, "color": "white" },
-      { "x": 2, "y": 3, "color": "white" },
-      { "x": 0, "y": 2, "color": "black" },
-      { "x": 2, "y": 0, "color": "black" },
-      { "x": 4, "y": 0, "color": "black" },
-      { "x": 4, "y": 2, "color": "black" },
-      { "x": 0, "y": 4, "color": "black" },
-      { "x": 2, "y": 4, "color": "black" }
+      {
+        "x": 1,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 1,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 1,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 0,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 2,
+        "y": 0,
+        "color": "black"
+      },
+      {
+        "x": 4,
+        "y": 0,
+        "color": "black"
+      },
+      {
+        "x": 4,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 0,
+        "y": 4,
+        "color": "black"
+      },
+      {
+        "x": 2,
+        "y": 4,
+        "color": "black"
+      }
     ],
     "variations": [
       {
@@ -70,22 +170,46 @@
         "label": "Vital point",
         "is_best": true,
         "moves": [
-          { "x": 2, "y": 2, "color": "black" },
-          { "x": 3, "y": 3, "color": "white" },
-          { "x": 1, "y": 1, "color": "black" }
+          {
+            "x": 2,
+            "y": 2,
+            "color": "black"
+          },
+          {
+            "x": 3,
+            "y": 3,
+            "color": "white"
+          },
+          {
+            "x": 1,
+            "y": 1,
+            "color": "black"
+          }
         ],
         "result_description": "Siyah vital noktaya oynar, beyaz tek göz yapamaz.",
         "evaluation": "good",
-        "move_annotations": ["Vital nokta", "Beyaz dener", "Siyah kapar"]
+        "move_annotations": [
+          "Vital nokta",
+          "Beyaz dener",
+          "Siyah kapar"
+        ]
       },
       {
         "id": "B",
         "label": "Dışarıdan saldırı",
         "is_best": false,
-        "moves": [{ "x": 4, "y": 4, "color": "black" }],
+        "moves": [
+          {
+            "x": 4,
+            "y": 4,
+            "color": "black"
+          }
+        ],
         "result_description": "Siyah dışarıdan oynar, beyaz 2,2'ye oynayarak yaşar.",
         "evaluation": "bad",
-        "move_annotations": ["Etkisiz"]
+        "move_annotations": [
+          "Etkisiz"
+        ]
       }
     ]
   },
@@ -97,20 +221,76 @@
     "category": "life_death",
     "board_size": 9,
     "initial_stones": [
-      { "x": 0, "y": 0, "color": "white" },
-      { "x": 1, "y": 0, "color": "white" },
-      { "x": 2, "y": 0, "color": "white" },
-      { "x": 0, "y": 1, "color": "white" },
-      { "x": 2, "y": 1, "color": "white" },
-      { "x": 0, "y": 2, "color": "white" },
-      { "x": 1, "y": 2, "color": "white" },
-      { "x": 2, "y": 2, "color": "white" },
-      { "x": 3, "y": 0, "color": "black" },
-      { "x": 3, "y": 1, "color": "black" },
-      { "x": 3, "y": 2, "color": "black" },
-      { "x": 0, "y": 3, "color": "black" },
-      { "x": 1, "y": 3, "color": "black" },
-      { "x": 2, "y": 3, "color": "black" }
+      {
+        "x": 0,
+        "y": 0,
+        "color": "white"
+      },
+      {
+        "x": 1,
+        "y": 0,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 0,
+        "color": "white"
+      },
+      {
+        "x": 0,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 0,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 1,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 0,
+        "color": "black"
+      },
+      {
+        "x": 3,
+        "y": 1,
+        "color": "black"
+      },
+      {
+        "x": 3,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 0,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 1,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 2,
+        "y": 3,
+        "color": "black"
+      }
     ],
     "variations": [
       {
@@ -118,25 +298,52 @@
         "label": "Beyaz oynar",
         "is_best": true,
         "moves": [
-          { "x": 1, "y": 1, "color": "white" },
-          { "x": 3, "y": 3, "color": "black" },
-          { "x": 3, "y": 3, "color": "white" },
-          { "x": 1, "y": 1, "color": "black" }
+          {
+            "x": 1,
+            "y": 1,
+            "color": "white"
+          },
+          {
+            "x": 3,
+            "y": 3,
+            "color": "black"
+          },
+          {
+            "x": 3,
+            "y": 3,
+            "color": "white"
+          },
+          {
+            "x": 1,
+            "y": 1,
+            "color": "black"
+          }
         ],
         "result_description": "Bu bent four pozisyonudur. Siyah önce oynarsa beyaz ölür, beyaz önce oynarsa bent four sebebiyle ölüdür.",
         "evaluation": "neutral",
-        "move_annotations": ["Beyaz oynar", "Siyah kapar", "Ko", "Bent four"]
+        "move_annotations": [
+          "Beyaz oynar",
+          "Siyah kapar",
+          "Ko",
+          "Bent four"
+        ]
       },
       {
         "id": "B",
         "label": "Siyah oynar",
         "is_best": true,
         "moves": [
-          { "x": 1, "y": 1, "color": "black" }
+          {
+            "x": 1,
+            "y": 1,
+            "color": "black"
+          }
         ],
         "result_description": "Siyah vital noktaya oynar, beyaz ölür.",
         "evaluation": "good",
-        "move_annotations": ["Vital nokta - ölüm"]
+        "move_annotations": [
+          "Vital nokta - ölüm"
+        ]
       }
     ]
   },
@@ -148,23 +355,91 @@
     "category": "life_death",
     "board_size": 9,
     "initial_stones": [
-      { "x": 2, "y": 1, "color": "white" },
-      { "x": 3, "y": 1, "color": "white" },
-      { "x": 4, "y": 1, "color": "white" },
-      { "x": 2, "y": 2, "color": "white" },
-      { "x": 4, "y": 2, "color": "white" },
-      { "x": 2, "y": 3, "color": "white" },
-      { "x": 3, "y": 3, "color": "white" },
-      { "x": 4, "y": 3, "color": "white" },
-      { "x": 1, "y": 1, "color": "black" },
-      { "x": 1, "y": 2, "color": "black" },
-      { "x": 1, "y": 3, "color": "black" },
-      { "x": 5, "y": 1, "color": "black" },
-      { "x": 5, "y": 2, "color": "black" },
-      { "x": 5, "y": 3, "color": "black" },
-      { "x": 2, "y": 4, "color": "black" },
-      { "x": 3, "y": 4, "color": "black" },
-      { "x": 4, "y": 4, "color": "black" }
+      {
+        "x": 2,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 1,
+        "y": 1,
+        "color": "black"
+      },
+      {
+        "x": 1,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 1,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 1,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 2,
+        "y": 4,
+        "color": "black"
+      },
+      {
+        "x": 3,
+        "y": 4,
+        "color": "black"
+      },
+      {
+        "x": 4,
+        "y": 4,
+        "color": "black"
+      }
     ],
     "variations": [
       {
@@ -172,22 +447,1237 @@
         "label": "Merkez saldırı",
         "is_best": true,
         "moves": [
-          { "x": 3, "y": 2, "color": "black" },
-          { "x": 2, "y": 2, "color": "white" },
-          { "x": 3, "y": 3, "color": "black" }
+          {
+            "x": 3,
+            "y": 2,
+            "color": "black"
+          },
+          {
+            "x": 2,
+            "y": 2,
+            "color": "white"
+          },
+          {
+            "x": 3,
+            "y": 3,
+            "color": "black"
+          }
         ],
         "result_description": "Siyah merkez vital noktaya oynar, bulky five ölür.",
         "evaluation": "good",
-        "move_annotations": ["Vital nokta", "Beyaz karşılık", "Ölüm"]
+        "move_annotations": [
+          "Vital nokta",
+          "Beyaz karşılık",
+          "Ölüm"
+        ]
       },
       {
         "id": "B",
         "label": "Dışarıdan",
         "is_best": false,
-        "moves": [{ "x": 3, "y": 0, "color": "black" }],
+        "moves": [
+          {
+            "x": 3,
+            "y": 0,
+            "color": "black"
+          }
+        ],
         "result_description": "Siyah dışarıdan oynar, beyaz merkeze oynayarak yaşar.",
         "evaluation": "bad",
-        "move_annotations": ["Etkisiz - beyaz yaşar"]
+        "move_annotations": [
+          "Etkisiz - beyaz yaşar"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "life-5",
+    "title": "Straight Four",
+    "description": "Dört noktalık düz şekil - yaşama tekniği",
+    "level": 3,
+    "category": "life_death",
+    "board_size": 9,
+    "initial_stones": [
+      {
+        "x": 2,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 1,
+        "y": 1,
+        "color": "black"
+      },
+      {
+        "x": 1,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 1,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 1,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 3,
+        "color": "black"
+      }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Merkez göz",
+        "is_best": true,
+        "moves": [
+          {
+            "x": 3,
+            "y": 2,
+            "color": "white"
+          },
+          {
+            "x": 3,
+            "y": 2,
+            "color": "black"
+          }
+        ],
+        "result_description": "Beyaz merkeze oynar, iki göz oluşturur ve yaşar.",
+        "evaluation": "good",
+        "move_annotations": [
+          "Vital nokta",
+          "İki göz oluştu"
+        ]
+      },
+      {
+        "id": "B",
+        "label": "Yan nokta",
+        "is_best": false,
+        "moves": [
+          {
+            "x": 2,
+            "y": 2,
+            "color": "white"
+          },
+          {
+            "x": 3,
+            "y": 2,
+            "color": "black"
+          }
+        ],
+        "result_description": "Beyaz yan noktaya oynar, siyah vital noktayı kapar.",
+        "evaluation": "bad",
+        "move_annotations": [
+          "Yanlış nokta",
+          "Siyah kapar"
+        ]
+      }
+    ],
+    "quiz": {
+      "question": "Straight four pozisyonunda beyaz nasıl yaşar?",
+      "correct_variation_id": "A",
+      "hint": "Merkezdeki tek boş noktaya bakın"
+    }
+  },
+  {
+    "id": "life-6",
+    "title": "Rabbity Six",
+    "description": "Altı noktalık tavşan şekli - öldürme tekniği",
+    "level": 4,
+    "category": "life_death",
+    "board_size": 9,
+    "initial_stones": [
+      {
+        "x": 2,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 1,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 5,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 1,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 5,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 4,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 4,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 4,
+        "color": "white"
+      },
+      {
+        "x": 1,
+        "y": 1,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 1,
+        "color": "black"
+      },
+      {
+        "x": 0,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 6,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 0,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 6,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 1,
+        "y": 4,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 4,
+        "color": "black"
+      }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Vital nokta",
+        "is_best": true,
+        "moves": [
+          {
+            "x": 3,
+            "y": 2,
+            "color": "black"
+          },
+          {
+            "x": 2,
+            "y": 2,
+            "color": "white"
+          },
+          {
+            "x": 3,
+            "y": 3,
+            "color": "black"
+          },
+          {
+            "x": 4,
+            "y": 3,
+            "color": "white"
+          },
+          {
+            "x": 2,
+            "y": 3,
+            "color": "black"
+          }
+        ],
+        "result_description": "Siyah vital noktaya oynar, beyaz tek göz yapamaz. Grup ölür.",
+        "evaluation": "good",
+        "move_annotations": [
+          "Vital nokta",
+          "Beyaz dener",
+          "Siyah devam",
+          "Beyaz son deneme",
+          "Ölüm"
+        ]
+      },
+      {
+        "id": "B",
+        "label": "Dışarıdan",
+        "is_best": false,
+        "moves": [
+          {
+            "x": 3,
+            "y": 0,
+            "color": "black"
+          },
+          {
+            "x": 3,
+            "y": 2,
+            "color": "white"
+          }
+        ],
+        "result_description": "Siyah dışarıdan oynar, beyaz vital noktayı alır ve yaşar.",
+        "evaluation": "bad",
+        "move_annotations": [
+          "Etkisiz",
+          "Beyaz yaşar"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "life-7",
+    "title": "L-Shape Öldürme",
+    "description": "L şeklindeki grubu öldürme tekniği",
+    "level": 4,
+    "category": "life_death",
+    "board_size": 9,
+    "initial_stones": [
+      {
+        "x": 2,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 4,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 4,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 4,
+        "color": "white"
+      },
+      {
+        "x": 1,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 1,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 1,
+        "y": 4,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 4,
+        "color": "black"
+      },
+      {
+        "x": 2,
+        "y": 5,
+        "color": "black"
+      },
+      {
+        "x": 3,
+        "y": 5,
+        "color": "black"
+      },
+      {
+        "x": 4,
+        "y": 5,
+        "color": "black"
+      }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Bent four öldürme",
+        "is_best": true,
+        "moves": [
+          {
+            "x": 3,
+            "y": 3,
+            "color": "black"
+          },
+          {
+            "x": 2,
+            "y": 3,
+            "color": "white"
+          },
+          {
+            "x": 3,
+            "y": 4,
+            "color": "black"
+          }
+        ],
+        "result_description": "Siyah merkeze oynar, beyaz bent four düşer ve ölür.",
+        "evaluation": "good",
+        "move_annotations": [
+          "Merkez",
+          "Beyaz dener",
+          "Ölüm"
+        ]
+      },
+      {
+        "id": "B",
+        "label": "Köşeden saldırı",
+        "is_best": false,
+        "moves": [
+          {
+            "x": 2,
+            "y": 1,
+            "color": "black"
+          },
+          {
+            "x": 3,
+            "y": 3,
+            "color": "white"
+          }
+        ],
+        "result_description": "Siyah köşeden saldırır, beyaz merkezde göz yapar.",
+        "evaluation": "bad",
+        "move_annotations": [
+          "Yanlış saldırı",
+          "Beyaz yaşar"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "life-8",
+    "title": "Under the Stones Yaşama",
+    "description": "Altına girerek rakip grubu öldürme",
+    "level": 5,
+    "category": "life_death",
+    "board_size": 9,
+    "initial_stones": [
+      {
+        "x": 1,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 1,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 0,
+        "y": 1,
+        "color": "black"
+      },
+      {
+        "x": 0,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 3,
+        "y": 1,
+        "color": "black"
+      },
+      {
+        "x": 1,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 3,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 2,
+        "y": 4,
+        "color": "black"
+      }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Under the stones",
+        "is_best": true,
+        "moves": [
+          {
+            "x": 2,
+            "y": 2,
+            "color": "black"
+          },
+          {
+            "x": 1,
+            "y": 1,
+            "color": "white"
+          },
+          {
+            "x": 1,
+            "y": 2,
+            "color": "black"
+          }
+        ],
+        "result_description": "Siyah beyaz taşların altına girer, beyaz tek göz yapamaz ve ölür.",
+        "evaluation": "good",
+        "move_annotations": [
+          "Altına girme",
+          "Beyaz dener",
+          "Ölüm kesin"
+        ]
+      },
+      {
+        "id": "B",
+        "label": "Dışarıdan kuşatma",
+        "is_best": false,
+        "moves": [
+          {
+            "x": 4,
+            "y": 1,
+            "color": "black"
+          },
+          {
+            "x": 2,
+            "y": 2,
+            "color": "white"
+          }
+        ],
+        "result_description": "Siyah dışarıdan kuşatır, beyaz iki göz yapar.",
+        "evaluation": "bad",
+        "move_annotations": [
+          "Zayıf kuşatma",
+          "Beyaz yaşar"
+        ]
+      }
+    ],
+    "quiz": {
+      "question": "Bu grupta under the stones tekniği nasıl uygulanır?",
+      "correct_variation_id": "A",
+      "hint": "Beyaz taşların arasına girin"
+    }
+  },
+  {
+    "id": "life-9",
+    "title": "T-Shape Yaşama",
+    "description": "T şeklindeki grubu yaşama tekniği",
+    "level": 2,
+    "category": "life_death",
+    "board_size": 9,
+    "initial_stones": [
+      {
+        "x": 2,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 1,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 2,
+        "y": 1,
+        "color": "black"
+      },
+      {
+        "x": 4,
+        "y": 1,
+        "color": "black"
+      },
+      {
+        "x": 2,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 4,
+        "y": 3,
+        "color": "black"
+      }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Merkez göz",
+        "is_best": true,
+        "moves": [
+          {
+            "x": 3,
+            "y": 3,
+            "color": "white"
+          },
+          {
+            "x": 3,
+            "y": 1,
+            "color": "black"
+          }
+        ],
+        "result_description": "Beyaz merkezde ikinci göz oluşturur, grup yaşar.",
+        "evaluation": "good",
+        "move_annotations": [
+          "İkinci göz",
+          "Yaşam garantisi"
+        ]
+      },
+      {
+        "id": "B",
+        "label": "Dış nokta",
+        "is_best": false,
+        "moves": [
+          {
+            "x": 2,
+            "y": 4,
+            "color": "white"
+          },
+          {
+            "x": 3,
+            "y": 3,
+            "color": "black"
+          }
+        ],
+        "result_description": "Beyaz dışarıdan oynar, siyah vital noktayı kapar. Grup ölür.",
+        "evaluation": "bad",
+        "move_annotations": [
+          "Yanlış nokta",
+          "Siyah kapar - ölüm"
+        ]
+      }
+    ],
+    "quiz": {
+      "question": "T-shape grubunu yaşatmak için nereye oynamalı?",
+      "correct_variation_id": "A",
+      "hint": "Merkezdeki boş noktaya bakın"
+    }
+  },
+  {
+    "id": "life-10",
+    "title": "Rectangular Six Öldürme",
+    "description": "Altı noktalık dikdörtgen grubu öldürme tekniği",
+    "level": 3,
+    "category": "life_death",
+    "board_size": 9,
+    "initial_stones": [
+      {
+        "x": 2,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 1,
+        "y": 1,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 1,
+        "color": "black"
+      },
+      {
+        "x": 1,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 1,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 2,
+        "y": 0,
+        "color": "black"
+      },
+      {
+        "x": 4,
+        "y": 0,
+        "color": "black"
+      },
+      {
+        "x": 2,
+        "y": 4,
+        "color": "black"
+      },
+      {
+        "x": 3,
+        "y": 4,
+        "color": "black"
+      },
+      {
+        "x": 4,
+        "y": 4,
+        "color": "black"
+      }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Vital nokta",
+        "is_best": true,
+        "moves": [
+          {
+            "x": 3,
+            "y": 2,
+            "color": "black"
+          },
+          {
+            "x": 2,
+            "y": 2,
+            "color": "white"
+          },
+          {
+            "x": 3,
+            "y": 3,
+            "color": "black"
+          }
+        ],
+        "result_description": "Siyah vital noktaya oynar, beyaz bent four düşer ve ölür.",
+        "evaluation": "good",
+        "move_annotations": [
+          "Vital nokta",
+          "Beyaz karşılık",
+          "Ölüm"
+        ]
+      },
+      {
+        "id": "B",
+        "label": "Dışarıdan",
+        "is_best": false,
+        "moves": [
+          {
+            "x": 3,
+            "y": 0,
+            "color": "black"
+          },
+          {
+            "x": 3,
+            "y": 2,
+            "color": "white"
+          }
+        ],
+        "result_description": "Siyah dışarıdan oynar, beyaz vital noktayı alır ve yaşar.",
+        "evaluation": "bad",
+        "move_annotations": [
+          "Etkisiz",
+          "Beyaz yaşar"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "life-11",
+    "title": "Flower Six Yaşama",
+    "description": "Altı noktalık çiçek şekli - yaşama tekniği",
+    "level": 4,
+    "category": "life_death",
+    "board_size": 9,
+    "initial_stones": [
+      {
+        "x": 2,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 1,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 5,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 1,
+        "y": 1,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 1,
+        "color": "black"
+      },
+      {
+        "x": 0,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 6,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 1,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 3,
+        "color": "black"
+      }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Merkez gözler",
+        "is_best": true,
+        "moves": [
+          {
+            "x": 2,
+            "y": 2,
+            "color": "white"
+          },
+          {
+            "x": 4,
+            "y": 2,
+            "color": "black"
+          },
+          {
+            "x": 3,
+            "y": 3,
+            "color": "white"
+          }
+        ],
+        "result_description": "Beyaz merkezde iki göz oluşturur, flower six yaşar.",
+        "evaluation": "good",
+        "move_annotations": [
+          "Göz",
+          "Siyah kapar",
+          "İkinci göz - yaşam"
+        ]
+      },
+      {
+        "id": "B",
+        "label": "Yanlış göz",
+        "is_best": false,
+        "moves": [
+          {
+            "x": 3,
+            "y": 2,
+            "color": "white"
+          },
+          {
+            "x": 2,
+            "y": 2,
+            "color": "black"
+          }
+        ],
+        "result_description": "Beyaz yanlış noktaya oynar, siyah vital noktayı kapar. Tek göz kalır.",
+        "evaluation": "bad",
+        "move_annotations": [
+          "Yanlış nokta",
+          "Siyah kapar - ölüm"
+        ]
+      }
+    ],
+    "quiz": {
+      "question": "Flower Six pozisyonunda beyaz nasıl yaşar?",
+      "correct_variation_id": "A",
+      "hint": "Doğru göz sıralaması önemli"
+    }
+  },
+  {
+    "id": "life-12",
+    "title": "Cloud Nine Öldürme",
+    "description": "Dokuz noktalık bulut şekli - öldürme tekniği",
+    "level": 5,
+    "category": "life_death",
+    "board_size": 9,
+    "initial_stones": [
+      {
+        "x": 2,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 1,
+        "color": "white"
+      },
+      {
+        "x": 1,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 5,
+        "y": 2,
+        "color": "white"
+      },
+      {
+        "x": 1,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 5,
+        "y": 3,
+        "color": "white"
+      },
+      {
+        "x": 2,
+        "y": 4,
+        "color": "white"
+      },
+      {
+        "x": 3,
+        "y": 4,
+        "color": "white"
+      },
+      {
+        "x": 4,
+        "y": 4,
+        "color": "white"
+      },
+      {
+        "x": 1,
+        "y": 1,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 1,
+        "color": "black"
+      },
+      {
+        "x": 0,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 6,
+        "y": 2,
+        "color": "black"
+      },
+      {
+        "x": 0,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 6,
+        "y": 3,
+        "color": "black"
+      },
+      {
+        "x": 1,
+        "y": 4,
+        "color": "black"
+      },
+      {
+        "x": 5,
+        "y": 4,
+        "color": "black"
+      },
+      {
+        "x": 2,
+        "y": 0,
+        "color": "black"
+      },
+      {
+        "x": 4,
+        "y": 0,
+        "color": "black"
+      },
+      {
+        "x": 2,
+        "y": 5,
+        "color": "black"
+      },
+      {
+        "x": 3,
+        "y": 5,
+        "color": "black"
+      },
+      {
+        "x": 4,
+        "y": 5,
+        "color": "black"
+      }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Vital nokta saldırısı",
+        "is_best": true,
+        "moves": [
+          {
+            "x": 3,
+            "y": 2,
+            "color": "black"
+          },
+          {
+            "x": 2,
+            "y": 2,
+            "color": "white"
+          },
+          {
+            "x": 3,
+            "y": 3,
+            "color": "black"
+          },
+          {
+            "x": 4,
+            "y": 3,
+            "color": "white"
+          },
+          {
+            "x": 2,
+            "y": 3,
+            "color": "black"
+          },
+          {
+            "x": 4,
+            "y": 2,
+            "color": "white"
+          },
+          {
+            "x": 3,
+            "y": 4,
+            "color": "black"
+          }
+        ],
+        "result_description": "Siyah vital noktaları sırayla vurur, cloud nine tek göz yapamaz ve ölür.",
+        "evaluation": "good",
+        "move_annotations": [
+          "Vital nokta",
+          "Beyaz karşılık",
+          "Devam",
+          "Beyaz dener",
+          "Siyah devam",
+          "Beyaz son deneme",
+          "Ölüm"
+        ]
+      },
+      {
+        "id": "B",
+        "label": "Dışarıdan kuşatma",
+        "is_best": false,
+        "moves": [
+          {
+            "x": 3,
+            "y": 0,
+            "color": "black"
+          },
+          {
+            "x": 3,
+            "y": 2,
+            "color": "white"
+          }
+        ],
+        "result_description": "Siyah dışarıdan oynar, beyaz vital noktayı alır ve yaşar.",
+        "evaluation": "bad",
+        "move_annotations": [
+          "Etkisiz",
+          "Beyaz yaşar"
+        ]
       }
     ]
   }

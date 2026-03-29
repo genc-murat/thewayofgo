@@ -82,5 +82,334 @@
         "move_annotations": ["Köşe oyunu", "Eşit köşe"]
       }
     ]
+  },
+  {
+    "id": "fuseki-3",
+    "title": "Komoku Açılış",
+    "description": "3-4 noktasından açılış varyantları",
+    "level": 2,
+    "category": "fuseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Karşı köşe yaklaşım",
+        "is_best": true,
+        "moves": [
+          { "x": 6, "y": 6, "color": "white" },
+          { "x": 6, "y": 2, "color": "black" },
+          { "x": 2, "y": 6, "color": "white" }
+        ],
+        "result_description": "Beyaz karşı köşeye yaklaşır, siyah diğer köşeyi alır. Dengeli oyun.",
+        "evaluation": "good",
+        "move_annotations": ["Karşı köşe", "Siyah köşe", "Beyaz köşe"]
+      },
+      {
+        "id": "B",
+        "label": "Yanlış nokta",
+        "is_best": false,
+        "moves": [
+          { "x": 4, "y": 4, "color": "white" },
+          { "x": 6, "y": 4, "color": "black" }
+        ],
+        "result_description": "Beyaz merkeze oynar, siyah kenara oynar. Beyaz etkisiz kalır.",
+        "evaluation": "bad",
+        "move_annotations": ["Merkez erken", "Kenar"]
+      }
+    ]
+  },
+  {
+    "id": "fuseki-4",
+    "title": "Sansan Açılış",
+    "description": "3-3 noktasından açılış stratejisi",
+    "level": 3,
+    "category": "fuseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 6, "y": 6, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Çapraz köşe",
+        "is_best": true,
+        "moves": [
+          { "x": 6, "y": 2, "color": "black" },
+          { "x": 2, "y": 6, "color": "white" },
+          { "x": 4, "y": 4, "color": "black" }
+        ],
+        "result_description": "Siyah çapraz köşeyi alır, merkez hakimiyeti kurar.",
+        "evaluation": "good",
+        "move_annotations": ["Çapraz", "Karşılık", "Merkez"]
+      },
+      {
+        "id": "B",
+        "label": "Köşe kopyası",
+        "is_best": false,
+        "moves": [
+          { "x": 2, "y": 6, "color": "black" },
+          { "x": 6, "y": 2, "color": "white" }
+        ],
+        "result_description": "Siyah yakın köşeye oynar, beyaz karşılık verir. Dengeli ama sıkıcı.",
+        "evaluation": "neutral",
+        "move_annotations": ["Yakın köşe", "Karşılık"]
+      }
+    ]
+  },
+  {
+    "id": "fuseki-5",
+    "title": "Chinese Fuseki",
+    "description": "Çin açılışı ile büyük alan stratejisi",
+    "level": 4,
+    "category": "fuseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 4, "color": "black" },
+      { "x": 4, "y": 2, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Çin açılışı",
+        "is_best": true,
+        "moves": [
+          { "x": 6, "y": 2, "color": "white" },
+          { "x": 2, "y": 6, "color": "black" },
+          { "x": 6, "y": 6, "color": "white" },
+          { "x": 4, "y": 4, "color": "black" }
+        ],
+        "result_description": "Siyah kanat taşlarıyla büyük alan (moyo) oluşturur, merkezi kontrol eder.",
+        "evaluation": "good",
+        "move_annotations": ["Beyaz köşe", "Kanat", "Beyaz köşe", "Merkez"]
+      },
+      {
+        "id": "B",
+        "label": "Erken merkez",
+        "is_best": false,
+        "moves": [
+          { "x": 4, "y": 4, "color": "black" },
+          { "x": 2, "y": 2, "color": "white" }
+        ],
+        "result_description": "Siyah erken merkeze oynar, beyaz köşeleri alır.",
+        "evaluation": "neutral",
+        "move_annotations": ["Erken merkez", "Köşe alındı"]
+      }
+    ],
+    "quiz": {
+      "question": "Çin açılışında siyahın ana stratejisi nedir?",
+      "correct_variation_id": "A",
+      "hint": "Kanat taşlarıyla alan oluşturun"
+    }
+  },
+  {
+    "id": "fuseki-6",
+    "title": "Sanrensei Açılış",
+    "description": "Üçlü hoshi hattı ile agresif açılış",
+    "level": 5,
+    "category": "fuseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 4, "color": "black" },
+      { "x": 4, "y": 4, "color": "black" },
+      { "x": 6, "y": 4, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Moyo genişletme",
+        "is_best": true,
+        "moves": [
+          { "x": 2, "y": 2, "color": "white" },
+          { "x": 6, "y": 6, "color": "white" },
+          { "x": 4, "y": 2, "color": "black" },
+          { "x": 4, "y": 6, "color": "white" },
+          { "x": 4, "y": 7, "color": "black" }
+        ],
+        "result_description": "Siyah üçlü hoshi hattıyla büyük moyo oluşturur. Agresif strateji.",
+        "evaluation": "good",
+        "move_annotations": ["Beyaz köşe", "Köşe", "Moyo", "Beyaz müdahale", "Genişleme"]
+      },
+      {
+        "id": "B",
+        "label": "Dördüncü köşe",
+        "is_best": false,
+        "moves": [
+          { "x": 2, "y": 6, "color": "black" },
+          { "x": 6, "y": 2, "color": "white" }
+        ],
+        "result_description": "Siyah dördüncü köşeye oynar, hattın etkisi azalır.",
+        "evaluation": "bad",
+        "move_annotations": ["Köşe", "Etki kaybı"]
+      }
+    ]
+  },
+  {
+    "id": "fuseki-7",
+    "title": "İkiz Köşe Açılışı",
+    "description": "İki köşede aynı açılış stratejisi",
+    "level": 2,
+    "category": "fuseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 6, "y": 6, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Simetrik açılış",
+        "is_best": true,
+        "moves": [
+          { "x": 4, "y": 4, "color": "white" },
+          { "x": 2, "y": 6, "color": "black" },
+          { "x": 6, "y": 2, "color": "white" }
+        ],
+        "result_description": "Siyah iki köşeyi alır, beyaz merkeze ve diğer köşelere oynar. Dengeli açılış.",
+        "evaluation": "good",
+        "move_annotations": ["Merkez", "Köşe", "Karşılık"]
+      },
+      {
+        "id": "B",
+        "label": "Aynı köşeye oynama",
+        "is_best": false,
+        "moves": [
+          { "x": 3, "y": 2, "color": "black" },
+          { "x": 4, "y": 4, "color": "white" }
+        ],
+        "result_description": "Siyah aynı köşeye oynar, boş köşeleri beyaza bırakır.",
+        "evaluation": "bad",
+        "move_annotations": ["Tek köşe", "Beyaz boş köşeleri alır"]
+      }
+    ]
+  },
+  {
+    "id": "fuseki-8",
+    "title": "Diagonal Açılış",
+    "description": "Çapraz köşe stratejisi ile açılış",
+    "level": 3,
+    "category": "fuseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 6, "y": 6, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Çapraz strateji",
+        "is_best": true,
+        "moves": [
+          { "x": 6, "y": 2, "color": "black" },
+          { "x": 2, "y": 6, "color": "white" },
+          { "x": 4, "y": 4, "color": "black" }
+        ],
+        "result_description": "Siyah çapraz köşeyi alır, merkez hakimiyeti kurar.",
+        "evaluation": "good",
+        "move_annotations": ["Çapraz", "Karşılık", "Merkez"]
+      },
+      {
+        "id": "B",
+        "label": "Yakın köşe",
+        "is_best": false,
+        "moves": [
+          { "x": 2, "y": 6, "color": "black" },
+          { "x": 6, "y": 2, "color": "white" }
+        ],
+        "result_description": "Siyah yakın köşeye oynar, beyaz merkezi kontrol eder.",
+        "evaluation": "neutral",
+        "move_annotations": ["Yakın köşe", "Beyaz merkez"]
+      }
+    ]
+  },
+  {
+    "id": "fuseki-9",
+    "title": "Mini Chinese Fuseki",
+    "description": "Mini Çin açılışı ile alan stratejisi",
+    "level": 4,
+    "category": "fuseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 4, "color": "black" },
+      { "x": 4, "y": 2, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Mini Çin",
+        "is_best": true,
+        "moves": [
+          { "x": 6, "y": 2, "color": "white" },
+          { "x": 2, "y": 6, "color": "black" },
+          { "x": 6, "y": 6, "color": "white" },
+          { "x": 4, "y": 4, "color": "black" }
+        ],
+        "result_description": "Siyah mini Çin açılışı ile sağ tarafı kontrol eder, moyo oluşturur.",
+        "evaluation": "good",
+        "move_annotations": ["Beyaz köşe", "Kanat", "Beyaz köşe", "Merkez"]
+      },
+      {
+        "id": "B",
+        "label": "Köşe savunma",
+        "is_best": false,
+        "moves": [
+          { "x": 2, "y": 2, "color": "black" },
+          { "x": 6, "y": 6, "color": "white" }
+        ],
+        "result_description": "Siyah köşeyi savunur, kanat taşları etkisiz kalır.",
+        "evaluation": "neutral",
+        "move_annotations": ["Köşe", "Etki kaybı"]
+      }
+    ],
+    "quiz": {
+      "question": "Mini Chinese fusekide siyahın hedefi nedir?",
+      "correct_variation_id": "A",
+      "hint": "Sağ tarafı kontrol edin"
+    }
+  },
+  {
+    "id": "fuseki-10",
+    "title": "Shusaku Açılış",
+    "description": "Shusaku stili açılış stratejisi",
+    "level": 5,
+    "category": "fuseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 4, "y": 4, "color": "black" },
+      { "x": 6, "y": 6, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Shusaku stili",
+        "is_best": true,
+        "moves": [
+          { "x": 6, "y": 2, "color": "white" },
+          { "x": 2, "y": 6, "color": "black" },
+          { "x": 4, "y": 2, "color": "white" },
+          { "x": 3, "y": 3, "color": "black" },
+          { "x": 5, "y": 3, "color": "white" }
+        ],
+        "result_description": "Siyah Shusaku stili açılış oynar, dengeli köşe ve merkez stratejisi kurar.",
+        "evaluation": "good",
+        "move_annotations": ["Beyaz yaklaşım", "Köşe", "Beyaz devam", "Shusaku taşı", "Beyaz karşılık"]
+      },
+      {
+        "id": "B",
+        "label": "Agresif yaklaşım",
+        "is_best": false,
+        "moves": [
+          { "x": 5, "y": 5, "color": "black" },
+          { "x": 3, "y": 3, "color": "white" }
+        ],
+        "result_description": "Siyah agresif oynar ama beyaz dengeyi kurar.",
+        "evaluation": "neutral",
+        "move_annotations": ["Agresif", "Denge"]
+      }
+    ]
   }
 ]

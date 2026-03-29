@@ -24,4 +24,5 @@ export const CATEGORY_LABELS: Record<VariationCategory, string> = {
   fuseki: 'Açılış',
   endgame: 'Oyun Sonu',
   tesuji: 'Tesuji',
+  joseki: 'Joseki',
 };
