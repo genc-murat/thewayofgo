@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getUserStats, getWeakAreas, getStreak, getDailyProgress, getDailyActivityHeatmap, getBookmarks, getAccuracyOverTime } from '../../utils/progressDb';
+import { getUserStats, getWeakAreas, getStreak, getDailyProgress, getDailyActivityHeatmap, getBookmarks, getAccuracyOverTime, getExerciseTypeStats, type ExerciseTypeStats } from '../../utils/progressDb';
 import { getTypeDisplayName, canAdvanceLevel } from '../../utils/adaptiveDifficulty';
 import type { WeakArea } from '../../utils/progressDb';
 import { useAppStore } from '../../stores/appStore';
@@ -10,6 +10,7 @@ import { ActivityHeatmap } from './ActivityHeatmap';
 import { MistakeReview } from './MistakeReview';
 import { LearningCurve } from './LearningCurve';
 import { AchievementsPanel } from './AchievementsPanel';
+import { AccuracyChart } from './AccuracyChart';
 
 interface StatsData {
   total_lessons_completed: number;
@@ -36,6 +37,7 @@ export function ProgressPage() {
   const [heatmapData, setHeatmapData] = useState<{ date: string; count: number }[]>([]);
   const [bookmarks, setBookmarks] = useState<{ item_id: string; item_type: string; created_at: string; note: string | null }[]>([]);
   const [accuracyData, setAccuracyData] = useState<{ date: string; accuracy: number }[]>([]);
+  const [exerciseTypeStats, setExerciseTypeStats] = useState<ExerciseTypeStats[]>([]);
 
   useEffect(() => {
     getUserStats().then(setStats).catch(err => console.warn('[Progress] getUserStats failed:', err));
@@ -49,6 +51,7 @@ export function ProgressPage() {
     getDailyActivityHeatmap(365).then(setHeatmapData).catch(err => console.warn('[Progress] getDailyActivityHeatmap failed:', err));
     getBookmarks().then(setBookmarks).catch(err => console.warn('[Progress] getBookmarks failed:', err));
     getAccuracyOverTime(30).then(setAccuracyData).catch(err => console.warn('[Progress] getAccuracyOverTime failed:', err));
+    getExerciseTypeStats().then(setExerciseTypeStats).catch(err => console.warn('[Progress] getExerciseTypeStats failed:', err));
   }, []);
 
   const statItems = [
@@ -143,29 +146,37 @@ export function ProgressPage() {
         </div>
       )}
 
-      {/* Daily goal */}
-      <div className="glass rounded-2xl p-6 border border-glass-border">
-        <h3 className="font-bold text-lg mb-5">Günlük Hedef</h3>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="text-center p-4 rounded-xl bg-bg-primary/40">
-            <div className="text-2xl font-bold text-accent">{daily.exercises}</div>
-            <div className="text-xs text-text-secondary">Çözülen Alıştırma</div>
-          </div>
-          <div className="text-center p-4 rounded-xl bg-bg-primary/40">
-            <div className="text-2xl font-bold text-emerald-400">{daily.lessons}</div>
-            <div className="text-xs text-text-secondary">Tamamlanan Ders</div>
-          </div>
-        </div>
-      </div>
+       {/* Daily goal */}
+       <div className="glass rounded-2xl p-6 border border-glass-border">
+         <h3 className="font-bold text-lg mb-5">Günlük Hedef</h3>
+         <div className="grid grid-cols-2 gap-4">
+           <div className="text-center p-4 rounded-xl bg-bg-primary/40">
+             <div className="text-2xl font-bold text-accent">{daily.exercises}</div>
+             <div className="text-xs text-text-secondary">Çözülen Alıştırma</div>
+           </div>
+           <div className="text-center p-4 rounded-xl bg-bg-primary/40">
+             <div className="text-2xl font-bold text-emerald-400">{daily.lessons}</div>
+             <div className="text-xs text-text-secondary">Tamamlanan Ders</div>
+           </div>
+         </div>
+       </div>
 
-      {/* Activity Heatmap */}
-      <ActivityHeatmap data={heatmapData} />
+       {/* Exercise Type Performance */}
+       <div className="glass rounded-2xl p-6 border border-glass-border">
+         <AccuracyChart data={exerciseTypeStats.map(item => ({
+           date: item.exercise_type,
+           accuracy: item.accuracy
+         }))} />
+       </div>
 
-      {/* Learning Curve */}
-      <LearningCurve data={accuracyData} />
+       {/* Activity Heatmap */}
+       <ActivityHeatmap data={heatmapData} />
 
-      {/* Mistake Review */}
-      <MistakeReview />
+       {/* Learning Curve */}
+       <LearningCurve data={accuracyData} />
+
+       {/* Mistake Review */}
+       <MistakeReview />
 
       {/* Bookmarks */}
       {bookmarks.length > 0 && (

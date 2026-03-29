@@ -9,14 +9,15 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   const { currentView, setView } = useAppStore();
 
-  const navItems = [
-    { id: 'home' as const, label: 'Ana Sayfa' },
-    { id: 'learn' as const, label: 'Öğren' },
-    { id: 'play' as const, label: 'Oyna' },
-    { id: 'exercise' as const, label: 'Alıştırma' },
-    { id: 'progress' as const, label: 'İlerleme' },
-    { id: 'settings' as const, label: 'Ayarlar' },
-  ];
+   const navItems = [
+     { id: 'home' as const, label: 'Ana Sayfa' },
+     { id: 'learn' as const, label: 'Öğren' },
+     { id: 'play' as const, label: 'Oyna' },
+     { id: 'exercise' as const, label: 'Alıştırma' },
+     { id: 'progress' as const, label: 'İlerleme' },
+     { id: 'settings' as const, label: 'Ayarlar' },
+     { id: 'openings' as const, label: 'Açılımlar' },
+   ];
 
   const icons: Record<string, React.ReactNode> = {
     home: (

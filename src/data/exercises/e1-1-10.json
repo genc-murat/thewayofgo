@@ -1,0 +1,41 @@
+{
+  "id": "e1-1-10",
+  "level": 1,
+  "module": 1,
+  "lesson": 10,
+  "type": "life_and_death",
+  "title": "İki Göz Kavramı",
+  "description": "İki göz oluşturarak grubu yaşatın - temel生命概念ı",
+  "board_size": 9,
+  "initial_stones": [
+    {
+      "x": 3,
+      "y": 3,
+      "color": "black"
+    },
+    {
+      "x": 4,
+      "y": 3,
+      "color": "black"
+    },
+    {
+      "x": 3,
+      "y": 4,
+      "color": "black"
+    }
+  ],
+  "correct_moves": [
+    {
+      "x": 4,
+      "y": 4,
+      "is_correct": true,
+      "explanation": "Doğru! 2x2 kare oluşturduğunuz için iki göz var ve grup yaşıyor."
+    }
+  ],
+  "hints": [
+    "İki ayrı boş nokta oluşturun.",
+    "Bu iki nokta birbiriyle komşu olmalı ve grup tarafından çevrili olmalı."
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

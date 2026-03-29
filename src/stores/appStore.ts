@@ -18,7 +18,7 @@ import { EXERCISE_CATALOG } from '../data/exerciseCatalog';
 
 interface AppState {
   // Navigation
-  currentView: 'home' | 'learn' | 'play' | 'exercise' | 'progress' | 'settings' | 'srs-review' | 'position-editor';
+  currentView: 'home' | 'learn' | 'play' | 'exercise' | 'progress' | 'settings' | 'srs-review' | 'position-editor' | 'openings';
   currentLevel: number;
   currentModule: number;
 
@@ -29,6 +29,7 @@ interface AppState {
   aiDifficulty: number;
   aiStyle: AIStyle;
   komi: number;
+  rule_set: string;
 
   // Lesson state
   currentLesson: Lesson | null;
@@ -61,14 +62,14 @@ interface AppState {
   setLevel: (level: number, module: number) => void;
 
   // Game actions
-  createGame: (size: number, komi?: number) => Promise<void>;
+  createGame: (size: number, komi?: number, rule_set?: string) => Promise<void>;
   placeStone: (x: number, y: number) => Promise<MoveResult | null>;
   pass: () => Promise<MoveResult | null>;
   resign: (player: string) => Promise<void>;
   aiMove: () => Promise<MoveResult | null>;
   setAiDifficulty: (level: number) => Promise<void>;
   setAiStyle: (style: AIStyle) => Promise<void>;
-  startAiGame: (size: number, difficulty: number, style?: AIStyle, komi?: number) => Promise<void>;
+  startAiGame: (size: number, difficulty: number, style?: AIStyle, komi?: number, rule_set?: string) => Promise<void>;
   undoMove: () => Promise<void>;
   getMoveHistory: () => Promise<MoveRecord[]>;
   createGameFromPosition: (
@@ -112,6 +113,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   aiDifficulty: 2,
   aiStyle: 'balanced',
   komi: 6.5,
+  rule_set: 'japanese',
 
   // Lesson state
   currentLesson: null,
@@ -145,10 +147,10 @@ export const useAppStore = create<AppState>((set, get) => ({
   setLevel: (level, module) => set({ currentLevel: level, currentModule: module }),
 
   // Game actions
-  createGame: async (size, komi) => {
+  createGame: async (size, komi, rule_set) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await invoke<GameStateResponse>('create_game', { size, komi });
+      const response = await invoke<GameStateResponse>('create_game', { size, komi, rule_set });
       set({ game: response.state, gameResult: null, isLoading: false, komi: komi ?? 6.5 });
     } catch (e) {
       set({ error: String(e), isLoading: false });
@@ -218,20 +220,22 @@ export const useAppStore = create<AppState>((set, get) => ({
     }
   },
 
-  startAiGame: async (size, difficulty, style, komi) => {
+  startAiGame: async (size, difficulty, style, komi, rule_set) => {
     const aiStyle = style || useAppStore.getState().aiStyle;
     const gameKomi = komi ?? useAppStore.getState().komi;
+    const gameRuleSet = rule_set || useAppStore.getState().rule_set;
     set({ isLoading: true, error: null, isAiGame: true });
     try {
       await invoke('set_ai_difficulty', { level: difficulty });
       await invoke('set_ai_style', { style: aiStyle });
-      const response = await invoke<GameStateResponse>('create_game', { size, komi: gameKomi });
+      const response = await invoke<GameStateResponse>('create_game', { size, komi: gameKomi, rule_set: gameRuleSet });
       set({
         game: response.state,
         gameResult: null,
         aiDifficulty: difficulty,
         aiStyle: aiStyle,
         komi: gameKomi,
+        rule_set: gameRuleSet,
         isLoading: false,
         currentView: 'play',
       });
@@ -494,5 +498,3 @@ export const useAppStore = create<AppState>((set, get) => ({
     }
   },
 }));
-
-

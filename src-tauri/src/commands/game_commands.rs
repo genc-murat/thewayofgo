@@ -26,9 +26,15 @@ pub struct GameStateResponse {
 }
 
 #[tauri::command]
-pub fn create_game(state: State<AppState>, size: u8, komi: Option<f32>) -> Result<GameStateResponse, String> {
+pub fn create_game(state: State<AppState>, size: u8, komi: Option<f32>, rule_set: String) -> Result<GameStateResponse, String> {
     let board_size = BoardSize::from_u8(size)?;
-    let game = GoGame::new(board_size, komi.unwrap_or(6.5));
+    let rule_set_enum = match rule_set.as_str() {
+        "japanese" => RuleSet::Japanese,
+        "korean" => RuleSet::Korean,
+        "chinese" => RuleSet::Chinese,
+        _ => return Err("Invalid rule set. Must be japanese, korean, or chinese".to_string()),
+    };
+    let game = GoGame::new(board_size, komi.unwrap_or(6.5), rule_set_enum);
     let game_state = game.get_game_state();
 
     let mut guard = state.game.lock().map_err(|e| e.to_string())?;
@@ -372,6 +378,7 @@ pub fn create_game_from_position(
     komi: Option<f32>,
     black_captures: Option<u32>,
     white_captures: Option<u32>,
+    rule_set: String,
 ) -> Result<GameStateResponse, String> {
     let board_size = BoardSize::from_u8(size)?;
     let player = match current_player.as_str() {
@@ -392,6 +399,12 @@ pub fn create_game_from_position(
         })
         .collect::<Result<Vec<_>, String>>()?;
 
+    let rule_set_enum = match rule_set.as_str() {
+        "japanese" => RuleSet::Japanese,
+        "korean" => RuleSet::Korean,
+        "chinese" => RuleSet::Chinese,
+        _ => return Err("Invalid rule set. Must be japanese, korean, or chinese".to_string()),
+    };
     let game = GoGame::from_position(
         board_size,
         &parsed_stones,
@@ -399,6 +412,7 @@ pub fn create_game_from_position(
         komi.unwrap_or(6.5),
         black_captures.unwrap_or(0),
         white_captures.unwrap_or(0),
+        rule_set_enum,
     );
     let game_state = game.get_game_state();
 

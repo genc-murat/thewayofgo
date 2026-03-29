@@ -1,6 +1,6 @@
 use crate::engine::{
     game::GoGame,
-    types::{BoardSize, StoneColor},
+    types::{BoardSize, RuleSet, StoneColor},
 };
 use serde::{Deserialize, Serialize};
 
@@ -101,7 +101,7 @@ pub fn validate_exercise_move(
                 .collect();
             let board_size = BoardSize::from_u8(exercise.board_size)
                 .map_err(|e| format!("Invalid board size: {}", e))?;
-            let mut game = GoGame::from_board_state(board_size, &stones, 6.5);
+            let mut game = GoGame::from_board_state(board_size, &stones, 6.5, RuleSet::Japanese);
 
             if let Err(e) = game.place_stone(x, y) {
                 return Ok(ExerciseResult {
@@ -148,7 +148,7 @@ pub fn validate_exercise_move(
         .collect();
     let board_size = BoardSize::from_u8(exercise.board_size)
         .map_err(|e| format!("Invalid board size: {}", e))?;
-    let mut game = GoGame::from_board_state(board_size, &stones, 6.5);
+    let mut game = GoGame::from_board_state(board_size, &stones, 6.5, RuleSet::Japanese);
 
     match game.place_stone(x, y) {
         Ok(_) => Ok(ExerciseResult {

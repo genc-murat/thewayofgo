@@ -222,6 +222,23 @@ export interface StudyPlanItemData {
   completed: boolean;
 }
 
+// Joseki types
+export interface JosekiVariation {
+  name: string;
+  moves: { x: number; y: number; color: StoneColor }[];
+  explanation?: string;
+}
+
+export interface Joseki {
+  id: string;
+  name: string;
+  description: string;
+  moves: { x: number; y: number; color: StoneColor }[];
+  variations: JosekiVariation[];
+  difficulty: number;
+  stars_required: number;
+}
+
 // AI Analysis types
 export interface MoveCandidate {
   x: number;

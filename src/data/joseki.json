@@ -1,0 +1,77 @@
+{
+  "joseki": [
+    {
+      "id": "kiwi-joseki",
+      "name": "Kiwi Joseki",
+      "description": "Ünlü Kiwi Joseki kalıbı",
+      "moves": [
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 2, "y": 2, "color": "white"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 2, "y": 3, "color": "white"}
+      ],
+      "variations": [
+        {
+          "name": "Standart Kiwi",
+          "moves": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 2, "color": "white"}
+          ],
+          "explanation": "Kiwi Joseki'nin standart devamı - dengeli bir pozisyon oluşturur."
+        }
+      ],
+      "difficulty": 5,
+      "stars_required": 4
+    },
+    {
+      "id": "hoshi-joseki",
+      "name": "Hoshi Joseki",
+      "description": "Yıldız noktası Joseki",
+      "moves": [
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 3, "y": 3, "color": "white"}
+      ],
+      "variations": [
+        {
+          "name": "Kucuk Hoshi Joseki",
+          "moves": [
+            {"x": 3, "y": 4, "color": "black"},
+            {"x": 4, "y": 3, "color": "white"}
+          ],
+          "explanation": "Küçük valuteli Joseki - esnek bir pozisyon."
+        },
+        {
+          "name": "Buyuk Hoshi Joseki",
+          "moves": [
+            {"x": 5, "y": 4, "color": "black"},
+            {"x": 4, "y": 5, "color": "white"}
+          ],
+          "explanation": "Büyük valuteli Joseki - güçlü merkez etkisi."
+        }
+      ],
+      "difficulty": 4,
+      "stars_required": 3
+    },
+    {
+      "id": "komoku-joseki",
+      "name": "Komoku Joseki",
+      "description": "Köşe-yıldız Joseki",
+      "moves": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 6, "y": 6, "color": "white"}
+      ],
+      "variations": [
+        {
+          "name": "Standart Komoku",
+          "moves": [
+            {"x": 4, "y": 3, "color": "black"},
+            {"x": 5, "y": 6, "color": "white"}
+          ],
+          "explanation": "Standart Joseki devamı - alan influencia."
+        }
+      ],
+      "difficulty": 4,
+      "stars_required": 3
+    }
+  ]
+}

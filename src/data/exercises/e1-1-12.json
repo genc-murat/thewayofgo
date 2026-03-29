@@ -1,0 +1,53 @@
+{
+  "id": "e1-1-12",
+  "level": 1,
+  "module": 1,
+  "lesson": 12,
+  "type": "life_and_death",
+  "title": "İki Adımlı Yaşama",
+  "description": "İki adım ile grubu yaşatın - adım adım生命概念ı",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 4, "y": 3, "color": "black"},
+    {"x": 3, "y": 4, "color": "white"},
+    {"x": 4, "y": 4, "color": "white"}
+  ],
+  "steps": [
+    {
+      "initial_stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 3, "y": 4, "color": "white"},
+        {"x": 4, "y": 4, "color": "white"}
+      ],
+      "correct_moves": [
+        {"x": 3, "y": 5, "is_correct": true, "explanation": "İlk göz: (3,5) ile boş noktayı doldurun."}
+      ],
+      "opponent_response": [
+        {"x": 2, "y": 4, "color": "white"}
+      ],
+      "explanation": "Beyaz (2,4) ile kesme yapmaya çalışır."
+    },
+    {
+      "initial_stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 3, "y": 4, "color": "white"},
+        {"x": 4, "y": 4, "color": "white"},
+        {"x": 3, "y": 5, "color": "black"},
+        {"x": 2, "y": 4, "color": "white"}
+      ],
+      "correct_moves": [
+        {"x": 5, "y": 3, "is_correct": true, "explanation": "İkinci göz: (5,3) ile tam iki göz oluşturun!"}
+      ],
+      "explanation": "İki göz oluşturdunuz, grup artık hayatta!"
+    }
+  ],
+  "hints": [
+    "İki göz için iki adım gerekli.",
+    "Her adımda bir göz oluşturmaya çalışın."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

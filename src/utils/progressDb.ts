@@ -1,4 +1,5 @@
 import Database from '@tauri-apps/plugin-sql';
+import { getSRSStats } from './srs';
 
 let db: Database | null = null;
 let dbInitialized = false;
@@ -440,27 +441,57 @@ export async function getExerciseHistory(exerciseId: string, limit: number = 5):
   }
 }
 
+export interface ExerciseTypeStats {
+    exercise_type: string;
+    total_attempts: number;
+    correct_attempts: number;
+    accuracy: number;
+}
+
+export async function getExerciseTypeStats(): Promise<ExerciseTypeStats[]> {
+    const database = await getDb();
+
+    try {
+        const results = await database.select<{ exercise_type: string; total: number; correct: number }[]>(
+            `SELECT exercise_type, 
+                    SUM(attempts) as total,
+                    SUM(CASE WHEN correct THEN 1 ELSE 0 END) as correct
+             FROM exercise_type_stats
+             GROUP BY exercise_type`
+        );
+        return results.map(r => ({
+            exercise_type: r.exercise_type,
+            total_attempts: r.total,
+            correct_attempts: r.correct,
+            accuracy: r.total > 0 ? (r.correct / r.total) * 100 : 0
+        }));
+    } catch (err) {
+        console.warn('[progressDb] getExerciseTypeStats failed:', err);
+        return [];
+    }
+}
+
 export async function getAccuracyOverTime(days: number = 30): Promise<{ date: string; accuracy: number }[]> {
-  const database = await getDb();
-  try {
-    const results = await database.select<{ date: string; total: number; correct: number }[]>(
-      `SELECT DATE(last_attempt) as date,
-              COUNT(*) as total,
-              SUM(CASE WHEN correct THEN 1 ELSE 0 END) as correct
-       FROM exercise_type_stats
-       WHERE last_attempt >= DATE('now', '-' || $1 || ' days')
-       GROUP BY DATE(last_attempt)
-       ORDER BY date ASC`,
-      [days]
-    );
-    return results.map(r => ({
-      date: r.date,
-      accuracy: r.total > 0 ? Math.round((r.correct / r.total) * 100) : 0,
-    }));
-  } catch (err) {
-    console.warn('[progressDb] getAccuracyOverTime failed:', err);
-    return [];
-  }
+    const database = await getDb();
+    try {
+        const results = await database.select<{ date: string; total: number; correct: number }[]>(
+            `SELECT DATE(last_attempt) as date,
+                    COUNT(*) as total,
+                    SUM(CASE WHEN correct THEN 1 ELSE 0 END) as correct
+             FROM exercise_type_stats
+             WHERE last_attempt >= DATE('now', '-' || $1 || ' days')
+             GROUP BY DATE(last_attempt)
+             ORDER BY date ASC`,
+            [days]
+        );
+        return results.map(r => ({
+            date: r.date,
+            accuracy: r.total > 0 ? Math.round((r.correct / r.total) * 100) : 0,
+        }));
+    } catch (err) {
+        console.warn('[progressDb] getAccuracyOverTime failed:', err);
+        return [];
+    }
 }
 
 export interface Bookmark {
@@ -553,20 +584,24 @@ export interface Achievement {
   progress: number;
 }
 
-const ACHIEVEMENT_DEFS: { id: string; name: string; description: string; icon: string; check: (stats: UserStatsData, streak: { current: number; best: number }, srs: { total_cards: number; learned: number }) => boolean }[] = [
-  { id: 'first_lesson', name: 'İlk Adım', description: 'İlk dersi tamamla', icon: '🎓', check: (s) => s.total_lessons_completed >= 1 },
-  { id: 'first_exercise', name: 'İlk Alıştırma', description: 'İlk alıştırmayı çöz', icon: '✏️', check: (s) => s.total_exercises_completed >= 1 },
-  { id: 'streak_3', name: '3 Günlük Seri', description: '3 gün üst üste çalış', icon: '🔥', check: (_, streak) => streak.best >= 3 },
-  { id: 'streak_7', name: 'Haftalık Seri', description: '7 gün üst üste çalış', icon: '⚡', check: (_, streak) => streak.best >= 7 },
-  { id: 'streak_30', name: 'Aylık Seri', description: '30 gün üst üste çalış', icon: '🏆', check: (_, streak) => streak.best >= 30 },
-  { id: 'lessons_10', name: 'Öğrenci', description: '10 ders tamamla', icon: '📚', check: (s) => s.total_lessons_completed >= 10 },
-  { id: 'lessons_50', name: 'Bilgin', description: '50 ders tamamla', icon: '🧠', check: (s) => s.total_lessons_completed >= 50 },
-  { id: 'exercises_10', name: 'Çalışkan', description: '10 alıştırma çöz', icon: '💪', check: (s) => s.total_exercises_completed >= 10 },
-  { id: 'exercises_50', name: 'Pratik Ustası', description: '50 alıştırma çöz', icon: '🎯', check: (s) => s.total_exercises_completed >= 50 },
-  { id: 'exercises_100', name: 'Yüzde Usta', description: '100 alıştırma çöz', icon: '💯', check: (s) => s.total_exercises_completed >= 100 },
-  { id: 'stars_50', name: 'Yıldız Toplayıcı', description: '50 yıldız kazan', icon: '⭐', check: (s) => s.total_stars >= 50 },
-  { id: 'srs_10', name: 'SRS Başlangıç', description: '10 SRS kart öğren', icon: '🔄', check: (_, __, srs) => srs.learned >= 10 },
-  { id: 'srs_100', name: 'SRS Ustası', description: '100 SRS kart öğren', icon: '🎖️', check: (_, __, srs) => srs.learned >= 100 },
+const ACHIEVEMENT_DEFS: { id: string; name: string; description: string; icon: string; check: (stats: UserStatsData, streak: { current: number; best: number }, srs: { total_cards: number; learned: number }, exerciseTypeStats: ExerciseTypeStats[]) => boolean }[] = [
+  { id: 'first_lesson', name: 'İlk Adım', description: 'İlk dersi tamamla', icon: '🎓', check: (stats) => stats.total_lessons_completed >= 1 },
+  { id: 'first_exercise', name: 'İlk Alıştırma', description: 'İlk alıştırmayı çöz', icon: '✏️', check: (stats) => stats.total_exercises_completed >= 1 },
+  { id: 'streak_3', name: '3 Günlük Seri', description: '3 gün üst üte çalış', icon: '🔥', check: (_stats, streak) => streak.best >= 3 },
+  { id: 'streak_7', name: 'Haftalık Seri', description: '7 gün üst üte çalış', icon: '⚡', check: (_stats, streak) => streak.best >= 7 },
+  { id: 'streak_30', name: 'Aylık Seri', description: '30 gün üst üte çalış', icon: '🏆', check: (_stats, streak) => streak.best >= 30 },
+  { id: 'lessons_10', name: 'Öğrenci', description: '10 ders tamamla', icon: '📚', check: (stats) => stats.total_lessons_completed >= 10 },
+  { id: 'lessons_50', name: 'Bilgin', description: '50 ders tamamla', icon: '🧠', check: (stats) => stats.total_lessons_completed >= 50 },
+  { id: 'exercises_10', name: 'Çalışkan', description: '10 alıştırma çöz', icon: '💪', check: (stats) => stats.total_exercises_completed >= 10 },
+  { id: 'exercises_50', name: 'Pratik Ustası', description: '50 alıştırma çöz', icon: '🎯', check: (stats) => stats.total_exercises_completed >= 50 },
+  { id: 'exercises_100', name: 'Yüzde Usta', description: '100 alıştırma çöz', icon: '💯', check: (stats) => stats.total_exercises_completed >= 100 },
+  { id: 'stars_50', name: 'Yıldız Toplayıcı', description: '50 yıldız kazan', icon: '⭐', check: (stats) => stats.total_stars >= 50 },
+  { id: 'srs_10', name: 'SRS Başlangıç', description: '10 SRS kart öğren', icon: '🔄', check: (_stats, _streak, srs) => srs.learned >= 10 },
+  { id: 'srs_100', name: 'SRS Ustası', description: '100 SRS kart öğren', icon: '🎖️', check: (_stats, _streak, srs) => srs.learned >= 100 },
+  { id: 'life_and_death_master_10', name: 'Yaşam ve Ölüm Ustası', description: '10 yaşam ve ölüm alıştırması çöz', icon: '💀', check: (_stats, _streak, _srs, exerciseTypeStats) => {
+      const lifeAndDeathStat = exerciseTypeStats.find(stat => stat.exercise_type === 'life_and_death');
+      return (lifeAndDeathStat?.correct_attempts ?? 0) >= 10;
+  } },
 ];
 
 export async function getUnlockedAchievements(): Promise<Achievement[]> {
@@ -605,18 +640,20 @@ export async function checkAndUnlockAchievements(): Promise<string[]> {
     const existingIds = new Set(existing.map(a => a.achievement_id));
 
     const stats = await getUserStats();
-    const streak = await getStreak();
-    const srsStats = await import('./srs').then(m => m.getSRSStats()).catch(() => ({ total_cards: 0, learned: 0, learning: 0, due_today: 0, lapsed: 0 }));
+    const streakData = await getStreak();
+    const streak = { current: streakData.current, best: streakData.best };
+    const srsStats = await getSRSStats();
+    const exerciseTypeStats = await getExerciseTypeStats();
 
-    for (const def of ACHIEVEMENT_DEFS) {
-      if (!existingIds.has(def.id) && def.check(stats, streak, srsStats)) {
-        await database.execute(
-          `INSERT OR IGNORE INTO achievements (achievement_id) VALUES ($1)`,
-          [def.id]
-        );
-        newlyUnlocked.push(def.id);
+      for (const def of ACHIEVEMENT_DEFS) {
+        if (!existingIds.has(def.id) && def.check(stats, streak, srsStats, exerciseTypeStats)) {
+          await database.execute(
+            `INSERT OR IGNORE INTO achievements (achievement_id) VALUES ($1)`,
+            [def.id]
+          );
+          newlyUnlocked.push(def.id);
+        }
       }
-    }
   } catch (err) {
     console.warn('[progressDb] checkAndUnlockAchievements failed:', err);
   }

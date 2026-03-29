@@ -18,10 +18,11 @@ pub struct GoGame {
     zobrist: ZobristTable,
     current_hash: u64,
     komi: f32,
+    rule_set: RuleSet,
 }
 
 impl GoGame {
-    pub fn new(size: BoardSize, komi: f32) -> Self {
+    pub fn new(size: BoardSize, komi: f32, rule_set: RuleSet) -> Self {
         let s = size.to_u8() as usize;
         let zobrist = ZobristTable::new();
         GoGame {
@@ -39,11 +40,17 @@ impl GoGame {
             zobrist,
             current_hash: 0,
             komi,
+            rule_set,
         }
     }
 
-    pub fn from_board_state(size: BoardSize, stones: &[(u8, u8, StoneColor)], komi: f32) -> Self {
-        let mut game = GoGame::new(size, komi);
+    pub fn from_board_state(
+        size: BoardSize,
+        stones: &[(u8, u8, StoneColor)],
+        komi: f32,
+        rule_set: RuleSet,
+    ) -> Self {
+        let mut game = GoGame::new(size, komi, rule_set);
         for &(x, y, color) in stones {
             if (x as usize) < game.board_size as usize && (y as usize) < game.board_size as usize {
                 game.board[y as usize][x as usize] = Some(color);
@@ -59,8 +66,9 @@ impl GoGame {
         komi: f32,
         black_captures: u32,
         white_captures: u32,
+        rule_set: RuleSet,
     ) -> Self {
-        let mut game = GoGame::from_board_state(size, stones, komi);
+        let mut game = GoGame::from_board_state(size, stones, komi, rule_set);
         game.current_player = current_player;
         game.black_captures = black_captures;
         game.white_captures = white_captures;
@@ -395,6 +403,7 @@ impl GoGame {
             game_over: self.game_over,
             passes_in_a_row: self.passes_in_a_row,
             komi: self.komi,
+            rule_set: self.rule_set,
         }
     }
 
@@ -850,6 +859,7 @@ impl GoGame {
             zobrist: self.zobrist.clone(),
             current_hash: self.current_hash,
             komi: self.komi,
+            rule_set: self.rule_set,
         }
     }
 
@@ -869,6 +879,7 @@ impl GoGame {
             zobrist: self.zobrist.clone(),
             current_hash: self.current_hash,
             komi: self.komi,
+            rule_set: self.rule_set,
         }
     }
 

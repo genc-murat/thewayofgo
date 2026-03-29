@@ -123,6 +123,15 @@ pub struct GameState {
     pub game_over: bool,
     pub passes_in_a_row: u8,
     pub komi: f32,
+    pub rule_set: RuleSet,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum RuleSet {
+    Japanese,
+    Korean,
+    Chinese,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

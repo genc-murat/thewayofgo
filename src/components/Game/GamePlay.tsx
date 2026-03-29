@@ -23,11 +23,11 @@ function formatMove(record: MoveRecord, index: number): string {
 }
 
 export function GamePlay() {
-  const {
-    game, gameResult, isAiGame, aiDifficulty, aiStyle,
-    placeStone, pass: doPass, resign: doResign,
-    aiMove, setView, startAiGame, setAiStyle, undoMove, getMoveHistory,
-  } = useAppStore();
+   const {
+     game, gameResult, isAiGame, aiDifficulty, aiStyle, rule_set,
+     placeStone, pass: doPass, resign: doResign,
+     aiMove, setView, startAiGame, setAiStyle, undoMove, getMoveHistory,
+   } = useAppStore();
 
   const [showScore, setShowScore] = useState(false);
   const [isThinking, setIsThinking] = useState(false);
@@ -188,17 +188,17 @@ export function GamePlay() {
         </div>
 
         <div className="flex gap-6">
-          {[
-            { size: 9, label: '9x9', desc: 'Başlangıç', color: 'border-emerald-500/30' },
-            { size: 13, label: '13x13', desc: 'Orta', color: 'border-blue-500/30' },
-            { size: 19, label: '19x19', desc: 'Uzman', color: 'border-purple-500/30' },
-          ].map((opt) => (
-            <button key={opt.size} onClick={() => startAiGame(opt.size, aiDifficulty, aiStyle, selectedKomi)}
-              className={`glass rounded-2xl p-6 text-center card-hover border ${opt.color} min-w-[120px]`}>
-              <div className="text-3xl font-bold mb-1">{opt.label}</div>
-              <div className="text-xs text-text-secondary">{opt.desc}</div>
-            </button>
-          ))}
+           {[
+             { size: 9, label: '9x9', desc: 'Başlangıç', color: 'border-emerald-500/30' },
+             { size: 13, label: '13x13', desc: 'Orta', color: 'border-blue-500/30' },
+             { size: 19, label: '19x19', desc: 'Uzman', color: 'border-purple-500/30' },
+           ].map((opt) => (
+             <button key={opt.size} onClick={() => startAiGame(opt.size, aiDifficulty, aiStyle, selectedKomi, rule_set)}
+               className={`glass rounded-2xl p-6 text-center card-hover border ${opt.color} min-w-[120px]`}>
+               <div className="text-3xl font-bold mb-1">{opt.label}</div>
+               <div className="text-xs text-text-secondary">{opt.desc}</div>
+             </button>
+           ))}
         </div>
 
         <div className="glass rounded-2xl p-6">

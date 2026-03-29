@@ -10,6 +10,7 @@ import { SettingsPage } from './components/Settings';
 import { ReviewSession } from './components/SRS';
 import { PositionEditor } from './components/PositionEditor';
 import { OnboardingWizard, shouldShowOnboarding } from './components/Onboarding/OnboardingWizard';
+import { Openings } from './components/Openings';
 import { useAppStore } from './stores/appStore';
 import { soundEngine } from './utils/soundEngine';
 import { applyTheme, getStoredTheme } from './utils/themes';
@@ -28,28 +29,30 @@ function App() {
     return () => document.removeEventListener('click', initSound);
   }, []);
 
-  const renderView = () => {
-    switch (currentView) {
-      case 'home':
-        return <HomePage />;
-      case 'learn':
-        return <LessonViewer />;
-      case 'play':
-        return <GamePlay />;
-      case 'exercise':
-        return <ExerciseView />;
-      case 'progress':
-        return <ProgressPage />;
-      case 'settings':
-        return <SettingsPage />;
-      case 'srs-review':
-        return <ReviewSession />;
-      case 'position-editor':
-        return <PositionEditor />;
-      default:
-        return <HomePage />;
-    }
-  };
+   const renderView = () => {
+     switch (currentView) {
+       case 'home':
+         return <HomePage />;
+       case 'learn':
+         return <LessonViewer />;
+       case 'play':
+         return <GamePlay />;
+       case 'exercise':
+         return <ExerciseView />;
+       case 'progress':
+         return <ProgressPage />;
+       case 'settings':
+         return <SettingsPage />;
+       case 'srs-review':
+         return <ReviewSession />;
+       case 'position-editor':
+         return <PositionEditor />;
+       case 'openings':
+         return <Openings />;
+       default:
+         return <HomePage />;
+     }
+   };
 
   return (
     <>
