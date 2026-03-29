@@ -33,6 +33,29 @@ interface AppState {
   komi: number;
   rule_set: string;
 
+  // Time control
+  timeControl: {
+    kind: string;
+    mainTime: number;
+    byoyomiPeriods: number;
+    byoyomiTime: number;
+    fischerIncrement: number;
+  };
+  blackTimeRemaining: number;
+  whiteTimeRemaining: number;
+  blackByoyomiPeriods: number;
+  whiteByoyomiPeriods: number;
+  blackByoyomiTime: number;
+  whiteByoyomiTime: number;
+  clockActive: boolean;
+
+  // Human SL
+  humanSLProfile: string | null;
+  humanSLModelAvailable: boolean;
+
+  // KataGo params
+  katagoParams: Record<string, string>;
+
   // Lesson state
   currentLesson: Lesson | null;
   lessonStep: number;
@@ -86,6 +109,20 @@ interface AppState {
     ruleSet?: string,
   ) => Promise<void>;
 
+  // Time control actions
+  setTimeControl: (tc: AppState['timeControl']) => void;
+  startClock: () => void;
+  stopClock: () => void;
+  tickClock: () => void;
+
+  // Human SL actions
+  setHumanSLProfile: (profile: string | null) => Promise<void>;
+  checkHumanSLModel: () => Promise<void>;
+
+  // KataGo param actions
+  setKatagoParam: (key: string, value: string) => Promise<void>;
+  loadKatagoParams: () => Promise<void>;
+
   // Lesson actions
   loadLesson: (lessonId: string) => Promise<void>;
   nextStep: () => void;
@@ -121,6 +158,23 @@ export const useAppStore = create<AppState>((set, get) => ({
   katagoMaxVisits: 400,
   komi: 6.5,
   rule_set: 'japanese',
+
+  // Time control
+  timeControl: { kind: 'none', mainTime: 0, byoyomiPeriods: 0, byoyomiTime: 0, fischerIncrement: 0 },
+  blackTimeRemaining: 0,
+  whiteTimeRemaining: 0,
+  blackByoyomiPeriods: 0,
+  whiteByoyomiPeriods: 0,
+  blackByoyomiTime: 0,
+  whiteByoyomiTime: 0,
+  clockActive: false,
+
+  // Human SL
+  humanSLProfile: null,
+  humanSLModelAvailable: false,
+
+  // KataGo params
+  katagoParams: {},
 
   // Lesson state
   currentLesson: null,
@@ -238,6 +292,15 @@ export const useAppStore = create<AppState>((set, get) => ({
   setAiStyle: async (style) => {
     try {
       await invoke('set_ai_style', { style });
+      // Also apply PDA to KataGo if enabled
+      const { useKataGo } = useAppStore.getState();
+      if (useKataGo) {
+        try {
+          await invoke('set_katago_style', { style });
+        } catch {
+          // KataGo style not available
+        }
+      }
       set({ aiStyle: style });
     } catch (e) {
       set({ error: String(e) });
@@ -248,6 +311,7 @@ export const useAppStore = create<AppState>((set, get) => ({
     const aiStyle = style || useAppStore.getState().aiStyle;
     const gameKomi = komi ?? useAppStore.getState().komi;
     const gameRuleSet = rule_set || useAppStore.getState().rule_set;
+    const { timeControl, humanSLProfile } = useAppStore.getState();
     set({ isLoading: true, error: null, isAiGame: true });
     try {
       await invoke('set_ai_difficulty', { level: difficulty });
@@ -257,15 +321,45 @@ export const useAppStore = create<AppState>((set, get) => ({
       const maxVisitsMap = [50, 100, 200, 300, 400, 600, 1000];
       const maxVisits = maxVisitsMap[Math.min(difficulty - 1, 6)];
       try {
-        await invoke('init_katago');
+        await invoke('init_katago', { humanSl: !!humanSLProfile });
         await invoke('set_use_katago', { useKatago: true });
         await invoke('set_katago_difficulty', { maxVisits });
+        // Apply PDA style
+        await invoke('set_katago_style', { style: aiStyle });
+        // Apply rules
+        await invoke('set_katago_rules', { rules: gameRuleSet });
+        // Apply human SL profile if set
+        if (humanSLProfile) {
+          try {
+            await invoke('set_human_sl_profile', { profile: humanSLProfile });
+          } catch {
+            // Human SL model not available
+          }
+        }
+        // Apply time control
+        if (timeControl.kind !== 'none') {
+          try {
+            await invoke('setup_time_control', {
+              kind: timeControl.kind,
+              mainTime: timeControl.mainTime,
+              byoyomiPeriods: timeControl.byoyomiPeriods,
+              byoyomiTime: timeControl.byoyomiTime,
+              fischerIncrement: timeControl.fischerIncrement,
+            });
+          } catch {
+            // Time control not available
+          }
+        }
         set({ useKataGo: true, katagoMaxVisits: maxVisits });
       } catch {
         // KataGo not available, fall back to MCTS
         await invoke('set_use_katago', { useKatago: false });
         set({ useKataGo: false });
       }
+
+      // Initialize clock if time control is set
+      const tc = useAppStore.getState().timeControl;
+      const initialTime = tc.kind !== 'none' ? tc.mainTime : 0;
 
       const response = await invoke<GameStateResponse>('create_game', { size, komi: gameKomi, ruleSet: gameRuleSet });
       set({
@@ -277,6 +371,13 @@ export const useAppStore = create<AppState>((set, get) => ({
         rule_set: gameRuleSet,
         isLoading: false,
         currentView: 'play',
+        blackTimeRemaining: initialTime,
+        whiteTimeRemaining: initialTime,
+        blackByoyomiPeriods: tc.byoyomiPeriods,
+        whiteByoyomiPeriods: tc.byoyomiPeriods,
+        blackByoyomiTime: tc.byoyomiTime,
+        whiteByoyomiTime: tc.byoyomiTime,
+        clockActive: tc.kind !== 'none',
       });
     } catch (e) {
       set({ error: String(e), isLoading: false });
@@ -535,6 +636,92 @@ export const useAppStore = create<AppState>((set, get) => ({
     if (idx >= 0 && idx < EXERCISE_CATALOG.length - 1) {
       const nextEx = EXERCISE_CATALOG[idx + 1];
       get().loadExercise(nextEx.id);
+    }
+  },
+
+  // Time control actions
+  setTimeControl: (tc) => set({
+    timeControl: tc,
+    blackTimeRemaining: tc.kind !== 'none' ? tc.mainTime : 0,
+    whiteTimeRemaining: tc.kind !== 'none' ? tc.mainTime : 0,
+    blackByoyomiPeriods: tc.byoyomiPeriods,
+    whiteByoyomiPeriods: tc.byoyomiPeriods,
+    blackByoyomiTime: tc.byoyomiTime,
+    whiteByoyomiTime: tc.byoyomiTime,
+  }),
+
+  startClock: () => set({ clockActive: true }),
+
+  stopClock: () => set({ clockActive: false }),
+
+  tickClock: () => {
+    const { game, clockActive, timeControl } = get();
+    if (!game || !clockActive || game.game_over || timeControl.kind === 'none') return;
+
+    const isBlack = game.current_player === 'black';
+    if (isBlack) {
+      const newTime = get().blackTimeRemaining - 1;
+      if (newTime <= 0) {
+        if (timeControl.kind === 'byoyomi' && get().blackByoyomiPeriods > 0) {
+          set({
+            blackTimeRemaining: timeControl.byoyomiTime,
+            blackByoyomiPeriods: get().blackByoyomiPeriods - 1,
+          });
+        } else {
+          set({ clockActive: false, blackTimeRemaining: 0 });
+        }
+      } else {
+        set({ blackTimeRemaining: newTime });
+      }
+    } else {
+      const newTime = get().whiteTimeRemaining - 1;
+      if (newTime <= 0) {
+        if (timeControl.kind === 'byoyomi' && get().whiteByoyomiPeriods > 0) {
+          set({
+            whiteTimeRemaining: timeControl.byoyomiTime,
+            whiteByoyomiPeriods: get().whiteByoyomiPeriods - 1,
+          });
+        } else {
+          set({ clockActive: false, whiteTimeRemaining: 0 });
+        }
+      } else {
+        set({ whiteTimeRemaining: newTime });
+      }
+    }
+  },
+
+  // Human SL actions
+  setHumanSLProfile: async (profile) => {
+    // Only store the preference. It will be applied when startAiGame creates the engine.
+    set({ humanSLProfile: profile || null });
+  },
+
+  checkHumanSLModel: async () => {
+    try {
+      const available = await invoke<boolean>('get_human_sl_model_status');
+      set({ humanSLModelAvailable: available });
+    } catch {
+      set({ humanSLModelAvailable: false });
+    }
+  },
+
+  // KataGo param actions
+  setKatagoParam: async (key, value) => {
+    try {
+      await invoke('set_katago_param', { param: key, value });
+      set(s => ({ katagoParams: { ...s.katagoParams, [key]: value } }));
+    } catch (e) {
+      set({ error: String(e) });
+    }
+  },
+
+  loadKatagoParams: async () => {
+    try {
+      const paramsJson = await invoke<string>('get_katago_params');
+      const params = JSON.parse(paramsJson);
+      set({ katagoParams: params });
+    } catch {
+      // KataGo not available
     }
   },
 }));

@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect, useRef } from 'react';
 import { useAppStore } from '../../stores/appStore';
 import { Board } from '../Board';
 import { GameReview } from './GameReview';
+import { GameClock } from './GameClock';
 import { invoke } from '@tauri-apps/api/core';
 import { getSavedGames, formatGameResult, formatDuration, saveGame } from '../../utils/gameHistory';
 import { soundEngine } from '../../utils/soundEngine';
@@ -10,6 +11,23 @@ import type { BoardSize, ScoreResult, MoveRecord, Point, AIStyle, HeatmapEntry, 
 import type { SavedGame } from '../../utils/gameHistory';
 
 const COLUMN_LABELS = 'ABCDEFGHJKLMNOPQRST';
+
+function getTimeControlFromPreset(preset: string) {
+  switch (preset) {
+    case 'none':
+      return { kind: 'none', mainTime: 0, byoyomiPeriods: 0, byoyomiTime: 0, fischerIncrement: 0 };
+    case 'blitz':
+      return { kind: 'fischer', mainTime: 300, byoyomiPeriods: 0, byoyomiTime: 0, fischerIncrement: 5 };
+    case 'rapid':
+      return { kind: 'fischer', mainTime: 900, byoyomiPeriods: 0, byoyomiTime: 0, fischerIncrement: 10 };
+    case 'classical':
+      return { kind: 'byoyomi', mainTime: 1800, byoyomiPeriods: 3, byoyomiTime: 30, fischerIncrement: 0 };
+    case 'long':
+      return { kind: 'absolute', mainTime: 3600, byoyomiPeriods: 0, byoyomiTime: 0, fischerIncrement: 0 };
+    default:
+      return { kind: 'none', mainTime: 0, byoyomiPeriods: 0, byoyomiTime: 0, fischerIncrement: 0 };
+  }
+}
 
 function formatMove(record: MoveRecord, index: number): string {
   const num = index + 1;
@@ -24,9 +42,12 @@ function formatMove(record: MoveRecord, index: number): string {
 
 export function GamePlay() {
    const {
-     game, gameResult, isAiGame, aiDifficulty, aiStyle, rule_set,
+     game, gameResult, isAiGame, aiDifficulty, aiStyle,
+     timeControl, blackTimeRemaining, whiteTimeRemaining, clockActive,
+     blackByoyomiPeriods, whiteByoyomiPeriods, blackByoyomiTime, whiteByoyomiTime,
      placeStone, pass: doPass, resign: doResign,
      aiMove, setView, startAiGame, setAiStyle, undoMove, getMoveHistory,
+     setTimeControl,
    } = useAppStore();
 
   const [showScore, setShowScore] = useState(false);
@@ -39,6 +60,8 @@ export function GamePlay() {
   const [lastMoveAnalysis, setLastMoveAnalysis] = useState<string | null>(null);
   const [lastMoveQuality, setLastMoveQuality] = useState<string | null>(null);
   const [selectedKomi, setSelectedKomi] = useState(6.5);
+  const [selectedRuleSet, setSelectedRuleSet] = useState<string>('japanese');
+  const [selectedTimePreset, setSelectedTimePreset] = useState<string>('none');
   const [showReview, setShowReview] = useState(false);
 
   // KataGo state
@@ -249,6 +272,49 @@ export function GamePlay() {
     }
   }, [showValidMoves, game?.move_number, game?.game_over]);
 
+  // Clock tick effect
+  useEffect(() => {
+    if (!clockActive || !game || game.game_over || timeControl.kind === 'none') return;
+
+    const interval = setInterval(() => {
+      const state = useAppStore.getState();
+      if (!state.clockActive || !state.game || state.game.game_over) return;
+
+      const isBlack = state.game.current_player === 'black';
+      if (isBlack) {
+        const newTime = state.blackTimeRemaining - 1;
+        if (newTime <= 0) {
+          if (state.timeControl.kind === 'byoyomi' && state.blackByoyomiPeriods > 0) {
+            useAppStore.setState({
+              blackTimeRemaining: state.timeControl.byoyomiTime,
+              blackByoyomiPeriods: state.blackByoyomiPeriods - 1,
+            });
+          } else {
+            useAppStore.setState({ clockActive: false, blackTimeRemaining: 0 });
+          }
+        } else {
+          useAppStore.setState({ blackTimeRemaining: newTime });
+        }
+      } else {
+        const newTime = state.whiteTimeRemaining - 1;
+        if (newTime <= 0) {
+          if (state.timeControl.kind === 'byoyomi' && state.whiteByoyomiPeriods > 0) {
+            useAppStore.setState({
+              whiteTimeRemaining: state.timeControl.byoyomiTime,
+              whiteByoyomiPeriods: state.whiteByoyomiPeriods - 1,
+            });
+          } else {
+            useAppStore.setState({ clockActive: false, whiteTimeRemaining: 0 });
+          }
+        } else {
+          useAppStore.setState({ whiteTimeRemaining: newTime });
+        }
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [clockActive, game?.move_number, game?.game_over, timeControl.kind]);
+
   // Auto-save completed games
   const gameSavedRef = useRef(false);
   useEffect(() => {
@@ -275,6 +341,16 @@ export function GamePlay() {
       } else if (result.success) {
         soundEngine.play('stone_place');
       }
+
+      // Fischer increment: add time after successful move
+      if (result.success && timeControl.kind === 'fischer' && timeControl.fischerIncrement > 0) {
+        const state = useAppStore.getState();
+        if (game.current_player === 'black') {
+          useAppStore.setState({ blackTimeRemaining: state.blackTimeRemaining + timeControl.fischerIncrement });
+        } else {
+          useAppStore.setState({ whiteTimeRemaining: state.whiteTimeRemaining + timeControl.fischerIncrement });
+        }
+      }
     }
     if (result?.game_over) {
       setShowScore(true);
@@ -295,7 +371,7 @@ export function GamePlay() {
         }
       })
       .catch(() => {});
-  }, [game, isAiGame, placeStone, getMoveHistory, useKataGo, analyzeMoveWithKatago]);
+  }, [game, isAiGame, placeStone, getMoveHistory, useKataGo, analyzeMoveWithKatago, timeControl]);
 
   const handlePass = useCallback(async () => {
     soundEngine.play('pass');
@@ -345,7 +421,11 @@ export function GamePlay() {
              { size: 13, label: '13x13', desc: 'Orta', color: 'border-blue-500/30' },
              { size: 19, label: '19x19', desc: 'Uzman', color: 'border-purple-500/30' },
            ].map((opt) => (
-             <button key={opt.size} onClick={() => startAiGame(opt.size, aiDifficulty, aiStyle, selectedKomi, rule_set)}
+             <button key={opt.size} onClick={() => {
+               const tc = getTimeControlFromPreset(selectedTimePreset);
+               setTimeControl(tc);
+               startAiGame(opt.size, aiDifficulty, aiStyle, selectedKomi, selectedRuleSet);
+             }}
                className={`glass rounded-2xl p-6 text-center card-hover border ${opt.color} min-w-[120px]`}>
                <div className="text-3xl font-bold mb-1">{opt.label}</div>
                <div className="text-xs text-text-secondary">{opt.desc}</div>
@@ -414,6 +494,52 @@ export function GamePlay() {
           <p className="text-[10px] text-text-secondary text-center mt-2">Beyaz taşa eklenen puan</p>
         </div>
 
+        <div className="glass rounded-2xl p-6">
+          <p className="text-sm text-text-secondary mb-3 font-medium text-center">Kural Sistemi</p>
+          <div className="grid grid-cols-3 gap-2">
+            {([
+              { id: 'japanese', label: 'Japon', desc: 'Sekide puan yok, dama yok' },
+              { id: 'korean', label: 'Kore', desc: 'Japona benzer' },
+              { id: 'chinese', label: 'Çin', desc: 'Dama var, taş sayımı' },
+              { id: 'aga', label: 'AGA', desc: 'Çin/Japon hibrit' },
+              { id: 'tromp-taylor', label: 'Tromp-Taylor', desc: 'Matematiksel kesin' },
+            ] as const).map((r) => (
+              <button key={r.id} onClick={() => setSelectedRuleSet(r.id)}
+                className={`p-2 rounded-xl text-left transition-all border ${
+                  selectedRuleSet === r.id
+                    ? 'bg-accent/10 border-accent/40 ring-1 ring-accent/30'
+                    : 'glass border-transparent hover:bg-bg-secondary card-hover'
+                }`}>
+                <div className="text-xs font-semibold">{r.label}</div>
+                <div className="text-[9px] text-text-secondary">{r.desc}</div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="glass rounded-2xl p-6">
+          <p className="text-sm text-text-secondary mb-3 font-medium text-center">Zaman Kontrolü</p>
+          <div className="grid grid-cols-3 gap-2">
+            {([
+              { id: 'none', label: 'Sınırsız', desc: 'Zaman yok' },
+              { id: 'blitz', label: 'Blitz', desc: '5dk + 5sn' },
+              { id: 'rapid', label: 'Hızlı', desc: '15dk + 10sn' },
+              { id: 'classical', label: 'Klasik', desc: '30dk + 30x3' },
+              { id: 'long', label: 'Uzun', desc: '60dk toplam' },
+            ]).map((tc) => (
+              <button key={tc.id} onClick={() => setSelectedTimePreset(tc.id)}
+                className={`p-2 rounded-xl text-left transition-all border ${
+                  selectedTimePreset === tc.id
+                    ? 'bg-accent/10 border-accent/40 ring-1 ring-accent/30'
+                    : 'glass border-transparent hover:bg-bg-secondary card-hover'
+                }`}>
+                <div className="text-xs font-semibold">{tc.label}</div>
+                <div className="text-[9px] text-text-secondary">{tc.desc}</div>
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Recent games */}
         {recentGames.length > 0 && (
           <div className="w-full max-w-md glass rounded-2xl p-6">
@@ -464,7 +590,18 @@ export function GamePlay() {
       <div className="lg:w-80 space-y-4">
         <div className="glass rounded-2xl p-5">
           <div className="flex items-center justify-between mb-5">
-            <PlayerInfo color="black" captures={game.black_captures} isActive={game.current_player === 'black'} isAi={isAiGame} />
+            <div className="flex flex-col items-center gap-2">
+              <PlayerInfo color="black" captures={game.black_captures} isActive={game.current_player === 'black'} isAi={isAiGame} />
+              {timeControl.kind !== 'none' && (
+                <GameClock
+                  timeRemaining={blackTimeRemaining}
+                  byoyomiPeriods={blackByoyomiPeriods}
+                  byoyomiTime={blackByoyomiTime}
+                  isActive={clockActive && game.current_player === 'black' && !game.game_over && !isThinking}
+                  color="black"
+                />
+              )}
+            </div>
             <div className="flex flex-col items-center gap-1">
               <span className="text-xs text-text-secondary font-medium">HAMLE</span>
               <span className="text-2xl font-bold text-text-primary">{game.move_number}</span>
@@ -477,7 +614,18 @@ export function GamePlay() {
                 </div>
               )}
             </div>
-            <PlayerInfo color="white" captures={game.white_captures} isActive={game.current_player === 'white'} isAi={isAiGame} aiStyle={aiStyle} />
+            <div className="flex flex-col items-center gap-2">
+              <PlayerInfo color="white" captures={game.white_captures} isActive={game.current_player === 'white'} isAi={isAiGame} aiStyle={aiStyle} />
+              {timeControl.kind !== 'none' && (
+                <GameClock
+                  timeRemaining={whiteTimeRemaining}
+                  byoyomiPeriods={whiteByoyomiPeriods}
+                  byoyomiTime={whiteByoyomiTime}
+                  isActive={clockActive && game.current_player === 'white' && !game.game_over && !isThinking}
+                  color="white"
+                />
+              )}
+            </div>
           </div>
 
           <div className={`text-center py-3 rounded-xl text-sm font-medium ${

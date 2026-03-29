@@ -1,7 +1,7 @@
 use std::sync::Arc;
 use std::sync::atomic::{AtomicBool, Ordering};
 use tokio::sync::{mpsc, oneshot, Mutex};
-use tauri_plugin_shell::process::CommandEvent;
+use tauri_plugin_shell::process::{CommandEvent, CommandChild};
 use tauri_plugin_shell::ShellExt;
 use tauri::{AppHandle, Manager};
 
@@ -58,9 +58,11 @@ pub struct VariationResult {
 
 pub struct KataGoEngine {
     stdin_tx: mpsc::Sender<(String, Option<oneshot::Sender<String>>)>,
+    child: Arc<Mutex<Option<CommandChild>>>,
     pub status: Arc<Mutex<EngineStatus>>,
     expecting_analyze: Arc<AtomicBool>,
     analyze_info_lines: Arc<Mutex<String>>,
+    has_human_model: bool,
 }
 
 impl KataGoEngine {
@@ -75,26 +77,46 @@ impl KataGoEngine {
         }
     }
 
+    pub fn has_human_model(&self) -> bool {
+        self.has_human_model
+    }
+
     pub async fn get_status(&self) -> EngineStatus {
         let s = self.status.lock().await;
         *s
     }
 
     pub async fn new(app_handle: &AppHandle) -> Result<Self, String> {
+        Self::new_with_human_sl(app_handle, false).await
+    }
+
+    pub async fn new_with_human_sl(app_handle: &AppHandle, use_human_sl: bool) -> Result<Self, String> {
         let shell = app_handle.shell();
 
         let resource_dir = app_handle.path().resource_dir().map_err(|e: tauri::Error| e.to_string())?;
         let model_path = resource_dir.join("resources/katago_model.bin.gz");
         let config_path = resource_dir.join("resources/gtp_custom.cfg");
 
-        let cmd = shell.sidecar("katago").map_err(|e| e.to_string())?
-            .args([
-                "gtp",
-                "-model", model_path.to_str().unwrap_or("resources/katago_model.bin.gz"),
-                "-config", config_path.to_str().unwrap_or("resources/gtp_custom.cfg")
-            ]);
+        let mut args: Vec<String> = vec![
+            "gtp".to_string(),
+            "-model".to_string(),
+            model_path.to_str().unwrap_or("resources/katago_model.bin.gz").to_string(),
+            "-config".to_string(),
+            config_path.to_str().unwrap_or("resources/gtp_custom.cfg").to_string(),
+        ];
 
-        let (mut rx, mut child) = cmd.spawn().map_err(|e| e.to_string())?;
+        if use_human_sl {
+            let human_model_path = resource_dir.join("resources/b18c384nbt-humanv0.bin.gz");
+            args.insert(3, "-human-model".to_string());
+            args.insert(4, human_model_path.to_str().unwrap_or("resources/b18c384nbt-humanv0.bin.gz").to_string());
+        }
+
+        let cmd = shell.sidecar("katago").map_err(|e| e.to_string())?
+            .args(&args);
+
+        let (mut rx, child_process) = cmd.spawn().map_err(|e| e.to_string())?;
+        let child: Arc<Mutex<Option<CommandChild>>> = Arc::new(Mutex::new(Some(child_process)));
+        let child_for_writer = Arc::clone(&child);
 
         let (stdin_tx, mut stdin_rx) = mpsc::channel::<(String, Option<oneshot::Sender<String>>)>(100);
         let status: Arc<Mutex<EngineStatus>> = Arc::new(Mutex::new(EngineStatus::Starting));
@@ -190,8 +212,12 @@ impl KataGoEngine {
                 }
 
                 let cmd_with_newline = format!("{}\n", cmd);
-                if let Err(e) = child.write(cmd_with_newline.as_bytes()) {
-                    eprintln!("Failed to write to KataGo: {}", e);
+                if let Some(child_guard) = child_for_writer.lock().await.as_mut() {
+                    if let Err(e) = child_guard.write(cmd_with_newline.as_bytes()) {
+                        eprintln!("Failed to write to KataGo: {}", e);
+                        break;
+                    }
+                } else {
                     break;
                 }
             }
@@ -202,9 +228,11 @@ impl KataGoEngine {
 
         let engine = Self {
             stdin_tx,
+            child,
             status,
             expecting_analyze,
             analyze_info_lines,
+            has_human_model: use_human_sl,
         };
 
         if !engine.is_healthy() {
@@ -296,6 +324,18 @@ impl KataGoEngine {
         Ok(())
     }
 
+    pub async fn get_params(&self) -> Result<String, String> {
+        self.send_command("kata-get-params".to_string()).await
+    }
+
+    pub async fn set_rules(&self, rules: &str) -> Result<(), String> {
+        let response = self.send_command(format!("kata-set-rules {}", rules)).await?;
+        if response.starts_with("ERROR") {
+            return Err(response);
+        }
+        Ok(())
+    }
+
     pub async fn analyze_position(&self, board_size: u8, komi: f32) -> Result<PositionAnalysisResult, String> {
         self.expecting_analyze.store(true, Ordering::SeqCst);
         *self.analyze_info_lines.lock().await = String::new();
@@ -333,6 +373,16 @@ impl KataGoEngine {
 
         result.evaluations.into_iter().next()
             .ok_or_else(|| "No move evaluation returned".to_string())
+    }
+}
+
+impl Drop for KataGoEngine {
+    fn drop(&mut self) {
+        if let Ok(mut child) = self.child.try_lock() {
+            if let Some(c) = child.take() {
+                let _ = c.kill();
+            }
+        }
     }
 }
 

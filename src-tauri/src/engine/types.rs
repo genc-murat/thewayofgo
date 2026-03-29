@@ -132,6 +132,8 @@ pub enum RuleSet {
     Japanese,
     Korean,
     Chinese,
+    Aga,
+    TrompTaylor,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

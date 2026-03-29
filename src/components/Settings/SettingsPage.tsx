@@ -50,7 +50,15 @@ function saveSettings(settings: SettingsState): void {
 
 export function SettingsPage() {
   const [settings, setSettings] = useState<SettingsState>(DEFAULT_SETTINGS);
-  const { useKataGo, setUseKataGo } = useAppStore();
+  const { useKataGo, setUseKataGo, humanSLProfile, humanSLModelAvailable, setHumanSLProfile, checkHumanSLModel, katagoParams, setKatagoParam, loadKatagoParams } = useAppStore();
+
+  // KataGo param local state for sliders
+  const [maxVisits, setMaxVisits] = useState(400);
+  const [maxTime, setMaxTime] = useState(5.0);
+  const [numThreads, setNumThreads] = useState(4);
+  const [pda, setPda] = useState(0.0);
+  const [wideRootNoise, setWideRootNoise] = useState(0.04);
+  const [showAllParams, setShowAllParams] = useState(false);
 
   useEffect(() => {
     const loaded = loadSettings();
@@ -61,7 +69,25 @@ export function SettingsPage() {
     loaded.useKataGo = useKataGo;
     setSettings(loaded);
     applyTheme(loaded.theme);
+    // Check human SL model availability
+    checkHumanSLModel();
   }, [useKataGo]);
+
+  // Load current KataGo params when section is visible
+  useEffect(() => {
+    if (useKataGo) {
+      loadKatagoParams();
+    }
+  }, [useKataGo]);
+
+  // Sync local param state from loaded katagoParams
+  useEffect(() => {
+    if (katagoParams.maxVisits) setMaxVisits(parseInt(katagoParams.maxVisits));
+    if (katagoParams.maxTime) setMaxTime(parseFloat(katagoParams.maxTime));
+    if (katagoParams.numSearchThreads) setNumThreads(parseInt(katagoParams.numSearchThreads));
+    if (katagoParams.playoutDoublingAdvantage) setPda(parseFloat(katagoParams.playoutDoublingAdvantage));
+    if (katagoParams.analysisWideRootNoise) setWideRootNoise(parseFloat(katagoParams.analysisWideRootNoise));
+  }, [katagoParams]);
 
   const update = <K extends keyof SettingsState>(key: K, value: SettingsState[K]) => {
     const newSettings = { ...settings, [key]: value };
@@ -171,6 +197,189 @@ export function SettingsPage() {
           />
         </SettingRow>
       </div>
+
+      {/* KataGo Parameters */}
+      {useKataGo && (
+        <div className="glass rounded-2xl p-6 border border-glass-border space-y-6">
+          <h3 className="font-bold text-lg">KataGo Gelişmiş</h3>
+
+          <SettingRow
+            label="Arama Ziyaret Sayısı"
+            description="Yüksek değer = daha güçlü ama daha yavaş"
+          >
+            <div className="flex items-center gap-3">
+              <input
+                type="range"
+                min="10"
+                max="2000"
+                step="10"
+                value={maxVisits}
+                onChange={(e) => {
+                  const v = parseInt(e.target.value);
+                  setMaxVisits(v);
+                  setKatagoParam('maxVisits', String(v));
+                }}
+                className="w-28 accent-accent"
+              />
+              <span className="text-sm font-mono w-12 text-right">{maxVisits}</span>
+            </div>
+          </SettingRow>
+
+          <SettingRow
+            label="Hamle Başına Süre"
+            description="Saniye cinsinden maksimum düşünme süresi"
+          >
+            <div className="flex items-center gap-3">
+              <input
+                type="range"
+                min="0.5"
+                max="30"
+                step="0.5"
+                value={maxTime}
+                onChange={(e) => {
+                  const v = parseFloat(e.target.value);
+                  setMaxTime(v);
+                  setKatagoParam('maxTime', String(v));
+                }}
+                className="w-28 accent-accent"
+              />
+              <span className="text-sm font-mono w-12 text-right">{maxTime}s</span>
+            </div>
+          </SettingRow>
+
+          <SettingRow
+            label="CPU Thread Sayısı"
+            description="Daha fazla thread = daha hızlı ama daha fazla CPU kullanır"
+          >
+            <div className="flex items-center gap-3">
+              <input
+                type="range"
+                min="1"
+                max="16"
+                step="1"
+                value={numThreads}
+                onChange={(e) => {
+                  const v = parseInt(e.target.value);
+                  setNumThreads(v);
+                  setKatagoParam('numSearchThreads', String(v));
+                }}
+                className="w-28 accent-accent"
+              />
+              <span className="text-sm font-mono w-12 text-right">{numThreads}</span>
+            </div>
+          </SettingRow>
+
+          <SettingRow
+            label="Oyun Tarzı Bias (PDA)"
+            description="Negatif = agresif (siyah lehine), Pozitif = savunmacı (beyaz lehine)"
+          >
+            <div className="flex items-center gap-3">
+              <input
+                type="range"
+                min="-3"
+                max="3"
+                step="0.5"
+                value={pda}
+                onChange={(e) => {
+                  const v = parseFloat(e.target.value);
+                  setPda(v);
+                  setKatagoParam('playoutDoublingAdvantage', String(v));
+                }}
+                className="w-28 accent-accent"
+              />
+              <span className="text-sm font-mono w-12 text-right">{pda > 0 ? '+' : ''}{pda}</span>
+            </div>
+          </SettingRow>
+
+          <SettingRow
+            label="Geniş Keşif Gürültüsü"
+            description="Yüksek değer = daha çeşitli hamle keşfi"
+          >
+            <div className="flex items-center gap-3">
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value={wideRootNoise}
+                onChange={(e) => {
+                  const v = parseFloat(e.target.value);
+                  setWideRootNoise(v);
+                  setKatagoParam('analysisWideRootNoise', String(v));
+                }}
+                className="w-28 accent-accent"
+              />
+              <span className="text-sm font-mono w-12 text-right">{wideRootNoise}</span>
+            </div>
+          </SettingRow>
+
+          {/* Human SL Profile */}
+          <SettingRow
+            label="İnsansı Oyun"
+            description="KataGo'nun insan benzeri oynamasını sağlar"
+          >
+            <ToggleSwitch
+              checked={humanSLProfile !== null}
+              onChange={(val) => {
+                if (val) {
+                  setHumanSLProfile('preaz_5k');
+                } else {
+                  setHumanSLProfile(null);
+                }
+              }}
+            />
+          </SettingRow>
+
+          {humanSLProfile !== null && (
+            <div className="space-y-3 pl-4 border-l-2 border-accent/20">
+              <p className="text-xs text-text-secondary font-medium">İnsan Seviyesi</p>
+              <div className="grid grid-cols-4 gap-2">
+                {[
+                  { label: '20k', value: 'preaz_20k' },
+                  { label: '10k', value: 'preaz_10k' },
+                  { label: '5k', value: 'preaz_5k' },
+                  { label: '1k', value: 'preaz_1k' },
+                  { label: '1d', value: 'preaz_1d' },
+                  { label: '3d', value: 'preaz_3d' },
+                  { label: '5d', value: 'preaz_5d' },
+                  { label: '9d', value: 'preaz_9d' },
+                ].map(p => (
+                  <button
+                    key={p.value}
+                    onClick={() => setHumanSLProfile(p.value)}
+                    className={`px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                      humanSLProfile === p.value
+                        ? 'gradient-accent text-bg-primary'
+                        : 'glass text-text-secondary hover:text-text-primary'
+                    }`}
+                  >
+                    {p.label}
+                  </button>
+                ))}
+              </div>
+              {!humanSLModelAvailable && (
+                <p className="text-xs text-warning">
+                  Insan SL modeli bulunamadı. Bu özellik için model dosyası gerekli.
+                </p>
+              )}
+            </div>
+          )}
+
+          {/* All params button */}
+          <button
+            onClick={() => setShowAllParams(!showAllParams)}
+            className="w-full py-2 rounded-xl glass text-text-secondary hover:text-text-primary text-sm font-medium transition-all"
+          >
+            {showAllParams ? 'Parametreleri Gizle' : 'Tüm Parametreleri Göster'}
+          </button>
+
+          {showAllParams && (
+            <div className="mt-3 p-4 rounded-xl bg-bg-primary/50 text-xs font-mono text-text-secondary overflow-auto max-h-60">
+              <pre>{JSON.stringify(katagoParams, null, 2)}</pre>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Theme Settings */}
       <div className="glass rounded-2xl p-6 border border-glass-border space-y-6">

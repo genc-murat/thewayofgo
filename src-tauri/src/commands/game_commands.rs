@@ -1,5 +1,6 @@
 use std::sync::{Arc, Mutex};
 use tauri::State;
+use tauri::Manager;
 
 use crate::ai::mcts::MCTSAi;
 use crate::ai::katago::KataGoEngine;
@@ -37,7 +38,9 @@ pub fn create_game(state: State<AppState>, size: u8, komi: Option<f32>, rule_set
         "japanese" => RuleSet::Japanese,
         "korean" => RuleSet::Korean,
         "chinese" => RuleSet::Chinese,
-        _ => return Err("Invalid rule set. Must be japanese, korean, or chinese".to_string()),
+        "aga" => RuleSet::Aga,
+        "tromp-taylor" => RuleSet::TrompTaylor,
+        _ => return Err("Invalid rule set. Must be japanese, korean, chinese, aga, or tromp-taylor".to_string()),
     };
     let game = GoGame::new(board_size, komi.unwrap_or(6.5), rule_set_enum);
     let game_state = game.get_game_state();
@@ -121,14 +124,20 @@ pub fn get_valid_moves(state: State<AppState>) -> Result<Vec<Point>, String> {
 }
 
 #[tauri::command]
-pub async fn init_katago(state: State<'_, AppState>, handle: tauri::AppHandle) -> Result<(), String> {
+pub async fn init_katago(state: State<'_, AppState>, handle: tauri::AppHandle, human_sl: Option<bool>) -> Result<(), String> {
+    let use_human = human_sl.unwrap_or(false);
     let mut katago_guard = state.katago.lock().await;
     let needs_init = match katago_guard.as_ref() {
-        Some(engine) => !engine.is_healthy(),
+        Some(engine) => !engine.is_healthy() || (use_human && !engine.has_human_model()),
         None => true,
     };
     if needs_init {
-        let engine = KataGoEngine::new(&handle).await?;
+        // Drop old engine if switching models
+        if katago_guard.is_some() {
+            *katago_guard = None;
+            tokio::time::sleep(std::time::Duration::from_secs(1)).await;
+        }
+        let engine = KataGoEngine::new_with_human_sl(&handle, use_human).await?;
         *katago_guard = Some(engine);
     }
     Ok(())
@@ -251,6 +260,163 @@ pub async fn set_katago_difficulty(state: State<'_, AppState>, handle: tauri::Ap
     let katago_guard = state.katago.lock().await;
     let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
     engine.set_param("maxVisits", &max_visits.to_string()).await
+}
+
+#[tauri::command]
+pub async fn set_katago_style(state: State<'_, AppState>, handle: tauri::AppHandle, style: String) -> Result<(), String> {
+    let pda_value = match style.as_str() {
+        "balanced" => "0.0",
+        "aggressive" => "-1.5",
+        "defensive" => "1.5",
+        "educational" => "0.0",
+        _ => return Err(format!("Invalid AI style: {}", style)),
+    };
+
+    {
+        let mut katago_guard = state.katago.lock().await;
+        let needs_init = match katago_guard.as_ref() {
+            Some(engine) => !engine.is_healthy(),
+            None => true,
+        };
+        if needs_init {
+            let engine = KataGoEngine::new(&handle).await?;
+            *katago_guard = Some(engine);
+        }
+    }
+
+    let katago_guard = state.katago.lock().await;
+    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+    engine.set_param("playoutDoublingAdvantage", pda_value).await
+}
+
+#[tauri::command]
+pub async fn set_katago_param(state: State<'_, AppState>, handle: tauri::AppHandle, param: String, value: String) -> Result<(), String> {
+    {
+        let mut katago_guard = state.katago.lock().await;
+        let needs_init = match katago_guard.as_ref() {
+            Some(engine) => !engine.is_healthy(),
+            None => true,
+        };
+        if needs_init {
+            let engine = KataGoEngine::new(&handle).await?;
+            *katago_guard = Some(engine);
+        }
+    }
+
+    let katago_guard = state.katago.lock().await;
+    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+    engine.set_param(&param, &value).await
+}
+
+#[tauri::command]
+pub async fn get_katago_params(state: State<'_, AppState>, handle: tauri::AppHandle) -> Result<String, String> {
+    {
+        let mut katago_guard = state.katago.lock().await;
+        let needs_init = match katago_guard.as_ref() {
+            Some(engine) => !engine.is_healthy(),
+            None => true,
+        };
+        if needs_init {
+            let engine = KataGoEngine::new(&handle).await?;
+            *katago_guard = Some(engine);
+        }
+    }
+
+    let katago_guard = state.katago.lock().await;
+    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+    engine.get_params().await
+}
+
+#[tauri::command]
+pub async fn set_katago_rules(state: State<'_, AppState>, handle: tauri::AppHandle, rules: String) -> Result<(), String> {
+    let rules_cmd = match rules.as_str() {
+        "japanese" => "japanese",
+        "korean" => "korean",
+        "chinese" => "chinese",
+        "aga" => "aga",
+        "tromp-taylor" => "tromp-taylor",
+        _ => return Err(format!("Invalid rule set: {}", rules)),
+    };
+
+    {
+        let mut katago_guard = state.katago.lock().await;
+        let needs_init = match katago_guard.as_ref() {
+            Some(engine) => !engine.is_healthy(),
+            None => true,
+        };
+        if needs_init {
+            let engine = KataGoEngine::new(&handle).await?;
+            *katago_guard = Some(engine);
+        }
+    }
+
+    let katago_guard = state.katago.lock().await;
+    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+    engine.set_rules(rules_cmd).await
+}
+
+#[tauri::command]
+pub async fn set_human_sl_profile(state: State<'_, AppState>, profile: String) -> Result<(), String> {
+    let katago_guard = state.katago.lock().await;
+    match katago_guard.as_ref() {
+        Some(engine) if engine.has_human_model() => {
+            engine.set_param("humanSLProfile", &profile).await
+        }
+        Some(_) => {
+            Err("İnsan SL modeli yüklü değil. Yeni bir oyun başlatın.".to_string())
+        }
+        None => {
+            Err("KataGo başlatılmadı. Önce bir oyun başlatın.".to_string())
+        }
+    }
+}
+
+#[tauri::command]
+pub async fn get_human_sl_model_status(handle: tauri::AppHandle) -> Result<bool, String> {
+    let resource_dir = handle.path().resource_dir().map_err(|e: tauri::Error| e.to_string())?;
+    let model_path = resource_dir.join("resources/b18c384nbt-humanv0.bin.gz");
+    Ok(model_path.exists())
+}
+
+#[tauri::command]
+pub async fn setup_time_control(state: State<'_, AppState>, handle: tauri::AppHandle, kind: String, main_time: Option<f64>, byoyomi_periods: Option<u32>, byoyomi_time: Option<f64>, fischer_increment: Option<f64>) -> Result<(), String> {
+    {
+        let mut katago_guard = state.katago.lock().await;
+        let needs_init = match katago_guard.as_ref() {
+            Some(engine) => !engine.is_healthy(),
+            None => true,
+        };
+        if needs_init {
+            let engine = KataGoEngine::new(&handle).await?;
+            *katago_guard = Some(engine);
+        }
+    }
+
+    let katago_guard = state.katago.lock().await;
+    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+
+    let cmd = match kind.as_str() {
+        "none" => "kata-time_settings none".to_string(),
+        "absolute" => {
+            let mt = main_time.unwrap_or(1800.0);
+            format!("kata-time_settings absolute {}", mt)
+        }
+        "byoyomi" => {
+            let mt = main_time.unwrap_or(600.0);
+            let pt = byoyomi_time.unwrap_or(30.0);
+            let np = byoyomi_periods.unwrap_or(3);
+            format!("kata-time_settings byoyomi {} {} {}", mt, pt, np)
+        }
+        "fischer" => {
+            let mt = main_time.unwrap_or(600.0);
+            let inc = fischer_increment.unwrap_or(10.0);
+            format!("kata-time_settings fischer {} {}", mt, inc)
+        }
+        _ => return Err(format!("Invalid time control kind: {}", kind)),
+    };
+
+    engine.send_command(cmd).await?;
+    Ok(())
 }
 
 #[tauri::command]
@@ -508,7 +674,9 @@ pub fn create_game_from_position(
         "japanese" => RuleSet::Japanese,
         "korean" => RuleSet::Korean,
         "chinese" => RuleSet::Chinese,
-        _ => return Err("Invalid rule set. Must be japanese, korean, or chinese".to_string()),
+        "aga" => RuleSet::Aga,
+        "tromp-taylor" => RuleSet::TrompTaylor,
+        _ => return Err("Invalid rule set. Must be japanese, korean, chinese, aga, or tromp-taylor".to_string()),
     };
     let game = GoGame::from_position(
         board_size,
