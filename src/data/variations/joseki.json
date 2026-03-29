@@ -337,5 +337,1237 @@
         "move_annotations": ["Zayıf varyant", "Beyaz iyi"]
       }
     ]
+  },
+  {
+    "id": "joseki-9",
+    "title": "San-san Invasion",
+    "description": "3-3 noktası istilası - hoshi taşına karşı temel joseki",
+    "level": 2,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 4, "y": 4, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Doğrudan istila",
+        "is_best": true,
+        "moves": [
+          { "x": 3, "y": 3, "color": "white" },
+          { "x": 2, "y": 4, "color": "black" },
+          { "x": 4, "y": 3, "color": "white" },
+          { "x": 3, "y": 2, "color": "black" },
+          { "x": 4, "y": 2, "color": "white" },
+          { "x": 2, "y": 3, "color": "black" }
+        ],
+        "result_description": "Beyaz 3-3'e doğrudan istila eder, siyah karşılık verir. Köşe paylaşılır.",
+        "evaluation": "good",
+        "move_annotations": ["3-3 istila", "Siyah karşılık", "Genişleme", "Bağlantı", "Duvar", "Köşe paylaşımı"]
+      },
+      {
+        "id": "B",
+        "label": "Erken istila",
+        "is_best": false,
+        "moves": [
+          { "x": 2, "y": 2, "color": "white" },
+          { "x": 3, "y": 3, "color": "black" }
+        ],
+        "result_description": "Beyaz çok erken istila eder, siyah dış etki kazanır.",
+        "evaluation": "bad",
+        "move_annotations": ["Küçük hamle", "Siyah etki"]
+      }
+    ],
+    "quiz": {
+      "question": "Hoshi taşına karşı 3-3 istilası ne zaman yapılmalı?",
+      "correct_variation_id": "A",
+      "hint": "Doğrudan köşe noktasına gidin"
+    }
+  },
+  {
+    "id": "joseki-10",
+    "title": "Ikken Pincer Joseki",
+    "description": "Tek boşluk pincer josekisi - yaklaşan taşa sıkıştırma",
+    "level": 3,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 6, "y": 2, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "İkken pincer",
+        "is_best": true,
+        "moves": [
+          { "x": 4, "y": 2, "color": "black" },
+          { "x": 5, "y": 2, "color": "white" },
+          { "x": 4, "y": 4, "color": "black" },
+          { "x": 6, "y": 3, "color": "white" }
+        ],
+        "result_description": "Siyah ikken pincer ile beyazı sıkıştırır, beyaz kenara kaçar. Dengeli sonuç.",
+        "evaluation": "good",
+        "move_annotations": ["Pincer", "Beyaz karşılık", "Merkez", "Kaçış"]
+      },
+      {
+        "id": "B",
+        "label": "Pincer yerine yaklaşım",
+        "is_best": false,
+        "moves": [
+          { "x": 3, "y": 2, "color": "black" },
+          { "x": 4, "y": 3, "color": "white" }
+        ],
+        "result_description": "Siyah pincer yerine yaklaşır, beyaz serbest hareket eder.",
+        "evaluation": "neutral",
+        "move_annotations": ["Yaklaşım", "Beyaz serbest"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-11",
+    "title": "Nikken Pincer Joseki",
+    "description": "İki boşluk pincer josekisi - daha agresif sıkıştırma",
+    "level": 3,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 6, "y": 2, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Nikken pincer",
+        "is_best": true,
+        "moves": [
+          { "x": 3, "y": 2, "color": "black" },
+          { "x": 5, "y": 2, "color": "white" },
+          { "x": 3, "y": 4, "color": "black" },
+          { "x": 5, "y": 4, "color": "white" }
+        ],
+        "result_description": "Siyah nikken pincer ile beyazı uzaktan hedefler, beyaz kosumi ile karşılık verir.",
+        "evaluation": "good",
+        "move_annotations": ["Pincer", "Beyaz karşılık", "Genişleme", "Kosumi"]
+      },
+      {
+        "id": "B",
+        "label": "Direkt kesme",
+        "is_best": false,
+        "moves": [
+          { "x": 4, "y": 2, "color": "black" },
+          { "x": 3, "y": 2, "color": "white" }
+        ],
+        "result_description": "Siyah direkt keser ama beyaz güçlü köşe pozisyonu kazanır.",
+        "evaluation": "bad",
+        "move_annotations": ["Kesme", "Beyaz köşe"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-12",
+    "title": "High Approach Response",
+    "description": "Yüksek yaklaşım josekisi - komokuya üstten yaklaşım",
+    "level": 3,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Hane karşılık",
+        "is_best": true,
+        "moves": [
+          { "x": 2, "y": 5, "color": "white" },
+          { "x": 3, "y": 5, "color": "black" },
+          { "x": 2, "y": 4, "color": "white" },
+          { "x": 4, "y": 4, "color": "black" }
+        ],
+        "result_description": "Beyaz yüksek yaklaşır, siyah hane ile karşılık verir. Siyah güçlü dış duvar elde eder.",
+        "evaluation": "good",
+        "move_annotations": ["Yüksek yaklaşım", "Hane", "Köşeye çekilme", "Duvar"]
+      },
+      {
+        "id": "B",
+        "label": "Basit karşılık",
+        "is_best": false,
+        "moves": [
+          { "x": 2, "y": 5, "color": "white" },
+          { "x": 2, "y": 1, "color": "black" }
+        ],
+        "result_description": "Beyaz yaklaşır, siyah basit karşılık verir. Beyaz iyi pozisyon kazanır.",
+        "evaluation": "neutral",
+        "move_annotations": ["Yaklaşım", "Basit"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-13",
+    "title": "Low Approach Response",
+    "description": "Alçak yaklaşım josekisi - komokuya alttan yaklaşım",
+    "level": 3,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Kosumi karşılık",
+        "is_best": true,
+        "moves": [
+          { "x": 5, "y": 2, "color": "white" },
+          { "x": 3, "y": 1, "color": "black" },
+          { "x": 4, "y": 1, "color": "white" },
+          { "x": 2, "y": 3, "color": "black" }
+        ],
+        "result_description": "Beyaz alçak yaklaşır, siyah kosumi ile karşılık verir. Standart joseki sonucu.",
+        "evaluation": "good",
+        "move_annotations": ["Alçak yaklaşım", "Kosumi", "Beyaz devam", "Köşe güvence"]
+      },
+      {
+        "id": "B",
+        "label": "Pincer seçeneği",
+        "is_best": false,
+        "moves": [
+          { "x": 5, "y": 2, "color": "white" },
+          { "x": 4, "y": 2, "color": "black" },
+          { "x": 6, "y": 2, "color": "white" }
+        ],
+        "result_description": "Siyah pincer oynar ama beyaz basit karşılık verir.",
+        "evaluation": "neutral",
+        "move_annotations": ["Pincer", "Beyaz karşılık", "Genişleme"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-14",
+    "title": "Double Approach Joseki",
+    "description": "Çift yaklaşım josekisi - iki taraftan yaklaşım",
+    "level": 4,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 6, "y": 2, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "İkinci yaklaşım",
+        "is_best": true,
+        "moves": [
+          { "x": 2, "y": 5, "color": "white" },
+          { "x": 1, "y": 4, "color": "black" },
+          { "x": 3, "y": 4, "color": "white" },
+          { "x": 2, "y": 3, "color": "black" },
+          { "x": 4, "y": 3, "color": "white" }
+        ],
+        "result_description": "Beyaz ikinci taraftan yaklaşır, siyah karşılık verir. Karmaşık joseki sonucu.",
+        "evaluation": "good",
+        "move_annotations": ["İkinci yaklaşım", "Savunma", "Kesme", "Bağlantı", "Genişleme"]
+      },
+      {
+        "id": "B",
+        "label": "Tek yaklaşım",
+        "is_best": false,
+        "moves": [
+          { "x": 5, "y": 2, "color": "white" },
+          { "x": 3, "y": 1, "color": "black" }
+        ],
+        "result_description": "Beyaz tek taraftan yaklaşır, siyah iyi köşe pozisyonu alır.",
+        "evaluation": "neutral",
+        "move_annotations": ["Yaklaşım", "Köşe iyi"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-15",
+    "title": "3-3 Invasion Advanced",
+    "description": "Gelişmiş 3-3 istilası - karmaşık varyasyonlar",
+    "level": 4,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 4, "y": 4, "color": "black" },
+      { "x": 6, "y": 4, "color": "white" },
+      { "x": 4, "y": 2, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Gelişmiş istila",
+        "is_best": true,
+        "moves": [
+          { "x": 3, "y": 3, "color": "white" },
+          { "x": 2, "y": 4, "color": "black" },
+          { "x": 3, "y": 4, "color": "white" },
+          { "x": 2, "y": 2, "color": "black" },
+          { "x": 3, "y": 2, "color": "white" },
+          { "x": 2, "y": 1, "color": "black" }
+        ],
+        "result_description": "Beyaz gelişmiş 3-3 istilası yapar, siyah karşılık verir. Köşe paylaşılır ancak beyaz sağlam şekil yapar.",
+        "evaluation": "good",
+        "move_annotations": ["Gelişmiş istila", "Korner", "Genişleme", "Bağlantı", "Kesme", "Güvence"]
+      },
+      {
+        "id": "B",
+        "label": "Basit istila",
+        "is_best": false,
+        "moves": [
+          { "x": 2, "y": 2, "color": "white" },
+          { "x": 3, "y": 3, "color": "black" }
+        ],
+        "result_description": "Beyaz basit istila eder, siyah güçlü dış duvar kazanır.",
+        "evaluation": "bad",
+        "move_annotations": ["Basit", "Beyaz zayıf"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-16",
+    "title": "Attach-Under Joseki",
+    "description": "Altın bağlantı josekisi - taşın altına temas",
+    "level": 4,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 6, "y": 2, "color": "white" },
+      { "x": 4, "y": 2, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Alt bağlantı",
+        "is_best": true,
+        "moves": [
+          { "x": 4, "y": 3, "color": "white" },
+          { "x": 3, "y": 3, "color": "black" },
+          { "x": 5, "y": 3, "color": "white" },
+          { "x": 4, "y": 4, "color": "black" }
+        ],
+        "result_description": "Beyaz siyah taşın altına temas eder, siyah karşılık verir. Karmaşık joseki sonucu.",
+        "evaluation": "good",
+        "move_annotations": ["Alt temas", "Kesme", "Beyaz devam", "Denge"]
+      },
+      {
+        "id": "B",
+        "label": "Direkt çekilme",
+        "is_best": false,
+        "moves": [
+          { "x": 3, "y": 1, "color": "white" },
+          { "x": 4, "y": 3, "color": "black" }
+        ],
+        "result_description": "Beyaz direkt çekilir, siyah iyi pozisyon kazanır.",
+        "evaluation": "bad",
+        "move_annotations": ["Çekilme", "Siyah iyi"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-17",
+    "title": "Kobayashi Opening",
+    "description": "Kobayashi açılışı - modern Go'nun ünlü stratejisi",
+    "level": 5,
+    "category": "fuseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 4, "y": 4, "color": "black" },
+      { "x": 2, "y": 2, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Kobayashi standart",
+        "is_best": true,
+        "moves": [
+          { "x": 6, "y": 4, "color": "black" },
+          { "x": 6, "y": 2, "color": "white" },
+          { "x": 4, "y": 6, "color": "black" },
+          { "x": 2, "y": 6, "color": "white" }
+        ],
+        "result_description": "Siyah Kobayashi açılışını oynar, kenar stratejisi kurar. Modern Go'nun temel açılışı.",
+        "evaluation": "good",
+        "move_annotations": ["Yaklaşım", "Beyaz karşılık", "Kenar stratejisi", "Denge"]
+      },
+      {
+        "id": "B",
+        "label": "Geleneksel açılış",
+        "is_best": false,
+        "moves": [
+          { "x": 2, "y": 2, "color": "black" },
+          { "x": 6, "y": 6, "color": "white" }
+        ],
+        "result_description": "Siyah geleneksel açılışı seçer, Kobayashi stratejisinden vazgeçer.",
+        "evaluation": "neutral",
+        "move_annotations": ["Geleneksel", "Köşe karşılık"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-18",
+    "title": "Chinese Opening",
+    "description": "Çin açılışı - geniş kenar stratejisi",
+    "level": 5,
+    "category": "fuseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 4, "y": 4, "color": "black" },
+      { "x": 2, "y": 2, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Çin açılışı",
+        "is_best": true,
+        "moves": [
+          { "x": 4, "y": 2, "color": "black" },
+          { "x": 6, "y": 6, "color": "white" },
+          { "x": 6, "y": 2, "color": "black" },
+          { "x": 2, "y": 6, "color": "white" }
+        ],
+        "result_description": "Siyah Çin açılışını kurar, geniş kenar stratejisi izler. Güçlü merkez etkisi.",
+        "evaluation": "good",
+        "move_annotations": ["Kenar genişleme", "Beyaz karşılık", "Strateji kurulumu", "Denge"]
+      },
+      {
+        "id": "B",
+        "label": "Küçük Çin açılışı",
+        "is_best": false,
+        "moves": [
+          { "x": 4, "y": 2, "color": "black" },
+          { "x": 3, "y": 2, "color": "white" }
+        ],
+        "result_description": "Siyah küçük açılış yapar, beyaz agresif karşılık verir.",
+        "evaluation": "neutral",
+        "move_annotations": ["Küçük açılış", "Beyaz agresif"]
+      }
+    ],
+    "quiz": {
+      "question": "Çin açılışında siyahın ana stratejisi nedir?",
+      "correct_variation_id": "A",
+      "hint": "Kenar stratejisine odaklanın"
+    }
+  },
+  {
+    "id": "joseki-19",
+    "title": "Mini Chinese Opening",
+    "description": "Küçük Çin açılışı - kompakt strateji varyantı",
+    "level": 4,
+    "category": "fuseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 4, "y": 4, "color": "black" },
+      { "x": 2, "y": 2, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Mini Çin",
+        "is_best": true,
+        "moves": [
+          { "x": 3, "y": 2, "color": "black" },
+          { "x": 6, "y": 6, "color": "white" },
+          { "x": 5, "y": 2, "color": "black" },
+          { "x": 2, "y": 6, "color": "white" }
+        ],
+        "result_description": "Siyah mini Çin açılışını oynar, kompakt kenar stratejisi kurar.",
+        "evaluation": "good",
+        "move_annotations": ["Mini Çin", "Beyaz karşılık", "Kenar tamamlandı", "Denge"]
+      },
+      {
+        "id": "B",
+        "label": "Geniş mini Çin",
+        "is_best": false,
+        "moves": [
+          { "x": 2, "y": 2, "color": "black" },
+          { "x": 6, "y": 2, "color": "white" }
+        ],
+        "result_description": "Siyah geniş oynar, beyaz karşı saldırı yapar.",
+        "evaluation": "neutral",
+        "move_annotations": ["Geniş", "Beyaz saldırı"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-20",
+    "title": "Large Knight Approach",
+    "description": "Büyük at yaklaşımı - komokuya büyük at hamlesi",
+    "level": 4,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Büyük at yaklaşım",
+        "is_best": true,
+        "moves": [
+          { "x": 5, "y": 3, "color": "white" },
+          { "x": 3, "y": 2, "color": "black" },
+          { "x": 4, "y": 2, "color": "white" },
+          { "x": 2, "y": 3, "color": "black" }
+        ],
+        "result_description": "Beyaz büyük at ile yaklaşır, siyah karşılık verir. Esnek joseki sonucu.",
+        "evaluation": "good",
+        "move_annotations": ["Büyük at", "Siyah karşılık", "Yaklaşım", "Köşe güvence"]
+      },
+      {
+        "id": "B",
+        "label": "Yüksek karşılık",
+        "is_best": false,
+        "moves": [
+          { "x": 5, "y": 3, "color": "white" },
+          { "x": 4, "y": 4, "color": "black" }
+        ],
+        "result_description": "Beyaz büyük at ile yaklaşır, siyah merkeze çekilir.",
+        "evaluation": "neutral",
+        "move_annotations": ["Büyük at", "Merkez çekilme"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-21",
+    "title": "Temel Yaklaşım Joseki",
+    "description": "En temel köşe yaklaşım josekisi - ilk öğrenilmesi gereken",
+    "level": 1,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Doğrudan yaklaşım",
+        "is_best": true,
+        "moves": [
+          { "x": 5, "y": 2, "color": "white" },
+          { "x": 3, "y": 2, "color": "black" },
+          { "x": 4, "y": 3, "color": "white" }
+        ],
+        "result_description": "Beyaz köşeye yaklaşır, siyah karşılık verir. Basit ve dengeli joseki.",
+        "evaluation": "good",
+        "move_annotations": ["Yaklaşım", "Karşılık", "Genişleme"]
+      },
+      {
+        "id": "B",
+        "label": "Uzak yaklaşım",
+        "is_best": false,
+        "moves": [
+          { "x": 6, "y": 6, "color": "white" }
+        ],
+        "result_description": "Beyaz çok uzak oynar, siyah köşeyi serbestçe alır.",
+        "evaluation": "neutral",
+        "move_annotations": ["Uzak hamle"]
+      }
+    ],
+    "quiz": {
+      "question": "En temel yaklaşım josekisinde beyaz nasıl yaklaşmalı?",
+      "correct_variation_id": "A",
+      "hint": "Köşeye doğru yaklaşın"
+    }
+  },
+  {
+    "id": "joseki-22",
+    "title": "4-4 Kosumi Bağlantı",
+    "description": "Hoshi taşına kosumi bağlantı josekisi",
+    "level": 2,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 4, "y": 4, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Kosumi bağlantı",
+        "is_best": true,
+        "moves": [
+          { "x": 3, "y": 3, "color": "white" },
+          { "x": 5, "y": 5, "color": "black" },
+          { "x": 4, "y": 3, "color": "white" },
+          { "x": 5, "y": 3, "color": "black" }
+        ],
+        "result_description": "Beyaz kosumi ile bağlanır, siyah hane ile karşılık verir. Dengeli sonuç.",
+        "evaluation": "good",
+        "move_annotations": ["Kosumi bağlantı", "Hane", "Genişleme", "Denge"]
+      },
+      {
+        "id": "B",
+        "label": "Direkt bağlanma",
+        "is_best": false,
+        "moves": [
+          { "x": 4, "y": 3, "color": "white" },
+          { "x": 4, "y": 5, "color": "black" }
+        ],
+        "result_description": "Beyaz direkt bağlanır, siyah güçlü dış etki kazanır.",
+        "evaluation": "bad",
+        "move_annotations": ["Zayıf bağlantı", "Siyah etki"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-23",
+    "title": "Mokuhazushi Joseki",
+    "description": "3-5 noktası josekisi - kenar ağırlıklı strateji",
+    "level": 2,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 3, "y": 5, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Yaklaşım karşılık",
+        "is_best": true,
+        "moves": [
+          { "x": 5, "y": 5, "color": "white" },
+          { "x": 3, "y": 3, "color": "black" },
+          { "x": 5, "y": 3, "color": "white" }
+        ],
+        "result_description": "Beyaz mokuhazushi taşına yaklaşır, siyah karşılık verir. Kenar kontrolü paylaşılır.",
+        "evaluation": "good",
+        "move_annotations": ["Yaklaşım", "Karşılık", "Kenar genişleme"]
+      },
+      {
+        "id": "B",
+        "label": "Köşe yaklaşım",
+        "is_best": false,
+        "moves": [
+          { "x": 3, "y": 3, "color": "white" },
+          { "x": 5, "y": 3, "color": "black" }
+        ],
+        "result_description": "Beyaz köşeye yaklaşır, siyah kenarı kontrol eder.",
+        "evaluation": "neutral",
+        "move_annotations": ["Köşe yaklaşım", "Kenar kontrol"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-24",
+    "title": "Nikken Takamoku",
+    "description": "İki boşluk yüksek yaklaşım josekisi",
+    "level": 3,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Yüksek yaklaşım",
+        "is_best": true,
+        "moves": [
+          { "x": 2, "y": 5, "color": "white" },
+          { "x": 3, "y": 5, "color": "black" },
+          { "x": 2, "y": 4, "color": "white" },
+          { "x": 4, "y": 4, "color": "black" }
+        ],
+        "result_description": "Beyaz iki boşluk yüksek yaklaşır, siyah hane ile karşılık verir. Güçlü duvar oluşur.",
+        "evaluation": "good",
+        "move_annotations": ["Yüksek yaklaşım", "Hane", "Köşeye çekilme", "Duvar"]
+      },
+      {
+        "id": "B",
+        "label": "Düşük karşılık",
+        "is_best": false,
+        "moves": [
+          { "x": 2, "y": 5, "color": "white" },
+          { "x": 2, "y": 1, "color": "black" }
+        ],
+        "result_description": "Beyaz yüksek yaklaşır, siyah alçak karşılık verir. Beyaz iyi pozisyon kazanır.",
+        "evaluation": "neutral",
+        "move_annotations": ["Yaklaşım", "Alçak karşılık"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-25",
+    "title": "Bir Boşluk Alçak Yaklaşım",
+    "description": "Tek boşluk alçak yaklaşım josekisi",
+    "level": 3,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Kosumi karşılık",
+        "is_best": true,
+        "moves": [
+          { "x": 4, "y": 2, "color": "white" },
+          { "x": 3, "y": 3, "color": "black" },
+          { "x": 5, "y": 2, "color": "white" },
+          { "x": 2, "y": 3, "color": "black" }
+        ],
+        "result_description": "Beyaz alçak yaklaşır, siyah kosumi ile karşılık verir. Standart joseki sonucu.",
+        "evaluation": "good",
+        "move_annotations": ["Alçak yaklaşım", "Kosumi", "Beyaz devam", "Köşe güvence"]
+      },
+      {
+        "id": "B",
+        "label": "Hane karşılık",
+        "is_best": false,
+        "moves": [
+          { "x": 4, "y": 2, "color": "white" },
+          { "x": 4, "y": 3, "color": "black" }
+        ],
+        "result_description": "Beyaz alçak yaklaşır, siyah hane oynar ama beyaz iyi şekil alır.",
+        "evaluation": "neutral",
+        "move_annotations": ["Yaklaşım", "Hane"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-26",
+    "title": "Kosumi Tsuke Joseki",
+    "description": "Kosumi temas josekisi - diagonal bağlantı",
+    "level": 3,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 4, "y": 4, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Kosumi tsuke",
+        "is_best": true,
+        "moves": [
+          { "x": 3, "y": 3, "color": "black" },
+          { "x": 2, "y": 3, "color": "white" },
+          { "x": 3, "y": 2, "color": "black" },
+          { "x": 4, "y": 3, "color": "white" }
+        ],
+        "result_description": "Siyah kosumi tsuke ile bağlanır, beyaz karşılık verir. Dengeli joseki.",
+        "evaluation": "good",
+        "move_annotations": ["Kosumi tsuke", "Beyaz karşılık", "Bağlantı", "Denge"]
+      },
+      {
+        "id": "B",
+        "label": "Direkt kesme",
+        "is_best": false,
+        "moves": [
+          { "x": 3, "y": 4, "color": "black" },
+          { "x": 3, "y": 3, "color": "white" }
+        ],
+        "result_description": "Siyah direkt keser ama beyaz güçlü pozisyon kazanır.",
+        "evaluation": "bad",
+        "move_annotations": ["Kesme", "Beyaz güçlü"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-27",
+    "title": "Taisha Joseki Klasik",
+    "description": "Klasik taisha joseki - çok karmaşık varyasyonlar",
+    "level": 4,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 5, "y": 3, "color": "white" },
+      { "x": 3, "y": 3, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Klasik taisha",
+        "is_best": true,
+        "moves": [
+          { "x": 4, "y": 3, "color": "white" },
+          { "x": 4, "y": 2, "color": "black" },
+          { "x": 3, "y": 4, "color": "white" },
+          { "x": 2, "y": 4, "color": "black" },
+          { "x": 5, "y": 4, "color": "white" }
+        ],
+        "result_description": "Klasik taisha varyasyonu başlar, karmaşık savaş dengeli sonuçlanır.",
+        "evaluation": "good",
+        "move_annotations": ["Taisha başlar", "Kesme", "Savunma", "Bağlantı", "Genişleme"]
+      },
+      {
+        "id": "B",
+        "label": "Basit çekilme",
+        "is_best": false,
+        "moves": [
+          { "x": 3, "y": 2, "color": "white" },
+          { "x": 4, "y": 2, "color": "black" }
+        ],
+        "result_description": "Beyaz basit çekilir, siyah güçlü pozisyon kazanır.",
+        "evaluation": "bad",
+        "move_annotations": ["Çekilme", "Siyah iyi"]
+      }
+    ],
+    "quiz": {
+      "question": "Taisha josekisinde beyazın en iyi devamı nedir?",
+      "correct_variation_id": "A",
+      "hint": "Karmaşık varyasyonu takip edin"
+    }
+  },
+  {
+    "id": "joseki-28",
+    "title": "Nadare Joseki",
+    "description": "Küçük çığ josekisi - agresif karşılık",
+    "level": 4,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 4, "y": 3, "color": "white" },
+      { "x": 3, "y": 2, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Nadare devam",
+        "is_best": true,
+        "moves": [
+          { "x": 3, "y": 4, "color": "white" },
+          { "x": 4, "y": 2, "color": "black" },
+          { "x": 2, "y": 3, "color": "white" },
+          { "x": 4, "y": 4, "color": "black" }
+        ],
+        "result_description": "Nadare josekisi devam eder, siyah köşeyi alır beyaz dış etki kazanır.",
+        "evaluation": "good",
+        "move_annotations": ["Nadare", "Köşe", "Dış etki", "Denge"]
+      },
+      {
+        "id": "B",
+        "label": "Basit karşılık",
+        "is_best": false,
+        "moves": [
+          { "x": 4, "y": 2, "color": "white" },
+          { "x": 3, "y": 3, "color": "black" }
+        ],
+        "result_description": "Beyaz basit karşılık verir, siyah iyi şekil alır.",
+        "evaluation": "neutral",
+        "move_annotations": ["Basit", "Siyah iyi şekil"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-29",
+    "title": "Shusaku Joseki",
+    "description": "Shusaku'nun ünlü joseki karşılığı",
+    "level": 4,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 5, "y": 2, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Shusaku kosumi",
+        "is_best": true,
+        "moves": [
+          { "x": 3, "y": 1, "color": "black" },
+          { "x": 4, "y": 1, "color": "white" },
+          { "x": 2, "y": 3, "color": "black" },
+          { "x": 5, "y": 3, "color": "white" }
+        ],
+        "result_description": "Shusaku kosumi ile karşılık verir, dengeli joseki sonucu elde edilir.",
+        "evaluation": "good",
+        "move_annotations": ["Shusaku kosumi", "Beyaz devam", "Köşe güvence", "Denge"]
+      },
+      {
+        "id": "B",
+        "label": "Direkt pincer",
+        "is_best": false,
+        "moves": [
+          { "x": 4, "y": 2, "color": "black" },
+          { "x": 3, "y": 2, "color": "white" }
+        ],
+        "result_description": "Siyah direkt pincer oynar, beyaz güçlü karşılık verir.",
+        "evaluation": "bad",
+        "move_annotations": ["Pincer", "Beyaz güçlü"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-30",
+    "title": "Iron Pillar Joseki",
+    "description": "Demir sütun josekisi - güçlü savunma",
+    "level": 4,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 5, "y": 2, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Demir sütun",
+        "is_best": true,
+        "moves": [
+          { "x": 3, "y": 2, "color": "black" },
+          { "x": 4, "y": 2, "color": "white" },
+          { "x": 3, "y": 3, "color": "black" },
+          { "x": 4, "y": 3, "color": "white" }
+        ],
+        "result_description": "Siyah demir sütun ile güçlü savunma yapar, beyaz kenara genişler.",
+        "evaluation": "good",
+        "move_annotations": ["Demir sütun", "Beyaz yaklaşır", "Güçlü savunma", "Genişleme"]
+      },
+      {
+        "id": "B",
+        "label": "Zayıf savunma",
+        "is_best": false,
+        "moves": [
+          { "x": 2, "y": 1, "color": "black" },
+          { "x": 4, "y": 3, "color": "white" }
+        ],
+        "result_description": "Siyah zayıf savunur, beyaz köşeyi kontrol eder.",
+        "evaluation": "bad",
+        "move_annotations": ["Zayıf", "Beyaz kontrol"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-31",
+    "title": "Large Avalanche",
+    "description": "Büyük çığ josekisi - en karmaşık joseki varyasyonu",
+    "level": 5,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 4, "y": 3, "color": "white" },
+      { "x": 3, "y": 2, "color": "black" },
+      { "x": 3, "y": 4, "color": "white" },
+      { "x": 4, "y": 2, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Büyük çığ devam",
+        "is_best": true,
+        "moves": [
+          { "x": 2, "y": 3, "color": "white" },
+          { "x": 3, "y": 3, "color": "black" },
+          { "x": 4, "y": 4, "color": "white" },
+          { "x": 5, "y": 3, "color": "black" },
+          { "x": 2, "y": 1, "color": "white" }
+        ],
+        "result_description": "Büyük çığ josekisi devam eder, karmaşık savaş sonucunda dengeli pozisyon.",
+        "evaluation": "good",
+        "move_annotations": ["Büyük çığ", "Kesme", "Savaş", "Denge", "Sonuç"]
+      },
+      {
+        "id": "B",
+        "label": "Küçük çığ varyantı",
+        "is_best": false,
+        "moves": [
+          { "x": 2, "y": 3, "color": "white" },
+          { "x": 5, "y": 3, "color": "black" }
+        ],
+        "result_description": "Siyah küçük çığ oynar, beyaz daha iyi pozisyon kazanır.",
+        "evaluation": "bad",
+        "move_annotations": ["Küçük çığ", "Beyaz iyi"]
+      }
+    ],
+    "quiz": {
+      "question": "Büyük çığ josekisinde siyah ne yapmalı?",
+      "correct_variation_id": "A",
+      "hint": "Karmaşık savaşı kabul edin"
+    }
+  },
+  {
+    "id": "joseki-32",
+    "title": "Magic Sword Klasik",
+    "description": "Klasik sihirli kılıç josekisi - güçlü dış duvar",
+    "level": 5,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 4, "y": 2, "color": "white" },
+      { "x": 3, "y": 3, "color": "black" },
+      { "x": 3, "y": 2, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Klasik kılıç",
+        "is_best": true,
+        "moves": [
+          { "x": 2, "y": 1, "color": "black" },
+          { "x": 4, "y": 1, "color": "white" },
+          { "x": 3, "y": 1, "color": "black" },
+          { "x": 5, "y": 1, "color": "white" }
+        ],
+        "result_description": "Klasik sihirli kılıç devam eder, siyah güçlü dış duvar elde eder.",
+        "evaluation": "good",
+        "move_annotations": ["Kılıç devam", "Beyaz karşılık", "Duvar oluştu", "Sonuç"]
+      },
+      {
+        "id": "B",
+        "label": "Alternatif çekilme",
+        "is_best": false,
+        "moves": [
+          { "x": 2, "y": 3, "color": "black" },
+          { "x": 4, "y": 3, "color": "white" }
+        ],
+        "result_description": "Siyah alternatif çekilir, beyaz güçlü köşe pozisyonu kazanır.",
+        "evaluation": "neutral",
+        "move_annotations": ["Çekilme", "Beyaz güçlü"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-33",
+    "title": "Shusaku Açılışı",
+    "description": "Shusaku'nun ünlü açılış stratejisi",
+    "level": 5,
+    "category": "fuseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 6, "y": 6, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Shusaku açılışı",
+        "is_best": true,
+        "moves": [
+          { "x": 6, "y": 2, "color": "black" },
+          { "x": 2, "y": 6, "color": "white" },
+          { "x": 4, "y": 4, "color": "black" },
+          { "x": 3, "y": 5, "color": "white" }
+        ],
+        "result_description": "Shusaku açılışı kurulur, siyah dengeli strateji izler.",
+        "evaluation": "good",
+        "move_annotations": ["Shusaku açılışı", "Beyaz karşılık", "Merkez", "Denge"]
+      },
+      {
+        "id": "B",
+        "label": "Agresif açılış",
+        "is_best": false,
+        "moves": [
+          { "x": 4, "y": 4, "color": "black" },
+          { "x": 4, "y": 6, "color": "white" }
+        ],
+        "result_description": "Siyah agresif açar, beyaz iyi karşılık verir.",
+        "evaluation": "neutral",
+        "move_annotations": ["Agresif", "Beyaz karşılık"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-34",
+    "title": "Yeni Açılış Fuseki",
+    "description": "Modern açılış stratejisi - contemporary Go",
+    "level": 5,
+    "category": "fuseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 4, "y": 4, "color": "black" },
+      { "x": 2, "y": 2, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Modern açılış",
+        "is_best": true,
+        "moves": [
+          { "x": 6, "y": 4, "color": "black" },
+          { "x": 6, "y": 2, "color": "white" },
+          { "x": 4, "y": 6, "color": "black" },
+          { "x": 4, "y": 2, "color": "white" }
+        ],
+        "result_description": "Modern açılış stratejisi kurulur, esnek pozisyon elde edilir.",
+        "evaluation": "good",
+        "move_annotations": ["Modern açılış", "Beyaz karşılık", "Strateji", "Esnek"]
+      },
+      {
+        "id": "B",
+        "label": "Geleneksel açılış",
+        "is_best": false,
+        "moves": [
+          { "x": 2, "y": 6, "color": "black" },
+          { "x": 6, "y": 6, "color": "white" }
+        ],
+        "result_description": "Siyah geleneksel açar, modern stratejiden vazgeçer.",
+        "evaluation": "neutral",
+        "move_annotations": ["Geleneksel", "Köşe karşılık"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-35",
+    "title": "4-4 Çift Yaklaşım",
+    "description": "Hoshi taşına çift taraflı yaklaşım",
+    "level": 4,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 4, "y": 4, "color": "black" },
+      { "x": 6, "y": 4, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "İkinci yaklaşım",
+        "is_best": true,
+        "moves": [
+          { "x": 4, "y": 6, "color": "white" },
+          { "x": 3, "y": 6, "color": "black" },
+          { "x": 5, "y": 6, "color": "white" },
+          { "x": 4, "y": 5, "color": "black" }
+        ],
+        "result_description": "Beyaz ikinci taraftan yaklaşır, siyah karşılık verir. Karmaşık joseki.",
+        "evaluation": "good",
+        "move_annotations": ["İkinci yaklaşım", "Savunma", "Kesme", "Denge"]
+      },
+      {
+        "id": "B",
+        "label": "Tek yaklaşım",
+        "is_best": false,
+        "moves": [
+          { "x": 3, "y": 4, "color": "white" },
+          { "x": 5, "y": 3, "color": "black" }
+        ],
+        "result_description": "Beyaz tek taraftan yaklaşır, siyah iyi köşe pozisyonu alır.",
+        "evaluation": "neutral",
+        "move_annotations": ["Yaklaşım", "Köşe iyi"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-36",
+    "title": "Sansan Temel İstila",
+    "description": "3-3 temel istila josekisi - en basit köşe istilası",
+    "level": 1,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 4, "y": 4, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Doğrudan 3-3",
+        "is_best": true,
+        "moves": [
+          { "x": 3, "y": 3, "color": "white" },
+          { "x": 2, "y": 4, "color": "black" },
+          { "x": 4, "y": 3, "color": "white" }
+        ],
+        "result_description": "Beyaz 3-3'e istila eder, siyah karşılık verir. Köşe paylaşılır.",
+        "evaluation": "good",
+        "move_annotations": ["3-3 istila", "Savunma", "Köşe paylaşımı"]
+      },
+      {
+        "id": "B",
+        "label": "Erken istila",
+        "is_best": false,
+        "moves": [
+          { "x": 2, "y": 2, "color": "white" },
+          { "x": 3, "y": 3, "color": "black" }
+        ],
+        "result_description": "Beyaz çok erken istila eder, siyah dış etki kazanır.",
+        "evaluation": "bad",
+        "move_annotations": ["Erken", "Siyah etki"]
+      }
+    ],
+    "quiz": {
+      "question": "3-3 istilası ne zaman yapılmalı?",
+      "correct_variation_id": "A",
+      "hint": "Doğrudan köşe noktasına gidin"
+    }
+  },
+  {
+    "id": "joseki-37",
+    "title": "Keima Attach Joseki",
+    "description": "At temas josekisi - keima ile bağlantı",
+    "level": 3,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 5, "y": 3, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Keima temas",
+        "is_best": true,
+        "moves": [
+          { "x": 3, "y": 3, "color": "black" },
+          { "x": 4, "y": 3, "color": "white" },
+          { "x": 4, "y": 2, "color": "black" },
+          { "x": 3, "y": 4, "color": "white" }
+        ],
+        "result_description": "Siyah keima ile temas eder, beyaz karşılık verir. Dengeli joseki.",
+        "evaluation": "good",
+        "move_annotations": ["Keima temas", "Beyaz karşılık", "Bağlantı", "Denge"]
+      },
+      {
+        "id": "B",
+        "label": "Uzak karşılık",
+        "is_best": false,
+        "moves": [
+          { "x": 3, "y": 2, "color": "black" },
+          { "x": 4, "y": 4, "color": "white" }
+        ],
+        "result_description": "Siyah uzak oynar, beyaz güçlü şekil alır.",
+        "evaluation": "neutral",
+        "move_annotations": ["Uzak", "Beyaz güçlü"]
+      }
+    ]
+  },
+  {
+    "id": "joseki-38",
+    "title": "3-4 One-Space High",
+    "description": "3-4 taşına tek boşluk yüksek yaklaşım",
+    "level": 2,
+    "category": "joseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Yüksek yaklaşım",
+        "is_best": true,
+        "moves": [
+          { "x": 2, "y": 4, "color": "white" },
+          { "x": 3, "y": 4, "color": "black" },
+          { "x": 2, "y": 3, "color": "white" },
+          { "x": 4, "y": 3, "color": "black" }
+        ],
+        "result_description": "Beyaz yüksek yaklaşır, siyah hane ile karşılık verir. Standart joseki.",
+        "evaluation": "good",
+        "move_annotations": ["Yüksek yaklaşım", "Hane", "Köşeye çekilme", "Duvar"]
+      },
+      {
+        "id": "B",
+        "label": "Alçak karşılık",
+        "is_best": false,
+        "moves": [
+          { "x": 2, "y": 4, "color": "white" },
+          { "x": 2, "y": 1, "color": "black" }
+        ],
+        "result_description": "Beyaz yüksek yaklaşır, siyah alçak karşılık verir. Beyaz iyi şekil alır.",
+        "evaluation": "neutral",
+        "move_annotations": ["Yaklaşım", "Alçak karşılık"]
+      }
+    ]
   }
 ]

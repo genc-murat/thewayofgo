@@ -306,6 +306,301 @@ impl JosekiBook {
                 },
             ],
         );
+
+        // After B(3,3) (san-san in corner)
+        let board = Self::board_with_stones(9, &[(3, 3, StoneColor::Black)]);
+        self.add_pattern(
+            &board,
+            StoneColor::White,
+            9,
+            vec![
+                JosekiEntry {
+                    x: 4,
+                    y: 4,
+                    weight: 0.8,
+                    name: Some("Tengen".to_string()),
+                },
+                JosekiEntry {
+                    x: 2,
+                    y: 3,
+                    weight: 0.7,
+                    name: Some("Approach".to_string()),
+                },
+                JosekiEntry {
+                    x: 3,
+                    y: 2,
+                    weight: 0.7,
+                    name: Some("Approach".to_string()),
+                },
+                JosekiEntry {
+                    x: 6,
+                    y: 6,
+                    weight: 0.6,
+                    name: Some("Diagonal".to_string()),
+                },
+            ],
+        );
+
+        // After B(3,3) W(2,3) → B response
+        let board =
+            Self::board_with_stones(9, &[(3, 3, StoneColor::Black), (2, 3, StoneColor::White)]);
+        self.add_pattern(
+            &board,
+            StoneColor::Black,
+            9,
+            vec![
+                JosekiEntry {
+                    x: 4,
+                    y: 2,
+                    weight: 0.9,
+                    name: Some("Hane".to_string()),
+                },
+                JosekiEntry {
+                    x: 3,
+                    y: 2,
+                    weight: 0.8,
+                    name: Some("Extension".to_string()),
+                },
+                JosekiEntry {
+                    x: 4,
+                    y: 4,
+                    weight: 0.7,
+                    name: Some("Diagonal".to_string()),
+                },
+            ],
+        );
+
+        // After B(4,4) W(6,6) B(2,6) → opposite corner response
+        let board = Self::board_with_stones(
+            9,
+            &[
+                (4, 4, StoneColor::Black),
+                (6, 6, StoneColor::White),
+                (2, 6, StoneColor::Black),
+            ],
+        );
+        self.add_pattern(
+            &board,
+            StoneColor::White,
+            9,
+            vec![
+                JosekiEntry {
+                    x: 6,
+                    y: 2,
+                    weight: 0.8,
+                    name: Some("Remaining corner".to_string()),
+                },
+                JosekiEntry {
+                    x: 5,
+                    y: 6,
+                    weight: 0.7,
+                    name: Some("Approach".to_string()),
+                },
+            ],
+        );
+
+        // After B(2,2) W(6,6) → double san-san opening
+        let board =
+            Self::board_with_stones(9, &[(2, 2, StoneColor::Black), (6, 6, StoneColor::White)]);
+        self.add_pattern(
+            &board,
+            StoneColor::Black,
+            9,
+            vec![
+                JosekiEntry {
+                    x: 4,
+                    y: 4,
+                    weight: 0.9,
+                    name: Some("Tengen".to_string()),
+                },
+                JosekiEntry {
+                    x: 3,
+                    y: 3,
+                    weight: 0.7,
+                    name: Some("San-san approach".to_string()),
+                },
+            ],
+        );
+
+        // After B(3,3) W(6,3) B(4,2) → approach continuation
+        let board = Self::board_with_stones(
+            9,
+            &[
+                (3, 3, StoneColor::Black),
+                (6, 3, StoneColor::White),
+                (4, 2, StoneColor::Black),
+            ],
+        );
+        self.add_pattern(
+            &board,
+            StoneColor::White,
+            9,
+            vec![
+                JosekiEntry {
+                    x: 3,
+                    y: 2,
+                    weight: 0.9,
+                    name: Some("Hane".to_string()),
+                },
+                JosekiEntry {
+                    x: 5,
+                    y: 2,
+                    weight: 0.7,
+                    name: Some("Extension".to_string()),
+                },
+                JosekiEntry {
+                    x: 4,
+                    y: 4,
+                    weight: 0.6,
+                    name: Some("Diagonal".to_string()),
+                },
+            ],
+        );
+
+        // After B(4,4) W(3,3) → after 3-3 invasion
+        let board =
+            Self::board_with_stones(9, &[(4, 4, StoneColor::Black), (3, 3, StoneColor::White)]);
+        self.add_pattern(
+            &board,
+            StoneColor::Black,
+            9,
+            vec![
+                JosekiEntry {
+                    x: 2,
+                    y: 4,
+                    weight: 0.9,
+                    name: Some("Block".to_string()),
+                },
+                JosekiEntry {
+                    x: 4,
+                    y: 3,
+                    weight: 0.8,
+                    name: Some("Hane".to_string()),
+                },
+                JosekiEntry {
+                    x: 6,
+                    y: 6,
+                    weight: 0.6,
+                    name: Some("Tenuki".to_string()),
+                },
+            ],
+        );
+
+        // After B(2,2) W(5,3) B(3,2) → keima response
+        let board = Self::board_with_stones(
+            9,
+            &[
+                (2, 2, StoneColor::Black),
+                (5, 3, StoneColor::White),
+                (3, 2, StoneColor::Black),
+            ],
+        );
+        self.add_pattern(
+            &board,
+            StoneColor::White,
+            9,
+            vec![
+                JosekiEntry {
+                    x: 3,
+                    y: 3,
+                    weight: 0.8,
+                    name: Some("Kosumi".to_string()),
+                },
+                JosekiEntry {
+                    x: 4,
+                    y: 4,
+                    weight: 0.7,
+                    name: Some("Diagonal".to_string()),
+                },
+            ],
+        );
+
+        // After B(3,2) W(5,2) → komoku approach sequence
+        let board =
+            Self::board_with_stones(9, &[(3, 2, StoneColor::Black), (5, 2, StoneColor::White)]);
+        self.add_pattern(
+            &board,
+            StoneColor::Black,
+            9,
+            vec![
+                JosekiEntry {
+                    x: 3,
+                    y: 3,
+                    weight: 0.9,
+                    name: Some("Kosumi".to_string()),
+                },
+                JosekiEntry {
+                    x: 4,
+                    y: 4,
+                    weight: 0.7,
+                    name: Some("Keima".to_string()),
+                },
+            ],
+        );
+
+        // After B(4,4) W(4,3) B(3,3) → front approach continuation
+        let board = Self::board_with_stones(
+            9,
+            &[
+                (4, 4, StoneColor::Black),
+                (4, 3, StoneColor::White),
+                (3, 3, StoneColor::Black),
+            ],
+        );
+        self.add_pattern(
+            &board,
+            StoneColor::White,
+            9,
+            vec![
+                JosekiEntry {
+                    x: 3,
+                    y: 2,
+                    weight: 0.8,
+                    name: Some("Hane".to_string()),
+                },
+                JosekiEntry {
+                    x: 5,
+                    y: 2,
+                    weight: 0.7,
+                    name: Some("Extension".to_string()),
+                },
+            ],
+        );
+
+        // After B(2,2) W(6,2) B(3,2) → diagonal pattern
+        let board = Self::board_with_stones(
+            9,
+            &[
+                (2, 2, StoneColor::Black),
+                (6, 2, StoneColor::White),
+                (3, 2, StoneColor::Black),
+            ],
+        );
+        self.add_pattern(
+            &board,
+            StoneColor::White,
+            9,
+            vec![
+                JosekiEntry {
+                    x: 4,
+                    y: 3,
+                    weight: 0.8,
+                    name: Some("Keima".to_string()),
+                },
+                JosekiEntry {
+                    x: 5,
+                    y: 2,
+                    weight: 0.7,
+                    name: Some("Pincer".to_string()),
+                },
+                JosekiEntry {
+                    x: 6,
+                    y: 6,
+                    weight: 0.6,
+                    name: Some("Diagonal".to_string()),
+                },
+            ],
+        );
     }
 
     fn load_13x13_patterns(&mut self) {
@@ -397,6 +692,219 @@ impl JosekiBook {
                     y: 4,
                     weight: 0.8,
                     name: Some("Approach".to_string()),
+                },
+            ],
+        );
+
+        // After B(3,3) W(4,3) → B response
+        let board =
+            Self::board_with_stones(13, &[(3, 3, StoneColor::Black), (4, 3, StoneColor::White)]);
+        self.add_pattern(
+            &board,
+            StoneColor::Black,
+            13,
+            vec![
+                JosekiEntry {
+                    x: 2,
+                    y: 3,
+                    weight: 0.9,
+                    name: Some("Kosumi".to_string()),
+                },
+                JosekiEntry {
+                    x: 3,
+                    y: 2,
+                    weight: 0.8,
+                    name: Some("Extension".to_string()),
+                },
+                JosekiEntry {
+                    x: 6,
+                    y: 6,
+                    weight: 0.7,
+                    name: Some("Side star".to_string()),
+                },
+            ],
+        );
+
+        // After B(4,4) → responses
+        let board = Self::board_with_stones(13, &[(4, 4, StoneColor::Black)]);
+        self.add_pattern(
+            &board,
+            StoneColor::White,
+            13,
+            vec![
+                JosekiEntry {
+                    x: 3,
+                    y: 3,
+                    weight: 0.9,
+                    name: Some("Kosumi approach".to_string()),
+                },
+                JosekiEntry {
+                    x: 3,
+                    y: 4,
+                    weight: 0.8,
+                    name: Some("Low approach".to_string()),
+                },
+                JosekiEntry {
+                    x: 4,
+                    y: 3,
+                    weight: 0.8,
+                    name: Some("High approach".to_string()),
+                },
+                JosekiEntry {
+                    x: 9,
+                    y: 4,
+                    weight: 0.7,
+                    name: Some("Far approach".to_string()),
+                },
+            ],
+        );
+
+        // After B(6,6) (tengen on 13x13) → responses
+        let board = Self::board_with_stones(13, &[(6, 6, StoneColor::Black)]);
+        self.add_pattern(
+            &board,
+            StoneColor::White,
+            13,
+            vec![
+                JosekiEntry {
+                    x: 3,
+                    y: 3,
+                    weight: 0.8,
+                    name: Some("Corner".to_string()),
+                },
+                JosekiEntry {
+                    x: 9,
+                    y: 3,
+                    weight: 0.8,
+                    name: Some("Corner".to_string()),
+                },
+                JosekiEntry {
+                    x: 3,
+                    y: 9,
+                    weight: 0.8,
+                    name: Some("Corner".to_string()),
+                },
+                JosekiEntry {
+                    x: 9,
+                    y: 9,
+                    weight: 0.8,
+                    name: Some("Corner".to_string()),
+                },
+            ],
+        );
+
+        // After B(3,3) W(9,3) → opposite corner approach
+        let board =
+            Self::board_with_stones(13, &[(3, 3, StoneColor::Black), (9, 3, StoneColor::White)]);
+        self.add_pattern(
+            &board,
+            StoneColor::Black,
+            13,
+            vec![
+                JosekiEntry {
+                    x: 4,
+                    y: 3,
+                    weight: 0.8,
+                    name: Some("Approach".to_string()),
+                },
+                JosekiEntry {
+                    x: 3,
+                    y: 4,
+                    weight: 0.8,
+                    name: Some("High approach".to_string()),
+                },
+                JosekiEntry {
+                    x: 6,
+                    y: 6,
+                    weight: 0.7,
+                    name: Some("Tengen".to_string()),
+                },
+            ],
+        );
+
+        // After B(4,4) W(3,3) B(2,4) → 3-3 invasion response
+        let board = Self::board_with_stones(
+            13,
+            &[
+                (4, 4, StoneColor::Black),
+                (3, 3, StoneColor::White),
+                (2, 4, StoneColor::Black),
+            ],
+        );
+        self.add_pattern(
+            &board,
+            StoneColor::White,
+            13,
+            vec![
+                JosekiEntry {
+                    x: 3,
+                    y: 2,
+                    weight: 0.8,
+                    name: Some("Block".to_string()),
+                },
+                JosekiEntry {
+                    x: 4,
+                    y: 3,
+                    weight: 0.7,
+                    name: Some("Hane".to_string()),
+                },
+            ],
+        );
+
+        // After B(9,9) W(3,3) → diagonal on 13x13
+        let board =
+            Self::board_with_stones(13, &[(9, 9, StoneColor::Black), (3, 3, StoneColor::White)]);
+        self.add_pattern(
+            &board,
+            StoneColor::Black,
+            13,
+            vec![
+                JosekiEntry {
+                    x: 9,
+                    y: 3,
+                    weight: 0.8,
+                    name: Some("Corner".to_string()),
+                },
+                JosekiEntry {
+                    x: 3,
+                    y: 9,
+                    weight: 0.8,
+                    name: Some("Corner".to_string()),
+                },
+                JosekiEntry {
+                    x: 6,
+                    y: 6,
+                    weight: 0.7,
+                    name: Some("Tengen".to_string()),
+                },
+            ],
+        );
+
+        // After B(3,3) W(5,3) B(3,5) → double approach
+        let board = Self::board_with_stones(
+            13,
+            &[
+                (3, 3, StoneColor::Black),
+                (5, 3, StoneColor::White),
+                (3, 5, StoneColor::Black),
+            ],
+        );
+        self.add_pattern(
+            &board,
+            StoneColor::White,
+            13,
+            vec![
+                JosekiEntry {
+                    x: 4,
+                    y: 5,
+                    weight: 0.8,
+                    name: Some("Hane".to_string()),
+                },
+                JosekiEntry {
+                    x: 4,
+                    y: 4,
+                    weight: 0.7,
+                    name: Some("Kosumi".to_string()),
                 },
             ],
         );
@@ -568,6 +1076,261 @@ impl JosekiBook {
                     y: 15,
                     weight: 0.9,
                     name: Some("Opposite corner".to_string()),
+                },
+            ],
+        );
+
+        // After B(3,3) W(5,3) → B pincer response
+        let board =
+            Self::board_with_stones(19, &[(3, 3, StoneColor::Black), (5, 3, StoneColor::White)]);
+        self.add_pattern(
+            &board,
+            StoneColor::Black,
+            19,
+            vec![
+                JosekiEntry {
+                    x: 2,
+                    y: 3,
+                    weight: 0.9,
+                    name: Some("Kosumi".to_string()),
+                },
+                JosekiEntry {
+                    x: 3,
+                    y: 2,
+                    weight: 0.8,
+                    name: Some("Extension".to_string()),
+                },
+                JosekiEntry {
+                    x: 4,
+                    y: 2,
+                    weight: 0.7,
+                    name: Some("Pincer".to_string()),
+                },
+            ],
+        );
+
+        // After B(4,4) W(3,4) → B response to low approach
+        let board =
+            Self::board_with_stones(19, &[(4, 4, StoneColor::Black), (3, 4, StoneColor::White)]);
+        self.add_pattern(
+            &board,
+            StoneColor::Black,
+            19,
+            vec![
+                JosekiEntry {
+                    x: 5,
+                    y: 3,
+                    weight: 0.9,
+                    name: Some("Hane".to_string()),
+                },
+                JosekiEntry {
+                    x: 4,
+                    y: 3,
+                    weight: 0.8,
+                    name: Some("Kosumi".to_string()),
+                },
+                JosekiEntry {
+                    x: 3,
+                    y: 3,
+                    weight: 0.7,
+                    name: Some("Block".to_string()),
+                },
+            ],
+        );
+
+        // After B(4,4) W(5,4) → B response to high approach
+        let board =
+            Self::board_with_stones(19, &[(4, 4, StoneColor::Black), (5, 4, StoneColor::White)]);
+        self.add_pattern(
+            &board,
+            StoneColor::Black,
+            19,
+            vec![
+                JosekiEntry {
+                    x: 3,
+                    y: 3,
+                    weight: 0.9,
+                    name: Some("Hane".to_string()),
+                },
+                JosekiEntry {
+                    x: 4,
+                    y: 3,
+                    weight: 0.8,
+                    name: Some("Kosumi".to_string()),
+                },
+                JosekiEntry {
+                    x: 6,
+                    y: 4,
+                    weight: 0.7,
+                    name: Some("Far pincer".to_string()),
+                },
+            ],
+        );
+
+        // After B(3,3) W(3,5) → high approach to komoku
+        let board =
+            Self::board_with_stones(19, &[(3, 3, StoneColor::Black), (3, 5, StoneColor::White)]);
+        self.add_pattern(
+            &board,
+            StoneColor::Black,
+            19,
+            vec![
+                JosekiEntry {
+                    x: 4,
+                    y: 5,
+                    weight: 0.9,
+                    name: Some("Hane".to_string()),
+                },
+                JosekiEntry {
+                    x: 3,
+                    y: 4,
+                    weight: 0.8,
+                    name: Some("Block".to_string()),
+                },
+                JosekiEntry {
+                    x: 2,
+                    y: 5,
+                    weight: 0.7,
+                    name: Some("Kosumi".to_string()),
+                },
+            ],
+        );
+
+        // After B(4,4) W(4,3) → approach from front
+        let board =
+            Self::board_with_stones(19, &[(4, 4, StoneColor::Black), (4, 3, StoneColor::White)]);
+        self.add_pattern(
+            &board,
+            StoneColor::Black,
+            19,
+            vec![
+                JosekiEntry {
+                    x: 3,
+                    y: 3,
+                    weight: 0.9,
+                    name: Some("Kosumi".to_string()),
+                },
+                JosekiEntry {
+                    x: 5,
+                    y: 3,
+                    weight: 0.8,
+                    name: Some("Hane".to_string()),
+                },
+                JosekiEntry {
+                    x: 3,
+                    y: 4,
+                    weight: 0.7,
+                    name: Some("Low approach".to_string()),
+                },
+            ],
+        );
+
+        // After B(3,3) W(15,3) B(3,15) → opposite corner sequence
+        let board = Self::board_with_stones(
+            19,
+            &[
+                (3, 3, StoneColor::Black),
+                (15, 3, StoneColor::White),
+                (3, 15, StoneColor::Black),
+            ],
+        );
+        self.add_pattern(
+            &board,
+            StoneColor::White,
+            19,
+            vec![
+                JosekiEntry {
+                    x: 15,
+                    y: 15,
+                    weight: 0.9,
+                    name: Some("Remaining corner".to_string()),
+                },
+                JosekiEntry {
+                    x: 9,
+                    y: 9,
+                    weight: 0.7,
+                    name: Some("Tengen".to_string()),
+                },
+            ],
+        );
+
+        // After B(4,4) W(15,4) → diagonal hoshi response
+        let board =
+            Self::board_with_stones(19, &[(4, 4, StoneColor::Black), (15, 4, StoneColor::White)]);
+        self.add_pattern(
+            &board,
+            StoneColor::Black,
+            19,
+            vec![
+                JosekiEntry {
+                    x: 3,
+                    y: 4,
+                    weight: 0.85,
+                    name: Some("Low approach".to_string()),
+                },
+                JosekiEntry {
+                    x: 4,
+                    y: 3,
+                    weight: 0.8,
+                    name: Some("High approach".to_string()),
+                },
+            ],
+        );
+
+        // After B(3,3) W(3,15) B(15,3) → fuseki continuation
+        let board = Self::board_with_stones(
+            19,
+            &[
+                (3, 3, StoneColor::Black),
+                (3, 15, StoneColor::White),
+                (15, 3, StoneColor::Black),
+            ],
+        );
+        self.add_pattern(
+            &board,
+            StoneColor::White,
+            19,
+            vec![
+                JosekiEntry {
+                    x: 15,
+                    y: 15,
+                    weight: 0.9,
+                    name: Some("Diagonal".to_string()),
+                },
+                JosekiEntry {
+                    x: 4,
+                    y: 4,
+                    weight: 0.7,
+                    name: Some("Hoshi".to_string()),
+                },
+            ],
+        );
+
+        // After B(4,4) W(4,15) B(15,4) → standard 19x19 fuseki
+        let board = Self::board_with_stones(
+            19,
+            &[
+                (4, 4, StoneColor::Black),
+                (4, 15, StoneColor::White),
+                (15, 4, StoneColor::Black),
+            ],
+        );
+        self.add_pattern(
+            &board,
+            StoneColor::White,
+            19,
+            vec![
+                JosekiEntry {
+                    x: 15,
+                    y: 15,
+                    weight: 0.9,
+                    name: Some("Hoshi".to_string()),
+                },
+                JosekiEntry {
+                    x: 3,
+                    y: 3,
+                    weight: 0.8,
+                    name: Some("Komoku".to_string()),
                 },
             ],
         );

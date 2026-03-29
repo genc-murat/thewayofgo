@@ -72,6 +72,578 @@
       ],
       "difficulty": 4,
       "stars_required": 3
+    },
+    {
+      "id": "san-san-invasion",
+      "name": "San-san İstilası",
+      "description": "3-3 noktasına istila - hoshi taşına karşı",
+      "moves": [
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 3, "y": 3, "color": "white"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 4, "y": 3, "color": "white"}
+      ],
+      "variations": [
+        {
+          "name": "Standart İstila",
+          "moves": [
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "black"}
+          ],
+          "explanation": "3-3 istilasının standart devamı - köşe paylaşılır."
+        }
+      ],
+      "difficulty": 2,
+      "stars_required": 1
+    },
+    {
+      "id": "diagonal-fuseki",
+      "name": "Diagonal Fuseki",
+      "description": "Çapraz açılış - zıt köşeler stratejisi",
+      "moves": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 6, "y": 6, "color": "white"},
+        {"x": 6, "y": 2, "color": "black"},
+        {"x": 2, "y": 6, "color": "white"}
+      ],
+      "variations": [
+        {
+          "name": "Çapraz Devam",
+          "moves": [
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 3, "y": 4, "color": "white"}
+          ],
+          "explanation": "Çapraz açılışın devamı - merkez kontrolü önem kazanır."
+        }
+      ],
+      "difficulty": 3,
+      "stars_required": 2
+    },
+    {
+      "id": "high-approach",
+      "name": "Yüksek Yaklaşım",
+      "description": "Komokuya üstten yaklaşım josekisi",
+      "moves": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 2, "y": 5, "color": "white"}
+      ],
+      "variations": [
+        {
+          "name": "Hane Karşılık",
+          "moves": [
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 2, "y": 4, "color": "white"},
+            {"x": 4, "y": 4, "color": "black"}
+          ],
+          "explanation": "Yüksek yaklaşıma hane ile karşılık - güçlü dış duvar elde edilir."
+        }
+      ],
+      "difficulty": 3,
+      "stars_required": 2
+    },
+    {
+      "id": "low-approach",
+      "name": "Alçak Yaklaşım",
+      "description": "Komokuya alttan yaklaşım josekisi",
+      "moves": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 5, "y": 2, "color": "white"}
+      ],
+      "variations": [
+        {
+          "name": "Kosumi Karşılık",
+          "moves": [
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 4, "y": 1, "color": "white"},
+            {"x": 2, "y": 3, "color": "black"}
+          ],
+          "explanation": "Alçak yaklaşıma kosumi karşılık - standart joseki sonucu."
+        }
+      ],
+      "difficulty": 3,
+      "stars_required": 2
+    },
+    {
+      "id": "pincer-joseki",
+      "name": "Pincer Joseki",
+      "description": "Pincer sıkıştırma josekisi",
+      "moves": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 6, "y": 2, "color": "white"},
+        {"x": 4, "y": 2, "color": "black"}
+      ],
+      "variations": [
+        {
+          "name": "Pincer Devam",
+          "moves": [
+            {"x": 5, "y": 2, "color": "white"},
+            {"x": 4, "y": 4, "color": "black"},
+            {"x": 6, "y": 3, "color": "white"}
+          ],
+          "explanation": "Pincer ile beyazı sıkıştırma - dengeli sonuç."
+        }
+      ],
+      "difficulty": 4,
+      "stars_required": 3
+    },
+    {
+      "id": "kobayashi-fuseki",
+      "name": "Kobayashi Fuseki",
+      "description": "Modern Kobayashi açılış stratejisi",
+      "moves": [
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 2, "y": 2, "color": "white"},
+        {"x": 6, "y": 4, "color": "black"},
+        {"x": 6, "y": 6, "color": "white"}
+      ],
+      "variations": [
+        {
+          "name": "Kobayashi Devam",
+          "moves": [
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 2, "y": 6, "color": "white"}
+          ],
+          "explanation": "Kobayashi açılışının devamı - kenar stratejisi kurulur."
+        }
+      ],
+      "difficulty": 5,
+      "stars_required": 4
+    },
+    {
+      "id": "chinese-opening",
+      "name": "Çin Açılışı",
+      "description": "Geniş kenar stratejisi ile Çin açılışı",
+      "moves": [
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 2, "y": 2, "color": "white"},
+        {"x": 4, "y": 2, "color": "black"},
+        {"x": 6, "y": 6, "color": "white"}
+      ],
+      "variations": [
+        {
+          "name": "Çin Devam",
+          "moves": [
+            {"x": 6, "y": 2, "color": "black"},
+            {"x": 2, "y": 6, "color": "white"}
+          ],
+          "explanation": "Çin açılışı devamı - geniş kenar kontrolü sağlanır."
+        }
+      ],
+      "difficulty": 5,
+      "stars_required": 4
+    },
+    {
+      "id": "mini-chinese",
+      "name": "Küçük Çin Açılışı",
+      "description": "Kompakt Çin açılışı varyantı",
+      "moves": [
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 2, "y": 2, "color": "white"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 6, "y": 6, "color": "white"}
+      ],
+      "variations": [
+        {
+          "name": "Küçük Çin Devam",
+          "moves": [
+            {"x": 5, "y": 2, "color": "black"},
+            {"x": 2, "y": 6, "color": "white"}
+          ],
+          "explanation": "Küçük Çin açılışı devamı - kompakt kenar stratejisi."
+        }
+      ],
+      "difficulty": 4,
+      "stars_required": 3
+    },
+    {
+      "id": "taisha-joseki",
+      "name": "Taisha Joseki",
+      "description": "Ünlü Taisha joseki varyantı - karmaşık savaş",
+      "moves": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 5, "y": 3, "color": "white"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "white"}
+      ],
+      "variations": [
+        {
+          "name": "Taisha Dal",
+          "moves": [
+            {"x": 4, "y": 2, "color": "black"},
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 2, "y": 4, "color": "black"}
+          ],
+          "explanation": "Taisha dalı - karmaşık savaş başlar, dengeli sonuç."
+        }
+      ],
+      "difficulty": 4,
+      "stars_required": 3
+    },
+    {
+      "id": "nadare-joseki",
+      "name": "Nadare Joseki",
+      "description": "Küçük çığ josekisi - agresif karşılık",
+      "moves": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 4, "y": 3, "color": "white"},
+        {"x": 3, "y": 2, "color": "black"}
+      ],
+      "variations": [
+        {
+          "name": "Nadare Devam",
+          "moves": [
+            {"x": 3, "y": 4, "color": "white"},
+            {"x": 4, "y": 2, "color": "black"},
+            {"x": 2, "y": 3, "color": "white"}
+          ],
+          "explanation": "Nadare devamı - siyah köşeyi alır, beyaz dış etki kazanır."
+        }
+      ],
+      "difficulty": 4,
+      "stars_required": 3
+    },
+    {
+      "id": "avalanche-joseki",
+      "name": "Avalanche Joseki",
+      "description": "Büyük çığ josekisi - en karmaşık joseki",
+      "moves": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 4, "y": 3, "color": "white"},
+        {"x": 3, "y": 2, "color": "black"},
+        {"x": 3, "y": 4, "color": "white"},
+        {"x": 4, "y": 2, "color": "black"}
+      ],
+      "variations": [
+        {
+          "name": "Büyük Çığ",
+          "moves": [
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 4, "color": "white"},
+            {"x": 5, "y": 3, "color": "black"}
+          ],
+          "explanation": "Büyük çığ josekisi - karmaşık savaş dengeli sonuçlanır."
+        }
+      ],
+      "difficulty": 5,
+      "stars_required": 4
+    },
+    {
+      "id": "magic-sword",
+      "name": "Magic Sword",
+      "description": "Sihirli Kılıç josekisi - güçlü dış duvar",
+      "moves": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 4, "y": 2, "color": "white"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 3, "y": 2, "color": "white"}
+      ],
+      "variations": [
+        {
+          "name": "Sihirli Kılıç",
+          "moves": [
+            {"x": 2, "y": 1, "color": "black"},
+            {"x": 4, "y": 1, "color": "white"},
+            {"x": 3, "y": 1, "color": "black"}
+          ],
+          "explanation": "Sihirli kılıç devamı - siyah güçlü dış duvar elde eder."
+        }
+      ],
+      "difficulty": 4,
+      "stars_required": 3
+    },
+    {
+      "id": "shusaku-joseki",
+      "name": "Shusaku Joseki",
+      "description": "Shusaku'nun ünlü joseki karşılığı",
+      "moves": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 5, "y": 2, "color": "white"},
+        {"x": 3, "y": 1, "color": "black"}
+      ],
+      "variations": [
+        {
+          "name": "Shusaku Kosumi",
+          "moves": [
+            {"x": 4, "y": 1, "color": "white"},
+            {"x": 2, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"}
+          ],
+          "explanation": "Shusaku kosumi ile karşılık - dengeli joseki sonucu."
+        }
+      ],
+      "difficulty": 4,
+      "stars_required": 3
+    },
+    {
+      "id": "keima-approach",
+      "name": "Keima Approach",
+      "description": "At hamlesi yaklaşım josekisi",
+      "moves": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 5, "y": 3, "color": "white"}
+      ],
+      "variations": [
+        {
+          "name": "Keima Karşılık",
+          "moves": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 4, "y": 2, "color": "black"}
+          ],
+          "explanation": "Keima yaklaşımına karşılık - dengeli joseki sonucu."
+        }
+      ],
+      "difficulty": 3,
+      "stars_required": 2
+    },
+    {
+      "id": "one-space-low",
+      "name": "Bir Boşluk Alçak",
+      "description": "Tek boşluk alçak yaklaşım josekisi",
+      "moves": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 4, "y": 2, "color": "white"}
+      ],
+      "variations": [
+        {
+          "name": "Kosumi Karşılık",
+          "moves": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "black"}
+          ],
+          "explanation": "Alçak yaklaşıma kosumi karşılık - standart joseki sonucu."
+        }
+      ],
+      "difficulty": 3,
+      "stars_required": 2
+    },
+    {
+      "id": "kosumi-tsuke",
+      "name": "Kosumi Tsuke",
+      "description": "Kosumi temas josekisi - diagonal bağlantı",
+      "moves": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 4, "y": 4, "color": "white"},
+        {"x": 3, "y": 3, "color": "black"}
+      ],
+      "variations": [
+        {
+          "name": "Kosumi Tsuke Devam",
+          "moves": [
+            {"x": 2, "y": 3, "color": "white"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 4, "y": 3, "color": "white"}
+          ],
+          "explanation": "Kosumi tsuke devamı - dengeli joseki sonucu."
+        }
+      ],
+      "difficulty": 3,
+      "stars_required": 2
+    },
+    {
+      "id": "iron-pillar",
+      "name": "Iron Pillar",
+      "description": "Demir sütun josekisi - güçlü savunma",
+      "moves": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 5, "y": 2, "color": "white"},
+        {"x": 3, "y": 2, "color": "black"}
+      ],
+      "variations": [
+        {
+          "name": "Demir Sütun Devam",
+          "moves": [
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 4, "y": 3, "color": "white"}
+          ],
+          "explanation": "Demir sütun devamı - siyah güçlü savunma yapar."
+        }
+      ],
+      "difficulty": 3,
+      "stars_required": 2
+    },
+    {
+      "id": "nikken-takamoku",
+      "name": "Nikken Takamoku",
+      "description": "İki boşluk yüksek yaklaşım josekisi",
+      "moves": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 2, "y": 5, "color": "white"}
+      ],
+      "variations": [
+        {
+          "name": "Hane Karşılık",
+          "moves": [
+            {"x": 3, "y": 5, "color": "black"},
+            {"x": 2, "y": 4, "color": "white"},
+            {"x": 4, "y": 4, "color": "black"}
+          ],
+          "explanation": "Yüksek yaklaşıma hane ile karşılık - güçlü dış duvar."
+        }
+      ],
+      "difficulty": 4,
+      "stars_required": 3
+    },
+    {
+      "id": "sansan-attachment",
+      "name": "Sansan Bağlantı",
+      "description": "3-3 noktası bağlantı josekisi",
+      "moves": [
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 3, "y": 3, "color": "white"}
+      ],
+      "variations": [
+        {
+          "name": "3-3 Karşılık",
+          "moves": [
+            {"x": 2, "y": 4, "color": "black"},
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 3, "y": 2, "color": "black"}
+          ],
+          "explanation": "3-3 bağlantısına karşılık - köşe paylaşılır."
+        }
+      ],
+      "difficulty": 2,
+      "stars_required": 1
+    },
+    {
+      "id": "3-3-invasion-basic",
+      "name": "3-3 Temel İstila",
+      "description": "Temel 3-3 istila josekisi",
+      "moves": [
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 3, "y": 3, "color": "white"},
+        {"x": 2, "y": 4, "color": "black"}
+      ],
+      "variations": [
+        {
+          "name": "Standart İstila",
+          "moves": [
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 3, "y": 2, "color": "black"},
+            {"x": 4, "y": 2, "color": "white"},
+            {"x": 2, "y": 3, "color": "black"}
+          ],
+          "explanation": "Temel 3-3 istilası - köşe paylaşılır, basit sonuç."
+        }
+      ],
+      "difficulty": 1,
+      "stars_required": 1
+    },
+    {
+      "id": "shusaku-opening",
+      "name": "Shusaku Açılışı",
+      "description": "Shusaku'nun ünlü açılış stratejisi",
+      "moves": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 6, "y": 6, "color": "white"},
+        {"x": 6, "y": 2, "color": "black"},
+        {"x": 2, "y": 6, "color": "white"},
+        {"x": 4, "y": 4, "color": "black"}
+      ],
+      "variations": [
+        {
+          "name": "Shusaku Açılışı Devam",
+          "moves": [
+            {"x": 3, "y": 5, "color": "white"},
+            {"x": 5, "y": 3, "color": "black"}
+          ],
+          "explanation": "Shusaku açılışı devamı - dengeli strateji kurulur."
+        }
+      ],
+      "difficulty": 5,
+      "stars_required": 4
+    },
+    {
+      "id": "new-opening-fuseki",
+      "name": "Yeni Açılış",
+      "description": "Modern açılış stratejisi - contemporary Go",
+      "moves": [
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 2, "y": 2, "color": "white"},
+        {"x": 6, "y": 4, "color": "black"},
+        {"x": 6, "y": 2, "color": "white"}
+      ],
+      "variations": [
+        {
+          "name": "Modern Açılış Devam",
+          "moves": [
+            {"x": 4, "y": 6, "color": "black"},
+            {"x": 4, "y": 2, "color": "white"}
+          ],
+          "explanation": "Modern açılış devamı - esnek strateji kurulur."
+        }
+      ],
+      "difficulty": 5,
+      "stars_required": 4
+    },
+    {
+      "id": "4-4-kosumi-attach",
+      "name": "4-4 Kosumi Bağlantı",
+      "description": "Hoshi taşına kosumi bağlantı josekisi",
+      "moves": [
+        {"x": 4, "y": 4, "color": "black"},
+        {"x": 3, "y": 3, "color": "white"},
+        {"x": 5, "y": 5, "color": "black"}
+      ],
+      "variations": [
+        {
+          "name": "Kosumi Bağlantı Devam",
+          "moves": [
+            {"x": 4, "y": 3, "color": "white"},
+            {"x": 5, "y": 3, "color": "black"}
+          ],
+          "explanation": "Kosumi bağlantı devamı - dengeli sonuç elde edilir."
+        }
+      ],
+      "difficulty": 2,
+      "stars_required": 1
+    },
+    {
+      "id": "3-4-approach-basic",
+      "name": "3-4 Yaklaşım Temel",
+      "description": "Temel 3-4 yaklaşım josekisi",
+      "moves": [
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 5, "y": 2, "color": "white"}
+      ],
+      "variations": [
+        {
+          "name": "Kosumi Karşılık",
+          "moves": [
+            {"x": 3, "y": 1, "color": "black"},
+            {"x": 4, "y": 1, "color": "white"}
+          ],
+          "explanation": "Temel 3-4 yaklaşımı - kosumi karşılık standart joseki."
+        }
+      ],
+      "difficulty": 1,
+      "stars_required": 1
+    },
+    {
+      "id": "mokuhazushi",
+      "name": "Mokuhazushi",
+      "description": "3-5 noktası açılış josekisi - kenar stratejisi",
+      "moves": [
+        {"x": 3, "y": 5, "color": "black"},
+        {"x": 5, "y": 5, "color": "white"}
+      ],
+      "variations": [
+        {
+          "name": "Mokuhazushi Devam",
+          "moves": [
+            {"x": 3, "y": 3, "color": "black"},
+            {"x": 5, "y": 3, "color": "white"}
+          ],
+          "explanation": "Mokuhazushi devamı - kenar kontrolü paylaşılır."
+        }
+      ],
+      "difficulty": 3,
+      "stars_required": 2
     }
   ]
 }
