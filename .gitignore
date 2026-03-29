@@ -25,3 +25,4 @@ dist-ssr
 
 # Tauri build artifacts
 src-tauri/bin
+src-tauri/resources/*.bin.gz
