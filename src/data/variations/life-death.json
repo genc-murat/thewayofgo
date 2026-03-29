@@ -1,0 +1,194 @@
+[
+  {
+    "id": "life-1",
+    "title": "Göz Yapımı Temeli",
+    "description": "Köşede iki göz oluşturarak yaşama",
+    "level": 2,
+    "category": "life_death",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 3, "y": 2, "color": "black" },
+      { "x": 4, "y": 2, "color": "black" },
+      { "x": 2, "y": 3, "color": "black" },
+      { "x": 4, "y": 3, "color": "black" },
+      { "x": 2, "y": 4, "color": "black" },
+      { "x": 3, "y": 4, "color": "black" },
+      { "x": 4, "y": 4, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Merkez göz",
+        "is_best": true,
+        "moves": [{ "x": 3, "y": 3, "color": "black" }],
+        "result_description": "Siyah iki göz oluşturur, grup canlı kalır.",
+        "evaluation": "good",
+        "move_annotations": ["İki göz oluştu"]
+      },
+      {
+        "id": "B",
+        "label": "Dış nokta",
+        "is_best": false,
+        "moves": [{ "x": 5, "y": 3, "color": "black" }],
+        "result_description": "Siyah tek göz yapar, beyaz 3,3'e oynarsa öldürebilir.",
+        "evaluation": "bad",
+        "move_annotations": ["Yanlış nokta"]
+      }
+    ],
+    "quiz": {
+      "question": "Bu grupta iki göz için hangi noktaya oynamalı?",
+      "correct_variation_id": "A",
+      "hint": "Taşların ortasına bakın"
+    }
+  },
+  {
+    "id": "life-2",
+    "title": "Ölüm-Kesin Köşe",
+    "description": "Bir köşe grubunu öldürme tekniği",
+    "level": 3,
+    "category": "life_death",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 1, "y": 1, "color": "white" },
+      { "x": 2, "y": 1, "color": "white" },
+      { "x": 3, "y": 1, "color": "white" },
+      { "x": 1, "y": 2, "color": "white" },
+      { "x": 3, "y": 2, "color": "white" },
+      { "x": 1, "y": 3, "color": "white" },
+      { "x": 2, "y": 3, "color": "white" },
+      { "x": 0, "y": 2, "color": "black" },
+      { "x": 2, "y": 0, "color": "black" },
+      { "x": 4, "y": 0, "color": "black" },
+      { "x": 4, "y": 2, "color": "black" },
+      { "x": 0, "y": 4, "color": "black" },
+      { "x": 2, "y": 4, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Vital point",
+        "is_best": true,
+        "moves": [
+          { "x": 2, "y": 2, "color": "black" },
+          { "x": 3, "y": 3, "color": "white" },
+          { "x": 1, "y": 1, "color": "black" }
+        ],
+        "result_description": "Siyah vital noktaya oynar, beyaz tek göz yapamaz.",
+        "evaluation": "good",
+        "move_annotations": ["Vital nokta", "Beyaz dener", "Siyah kapar"]
+      },
+      {
+        "id": "B",
+        "label": "Dışarıdan saldırı",
+        "is_best": false,
+        "moves": [{ "x": 4, "y": 4, "color": "black" }],
+        "result_description": "Siyah dışarıdan oynar, beyaz 2,2'ye oynayarak yaşar.",
+        "evaluation": "bad",
+        "move_annotations": ["Etkisiz"]
+      }
+    ]
+  },
+  {
+    "id": "life-3",
+    "title": "Bent Four in the Corner",
+    "description": "Köşedeki bükülü dört pozisyonu - ölüm durumu",
+    "level": 4,
+    "category": "life_death",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 0, "y": 0, "color": "white" },
+      { "x": 1, "y": 0, "color": "white" },
+      { "x": 2, "y": 0, "color": "white" },
+      { "x": 0, "y": 1, "color": "white" },
+      { "x": 2, "y": 1, "color": "white" },
+      { "x": 0, "y": 2, "color": "white" },
+      { "x": 1, "y": 2, "color": "white" },
+      { "x": 2, "y": 2, "color": "white" },
+      { "x": 3, "y": 0, "color": "black" },
+      { "x": 3, "y": 1, "color": "black" },
+      { "x": 3, "y": 2, "color": "black" },
+      { "x": 0, "y": 3, "color": "black" },
+      { "x": 1, "y": 3, "color": "black" },
+      { "x": 2, "y": 3, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Beyaz oynar",
+        "is_best": true,
+        "moves": [
+          { "x": 1, "y": 1, "color": "white" },
+          { "x": 3, "y": 3, "color": "black" },
+          { "x": 3, "y": 3, "color": "white" },
+          { "x": 1, "y": 1, "color": "black" }
+        ],
+        "result_description": "Bu bent four pozisyonudur. Siyah önce oynarsa beyaz ölür, beyaz önce oynarsa bent four sebebiyle ölüdür.",
+        "evaluation": "neutral",
+        "move_annotations": ["Beyaz oynar", "Siyah kapar", "Ko", "Bent four"]
+      },
+      {
+        "id": "B",
+        "label": "Siyah oynar",
+        "is_best": true,
+        "moves": [
+          { "x": 1, "y": 1, "color": "black" }
+        ],
+        "result_description": "Siyah vital noktaya oynar, beyaz ölür.",
+        "evaluation": "good",
+        "move_annotations": ["Vital nokta - ölüm"]
+      }
+    ]
+  },
+  {
+    "id": "life-4",
+    "title": "Bulky Five Shape",
+    "description": "Beş noktalık şekil - ölüm tekniği",
+    "level": 5,
+    "category": "life_death",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 1, "color": "white" },
+      { "x": 3, "y": 1, "color": "white" },
+      { "x": 4, "y": 1, "color": "white" },
+      { "x": 2, "y": 2, "color": "white" },
+      { "x": 4, "y": 2, "color": "white" },
+      { "x": 2, "y": 3, "color": "white" },
+      { "x": 3, "y": 3, "color": "white" },
+      { "x": 4, "y": 3, "color": "white" },
+      { "x": 1, "y": 1, "color": "black" },
+      { "x": 1, "y": 2, "color": "black" },
+      { "x": 1, "y": 3, "color": "black" },
+      { "x": 5, "y": 1, "color": "black" },
+      { "x": 5, "y": 2, "color": "black" },
+      { "x": 5, "y": 3, "color": "black" },
+      { "x": 2, "y": 4, "color": "black" },
+      { "x": 3, "y": 4, "color": "black" },
+      { "x": 4, "y": 4, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Merkez saldırı",
+        "is_best": true,
+        "moves": [
+          { "x": 3, "y": 2, "color": "black" },
+          { "x": 2, "y": 2, "color": "white" },
+          { "x": 3, "y": 3, "color": "black" }
+        ],
+        "result_description": "Siyah merkez vital noktaya oynar, bulky five ölür.",
+        "evaluation": "good",
+        "move_annotations": ["Vital nokta", "Beyaz karşılık", "Ölüm"]
+      },
+      {
+        "id": "B",
+        "label": "Dışarıdan",
+        "is_best": false,
+        "moves": [{ "x": 3, "y": 0, "color": "black" }],
+        "result_description": "Siyah dışarıdan oynar, beyaz merkeze oynayarak yaşar.",
+        "evaluation": "bad",
+        "move_annotations": ["Etkisiz - beyaz yaşar"]
+      }
+    ]
+  }
+]

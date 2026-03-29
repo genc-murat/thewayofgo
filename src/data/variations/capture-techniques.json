@@ -1,0 +1,128 @@
+[
+  {
+    "id": "capture-1",
+    "title": "Ladder (Merdiven)",
+    "description": "Tek taşı zigzag yaparak esir alma tekniği",
+    "level": 2,
+    "category": "capture",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 3, "y": 3, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Merdiven",
+        "is_best": true,
+        "moves": [
+          { "x": 2, "y": 3, "color": "black" },
+          { "x": 4, "y": 4, "color": "white" },
+          { "x": 4, "y": 3, "color": "black" },
+          { "x": 5, "y": 5, "color": "white" },
+          { "x": 5, "y": 3, "color": "black" },
+          { "x": 6, "y": 6, "color": "white" },
+          { "x": 6, "y": 3, "color": "black" }
+        ],
+        "result_description": "Siyah beyaz taşları kenara doğru iter, merdiven tekniğiyle esir alır.",
+        "evaluation": "good",
+        "move_annotations": ["Merdiven başlar", "Zigzag", "Devam", "Sürdür", "Yaklaşıyor", "Sona yakın", "Esir!"]
+      },
+      {
+        "id": "B",
+        "label": "Yanlış takip",
+        "is_best": false,
+        "moves": [
+          { "x": 2, "y": 3, "color": "black" },
+          { "x": 3, "y": 4, "color": "white" }
+        ],
+        "result_description": "Siyah yanlış yönde kovalar, beyaz kaçar.",
+        "evaluation": "bad",
+        "move_annotations": ["Doğru başlangıç", "Yanlış takip"]
+      }
+    ],
+    "quiz": {
+      "question": "Merdiven tekniğiyle beyaz taşı esir almak için hangi yöne sürmelisiniz?",
+      "correct_variation_id": "A",
+      "hint": "Taşı duvara doğru sürün"
+    }
+  },
+  {
+    "id": "capture-2",
+    "title": "Net (Ağ)",
+    "description": "Ağ kurarak taşı esir alma",
+    "level": 3,
+    "category": "capture",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 3, "y": 3, "color": "white" },
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 4, "y": 2, "color": "black" },
+      { "x": 1, "y": 4, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Ağ kurulumu",
+        "is_best": true,
+        "moves": [
+          { "x": 4, "y": 4, "color": "black" },
+          { "x": 3, "y": 5, "color": "white" },
+          { "x": 2, "y": 4, "color": "black" }
+        ],
+        "result_description": "Siyah beyaz taşı ağ tuzağına düşürür, kaçış yolu yok.",
+        "evaluation": "good",
+        "move_annotations": ["Ağ kapatılır", "Son kaçış denemesi", "Ağ tamamlandı"]
+      },
+      {
+        "id": "B",
+        "label": "Direkt temas",
+        "is_best": false,
+        "moves": [{ "x": 3, "y": 2, "color": "black" }],
+        "result_description": "Siyah doğrudan yaklaşır ama beyaz bağlantı kurabilir.",
+        "evaluation": "neutral",
+        "move_annotations": ["Zayıf yaklaşım"]
+      }
+    ]
+  },
+  {
+    "id": "capture-3",
+    "title": "Snapback",
+    "description": "Kendi taşını feda ederek rakip taşları esir alma",
+    "level": 4,
+    "category": "capture",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 3, "y": 3, "color": "white" },
+      { "x": 4, "y": 3, "color": "white" },
+      { "x": 3, "y": 4, "color": "black" },
+      { "x": 4, "y": 4, "color": "black" },
+      { "x": 5, "y": 4, "color": "black" },
+      { "x": 3, "y": 5, "color": "black" },
+      { "x": 5, "y": 3, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Snapback",
+        "is_best": true,
+        "moves": [
+          { "x": 4, "y": 4, "color": "white" },
+          { "x": 3, "y": 3, "color": "black" }
+        ],
+        "result_description": "Siyah snapback ile beyaz taşları esir alır.",
+        "evaluation": "good",
+        "move_annotations": ["Beyaz oynar", "Snapback!"]
+      },
+      {
+        "id": "B",
+        "label": "Bağlanmaya çalışma",
+        "is_best": false,
+        "moves": [{ "x": 2, "y": 3, "color": "black" }],
+        "result_description": "Siyah bağlantıyı denese de beyaz kurtulur.",
+        "evaluation": "bad",
+        "move_annotations": ["Zayıf hamle"]
+      }
+    ]
+  }
+]

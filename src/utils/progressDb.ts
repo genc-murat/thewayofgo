@@ -27,6 +27,18 @@ async function initDB(database: Database): Promise<void> {
         UNIQUE(exercise_id, last_attempt)
       )`
     );
+    await database.execute(
+      `CREATE TABLE IF NOT EXISTS variant_progress (
+        position_id TEXT NOT NULL,
+        variation_id TEXT NOT NULL,
+        explored BOOLEAN NOT NULL DEFAULT 0,
+        quiz_completed BOOLEAN NOT NULL DEFAULT 0,
+        quiz_correct BOOLEAN NOT NULL DEFAULT 0,
+        attempts INTEGER NOT NULL DEFAULT 0,
+        last_attempt TEXT,
+        PRIMARY KEY (position_id, variation_id)
+      )`
+    );
   } catch (err) {
     console.warn('[progressDb] initDB failed:', err);
   }
@@ -619,6 +631,79 @@ export async function getUnlockedAchievements(): Promise<Achievement[]> {
     );
   } catch (err) {
     console.warn('[progressDb] getUnlockedAchievements failed:', err);
+    return [];
+  }
+}
+
+// Variant progress functions
+export interface VariantProgressRecord {
+  position_id: string;
+  variation_id: string;
+  explored: boolean;
+  quiz_completed: boolean;
+  quiz_correct: boolean;
+  attempts: number;
+  last_attempt: string | null;
+}
+
+export async function recordVariantExploration(positionId: string, variationId: string): Promise<void> {
+  const database = await getDb();
+  try {
+    await database.execute(
+      `INSERT INTO variant_progress (position_id, variation_id, explored, attempts, last_attempt)
+       VALUES ($1, $2, 1, 1, datetime('now'))
+       ON CONFLICT(position_id, variation_id) DO UPDATE SET
+       explored = 1,
+       attempts = attempts + 1,
+       last_attempt = datetime('now')`,
+      [positionId, variationId]
+    );
+  } catch (err) {
+    console.warn('[progressDb] recordVariantExploration failed:', err);
+  }
+}
+
+export async function recordVariantQuizResult(positionId: string, correct: boolean): Promise<void> {
+  const database = await getDb();
+  try {
+    await database.execute(
+      `INSERT INTO variant_progress (position_id, variation_id, explored, quiz_completed, quiz_correct, attempts, last_attempt)
+       VALUES ($1, '__quiz__', 1, 1, $2, 1, datetime('now'))
+       ON CONFLICT(position_id, variation_id) DO UPDATE SET
+       quiz_completed = 1,
+       quiz_correct = $2,
+       attempts = attempts + 1,
+       last_attempt = datetime('now')`,
+      [positionId, correct]
+    );
+  } catch (err) {
+    console.warn('[progressDb] recordVariantQuizResult failed:', err);
+  }
+}
+
+export async function getVariantProgress(positionId: string): Promise<VariantProgressRecord[]> {
+  const database = await getDb();
+  try {
+    return await database.select<VariantProgressRecord[]>(
+      `SELECT position_id, variation_id, explored, quiz_completed, quiz_correct, attempts, last_attempt
+       FROM variant_progress WHERE position_id = $1`,
+      [positionId]
+    );
+  } catch (err) {
+    console.warn('[progressDb] getVariantProgress failed:', err);
+    return [];
+  }
+}
+
+export async function getAllVariantProgress(): Promise<VariantProgressRecord[]> {
+  const database = await getDb();
+  try {
+    return await database.select<VariantProgressRecord[]>(
+      `SELECT position_id, variation_id, explored, quiz_completed, quiz_correct, attempts, last_attempt
+       FROM variant_progress`
+    );
+  } catch (err) {
+    console.warn('[progressDb] getAllVariantProgress failed:', err);
     return [];
   }
 }

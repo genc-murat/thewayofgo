@@ -1,0 +1,139 @@
+[
+  {
+    "id": "tesuji-1",
+    "title": "Placement (Yerleştirme)",
+    "description": "Rakip grup arasına taş yerleştirme tekniği",
+    "level": 3,
+    "category": "tesuji",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 3, "y": 2, "color": "white" },
+      { "x": 4, "y": 2, "color": "white" },
+      { "x": 5, "y": 2, "color": "white" },
+      { "x": 2, "y": 3, "color": "black" },
+      { "x": 2, "y": 4, "color": "black" },
+      { "x": 6, "y": 3, "color": "black" },
+      { "x": 6, "y": 4, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Hane placement",
+        "is_best": true,
+        "moves": [
+          { "x": 4, "y": 3, "color": "black" },
+          { "x": 3, "y": 3, "color": "white" },
+          { "x": 5, "y": 3, "color": "black" }
+        ],
+        "result_description": "Siyah beyaz grup arasına placement yapar, beyazı keser.",
+        "evaluation": "good",
+        "move_annotations": ["Placement", "Beyaz savunur", "Kesme başarılı"]
+      },
+      {
+        "id": "B",
+        "label": "Doğrudan kesme",
+        "is_best": false,
+        "moves": [
+          { "x": 3, "y": 3, "color": "black" },
+          { "x": 4, "y": 3, "color": "white" }
+        ],
+        "result_description": "Siyah doğrudan keser ama beyaz basitleştirir.",
+        "evaluation": "bad",
+        "move_annotations": ["Basit kesme", "Beyaz bağlanır"]
+      }
+    ],
+    "quiz": {
+      "question": "Bu pozisyonda beyaz grubu kesmek için en etkili tesuji nedir?",
+      "correct_variation_id": "A",
+      "hint": "Tam ortaya bakın"
+    }
+  },
+  {
+    "id": "tesuji-2",
+    "title": "Under the Stones",
+    "description": "Rakibin altına girerek esir alma tekniği",
+    "level": 4,
+    "category": "tesuji",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "white" },
+      { "x": 3, "y": 2, "color": "white" },
+      { "x": 2, "y": 3, "color": "white" },
+      { "x": 1, "y": 2, "color": "black" },
+      { "x": 1, "y": 3, "color": "black" },
+      { "x": 2, "y": 4, "color": "black" },
+      { "x": 3, "y": 4, "color": "black" },
+      { "x": 4, "y": 3, "color": "black" },
+      { "x": 3, "y": 3, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Tsume tesuji",
+        "is_best": true,
+        "moves": [
+          { "x": 3, "y": 3, "color": "white" },
+          { "x": 2, "y": 2, "color": "black" }
+        ],
+        "result_description": "Siyah beyaz taşların altına girer, onları esir alır.",
+        "evaluation": "good",
+        "move_annotations": ["Beyaz oynar", "Under the stones!"]
+      },
+      {
+        "id": "B",
+        "label": "Dışarıdan alma",
+        "is_best": false,
+        "moves": [{ "x": 4, "y": 2, "color": "black" }],
+        "result_description": "Siyah dışarıdan oynar ama beyaz bağlanır.",
+        "evaluation": "bad",
+        "move_annotations": ["Etkisiz"]
+      }
+    ]
+  },
+  {
+    "id": "tesuji-3",
+    "title": "Descent Tesuji",
+    "description": "İniş hamlesi ile köşe yaşama veya öldürme",
+    "level": 5,
+    "category": "tesuji",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 1, "y": 1, "color": "white" },
+      { "x": 2, "y": 1, "color": "white" },
+      { "x": 1, "y": 2, "color": "white" },
+      { "x": 0, "y": 0, "color": "black" },
+      { "x": 3, "y": 0, "color": "black" },
+      { "x": 3, "y": 1, "color": "black" },
+      { "x": 0, "y": 3, "color": "black" },
+      { "x": 1, "y": 3, "color": "black" },
+      { "x": 2, "y": 3, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Descent hamle",
+        "is_best": true,
+        "moves": [
+          { "x": 2, "y": 2, "color": "black" },
+          { "x": 1, "y": 1, "color": "white" },
+          { "x": 0, "y": 1, "color": "black" }
+        ],
+        "result_description": "Siyah iniş hamlesiyle beyazı köşede tuzağa düşürür.",
+        "evaluation": "good",
+        "move_annotations": ["Descent", "Beyaz cevap", "Vur"]
+      },
+      {
+        "id": "B",
+        "label": "Direkt saldırı",
+        "is_best": false,
+        "moves": [
+          { "x": 2, "y": 2, "color": "black" },
+          { "x": 0, "y": 1, "color": "white" }
+        ],
+        "result_description": "Siyah erken saldırır, beyaz kaçar.",
+        "evaluation": "neutral",
+        "move_annotations": ["Erken saldırı", "Kaçış"]
+      }
+    ]
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "id": "fuseki-1",
+    "title": "Hoshi Açılış",
+    "description": "4-4 noktadan açılış varyantları",
+    "level": 2,
+    "category": "fuseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 4, "y": 4, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Karşı köşe",
+        "is_best": true,
+        "moves": [
+          { "x": 6, "y": 2, "color": "white" },
+          { "x": 2, "y": 6, "color": "black" },
+          { "x": 6, "y": 6, "color": "white" }
+        ],
+        "result_description": "Beyaz karşı köşeye oynar, siyah diğer köşeyi alır. Dengeli açılış.",
+        "evaluation": "good",
+        "move_annotations": ["Karşı köşe", "Siyah köşe", "Beyaz köşe"]
+      },
+      {
+        "id": "B",
+        "label": "Yanlış açılış",
+        "is_best": false,
+        "moves": [
+          { "x": 4, "y": 6, "color": "white" },
+          { "x": 6, "y": 4, "color": "black" }
+        ],
+        "result_description": "Beyaz kenardan yaklaşır, siyah yan noktaya oynar.",
+        "evaluation": "neutral",
+        "move_annotations": ["Kenar yaklaşım", "Orta oyun"]
+      }
+    ],
+    "quiz": {
+      "question": "Hoshi taşına karşı en dengeli açılış hangisidir?",
+      "correct_variation_id": "A",
+      "hint": "Boş köşelere bakın"
+    }
+  },
+  {
+    "id": "fuseki-2",
+    "title": "Moyo Oluşturma",
+    "description": "Büyük alan (moyo) oluşturma stratejisi",
+    "level": 3,
+    "category": "fuseki",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 6, "y": 6, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Merkez hakimiyeti",
+        "is_best": true,
+        "moves": [
+          { "x": 4, "y": 4, "color": "black" },
+          { "x": 4, "y": 2, "color": "white" },
+          { "x": 5, "y": 3, "color": "black" },
+          { "x": 2, "y": 4, "color": "white" },
+          { "x": 3, "y": 5, "color": "black" }
+        ],
+        "result_description": "Siyah merkeze hakim olur, geniş bir alan oluşturur.",
+        "evaluation": "good",
+        "move_annotations": ["Merkez nokta", "Beyaz karşılık", "Büyüme", "Beyaz müdahale", "Moyo oluştu"]
+      },
+      {
+        "id": "B",
+        "label": "Sadece köşeler",
+        "is_best": false,
+        "moves": [
+          { "x": 6, "y": 2, "color": "black" },
+          { "x": 2, "y": 6, "color": "white" }
+        ],
+        "result_description": "Köşe oyunuyla sınırlı kalır, merkez boş kalır.",
+        "evaluation": "neutral",
+        "move_annotations": ["Köşe oyunu", "Eşit köşe"]
+      }
+    ]
+  }
+]

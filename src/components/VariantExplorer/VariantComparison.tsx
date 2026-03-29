@@ -16,8 +16,6 @@ export function VariantComparison({ position, variations }: VariantComparisonPro
     );
   }
 
-  const showVariations = variations.slice(0, 2);
-
   return (
     <div className="animate-fade-in">
       <div className="flex items-center gap-2 mb-4">
@@ -25,8 +23,12 @@ export function VariantComparison({ position, variations }: VariantComparisonPro
         <span className="text-xs bg-info/15 text-info px-2 py-0.5 rounded-full">{variations.length} varyant</span>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {showVariations.map(v => {
+      <div className={`grid gap-6 ${
+        variations.length <= 2 ? 'grid-cols-1 md:grid-cols-2' :
+        variations.length === 3 ? 'grid-cols-1 md:grid-cols-3' :
+        'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+      }`}>
+        {variations.map(v => {
           const finalStones = [...position.initial_stones, ...v.moves];
           const board = createBoardFromStones(finalStones, position.board_size);
           const lastMove = v.moves.length > 0 ? v.moves[v.moves.length - 1] : null;
@@ -34,8 +36,11 @@ export function VariantComparison({ position, variations }: VariantComparisonPro
           return (
             <div
               key={v.id}
-              className={`glass rounded-2xl p-4 border ${
-                v.evaluation === 'good' ? 'border-success/30' : v.evaluation === 'bad' ? 'border-error/30' : 'border-info/30'
+              className={`glass rounded-2xl p-4 border transition-all ${
+                v.is_best ? 'border-accent/40 glow-accent-sm' :
+                v.evaluation === 'good' ? 'border-success/30' :
+                v.evaluation === 'bad' ? 'border-error/30' :
+                'border-info/30'
               }`}
             >
               <div className="flex items-center justify-between mb-3">
@@ -43,13 +48,18 @@ export function VariantComparison({ position, variations }: VariantComparisonPro
                   <span className="font-bold text-lg">{v.id}</span>
                   <span className="text-sm text-text-secondary ml-2">{v.label}</span>
                 </div>
-                <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
-                  v.evaluation === 'good' ? 'bg-success/15 text-success' :
-                  v.evaluation === 'bad' ? 'bg-error/15 text-error' :
-                  'bg-info/15 text-info'
-                }`}>
-                  {v.evaluation === 'good' ? 'İyi' : v.evaluation === 'bad' ? 'Kötü' : 'Nötr'}
-                </span>
+                <div className="flex items-center gap-1.5">
+                  {v.is_best && (
+                    <span className="text-xs bg-accent/20 text-accent px-2 py-0.5 rounded-full font-medium">En İyi</span>
+                  )}
+                  <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
+                    v.evaluation === 'good' ? 'bg-success/15 text-success' :
+                    v.evaluation === 'bad' ? 'bg-error/15 text-error' :
+                    'bg-info/15 text-info'
+                  }`}>
+                    {v.evaluation === 'good' ? 'İyi' : v.evaluation === 'bad' ? 'Kötü' : 'Nötr'}
+                  </span>
+                </div>
               </div>
 
               <div className="mb-3">
@@ -62,7 +72,15 @@ export function VariantComparison({ position, variations }: VariantComparisonPro
               </div>
 
               <p className="text-sm text-text-secondary leading-relaxed">{v.result_description}</p>
-              <p className="text-xs text-text-secondary mt-2">{v.moves.length} hamle</p>
+              <div className="flex items-center justify-between mt-2 text-xs text-text-secondary">
+                <span>{v.moves.length} hamle</span>
+                {v.territory_change && (
+                  <span>
+                    S:{v.territory_change.black > 0 ? '+' : ''}{v.territory_change.black} |
+                    B:{v.territory_change.white > 0 ? '+' : ''}{v.territory_change.white}
+                  </span>
+                )}
+              </div>
             </div>
           );
         })}

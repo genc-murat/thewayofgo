@@ -1,0 +1,183 @@
+[
+  {
+    "id": "corner-1",
+    "title": "3-4 Noktası İstila",
+    "description": "3-4 noktasına yapılmış taşa karşı istila varyantları",
+    "level": 2,
+    "category": "corner",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 6, "y": 6, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Doğru istila",
+        "is_best": true,
+        "moves": [
+          { "x": 3, "y": 2, "color": "black" },
+          { "x": 4, "y": 2, "color": "white" },
+          { "x": 2, "y": 3, "color": "black" }
+        ],
+        "result_description": "Siyah köşe kontrolünü alır, güçlü toprak oluşturur.",
+        "evaluation": "good",
+        "move_annotations": ["İstila noktası", "Beyaz karşılık", "Bağlantı"]
+      },
+      {
+        "id": "B",
+        "label": "Zayıf istila",
+        "is_best": false,
+        "moves": [
+          { "x": 5, "y": 5, "color": "black" },
+          { "x": 3, "y": 3, "color": "white" }
+        ],
+        "result_description": "Siyah köşeyi beyaza bırakır, zayıf pozisyona düşer.",
+        "evaluation": "bad",
+        "move_annotations": ["Çok uzak", "Beyaz köşeyi alır"]
+      },
+      {
+        "id": "C",
+        "label": "Kosumi yaklaşma",
+        "is_best": false,
+        "moves": [
+          { "x": 3, "y": 3, "color": "black" },
+          { "x": 2, "y": 4, "color": "white" },
+          { "x": 4, "y": 3, "color": "black" }
+        ],
+        "result_description": "Orta düzey istila, sonuç belirsiz.",
+        "evaluation": "neutral",
+        "move_annotations": ["Kosumi yaklaşım", "Karşılık", "Genişleme"]
+      }
+    ],
+    "quiz": {
+      "question": "Bu pozisyonda Siyah'ın en iyi hamlesi hangisi?",
+      "correct_variation_id": "A",
+      "hint": "Köşeye yakın oynayın"
+    }
+  },
+  {
+    "id": "corner-2",
+    "title": "Komoku Müdafa",
+    "description": "Komoku (3-4) taşına karşı yaklaşım ve savunma",
+    "level": 3,
+    "category": "corner",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Kosumi karşılık",
+        "is_best": true,
+        "moves": [
+          { "x": 6, "y": 2, "color": "white" },
+          { "x": 4, "y": 2, "color": "black" },
+          { "x": 5, "y": 3, "color": "white" },
+          { "x": 3, "y": 3, "color": "black" }
+        ],
+        "result_description": "Siyah kosumi ile güçlü köşe elde eder.",
+        "evaluation": "good",
+        "move_annotations": ["Yaklaşım", "Karşılık", "Beyaz genişler", "Siyah güvence"]
+      },
+      {
+        "id": "B",
+        "label": "Doğrudan yaklaşım",
+        "is_best": false,
+        "moves": [
+          { "x": 6, "y": 2, "color": "white" },
+          { "x": 5, "y": 2, "color": "black" }
+        ],
+        "result_description": "Siyah çok yakın oynar, beyaz basitleştirir.",
+        "evaluation": "bad",
+        "move_annotations": ["Yaklaşım", "Çok yakın - zayıf"]
+      }
+    ]
+  },
+  {
+    "id": "corner-3",
+    "title": "Hoshi İstila",
+    "description": "4-4 noktasına yapılmış taşa karşı istila teknikleri",
+    "level": 3,
+    "category": "corner",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 4, "y": 4, "color": "black" },
+      { "x": 2, "y": 6, "color": "white" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "3-3 İstila",
+        "is_best": true,
+        "moves": [
+          { "x": 2, "y": 2, "color": "white" },
+          { "x": 3, "y": 2, "color": "black" },
+          { "x": 2, "y": 3, "color": "white" },
+          { "x": 3, "y": 3, "color": "black" },
+          { "x": 1, "y": 2, "color": "white" }
+        ],
+        "result_description": "Beyaz 3-3 noktasına girerek köşeyi alır, siyah dış duvar elde eder.",
+        "evaluation": "good",
+        "move_annotations": ["3-3 nokta", "Köşe savunma", "Devam", "Bağlanma", "Köşe alındı"]
+      },
+      {
+        "id": "B",
+        "label": "Direkt taş altı",
+        "is_best": false,
+        "moves": [
+          { "x": 3, "y": 5, "color": "white" }
+        ],
+        "result_description": "Beyaz çok zayıf yaklaşır, siyah rahatça savunur.",
+        "evaluation": "bad",
+        "move_annotations": ["Çok uzak"]
+      }
+    ],
+    "quiz": {
+      "question": "Hoshi taşına en etkili istila hangi noktadır?",
+      "correct_variation_id": "A",
+      "hint": "Köşenin en kritik noktası"
+    }
+  },
+  {
+    "id": "corner-4",
+    "title": "Sansan Köşe Savaşı",
+    "description": "Sansan (3-3) noktasına yapılan saldırı ve savunma",
+    "level": 4,
+    "category": "corner",
+    "board_size": 9,
+    "initial_stones": [
+      { "x": 2, "y": 2, "color": "black" },
+      { "x": 6, "y": 2, "color": "white" },
+      { "x": 6, "y": 6, "color": "black" }
+    ],
+    "variations": [
+      {
+        "id": "A",
+        "label": "Pincer",
+        "is_best": true,
+        "moves": [
+          { "x": 4, "y": 2, "color": "white" },
+          { "x": 4, "y": 3, "color": "black" }
+        ],
+        "result_description": "Beyaz pincer ile siyahı sıkıştırır, savaş başlar.",
+        "evaluation": "good",
+        "move_annotations": ["Pincer hamle", "Siyah kaçar"]
+      },
+      {
+        "id": "B",
+        "label": "Basit köşe",
+        "is_best": false,
+        "moves": [
+          { "x": 3, "y": 2, "color": "white" },
+          { "x": 3, "y": 3, "color": "black" },
+          { "x": 2, "y": 3, "color": "white" }
+        ],
+        "result_description": "Beyaz köşeyi alır ama siyah dış etki kazanır.",
+        "evaluation": "neutral",
+        "move_annotations": ["Köşe alır", "Karşılık", "Güven"]
+      }
+    ]
+  }
+]

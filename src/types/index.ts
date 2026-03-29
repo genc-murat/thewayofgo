@@ -329,6 +329,8 @@ export interface ReadingLadder {
 }
 
 // Variant types
+export type VariationCategory = 'corner' | 'life_death' | 'capture' | 'fuseki' | 'endgame' | 'tesuji';
+
 export interface VariationPosition {
   id: string;
   title: string;
@@ -337,6 +339,9 @@ export interface VariationPosition {
   board_size: BoardSize;
   initial_stones: Stone[];
   variations: Variation[];
+  category?: VariationCategory;
+  quiz?: VariantQuiz;
+  territory_markers?: TerritoryMarker[];
 }
 
 export interface Variation {
@@ -346,4 +351,29 @@ export interface Variation {
   moves: Stone[];
   result_description: string;
   evaluation: 'good' | 'bad' | 'neutral';
+  sub_variations?: Variation[];
+  move_annotations?: string[];
+  territory_change?: { black: number; white: number };
+}
+
+export interface VariantQuiz {
+  question: string;
+  correct_variation_id: string;
+  hint?: string;
+}
+
+export interface TerritoryMarker {
+  x: number;
+  y: number;
+  owner: 'black' | 'white';
+}
+
+export interface VariantProgressData {
+  position_id: string;
+  variation_id: string;
+  explored: boolean;
+  quiz_completed: boolean;
+  quiz_correct: boolean;
+  attempts: number;
+  last_attempt: string | null;
 }
