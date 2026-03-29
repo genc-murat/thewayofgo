@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { THEMES, applyTheme, getStoredTheme, storeTheme } from '../../utils/themes';
 import { soundEngine } from '../../utils/soundEngine';
 import { getShortcutsForContext } from '../../hooks/useKeyboardShortcuts';
+import { useAppStore } from '../../stores/appStore';
 
 interface SettingsState {
   komi: number;
@@ -12,6 +13,7 @@ interface SettingsState {
   soundVolume: number;
   theme: string;
   showKeyboardHints: boolean;
+  useKataGo: boolean;
 }
 
 const DEFAULT_SETTINGS: SettingsState = {
@@ -23,6 +25,7 @@ const DEFAULT_SETTINGS: SettingsState = {
   soundVolume: 0.5,
   theme: 'dark',
   showKeyboardHints: true,
+  useKataGo: false,
 };
 
 function loadSettings(): SettingsState {
@@ -47,15 +50,18 @@ function saveSettings(settings: SettingsState): void {
 
 export function SettingsPage() {
   const [settings, setSettings] = useState<SettingsState>(DEFAULT_SETTINGS);
+  const { useKataGo, setUseKataGo } = useAppStore();
 
   useEffect(() => {
     const loaded = loadSettings();
     loaded.theme = getStoredTheme();
     loaded.soundEnabled = soundEngine.isEnabled();
     loaded.soundVolume = soundEngine.getVolume();
+    // Sync with store
+    loaded.useKataGo = useKataGo;
     setSettings(loaded);
     applyTheme(loaded.theme);
-  }, []);
+  }, [useKataGo]);
 
   const update = <K extends keyof SettingsState>(key: K, value: SettingsState[K]) => {
     const newSettings = { ...settings, [key]: value };
@@ -72,6 +78,9 @@ export function SettingsPage() {
     if (key === 'soundVolume') {
       soundEngine.setVolume(value as number);
     }
+    if (key === 'useKataGo') {
+      setUseKataGo(value as boolean);
+    }
   };
 
   const gameShortcuts = getShortcutsForContext('game');
@@ -86,6 +95,30 @@ export function SettingsPage() {
       {/* Game Settings */}
       <div className="glass rounded-2xl p-6 border border-glass-border space-y-6">
         <h3 className="font-bold text-lg">Oyun Ayarları</h3>
+
+        <SettingRow
+          label="Yapay Zeka Motoru"
+          description="KataGo çok daha güçlüdür ancak donanımınıza bağlı olarak daha yavaş çalışabilir"
+        >
+          <div className="flex gap-2">
+            {[
+              { id: false, name: 'MCTS (Hızlı)' },
+              { id: true, name: 'KataGo (Akıllı)' }
+            ].map(engine => (
+              <button
+                key={String(engine.id)}
+                onClick={() => update('useKataGo', engine.id)}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                  settings.useKataGo === engine.id
+                    ? 'gradient-accent text-bg-primary'
+                    : 'glass text-text-secondary hover:text-text-primary'
+                }`}
+              >
+                {engine.name}
+              </button>
+            ))}
+          </div>
+        </SettingRow>
 
         <SettingRow
           label="Komi Değeri"

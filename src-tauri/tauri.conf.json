@@ -28,6 +28,13 @@
   "bundle": {
     "active": true,
     "targets": "all",
+    "externalBin": [
+      "bin/katago"
+    ],
+    "resources": [
+      "resources/katago_model.bin.gz",
+      "resources/gtp_custom.cfg"
+    ],
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",

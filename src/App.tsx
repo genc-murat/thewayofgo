@@ -21,10 +21,12 @@ import { applyTheme, getStoredTheme } from './utils/themes';
 
 function App() {
   const currentView = useAppStore((state) => state.currentView);
+  const initKataGo = useAppStore((state) => state.initKataGo);
   const [showOnboarding, setShowOnboarding] = useState(() => shouldShowOnboarding());
 
   useEffect(() => {
     applyTheme(getStoredTheme());
+    initKataGo();
     const initSound = () => {
       soundEngine.init();
       document.removeEventListener('click', initSound);

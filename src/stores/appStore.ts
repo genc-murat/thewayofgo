@@ -28,6 +28,7 @@ interface AppState {
   isAiGame: boolean;
   aiDifficulty: number;
   aiStyle: AIStyle;
+  useKataGo: boolean;
   komi: number;
   rule_set: string;
 
@@ -62,6 +63,8 @@ interface AppState {
   setLevel: (level: number, module: number) => void;
 
   // Game actions
+  initKataGo: () => Promise<void>;
+  setUseKataGo: (use: boolean) => Promise<void>;
   createGame: (size: number, komi?: number, rule_set?: string) => Promise<void>;
   placeStone: (x: number, y: number) => Promise<MoveResult | null>;
   pass: () => Promise<MoveResult | null>;
@@ -79,6 +82,7 @@ interface AppState {
     komi?: number,
     blackCaptures?: number,
     whiteCaptures?: number,
+    ruleSet?: string,
   ) => Promise<void>;
 
   // Lesson actions
@@ -112,6 +116,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   isAiGame: false,
   aiDifficulty: 2,
   aiStyle: 'balanced',
+  useKataGo: false,
   komi: 6.5,
   rule_set: 'japanese',
 
@@ -147,10 +152,27 @@ export const useAppStore = create<AppState>((set, get) => ({
   setLevel: (level, module) => set({ currentLevel: level, currentModule: module }),
 
   // Game actions
+  initKataGo: async () => {
+    try {
+      await invoke('init_katago');
+    } catch (e) {
+      console.error('Failed to initialize KataGo:', e);
+    }
+  },
+
+  setUseKataGo: async (use) => {
+    try {
+      await invoke('set_use_katago', { useKatago: use });
+      set({ useKataGo: use });
+    } catch (e) {
+      console.error('Failed to set KataGo usage:', e);
+    }
+  },
+
   createGame: async (size, komi, rule_set) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await invoke<GameStateResponse>('create_game', { size, komi, rule_set });
+      const response = await invoke<GameStateResponse>('create_game', { size, komi, ruleSet: rule_set });
       set({ game: response.state, gameResult: null, isLoading: false, komi: komi ?? 6.5 });
     } catch (e) {
       set({ error: String(e), isLoading: false });
@@ -228,7 +250,7 @@ export const useAppStore = create<AppState>((set, get) => ({
     try {
       await invoke('set_ai_difficulty', { level: difficulty });
       await invoke('set_ai_style', { style: aiStyle });
-      const response = await invoke<GameStateResponse>('create_game', { size, komi: gameKomi, rule_set: gameRuleSet });
+      const response = await invoke<GameStateResponse>('create_game', { size, komi: gameKomi, ruleSet: gameRuleSet });
       set({
         game: response.state,
         gameResult: null,
@@ -262,7 +284,7 @@ export const useAppStore = create<AppState>((set, get) => ({
     }
   },
 
-  createGameFromPosition: async (size, stones, currentPlayer, komi, blackCaptures, whiteCaptures) => {
+  createGameFromPosition: async (size, stones, currentPlayer, komi, blackCaptures, whiteCaptures, ruleSet) => {
     set({ isLoading: true, error: null });
     try {
       const stoneTuples = stones.map(s => [s.x, s.y, s.color] as [number, number, string]);
@@ -273,6 +295,7 @@ export const useAppStore = create<AppState>((set, get) => ({
         komi,
         blackCaptures,
         whiteCaptures,
+        ruleSet: ruleSet ?? 'japanese',
       });
       set({
         game: response.state,

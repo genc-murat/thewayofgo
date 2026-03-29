@@ -2,12 +2,15 @@ use std::sync::{Arc, Mutex};
 use tauri::State;
 
 use crate::ai::mcts::MCTSAi;
+use crate::ai::katago::KataGoEngine;
 use crate::engine::game::GoGame;
 use crate::engine::types::*;
 
 pub struct AppState {
     pub game: Arc<Mutex<Option<GoGame>>>,
     pub ai: Arc<Mutex<MCTSAi>>,
+    pub katago: Arc<tokio::sync::Mutex<Option<KataGoEngine>>>,
+    pub use_katago: Arc<Mutex<bool>>,
 }
 
 impl Default for AppState {
@@ -15,6 +18,8 @@ impl Default for AppState {
         AppState {
             game: Arc::new(Mutex::new(None)),
             ai: Arc::new(Mutex::new(MCTSAi::new(AIDifficulty::new(2)))),
+            katago: Arc::new(tokio::sync::Mutex::new(None)),
+            use_katago: Arc::new(Mutex::new(false)),
         }
     }
 }
@@ -116,7 +121,47 @@ pub fn get_valid_moves(state: State<AppState>) -> Result<Vec<Point>, String> {
 }
 
 #[tauri::command]
-pub async fn ai_get_move(state: State<'_, AppState>) -> Result<Option<Point>, String> {
+pub async fn init_katago(state: State<'_, AppState>, handle: tauri::AppHandle) -> Result<(), String> {
+    let mut katago_guard = state.katago.lock().await;
+    let needs_init = match katago_guard.as_ref() {
+        Some(engine) => !engine.is_healthy(),
+        None => true,
+    };
+    if needs_init {
+        let engine = KataGoEngine::new(&handle).await?;
+        *katago_guard = Some(engine);
+    }
+    Ok(())
+}
+
+#[tauri::command]
+pub fn set_use_katago(state: State<'_, AppState>, use_katago: bool) -> Result<(), String> {
+    let mut guard = state.use_katago.lock().map_err(|e| e.to_string())?;
+    *guard = use_katago;
+    Ok(())
+}
+
+#[tauri::command]
+pub async fn ai_get_move(state: State<'_, AppState>, handle: tauri::AppHandle) -> Result<Option<Point>, String> {
+    let use_katago = {
+        let guard = state.use_katago.lock().map_err(|e| e.to_string())?;
+        *guard
+    };
+
+    if use_katago {
+        match try_katago_move(&state, &handle).await {
+            Ok(mv) => return Ok(mv),
+            Err(e) => {
+                eprintln!("KataGo failed, falling back to MCTS: {}", e);
+                // Disable KataGo so subsequent moves don't keep failing
+                if let Ok(mut guard) = state.use_katago.lock() {
+                    *guard = false;
+                }
+                // Fall through to MCTS
+            }
+        }
+    }
+
     let game_mutex = state.game.clone();
     let ai_mutex = state.ai.clone();
     let handle = std::thread::spawn(move || {
@@ -129,44 +174,85 @@ pub async fn ai_get_move(state: State<'_, AppState>) -> Result<Option<Point>, St
     handle.join().map_err(|e| format!("AI thread panicked: {:?}", e))?
 }
 
-#[tauri::command]
-pub async fn ai_place_stone(state: State<'_, AppState>) -> Result<GameStateResponse, String> {
-    let game_mutex = state.game.clone();
-    let ai_mutex = state.ai.clone();
-    let handle = std::thread::spawn(move || {
-        let ai_move = {
-            let game_guard = game_mutex.lock().map_err(|e: std::sync::PoisonError<_>| e.to_string())?;
-            let game = game_guard.as_ref().ok_or("No active game")?;
-
-            let mut ai_guard = ai_mutex.lock().map_err(|e: std::sync::PoisonError<_>| e.to_string())?;
-            ai_guard.get_move(game)
+async fn try_katago_move(state: &State<'_, AppState>, handle: &tauri::AppHandle) -> Result<Option<Point>, String> {
+    // Ensure KataGo is initialized and healthy
+    {
+        let mut katago_guard = state.katago.lock().await;
+        let needs_init = match katago_guard.as_ref() {
+            Some(engine) => !engine.is_healthy(),
+            None => true,
         };
-
-        if let Some(mov) = ai_move {
-            let mut game_guard = game_mutex.lock().map_err(|e: std::sync::PoisonError<_>| e.to_string())?;
-            let game = game_guard.as_mut().ok_or("No active game")?;
-
-            let result = game.place_stone(mov.x, mov.y)?;
-            let game_state = game.get_game_state();
-
-            Ok::<GameStateResponse, String>(GameStateResponse {
-                state: game_state,
-                result: Some(result),
-            })
-        } else {
-            let mut game_guard = game_mutex.lock().map_err(|e: std::sync::PoisonError<_>| e.to_string())?;
-            let game = game_guard.as_mut().ok_or("No active game")?;
-
-            let result = game.pass();
-            let game_state = game.get_game_state();
-
-            Ok::<GameStateResponse, String>(GameStateResponse {
-                state: game_state,
-                result: Some(result),
-            })
+        if needs_init {
+            let engine = KataGoEngine::new(handle).await?;
+            *katago_guard = Some(engine);
         }
-    });
-    handle.join().map_err(|e| format!("AI thread panicked: {:?}", e))?
+    }
+
+    let katago_guard = state.katago.lock().await;
+    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+
+    let (history, board_size, current_player) = {
+        let game_guard = state.game.lock().map_err(|e| e.to_string())?;
+        let game = game_guard.as_ref().ok_or("No active game")?;
+        (game.get_move_history(), game.board_size().to_u8(), game.current_player())
+    };
+
+    engine.clear_board().await?;
+    engine.set_board_size(board_size).await?;
+
+    for (i, m) in history.iter().enumerate() {
+        let color = if i % 2 == 0 { "B" } else { "W" };
+
+        if m.move_type == MoveType::Stone {
+            let mx = m.x.unwrap_or(0);
+            let my = m.y.unwrap_or(0);
+
+            let col_char = (b'A' + if mx >= 8 { mx + 1 } else { mx }) as char;
+            let vertex = format!("{}{}", col_char, board_size - my);
+            engine.play_move(color, &vertex).await?;
+        } else if m.move_type == MoveType::Pass {
+            engine.play_move(color, "pass").await?;
+        }
+    }
+
+    let color_str = if current_player == StoneColor::Black { "B" } else { "W" };
+    let response = engine.gen_move(color_str).await?;
+
+    if response.to_uppercase() == "PASS" {
+        return Ok(None);
+    }
+
+    if response.len() >= 2 {
+        let col_char = response.chars().next().unwrap().to_ascii_uppercase();
+        let col = if col_char > 'I' { col_char as u8 - b'A' - 1 } else { col_char as u8 - b'A' };
+        let row_str: String = response.chars().skip(1).collect();
+        let row_num: u8 = row_str.parse().map_err(|_| "Failed to parse KataGo row")?;
+        let row = board_size - row_num;
+        return Ok(Some(Point { x: col, y: row }));
+    }
+
+    Err(format!("Unexpected KataGo response: {}", response))
+}
+
+#[tauri::command]
+pub async fn ai_place_stone(state: State<'_, AppState>, handle: tauri::AppHandle) -> Result<GameStateResponse, String> {
+    let ai_move = ai_get_move(state.clone(), handle).await?;
+
+    let mut game_guard = state.game.lock().map_err(|e| e.to_string())?;
+    let game = game_guard.as_mut().ok_or("No active game")?;
+
+    let result = if let Some(mov) = ai_move {
+        game.place_stone(mov.x, mov.y)?
+    } else {
+        game.pass()
+    };
+
+    let game_state = game.get_game_state();
+
+    Ok(GameStateResponse {
+        state: game_state,
+        result: Some(result),
+    })
 }
 
 #[tauri::command]

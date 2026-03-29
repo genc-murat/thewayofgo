@@ -9,6 +9,7 @@ use tauri_plugin_sql::Builder as SqlBuilder;
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_shell::init())
         .plugin(tauri_plugin_opener::init())
         .plugin(
             SqlBuilder::default()
@@ -29,6 +30,8 @@ pub fn run() {
             get_valid_moves,
             ai_get_move,
             ai_place_stone,
+            init_katago,
+            set_use_katago,
             set_ai_difficulty,
             set_ai_style,
             get_ai_style,
