@@ -38,6 +38,24 @@ pub struct PositionAnalysisResult {
     pub turn: String,
 }
 
+#[derive(Debug, Clone, serde::Serialize)]
+pub struct OwnershipResult {
+    pub evaluations: Vec<MoveEvaluation>,
+    pub best_move: String,
+    pub score_mean: f64,
+    pub turn: String,
+    pub ownership: Vec<f64>,
+}
+
+#[derive(Debug, Clone, serde::Serialize)]
+pub struct VariationResult {
+    pub evaluations: Vec<MoveEvaluation>,
+    pub best_move: String,
+    pub score_mean: f64,
+    pub turn: String,
+    pub pv: Vec<(u8, u8)>,
+}
+
 pub struct KataGoEngine {
     stdin_tx: mpsc::Sender<(String, Option<oneshot::Sender<String>>)>,
     pub status: Arc<Mutex<EngineStatus>>,
@@ -234,6 +252,50 @@ impl KataGoEngine {
         Ok(())
     }
 
+    pub async fn analyze_position_with_ownership(&self, board_size: u8, komi: f32) -> Result<OwnershipResult, String> {
+        self.expecting_analyze.store(true, Ordering::SeqCst);
+        *self.analyze_info_lines.lock().await = String::new();
+
+        let cmd = format!(
+            "kata-analyze {} ownership true info 20 maxMoves 10",
+            if komi == komi.floor() {
+                format!("komi {:.0}", komi)
+            } else {
+                format!("komi {:.1}", komi)
+            }
+        );
+
+        let response = self.send_command(cmd).await?;
+        self.expecting_analyze.store(false, Ordering::SeqCst);
+        parse_ownership_response(&response, board_size)
+    }
+
+    pub async fn analyze_position_with_pv(&self, board_size: u8, komi: f32) -> Result<VariationResult, String> {
+        self.expecting_analyze.store(true, Ordering::SeqCst);
+        *self.analyze_info_lines.lock().await = String::new();
+
+        let cmd = format!(
+            "kata-analyze {} info 20 maxMoves 5 pv 10",
+            if komi == komi.floor() {
+                format!("komi {:.0}", komi)
+            } else {
+                format!("komi {:.1}", komi)
+            }
+        );
+
+        let response = self.send_command(cmd).await?;
+        self.expecting_analyze.store(false, Ordering::SeqCst);
+        parse_pv_response(&response, board_size)
+    }
+
+    pub async fn set_param(&self, param: &str, value: &str) -> Result<(), String> {
+        let response = self.send_command(format!("kata-set-param {} {}", param, value)).await?;
+        if response.starts_with("ERROR") {
+            return Err(response);
+        }
+        Ok(())
+    }
+
     pub async fn analyze_position(&self, board_size: u8, komi: f32) -> Result<PositionAnalysisResult, String> {
         self.expecting_analyze.store(true, Ordering::SeqCst);
         *self.analyze_info_lines.lock().await = String::new();
@@ -319,6 +381,154 @@ pub fn sync_board_state<'a>(engine: &'a KataGoEngine, game: &'a crate::engine::g
 
         Ok(())
     })
+}
+
+fn parse_ownership_response(response: &str, board_size: u8) -> Result<OwnershipResult, String> {
+    let mut evaluations = Vec::new();
+    let mut turn = "B".to_string();
+    let mut ownership: Vec<f64> = Vec::new();
+
+    for line in response.lines() {
+        let line = line.trim();
+        if line.is_empty() { continue; }
+
+        if line.starts_with("turn") {
+            if let Some(t) = line.split_whitespace().nth(1) { turn = t.to_string(); }
+            continue;
+        }
+
+        if line.starts_with("ownership") {
+            let vals: Vec<&str> = line.split_whitespace().skip(1).collect();
+            ownership = vals.iter().map(|v| v.parse::<f64>().unwrap_or(0.0)).collect();
+            continue;
+        }
+
+        if !line.starts_with("info") { continue; }
+
+        let parts: Vec<&str> = line.split_whitespace().collect();
+        let mut i = 1;
+        while i < parts.len() {
+            if parts[i] == "move" && i + 1 < parts.len() {
+                let move_str = parts[i + 1].to_string();
+                let (x, y) = gtp_to_coords(&move_str, board_size).unwrap_or((255, 255));
+                let mut visits = 0u32;
+                let mut win_rate = 0.5f64;
+                let mut score_mean = 0.0f64;
+
+                i += 2;
+                while i < parts.len() && parts[i] != "move" && parts[i] != "turn" {
+                    match parts[i] {
+                        "visits" if i + 1 < parts.len() => { visits = parts[i + 1].parse().unwrap_or(0); i += 2; }
+                        "winrate" if i + 1 < parts.len() => { win_rate = parts[i + 1].parse().unwrap_or(0.5); i += 2; }
+                        "scoreMean" if i + 1 < parts.len() => { score_mean = parts[i + 1].parse().unwrap_or(0.0); i += 2; }
+                        _ => { i += 1; }
+                    }
+                }
+
+                evaluations.push(MoveEvaluation {
+                    move_str, x, y, visits, win_rate, score_mean,
+                    is_best: false, quality: "unknown".to_string(),
+                });
+            } else {
+                i += 1;
+            }
+        }
+    }
+
+    if evaluations.is_empty() {
+        return Err("No evaluations parsed from ownership response".to_string());
+    }
+
+    let max_visits = evaluations.iter().map(|e| e.visits).max().unwrap_or(0);
+    let best_wr = evaluations.iter().map(|e| e.win_rate).fold(0.0f64, f64::max);
+    for eval in &mut evaluations {
+        eval.is_best = eval.visits == max_visits && max_visits > 0;
+        let diff = best_wr - eval.win_rate;
+        eval.quality = if diff < 0.005 { "best".to_string() } else if diff < 0.02 { "good".to_string() } else if diff < 0.05 { "acceptable".to_string() } else if diff < 0.10 { "mistake".to_string() } else { "blunder".to_string() };
+    }
+
+    let best_move = evaluations.iter().find(|e| e.is_best).map(|e| e.move_str.clone()).unwrap_or_default();
+    let score_mean = evaluations.iter().find(|e| e.is_best).map(|e| e.score_mean).unwrap_or(0.0);
+
+    Ok(OwnershipResult { evaluations, best_move, score_mean, turn, ownership })
+}
+
+fn parse_pv_response(response: &str, board_size: u8) -> Result<VariationResult, String> {
+    let mut evaluations = Vec::new();
+    let mut turn = "B".to_string();
+    let mut best_pv: Vec<(u8, u8)> = Vec::new();
+
+    for line in response.lines() {
+        let line = line.trim();
+        if line.is_empty() { continue; }
+
+        if line.starts_with("turn") {
+            if let Some(t) = line.split_whitespace().nth(1) { turn = t.to_string(); }
+            continue;
+        }
+
+        if !line.starts_with("info") { continue; }
+
+        let parts: Vec<&str> = line.split_whitespace().collect();
+        let mut i = 1;
+        while i < parts.len() {
+            if parts[i] == "move" && i + 1 < parts.len() {
+                let move_str = parts[i + 1].to_string();
+                let (x, y) = gtp_to_coords(&move_str, board_size).unwrap_or((255, 255));
+                let mut visits = 0u32;
+                let mut win_rate = 0.5f64;
+                let mut score_mean = 0.0f64;
+                let mut pv: Vec<(u8, u8)> = Vec::new();
+
+                i += 2;
+                while i < parts.len() && parts[i] != "move" && parts[i] != "turn" {
+                    match parts[i] {
+                        "visits" if i + 1 < parts.len() => { visits = parts[i + 1].parse().unwrap_or(0); i += 2; }
+                        "winrate" if i + 1 < parts.len() => { win_rate = parts[i + 1].parse().unwrap_or(0.5); i += 2; }
+                        "scoreMean" if i + 1 < parts.len() => { score_mean = parts[i + 1].parse().unwrap_or(0.0); i += 2; }
+                        "pv" => {
+                            i += 1;
+                            while i < parts.len() && parts[i] != "move" && parts[i] != "turn" {
+                                if let Ok((px, py)) = gtp_to_coords(parts[i], board_size) {
+                                    pv.push((px, py));
+                                }
+                                i += 1;
+                            }
+                        }
+                        _ => { i += 1; }
+                    }
+                }
+
+                evaluations.push(MoveEvaluation {
+                    move_str, x, y, visits, win_rate, score_mean,
+                    is_best: false, quality: "unknown".to_string(),
+                });
+
+                if best_pv.is_empty() && !pv.is_empty() {
+                    best_pv = pv;
+                }
+            } else {
+                i += 1;
+            }
+        }
+    }
+
+    if evaluations.is_empty() {
+        return Err("No evaluations parsed from PV response".to_string());
+    }
+
+    let max_visits = evaluations.iter().map(|e| e.visits).max().unwrap_or(0);
+    let best_wr = evaluations.iter().map(|e| e.win_rate).fold(0.0f64, f64::max);
+    for eval in &mut evaluations {
+        eval.is_best = eval.visits == max_visits && max_visits > 0;
+        let diff = best_wr - eval.win_rate;
+        eval.quality = if diff < 0.005 { "best".to_string() } else if diff < 0.02 { "good".to_string() } else if diff < 0.05 { "acceptable".to_string() } else if diff < 0.10 { "mistake".to_string() } else { "blunder".to_string() };
+    }
+
+    let best_move = evaluations.iter().find(|e| e.is_best).map(|e| e.move_str.clone()).unwrap_or_default();
+    let score_mean = evaluations.iter().find(|e| e.is_best).map(|e| e.score_mean).unwrap_or(0.0);
+
+    Ok(VariationResult { evaluations, best_move, score_mean, turn, pv: best_pv })
 }
 
 fn parse_kata_analyze_response(response: &str, board_size: u8) -> Result<PositionAnalysisResult, String> {

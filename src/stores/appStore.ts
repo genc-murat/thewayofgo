@@ -29,6 +29,7 @@ interface AppState {
   aiDifficulty: number;
   aiStyle: AIStyle;
   useKataGo: boolean;
+  katagoMaxVisits: number;
   komi: number;
   rule_set: string;
 
@@ -117,6 +118,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   aiDifficulty: 2,
   aiStyle: 'balanced',
   useKataGo: false,
+  katagoMaxVisits: 400,
   komi: 6.5,
   rule_set: 'japanese',
 
@@ -250,6 +252,21 @@ export const useAppStore = create<AppState>((set, get) => ({
     try {
       await invoke('set_ai_difficulty', { level: difficulty });
       await invoke('set_ai_style', { style: aiStyle });
+
+      // Auto-enable KataGo and set difficulty
+      const maxVisitsMap = [50, 100, 200, 300, 400, 600, 1000];
+      const maxVisits = maxVisitsMap[Math.min(difficulty - 1, 6)];
+      try {
+        await invoke('init_katago');
+        await invoke('set_use_katago', { useKatago: true });
+        await invoke('set_katago_difficulty', { maxVisits });
+        set({ useKataGo: true, katagoMaxVisits: maxVisits });
+      } catch {
+        // KataGo not available, fall back to MCTS
+        await invoke('set_use_katago', { useKatago: false });
+        set({ useKataGo: false });
+      }
+
       const response = await invoke<GameStateResponse>('create_game', { size, komi: gameKomi, ruleSet: gameRuleSet });
       set({
         game: response.state,

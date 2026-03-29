@@ -45,6 +45,10 @@ pub fn run() {
             get_katago_analysis,
             get_katago_move_evaluation,
             get_katago_exercise_hint,
+            set_katago_difficulty,
+            get_katago_ownership,
+            get_game_score_history,
+            get_variation_sequence,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

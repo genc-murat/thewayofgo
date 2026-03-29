@@ -412,3 +412,28 @@ export interface VariantProgressData {
   attempts: number;
   last_attempt: string | null;
 }
+
+// KataGo ownership
+export interface KataOwnershipResult {
+  evaluations: KataMoveEvaluation[];
+  best_move: string;
+  score_mean: number;
+  turn: string;
+  ownership: number[];
+}
+
+// Score history
+export interface ScoreHistoryPoint {
+  move_number: number;
+  score_mean: number;
+  win_rate: number;
+}
+
+// Variation sequence
+export interface VariationSequence {
+  evaluations: KataMoveEvaluation[];
+  best_move: string;
+  score_mean: number;
+  turn: string;
+  pv: Point[];
+}

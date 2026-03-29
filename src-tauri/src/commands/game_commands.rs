@@ -235,6 +235,25 @@ async fn try_katago_move(state: &State<'_, AppState>, handle: &tauri::AppHandle)
 }
 
 #[tauri::command]
+pub async fn set_katago_difficulty(state: State<'_, AppState>, handle: tauri::AppHandle, max_visits: u32) -> Result<(), String> {
+    {
+        let mut katago_guard = state.katago.lock().await;
+        let needs_init = match katago_guard.as_ref() {
+            Some(engine) => !engine.is_healthy(),
+            None => true,
+        };
+        if needs_init {
+            let engine = KataGoEngine::new(&handle).await?;
+            *katago_guard = Some(engine);
+        }
+    }
+
+    let katago_guard = state.katago.lock().await;
+    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+    engine.set_param("maxVisits", &max_visits.to_string()).await
+}
+
+#[tauri::command]
 pub async fn ai_place_stone(state: State<'_, AppState>, handle: tauri::AppHandle) -> Result<GameStateResponse, String> {
     let ai_move = ai_get_move(state.clone(), handle).await?;
 
@@ -706,5 +725,203 @@ pub async fn get_katago_exercise_hint(
         move_str: best.move_str,
         win_rate: best.win_rate,
         score_mean: best.score_mean,
+    })
+}
+
+// --- Ownership Analysis ---
+
+#[derive(Debug, Clone, serde::Serialize)]
+pub struct KataOwnershipResult {
+    pub evaluations: Vec<KataMoveEvaluation>,
+    pub best_move: String,
+    pub score_mean: f64,
+    pub turn: String,
+    pub ownership: Vec<f64>,
+}
+
+#[tauri::command]
+pub async fn get_katago_ownership(state: State<'_, AppState>, handle: tauri::AppHandle) -> Result<KataOwnershipResult, String> {
+    {
+        let mut katago_guard = state.katago.lock().await;
+        let needs_init = match katago_guard.as_ref() {
+            Some(engine) => !engine.is_healthy(),
+            None => true,
+        };
+        if needs_init {
+            let engine = KataGoEngine::new(&handle).await?;
+            *katago_guard = Some(engine);
+        }
+    }
+
+    let katago_guard = state.katago.lock().await;
+    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+
+    let (history, board_size, komi) = {
+        let game_guard = state.game.lock().map_err(|e| e.to_string())?;
+        let game = game_guard.as_ref().ok_or("No active game")?;
+        (game.get_move_history(), game.board_size().to_u8(), game.get_game_state().komi)
+    };
+
+    engine.clear_board().await?;
+    engine.set_board_size(board_size).await?;
+
+    for (i, m) in history.iter().enumerate() {
+        let color = if i % 2 == 0 { "B" } else { "W" };
+        if m.move_type == MoveType::Stone {
+            let mx = m.x.unwrap_or(0);
+            let my = m.y.unwrap_or(0);
+            let col_char = (b'A' + if mx >= 8 { mx + 1 } else { mx }) as char;
+            let vertex = format!("{}{}", col_char, board_size - my);
+            engine.play_move(color, &vertex).await?;
+        } else if m.move_type == MoveType::Pass {
+            engine.play_move(color, "pass").await?;
+        }
+    }
+
+    let result = engine.analyze_position_with_ownership(board_size, komi).await?;
+
+    Ok(KataOwnershipResult {
+        evaluations: result.evaluations.into_iter().map(|e| KataMoveEvaluation {
+            move_str: e.move_str, x: e.x, y: e.y, visits: e.visits,
+            win_rate: e.win_rate, score_mean: e.score_mean, is_best: e.is_best, quality: e.quality,
+        }).collect(),
+        best_move: result.best_move,
+        score_mean: result.score_mean,
+        turn: result.turn,
+        ownership: result.ownership,
+    })
+}
+
+// --- Score History ---
+
+#[derive(Debug, Clone, serde::Serialize)]
+pub struct ScoreHistoryPoint {
+    pub move_number: u32,
+    pub score_mean: f64,
+    pub win_rate: f64,
+}
+
+#[tauri::command]
+pub async fn get_game_score_history(state: State<'_, AppState>, handle: tauri::AppHandle) -> Result<Vec<ScoreHistoryPoint>, String> {
+    {
+        let mut katago_guard = state.katago.lock().await;
+        let needs_init = match katago_guard.as_ref() {
+            Some(engine) => !engine.is_healthy(),
+            None => true,
+        };
+        if needs_init {
+            let engine = KataGoEngine::new(&handle).await?;
+            *katago_guard = Some(engine);
+        }
+    }
+
+    let katago_guard = state.katago.lock().await;
+    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+
+    let (history, board_size, komi) = {
+        let game_guard = state.game.lock().map_err(|e| e.to_string())?;
+        let game = game_guard.as_ref().ok_or("No active game")?;
+        (game.get_move_history(), game.board_size().to_u8(), game.get_game_state().komi)
+    };
+
+    let mut points = Vec::new();
+
+    // Analyze starting position (move 0)
+    engine.clear_board().await?;
+    engine.set_board_size(board_size).await?;
+    if let Ok(result) = engine.analyze_position(board_size, komi).await {
+        points.push(ScoreHistoryPoint {
+            move_number: 0,
+            score_mean: result.score_mean,
+            win_rate: result.evaluations.first().map(|e| e.win_rate).unwrap_or(0.5),
+        });
+    }
+
+    // Analyze after each move
+    for (i, m) in history.iter().enumerate() {
+        let color = if i % 2 == 0 { "B" } else { "W" };
+        if m.move_type == MoveType::Stone {
+            let mx = m.x.unwrap_or(0);
+            let my = m.y.unwrap_or(0);
+            let col_char = (b'A' + if mx >= 8 { mx + 1 } else { mx }) as char;
+            let vertex = format!("{}{}", col_char, board_size - my);
+            engine.play_move(color, &vertex).await?;
+        } else if m.move_type == MoveType::Pass {
+            engine.play_move(color, "pass").await?;
+        }
+
+        if let Ok(result) = engine.analyze_position(board_size, komi).await {
+            points.push(ScoreHistoryPoint {
+                move_number: (i + 1) as u32,
+                score_mean: result.score_mean,
+                win_rate: result.evaluations.first().map(|e| e.win_rate).unwrap_or(0.5),
+            });
+        }
+    }
+
+    Ok(points)
+}
+
+// --- Variation Sequence ---
+
+#[derive(Debug, Clone, serde::Serialize)]
+pub struct VariationResult {
+    pub evaluations: Vec<KataMoveEvaluation>,
+    pub best_move: String,
+    pub score_mean: f64,
+    pub turn: String,
+    pub pv: Vec<Point>,
+}
+
+#[tauri::command]
+pub async fn get_variation_sequence(state: State<'_, AppState>, handle: tauri::AppHandle) -> Result<VariationResult, String> {
+    {
+        let mut katago_guard = state.katago.lock().await;
+        let needs_init = match katago_guard.as_ref() {
+            Some(engine) => !engine.is_healthy(),
+            None => true,
+        };
+        if needs_init {
+            let engine = KataGoEngine::new(&handle).await?;
+            *katago_guard = Some(engine);
+        }
+    }
+
+    let katago_guard = state.katago.lock().await;
+    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+
+    let (history, board_size, komi) = {
+        let game_guard = state.game.lock().map_err(|e| e.to_string())?;
+        let game = game_guard.as_ref().ok_or("No active game")?;
+        (game.get_move_history(), game.board_size().to_u8(), game.get_game_state().komi)
+    };
+
+    engine.clear_board().await?;
+    engine.set_board_size(board_size).await?;
+
+    for (i, m) in history.iter().enumerate() {
+        let color = if i % 2 == 0 { "B" } else { "W" };
+        if m.move_type == MoveType::Stone {
+            let mx = m.x.unwrap_or(0);
+            let my = m.y.unwrap_or(0);
+            let col_char = (b'A' + if mx >= 8 { mx + 1 } else { mx }) as char;
+            let vertex = format!("{}{}", col_char, board_size - my);
+            engine.play_move(color, &vertex).await?;
+        } else if m.move_type == MoveType::Pass {
+            engine.play_move(color, "pass").await?;
+        }
+    }
+
+    let result = engine.analyze_position_with_pv(board_size, komi).await?;
+
+    Ok(VariationResult {
+        evaluations: result.evaluations.into_iter().map(|e| KataMoveEvaluation {
+            move_str: e.move_str, x: e.x, y: e.y, visits: e.visits,
+            win_rate: e.win_rate, score_mean: e.score_mean, is_best: e.is_best, quality: e.quality,
+        }).collect(),
+        best_move: result.best_move,
+        score_mean: result.score_mean,
+        turn: result.turn,
+        pv: result.pv.into_iter().map(|(x, y)| Point { x, y }).collect(),
     })
 }

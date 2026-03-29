@@ -7,6 +7,8 @@ interface BoardProps {
   lastMove?: Point | null;
   highlights?: Highlight[];
   heatmap?: HeatmapEntry[];
+  ownership?: number[][] | null;
+  variation?: Point[];
   validMoves?: Point[];
   showValidMoves?: boolean;
   onIntersectionClick?: (x: number, y: number) => void;
@@ -23,6 +25,8 @@ export function Board({
   lastMove,
   highlights = [],
   heatmap = [],
+  ownership = null,
+  variation = [],
   validMoves = [],
   showValidMoves = false,
   onIntersectionClick,
@@ -316,6 +320,69 @@ export function Board({
             {!isTop && (
               <title>{`%${wrPct} kazanma | ${scoreStr} | ${entry.visits} ziyaret`}</title>
             )}
+          </g>
+        );
+      })}
+
+      {/* Ownership overlay */}
+      {ownership && ownership.length === size && board.map((row, y) =>
+        row.map((cell, x) => {
+          if (cell) return null; // Skip intersections with stones
+          if (!ownership[y] || ownership[y][x] === undefined) return null;
+          const val = ownership[y][x]; // -1.0 (white) to +1.0 (black)
+          const absVal = Math.abs(val);
+          if (absVal < 0.1) return null; // Skip neutral
+          const isBlack = val > 0;
+          const color = isBlack ? 'rgba(0,0,0,' : 'rgba(255,255,255,';
+          const opacity = absVal * 0.45;
+          return (
+            <rect
+              key={`own-${x}-${y}`}
+              x={toPixel(x) - cellSize / 2 + 1}
+              y={toPixel(y) - cellSize / 2 + 1}
+              width={cellSize - 2}
+              height={cellSize - 2}
+              fill={`${color}${opacity})`}
+              rx={2}
+            />
+          );
+        })
+      )}
+
+      {/* Variation overlay */}
+      {variation.length > 0 && variation.map((pt, i) => {
+        if (pt.x >= size || pt.y >= size) return null;
+        const px = toPixel(pt.x);
+        const py = toPixel(pt.y);
+        const isEven = i % 2 === 0;
+        const stoneColor = isEven ? '#ef4444' : '#3b82f6';
+        const r = cellSize * 0.22;
+        return (
+          <g key={`var-${i}`}>
+            {i > 0 && (
+              <line
+                x1={toPixel(variation[i - 1].x)}
+                y1={toPixel(variation[i - 1].y)}
+                x2={px}
+                y2={py}
+                stroke={stoneColor}
+                strokeWidth={1.5}
+                strokeDasharray="4,3"
+                opacity={0.6}
+              />
+            )}
+            <circle cx={px} cy={py} r={r} fill={stoneColor} opacity={0.8} />
+            <text
+              x={px}
+              y={py + r * 0.38}
+              textAnchor="middle"
+              fontSize={r * 1.1}
+              fill="#fff"
+              fontFamily="system-ui, sans-serif"
+              fontWeight={700}
+            >
+              {i + 1}
+            </text>
           </g>
         );
       })}

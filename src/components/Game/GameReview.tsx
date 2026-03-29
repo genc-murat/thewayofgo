@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Board } from '../Board';
-import type { BoardSize, MoveRecord, StoneColor } from '../../types';
+import { invoke } from '@tauri-apps/api/core';
+import type { BoardSize, MoveRecord, StoneColor, ScoreHistoryPoint } from '../../types';
 
 interface GameReviewProps {
   moveHistory: MoveRecord[];
@@ -12,6 +13,9 @@ export function GameReview({ moveHistory, onClose }: GameReviewProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [playSpeed, setPlaySpeed] = useState(1000);
   const intervalRef = useRef<number | null>(null);
+  const [scoreHistory, setScoreHistory] = useState<ScoreHistoryPoint[]>([]);
+  const [showScoreGraph, setShowScoreGraph] = useState(false);
+  const [scoreLoading, setScoreLoading] = useState(false);
 
   const currentBoard = currentIndex >= 0 && currentIndex < moveHistory.length
     ? moveHistory[currentIndex].board_snapshot
@@ -69,6 +73,23 @@ export function GameReview({ moveHistory, onClose }: GameReviewProps) {
 
   const currentMove = currentIndex >= 0 ? moveHistory[currentIndex] : null;
   const COLUMN_LABELS = 'ABCDEFGHJKLMNOPQRST';
+
+  const fetchScoreHistory = useCallback(async () => {
+    setScoreLoading(true);
+    try {
+      const result = await invoke<ScoreHistoryPoint[]>('get_game_score_history');
+      setScoreHistory(result);
+    } catch {
+      setScoreHistory([]);
+    }
+    setScoreLoading(false);
+  }, []);
+
+  useEffect(() => {
+    if (showScoreGraph && scoreHistory.length === 0) {
+      fetchScoreHistory();
+    }
+  }, [showScoreGraph, fetchScoreHistory]);
 
   return (
     <div className="max-w-4xl mx-auto animate-fade-in">
@@ -132,6 +153,30 @@ export function GameReview({ moveHistory, onClose }: GameReviewProps) {
               </button>
             ))}
           </div>
+
+          {/* Score graph toggle */}
+          <div className="mt-3">
+            <button
+              onClick={() => setShowScoreGraph(v => !v)}
+              disabled={scoreLoading}
+              className={`flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-medium transition-all border ${
+                showScoreGraph
+                  ? 'bg-info/10 text-info border-info/30'
+                  : 'glass text-text-secondary hover:text-text-primary border-transparent'
+              } ${scoreLoading ? 'opacity-50' : ''}`}
+            >
+              <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" /></svg>
+              {scoreLoading ? 'Analiz ediliyor...' : showScoreGraph ? 'Skor Grafiğini Gizle' : 'Skor Grafiği'}
+            </button>
+          </div>
+
+          {/* Score graph */}
+          {showScoreGraph && scoreHistory.length > 0 && (
+            <div className="mt-3 glass rounded-2xl p-4">
+              <div className="text-xs font-semibold text-text-secondary mb-2">Skor Tahmini (Hamle Bazında)</div>
+              <ScoreGraph points={scoreHistory} currentIndex={currentIndex} onPointClick={(idx) => { setCurrentIndex(idx - 1); setIsPlaying(false); }} />
+            </div>
+          )}
         </div>
 
         {/* Move list sidebar */}
@@ -201,4 +246,85 @@ export function GameReview({ moveHistory, onClose }: GameReviewProps) {
 
 function createEmptyBoard(size: number): (StoneColor | null)[][] {
   return Array.from({ length: size }, () => Array(size).fill(null));
+}
+
+function ScoreGraph({ points, currentIndex, onPointClick }: { points: ScoreHistoryPoint[]; currentIndex: number; onPointClick: (idx: number) => void }) {
+  if (points.length < 2) return null;
+
+  const width = 400;
+  const height = 120;
+  const padding = { top: 10, right: 10, bottom: 25, left: 35 };
+  const chartW = width - padding.left - padding.right;
+  const chartH = height - padding.top - padding.bottom;
+
+  const maxMove = points[points.length - 1].move_number;
+  const scores = points.map(p => p.score_mean);
+  const minScore = Math.min(...scores, -5);
+  const maxScore = Math.max(...scores, 5);
+  const scoreRange = maxScore - minScore || 1;
+
+  const toX = (move: number) => padding.left + (move / maxMove) * chartW;
+  const toY = (score: number) => padding.top + chartH - ((score - minScore) / scoreRange) * chartH;
+
+  const linePoints = points.map(p => `${toX(p.move_number)},${toY(p.score_mean)}`).join(' ');
+  const zeroY = toY(0);
+
+  // Y-axis ticks
+  const yTicks = [Math.ceil(minScore), 0, Math.floor(maxScore)].filter((v, i, a) => a.indexOf(v) === i);
+
+  return (
+    <svg viewBox={`0 0 ${width} ${height}`} className="w-full" style={{ maxHeight: 140 }}>
+      {/* Zero line */}
+      <line x1={padding.left} y1={zeroY} x2={width - padding.right} y2={zeroY} stroke="rgba(148,163,184,0.3)" strokeWidth={1} strokeDasharray="4,3" />
+
+      {/* Y-axis labels */}
+      {yTicks.map(tick => (
+        <text key={tick} x={padding.left - 5} y={toY(tick) + 3} textAnchor="end" fontSize={9} fill="#94a3b8" fontFamily="system-ui, sans-serif">
+          {tick > 0 ? `+${tick}` : tick}
+        </text>
+      ))}
+
+      {/* X-axis labels */}
+      {points.filter((_, i) => i % Math.max(1, Math.floor(points.length / 6)) === 0 || i === points.length - 1).map(p => (
+        <text key={p.move_number} x={toX(p.move_number)} y={height - 3} textAnchor="middle" fontSize={9} fill="#94a3b8" fontFamily="system-ui, sans-serif">
+          {p.move_number}
+        </text>
+      ))}
+
+      {/* Line */}
+      <polyline points={linePoints} fill="none" stroke="#f59e0b" strokeWidth={2} strokeLinejoin="round" />
+
+      {/* Area fill */}
+      <polygon
+        points={`${toX(points[0].move_number)},${zeroY} ${linePoints} ${toX(points[points.length - 1].move_number)},${zeroY}`}
+        fill="url(#score-gradient)"
+        opacity={0.3}
+      />
+
+      <defs>
+        <linearGradient id="score-gradient" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#22c55e" />
+          <stop offset="50%" stopColor="#f59e0b" />
+          <stop offset="100%" stopColor="#ef4444" />
+        </linearGradient>
+      </defs>
+
+      {/* Clickable points */}
+      {points.map((p, i) => (
+        <circle
+          key={i}
+          cx={toX(p.move_number)}
+          cy={toY(p.score_mean)}
+          r={p.move_number === currentIndex + 1 ? 4 : 2.5}
+          fill={p.score_mean > 0.5 ? '#22c55e' : p.score_mean < -0.5 ? '#ef4444' : '#f59e0b'}
+          stroke={p.move_number === currentIndex + 1 ? '#fff' : 'none'}
+          strokeWidth={1.5}
+          className="cursor-pointer"
+          onClick={() => onPointClick(p.move_number)}
+        >
+          <title>{`Hamle ${p.move_number}: ${p.score_mean > 0 ? '+' : ''}${p.score_mean.toFixed(1)} | Kazanma: ${(p.win_rate * 100).toFixed(0)}%`}</title>
+        </circle>
+      ))}
+    </svg>
+  );
 }

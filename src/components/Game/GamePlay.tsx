@@ -6,7 +6,7 @@ import { invoke } from '@tauri-apps/api/core';
 import { getSavedGames, formatGameResult, formatDuration, saveGame } from '../../utils/gameHistory';
 import { soundEngine } from '../../utils/soundEngine';
 import { useKeyboardShortcuts } from '../../hooks/useKeyboardShortcuts';
-import type { BoardSize, ScoreResult, MoveRecord, Point, AIStyle, HeatmapEntry, KataPositionAnalysis, ScoreEstimate } from '../../types';
+import type { BoardSize, ScoreResult, MoveRecord, Point, AIStyle, HeatmapEntry, KataPositionAnalysis, ScoreEstimate, KataOwnershipResult, VariationSequence } from '../../types';
 import type { SavedGame } from '../../utils/gameHistory';
 
 const COLUMN_LABELS = 'ABCDEFGHJKLMNOPQRST';
@@ -45,9 +45,13 @@ export function GamePlay() {
   const [heatmap, setHeatmap] = useState<HeatmapEntry[]>([]);
   const [showHeatmap, setShowHeatmap] = useState(false);
   const [scoreEstimate, setScoreEstimate] = useState<ScoreEstimate | null>(null);
-  const [suggestion, setSuggestion] = useState<{ move: string; x: number; y: number } | null>(null);
+  const [suggestion, setSuggestion] = useState<{ move: string; x: number; y: number; scoreDiff?: number; quality?: string } | null>(null);
   const [showSuggestionToast, setShowSuggestionToast] = useState(false);
   const [katagoLoading, setKatagoLoading] = useState(false);
+  const [ownership, setOwnership] = useState<number[][] | null>(null);
+  const [showOwnership, setShowOwnership] = useState(false);
+  const [variation, setVariation] = useState<Point[]>([]);
+  const [showVariation, setShowVariation] = useState(false);
 
   const aiThinkingRef = useRef(false);
 
@@ -105,6 +109,51 @@ export function GamePlay() {
     }
   }, [showHeatmap, game?.move_number, fetchKatagoAnalysis]);
 
+  // Fetch ownership data
+  const fetchOwnership = useCallback(async () => {
+    if (!useKataGo || !game || game.game_over) return;
+    setKatagoLoading(true);
+    try {
+      const result = await invoke<KataOwnershipResult>('get_katago_ownership');
+      const size = game.board_size;
+      const grid: number[][] = Array.from({ length: size }, () => Array(size).fill(0));
+      for (let i = 0; i < result.ownership.length && i < size * size; i++) {
+        const x = i % size;
+        const y = Math.floor(i / size);
+        grid[y][x] = result.ownership[i];
+      }
+      setOwnership(grid);
+    } catch {
+      setOwnership(null);
+    }
+    setKatagoLoading(false);
+  }, [useKataGo, game?.move_number, game?.game_over, game?.board_size]);
+
+  useEffect(() => {
+    if (showOwnership && useKataGo && game && !game.game_over) {
+      fetchOwnership();
+    }
+  }, [showOwnership, game?.move_number, fetchOwnership]);
+
+  // Fetch variation
+  const fetchVariation = useCallback(async () => {
+    if (!useKataGo || !game || game.game_over) return;
+    setKatagoLoading(true);
+    try {
+      const result = await invoke<VariationSequence>('get_variation_sequence');
+      setVariation(result.pv);
+    } catch {
+      setVariation([]);
+    }
+    setKatagoLoading(false);
+  }, [useKataGo, game?.move_number, game?.game_over]);
+
+  useEffect(() => {
+    if (showVariation && useKataGo && game && !game.game_over) {
+      fetchVariation();
+    }
+  }, [showVariation, game?.move_number, fetchVariation]);
+
   // Analyze last move with KataGo for quality classification
   const analyzeMoveWithKatago = useCallback(async (x: number, y: number) => {
     if (!useKataGo || !game || game.game_over) return;
@@ -127,13 +176,20 @@ export function GamePlay() {
         prev ? `${prev}\n[KataGo] ${label} (Kazanma: %${wr})` : `[KataGo] ${label} (Kazanma: %${wr})`
       );
 
-      // Show suggestion for bad moves
+      // Show suggestion for bad moves with score difference
       if ((evalResult.quality === 'mistake' || evalResult.quality === 'blunder') && showHeatmap) {
         const bestEntry = heatmap.find(h => h.is_best);
         if (bestEntry) {
-          setSuggestion({ move: `(${bestEntry.x}, ${bestEntry.y})`, x: bestEntry.x, y: bestEntry.y });
+          const scoreDiff = Math.abs(evalResult.score_mean - bestEntry.score_mean);
+          setSuggestion({
+            move: `(${COLUMN_LABELS[bestEntry.x]}${bestEntry.y + 1})`,
+            x: bestEntry.x,
+            y: bestEntry.y,
+            scoreDiff,
+            quality: evalResult.quality,
+          });
           setShowSuggestionToast(true);
-          setTimeout(() => setShowSuggestionToast(false), 5000);
+          setTimeout(() => setShowSuggestionToast(false), 6000);
         }
       }
     } catch {
@@ -401,7 +457,7 @@ export function GamePlay() {
     <div className="flex flex-col lg:flex-row gap-8 animate-fade-in">
       <div className="flex-1 flex flex-col items-center">
         <div className="w-full max-w-2xl glass rounded-2xl p-4">
-          <Board size={boardSize} board={game.board} lastMove={game.last_move} validMoves={validMoves} showValidMoves={showValidMoves} heatmap={showHeatmap ? heatmap : []} onIntersectionClick={handleIntersectionClick} interactive={!game.game_over} showCoordinates={true} currentPlayer={game.current_player} />
+            <Board size={boardSize} board={game.board} lastMove={game.last_move} validMoves={validMoves} showValidMoves={showValidMoves} heatmap={showHeatmap ? heatmap : []} ownership={showOwnership ? ownership : null} variation={showVariation ? variation : []} onIntersectionClick={handleIntersectionClick} interactive={!game.game_over} showCoordinates={true} currentPlayer={game.current_player} />
         </div>
       </div>
 
@@ -465,6 +521,9 @@ export function GamePlay() {
               <p className="text-xs text-text-secondary whitespace-pre-line">{lastMoveAnalysis}</p>
             </div>
           )}
+
+          {/* Opening Analysis */}
+          <OpeningAnalysis moveNumber={game.move_number} boardSize={game.board_size} />
         </div>
 
         {gameResult && showScore && gameResult.score && <ScoreDisplay score={gameResult.score} />}
@@ -504,6 +563,30 @@ export function GamePlay() {
                   <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zM6.5 10a3.5 3.5 0 117 0 3.5 3.5 0 01-7 0z" /></svg>
                   {katagoLoading ? 'Analiz ediliyor...' : showHeatmap ? 'Isı Haritasını Gizle' : 'Isı Haritası'}
                 </button>
+              )}
+              {useKataGo && showHeatmap && (
+                <>
+                  <button onClick={() => setShowOwnership(v => !v)}
+                    disabled={katagoLoading}
+                    className={`flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-medium transition-all border ${
+                      showOwnership
+                        ? 'bg-info/10 text-info border-info/30'
+                        : 'glass text-text-secondary hover:text-text-primary border-transparent'
+                    } ${katagoLoading ? 'opacity-50' : ''}`}>
+                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z" /><path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" /></svg>
+                    {showOwnership ? 'Alan Sahipliğini Gizle' : 'Alan Sahipliği'}
+                  </button>
+                  <button onClick={() => setShowVariation(v => !v)}
+                    disabled={katagoLoading}
+                    className={`flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-medium transition-all border ${
+                      showVariation
+                        ? 'bg-warning/10 text-warning border-warning/30'
+                        : 'glass text-text-secondary hover:text-text-primary border-transparent'
+                    } ${katagoLoading ? 'opacity-50' : ''}`}>
+                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
+                    {showVariation ? 'Varyasyonu Gizle' : 'En İyi Varyasyon'}
+                  </button>
+                </>
               )}
               <button onClick={handleResign}
                 className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-error/10 hover:bg-error/20 text-error font-medium transition-all border border-error/20">
@@ -555,12 +638,26 @@ export function GamePlay() {
       {showSuggestionToast && suggestion && (
         <div className="fixed bottom-6 right-6 z-50 glass rounded-2xl p-4 shadow-lg border border-accent/30 animate-slide-up max-w-xs">
           <div className="flex items-start gap-3">
-            <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
-              <svg className="w-4 h-4 text-accent" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" /></svg>
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+              suggestion.quality === 'blunder' ? 'bg-error/20' : 'bg-warning/20'
+            }`}>
+              <svg className={`w-4 h-4 ${suggestion.quality === 'blunder' ? 'text-error' : 'text-warning'}`} viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
             </div>
             <div>
-              <p className="text-sm font-semibold text-text-primary">Önerilen Hamle</p>
-              <p className="text-xs text-text-secondary mt-1">KataGo bu konumu öneriyor: <strong>{suggestion.move}</strong></p>
+              <p className="text-sm font-semibold text-text-primary">
+                {suggestion.quality === 'blunder' ? 'Büyük Hata!' : 'Daha İyi Hamle Var'}
+              </p>
+              <p className="text-xs text-text-secondary mt-1">
+                KataGo bu konumu öneriyor: <strong className="text-accent">{suggestion.move}</strong>
+              </p>
+              {suggestion.scoreDiff !== undefined && (
+                <p className={`text-xs font-medium mt-1 ${suggestion.quality === 'blunder' ? 'text-error' : 'text-warning'}`}>
+                  Skor farkı: {suggestion.scoreDiff > 0 ? '+' : ''}{suggestion.scoreDiff.toFixed(1)} puan
+                </p>
+              )}
+              <div className="flex items-center gap-1 mt-1.5">
+                <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-accent/20 text-accent">KataGo</span>
+              </div>
             </div>
             <button onClick={() => setShowSuggestionToast(false)} className="text-text-secondary hover:text-text-primary ml-auto">
               <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
@@ -580,13 +677,65 @@ function PlayerInfo({ color, captures, isActive, isAi, aiStyle }: { color: 'blac
     educational: 'Eğitici',
   };
   const styleLabel = aiStyle && styleLabels[aiStyle] ? ` - ${styleLabels[aiStyle]}` : '';
+  const { useKataGo } = useAppStore();
   return (
     <div className={`flex flex-col items-center gap-2 p-3 rounded-xl transition-all duration-300 ${isActive ? 'bg-accent/10 ring-1 ring-accent/50 scale-105' : ''}`}>
       <div className={`w-10 h-10 rounded-full ${
         color === 'black' ? 'bg-gradient-to-br from-gray-600 to-gray-900 ring-1 ring-gray-700' : 'bg-gradient-to-br from-white to-gray-200 ring-1 ring-gray-300'
       }`} />
       <span className="text-xs font-semibold">{color === 'black' ? 'Siyah' : 'Beyaz'}{isAi && color === 'white' ? ` (AI${styleLabel})` : ''}</span>
+      {isAi && color === 'white' && useKataGo && (
+        <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-accent/20 text-accent">KataGo</span>
+      )}
       <span className="text-xs text-text-secondary">{captures} yakalanan</span>
+    </div>
+  );
+}
+
+function OpeningAnalysis({ moveNumber, boardSize }: { moveNumber: number; boardSize: number }) {
+  const openingMoves = Math.floor((boardSize * boardSize) * 0.15);
+  if (moveNumber === 0 || moveNumber > openingMoves) return null;
+
+  const comments: Record<number, string[]> = {
+    1: [
+      'İlk hamle genellikle köşelerden birine yapılır. Köşe taşları daha az özgürlükle hayatta kalabilir.',
+      'Açılışta en popüler noktalar: 4-4 (hoshi), 3-4 (komoku) ve 3-3 (san-san).',
+    ],
+    2: [
+      'İkinci hamle genellikle ilk taşın zıt köşesine yapılır.',
+      'Beyazın cevabı açılış stratejisini belirler: agresif mi yoksa dengeli mi?',
+    ],
+    3: [
+      'Üçüncü hamle genellikle ilk iki taştan birinin yanına yapılır.',
+      'Şimdi açılış desenleri (fuseki) şekillenmeye başlar.',
+    ],
+    4: [
+      'Dördüncü hamle ile tahtanın temel dengesi kurulur.',
+      'Açılışta köşe kontrolü > kenar kontrolü > merkez kontrolü önceliği vardır.',
+    ],
+  };
+
+  const generalComments: string[] = [
+    'Açılışta çok agresif oynamak orta oyunda zor duruma düşürebilir.',
+    'Gruplarınızı bağlarken rakibin gruplarını kesmeye çalışın.',
+    'Açılış hamleleri genellikle 3. veya 4. satırdadır.',
+    'Açılışta taşlarınızın birbiriyle iletişim halinde olmasına dikkat edin.',
+    'Her hamlede hem kendi konumunuzu güçlendirin hem de rakibin planını bozun.',
+    'Köşe noktaları (hoshi) açılışta en güvenli tercihlerden biridir.',
+  ];
+
+  const specific = comments[moveNumber];
+  const comment = specific
+    ? specific[moveNumber % specific.length]
+    : generalComments[(moveNumber - 5) % generalComments.length];
+
+  return (
+    <div className="mt-3 p-3 rounded-xl bg-accent/5 border border-accent/20">
+      <div className="flex items-center gap-2 mb-1">
+        <span className="text-[10px] font-semibold text-accent">Açılış Yorumu</span>
+        <span className="text-[9px] text-text-secondary">Hamle {moveNumber}/{openingMoves}</span>
+      </div>
+      <p className="text-xs text-text-secondary">{comment}</p>
     </div>
   );
 }
