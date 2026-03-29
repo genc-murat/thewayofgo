@@ -1,0 +1,21 @@
+{
+  "id": "q3-3-1",
+  "lesson_id": "l3-3-1",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Bitiriş_kavramı_en_önemli_mi_şey_nedir?",
+      "options": ["Her_hamle_değeri", "Taş_dizme", "Alan_çap"],
+      "correct_index": 0,
+      "explanation": "Bitiriş_aşamasında_her_hamlenin_nokta_değeri_hesaplanır."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Bitiriş_tamamlanmadan_oyun_bitemez.",
+      "correct": false,
+      "explanation": "Yanlış, iki_oyuncu_pas_yaparak_oyun_ertelenebilir."
+    }
+  ]
+}

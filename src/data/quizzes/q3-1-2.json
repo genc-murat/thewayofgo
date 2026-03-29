@@ -1,0 +1,21 @@
+{
+  "id": "q3-1-2",
+  "lesson_id": "l3-1-2",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Joseki_nedir?",
+      "options": ["Özel_ahır_hamleler", "Standart_değer_köşe_hamleleri", "Rastgele_hamleler"],
+      "correct_index": 1,
+      "explanation": "Joseki_köşe_açılışında_hamle_serileri_stejanı.tır."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Her_joseki_döngüsü_için_ek_hamle_gerekir.",
+      "correct": false,
+      "explanation": "Yanlış, joseki_bittiğinde her_oyuncu_taş_koyabilir."
+    }
+  ]
+}

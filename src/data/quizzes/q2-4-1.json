@@ -1,0 +1,21 @@
+{
+  "id": "q2-4-1",
+  "lesson_id": "l2-4-1",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Yose_ne_demek?",
+      "options": ["Açılış_aşaması", "Orta_oyun_aşaması", "Son_aşama_aşaması"],
+      "correct_index": 2,
+      "explanation": "Yose_oyunun_son_aşamasıdır.toprak_sınırlarını_tamamlama_aşamasıdır."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Yose_değer_hesaplar_her_hamlenin_değerini.",
+      "correct": true,
+      "explanation": "Doğru, yose_aşamasında_her_hamlenin_değeri_hesaplanır."
+    }
+  ]
+}

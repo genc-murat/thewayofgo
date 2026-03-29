@@ -1,0 +1,21 @@
+{
+  "id": "q2-1-2",
+  "lesson_id": "l2-1-2",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Ladder tekniği nasıl çalışır?",
+      "options": ["Köşeye_çevirme ile esir_alma", "Kenarı_çevirme ile esir_alma", "Merkeze_çevirme ile esir_alma"],
+      "correct_index": 0,
+      "explanation": "Ladder tekniği bir_taşı köşeye_yaklaştırarak esir alma yöntemi."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Ladder her_zaman çalışır.",
+      "correct": false,
+      "explanation": "Yanlış, rakibin_tehdit noktaları varsa ladder_çalışmayabilir."
+    }
+  ]
+}

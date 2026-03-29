@@ -1,0 +1,21 @@
+{
+  "id": "q2-2-1",
+  "lesson_id": "l2-2-1",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Doğrudan_bitişik_taşların avantajı nedir?",
+      "options": ["Hızlı_oynama", "Kesilemez_olması", "Çapraz_etki"],
+      "correct_index": 1,
+      "explanation": "Bitişik_taşlar kesilemez bir bütün oluşturur."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Aralıklı_taşlar tehlikelidir.",
+      "correct": true,
+      "explanation": "Doğru, aralıklı_taşların bağlantısı_zayıf olabilir ve kesilebilir."
+    }
+  ]
+}

@@ -225,6 +225,59 @@ export function HomePage() {
           </button>
         </div>
       </section>
+
+      {/* Yeni Öğrenme Özellikleri */}
+      <section>
+        <div className="flex items-center gap-3 mb-8">
+          <h3 className="text-2xl font-bold">Keşfet</h3>
+          <div className="flex-1 h-px bg-glass-border" />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <button
+            onClick={() => setView('glossary')}
+            className="glass rounded-2xl p-5 text-left card-hover border border-cyan-500/30 transition-all"
+          >
+            <div className="w-10 h-10 rounded-xl bg-cyan-500/15 flex items-center justify-center mb-3">
+              <svg className="w-5 h-5 text-cyan-400" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M7 2a2 2 0 00-2 2v12a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2H7zm3 14a1 1 0 100-2 1 1 0 000 2zm1-5a1 1 0 011 1v2a1 1 0 11-2 0v-2a1 1 0 011-1z" clipRule="evenodd" /></svg>
+            </div>
+            <div className="text-lg font-bold mb-1 text-text-primary">Sözlük</div>
+            <p className="text-sm text-text-secondary">Go terimlerinin interaktif sözlüğü</p>
+          </button>
+
+          <button
+            onClick={() => setView('reading-ladder')}
+            className="glass rounded-2xl p-5 text-left card-hover border border-emerald-500/30 transition-all"
+          >
+            <div className="w-10 h-10 rounded-xl bg-emerald-500/15 flex items-center justify-center mb-3">
+              <svg className="w-5 h-5 text-emerald-400" viewBox="0 0 20 20" fill="currentColor"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838l-3.14 1.345.002.002 5.86 2.513a1 1 0 00.788 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0z" /></svg>
+            </div>
+            <div className="text-lg font-bold mb-1 text-text-primary">Okuma Merdiveni</div>
+            <p className="text-sm text-text-secondary">Kademeli zorlaşan tsumego serileri</p>
+          </button>
+
+          <button
+            onClick={() => setView('shapes')}
+            className="glass rounded-2xl p-5 text-left card-hover border border-rose-500/30 transition-all"
+          >
+            <div className="w-10 h-10 rounded-xl bg-rose-500/15 flex items-center justify-center mb-3">
+              <svg className="w-5 h-5 text-rose-400" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM10 6a2 2 0 100 4 2 2 0 000-4z" clipRule="evenodd" /></svg>
+            </div>
+            <div className="text-lg font-bold mb-1 text-text-primary">Şekil Kataloğu</div>
+            <p className="text-sm text-text-secondary">Go kalıplarının görsel kataloğu</p>
+          </button>
+
+          <button
+            onClick={() => setView('variants')}
+            className="glass rounded-2xl p-5 text-left card-hover border border-purple-500/30 transition-all"
+          >
+            <div className="w-10 h-10 rounded-xl bg-purple-500/15 flex items-center justify-center mb-3">
+              <svg className="w-5 h-5 text-purple-400" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z" clipRule="evenodd" /></svg>
+            </div>
+            <div className="text-lg font-bold mb-1 text-text-primary">Varyant Deneyimi</div>
+            <p className="text-sm text-text-secondary">Farklı hamle sonuçlarını keşfedin</p>
+          </button>
+        </div>
+      </section>
     </div>
   );
 }

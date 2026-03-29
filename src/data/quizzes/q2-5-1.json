@@ -1,0 +1,21 @@
+{
+  "id": "q2-5-1",
+  "lesson_id": "l2-5-1",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Uygulama_bölümünün_amacı_nedir?",
+      "options": ["Teori_okuma", "Öğrenilen_teknikler_pratik_uygulama", "Skor_takip"],
+      "correct_index": 1,
+      "explanation": "Uygulama_bölümü_öğrenilen_teknikleri_pratik_durumlarda_test_etmeyi_sağlar."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Uygulama_probleri_tekrar_değil_pratik_becerileri_pekiştirir.",
+      "correct": true,
+      "explanation": "Doğru, uygulama_probleri_pratik_becerileri_pekiştirir."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "q4-1-1",
+  "lesson_id": "l4-1-1",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Joseki_uygulamanın_avantajı_nedir?",
+      "options": ["Rastgele_hamle", "Standart_değeri_elde_etme", "Sadece_değer_kazanma"],
+      "correct_index": 1,
+      "explanation": "Joseki_stefan_dengeli_değeri_elde_etme_temel_yöntemdir."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Her_joseki_her_durumda_için_işle_yaramaz.",
+      "correct": true,
+      "explanation": "Doğru, joseki_durum_bağlamına_göre_değişir."
+    }
+  ]
+}

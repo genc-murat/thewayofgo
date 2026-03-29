@@ -1,0 +1,21 @@
+{
+  "id": "q1-1-2",
+  "lesson_id": "l1-1-2",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Bir taşın özgürlüğü nedir?",
+      "options": ["Taşın kendi rengindeki komşu taşları", "Boş kalan bitişik kesişim noktaları", "Taşın çevredeki tüm noktalar"],
+      "correct_index": 1,
+      "explanation": "Bir taşın özgürlüğü, boş kalan bitişik (yatay ve dikey) kesişim noktalarıdır."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Bir taş 4 özgürlük sahip olabilir.",
+      "correct": true,
+      "explanation": "Evet, ortada bir taşın 4 komşu noktası vardır (yukarı, aşağı, sol, sağ)."
+    }
+  ]
+}

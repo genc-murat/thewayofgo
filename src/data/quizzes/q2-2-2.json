@@ -1,0 +1,21 @@
+{
+  "id": "q2-2-2",
+  "lesson_id": "l2-2-2",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Çapraz_taşlar birbirini güçlendirir_mi?",
+      "options": ["Hayır", "Sadece koruma açısından", "Evet, etki alanı açısından"],
+      "correct_index": 2,
+      "explanation": "Çapraz_taşlar birbirine_dolaylı_bağlantı ile etki alanlarını_genişletir."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Çapraz_taşlar_root_atama_bad_shape_örneği değildir.",
+      "correct": false,
+      "explanation": "Yanlış, bazı_durumda çapraz_taşlar_thin_shape olabilir."
+    }
+  ]
+}

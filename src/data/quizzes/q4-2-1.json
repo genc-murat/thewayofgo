@@ -1,0 +1,21 @@
+{
+  "id": "q4-2-1",
+  "lesson_id": "l4-2-1",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Etki_alanı_nedir?",
+      "options": ["Taşın_doğrudan_kontrol_alanı", "Taşın_dolaylı_baskı_alanı", "Taşın_esir_aldığı_alan"],
+      "correct_index": 1,
+      "explanation": "Etki_alanı,taşın_dolaylı_baskı_yaptığı_alandır."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Etki_alanı_taşların_rengi_önemlidir.",
+      "correct": false,
+      "explanation": "Yanlış, etki_alanı_taş_konumuna_göre_değişir."
+    }
+  ]
+}

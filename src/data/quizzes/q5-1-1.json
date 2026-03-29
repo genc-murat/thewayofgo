@@ -1,0 +1,21 @@
+{
+  "id": "q5-1-1",
+  "lesson_id": "l5-1-1",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Okuma_becerisi_neden_önemlidir?",
+      "options": ["Güzel_taşlar_oynamak", "İleri_hamleleri_hesaplamak", "Taşı_daha_fazla_yakalama"],
+      "correct_index": 1,
+      "explanation": "Okuma_becerisi,hamlelerin_sonuçlarını_hesaplayarak_en_iyi_seçimi_yapma_imkanı_verir."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "İleri_seviye_okuma_gerektiren_probiler_tsumego_icin_temeldir.",
+      "correct": true,
+      "explanation": "Doğru, ileri_tsumego_probleri_derin_okuma_becerisi_gerektirir."
+    }
+  ]
+}

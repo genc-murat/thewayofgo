@@ -1,0 +1,21 @@
+{
+  "id": "q2-1-1",
+  "lesson_id": "l2-1-1",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Esir_almanın temel_şartı nedir?",
+      "options": ["Taşın etrafını çevirmek", "Taşın tüm özgürlüklerini yok etmek", "Taşın üzerine taş koymak"],
+      "correct_index": 1,
+      "explanation": "Esir_alma, bir taşın tüm özgürlük noktalarının_kapatılması ile gerçekleşir."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Tek_taş_esir almak_grup_esir almaktan_zordur.",
+      "correct": false,
+      "explanation": "Yanlış, tek_taş_esir almak daha kolaydır çünkü_taşın çevresinde çok nokta yoktur."
+    }
+  ]
+}

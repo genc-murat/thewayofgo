@@ -1,0 +1,21 @@
+{
+  "id": "q1-5-1",
+  "lesson_id": "l1-5-1",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Tekrarlama_unutmanın_en_iyi_yöntemi_nedir?",
+      "options": ["Bir_kez_oynamak", "Tekrarlı_pratik_yapmak", "Sadece_okumak"],
+      "correct_index": 1,
+      "explanation": "Tekrarlı_pratik_yapmak_taşı_ve_hamleleri_unutmamak_için_en_iyi_yöntemdir."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Günlük_pratik_tekrar_için_önemlidir.",
+      "correct": true,
+      "explanation": "Doğru, düzenli_günlük_pratik_taşı_pekiştirir."
+    }
+  ]
+}

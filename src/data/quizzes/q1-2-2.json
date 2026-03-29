@@ -1,0 +1,21 @@
+{
+  "id": "q1-2-2",
+  "lesson_id": "l1-2-2",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "İki taş birleşimi nasıl yapılır?",
+      "options": ["Birbirine yakın oynama", "İki boşluk bırakma", "Çapraz oynama"],
+      "correct_index": 0,
+      "explanation": "İki taş birleşimi, taşların birbirine bitişik oynanmasıyla gerçekleşir."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Doğrudan birleşmiş taşlar kesilebilir.",
+      "correct": false,
+      "explanation": "Yanlış. Doğrudan bitişik (yana yana) taşlar kesilemez, güvenli bağlantı sağlar."
+    }
+  ]
+}

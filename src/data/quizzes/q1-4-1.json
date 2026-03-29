@@ -1,0 +1,21 @@
+{
+  "id": "q1-4-1",
+  "lesson_id": "l1-4-1",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Toplam puan nasıl hesaplanır?",
+      "options": ["Sadece esirler", "Komi + esirler + toprak", "Sadece toprak"],
+      "correct_index": 1,
+      "explanation": "Puan hesaplamasında komi, esir alınan taşlar ve kontrol edilen toprak dahil edilir."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Oyuncunun esir aldığı taşlar skor hesabında sayılımaz.",
+      "correct": false,
+      "explanation": "Yanlış, esir alınan taşlar rakibin_puanından eksiltilir."
+    }
+  ]
+}

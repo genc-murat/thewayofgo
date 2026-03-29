@@ -1,9 +1,12 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useAppStore } from '../../stores/appStore';
 import { Board } from '../Board';
-import type { BoardSize, Exercise, Highlight } from '../../types';
+import { QuizView } from '../Quiz';
+import { GlossaryPopup } from '../Glossary';
+import type { BoardSize, Exercise, Highlight, Quiz, GlossaryEntry } from '../../types';
 import { createBoardFromStones } from '../../utils/boardUtils';
 import { recordLessonCompletion } from '../../utils/progressDb';
+import { GLOSSARY } from '../../data/glossary';
 
 export function LessonViewer() {
   const { currentLesson, lessonStep, nextStep, prevStep, setView, loadLesson } = useAppStore();
@@ -13,6 +16,9 @@ export function LessonViewer() {
   const [exerciseResult, setExerciseResult] = useState<{ correct: boolean; explanation: string } | null>(null);
   const [hintsShown, setHintsShown] = useState(0);
   const [animDirection, setAnimDirection] = useState<'forward' | 'backward'>('forward');
+  const [quiz, setQuiz] = useState<Quiz | null>(null);
+  const [showQuiz, setShowQuiz] = useState(false);
+  const [quizCompleted, setQuizCompleted] = useState(false);
   const lessonStartTime = useRef(Date.now());
 
   useEffect(() => {
@@ -21,7 +27,23 @@ export function LessonViewer() {
     setExercise(null);
     setExerciseResult(null);
     setHintsShown(0);
+    setQuiz(null);
+    setShowQuiz(false);
+    setQuizCompleted(false);
     lessonStartTime.current = Date.now();
+  }, [currentLesson?.id]);
+
+  useEffect(() => {
+    if (currentLesson) {
+      const lessonId = currentLesson.id;
+      import(`../../data/quizzes/q${lessonId.replace('l', '')}.json`)
+        .then(mod => {
+          setQuiz(mod.default || mod);
+        })
+        .catch(() => {
+          setQuiz(null);
+        });
+    }
   }, [currentLesson?.id]);
 
   const handleLessonComplete = useCallback(async () => {
@@ -93,9 +115,38 @@ export function LessonViewer() {
   const content = currentLesson.content[lessonStep];
   const isLastStep = lessonStep === currentLesson.content.length - 1;
   const hasRequiredExercise = !!currentLesson.required_exercise;
-  const totalSteps = currentLesson.content.length + (hasRequiredExercise ? 1 : 0);
-  const currentProgress = showExercise ? currentLesson.content.length + 1 : lessonStep + 1;
+  const hasQuiz = quiz !== null;
+  const totalSteps = currentLesson.content.length + (hasQuiz ? 1 : 0) + (hasRequiredExercise ? 1 : 0);
+  const currentProgress = showQuiz
+    ? currentLesson.content.length + 1
+    : showExercise
+      ? currentLesson.content.length + (hasQuiz ? 2 : 1)
+      : lessonStep + 1;
   const progress = (currentProgress / totalSteps) * 100;
+
+  if (showQuiz && quiz) {
+    return (
+      <div className="max-w-4xl mx-auto animate-fade-in-up">
+        <div className="mb-6">
+          <div className="flex items-center gap-2 text-sm text-text-secondary mb-2">
+            <button onClick={() => setShowQuiz(false)} className="flex items-center gap-1.5 text-text-secondary hover:text-text-primary transition-colors">
+              <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" /></svg>
+            </button>
+            <span className="bg-info/15 text-info px-2.5 py-1 rounded-lg font-medium text-xs">Mini Quiz</span>
+          </div>
+          <h2 className="text-2xl font-bold">{currentLesson.title} — Quiz</h2>
+          <p className="text-text-secondary mt-1">Dersin kavramlarını pekiştirin.</p>
+        </div>
+        <QuizView
+          quiz={quiz}
+          onComplete={() => {
+            setQuizCompleted(true);
+            setShowQuiz(false);
+          }}
+        />
+      </div>
+    );
+  }
 
   if (showExercise && exercise) {
     const boardSize = exercise.board_size as BoardSize;
@@ -221,10 +272,16 @@ export function LessonViewer() {
         {currentLesson.content.map((_, i) => (
           <div key={i} className={`step-dot ${i === lessonStep ? 'active' : i < lessonStep ? 'completed' : ''}`} />
         ))}
+        {hasQuiz && (
+          <>
+            <div className="w-px h-4 bg-glass-border mx-1" />
+            <div className={`step-dot ${showQuiz ? 'active' : quizCompleted ? 'completed' : ''}`} />
+          </>
+        )}
         {hasRequiredExercise && (
           <>
             <div className="w-px h-4 bg-glass-border mx-1" />
-            <div className={`step-dot ${showExercise ? 'active' : ''}`} />
+            <div className={`step-dot ${showExercise ? 'active' : exerciseCompleted ? 'completed' : ''}`} />
           </>
         )}
       </div>
@@ -247,9 +304,7 @@ export function LessonViewer() {
         'border-accent/20'
       }`}>
         {contentType === 'text' && (
-          <div className="animate-fade-in">
-            <p className="text-lg leading-relaxed text-text-primary/90">{content.content}</p>
-          </div>
+          <GlossaryText content={content.content || ''} />
         )}
 
         {contentType === 'board' && (
@@ -276,6 +331,12 @@ export function LessonViewer() {
         </button>
 
         {isLastStep ? (
+          hasQuiz && !quizCompleted && !showQuiz ? (
+            <button onClick={() => setShowQuiz(true)} className="btn-primary flex items-center gap-2 px-6 py-2.5 rounded-xl">
+              <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" /></svg>
+              Mini Quiz
+            </button>
+          ) : hasQuiz && showQuiz ? null :
           hasRequiredExercise && !exerciseCompleted ? (
             <button onClick={() => setShowExercise(true)} className="btn-primary flex items-center gap-2 px-6 py-2.5 rounded-xl">
               <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z" clipRule="evenodd" /></svg>
@@ -360,4 +421,33 @@ function AnimationPlayer({
   );
 }
 
+function GlossaryText({ content }: { content: string }) {
+  const [popup, setPopup] = useState<{ entry: GlossaryEntry; x: number; y: number } | null>(null);
 
+  const handleClick = (e: React.MouseEvent) => {
+    const target = e.target as HTMLElement;
+    if (target.classList.contains('glossary-term')) {
+      const termId = target.getAttribute('data-term');
+      if (termId) {
+        const entry = GLOSSARY.find(g => g.id === termId);
+        if (entry) {
+          setPopup({ entry, x: e.clientX, y: e.clientY });
+        }
+      }
+    }
+  };
+
+  // Simple text rendering - in real implementation would process glossary terms
+  return (
+    <div className="relative animate-fade-in" onClick={handleClick}>
+      <p className="text-lg leading-relaxed text-text-primary/90">{content}</p>
+      {popup && (
+        <GlossaryPopup 
+          entry={popup.entry} 
+          onClose={() => setPopup(null)} 
+          onNavigate={() => setPopup(null)} 
+        />
+      )}
+    </div>
+  );
+}

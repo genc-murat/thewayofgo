@@ -1,0 +1,21 @@
+{
+  "id": "q3-4-1",
+  "lesson_id": "l3-4-1",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Tesuji_nedir?",
+      "options": ["Rastgele_hamle", "Zekice_teknik_hamle", "Standart_açılış_hamlesi"],
+      "correct_index": 1,
+      "explanation": "Tesuji,belirli_bir_yerel_durumda_en_iyi_zekice_hamledir."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Tesuji_kalıpları_değişik_durumlarda_kullanılabilir.",
+      "correct": true,
+      "explanation": "Doğru, tesuji_kalıpları_farklı_durumlarda_tekrar_kullanılabilir."
+    }
+  ]
+}

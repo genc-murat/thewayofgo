@@ -1,0 +1,21 @@
+{
+  "id": "q1-3-2",
+  "lesson_id": "l1-3-2",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Açılış bölümünde en çok hangi noktalar önemli?",
+      "options": ["Köşe noktalar", "Merkez noktalar", "Kenar noktalar"],
+      "correct_index": 0,
+      "explanation": "Açılışta köşe noktalar ilk etkili oynamanız gereken yerlerdir, sonra kenar ve merkez gelir."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Açılışta taşların düzeni orta oyundaki_stratejiyi belirler.",
+      "correct": true,
+      "explanation": "Doğru, açılışta_kurulan taşlar orta oyun temelini oluşturur."
+    }
+  ]
+}

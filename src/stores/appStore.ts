@@ -18,7 +18,7 @@ import { EXERCISE_CATALOG } from '../data/exerciseCatalog';
 
 interface AppState {
   // Navigation
-  currentView: 'home' | 'learn' | 'play' | 'exercise' | 'progress' | 'settings' | 'srs-review' | 'position-editor' | 'openings';
+  currentView: 'home' | 'learn' | 'play' | 'exercise' | 'progress' | 'settings' | 'srs-review' | 'position-editor' | 'openings' | 'glossary' | 'reading-ladder' | 'shapes' | 'variants';
   currentLevel: number;
   currentModule: number;
 

@@ -254,3 +254,96 @@ export interface SearchAnalysis {
   evaluation: number;
   total_simulations: number;
 }
+
+// Glossary types
+export interface GlossaryEntry {
+  id: string;
+  term: string;
+  term_en?: string;
+  term_jp?: string;
+  definition: string;
+  category: 'temel' | 'teknik' | 'strateji' | 'oyun_sonu' | 'terim';
+  related_terms: string[];
+  level: number;
+  example_stones?: Stone[];
+  example_size?: number;
+  example_annotation?: string;
+}
+
+// Shape types
+export interface GoShape {
+  id: string;
+  name: string;
+  name_jp?: string;
+  description: string;
+  category: 'connection' | 'eye_shape' | 'attack' | 'defense' | 'territory' | 'efficiency';
+  level: number;
+  board_size: number;
+  stones: Stone[];
+  highlights?: Highlight[];
+  key_points: string[];
+  when_to_use: string;
+  related_exercises?: string[];
+  related_lessons?: string[];
+}
+
+// Quiz types
+export interface Quiz {
+  id: string;
+  lesson_id: string;
+  questions: QuizQuestion[];
+}
+
+export type QuizQuestion = MultipleChoiceQuestion | TrueFalseQuestion;
+
+export interface MultipleChoiceQuestion {
+  id: number;
+  type: 'multiple_choice';
+  question: string;
+  options: string[];
+  correct_index: number;
+  explanation: string;
+}
+
+export interface TrueFalseQuestion {
+  id: number;
+  type: 'true_false';
+  statement: string;
+  correct: boolean;
+  explanation: string;
+}
+
+// Reading Ladder types
+export interface LadderRung {
+  exercise_id: string;
+  stars_to_unlock: number;
+}
+
+export interface ReadingLadder {
+  id: string;
+  title: string;
+  description: string;
+  category: 'life_and_death' | 'tesuji' | 'capture' | 'endgame' | 'reading';
+  difficulty_range: [number, number];
+  rungs: LadderRung[];
+}
+
+// Variant types
+export interface VariationPosition {
+  id: string;
+  title: string;
+  description: string;
+  level: number;
+  board_size: BoardSize;
+  initial_stones: Stone[];
+  variations: Variation[];
+}
+
+export interface Variation {
+  id: string;
+  label: string;
+  is_best: boolean;
+  moves: Stone[];
+  result_description: string;
+  evaluation: 'good' | 'bad' | 'neutral';
+}

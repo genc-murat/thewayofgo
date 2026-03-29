@@ -1,0 +1,21 @@
+{
+  "id": "q3-2-1",
+  "lesson_id": "l3-2-1",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Orta_oyunda_en_önemli_kavram_nedir?",
+      "options": ["Oyun_sonu", "Çatışma ve_değer_hesap", "Sadece_taş_sayımı"],
+      "correct_index": 1,
+      "explanation": "Orta_oyunda_taş_taşı_değeri_odaklanmak_strateji_temelidir."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Orta_oyunda_her_zaman_saldırmak_en_iyi_yöntemdir.",
+      "correct": false,
+      "explanation": "Yanlış, bazen_taşı_koruma_ve_defending_daha_iyi."
+    }
+  ]
+}

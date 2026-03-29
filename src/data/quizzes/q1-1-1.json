@@ -1,0 +1,21 @@
+{
+  "id": "q1-1-1",
+  "lesson_id": "l1-1-1",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Go'da amaç nedir?",
+      "options": ["En çok taş yakalamak", "En çok alan kontrol etmek", "Karşı tarafı mat etmek"],
+      "correct_index": 1,
+      "explanation": "Go'da amaç tahtada en çok toprak/alan kontrol etmektir."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Oyuna beyaz taş başlar.",
+      "correct": false,
+      "explanation": "Oyuna her zaman siyah taş başlar."
+    }
+  ]
+}

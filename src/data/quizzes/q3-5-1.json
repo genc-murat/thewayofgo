@@ -1,0 +1,21 @@
+{
+  "id": "q3-5-1",
+  "lesson_id": "l3-5-1",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Saldırı_ve_savunma_dengesi_nedir?",
+      "options": ["Sadece_saldırı", "Sadece_savunma", "Karşı_duruma_göre_denge"],
+      "correct_index": 2,
+      "explanation": "Saldırı_ve_savunma_dengesi_duruma_göre_değişir."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Savunma_her_zaman_taşı_korumak_olmalıdır.",
+      "correct": false,
+      "explanation": "Yanlış, savunma_taşı_korumak_olmaz_sadece_duruma_göre_değişir."
+    }
+  ]
+}

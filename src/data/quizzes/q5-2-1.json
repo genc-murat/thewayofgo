@@ -1,0 +1,21 @@
+{
+  "id": "q5-2-1",
+  "lesson_id": "l5-2-1",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Sabırlı_oyun_un_en_önemli_ilkesi_nedir?",
+      "options": ["Hızlı_saldırı", "Doğru_zamanı_bekleme", "Erken_saldırı"],
+      "correct_index": 1,
+      "explanation": "Sabırlı_oyunda_doğru_zamanı_beklemek_ve_rakibin_hatasını_görmek_temelidir."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Sabırlı_oyun_taşı_koruma_odaklıdır.",
+      "correct": true,
+      "explanation": "Doğru, sabırlı_oyun_taşı_iyi_değerlendirme_ve_bekleme_stratejisidir."
+    }
+  ]
+}

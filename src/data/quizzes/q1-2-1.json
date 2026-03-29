@@ -1,0 +1,21 @@
+{
+  "id": "q1-2-1",
+  "lesson_id": "l1-2-1",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Atari nedir?",
+      "options": ["İki taş birleşimi", "Son özgürlüğü tehdit", "Bağlantı kestiği"],
+      "correct_index": 1,
+      "explanation": "Atari, bir taşın ya da grubun son özgürlüğüne yapılan tehdit anlamına gelir."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Atari durumundaki her taş bir sonraki hamlede esir alınır.",
+      "correct": false,
+      "explanation": "Yanlış. Rakip önce başka bir hamle yaparsa, atari durumundaki taş kurtarılabilir."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "q1-1-5",
+  "lesson_id": "l1-1-5",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Çapraz_taş_hamlesi_avantajı_nedir?",
+      "options": ["Daha_hızlı_alan_kontrol", "Daha_fazla_esir", "Daha_hızlı_skor"],
+      "correct_index": 0,
+      "explanation": "Çapraz_taş_hamlesi_taşlar_arasında_çapraz_bağlantı_kurarak_alan_kontrolü_genişletir."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Çapraz_taş_hamlesi_taşları_her_zaman_korur.",
+      "correct": false,
+      "explanation": "Yanlış, çapraz_taş_hamlesi_taşları_korumaz."
+    }
+  ]
+}

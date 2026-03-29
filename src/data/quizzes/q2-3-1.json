@@ -1,0 +1,21 @@
+{
+  "id": "q2-3-1",
+  "lesson_id": "l2-3-1",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Göz_createdığında_grup neden_canlı olur?",
+      "options": ["Taşlari_korur", "Rakip_puan_loss engeller", "Taşlar_in_time تمام alamaz"],
+      "correct_index": 2,
+      "explanation": "İki_gözü olan_grubu rakip_marching_in_moving alamaz çünkü iki_noktaya aynı hamle_yapamaz."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Tek_gözlü_grup_dahi_canlıdır.",
+      "correct": false,
+      "explanation": "Yanlış, tek_gözü olmayan_grup_dead_olabilir."
+    }
+  ]
+}

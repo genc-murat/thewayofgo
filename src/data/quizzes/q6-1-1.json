@@ -1,0 +1,21 @@
+{
+  "id": "q6-1-1",
+  "lesson_id": "l6-1-1",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Pro_oyun_analizi_neden_faydalıdır?",
+      "options": ["Sadece_celebrity_görmek", "Profesyonel_strateji_öğrenmek", "Oyun_sonunu_güzellemek"],
+      "correct_index": 1,
+      "explanation": "Pro_oyun_analizi,üst_seviye_strateji_kavramlarını_açıklayarak_geliştirir."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Pro_oyunları_taşı_canlı_durumda_örnektir.",
+      "correct": true,
+      "explanation": "Doğru, pro_oyunlar_canlı_durumları_modern_tekniklerle_kullanır."
+    }
+  ]
+}

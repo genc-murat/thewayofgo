@@ -1,0 +1,21 @@
+{
+  "id": "q3-1-1",
+  "lesson_id": "l3-1-1",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Fuseki'nin_amacı_nedir?",
+      "options": ["Hemen_taş_capture etmek", "Büyük_değerlendirme_taşları_yerleştirmek", "Oyun_sonu_icin_taşı_konumlandırmak"],
+      "correct_index": 1,
+      "explanation": "Fuseki_aşamasında büyük_değerli_taşları erken_yerleştirmektemel_strateji."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Fuseki stratejisi_sabit_hamle_sayısına_göre_değişir.",
+      "correct": true,
+      "explanation": "Doğru, erken_fuseki_değişik hamle_yapılabilir."
+    }
+  ]
+}

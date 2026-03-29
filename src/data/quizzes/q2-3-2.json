@@ -1,0 +1,21 @@
+{
+  "id": "q2-3-2",
+  "lesson_id": "l2-3-2",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Yaşam_ve_ölüm_problerinin_faydası nedir?",
+      "options": ["Tahmin_bezerir", "Göz_hesaplama_geliştirir", "Oyun_sonu_odaklanır"],
+      "correct_index": 1,
+      "explanation": "Bu_probler,göz_hesaplama ve_canlılık_kavramlarını_pekiştirir."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Grup_doğru_hamle ile canlandırılabilir.",
+      "correct": true,
+      "explanation": "Doğru, doğru hamle ile_grubu_canlı_tutulabilir."
+    }
+  ]
+}

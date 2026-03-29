@@ -1,0 +1,21 @@
+{
+  "id": "q2-1-3",
+  "lesson_id": "l2-1-3",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Bir_taş_esir_almak_için_ne_olması_gerekir?",
+      "options": ["Taş_yanı_hamle", "Tüm_özgürlüklerini_kapatma", "Karşı_taş_yanı_hamle"],
+      "correct_index": 1,
+      "explanation": "Esir_almak_için_taşın_tüm_bitisik_boş_kesişim_noktalarını_kapatmak_gerekir."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Köşe_taşı_esir_almak_zordur.",
+      "correct": false,
+      "explanation": "Yanlış, köşe_taşı_daha_çabuk_esir_alınabilir."
+    }
+  ]
+}

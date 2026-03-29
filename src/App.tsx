@@ -11,6 +11,10 @@ import { ReviewSession } from './components/SRS';
 import { PositionEditor } from './components/PositionEditor';
 import { OnboardingWizard, shouldShowOnboarding } from './components/Onboarding/OnboardingWizard';
 import { Openings } from './components/Openings';
+import { GlossaryPage } from './components/Glossary';
+import { LadderOverview } from './components/ReadingLadder';
+import { ShapeCatalog } from './components/Shapes';
+import { VariantExplorer } from './components/VariantExplorer';
 import { useAppStore } from './stores/appStore';
 import { soundEngine } from './utils/soundEngine';
 import { applyTheme, getStoredTheme } from './utils/themes';
@@ -48,8 +52,16 @@ function App() {
        case 'position-editor':
          return <PositionEditor />;
        case 'openings':
-         return <Openings />;
-       default:
+          return <Openings />;
+        case 'glossary':
+          return <GlossaryPage />;
+        case 'reading-ladder':
+          return <LadderOverview />;
+        case 'shapes':
+          return <ShapeCatalog />;
+        case 'variants':
+          return <VariantExplorer />;
+        default:
          return <HomePage />;
      }
    };

@@ -1,0 +1,21 @@
+{
+  "id": "q1-1-4",
+  "lesson_id": "l1-1-4",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "Düz_taş_hamlesi_nedir?",
+      "options": ["Bir_taş_oynama", "İki_taş_düz_oynama", "Çapraz_taş_oynama"],
+      "correct_index": 1,
+      "explanation": "Düz_taş_hamlesi_bitisik_taş_yanına_oynama_yöntemidir."
+    },
+    {
+      "id": 2,
+      "type": "true_false",
+      "statement": "Düz_taş_hamlesi_güvenlidir.",
+      "correct": true,
+      "explanation": "Doğru, düz_taş_hamlesi_taş_bütünlüğü_ve_bağlantı_sağlar."
+    }
+  ]
+}
