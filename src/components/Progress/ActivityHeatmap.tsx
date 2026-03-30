@@ -23,7 +23,7 @@ export function ActivityHeatmap({ data }: HeatmapProps) {
     const startDate = new Date(today);
     startDate.setDate(startDate.getDate() - 364);
 
-    // Align to start of week (Sunday)
+    // Align to start of week (Sunday = 0)
     const dayOfWeek = startDate.getDay();
     startDate.setDate(startDate.getDate() - dayOfWeek);
 
@@ -62,7 +62,7 @@ export function ActivityHeatmap({ data }: HeatmapProps) {
   };
 
   const months = ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'];
-  const days = ['Pzt', '', 'Çar', '', 'Cum', '', 'Paz'];
+  const days = ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt'];
 
   return (
     <div className="glass rounded-2xl p-6 border border-glass-border">

@@ -63,6 +63,8 @@ export function GamePlay() {
   const [selectedRuleSet, setSelectedRuleSet] = useState<string>('japanese');
   const [selectedTimePreset, setSelectedTimePreset] = useState<string>('none');
   const [showReview, setShowReview] = useState(false);
+  const [setupMode, setSetupMode] = useState<'simple' | 'advanced'>('simple');
+  const [confirmAction, setConfirmAction] = useState<{ title: string; message: string; onConfirm: () => void } | null>(null);
 
   // KataGo state
   const [heatmap, setHeatmap] = useState<HeatmapEntry[]>([]);
@@ -272,44 +274,12 @@ export function GamePlay() {
     }
   }, [showValidMoves, game?.move_number, game?.game_over]);
 
-  // Clock tick effect
+  // Clock tick effect - delegates to store's tickClock
   useEffect(() => {
     if (!clockActive || !game || game.game_over || timeControl.kind === 'none') return;
 
     const interval = setInterval(() => {
-      const state = useAppStore.getState();
-      if (!state.clockActive || !state.game || state.game.game_over) return;
-
-      const isBlack = state.game.current_player === 'black';
-      if (isBlack) {
-        const newTime = state.blackTimeRemaining - 1;
-        if (newTime <= 0) {
-          if (state.timeControl.kind === 'byoyomi' && state.blackByoyomiPeriods > 0) {
-            useAppStore.setState({
-              blackTimeRemaining: state.timeControl.byoyomiTime,
-              blackByoyomiPeriods: state.blackByoyomiPeriods - 1,
-            });
-          } else {
-            useAppStore.setState({ clockActive: false, blackTimeRemaining: 0 });
-          }
-        } else {
-          useAppStore.setState({ blackTimeRemaining: newTime });
-        }
-      } else {
-        const newTime = state.whiteTimeRemaining - 1;
-        if (newTime <= 0) {
-          if (state.timeControl.kind === 'byoyomi' && state.whiteByoyomiPeriods > 0) {
-            useAppStore.setState({
-              whiteTimeRemaining: state.timeControl.byoyomiTime,
-              whiteByoyomiPeriods: state.whiteByoyomiPeriods - 1,
-            });
-          } else {
-            useAppStore.setState({ clockActive: false, whiteTimeRemaining: 0 });
-          }
-        } else {
-          useAppStore.setState({ whiteTimeRemaining: newTime });
-        }
-      }
+      useAppStore.getState().tickClock();
     }, 1000);
 
     return () => clearInterval(interval);
@@ -324,7 +294,10 @@ export function GamePlay() {
       const result = winner === 'black' ? 'black_wins' : 'white_wins';
       saveGame(game.board_size, 'ai', result, game.move_number, 0)
         .then(() => getSavedGames(5).then(setRecentGames))
-        .catch(() => {});
+        .catch(() => {
+          // Reset on failure so it can retry on next render
+          gameSavedRef.current = false;
+        });
     }
     if (!game?.game_over) {
       gameSavedRef.current = false;
@@ -384,35 +357,72 @@ export function GamePlay() {
     setMoveHistory(history);
   }, [doPass, getMoveHistory]);
 
-  const handleResign = useCallback(async () => {
-    if (confirm('Oyundan çekilmek istediğinize emin misiniz?')) {
-      const player = isAiGame ? 'black' : game?.current_player || 'black';
-      await doResign(player);
-      setShowScore(true);
-    }
+  const handleResign = useCallback(() => {
+    setConfirmAction({
+      title: 'Oyundan Çekil',
+      message: 'Oyundan çekilmek istediğinize emin misiniz?',
+      onConfirm: async () => {
+        const player = isAiGame ? 'black' : game?.current_player || 'black';
+        await doResign(player);
+        setShowScore(true);
+        setConfirmAction(null);
+      },
+    });
   }, [doResign, isAiGame, game]);
 
   const handleUndo = useCallback(async () => {
     if (!game || game.game_over || isThinking) return;
     if (isAiGame) {
-      await undoMove();
-      await undoMove();
+      setConfirmAction({
+        title: 'Hamleyi Geri Al',
+        message: 'Sizin ve AI\'ın son hamlesini geri almak istediğinize emin misiniz?',
+        onConfirm: async () => {
+          await undoMove();
+          await undoMove();
+          const history = await getMoveHistory();
+          setMoveHistory(history);
+          setShowScore(false);
+          aiThinkingRef.current = false;
+          setIsThinking(false);
+          setConfirmAction(null);
+        },
+      });
     } else {
       await undoMove();
+      const history = await getMoveHistory();
+      setMoveHistory(history);
+      setShowScore(false);
+      aiThinkingRef.current = false;
+      setIsThinking(false);
     }
-    const history = await getMoveHistory();
-    setMoveHistory(history);
-    setShowScore(false);
-    aiThinkingRef.current = false;
-    setIsThinking(false);
   }, [game, isAiGame, isThinking, undoMove, getMoveHistory]);
 
   if (!game) {
     return (
-      <div className="flex flex-col items-center justify-center py-16 gap-10 animate-fade-in">
+      <div className="flex flex-col items-center justify-center py-16 gap-8 animate-fade-in">
         <div>
           <h2 className="text-3xl font-bold text-center mb-2">Yeni Oyun</h2>
-          <p className="text-text-secondary text-center">Tahta boyutunu ve zorluğu seçin</p>
+          <p className="text-text-secondary text-center">Tahta boyutunu seçin</p>
+        </div>
+
+        {/* Mode toggle */}
+        <div className="flex gap-1 glass rounded-xl p-1">
+          <button
+            onClick={() => setSetupMode('simple')}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+              setupMode === 'simple' ? 'bg-accent/20 text-accent' : 'text-text-secondary hover:text-text-primary'
+            }`}
+          >
+            Hızlı Başla
+          </button>
+          <button
+            onClick={() => setSetupMode('advanced')}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+              setupMode === 'advanced' ? 'bg-accent/20 text-accent' : 'text-text-secondary hover:text-text-primary'
+            }`}
+          >
+            Gelişmiş Ayarlar
+          </button>
         </div>
 
         <div className="flex gap-6">
@@ -422,17 +432,43 @@ export function GamePlay() {
              { size: 19, label: '19x19', desc: 'Uzman', color: 'border-purple-500/30' },
            ].map((opt) => (
              <button key={opt.size} onClick={() => {
-               const tc = getTimeControlFromPreset(selectedTimePreset);
+               const tc = getTimeControlFromPreset(setupMode === 'advanced' ? selectedTimePreset : 'none');
                setTimeControl(tc);
-               startAiGame(opt.size, aiDifficulty, aiStyle, selectedKomi, selectedRuleSet);
+               const diff = setupMode === 'simple' ? Math.min(3, aiDifficulty) : aiDifficulty;
+               startAiGame(opt.size, diff, aiStyle, selectedKomi, selectedRuleSet);
              }}
                className={`glass rounded-2xl p-6 text-center card-hover border ${opt.color} min-w-[120px]`}>
                <div className="text-3xl font-bold mb-1">{opt.label}</div>
                <div className="text-xs text-text-secondary">{opt.desc}</div>
              </button>
            ))}
-        </div>
+         </div>
 
+        {/* Simple mode: just difficulty slider */}
+        {setupMode === 'simple' && (
+          <div className="glass rounded-2xl p-6 w-full max-w-md">
+            <p className="text-sm text-text-secondary mb-3 font-medium text-center">Zorluk</p>
+            <div className="flex gap-2 justify-center">
+              {[
+                { level: 1, label: 'Kolay' },
+                { level: 2, label: 'Normal' },
+                { level: 3, label: 'Zor' },
+              ].map((opt) => (
+                <button key={opt.level} onClick={() => useAppStore.getState().setAiDifficulty(opt.level)}
+                  className={`flex-1 py-3 rounded-xl text-sm font-medium transition-all ${
+                    aiDifficulty === opt.level
+                      ? 'gradient-accent text-bg-primary shadow-lg glow-accent-sm'
+                      : 'glass text-text-secondary hover:text-text-primary card-hover'
+                  }`}>
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Advanced mode: all settings */}
+        {setupMode === 'advanced' && (<>
         <div className="glass rounded-2xl p-6">
           <p className="text-sm text-text-secondary mb-3 font-medium text-center">Zorluk Seviyesi</p>
           <div className="flex gap-2">
@@ -539,6 +575,7 @@ export function GamePlay() {
             ))}
           </div>
         </div>
+        </>)}
 
         {/* Recent games */}
         {recentGames.length > 0 && (
@@ -810,6 +847,29 @@ export function GamePlay() {
             <button onClick={() => setShowSuggestionToast(false)} className="text-text-secondary hover:text-text-primary ml-auto">
               <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
             </button>
+          </div>
+        </div>
+      )}
+      {/* Custom confirm modal */}
+      {confirmAction && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-bg-primary/80 backdrop-blur-sm animate-fade-in">
+          <div className="glass rounded-2xl p-6 max-w-sm w-full mx-4 border border-glass-border">
+            <h3 className="text-lg font-bold mb-2">{confirmAction.title}</h3>
+            <p className="text-sm text-text-secondary mb-6">{confirmAction.message}</p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setConfirmAction(null)}
+                className="flex-1 btn-ghost py-2.5 rounded-xl text-sm"
+              >
+                İptal
+              </button>
+              <button
+                onClick={confirmAction.onConfirm}
+                className="flex-1 bg-error hover:bg-error/80 text-white py-2.5 rounded-xl text-sm font-medium transition-colors"
+              >
+                Onayla
+              </button>
+            </div>
           </div>
         </div>
       )}

@@ -2,7 +2,14 @@ import { useState, useEffect } from 'react';
 import { useAppStore } from '../../stores/appStore';
 import { getMistakeExercises } from '../../utils/progressDb';
 import { getTypeDisplayName } from '../../utils/adaptiveDifficulty';
+import { getExerciseCatalog } from '../../data/exerciseCatalog';
 import type { MistakeExercise } from '../../utils/progressDb';
+
+function getExerciseTitle(exerciseId: string): string {
+  const catalog = getExerciseCatalog();
+  const entry = catalog.find(e => e.id === exerciseId);
+  return entry?.title ?? exerciseId;
+}
 
 export function MistakeReview() {
   const { loadExercise, setView } = useAppStore();
@@ -56,10 +63,10 @@ export function MistakeReview() {
             <div className="w-8 h-8 rounded-lg bg-error/15 flex items-center justify-center text-error text-sm font-bold">
               {m.attempts}
             </div>
-            <div className="flex-1 min-w-0">
-              <div className="text-sm font-medium truncate">{m.exercise_id}</div>
-              <div className="text-xs text-text-secondary">{getTypeDisplayName(m.exercise_type)}</div>
-            </div>
+              <div className="flex-1 min-w-0">
+               <div className="text-sm font-medium truncate">{getExerciseTitle(m.exercise_id)}</div>
+               <div className="text-xs text-text-secondary">{getTypeDisplayName(m.exercise_type)}</div>
+             </div>
             <span className="text-xs text-text-secondary">Tekrar Çöz →</span>
           </button>
         ))}

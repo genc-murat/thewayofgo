@@ -6,11 +6,31 @@ import { useAppStore } from '../../stores/appStore';
 import { getSRSStats, type SRSStats } from '../../utils/srs';
 import { getActiveGoals, type Goal } from '../../utils/goals';
 import { getDetailedWeaknessProfile, type DetailedWeakness } from '../../utils/weaknessEngine';
+import { getExerciseCatalog } from '../../data/exerciseCatalog';
+import { LEVELS } from '../../data/curriculum';
 import { ActivityHeatmap } from './ActivityHeatmap';
 import { MistakeReview } from './MistakeReview';
 import { LearningCurve } from './LearningCurve';
 import { AchievementsPanel } from './AchievementsPanel';
 import { AccuracyChart } from './AccuracyChart';
+
+function getItemTitle(itemId: string, itemType: string): string {
+  if (itemType === 'exercise') {
+    const catalog = getExerciseCatalog();
+    const entry = catalog.find(e => e.id === itemId);
+    return entry?.title ?? itemId;
+  }
+  // Lesson: parse level-module-lesson from ID like "l1-2-3"
+  const match = itemId.match(/^l(\d+)-(\d+)-(\d+)$/);
+  if (match) {
+    const levelId = parseInt(match[1]);
+    const moduleId = parseInt(match[2]);
+    const level = LEVELS.find(l => l.id === levelId);
+    const module = level?.modules.find(m => m.id === moduleId);
+    return module ? `${level?.title} > ${module.title} > Ders ${match[3]}` : itemId;
+  }
+  return itemId;
+}
 
 interface StatsData {
   total_lessons_completed: number;
@@ -200,7 +220,7 @@ export function ProgressPage() {
               >
                 <span className="text-amber-400">★</span>
                 <div className="flex-1 min-w-0">
-                  <div className="text-sm font-medium truncate">{b.item_id}</div>
+                  <div className="text-sm font-medium truncate">{getItemTitle(b.item_id, b.item_type)}</div>
                   <div className="text-xs text-text-secondary">{b.item_type === 'exercise' ? 'Alıştırma' : 'Ders'}</div>
                 </div>
               </button>
@@ -221,6 +241,15 @@ export function ProgressPage() {
           Derse Devam Et
         </button>
       </div>
+
+      {/* Back to top */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className="fixed bottom-6 right-6 w-10 h-10 rounded-full glass border border-glass-border flex items-center justify-center text-text-secondary hover:text-text-primary hover:border-accent/30 transition-all shadow-lg z-40"
+        title="Yukarı çık"
+      >
+        <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" /></svg>
+      </button>
     </div>
   );
 }

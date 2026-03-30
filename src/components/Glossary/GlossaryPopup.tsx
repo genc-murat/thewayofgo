@@ -1,3 +1,4 @@
+import { useEffect, useCallback } from 'react';
 import { Board } from '../Board';
 import { createBoardFromStones } from '../../utils/boardUtils';
 import type { GlossaryEntry, BoardSize } from '../../types';
@@ -11,6 +12,17 @@ interface GlossaryPopupProps {
 
 export function GlossaryPopup({ entry, onClose, onNavigate }: GlossaryPopupProps) {
   const relatedEntries = GLOSSARY.filter(e => entry.related_terms.includes(e.id));
+
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      onClose();
+    }
+  }, [onClose]);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handleKeyDown]);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>

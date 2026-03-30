@@ -10,6 +10,10 @@ class SoundEngine {
     if (this.initialized) return;
     try {
       this.ctx = new AudioContext();
+      // Pre-resume to avoid first-sound delay
+      if (this.ctx.state === 'suspended') {
+        this.ctx.resume().catch(() => {});
+      }
       this.initialized = true;
     } catch {
       // Web Audio not available
@@ -66,7 +70,7 @@ class SoundEngine {
     osc.type = 'sine';
     osc.frequency.setValueAtTime(800, ctx.currentTime);
     osc.frequency.exponentialRampToValueAtTime(400, ctx.currentTime + 0.05);
-    gain.gain.setValueAtTime(vol * 0.3, ctx.currentTime);
+    gain.gain.setValueAtTime(vol * 0.2, ctx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
     osc.connect(gain);
     gain.connect(ctx.destination);
@@ -129,7 +133,7 @@ class SoundEngine {
       osc.connect(gain);
       gain.connect(ctx.destination);
       osc.start(ctx.currentTime + i * 0.12);
-      osc.stop(ctx.currentTime + i * 0.12 + 0.12);
+      osc.stop(ctx.currentTime + i * 0.12 + 0.15);
     });
   }
 
@@ -138,12 +142,13 @@ class SoundEngine {
     const gain = ctx.createGain();
     osc.type = 'sine';
     osc.frequency.setValueAtTime(880, ctx.currentTime);
-    gain.gain.setValueAtTime(vol * 0.2, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+    osc.frequency.setValueAtTime(1100, ctx.currentTime + 0.05);
+    gain.gain.setValueAtTime(vol * 0.35, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
     osc.connect(gain);
     gain.connect(ctx.destination);
     osc.start(ctx.currentTime);
-    osc.stop(ctx.currentTime + 0.15);
+    osc.stop(ctx.currentTime + 0.2);
   }
 
   private playWrong(ctx: AudioContext, vol: number): void {
@@ -151,13 +156,13 @@ class SoundEngine {
     const gain = ctx.createGain();
     osc.type = 'sawtooth';
     osc.frequency.setValueAtTime(200, ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(100, ctx.currentTime + 0.15);
-    gain.gain.setValueAtTime(vol * 0.15, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+    osc.frequency.exponentialRampToValueAtTime(100, ctx.currentTime + 0.2);
+    gain.gain.setValueAtTime(vol * 0.25, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
     osc.connect(gain);
     gain.connect(ctx.destination);
     osc.start(ctx.currentTime);
-    osc.stop(ctx.currentTime + 0.15);
+    osc.stop(ctx.currentTime + 0.2);
   }
 
   private playClick(ctx: AudioContext, vol: number): void {

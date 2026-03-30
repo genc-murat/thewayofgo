@@ -16,11 +16,18 @@ export function PositionEditor() {
   const [komi, setKomi] = useState(6.5);
   const [blackCaptures, setBlackCaptures] = useState(0);
   const [whiteCaptures, setWhiteCaptures] = useState(0);
+  const [pendingSizeChange, setPendingSizeChange] = useState<BoardSize | null>(null);
+
+  const stoneCount = board.flat().filter(c => c !== null).length;
 
   const handleBoardSizeChange = useCallback((size: BoardSize) => {
-    setBoardSize(size);
-    setBoard(Array.from({ length: size }, () => Array(size).fill(null)));
-  }, []);
+    if (stoneCount > 0 && size !== boardSize) {
+      setPendingSizeChange(size);
+    } else {
+      setBoardSize(size);
+      setBoard(Array.from({ length: size }, () => Array(size).fill(null)));
+    }
+  }, [stoneCount, boardSize]);
 
   const handleIntersectionClick = useCallback((x: number, y: number) => {
     setBoard(prev => {
@@ -49,8 +56,6 @@ export function PositionEditor() {
     }
     createGameFromPosition(boardSize, stones, currentPlayer, komi, blackCaptures, whiteCaptures);
   }, [board, boardSize, currentPlayer, komi, blackCaptures, whiteCaptures, createGameFromPosition]);
-
-  const stoneCount = board.flat().filter(c => c !== null).length;
 
   return (
     <div className="flex flex-col lg:flex-row gap-6 p-4">
@@ -202,6 +207,36 @@ export function PositionEditor() {
           </div>
         </div>
       </div>
+
+      {/* Board size change confirmation */}
+      {pendingSizeChange !== null && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-bg-primary/80 backdrop-blur-sm animate-fade-in">
+          <div className="glass rounded-2xl p-6 max-w-sm w-full mx-4 border border-glass-border">
+            <h3 className="text-lg font-bold mb-2">Tahta Boyutunu Değiştir?</h3>
+            <p className="text-sm text-text-secondary mb-6">
+              Tahta boyutunu değiştirirseniz mevcut {stoneCount} taş silinecek. Devam etmek istiyor musunuz?
+            </p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setPendingSizeChange(null)}
+                className="flex-1 btn-ghost py-2.5 rounded-xl text-sm"
+              >
+                İptal
+              </button>
+              <button
+                onClick={() => {
+                  setBoardSize(pendingSizeChange);
+                  setBoard(Array.from({ length: pendingSizeChange }, () => Array(pendingSizeChange).fill(null)));
+                  setPendingSizeChange(null);
+                }}
+                className="flex-1 bg-error hover:bg-error/80 text-white py-2.5 rounded-xl text-sm font-medium transition-colors"
+              >
+                Değiştir
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

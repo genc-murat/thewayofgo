@@ -27,9 +27,16 @@ export function QuizView({ quiz, onComplete }: QuizViewProps) {
   const handleNext = () => {
     if (currentIndex < quiz.questions.length - 1) {
       setCurrentIndex(currentIndex + 1);
-      setShowExplanation(false);
+      setShowExplanation(answers[currentIndex + 1] !== null);
     } else {
       setShowResults(true);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+      setShowExplanation(answers[currentIndex - 1] !== null);
     }
   };
 
@@ -84,9 +91,16 @@ export function QuizView({ quiz, onComplete }: QuizViewProps) {
             <p className="text-sm text-text-secondary leading-relaxed">{currentQuestion.explanation}</p>
           </div>
 
-          <button onClick={handleNext} className="btn-primary w-full py-3 rounded-xl">
-            {currentIndex < quiz.questions.length - 1 ? 'Sonraki Soru →' : 'Sonuçları Gör'}
-          </button>
+          <div className="flex gap-3">
+            {currentIndex > 0 && (
+              <button onClick={handlePrev} className="btn-ghost flex-1 py-3 rounded-xl">
+                ← Önceki Soru
+              </button>
+            )}
+            <button onClick={handleNext} className="btn-primary flex-1 py-3 rounded-xl">
+              {currentIndex < quiz.questions.length - 1 ? 'Sonraki Soru →' : 'Sonuçları Gör'}
+            </button>
+          </div>
         </div>
       )}
     </div>

@@ -2,9 +2,22 @@ import { useState, useEffect, useCallback } from 'react';
 import { useAppStore } from '../../stores/appStore';
 import { Board } from '../Board';
 import type { BoardSize, Highlight } from '../../types';
-import { getNextReviewCards, recordSRSCardResult, type SRSCard } from '../../utils/srs';
+import { getNextReviewCards, recordSRSCardResult, type SRSCard, type SRSQuality } from '../../utils/srs';
 import { createBoardFromStones } from '../../utils/boardUtils';
 import type { Exercise } from '../../types';
+
+interface SessionStats {
+  total: number;
+  correct: number;
+  incorrect: number;
+}
+
+const QUALITY_OPTIONS: { quality: SRSQuality; label: string; key: string; color: string; desc: string }[] = [
+  { quality: 'again', label: 'Tekrar', key: '1', color: 'bg-error/20 hover:bg-error/30 text-error border-error/30', desc: 'Hiç hatırlayamadım' },
+  { quality: 'hard', label: 'Zor', key: '2', color: 'bg-amber-500/20 hover:bg-amber-500/30 text-amber-400 border-amber-500/30', desc: 'Zorlandım, ipucuyla hatırladım' },
+  { quality: 'good', label: 'İyi', key: '3', color: 'bg-success/20 hover:bg-success/30 text-success border-success/30', desc: 'Doğru cevap, biraz tereddüt' },
+  { quality: 'easy', label: 'Kolay', key: '4', color: 'bg-info/20 hover:bg-info/30 text-info border-info/30', desc: 'Hemen hatırladım' },
+];
 
 interface SessionStats {
   total: number;
@@ -56,24 +69,55 @@ export function ReviewSession() {
     }
   }, [exercise, result]);
 
-  const handleAnswer = async (correct: boolean) => {
+  const handleAnswer = async (quality: SRSQuality) => {
     if (currentIndex >= cards.length) return;
     const card = cards[currentIndex];
+    const correct = quality === 'good' || quality === 'easy';
 
-    await recordSRSCardResult(card.card_id, correct);
+    await recordSRSCardResult(card.card_id, correct, quality);
 
-    const feedback = correct
-      ? (card.repetitions === 0 ? 'Bu kart öğrenilmeye başlandı. Yarın tekrar gelecek.' :
-         `Bu kart ${Math.round(card.interval_days * 1.5)} gün sonra tekrar gelecek.`)
-      : 'Bu kart sıfırlandı. Yarın tekrar gelecek.';
-    setSrsFeedback(feedback);
+    const feedbackMap: Record<SRSQuality, string> = {
+      again: 'Kart sıfırlandı. ~10 dakika sonra tekrar gelecek.',
+      hard: `Kart ${Math.max(1, Math.round(card.interval_days * 0.5))} gün sonra tekrar gelecek.`,
+      good: card.repetitions === 0
+        ? 'Bu kart öğrenilmeye başlandı. Yarın tekrar gelecek.'
+        : `Kart ${Math.round(card.interval_days)} gün sonra tekrar gelecek.`,
+      easy: card.repetitions === 0
+        ? 'Kolay bulundu! 4 gün sonra tekrar gelecek.'
+        : `Kart ${Math.round(card.interval_days * 1.3 * card.ease_factor)} gün sonra tekrar gelecek.`,
+    };
 
+    setSrsFeedback(feedbackMap[quality]);
     setSessionStats(s => ({
       total: s.total + 1,
       correct: s.correct + (correct ? 1 : 0),
       incorrect: s.incorrect + (correct ? 0 : 1),
     }));
   };
+
+  // Keyboard shortcuts: 1-4 for grading, Space/Enter for next card
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (finished || loading) return;
+
+      if (result && !srsFeedback) {
+        // Grading phase
+        const opt = QUALITY_OPTIONS.find(o => o.key === e.key);
+        if (opt) {
+          e.preventDefault();
+          handleAnswer(opt.quality);
+        }
+      } else if (srsFeedback) {
+        // Next card phase
+        if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault();
+          handleNext();
+        }
+      }
+    };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [result, srsFeedback, finished, loading, currentIndex, cards.length]);
 
   const handleNext = () => {
     if (currentIndex + 1 >= cards.length) {
@@ -202,13 +246,20 @@ export function ReviewSession() {
                 </div>
                 <p className="text-sm text-text-secondary">{result.explanation}</p>
 
-                <div className="flex gap-2 mt-4">
-                  <button onClick={() => handleAnswer(true)} className="flex-1 btn-primary py-2 rounded-xl text-sm">
-                    Biliyordum
-                  </button>
-                  <button onClick={() => handleAnswer(false)} className="flex-1 btn-ghost py-2 rounded-xl text-sm">
-                    Bilmiyordum
-                  </button>
+                <div className="mt-4">
+                  <p className="text-xs text-text-secondary mb-2 text-center">Ne kadar hatırladınız?</p>
+                  <div className="grid grid-cols-4 gap-2">
+                    {QUALITY_OPTIONS.map((opt) => (
+                      <button
+                        key={opt.quality}
+                        onClick={() => handleAnswer(opt.quality)}
+                        className={`flex flex-col items-center py-2.5 rounded-xl text-sm font-medium border transition-all ${opt.color}`}
+                      >
+                        <span className="text-[10px] opacity-60 mb-0.5">[{opt.key}]</span>
+                        <span>{opt.label}</span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
             )}

@@ -47,7 +47,9 @@ export async function getNextReviewCards(limit: number = 20): Promise<SRSCard[]>
   }
 }
 
-export async function recordSRSCardResult(cardId: string, correct: boolean): Promise<void> {
+export type SRSQuality = 'again' | 'hard' | 'good' | 'easy';
+
+export async function recordSRSCardResult(cardId: string, correct: boolean, quality?: SRSQuality): Promise<void> {
   const database = await getDb();
   try {
     const existing = await database.select<SRSCard[]>(
@@ -61,21 +63,42 @@ export async function recordSRSCardResult(cardId: string, correct: boolean): Pro
     const card = existing[0];
     let { ease_factor, interval_days, repetitions, lapses } = card;
 
-    if (correct) {
-      repetitions += 1;
-      if (repetitions === 1) {
-        interval_days = 1;
-      } else if (repetitions === 2) {
-        interval_days = 6;
-      } else {
-        interval_days = interval_days * ease_factor;
-      }
-      ease_factor = Math.max(1.3, ease_factor + 0.1);
-    } else {
-      repetitions = 0;
-      interval_days = 1;
-      ease_factor = Math.max(1.3, ease_factor - 0.2);
-      lapses += 1;
+    // SM-2 inspired 4-level grading
+    const q = quality ?? (correct ? 'good' : 'again');
+
+    switch (q) {
+      case 'again': // Total blackout - reset
+        repetitions = 0;
+        interval_days = 0.007; // ~10 minutes
+        ease_factor = Math.max(1.3, ease_factor - 0.2);
+        lapses += 1;
+        break;
+      case 'hard': // Wrong but remembered after seeing answer
+        repetitions = Math.max(0, repetitions - 1);
+        interval_days = Math.max(0.007, interval_days * 0.5);
+        ease_factor = Math.max(1.3, ease_factor - 0.15);
+        break;
+      case 'good': // Correct with some hesitation
+        repetitions += 1;
+        if (repetitions === 1) {
+          interval_days = 1;
+        } else if (repetitions === 2) {
+          interval_days = 6;
+        } else {
+          interval_days = interval_days * ease_factor;
+        }
+        break;
+      case 'easy': // Perfect recall
+        repetitions += 1;
+        if (repetitions === 1) {
+          interval_days = 4;
+        } else if (repetitions === 2) {
+          interval_days = 10;
+        } else {
+          interval_days = interval_days * ease_factor * 1.3;
+        }
+        ease_factor = Math.max(1.3, ease_factor + 0.15);
+        break;
     }
 
     const now = new Date();
