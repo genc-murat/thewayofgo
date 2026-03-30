@@ -1,4 +1,4 @@
-import { EXERCISE_CATALOG } from './exerciseCatalog';
+import { getExerciseCatalog } from './exerciseCatalog';
 
 interface DailyProblemEntry {
   id: string;
@@ -54,7 +54,7 @@ function getExercisesByDifficulty(targetLevel: number): DailyProblemEntry[] {
   const lower = Math.max(1, targetLevel - 1);
   const upper = Math.min(6, targetLevel + 1);
 
-  return EXERCISE_CATALOG.filter((e) => {
+  return getExerciseCatalog().filter((e) => {
     return e.level >= lower && e.level <= upper;
   });
 }
@@ -64,7 +64,7 @@ export function getDailyProblem(targetLevel: number = 1): DailyProblemEntry | nu
   const cached = getDailyState();
 
   if (cached && cached.date === todayStr) {
-    const cachedEntry = EXERCISE_CATALOG.find((e) => e.id === cached.exerciseId);
+    const cachedEntry = getExerciseCatalog().find((e) => e.id === cached.exerciseId);
     if (cachedEntry) return cachedEntry;
   }
 
@@ -73,8 +73,8 @@ export function getDailyProblem(targetLevel: number = 1): DailyProblemEntry | nu
 
   const candidates = getExercisesByDifficulty(targetLevel);
   if (candidates.length === 0) {
-    const fallback = EXERCISE_CATALOG.length > 0
-      ? EXERCISE_CATALOG[Math.floor(rng() * EXERCISE_CATALOG.length)]
+    const fallback = getExerciseCatalog().length > 0
+      ? getExerciseCatalog()[Math.floor(rng() * getExerciseCatalog().length)]
       : null;
     return fallback ?? null;
   }
@@ -121,7 +121,7 @@ export function getDailyProblemForDate(dateStr: string, targetLevel: number = 1)
   const rng = seededRandom(seed);
 
   const candidates = getExercisesByDifficulty(targetLevel);
-  if (candidates.length === 0) return EXERCISE_CATALOG[0] ?? null;
+  if (candidates.length === 0) return getExerciseCatalog()[0] ?? null;
 
   const idx = Math.floor(rng() * candidates.length);
   return candidates[idx] ?? null;

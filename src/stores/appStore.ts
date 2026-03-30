@@ -14,7 +14,8 @@ import type {
 } from '../types';
 import { recordExerciseAttempt } from '../utils/progressDb';
 import { createBoardFromStones } from '../utils/boardUtils';
-import { EXERCISE_CATALOG } from '../data/exerciseCatalog';
+import { getExerciseCatalog, loadExerciseCatalog } from '../data/exerciseCatalog';
+import { loadAllVariations } from '../data/variations';
 
 interface AppState {
   // Navigation
@@ -77,6 +78,10 @@ interface AppState {
   streak: { current: number; best: number } | null;
   planVersion: number;
   bumpPlanVersion: () => void;
+
+  // Catalog
+  catalogLoaded: boolean;
+  loadCatalogs: () => Promise<void>;
 
   // UI
   isLoading: boolean;
@@ -198,6 +203,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   stats: null,
   streak: null,
   planVersion: 0,
+  catalogLoaded: false,
 
   // UI
   isLoading: false,
@@ -629,12 +635,17 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   // Error handling
   setError: (error) => set({ error }),
+  loadCatalogs: async () => {
+    await Promise.all([loadExerciseCatalog(), loadAllVariations()]);
+    set({ catalogLoaded: true });
+  },
+
   bumpPlanVersion: () => set(s => ({ planVersion: s.planVersion + 1 })),
 
   loadNextExercise: (currentId) => {
-    const idx = EXERCISE_CATALOG.findIndex((e) => e.id === currentId);
-    if (idx >= 0 && idx < EXERCISE_CATALOG.length - 1) {
-      const nextEx = EXERCISE_CATALOG[idx + 1];
+    const idx = getExerciseCatalog().findIndex((e) => e.id === currentId);
+    if (idx >= 0 && idx < getExerciseCatalog().length - 1) {
+      const nextEx = getExerciseCatalog()[idx + 1];
       get().loadExercise(nextEx.id);
     }
   },

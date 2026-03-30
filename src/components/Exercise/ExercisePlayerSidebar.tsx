@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { EXERCISE_CATALOG } from '../../data/exerciseCatalog';
+import { getExerciseCatalog } from '../../data/exerciseCatalog';
 import type { StepResult } from '../../types';
 import type { ExerciseAttempt } from '../../utils/progressDb';
 
@@ -39,7 +39,7 @@ export function ExercisePlayerSidebar({
     || (isMultiStep && (allStepsCompleted || (lastStepResult && !lastStepResult.correct)));
 
   const similarExercises = useMemo(() => {
-    return EXERCISE_CATALOG
+    return getExerciseCatalog()
       .filter((e) => e.type === exerciseType && e.id !== exerciseId)
       .slice(0, 3);
   }, [exerciseType, exerciseId]);

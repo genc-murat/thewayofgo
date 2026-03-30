@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
-import { ALL_VARIATIONS, VARIATIONS_BY_CATEGORY, CATEGORY_LABELS } from '../../data/variations';
+import { getAllVariations, getVariationsByCategory, CATEGORY_LABELS } from '../../data/variations';
+import { useAppStore } from '../../stores/appStore';
 import { getAllVariantProgress } from '../../utils/progressDb';
 import type { VariationPosition, VariationCategory } from '../../types';
 
@@ -13,6 +14,12 @@ export function VariantCatalog({ onSelectPosition }: VariantCatalogProps) {
   const [selectedCategory, setSelectedCategory] = useState<VariationCategory | 'all'>('all');
   const [selectedLevel, setSelectedLevel] = useState<number | 'all'>('all');
   const [progressMap, setProgressMap] = useState<Map<string, { explored: Set<string>; quizCorrect: boolean }>>(new Map());
+  const catalogLoaded = useAppStore((state) => state.catalogLoaded);
+  const loadCatalogs = useAppStore((state) => state.loadCatalogs);
+
+  useEffect(() => {
+    if (!catalogLoaded) loadCatalogs();
+  }, []);
 
   useEffect(() => {
     getAllVariantProgress().then(records => {
@@ -29,25 +36,44 @@ export function VariantCatalog({ onSelectPosition }: VariantCatalogProps) {
       }
       setProgressMap(map);
     }).catch(() => {});
-  }, []);
+  }, [catalogLoaded]);
 
   const filteredPositions = useMemo(() => {
     let positions: VariationPosition[];
     if (selectedCategory === 'all') {
-      positions = ALL_VARIATIONS;
+      positions = getAllVariations();
     } else {
-      positions = VARIATIONS_BY_CATEGORY[selectedCategory] ?? [];
+      positions = getVariationsByCategory()[selectedCategory] ?? [];
     }
     if (selectedLevel !== 'all') {
       positions = positions.filter(p => p.level === selectedLevel);
     }
     return positions;
-  }, [selectedCategory, selectedLevel]);
+  }, [selectedCategory, selectedLevel, catalogLoaded]);
 
   const levels = useMemo(() => {
-    const lvls = new Set<number>(ALL_VARIATIONS.map(p => p.level));
+    const lvls = new Set<number>(getAllVariations().map(p => p.level));
     return Array.from(lvls).sort((a, b) => a - b);
-  }, []);
+  }, [catalogLoaded]);
+
+  if (!catalogLoaded) {
+    return (
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-8">
+          <h2 className="text-3xl font-bold mb-2">Varyant Kataloğu</h2>
+          <p className="text-text-secondary">Yükleniyor...</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {[...Array(6)].map((_, i) => (
+            <div key={i} className="glass rounded-2xl p-5 border border-glass-border animate-pulse">
+              <div className="h-4 bg-glass-border rounded w-3/4 mb-3"></div>
+              <div className="h-3 bg-glass-border rounded w-1/2"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-6xl mx-auto">
@@ -64,10 +90,10 @@ export function VariantCatalog({ onSelectPosition }: VariantCatalogProps) {
             selectedCategory === 'all' ? 'bg-accent text-bg-primary' : 'glass text-text-secondary hover:text-text-primary'
           }`}
         >
-          Tümü ({ALL_VARIATIONS.length})
+          Tümü ({getAllVariations().length})
         </button>
         {ALL_CATEGORIES.map(cat => {
-          const count = VARIATIONS_BY_CATEGORY[cat]?.length ?? 0;
+          const count = getVariationsByCategory()[cat]?.length ?? 0;
           if (count === 0) return null;
           return (
             <button

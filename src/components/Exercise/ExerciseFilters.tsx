@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
 import { getTypeDisplayName } from '../../utils/adaptiveDifficulty';
-import { EXERCISE_CATALOG } from '../../data/exerciseCatalog';
+import { getExerciseCatalog } from '../../data/exerciseCatalog';
 
 const TYPE_COLORS: Record<string, string> = {
   'place_correct': 'bg-blue-500/15 text-blue-400 border-blue-500/20',
@@ -38,7 +38,7 @@ export function ExerciseFilters({
   onFilterTypeChange,
 }: ExerciseFiltersProps) {
   const types = useMemo(
-    () => [...new Set(EXERCISE_CATALOG.map((e) => e.type))],
+    () => [...new Set(getExerciseCatalog().map((e) => e.type))],
     []
   );
 

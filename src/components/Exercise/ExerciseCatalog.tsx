@@ -1,6 +1,6 @@
 import { useState, useCallback, useMemo, useEffect } from 'react';
 import { useAppStore } from '../../stores/appStore';
-import { EXERCISE_CATALOG } from '../../data/exerciseCatalog';
+import { getExerciseCatalog } from '../../data/exerciseCatalog';
 import { LEVELS } from '../../data/curriculum';
 import { getAdaptiveDifficulty, getTypeDisplayName, type DifficultyRecommendation } from '../../utils/adaptiveDifficulty';
 import { getSRSStats } from '../../utils/srs';
@@ -28,7 +28,11 @@ interface GroupedExercises {
 }
 
 export function ExerciseCatalog() {
-  const { loadExercise } = useAppStore();
+  const { loadExercise, catalogLoaded, loadCatalogs } = useAppStore();
+
+  useEffect(() => {
+    if (!catalogLoaded) loadCatalogs();
+  }, []);
 
   const [searchQuery, setSearchQuery] = useState('');
   const [filterLevel, setFilterLevel] = useState<number | null>(null);
@@ -49,7 +53,7 @@ export function ExerciseCatalog() {
   }, []);
 
   const filteredCatalog = useMemo(() => {
-    let items: ExerciseCatalogEntry[] = EXERCISE_CATALOG;
+    let items: ExerciseCatalogEntry[] = getExerciseCatalog();
     if (filterLevel !== null) items = items.filter((e) => e.level === filterLevel);
     if (filterType !== null) items = items.filter((e) => e.type === filterType);
     if (searchQuery) {
@@ -61,7 +65,7 @@ export function ExerciseCatalog() {
       );
     }
     return items;
-  }, [filterLevel, filterType, searchQuery]);
+  }, [filterLevel, filterType, searchQuery, catalogLoaded]);
 
   const groupedExercises = useMemo<GroupedExercises[]>(() => {
     const levelMap = new Map<number, Map<number, ExerciseCatalogEntry[]>>();
@@ -122,17 +126,17 @@ export function ExerciseCatalog() {
   }, [lastAttemptedId, loadExercise]);
 
   const handleRandom = useCallback(() => {
-    const items = filteredCatalog.length > 0 ? filteredCatalog : EXERCISE_CATALOG;
+    const items = filteredCatalog.length > 0 ? filteredCatalog : getExerciseCatalog();
     const randomEx = items[Math.floor(Math.random() * items.length)];
     if (randomEx) loadExercise(randomEx.id);
   }, [filteredCatalog, loadExercise]);
 
   const recommendedExercises = useMemo(() => {
     if (!recommendation || recommendation.focusTypes.length === 0) return [];
-    return EXERCISE_CATALOG.filter((ex) =>
+    return getExerciseCatalog().filter((ex) =>
       recommendation.focusTypes.includes(ex.type)
     ).slice(0, 3);
-  }, [recommendation]);
+  }, [recommendation, catalogLoaded]);
 
   const getGroupProgress = useCallback(
     (exercises: ExerciseCatalogEntry[]) => {
@@ -146,12 +150,32 @@ export function ExerciseCatalog() {
     [allProgress]
   );
 
+  if (!catalogLoaded) {
+    return (
+      <div className="max-w-5xl mx-auto space-y-8 animate-fade-in">
+        <div>
+          <h2 className="text-3xl font-bold mb-2">Alıştırmalar</h2>
+          <p className="text-text-secondary">Yükleniyor...</p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {[...Array(6)].map((_, i) => (
+            <div key={i} className="glass rounded-2xl p-5 border border-glass-border animate-pulse">
+              <div className="h-4 bg-glass-border rounded w-3/4 mb-3"></div>
+              <div className="h-3 bg-glass-border rounded w-1/2 mb-2"></div>
+              <div className="h-3 bg-glass-border rounded w-2/3"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="max-w-5xl mx-auto space-y-8 animate-fade-in">
       <div>
         <h2 className="text-3xl font-bold mb-2">Alıştırmalar</h2>
         <p className="text-text-secondary">
-          Seviye ve türe göre filtreleyerek çalışın ({EXERCISE_CATALOG.length} alıştırma)
+          Seviye ve türe göre filtreleyerek çalışın ({getExerciseCatalog().length} alıştırma)
         </p>
       </div>
 
