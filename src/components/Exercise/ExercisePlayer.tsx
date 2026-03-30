@@ -14,7 +14,7 @@ export function ExercisePlayer() {
     currentExercise, exerciseResult, exerciseAttempts,
     submitExerciseMove, closeExercise, loadExercise,
     currentStepIndex, stepBoard, stepResults, allStepsCompleted,
-    submitMultiStepMove, advanceToNextStep, loadNextExercise,
+    submitMultiStepMove, advanceToNextStep, retryCurrentStep, loadNextExercise,
   } = useAppStore();
 
   const { useKataGo } = useAppStore();
@@ -196,6 +196,7 @@ export function ExercisePlayer() {
           hints={hints}
           exerciseHistory={exerciseHistory}
           onRetry={() => loadExercise(currentExercise.id)}
+          onRetryStep={retryCurrentStep}
           onNextExercise={handleNextExercise}
           onAdvanceStep={advanceToNextStep}
         />

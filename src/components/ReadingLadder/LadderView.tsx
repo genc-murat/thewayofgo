@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAppStore } from '../../stores/appStore';
 import { READING_LADDERS } from '../../data/readingLadders';
+import { getExerciseCatalog } from '../../data/exerciseCatalog';
 import { LadderRung } from './LadderRung';
 
 interface LadderViewProps {
@@ -22,25 +23,41 @@ export function LadderView({ ladderId, onBack }: LadderViewProps) {
   const [totalStars, setTotalStars] = useState(0);
   const [currentRungIndex, setCurrentRungIndex] = useState(0);
 
-  // Load exercise progress (simplified - in real app would come from DB)
+  // Load exercise progress from DB
   useEffect(() => {
-    // For demo purposes, simulate some progress
-    // In production, this would fetch from progress database
-    const mockProgress = {
-      'e1-1-2': 3,
-      'e1-1-4': 2,
-      'e1-1-5': 1,
-    };
-    setExerciseStars(mockProgress);
-    setTotalStars(Object.values(mockProgress).reduce((sum, stars) => sum + stars, 0));
-    
-    // Find current rung (first locked rung)
-    const currentIndex = ladder.rungs.findIndex(rung => {
-      const starsForRung = exerciseStars[rung.exercise_id] ?? 0;
-      return starsForRung < rung.stars_to_unlock;
-    });
-    setCurrentRungIndex(currentIndex >= 0 ? currentIndex : ladder.rungs.length - 1);
-  }, []);
+    let cancelled = false;
+    async function loadProgress() {
+      try {
+        const { getAllExerciseProgress } = await import('../../utils/progressDb');
+        const allProgress = await getAllExerciseProgress();
+        if (cancelled) return;
+
+        const stars: Record<string, number> = {};
+        let total = 0;
+        for (const rung of ladder!.rungs) {
+          const p = allProgress.get(rung.exercise_id);
+          if (p && p.correct) {
+            const rungStars = Math.min(3, p.attempts > 0 ? (p.correct ? 3 - Math.max(0, p.attempts - 1) : 0) : 0);
+            const earned = rungStars > 0 ? Math.max(1, rungStars) : 0;
+            stars[rung.exercise_id] = earned;
+            total += earned;
+          }
+        }
+        setExerciseStars(stars);
+        setTotalStars(total);
+
+        const currentIndex = ladder!.rungs.findIndex(rung => {
+          const starsForRung = stars[rung.exercise_id] ?? 0;
+          return starsForRung < rung.stars_to_unlock;
+        });
+        setCurrentRungIndex(currentIndex >= 0 ? currentIndex : ladder!.rungs.length - 1);
+      } catch {
+        // progress DB not available
+      }
+    }
+    loadProgress();
+    return () => { cancelled = true; };
+  }, [ladderId]);
 
   return (
     <div className="max-w-4xl mx-auto animate-fade-in-up">
@@ -171,31 +188,15 @@ export function LadderView({ ladderId, onBack }: LadderViewProps) {
   );
 }
 
-// Helper functions (in real app would come from exercise data)
+// Helper functions using exercise catalog
 function getExerciseTitle(exerciseId: string): string {
-  const titles: Record<string, string> = {
-    'e1-1-2': 'Özgürlük Sayısı',
-    'e1-1-4': 'İki Nokta',
-    'e1-1-5': 'Üç Nokta',
-    'e1-2-1': 'Kömür Al',
-    'e1-2-2': 'İki Taş Birleştir',
-    'e1-2-4': 'Köşe Kontrolü',
-    'e1-3-3': 'İki Göz Oluştur',
-    'e1-4-3': 'Kenar Bağlantı',
-  };
-  return titles[exerciseId] || 'Bilinmeyen Alıştırma';
+  const catalog = getExerciseCatalog();
+  const entry = catalog.find(e => e.id === exerciseId);
+  return entry?.title ?? 'Bilinmeyen Alıştırma';
 }
 
 function getExerciseDifficulty(exerciseId: string): number {
-  const difficulties: Record<string, number> = {
-    'e1-1-2': 1,
-    'e1-1-4': 1,
-    'e1-1-5': 1,
-    'e1-2-1': 1,
-    'e1-2-2': 1,
-    'e1-2-4': 1,
-    'e1-3-3': 2,
-    'e1-4-3': 2,
-  };
-  return difficulties[exerciseId] || 1;
+  const catalog = getExerciseCatalog();
+  const entry = catalog.find(e => e.id === exerciseId);
+  return entry?.difficulty ?? 1;
 }

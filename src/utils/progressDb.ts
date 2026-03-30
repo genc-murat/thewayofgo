@@ -217,12 +217,47 @@ export async function getUserStats(): Promise<UserStatsData> {
     'SELECT COALESCE(SUM(stars), 0) as total FROM user_progress'
   );
 
+  // Calculate current level based on completed lessons
+  const completedLessons = await getCompletedLessons();
+  let currentLevel = 1;
+
+  // Level advancement requirements (mirrors lessonPath.ts LEVEL_REQUIREMENTS)
+  const LEVEL_REQS: Record<number, { min_lessons_pct: number }> = {
+    1: { min_lessons_pct: 70 },
+    2: { min_lessons_pct: 70 },
+    3: { min_lessons_pct: 70 },
+    4: { min_lessons_pct: 75 },
+    5: { min_lessons_pct: 80 },
+  };
+
+  try {
+    const { LESSONS_PER_LEVEL } = await import('../data/curriculum');
+    for (let lvl = 2; lvl <= 6; lvl++) {
+      const req = LEVEL_REQS[lvl - 1];
+      if (!req) break;
+      const prevLevelLessons = LESSONS_PER_LEVEL[lvl - 1] ?? 30;
+      let completedInPrev = 0;
+      for (const lessonId of completedLessons) {
+        const l = parseInt(lessonId.split('-')[0].replace('l', ''), 10);
+        if (l === lvl - 1) completedInPrev++;
+      }
+      const pct = prevLevelLessons > 0 ? (completedInPrev / prevLevelLessons) * 100 : 0;
+      if (pct >= req.min_lessons_pct) {
+        currentLevel = lvl;
+      } else {
+        break;
+      }
+    }
+  } catch {
+    // curriculum data not available, default to level 1
+  }
+
   return {
     total_lessons_completed: lessonsResult[0]?.count ?? 0,
     total_exercises_completed: exercisesResult[0]?.count ?? 0,
     total_exercises_correct: correctResult[0]?.count ?? 0,
     total_stars: starsResult[0]?.total ?? 0,
-    current_level: 1,
+    current_level: currentLevel,
   };
 }
 

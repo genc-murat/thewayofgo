@@ -116,11 +116,11 @@ export function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {LEVELS.map((level, idx) => {
             const totalLessons = level.modules.reduce((sum, m) => sum + m.lessonCount, 0);
-            const completedLessons = 0; // Real progress comes from DB below
-            // Use real progress if available
             const realProgress = progress?.levelProgress?.[level.id] ?? 0;
-            const progressPct = realProgress > 0 ? realProgress : (totalLessons > 0 ? (completedLessons / totalLessons) * 100 : 0);
-            const isLocked = idx > 0 && (progress?.levelProgress?.[idx] ?? 0) < 30;
+            const completedLessons = totalLessons > 0 ? Math.round((realProgress / 100) * totalLessons) : 0;
+            const progressPct = realProgress;
+            const prevLevelProgress = idx > 0 ? (progress?.levelProgress?.[LEVELS[idx - 1].id] ?? 0) : 100;
+            const isLocked = idx > 0 && prevLevelProgress < 30;
             const isComplete = progressPct >= 95;
 
             return (

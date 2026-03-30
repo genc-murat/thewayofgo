@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 interface OnboardingProps {
-  onComplete: () => void;
+  onComplete: (data: { level: number; dailyGoal: number }) => void;
 }
 
 export function OnboardingWizard({ onComplete }: OnboardingProps) {
@@ -10,10 +10,11 @@ export function OnboardingWizard({ onComplete }: OnboardingProps) {
   const [dailyGoal, setDailyGoal] = useState(10);
 
   const handleComplete = () => {
+    const selectedLevel = level ?? 1;
     localStorage.setItem('thewayofgo_onboarded', 'true');
-    localStorage.setItem('thewayofgo_level', String(level ?? 1));
+    localStorage.setItem('thewayofgo_level', String(selectedLevel));
     localStorage.setItem('thewayofgo_daily_goal', String(dailyGoal));
-    onComplete();
+    onComplete({ level: selectedLevel, dailyGoal });
   };
 
   const steps = [

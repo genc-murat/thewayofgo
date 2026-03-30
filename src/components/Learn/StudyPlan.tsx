@@ -28,6 +28,8 @@ interface StudyPlanProps {
 export function StudyPlan({ compact = false }: StudyPlanProps) {
   const { loadLesson, loadExercise, startAiGame, setView } = useAppStore();
   const planVersion = useAppStore(s => s.planVersion);
+  const userLevel = useAppStore(s => s.userLevel);
+  const dailyGoal = useAppStore(s => s.dailyGoal);
   const [plan, setPlan] = useState<StudyPlanItem[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -40,7 +42,7 @@ export function StudyPlan({ compact = false }: StudyPlanProps) {
     try {
       const items: StudyPlanItem[] = [];
 
-      const dailyProblem = getDailyProblem(1);
+      const dailyProblem = getDailyProblem(userLevel);
       const dailyCompleted = isDailyCompleted();
       const streak = getDailyStreak();
       if (dailyProblem && !dailyCompleted) {
@@ -103,14 +105,14 @@ export function StudyPlan({ compact = false }: StudyPlanProps) {
       }
 
       const daily = await getDailyProgress();
-      if (daily.exercises < 3) {
+      if (daily.exercises < dailyGoal) {
         items.push({
           id: 'daily-exercise',
           type: 'exercise',
           title: 'Günlük Alıştırma',
-          description: `${daily.exercises}/3 tamamlandı`,
+          description: `${daily.exercises}/${dailyGoal} tamamlandı`,
           estimated_minutes: 5,
-          completed: daily.exercises >= 3,
+          completed: daily.exercises >= dailyGoal,
         });
       }
 

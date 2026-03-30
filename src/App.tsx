@@ -21,6 +21,7 @@ import { applyTheme, getStoredTheme } from './utils/themes';
 
 function App() {
   const currentView = useAppStore((state) => state.currentView);
+  const setOnboardingData = useAppStore((state) => state.setOnboardingData);
   const [showOnboarding, setShowOnboarding] = useState(() => shouldShowOnboarding());
 
   useEffect(() => {
@@ -32,6 +33,14 @@ function App() {
     document.addEventListener('click', initSound);
     return () => document.removeEventListener('click', initSound);
   }, []);
+
+  useEffect(() => {
+    if (!showOnboarding) {
+      const storedLevel = parseInt(localStorage.getItem('thewayofgo_level') ?? '1', 10);
+      const storedGoal = parseInt(localStorage.getItem('thewayofgo_daily_goal') ?? '10', 10);
+      setOnboardingData(storedLevel, storedGoal);
+    }
+  }, [showOnboarding, setOnboardingData]);
 
    const renderView = () => {
      switch (currentView) {
@@ -68,7 +77,10 @@ function App() {
 
   return (
     <>
-      {showOnboarding && <OnboardingWizard onComplete={() => setShowOnboarding(false)} />}
+      {showOnboarding && <OnboardingWizard onComplete={({ level, dailyGoal }) => {
+        setOnboardingData(level, dailyGoal);
+        setShowOnboarding(false);
+      }} />}
       <Layout>{renderView()}</Layout>
     </>
   );

@@ -437,10 +437,109 @@ function GlossaryText({ content }: { content: string }) {
     }
   };
 
-  // Simple text rendering - in real implementation would process glossary terms
+  // Parse content: support [[term_id]] syntax and auto-detect glossary terms
+  const renderContent = () => {
+    // First pass: replace [[term_id]] markers with placeholder tokens
+    const markerRegex = /\[\[(\w[\w-]*)\]\]/g;
+    const parts: (string | { termId: string; displayText: string })[] = [];
+    let lastIndex = 0;
+    let match: RegExpExecArray | null;
+
+    const text = content;
+    while ((match = markerRegex.exec(text)) !== null) {
+      if (match.index > lastIndex) {
+        parts.push(text.slice(lastIndex, match.index));
+      }
+      const termId = match[1];
+      const entry = GLOSSARY.find(g => g.id === termId);
+      parts.push({ termId, displayText: entry?.term ?? termId });
+      lastIndex = match.index + match[0].length;
+    }
+    if (lastIndex < text.length) {
+      parts.push(text.slice(lastIndex));
+    }
+
+    // Second pass: auto-detect glossary terms in plain text parts
+    if (parts.length === 0 || (parts.length === 1 && typeof parts[0] === 'string')) {
+      const plainText = typeof parts[0] === 'string' ? parts[0] : text;
+      const sortedTerms = [...GLOSSARY]
+        .filter(g => g.term.length >= 2)
+        .sort((a, b) => b.term.length - a.term.length);
+
+      const termPattern = sortedTerms.map(g => g.term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+      if (!termPattern) return <p className="text-lg leading-relaxed text-text-primary/90">{plainText}</p>;
+
+      const regex = new RegExp(`(${termPattern})`, 'g');
+      const segments = plainText.split(regex);
+
+      return (
+        <p className="text-lg leading-relaxed text-text-primary/90">
+          {segments.map((seg, i) => {
+            const entry = sortedTerms.find(g => g.term === seg);
+            if (entry) {
+              return (
+                <span
+                  key={i}
+                  className="glossary-term cursor-help underline decoration-dotted decoration-accent/50 text-accent hover:decoration-accent transition-colors"
+                  data-term={entry.id}
+                >
+                  {seg}
+                </span>
+              );
+            }
+            return <span key={i}>{seg}</span>;
+          })}
+        </p>
+      );
+    }
+
+    // Mixed: parts contain both strings and term references
+    const sortedTerms = [...GLOSSARY]
+      .filter(g => g.term.length >= 2)
+      .sort((a, b) => b.term.length - a.term.length);
+
+    const termPattern = sortedTerms.map(g => g.term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+    const regex = termPattern ? new RegExp(`(${termPattern})`, 'g') : null;
+
+    return (
+      <p className="text-lg leading-relaxed text-text-primary/90">
+        {parts.map((part, i) => {
+          if (typeof part === 'string') {
+            if (!regex) return <span key={i}>{part}</span>;
+            const segments = part.split(regex);
+            return segments.map((seg, j) => {
+              const entry = sortedTerms.find(g => g.term === seg);
+              if (entry) {
+                return (
+                  <span
+                    key={`${i}-${j}`}
+                    className="glossary-term cursor-help underline decoration-dotted decoration-accent/50 text-accent hover:decoration-accent transition-colors"
+                    data-term={entry.id}
+                  >
+                    {seg}
+                  </span>
+                );
+              }
+              return <span key={`${i}-${j}`}>{seg}</span>;
+            });
+          }
+          return (
+            <span
+              key={i}
+              className="glossary-term cursor-help underline decoration-dotted decoration-accent/50 text-accent hover:decoration-accent transition-colors"
+              data-term={part.termId}
+            >
+              {part.displayText}
+            </span>
+          );
+        })}
+      </p>
+    );
+  };
+
   return (
     <div className="relative animate-fade-in" onClick={handleClick}>
-      <p className="text-lg leading-relaxed text-text-primary/90">{content}</p>
+      {renderContent()}
       {popup && (
         <GlossaryPopup 
           entry={popup.entry} 

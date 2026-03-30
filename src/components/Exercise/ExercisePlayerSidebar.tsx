@@ -15,6 +15,7 @@ interface ExercisePlayerSidebarProps {
   hints: string[];
   exerciseHistory: ExerciseAttempt[];
   onRetry: () => void;
+  onRetryStep: () => void;
   onNextExercise: () => void;
   onAdvanceStep: () => void;
 }
@@ -30,6 +31,7 @@ export function ExercisePlayerSidebar({
   hints,
   exerciseHistory,
   onRetry,
+  onRetryStep,
   onNextExercise,
   onAdvanceStep,
 }: ExercisePlayerSidebarProps) {
@@ -76,6 +78,14 @@ export function ExercisePlayerSidebar({
               className="mt-3 w-full btn-primary py-2 rounded-xl text-sm"
             >
               Sonraki Adım →
+            </button>
+          )}
+          {!lastStepResult.correct && (
+            <button
+              onClick={onRetryStep}
+              className="mt-3 w-full bg-error/20 hover:bg-error/30 text-error py-2 rounded-xl text-sm font-medium transition-colors"
+            >
+              Bu Adımı Tekrar Dene
             </button>
           )}
         </div>

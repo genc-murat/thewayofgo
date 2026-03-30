@@ -16,6 +16,7 @@ import { recordExerciseAttempt } from '../utils/progressDb';
 import { createBoardFromStones } from '../utils/boardUtils';
 import { getExerciseCatalog, loadExerciseCatalog } from '../data/exerciseCatalog';
 import { loadAllVariations } from '../data/variations';
+import { loadState, saveState } from '../utils/statePersistence';
 
 interface AppState {
   // Navigation
@@ -78,6 +79,11 @@ interface AppState {
   streak: { current: number; best: number } | null;
   planVersion: number;
   bumpPlanVersion: () => void;
+
+  // Onboarding / User preferences
+  userLevel: number;
+  dailyGoal: number;
+  setOnboardingData: (level: number, dailyGoal: number) => void;
 
   // Catalog
   catalogLoaded: boolean;
@@ -142,6 +148,7 @@ interface AppState {
   submitExerciseMove: (x: number, y: number) => Promise<void>;
   submitMultiStepMove: (x: number, y: number) => Promise<void>;
   advanceToNextStep: () => void;
+  retryCurrentStep: () => void;
   showNextHint: () => void;
 
   // Error handling
@@ -206,6 +213,10 @@ export const useAppStore = create<AppState>((set, get) => ({
   streak: null,
   planVersion: 0,
   catalogLoaded: false,
+
+  // Onboarding / User preferences
+  userLevel: 1,
+  dailyGoal: 10,
 
   // UI
   isLoading: false,
@@ -506,8 +517,9 @@ export const useAppStore = create<AppState>((set, get) => ({
       stepBoard: null,
       stepResults: [],
       allStepsCompleted: false,
-      currentView: 'exercise',
+      currentView: 'home',
     });
+    saveState({ currentView: 'home', currentExerciseId: null, currentStepIndex: 0, exerciseAttempts: 0 });
   },
 
   submitExerciseMove: async (x, y) => {
@@ -638,6 +650,33 @@ export const useAppStore = create<AppState>((set, get) => ({
     });
   },
 
+  retryCurrentStep: () => {
+    const { currentExercise, currentStepIndex, stepResults } = get();
+    if (!currentExercise?.steps) return;
+
+    const step = currentExercise.steps[currentStepIndex];
+    if (!step) return;
+
+    // Remove the last failed step result
+    const newResults = stepResults.slice(0, -1);
+
+    // Rebuild board for current step
+    let stones = step.initial_stones;
+    if (step.opponent_response) {
+      stones = [...step.initial_stones, ...step.opponent_response];
+    }
+    const board = createBoardFromStones(stones, currentExercise.board_size);
+
+    set({
+      stepBoard: board,
+      stepResults: newResults,
+      exerciseResult: null,
+      showHint: false,
+      hintIndex: 0,
+      exerciseAttempts: get().exerciseAttempts,
+    });
+  },
+
   // Error handling
   setError: (error) => set({ error }),
   setLoadingMessage: (message) => set({ loadingMessage: message }),
@@ -647,6 +686,8 @@ export const useAppStore = create<AppState>((set, get) => ({
   },
 
   bumpPlanVersion: () => set(s => ({ planVersion: s.planVersion + 1 })),
+
+  setOnboardingData: (level, dailyGoal) => set({ userLevel: level, dailyGoal }),
 
   loadNextExercise: (currentId) => {
     const idx = getExerciseCatalog().findIndex((e) => e.id === currentId);
@@ -742,3 +783,39 @@ export const useAppStore = create<AppState>((set, get) => ({
     }
   },
 }));
+
+// Hydrate from persisted state
+const persisted = loadState();
+if (persisted.currentView !== 'home') {
+  useAppStore.setState({
+    currentView: persisted.currentView as AppState['currentView'],
+    lessonStep: persisted.lessonStep,
+    currentStepIndex: persisted.currentStepIndex,
+    exerciseAttempts: persisted.exerciseAttempts,
+    userLevel: persisted.userLevel,
+    dailyGoal: persisted.dailyGoal,
+  });
+
+  // If there was an active lesson, reload it
+  if (persisted.currentView === 'learn' && persisted.currentLessonId) {
+    useAppStore.getState().loadLesson(persisted.currentLessonId);
+  }
+  // If there was an active exercise, reload it
+  if (persisted.currentView === 'exercise' && persisted.currentExerciseId) {
+    useAppStore.getState().loadExercise(persisted.currentExerciseId);
+  }
+}
+
+// Subscribe to changes and persist
+useAppStore.subscribe((state) => {
+  saveState({
+    currentView: state.currentView,
+    currentLessonId: state.currentLesson?.id ?? null,
+    lessonStep: state.lessonStep,
+    currentExerciseId: state.currentExercise?.id ?? null,
+    currentStepIndex: state.currentStepIndex,
+    exerciseAttempts: state.exerciseAttempts,
+    userLevel: state.userLevel,
+    dailyGoal: state.dailyGoal,
+  });
+});
