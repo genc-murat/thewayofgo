@@ -85,6 +85,7 @@ interface AppState {
 
   // UI
   isLoading: boolean;
+  loadingMessage: string | null;
   error: string | null;
 
   // Actions
@@ -145,6 +146,7 @@ interface AppState {
 
   // Error handling
   setError: (error: string | null) => void;
+  setLoadingMessage: (message: string | null) => void;
 }
 
 export const useAppStore = create<AppState>((set, get) => ({
@@ -207,6 +209,7 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   // UI
   isLoading: false,
+  loadingMessage: null,
   error: null,
 
   // Navigation actions
@@ -435,12 +438,12 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   // Lesson actions
   loadLesson: async (lessonId) => {
-    set({ isLoading: true, error: null, lessonStep: 0 });
+    set({ isLoading: true, loadingMessage: 'Ders yükleniyor...', error: null, lessonStep: 0 });
     try {
       const lessonData = await import(`../data/lessons/${lessonId}.json`);
-      set({ currentLesson: lessonData.default || lessonData, isLoading: false, currentView: 'learn' });
+      set({ currentLesson: lessonData.default || lessonData, isLoading: false, loadingMessage: null, currentView: 'learn' });
     } catch (e) {
-      set({ error: `Failed to load lesson: ${e}`, isLoading: false });
+      set({ error: `Failed to load lesson: ${e}`, isLoading: false, loadingMessage: null });
     }
   },
 
@@ -460,7 +463,7 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   // Exercise actions
   loadExercise: async (exerciseId) => {
-    set({ isLoading: true, error: null, exerciseAttempts: 0, showHint: false, hintIndex: 0, exerciseResult: null });
+    set({ isLoading: true, loadingMessage: 'Alıştırma hazırlanıyor...', error: null, exerciseAttempts: 0, showHint: false, hintIndex: 0, exerciseResult: null });
     try {
       const exerciseData = await import(`../data/exercises/${exerciseId}.json`);
       const exercise: Exercise = exerciseData.default || exerciseData;
@@ -478,6 +481,7 @@ export const useAppStore = create<AppState>((set, get) => ({
       set({
         currentExercise: exercise,
         isLoading: false,
+        loadingMessage: null,
         currentView: 'exercise',
         currentStepIndex: 0,
         stepBoard,
@@ -486,7 +490,7 @@ export const useAppStore = create<AppState>((set, get) => ({
         lastAttemptedExerciseId: exerciseId,
       });
     } catch (e) {
-      set({ error: `Failed to load exercise: ${e}`, isLoading: false });
+      set({ error: `Failed to load exercise: ${e}`, isLoading: false, loadingMessage: null });
     }
   },
 
@@ -635,6 +639,7 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   // Error handling
   setError: (error) => set({ error }),
+  setLoadingMessage: (message) => set({ loadingMessage: message }),
   loadCatalogs: async () => {
     await Promise.all([loadExerciseCatalog(), loadAllVariations()]);
     set({ catalogLoaded: true });

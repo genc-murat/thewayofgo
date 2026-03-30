@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useAppStore } from '../../stores/appStore';
 import { TitleBar } from '../TitleBar';
+import { LoadingOverlay } from '../LoadingOverlay';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -386,6 +387,7 @@ export function Layout({ children }: LayoutProps) {
         </div>
       </main>
 
+      <LoadingOverlay />
       <ErrorToast />
     </div>
   );
