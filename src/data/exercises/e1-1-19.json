@@ -1,0 +1,23 @@
+{
+  "id": "e1-1-19",
+  "level": 1,
+  "module": 1,
+  "lesson": 1,
+  "type": "place_correct",
+  "title": "Üçüncü Çizgi",
+  "description": "Üçüncü çizgide bir nokta seçin. Bu çizgi toprak için idealdir.",
+  "board_size": 9,
+  "initial_stones": [],
+  "correct_moves": [
+    {"x": 2, "y": 2, "is_correct": true, "explanation": "Doğru! Üçüncü çizgi köşe toprağı için idealdir."},
+    {"x": 6, "y": 2, "is_correct": true, "explanation": "İyi! Alt kenarda üçüncü çizgi."},
+    {"x": 2, "y": 6, "is_correct": true, "explanation": "Harika! Üst kenarda üçüncü çizgi."},
+    {"x": 6, "y": 6, "is_correct": true, "explanation": "Mükemmel! Sağ üst köşede üçüncü çizgi."}
+  ],
+  "hints": [
+    "Alt kenardan üçüncü çizgiyi sayın (0,1,2).",
+    "Üçüncü çizgi toprak garantisi için iyidir."
+  ],
+  "difficulty": 1,
+  "stars_required": 1
+}

@@ -1,0 +1,25 @@
+{
+  "id": "e2-2-11",
+  "level": 2,
+  "module": 2,
+  "lesson": 2,
+  "type": "connect_groups",
+  "title": "Uçan Bağlantı",
+  "description": "Siyah taşları 'uçan bağlantı' ile bağlayın. Bu esnek bir bağlantıdır.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 5, "y": 3, "color": "black"},
+    {"x": 4, "y": 5, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 4, "y": 3, "is_correct": true, "explanation": "Doğru! Uçan bağlantı. Beyaz (4,4)'e oynarsa, siyah (3,4) veya (5,4) ile bağlanır."},
+    {"x": 4, "y": 4, "is_correct": false, "explanation": "Bu hamle beyaz tarafından kesilebilir."}
+  ],
+  "hints": [
+    "İki taşın ortasındaki nokta.",
+    "Uçan bağlantı esnektir ama kesilebilir."
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

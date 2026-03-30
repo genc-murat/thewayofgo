@@ -1,0 +1,25 @@
+{
+  "id": "e1-1-17",
+  "level": 1,
+  "module": 1,
+  "lesson": 1,
+  "type": "place_correct",
+  "title": "Dengeli Açılış",
+  "description": "Tahtada dengeli bir açılış yapın. Köşe ve kenar dengesini koruyun.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 6, "y": 2, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 2, "y": 6, "is_correct": true, "explanation": "Harika! Üst köşeyi almak dengeli bir strateji."},
+    {"x": 6, "y": 6, "is_correct": true, "explanation": "Doğru! Karşı köşeyi almak iyi bir seçim."},
+    {"x": 4, "y": 4, "is_correct": true, "explanation": "Merkez - güçlü ve dengeli bir hamle."}
+  ],
+  "hints": [
+    "Boş köşeleri düşünün.",
+    "Rakibinizin taşına çok yakın olmaktan kaçının."
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

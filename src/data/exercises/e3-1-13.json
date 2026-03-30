@@ -1,0 +1,26 @@
+{
+  "id": "e3-1-13",
+  "level": 3,
+  "module": 1,
+  "lesson": 1,
+  "type": "opening",
+  "title": "Büyük Alan",
+  "description": "En büyük açık alanı (big field) seçin.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 10, "y": 2, "color": "black"},
+    {"x": 2, "y": 10, "color": "black"},
+    {"x": 10, "y": 6, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 10, "y": 10, "is_correct": true, "explanation": "Mükemmel! Sağ üst köşeyi almak en büyük hamle."},
+    {"x": 6, "y": 6, "is_correct": true, "explanation": "İyi! Merkez kontrolü de değerli."}
+  ],
+  "hints": [
+    "En büyük boş köşeyi düşünün.",
+    "Sağ üst köşe en değerli."
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

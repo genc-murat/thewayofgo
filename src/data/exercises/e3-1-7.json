@@ -1,0 +1,27 @@
+{
+  "id": "e3-1-7",
+  "level": 3,
+  "module": 1,
+  "lesson": 1,
+  "type": "opening",
+  "title": "Fuseki Temeli",
+  "description": "İyi bir fuseki (açılış) yapın. Köşe ve kenar dengesini koruyun.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 10, "y": 10, "color": "black"},
+    {"x": 2, "y": 10, "color": "white"},
+    {"x": 10, "y": 2, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 6, "y": 6, "is_correct": true, "explanation": "Mükemmel! Merkez kontrolü ile fuseki'yi tamamladınız."},
+    {"x": 2, "y": 6, "is_correct": true, "explanation": "İyi! Sol kenarda genişleme. Dengeli fuseki."},
+    {"x": 10, "y": 6, "is_correct": true, "explanation": "Doğru! Sağ kenarda genişleme."}
+  ],
+  "hints": [
+    "Dördüncü köşeyi düşünün.",
+    "Merkez kontrolü önemlidir."
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

@@ -1,0 +1,27 @@
+{
+  "id": "e4-2-9",
+  "level": 4,
+  "module": 2,
+  "lesson": 1,
+  "type": "position_judgment",
+  "title": "Etki Savaşı",
+  "description": "Etki savaşında üstünlük sağlayın.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 2, "y": 3, "color": "black"},
+    {"x": 10, "y": 3, "color": "black"},
+    {"x": 2, "y": 9, "color": "black"},
+    {"x": 10, "y": 9, "color": "white"},
+    {"x": 6, "y": 6, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 10, "y": 10, "is_correct": true, "explanation": "Doğru! Sağ üst köşeyi alın. Etki savaşı dengeli."},
+    {"x": 6, "y": 3, "is_correct": true, "explanation": "İyi! Alt kenarda genişleme."}
+  ],
+  "hints": [
+    "Boş köşeyi düşünün.",
+    "Etkiyi koruyun."
+  ],
+  "difficulty": 4,
+  "stars_required": 2
+}

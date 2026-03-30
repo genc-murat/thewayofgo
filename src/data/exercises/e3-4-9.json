@@ -1,0 +1,30 @@
+{
+  "id": "e3-4-9",
+  "level": 3,
+  "module": 4,
+  "lesson": 1,
+  "type": "tesuji",
+  "title": "Uzatma Tesujisi",
+  "description": "Uzatma (extend) tesujisiyle grubu kurtarın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 4, "y": 3, "color": "black"},
+    {"x": 3, "y": 4, "color": "black"},
+    {"x": 2, "y": 3, "color": "white"},
+    {"x": 2, "y": 4, "color": "white"},
+    {"x": 3, "y": 5, "color": "white"},
+    {"x": 4, "y": 4, "color": "white"},
+    {"x": 5, "y": 3, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 4, "y": 2, "is_correct": true, "explanation": "Mükemmel! Uzatma tesujisi! Siyah grup kurtuldu."},
+    {"x": 3, "y": 2, "is_correct": true, "explanation": "İyi! Bu da uzatma sağlar."}
+  ],
+  "hints": [
+    "Üst tarafa uzatın.",
+    "Kaçış yolu açın."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

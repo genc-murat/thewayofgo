@@ -2,16 +2,27 @@
   "id": "e4-2-2",
   "level": 4,
   "module": 2,
-  "lesson": 2,
-  "type": "opening",
-  "title": "Japon Açılışı",
-  "description": "Japon açılışına uygun hamle yapın. (Japon: 3-4 noktası)",
-  "board_size": 9,
-  "initial_stones": [{"x": 2, "y": 2, "color": "black"}],
-  "correct_moves": [
-    {"x": 3, "y": 2, "is_correct": true, "explanation": "Doğru! (3,2) 3-4 noktası - Japon açılışının temelidir. Alan ve etki dengesi sağlar."}
+  "lesson": 1,
+  "type": "position_judgment",
+  "title": "Merkez Gücü",
+  "description": "Merkezdeki gücünüzü kullanarak etki alanı oluşturun.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 6, "y": 6, "color": "black"},
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 10, "y": 10, "color": "black"},
+    {"x": 3, "y": 3, "color": "white"},
+    {"x": 9, "y": 9, "color": "white"}
   ],
-  "hints": ["3-4 noktası (kenardan 3. satır) ideal.", "(3,2) veya (2,3) 3-4 noktasıdır."],
+  "correct_moves": [
+    {"x": 6, "y": 2, "is_correct": true, "explanation": "Doğru! Merkez gücünü kenara bağladınız."},
+    {"x": 2, "y": 6, "is_correct": true, "explanation": "İyi! Sol kenarda genişleme."},
+    {"x": 10, "y": 6, "is_correct": true, "explanation": "Sağ kenarda genişleme de iyi."}
+  ],
+  "hints": [
+    "Merkez taşını kullanın.",
+    "Kenarlara genişleyin."
+  ],
   "difficulty": 3,
-  "stars_required": 3
+  "stars_required": 2
 }

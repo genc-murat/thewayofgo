@@ -1,1 +1,30 @@
-{"id": "e4-1-1", "level": 4, "module": 1, "lesson": 1, "type": "endgame", "title": "Büyük Yose", "description": "Oyun sonu büyük yose hamlesini bulun.", "board_size": 9, "initial_stones": [{"x": 0, "y": 0, "color": "black"}, {"x": 1, "y": 0, "color": "black"}, {"x": 2, "y": 0, "color": "black"}, {"x": 0, "y": 1, "color": "black"}, {"x": 0, "y": 2, "color": "black"}, {"x": 8, "y": 0, "color": "white"}, {"x": 7, "y": 0, "color": "white"}, {"x": 8, "y": 1, "color": "white"}, {"x": 7, "y": 1, "color": "white"}, {"x": 8, "y": 2, "color": "white"}], "correct_moves": [{"x": 3, "y": 0, "is_correct": true, "explanation": "Doğru! Büyük yose! (3,0) oynayarak üst sınırı genişlettiniz. Beyaz bu seviyede karşı hamle yapmak zorunda kalır - sente!"}], "hints": ["Sınır çizgisinin devamına bakın.", "En değerli yose noktasını bulun."], "difficulty": 3, "stars_required": 3}
+{
+  "id": "e4-1-1",
+  "level": 4,
+  "module": 1,
+  "lesson": 1,
+  "type": "opening",
+  "title": "Kobayashi Joseki",
+  "description": "Kobayashi joseki'sinin temel şeklini tamamlayın.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 10, "y": 2, "color": "black"},
+    {"x": 2, "y": 10, "color": "black"},
+    {"x": 10, "y": 10, "color": "black"},
+    {"x": 3, "y": 3, "color": "white"},
+    {"x": 3, "y": 9, "color": "white"},
+    {"x": 9, "y": 3, "color": "white"},
+    {"x": 5, "y": 3, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 3, "y": 5, "is_correct": true, "explanation": "Doğru! Kobayashi joseki'sinin standart devamı."},
+    {"x": 3, "y": 6, "is_correct": true, "explanation": "İyi! Bu da joseki'nin bir varyasyonu."}
+  ],
+  "hints": [
+    "Joseki'nin standart devamını düşünün.",
+    "Üçüncü çizgiyi takip edin."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

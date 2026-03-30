@@ -1,0 +1,26 @@
+{
+  "id": "e4-1-11",
+  "level": 4,
+  "module": 1,
+  "lesson": 1,
+  "type": "opening",
+  "title": "High Pincer Joseki",
+  "description": "Yüksek pincer joseki'sini oynayın.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 10, "y": 2, "color": "white"},
+    {"x": 3, "y": 3, "color": "white"},
+    {"x": 5, "y": 3, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 2, "y": 5, "is_correct": true, "explanation": "Doğru! Yüksek pincer joseki'si. Dördüncü çizgide güç."},
+    {"x": 3, "y": 6, "is_correct": true, "explanation": "İyi! Bu da joseki'nin bir varyasyonu."}
+  ],
+  "hints": [
+    "Dördüncü çizgide pincer.",
+    "Merkez etkisi önemli."
+  ],
+  "difficulty": 4,
+  "stars_required": 2
+}

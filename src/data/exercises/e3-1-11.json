@@ -1,0 +1,26 @@
+{
+  "id": "e3-1-11",
+  "level": 3,
+  "module": 1,
+  "lesson": 1,
+  "type": "opening",
+  "title": "Üçlü Nokta",
+  "description": "Üçlü nokta (3-3 point) açılışında doğru devamı bulun.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 10, "y": 10, "color": "black"},
+    {"x": 2, "y": 10, "color": "white"},
+    {"x": 3, "y": 3, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 10, "y": 2, "is_correct": true, "explanation": "Doğru! Dördüncü köşeyi alın. Dengeli fuseki."},
+    {"x": 6, "y": 6, "is_correct": true, "explanation": "İyi! Merkez kontrolü de iyi bir seçim."}
+  ],
+  "hints": [
+    "Dördüncü köşeyi düşünün.",
+    "Kobayashi açılışını tamamlayın."
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

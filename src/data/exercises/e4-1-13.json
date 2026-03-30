@@ -1,0 +1,26 @@
+{
+  "id": "e4-1-13",
+  "level": 4,
+  "module": 1,
+  "lesson": 1,
+  "type": "opening",
+  "title": "Taisha Joseki",
+  "description": "Taisha (büyük) joseki'sinin başlangıcını oynayın.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 10, "y": 2, "color": "white"},
+    {"x": 3, "y": 3, "color": "white"},
+    {"x": 3, "y": 5, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 2, "y": 4, "is_correct": true, "explanation": "Doğru! Taisha joseki'sinin başlangıcı. Karmaşık değişim."},
+    {"x": 4, "y": 2, "is_correct": true, "explanation": "İyi! Bu da joseki'nin bir varyasyonu."}
+  ],
+  "hints": [
+    "Taisha joseki'sini düşünün.",
+    "Karmaşık değişimlere hazır olun."
+  ],
+  "difficulty": 4,
+  "stars_required": 3
+}

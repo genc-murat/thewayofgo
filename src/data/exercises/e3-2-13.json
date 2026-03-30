@@ -1,0 +1,28 @@
+{
+  "id": "e3-2-13",
+  "level": 3,
+  "module": 2,
+  "lesson": 2,
+  "type": "tesuji",
+  "title": "Çift Atari",
+  "description": "Çift atari (double atari) tesujisini uygulayın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 4, "y": 4, "color": "black"},
+    {"x": 3, "y": 4, "color": "white"},
+    {"x": 4, "y": 3, "color": "white"},
+    {"x": 2, "y": 4, "color": "white"},
+    {"x": 4, "y": 2, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 2, "y": 3, "is_correct": true, "explanation": "Harika! Çift atari! Beyaz iki taştan birini kaybedecek."},
+    {"x": 3, "y": 2, "is_correct": true, "explanation": "Evet! Bu da çift atari."}
+  ],
+  "hints": [
+    "İki beyaz grubu aynı anda tehdit edin.",
+    "Çapraz noktayı düşünün."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

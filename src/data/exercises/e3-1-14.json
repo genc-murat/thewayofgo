@@ -1,0 +1,27 @@
+{
+  "id": "e3-1-14",
+  "level": 3,
+  "module": 1,
+  "lesson": 1,
+  "type": "opening",
+  "title": "Yıldız Noktası",
+  "description": "Yıldız noktası (star point) açılışında doğru devamı bulun.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 10, "y": 2, "color": "black"},
+    {"x": 2, "y": 10, "color": "black"},
+    {"x": 3, "y": 9, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 10, "y": 10, "is_correct": true, "explanation": "Doğru! Dördüncü yıldız noktası. Mükemmel fuseki."},
+    {"x": 2, "y": 6, "is_correct": true, "explanation": "İyi! Sol kenarda genişleme."},
+    {"x": 6, "y": 6, "is_correct": true, "explanation": "Merkez kontrolü de iyi."}
+  ],
+  "hints": [
+    "Dördüncü köşeyi tamamlayın.",
+    "Yıldız noktalarını doldurun."
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

@@ -1,0 +1,25 @@
+{
+  "id": "e4-1-9",
+  "level": 4,
+  "module": 1,
+  "lesson": 1,
+  "type": "opening",
+  "title": "Küçük At Joseki",
+  "description": "Küçük at (small knight) joseki'sini oynayın.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 10, "y": 2, "color": "white"},
+    {"x": 3, "y": 3, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 2, "y": 4, "is_correct": true, "explanation": "Doğru! Küçük at joseki'si. Temel şekil."},
+    {"x": 4, "y": 2, "is_correct": true, "explanation": "İyi! Bu da joseki'nin bir devamı."}
+  ],
+  "hints": [
+    "Üçüncü çizgiyi düşünün.",
+    "Köşeyi sağlam tutun."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

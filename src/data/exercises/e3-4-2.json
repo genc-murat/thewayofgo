@@ -1,1 +1,27 @@
-{"id": "e3-4-2", "level": 3, "module": 4, "lesson": 2, "type": "opening", "title": "Büyük Moyo", "description": "Büyük moyo (potansiyel alan) oluşturun.", "board_size": 9, "initial_stones": [{"x": 2, "y": 2, "color": "black"}, {"x": 6, "y": 6, "color": "white"}], "correct_moves": [{"x": 4, "y": 4, "is_correct": true, "explanation": "Doğru! Merkezden oynayarak büyük moyo oluşturdunuz. (4,4) merkez etkisi ile her iki tarafa da alan potansiyeli yarattınız."}], "hints": ["Merkezden oynayarak alan potansiyeli yaratın.", "Karşı taraftaki köşeye de yakın olun."], "difficulty": 3, "stars_required": 2}
+{
+  "id": "e3-4-2",
+  "level": 3,
+  "module": 4,
+  "lesson": 1,
+  "type": "tesuji",
+  "title": "Fildişi Kulesi",
+  "description": "Fildişi kulesi tesujisini tanıyın ve uygulayın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 2, "y": 4, "color": "black"},
+    {"x": 1, "y": 2, "color": "white"},
+    {"x": 1, "y": 3, "color": "white"},
+    {"x": 1, "y": 4, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 2, "y": 3, "is_correct": true, "explanation": "Doğru! Fildişi kulesi tesujisi! Beyaz taşlar yakalandı."}
+  ],
+  "hints": [
+    "Merkezdeki taşları kullanın.",
+    "Beyazı sıkıştırın."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

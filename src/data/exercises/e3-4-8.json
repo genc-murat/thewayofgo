@@ -2,26 +2,26 @@
   "id": "e3-4-8",
   "level": 3,
   "module": 4,
-  "lesson": 8,
-  "type": "shape_recognition",
-  "title": "Kötü Şekilden Kaçınma",
-  "description": "Boş üçgen (dumi) oluşturmadan etkili bir hamle bulun. Kötü şekillerden kaçının.",
+  "lesson": 1,
+  "type": "tesuji",
+  "title": "İki Nokta Kesme",
+  "description": "İki noktadan kesme tesujisini uygulayın.",
   "board_size": 9,
   "initial_stones": [
     {"x": 3, "y": 3, "color": "black"},
     {"x": 4, "y": 4, "color": "black"},
+    {"x": 3, "y": 4, "color": "white"},
+    {"x": 4, "y": 3, "color": "white"},
     {"x": 2, "y": 4, "color": "white"},
-    {"x": 6, "y": 6, "color": "white"}
+    {"x": 5, "y": 3, "color": "white"}
   ],
   "correct_moves": [
-    {"x": 5, "y": 5, "is_correct": true, "explanation": "Doğru! Kosumi (çapraz uzanma) ile merkeze doğru etkinizi artırdınız ve boş üçgenden kaçındınız."},
-    {"x": 3, "y": 4, "is_correct": false, "explanation": "Bu hamle (3,3), (3,4) ve (4,4) ile boş üçgen (dumi) oluşturur. Kötü şekil!"},
-    {"x": 4, "y": 3, "is_correct": false, "explanation": "Bu hamle de (3,3), (4,3) ve (4,4) ile boş üçgen oluşturur. Verimsiz şekil."},
-    {"x": 2, "y": 3, "is_correct": false, "explanation": "Bu hamle çok savunmacı kalır ve beyazın etkisine karşı iyi bir şekil oluşturmaz."}
+    {"x": 3, "y": 2, "is_correct": true, "explanation": "Doğru! İki noktadan kesme! Beyaz taşlar ayrıldı."},
+    {"x": 4, "y": 2, "is_correct": false, "explanation": "Bu hamle kesmez."}
   ],
   "hints": [
-    "İki siyah taş çapraz dizilmiş. Hangi yönde uzanmak daha etkili?",
-    "Boş üçgen (dumi): üç taşınız 2x2'lik bir alanın üç köşesini kaplar. Kaçının!"
+    "Beyazın zayıf noktasını bulun.",
+    "Alt taraftan kesin."
   ],
   "difficulty": 3,
   "stars_required": 2

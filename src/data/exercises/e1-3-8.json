@@ -1,0 +1,28 @@
+{
+  "id": "e1-3-8",
+  "level": 1,
+  "module": 3,
+  "lesson": 3,
+  "type": "capture_stones",
+  "title": "İki Taşı Yakala",
+  "description": "İki beyaz taşı birden yakalamak için doğru hamleyi yapın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 3, "y": 3, "color": "white"},
+    {"x": 3, "y": 4, "color": "white"},
+    {"x": 2, "y": 3, "color": "black"},
+    {"x": 2, "y": 4, "color": "black"},
+    {"x": 4, "y": 3, "color": "black"},
+    {"x": 4, "y": 4, "color": "black"},
+    {"x": 3, "y": 2, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 3, "y": 5, "is_correct": true, "explanation": "Mükemmel! İki beyaz taşı yakaladınız. Son özgürlükleri kapattınız."}
+  ],
+  "hints": [
+    "İki beyaz taşın ortak özgürlüğü var.",
+    "Üstteki boş nokta son şansları."
+  ],
+  "difficulty": 1,
+  "stars_required": 1
+}

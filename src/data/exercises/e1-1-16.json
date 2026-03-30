@@ -1,0 +1,25 @@
+{
+  "id": "e1-1-16",
+  "level": 1,
+  "module": 1,
+  "lesson": 1,
+  "type": "place_correct",
+  "title": "Merkez Kontrolü",
+  "description": "Merkezi kontrol etmek için en iyi noktayı seçin.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 6, "y": 6, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 4, "y": 4, "is_correct": true, "explanation": "Mükemmel! Merkez (4,4) iki köşe taşını birbirine bağlar ve tahtayı kontrol eder."},
+    {"x": 4, "y": 6, "is_correct": true, "explanation": "İyi! Merkez yönünde geliş."},
+    {"x": 6, "y": 4, "is_correct": true, "explanation": "Doğru! Merkez kontrolüne katkı."}
+  ],
+  "hints": [
+    "İki köşe taşının ortasını düşünün.",
+    "Merkez noktası (4,4) en güçlü hamle."
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

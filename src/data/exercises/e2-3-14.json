@@ -1,0 +1,36 @@
+{
+  "id": "e2-3-14",
+  "level": 2,
+  "module": 3,
+  "lesson": 3,
+  "type": "life_and_death",
+  "title": "Sahte Göz",
+  "description": "Beyazın sahte gözünü ortaya çıkarın. Grup ölü mü?",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "white"},
+    {"x": 3, "y": 2, "color": "white"},
+    {"x": 4, "y": 2, "color": "white"},
+    {"x": 2, "y": 3, "color": "white"},
+    {"x": 4, "y": 3, "color": "white"},
+    {"x": 2, "y": 4, "color": "white"},
+    {"x": 3, "y": 4, "color": "white"},
+    {"x": 4, "y": 4, "color": "white"},
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 1, "y": 2, "color": "black"},
+    {"x": 1, "y": 3, "color": "black"},
+    {"x": 1, "y": 4, "color": "black"},
+    {"x": 5, "y": 2, "color": "black"},
+    {"x": 5, "y": 3, "color": "black"},
+    {"x": 5, "y": 4, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 3, "y": 1, "is_correct": true, "explanation": "Doğru! Beyazın sahte gözünü ortaya çıkardınız. Grup ölü."}
+  ],
+  "hints": [
+    "Üstteki boşluğa bakın.",
+    "Sahte göz gerçek göz değildir."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

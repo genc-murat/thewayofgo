@@ -1,0 +1,23 @@
+{
+  "id": "e1-1-14",
+  "level": 1,
+  "module": 1,
+  "lesson": 1,
+  "type": "place_correct",
+  "title": "Köşe Açılışı",
+  "description": "Köşede iyi bir başlangıç noktası seçin. Köşeler değerlidir!",
+  "board_size": 9,
+  "initial_stones": [],
+  "correct_moves": [
+    {"x": 1, "y": 1, "is_correct": true, "explanation": "Köşe noktası - çok sağlam ve güvenli bir açılış."},
+    {"x": 2, "y": 2, "is_correct": true, "explanation": "Yıldız noktası - dengeli ve popüler bir açılış."},
+    {"x": 1, "y": 3, "is_correct": true, "explanation": "Üçüncü çizgi - köşeyi sağlam tutar."},
+    {"x": 3, "y": 1, "is_correct": true, "explanation": "Kenara yakın iyi bir köşe açılışı."}
+  ],
+  "hints": [
+    "Köşeler en kolay savunulan bölgelerdir.",
+    "İlk hamlenizi köşeye yapmak mantıklıdır."
+  ],
+  "difficulty": 1,
+  "stars_required": 1
+}

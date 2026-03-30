@@ -1,0 +1,26 @@
+{
+  "id": "e4-1-6",
+  "level": 4,
+  "module": 1,
+  "lesson": 1,
+  "type": "opening",
+  "title": "Yüksek Çin Joseki",
+  "description": "Yüksek Çin joseki'sinin devamını oynayın.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 2, "y": 4, "color": "black"},
+    {"x": 10, "y": 4, "color": "black"},
+    {"x": 2, "y": 9, "color": "black"},
+    {"x": 3, "y": 4, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 5, "y": 4, "is_correct": true, "explanation": "Doğru! Yüksek Çin joseki'si. Dördüncü çizgide güç."},
+    {"x": 2, "y": 6, "is_correct": true, "explanation": "İyi! Sol kenarda genişleme."}
+  ],
+  "hints": [
+    "Dördüncü çizgiyi takip edin.",
+    "Merkez etkisi önemli."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

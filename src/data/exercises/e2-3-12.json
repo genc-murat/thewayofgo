@@ -1,0 +1,35 @@
+{
+  "id": "e2-3-12",
+  "level": 2,
+  "module": 3,
+  "lesson": 3,
+  "type": "life_and_death",
+  "title": "Hayati Nokta",
+  "description": "Beyaz grubun hayati noktasını bulun ve oynayın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "white"},
+    {"x": 3, "y": 2, "color": "white"},
+    {"x": 4, "y": 2, "color": "white"},
+    {"x": 2, "y": 3, "color": "white"},
+    {"x": 4, "y": 3, "color": "white"},
+    {"x": 2, "y": 4, "color": "white"},
+    {"x": 3, "y": 4, "color": "white"},
+    {"x": 4, "y": 4, "color": "white"},
+    {"x": 1, "y": 2, "color": "black"},
+    {"x": 1, "y": 3, "color": "black"},
+    {"x": 1, "y": 4, "color": "black"},
+    {"x": 5, "y": 2, "color": "black"},
+    {"x": 5, "y": 3, "color": "black"},
+    {"x": 5, "y": 4, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 3, "y": 3, "is_correct": true, "explanation": "Mükemmel! Hayati noktayı buldunuz. Beyaz artık iki göz yapamaz."}
+  ],
+  "hints": [
+    "Merkezdeki boş nokta en önemli.",
+    "L'nin dönme noktası."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

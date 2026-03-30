@@ -1,0 +1,30 @@
+{
+  "id": "e3-2-16",
+  "level": 3,
+  "module": 2,
+  "lesson": 2,
+  "type": "tesuji",
+  "title": "İçeri Küme Tesujisi",
+  "description": "İçeri küme (placement) tesujisiyle beyazı öldürün.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "white"},
+    {"x": 3, "y": 2, "color": "white"},
+    {"x": 2, "y": 3, "color": "white"},
+    {"x": 3, "y": 3, "color": "white"},
+    {"x": 1, "y": 2, "color": "black"},
+    {"x": 1, "y": 3, "color": "black"},
+    {"x": 4, "y": 2, "color": "black"},
+    {"x": 4, "y": 3, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 2, "y": 1, "is_correct": true, "explanation": "Doğru! İçeri küme tesujisi! Beyazın göz yapmasını engellediniz."},
+    {"x": 3, "y": 1, "is_correct": true, "explanation": "Evet! Bu da beyazı öldürür."}
+  ],
+  "hints": [
+    "İlk çizgideki noktayı düşünün.",
+    "Göz yapmayı engelle."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

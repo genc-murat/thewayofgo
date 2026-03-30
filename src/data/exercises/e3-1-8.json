@@ -1,0 +1,26 @@
+{
+  "id": "e3-1-8",
+  "level": 3,
+  "module": 1,
+  "lesson": 1,
+  "type": "opening",
+  "title": "Çin Açılışı",
+  "description": "Çin açılışı (Chinese opening) pozisyonunda doğru devam hamlesini yapın.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 10, "y": 2, "color": "black"},
+    {"x": 2, "y": 9, "color": "black"},
+    {"x": 10, "y": 10, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 6, "y": 2, "is_correct": true, "explanation": "Doğru! Çin açılışının klasik devamı. Alt kenarda güçlü yapı."},
+    {"x": 2, "y": 6, "is_correct": true, "explanation": "İyi! Sol kenarda genişleme de iyi bir seçim."}
+  ],
+  "hints": [
+    "Alt kenarda genişleyin.",
+    "Üçüncü çizgiyi takip edin."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

@@ -1,0 +1,27 @@
+{
+  "id": "e2-2-10",
+  "level": 2,
+  "module": 2,
+  "lesson": 2,
+  "type": "connect_groups",
+  "title": "Kısa Bağlantı",
+  "description": "İki siyah grubu kısa ve güvenli bir şekilde bağlayın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 3, "color": "black"},
+    {"x": 2, "y": 4, "color": "black"},
+    {"x": 4, "y": 3, "color": "black"},
+    {"x": 4, "y": 4, "color": "black"},
+    {"x": 3, "y": 5, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 3, "y": 3, "is_correct": true, "explanation": "Mükemmel! İki grup artık doğrudan bağlı. Beyaz onları ayıramaz."},
+    {"x": 3, "y": 4, "is_correct": true, "explanation": "Doğru! Bu da güvenli bir bağlantı kurar."}
+  ],
+  "hints": [
+    "İki grup arasındaki noktaları düşünün.",
+    "Doğrudan bağlantı en güvenlisidir."
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

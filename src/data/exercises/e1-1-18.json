@@ -1,0 +1,24 @@
+{
+  "id": "e1-1-18",
+  "level": 1,
+  "module": 1,
+  "lesson": 1,
+  "type": "place_correct",
+  "title": "İkinci Köşe",
+  "description": "Siyah taşın yanına ikinci bir köşe taşını yerleştirin.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 6, "y": 6, "is_correct": true, "explanation": "Mükemmel! Karşı köşeyi almak klasik ve güçlü bir strateji."},
+    {"x": 2, "y": 6, "is_correct": true, "explanation": "İyi! Aynı kenarda ikinci köşe - sağlam yapı."},
+    {"x": 6, "y": 2, "is_correct": true, "explanation": "Doğru! Alt kenarda ikinci köşe."}
+  ],
+  "hints": [
+    "Diğer köşeleri düşünün.",
+    "Çapraz köşe en yaygın seçimdir."
+  ],
+  "difficulty": 1,
+  "stars_required": 1
+}

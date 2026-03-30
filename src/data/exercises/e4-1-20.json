@@ -1,0 +1,31 @@
+{
+  "id": "e4-1-20",
+  "level": 4,
+  "module": 1,
+  "lesson": 1,
+  "type": "opening",
+  "title": "Joseki Ustası",
+  "description": "Joseki ustası olun! En iyi hamleyi bulun.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 10, "y": 2, "color": "white"},
+    {"x": 2, "y": 10, "color": "black"},
+    {"x": 10, "y": 10, "color": "white"},
+    {"x": 3, "y": 3, "color": "white"},
+    {"x": 9, "y": 3, "color": "black"},
+    {"x": 3, "y": 9, "color": "black"},
+    {"x": 9, "y": 9, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 6, "y": 6, "is_correct": true, "explanation": "Mükemmel! Merkez kontrolü. Fuseki tamamlandı."},
+    {"x": 5, "y": 2, "is_correct": true, "explanation": "İyi! Alt kenarda genişleme."},
+    {"x": 2, "y": 6, "is_correct": true, "explanation": "Sol kenarda genişleme de iyi."}
+  ],
+  "hints": [
+    "Fuseki'nin son hamlesi.",
+    "Dengeli dağılım."
+  ],
+  "difficulty": 4,
+  "stars_required": 3
+}

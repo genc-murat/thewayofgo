@@ -1,0 +1,28 @@
+{
+  "id": "e1-r-5",
+  "level": 1,
+  "module": 5,
+  "lesson": 3,
+  "type": "place_correct",
+  "title": "Özgürlükler Tekrarı",
+  "description": "Siyah grubun özgürlüklerini artırın. En iyi hamleyi yapın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 3, "y": 4, "color": "black"},
+    {"x": 4, "y": 3, "color": "black"},
+    {"x": 2, "y": 3, "color": "white"},
+    {"x": 3, "y": 2, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 4, "y": 4, "is_correct": true, "explanation": "Mükemmel! Bu hamle grubun özgürlüklerini artırır ve güçlendirir."},
+    {"x": 2, "y": 4, "is_correct": true, "explanation": "İyi! Bu da özgürlükleri artırır."},
+    {"x": 4, "y": 2, "is_correct": true, "explanation": "Doğru! Grubu güçlendirir."}
+  ],
+  "hints": [
+    "Grubun etrafındaki boş noktaları düşünün.",
+    "Beyaz taşlardan uzak noktaları tercih edin."
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

@@ -1,0 +1,22 @@
+{
+  "id": "e1-1-13",
+  "level": 1,
+  "module": 1,
+  "lesson": 1,
+  "type": "place_correct",
+  "title": "Açılış Noktaları",
+  "description": "Tahtada iyi bir açılış noktası seçin. Yıldız noktalarını hedefleyin.",
+  "board_size": 9,
+  "initial_stones": [],
+  "correct_moves": [
+    {"x": 2, "y": 2, "is_correct": true, "explanation": "Harika! Köşe yıldız noktası (2,2) klasik ve sağlam bir açılış."},
+    {"x": 6, "y": 6, "is_correct": true, "explanation": "Doğru! Karşı köşe yıldız noktası da mükemmel bir açılış."},
+    {"x": 4, "y": 4, "is_correct": true, "explanation": "Merkez noktası - güçlü ve etkileyici bir açılış."}
+  ],
+  "hints": [
+    "Köşe yıldız noktaları (2,2), (2,6), (6,2), (6,6) iyi seçeneklerdir.",
+    "Merkez (4,4) de güçlü bir açılış noktasıdır."
+  ],
+  "difficulty": 1,
+  "stars_required": 1
+}

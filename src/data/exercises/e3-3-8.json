@@ -1,0 +1,27 @@
+{
+  "id": "e3-3-8",
+  "level": 3,
+  "module": 3,
+  "lesson": 3,
+  "type": "endgame",
+  "title": "İkinci Çizgi Yose",
+  "description": "İkinci çizgide en büyük yose hamlesini bulun.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 1, "color": "black"},
+    {"x": 3, "y": 1, "color": "black"},
+    {"x": 4, "y": 1, "color": "black"},
+    {"x": 5, "y": 1, "color": "white"},
+    {"x": 6, "y": 1, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 2, "y": 2, "is_correct": true, "explanation": "Mükemmel! İkinci çizgi uzatması. 3 puanlık değer."},
+    {"x": 6, "y": 2, "is_correct": false, "explanation": "Bu hamle daha küçük. Önce kendi tarafınızı güçlendirin."}
+  ],
+  "hints": [
+    "Kendi taşlarınızı uzatın.",
+    "İkinci çizgide ilerleyin."
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

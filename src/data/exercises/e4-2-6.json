@@ -2,39 +2,25 @@
   "id": "e4-2-6",
   "level": 4,
   "module": 2,
-  "lesson": 6,
-  "type": "territorial_control",
-  "title": "Moyoyu Değerlendirme",
-  "description": "Moyo değerini hesaplama.",
-  "board_size": 9,
+  "lesson": 1,
+  "type": "position_judgment",
+  "title": "Etki Genişletme",
+  "description": "Siyahın etki alanını genişletin.",
+  "board_size": 13,
   "initial_stones": [
-    {
-      "x": 1,
-      "y": 1,
-      "color": "black"
-    },
-    {
-      "x": 1,
-      "y": 2,
-      "color": "black"
-    },
-    {
-      "x": 2,
-      "y": 1,
-      "color": "black"
-    }
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 2, "y": 10, "color": "black"},
+    {"x": 6, "y": 6, "color": "black"},
+    {"x": 10, "y": 3, "color": "white"}
   ],
   "correct_moves": [
-    {
-      "x": 0,
-      "y": 0,
-      "is_correct": true,
-      "explanation": "Moyo değerli!"
-    }
+    {"x": 10, "y": 10, "is_correct": true, "explanation": "Mükemmel! Sağ üst köşeyi alın. Büyük moyo."},
+    {"x": 2, "y": 6, "is_correct": true, "explanation": "İyi! Sol kenarda genişleme."}
   ],
   "hints": [
-    "Potansiyel alanı sayın."
+    "Sağ üst köşeyi düşünün.",
+    "Moyoyu genişletin."
   ],
-  "difficulty": 4,
-  "stars_required": 1
+  "difficulty": 3,
+  "stars_required": 2
 }

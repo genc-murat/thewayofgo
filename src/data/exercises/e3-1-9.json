@@ -1,0 +1,28 @@
+{
+  "id": "e3-1-9",
+  "level": 3,
+  "module": 1,
+  "lesson": 1,
+  "type": "opening",
+  "title": "Kobayashi Açılışı",
+  "description": "Kobayashi açılışında doğru devam hamlesini bulun.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 10, "y": 2, "color": "black"},
+    {"x": 2, "y": 10, "color": "black"},
+    {"x": 10, "y": 10, "color": "black"},
+    {"x": 3, "y": 3, "color": "white"},
+    {"x": 9, "y": 3, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 6, "y": 2, "is_correct": true, "explanation": "Mükemmel! Kobayashi açılışının standart devamı."},
+    {"x": 2, "y": 6, "is_correct": true, "explanation": "İyi! Sol kenarda genişleme de geçerli."}
+  ],
+  "hints": [
+    "Alt kenarda genişleyin.",
+    "Beyazın yaklaşmasına cevap verin."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

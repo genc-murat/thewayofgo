@@ -1,0 +1,31 @@
+{
+  "id": "e3-2-20",
+  "level": 3,
+  "module": 2,
+  "lesson": 2,
+  "type": "tesuji",
+  "title": "Köşe Tesujisi",
+  "description": "Köşede özel tesujiyi bulun ve uygulayın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 0, "y": 0, "color": "white"},
+    {"x": 1, "y": 0, "color": "white"},
+    {"x": 0, "y": 1, "color": "white"},
+    {"x": 1, "y": 1, "color": "white"},
+    {"x": 2, "y": 0, "color": "black"},
+    {"x": 2, "y": 1, "color": "black"},
+    {"x": 0, "y": 2, "color": "black"},
+    {"x": 1, "y": 2, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 0, "y": 3, "is_correct": false, "explanation": "Bu hamle işe yaramaz."},
+    {"x": 1, "y": 3, "is_correct": false, "explanation": "Yanlış nokta."},
+    {"x": 2, "y": 2, "is_correct": true, "explanation": "Mükemmel! Köşe tesujisi! Beyazın göz yapmasını engellediniz."}
+  ],
+  "hints": [
+    "Köşedeki hayati noktayı bulun.",
+    "Dışarıdan sıkıştırın."
+  ],
+  "difficulty": 4,
+  "stars_required": 2
+}

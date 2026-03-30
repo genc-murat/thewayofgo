@@ -2,34 +2,25 @@
   "id": "e4-2-5",
   "level": 4,
   "module": 2,
-  "lesson": 5,
-  "type": "territorial_control",
-  "title": "Etki Hesaplama",
-  "description": "Taş etkisini ölçme teknikleri.",
-  "board_size": 9,
+  "lesson": 1,
+  "type": "position_judgment",
+  "title": "Moyo Oluşturma",
+  "description": "Büyük bir moyo (etki alanı) oluşturun.",
+  "board_size": 13,
   "initial_stones": [
-    {
-      "x": 3,
-      "y": 3,
-      "color": "black"
-    },
-    {
-      "x": 4,
-      "y": 4,
-      "color": "white"
-    }
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 10, "y": 2, "color": "black"},
+    {"x": 2, "y": 10, "color": "black"},
+    {"x": 6, "y": 3, "color": "white"}
   ],
   "correct_moves": [
-    {
-      "x": 3,
-      "y": 4,
-      "is_correct": true,
-      "explanation": "Etki artırıldı!"
-    }
+    {"x": 10, "y": 10, "is_correct": true, "explanation": "Doğru! Büyük moyo oluştu. Siyah merkezde güçlü."},
+    {"x": 6, "y": 6, "is_correct": true, "explanation": "İyi! Merkez kontrolü."}
   ],
   "hints": [
-    "Etki alanını hesaplayın."
+    "Üç köşeyi birleştirin.",
+    "Merkezi hedefleyin."
   ],
-  "difficulty": 4,
-  "stars_required": 1
+  "difficulty": 3,
+  "stars_required": 2
 }

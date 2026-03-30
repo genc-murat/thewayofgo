@@ -1,0 +1,31 @@
+{
+  "id": "e1-3-10",
+  "level": 1,
+  "module": 3,
+  "lesson": 3,
+  "type": "capture_stones",
+  "title": "Üç Taşı Yakala",
+  "description": "Üç beyaz taşı birden yakalamak için doğru hamleyi yapın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 3, "y": 3, "color": "white"},
+    {"x": 3, "y": 4, "color": "white"},
+    {"x": 3, "y": 5, "color": "white"},
+    {"x": 2, "y": 3, "color": "black"},
+    {"x": 2, "y": 4, "color": "black"},
+    {"x": 2, "y": 5, "color": "black"},
+    {"x": 4, "y": 3, "color": "black"},
+    {"x": 4, "y": 4, "color": "black"},
+    {"x": 4, "y": 5, "color": "black"},
+    {"x": 3, "y": 2, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 3, "y": 6, "is_correct": true, "explanation": "Harika! Üç beyaz taşı yakaladınız. Üstteki son özgürlüğü kapattınız."}
+  ],
+  "hints": [
+    "Üç beyaz taş bir zincir oluşturuyor.",
+    "En üstteki nokta son özgürlük."
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

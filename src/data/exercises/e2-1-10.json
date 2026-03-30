@@ -1,0 +1,29 @@
+{
+  "id": "e2-1-10",
+  "level": 2,
+  "module": 1,
+  "lesson": 1,
+  "type": "capture_stones",
+  "title": "Merdiven Deseni 2",
+  "description": "Beyaz grubu merdivenle yakalayın. Doğru açıyı koruyun.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 4, "color": "black"},
+    {"x": 3, "y": 4, "color": "black"},
+    {"x": 2, "y": 3, "color": "black"},
+    {"x": 2, "y": 5, "color": "black"},
+    {"x": 3, "y": 3, "color": "white"},
+    {"x": 4, "y": 3, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 3, "y": 2, "is_correct": true, "explanation": "Mükemmel! Merdiven açısı doğru. Beyaz taşlar kaçamaz."},
+    {"x": 4, "y": 2, "is_correct": false, "explanation": "Bu hamle merdiveni bozar. Beyaz kaçabilir."},
+    {"x": 3, "y": 5, "is_correct": false, "explanation": "Yanlış yön! Beyaz bu şekilde kurtulur."}
+  ],
+  "hints": [
+    "Beyaz taşları köşeye doğru sürün.",
+    "Merdiven açısını koruyun."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

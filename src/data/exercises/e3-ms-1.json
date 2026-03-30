@@ -2,89 +2,105 @@
   "id": "e3-ms-1",
   "level": 3,
   "module": 6,
-  "lesson": 5,
+  "lesson": 1,
   "type": "tesuji",
-  "title": "Tesuji Kombinasyonu (3 Adım)",
-  "description": "Tesuji kombinasyonu ile taş yakalayın.",
+  "title": "Tesuji Serisi (4 Adım)",
+  "description": "Beyaz taşları yakalamak için tesuji serisini tamamlayın.",
   "board_size": 9,
   "initial_stones": [],
   "correct_moves": [],
   "hints": [
-    "İlk hamle beyaz grubu sıkıştır",
-    "İkinci hamle özgürlükleri azaltır",
-    "Üçüncü hamle yakalar"
+    "Fedakarlık yapmaya hazır olun",
+    "Atari'yi kullanın",
+    "Sarmalama tesujisi",
+    "Yakalama tamamlandı"
   ],
   "difficulty": 4,
-  "stars_required": 1,
+  "stars_required": 3,
   "steps": [
     {
       "initial_stones": [
-        {"x": 3, "y": 3, "color": "white"},
-        {"x": 4, "y": 3, "color": "white"},
-        {"x": 3, "y": 4, "color": "white"},
-        {"x": 2, "y": 3, "color": "black"},
-        {"x": 2, "y": 4, "color": "black"},
-        {"x": 3, "y": 5, "color": "black"},
-        {"x": 4, "y": 4, "color": "black"},
-        {"x": 5, "y": 3, "color": "black"}
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 4, "y": 4, "color": "white"},
+        {"x": 5, "y": 4, "color": "white"},
+        {"x": 4, "y": 5, "color": "white"}
       ],
       "correct_moves": [
-        {"x": 4, "y": 2, "is_correct": true, "explanation": "Doğru! Beyaz grubu yukarıdan sıkıştırıyorsunuz. Bir özgürlük kapandı."},
-        {"x": 5, "y": 4, "is_correct": false, "explanation": "Bu hamle beyaz grubun kaçmasına izin verir."},
-        {"x": 3, "y": 2, "is_correct": false, "explanation": "Bu nokta beyaz grubu sıkıştırma etkisini azaltır."}
+        {"x": 5, "y": 3, "is_correct": true, "explanation": "Adım 1 doğru! Fedakarlık başladı. Beyazı sarmalamaya hazırlanın."},
+        {"x": 3, "y": 5, "is_correct": false, "explanation": "Yanlış! Beyaz bu şekilde kurtulur."}
       ],
       "opponent_response": [
-        {"x": 5, "y": 2, "color": "white"}
+        {"x": 5, "y": 5, "color": "white"}
       ],
-      "explanation": "İlk adım: Beyaz grubu sıkıştırın.",
-      "hints": ["Beyaz grubun dış özgürlüklerini kapatan bir nokta düşünün"]
+      "explanation": "İlk adım: Fedakarlık tesujisi.",
+      "hints": ["Beyaz taşları sarmalayın"]
     },
     {
       "initial_stones": [
-        {"x": 3, "y": 3, "color": "white"},
-        {"x": 4, "y": 3, "color": "white"},
-        {"x": 3, "y": 4, "color": "white"},
-        {"x": 2, "y": 3, "color": "black"},
-        {"x": 2, "y": 4, "color": "black"},
-        {"x": 3, "y": 5, "color": "black"},
-        {"x": 4, "y": 4, "color": "black"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 4, "y": 4, "color": "white"},
+        {"x": 5, "y": 4, "color": "white"},
+        {"x": 4, "y": 5, "color": "white"},
         {"x": 5, "y": 3, "color": "black"},
-        {"x": 4, "y": 2, "color": "black"},
-        {"x": 5, "y": 2, "color": "white"}
+        {"x": 5, "y": 5, "color": "white"}
       ],
       "correct_moves": [
-        {"x": 5, "y": 4, "is_correct": true, "explanation": "Harika! Beyaz'ın kaçış yolunu kapattınız. Artık sadece 1 özgürlük kaldı."},
-        {"x": 6, "y": 3, "is_correct": false, "explanation": "Bu nokta beyaz grubu kovalamak için çok uzak."},
-        {"x": 4, "y": 1, "is_correct": false, "explanation": "Bu hamle grubunuzu güçlendirmez."}
+        {"x": 6, "y": 4, "is_correct": true, "explanation": "Doğru! Sarmalama devam ediyor. Beyaz kaçamaz."},
+        {"x": 6, "y": 3, "is_correct": false, "explanation": "Bu hamle beyaza şans verir."}
       ],
       "opponent_response": [
-        {"x": 6, "y": 4, "color": "white"}
+        {"x": 6, "y": 3, "color": "white"}
       ],
-      "explanation": "İkinci adım: Özgürlükleri azaltın.",
-      "hints": ["Beyaz grubun kaçmasını engelleyecek noktayı bulun"]
+      "explanation": "Adım 2: Sarmalamayı sürdürün.",
+      "hints": ["Beyazın kaçış yolunu kapatın"]
     },
     {
       "initial_stones": [
-        {"x": 3, "y": 3, "color": "white"},
-        {"x": 4, "y": 3, "color": "white"},
-        {"x": 3, "y": 4, "color": "white"},
-        {"x": 2, "y": 3, "color": "black"},
-        {"x": 2, "y": 4, "color": "black"},
-        {"x": 3, "y": 5, "color": "black"},
-        {"x": 4, "y": 4, "color": "black"},
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 4, "y": 4, "color": "white"},
+        {"x": 5, "y": 4, "color": "white"},
+        {"x": 4, "y": 5, "color": "white"},
         {"x": 5, "y": 3, "color": "black"},
-        {"x": 4, "y": 2, "color": "black"},
-        {"x": 5, "y": 2, "color": "white"},
-        {"x": 5, "y": 4, "color": "black"},
-        {"x": 6, "y": 4, "color": "white"}
+        {"x": 5, "y": 5, "color": "white"},
+        {"x": 6, "y": 4, "color": "black"},
+        {"x": 6, "y": 3, "color": "white"}
       ],
       "correct_moves": [
-        {"x": 3, "y": 2, "is_correct": true, "explanation": "Mükemmel! Son özgürlük kapatıldı. Beyaz grup yakalandı!"},
-        {"x": 6, "y": 3, "is_correct": false, "explanation": "Bu nokta beyaz'a bir özgürlük daha verir."},
-        {"x": 5, "y": 1, "is_correct": false, "explanation": "Bu nokta grubunuzu ilgilendirmez."}
+        {"x": 6, "y": 5, "is_correct": true, "explanation": "Mükemmel! Atari! Beyaz taşlar yakalanmak üzere."},
+        {"x": 7, "y": 4, "is_correct": false, "explanation": "Bu hamle atari değil."}
       ],
-      "explanation": "Son adım: Beyaz grubu yakalayın.",
-      "hints": ["Beyaz grubun son özgürlüğünü kapatan noktayı bulun"]
+      "opponent_response": [
+        {"x": 6, "y": 6, "color": "white"}
+      ],
+      "explanation": "Adım 3: Atari ile sıkıştırın.",
+      "hints": ["Beyazı atariye alın"]
+    },
+    {
+      "initial_stones": [
+        {"x": 3, "y": 3, "color": "black"},
+        {"x": 4, "y": 3, "color": "black"},
+        {"x": 3, "y": 4, "color": "black"},
+        {"x": 4, "y": 4, "color": "white"},
+        {"x": 5, "y": 4, "color": "white"},
+        {"x": 4, "y": 5, "color": "white"},
+        {"x": 5, "y": 3, "color": "black"},
+        {"x": 5, "y": 5, "color": "white"},
+        {"x": 6, "y": 4, "color": "black"},
+        {"x": 6, "y": 3, "color": "white"},
+        {"x": 6, "y": 5, "color": "black"},
+        {"x": 6, "y": 6, "color": "white"}
+      ],
+      "correct_moves": [
+        {"x": 7, "y": 5, "is_correct": true, "explanation": "Harika! Beyaz taşlar yakalandı! Tesuji serisi tamamlandı."}
+      ],
+      "explanation": "Son adım: Yakalamayı tamamlayın.",
+      "hints": ["Son nefesi kapatın"]
     }
   ]
 }

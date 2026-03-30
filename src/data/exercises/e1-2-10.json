@@ -1,0 +1,28 @@
+{
+  "id": "e1-2-10",
+  "level": 1,
+  "module": 2,
+  "lesson": 2,
+  "type": "place_correct",
+  "title": "İki Özgürlük",
+  "description": "Siyah grubun iki özgürlüğü var. Her ikisini de işaretleyin.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 4, "y": 4, "color": "black"},
+    {"x": 4, "y": 5, "color": "black"},
+    {"x": 3, "y": 4, "color": "white"},
+    {"x": 4, "y": 3, "color": "white"},
+    {"x": 5, "y": 4, "color": "white"},
+    {"x": 4, "y": 6, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 3, "y": 5, "is_correct": true, "explanation": "Doğru! Bu iki özgürlükten biri. Diğeri (5,5)."},
+    {"x": 5, "y": 5, "is_correct": true, "explanation": "Evet! İkinci özgürlük. Siyah grup iki özgürlüğe sahip."}
+  ],
+  "hints": [
+    "Siyah taşların yanındaki boş noktaları bulun.",
+    "İki nokta birbirine komşu."
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

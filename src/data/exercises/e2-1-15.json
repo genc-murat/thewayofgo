@@ -1,0 +1,25 @@
+{
+  "id": "e2-1-15",
+  "level": 2,
+  "module": 1,
+  "lesson": 1,
+  "type": "capture_stones",
+  "title": "Köşe Merdiveni",
+  "description": "Köşedeki beyaz taşı merdivenle yakalayın. Köşeler merdiveni kolaylaştırır!",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 1, "y": 2, "color": "black"},
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 1, "y": 3, "color": "black"},
+    {"x": 2, "y": 3, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 2, "y": 4, "is_correct": true, "explanation": "Mükemmel! Köşe merdiveni çok etkilidir. Beyaz taş köşeye sıkıştı!"}
+  ],
+  "hints": [
+    "Köşe merdivenleri daha kısa sürer.",
+    "Beyaz'ı köşeye doğru sürün."
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

@@ -1,0 +1,28 @@
+{
+  "id": "e1-2-5",
+  "level": 1,
+  "module": 2,
+  "lesson": 2,
+  "type": "place_correct",
+  "title": "Özgürlük Sayısı",
+  "description": "Siyah grubun kaç özgürlüğü var? Doğru sayıyı seçin.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 3, "y": 4, "color": "black"},
+    {"x": 4, "y": 3, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 2, "y": 3, "is_correct": true, "explanation": "Doğru! Bu noktayı işaretleyerek grubun 5 özgürlüğü olduğunu gösterdiniz."},
+    {"x": 3, "y": 2, "is_correct": true, "explanation": "Evet! Grubun 5 özgürlüğü var (2,3), (3,2), (4,2), (5,3), (4,4)."},
+    {"x": 4, "y": 2, "is_correct": true, "explanation": "Doğru! Beş özgürlükten biri."},
+    {"x": 5, "y": 3, "is_correct": true, "explanation": "İyi! Grubun 5 özgürlüğü var."},
+    {"x": 4, "y": 4, "is_correct": true, "explanation": "Evet! Beşinci özgürlük noktası."}
+  ],
+  "hints": [
+    "Taşların etrafındaki boş noktaları sayın.",
+    "Üç taşın toplam 5 özgürlüğü var."
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

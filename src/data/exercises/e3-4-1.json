@@ -1,1 +1,28 @@
-{"id": "e3-4-1", "level": 3, "module": 4, "lesson": 1, "type": "territorial_control", "title": "Kalınlık mı Alan mı?", "description": "Kalınlık (taşların gücü) mi yoksa alan mı daha değerli?", "board_size": 9, "initial_stones": [{"x": 2, "y": 2, "color": "black"}, {"x": 2, "y": 3, "color": "black"}, {"x": 2, "y": 4, "color": "black"}, {"x": 2, "y": 5, "color": "black"}, {"x": 6, "y": 2, "color": "white"}, {"x": 6, "y": 3, "color": "white"}, {"x": 6, "y": 4, "color": "white"}, {"x": 6, "y": 5, "color": "white"}], "correct_moves": [{"x": 6, "y": 6, "is_correct": true, "explanation": "Doğru! Kalınlık yerine alan oluşturmak için beyazın o bölgeyi çevrelemesi gerekir. (6,6) ile alan kurmaya başlayabilir."}], "hints": ["Siyah kalın ama alan yok. Beyaz alan kurabilir.", "Boş bölgeye taş koyarak alan oluşturun."], "difficulty": 3, "stars_required": 2}
+{
+  "id": "e3-4-1",
+  "level": 3,
+  "module": 4,
+  "lesson": 1,
+  "type": "tesuji",
+  "title": "Üçgen Tesuji",
+  "description": "Üçgen (ponnuki) şeklinin tesujisini uygulayın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 4, "y": 3, "color": "black"},
+    {"x": 3, "y": 4, "color": "black"},
+    {"x": 5, "y": 3, "color": "white"},
+    {"x": 4, "y": 4, "color": "white"},
+    {"x": 3, "y": 5, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 4, "y": 2, "is_correct": true, "explanation": "Mükemmel! Üçgen tesujisi! Beyaz taşlar zayıf."},
+    {"x": 2, "y": 4, "is_correct": true, "explanation": "İyi! Bu da üçgen şekli oluşturur."}
+  ],
+  "hints": [
+    "Üçgen şeklini tamamlayın.",
+    "Merkezi kontrol edin."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

@@ -1,0 +1,28 @@
+{
+  "id": "e3-1-15",
+  "level": 3,
+  "module": 1,
+  "lesson": 1,
+  "type": "opening",
+  "title": "Dengeli Fuseki",
+  "description": "Dengeli bir fuseki için en iyi hamleyi yapın.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 10, "y": 10, "color": "black"},
+    {"x": 2, "y": 10, "color": "white"},
+    {"x": 10, "y": 2, "color": "white"},
+    {"x": 6, "y": 2, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 2, "y": 6, "is_correct": true, "explanation": "Mükemmel! Sol kenarda genişleme. Dengeli fuseki tamamlandı."},
+    {"x": 10, "y": 6, "is_correct": true, "explanation": "İyi! Sağ kenarda genişleme de dengeli."},
+    {"x": 6, "y": 6, "is_correct": true, "explanation": "Merkez kontrolü de geçerli."}
+  ],
+  "hints": [
+    "Kenarlarda genişleyin.",
+    "Üçüncü köşeyi düşünün."
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

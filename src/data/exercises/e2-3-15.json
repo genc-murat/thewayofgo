@@ -1,0 +1,36 @@
+{
+  "id": "e2-3-15",
+  "level": 2,
+  "module": 3,
+  "lesson": 3,
+  "type": "life_and_death",
+  "title": "Yaşamak İçin Savaş",
+  "description": "Siyah grup tehlikede. Hayati noktayı bulun ve kurtulun.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 3, "y": 2, "color": "black"},
+    {"x": 4, "y": 2, "color": "black"},
+    {"x": 2, "y": 3, "color": "black"},
+    {"x": 4, "y": 3, "color": "black"},
+    {"x": 2, "y": 4, "color": "black"},
+    {"x": 3, "y": 4, "color": "black"},
+    {"x": 4, "y": 4, "color": "black"},
+    {"x": 1, "y": 2, "color": "white"},
+    {"x": 1, "y": 3, "color": "white"},
+    {"x": 1, "y": 4, "color": "white"},
+    {"x": 5, "y": 2, "color": "white"},
+    {"x": 5, "y": 3, "color": "white"},
+    {"x": 5, "y": 4, "color": "white"},
+    {"x": 3, "y": 5, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 3, "y": 3, "is_correct": true, "explanation": "Mükemmel! Hayati nokta! Siyah grup artık iki gözle canlı."}
+  ],
+  "hints": [
+    "Merkez nokta her şeyi değiştirir.",
+    "Bir taş iki göz yaratır."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

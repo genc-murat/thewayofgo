@@ -1,0 +1,37 @@
+{
+  "id": "e2-3-20",
+  "level": 2,
+  "module": 3,
+  "lesson": 3,
+  "type": "life_and_death",
+  "title": "Yaşam ve Ölüm",
+  "description": "Siyah grubu kurtarın. Doğru hamle yaşamı getirir.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 3, "y": 2, "color": "black"},
+    {"x": 4, "y": 2, "color": "black"},
+    {"x": 2, "y": 3, "color": "black"},
+    {"x": 4, "y": 3, "color": "black"},
+    {"x": 2, "y": 4, "color": "black"},
+    {"x": 3, "y": 4, "color": "black"},
+    {"x": 4, "y": 4, "color": "black"},
+    {"x": 1, "y": 2, "color": "white"},
+    {"x": 1, "y": 3, "color": "white"},
+    {"x": 1, "y": 4, "color": "white"},
+    {"x": 5, "y": 2, "color": "white"},
+    {"x": 5, "y": 3, "color": "white"},
+    {"x": 5, "y": 4, "color": "white"},
+    {"x": 3, "y": 1, "color": "white"},
+    {"x": 3, "y": 5, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 3, "y": 3, "is_correct": true, "explanation": "Harika! İki göz oluşturdunuz. Siyah grup kurtuldu!"}
+  ],
+  "hints": [
+    "Merkez nokta hayati.",
+    "Bir taş iki göz."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

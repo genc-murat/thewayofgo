@@ -1,1 +1,26 @@
-{"id": "e4-2-3", "level": 4, "module": 2, "lesson": 3, "type": "opening", "title": "Kore Açılışı", "description": "Kore açılışına uygun hamle yapın. (Agresif, merkeze odaklı)", "board_size": 9, "initial_stones": [{"x": 4, "y": 4, "color": "black"}], "correct_moves": [{"x": 3, "y": 3, "is_correct": true, "explanation": "Doğru! Yıldız noktası (3,3) ile merkeze doğru agresif açılış. Güçlü, saldırgan bir pozisyon."}], "hints": ["Yıldız noktası (2,2), (3,3), (4,4) merkeze etki eder.", "Merkeze yakın hamle ile baskınlık kurun."], "difficulty": 3, "stars_required": 3}
+{
+  "id": "e4-2-3",
+  "level": 4,
+  "module": 2,
+  "lesson": 1,
+  "type": "position_judgment",
+  "title": "Etki vs Toprak",
+  "description": "Etki ve toprak dengesini kurun. Hangi hamle daha iyi?",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 2, "y": 3, "color": "black"},
+    {"x": 10, "y": 3, "color": "black"},
+    {"x": 2, "y": 9, "color": "black"},
+    {"x": 3, "y": 3, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 5, "y": 3, "is_correct": true, "explanation": "Doğru! Etki ve toprak dengesi. İyi fuseki."},
+    {"x": 2, "y": 6, "is_correct": true, "explanation": "İyi! Sol kenarda genişleme."}
+  ],
+  "hints": [
+    "Dengeli seçim yapın.",
+    "Hem etki hem toprak düşünün."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

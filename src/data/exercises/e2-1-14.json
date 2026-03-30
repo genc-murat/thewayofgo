@@ -1,0 +1,27 @@
+{
+  "id": "e2-1-14",
+  "level": 2,
+  "module": 1,
+  "lesson": 1,
+  "type": "capture_stones",
+  "title": "Merdiven vs Şike",
+  "description": "Beyaz taş merdivenle mi yoksa şike (net) ile mi yakalanır? Doğru yöntemi seçin.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 3, "color": "black"},
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 2, "y": 4, "color": "black"},
+    {"x": 4, "y": 4, "color": "white"},
+    {"x": 5, "y": 3, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 4, "y": 3, "is_correct": true, "explanation": "Doğru! Bu bir şike (net) pozisyonu. Beyaz taş kaçamaz."},
+    {"x": 4, "y": 5, "is_correct": false, "explanation": "Merdiven denemesi işe yaramaz. Şike daha etkili."}
+  ],
+  "hints": [
+    "Merdiven yerine doğrudan sarma düşünün.",
+    "Şike, rakibi iki yönden sarmaktır."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

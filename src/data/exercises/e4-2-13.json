@@ -1,0 +1,27 @@
+{
+  "id": "e4-2-13",
+  "level": 4,
+  "module": 2,
+  "lesson": 1,
+  "type": "position_judgment",
+  "title": "Moyo Yarışı",
+  "description": "Moyo yarışında öne geçin.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 10, "y": 2, "color": "black"},
+    {"x": 6, "y": 6, "color": "black"},
+    {"x": 3, "y": 9, "color": "white"},
+    {"x": 9, "y": 9, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 10, "y": 10, "is_correct": true, "explanation": "Mükemmel! Sağ üst köşeyi alın. Büyük moyо."},
+    {"x": 2, "y": 10, "is_correct": true, "explanation": "İyi! Sol üst köşeyi alın."}
+  ],
+  "hints": [
+    "Üst köşeleri düşünün.",
+    "Moyoyu genişletin."
+  ],
+  "difficulty": 4,
+  "stars_required": 2
+}

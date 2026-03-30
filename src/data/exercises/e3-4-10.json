@@ -1,0 +1,28 @@
+{
+  "id": "e3-4-10",
+  "level": 3,
+  "module": 4,
+  "lesson": 1,
+  "type": "tesuji",
+  "title": "Çapraz Kesme",
+  "description": "Çapraz kesme (cross cut) tesujisini uygulayın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 4, "y": 4, "color": "black"},
+    {"x": 3, "y": 4, "color": "white"},
+    {"x": 4, "y": 3, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 2, "y": 3, "is_correct": false, "explanation": "Bu hamle kesmez."},
+    {"x": 3, "y": 2, "is_correct": true, "explanation": "Doğru! Çapraz kesme! Beyaz taşlar zayıf kaldı."},
+    {"x": 4, "y": 2, "is_correct": false, "explanation": "Yanlış nokta."},
+    {"x": 5, "y": 4, "is_correct": false, "explanation": "Bu da kesmez."}
+  ],
+  "hints": [
+    "Çapraz noktayı düşünün.",
+    "Beyazın ortasını hedefleyin."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

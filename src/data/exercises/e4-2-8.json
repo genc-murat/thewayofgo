@@ -1,0 +1,28 @@
+{
+  "id": "e4-2-8",
+  "level": 4,
+  "module": 2,
+  "lesson": 1,
+  "type": "position_judgment",
+  "title": "İstila Karşıtı",
+  "description": "Rakibin istilasını önleyin. Etki alanınızı koruyun.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 10, "y": 2, "color": "black"},
+    {"x": 2, "y": 10, "color": "black"},
+    {"x": 10, "y": 10, "color": "black"},
+    {"x": 6, "y": 6, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 5, "y": 5, "is_correct": true, "explanation": "Doğru! Beyazın merkez istilasına karşı koydunuz."},
+    {"x": 7, "y": 7, "is_correct": true, "explanation": "İyi! Bu da merkezi korur."},
+    {"x": 5, "y": 7, "is_correct": true, "explanation": "Sol taraftan sıkıştırma da iyi."}
+  ],
+  "hints": [
+    "Merkezi koruyun.",
+    "Beyaz taşa yaklaşın."
+  ],
+  "difficulty": 4,
+  "stars_required": 2
+}

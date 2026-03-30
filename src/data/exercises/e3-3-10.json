@@ -1,0 +1,28 @@
+{
+  "id": "e3-3-10",
+  "level": 3,
+  "module": 3,
+  "lesson": 3,
+  "type": "endgame",
+  "title": "Sente Yose",
+  "description": "Sente (öncelikli) yose hamlesini yapın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 0, "y": 2, "color": "black"},
+    {"x": 0, "y": 3, "color": "black"},
+    {"x": 1, "y": 2, "color": "white"},
+    {"x": 1, "y": 3, "color": "white"},
+    {"x": 8, "y": 5, "color": "black"},
+    {"x": 8, "y": 6, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 0, "y": 4, "is_correct": true, "explanation": "Doğru! Sente yose. Rakip cevap vermek zorunda."},
+    {"x": 0, "y": 1, "is_correct": true, "explanation": "İyi! Bu da sente yose."}
+  ],
+  "hints": [
+    "Rakibi cevap vermeye zorlayın.",
+    "Önceliği elinizde tutun."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

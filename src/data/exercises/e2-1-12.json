@@ -1,0 +1,28 @@
+{
+  "id": "e2-1-12",
+  "level": 2,
+  "module": 1,
+  "lesson": 1,
+  "type": "capture_stones",
+  "title": "Uzun Merdiven",
+  "description": "Beyaz taşı uzun bir merdivenle yakalayın. Sabırlı olun!",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 4, "y": 4, "color": "black"},
+    {"x": 5, "y": 4, "color": "black"},
+    {"x": 4, "y": 3, "color": "black"},
+    {"x": 4, "y": 5, "color": "black"},
+    {"x": 4, "y": 6, "color": "black"},
+    {"x": 4, "y": 7, "color": "black"},
+    {"x": 5, "y": 5, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 5, "y": 6, "is_correct": true, "explanation": "Doğru! Merdiven başladı. Beyaz taş köşeye doğru uzun bir yolculuk yapacak."}
+  ],
+  "hints": [
+    "Merdiveni başlatın ve sürdürün.",
+    "Her adımda zikzak desenini koruyun."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

@@ -1,0 +1,27 @@
+{
+  "id": "e4-2-7",
+  "level": 4,
+  "module": 2,
+  "lesson": 1,
+  "type": "position_judgment",
+  "title": "Merkez Odaklı",
+  "description": "Merkez odaklı oyun oynayın. Etkiyi koruyun.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 6, "y": 6, "color": "black"},
+    {"x": 4, "y": 4, "color": "black"},
+    {"x": 8, "y": 8, "color": "black"},
+    {"x": 3, "y": 3, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 6, "y": 2, "is_correct": true, "explanation": "Doğru! Merkez gücünü kenara bağladınız."},
+    {"x": 2, "y": 6, "is_correct": true, "explanation": "İyi! Sol kenarda genişleme."},
+    {"x": 10, "y": 6, "is_correct": true, "explanation": "Sağ kenarda genişleme de iyi."}
+  ],
+  "hints": [
+    "Merkez taşlarını kullanın.",
+    "Kenarlara genişleyin."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

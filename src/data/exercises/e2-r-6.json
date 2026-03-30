@@ -1,0 +1,26 @@
+{
+  "id": "e2-r-6",
+  "level": 2,
+  "module": 5,
+  "lesson": 3,
+  "type": "connect_groups",
+  "title": "Bağlantı Tekrarı",
+  "description": "Bağlantı tekniklerini tekrar edin. İki siyah grubu bağlayın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 3, "color": "black"},
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 5, "y": 3, "color": "black"},
+    {"x": 6, "y": 3, "color": "black"},
+    {"x": 4, "y": 4, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 4, "y": 3, "is_correct": true, "explanation": "Mükemmel! İki grup artık doğrudan bağlı. Beyaz onları ayıramaz."}
+  ],
+  "hints": [
+    "İki grup arasındaki noktayı düşünün.",
+    "Doğrudan bağlantı en güçlüsüdür."
+  ],
+  "difficulty": 2,
+  "stars_required": 1
+}

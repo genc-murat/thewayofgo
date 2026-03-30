@@ -1,0 +1,27 @@
+{
+  "id": "e4-1-12",
+  "level": 4,
+  "module": 1,
+  "lesson": 1,
+  "type": "opening",
+  "title": "Avalanche Joseki",
+  "description": "Avalanche (çığ) joseki'sinin temel şeklini tanıyın.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 10, "y": 2, "color": "white"},
+    {"x": 3, "y": 3, "color": "white"},
+    {"x": 3, "y": 4, "color": "black"},
+    {"x": 4, "y": 3, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 2, "y": 4, "is_correct": true, "explanation": "Doğru! Avalanche joseki'sinin temel devamı."},
+    {"x": 4, "y": 2, "is_correct": false, "explanation": "Bu hamle avalanche'yi bozar."}
+  ],
+  "hints": [
+    "Avalanche şeklini tamamlayın.",
+    "Üçüncü çizgiyi takip edin."
+  ],
+  "difficulty": 4,
+  "stars_required": 3
+}

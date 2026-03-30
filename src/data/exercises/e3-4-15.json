@@ -1,0 +1,28 @@
+{
+  "id": "e3-4-15",
+  "level": 3,
+  "module": 4,
+  "lesson": 1,
+  "type": "tesuji",
+  "title": "Şok Tesujisi",
+  "description": "Şok edici tesujiyi bulun. Rakibi şaşırtın!",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 4, "y": 3, "color": "black"},
+    {"x": 3, "y": 4, "color": "black"},
+    {"x": 4, "y": 4, "color": "white"},
+    {"x": 5, "y": 3, "color": "white"},
+    {"x": 5, "y": 4, "color": "white"},
+    {"x": 5, "y": 5, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 4, "y": 5, "is_correct": true, "explanation": "Şok! Fedakarlık tesujisi! Beyaz taşlar yakalandı."}
+  ],
+  "hints": [
+    "Beklenmedik bir hamle düşünün.",
+    "Fedakarlık yapmaya hazır olun."
+  ],
+  "difficulty": 4,
+  "stars_required": 3
+}

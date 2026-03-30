@@ -2,64 +2,137 @@
   "id": "e3-ms-2",
   "level": 3,
   "module": 6,
-  "lesson": 6,
-  "type": "defend_group",
-  "title": "Çift Yönlü Savunma (2 Adım)",
-  "description": "Birbirine bağlı grupları iki adımda güvenli hale getirin.",
+  "lesson": 2,
+  "type": "life_and_death",
+  "title": "Köşe Yaşamı (4 Adım)",
+  "description": "Köşedeki siyah grubu kurtarmak için doğru yaşam serisini oynayın.",
   "board_size": 9,
   "initial_stones": [],
   "correct_moves": [],
   "hints": [
-    "Köprü noktasını bulun",
-    "Bağlantıyı güçlendirin"
+    "Göz yapmaya hazırlanın",
+    "Hayati noktayı bulun",
+    "İkinci göz için yer açın",
+    "Yaşam tamamlandı"
   ],
-  "difficulty": 3,
-  "stars_required": 1,
+  "difficulty": 4,
+  "stars_required": 3,
   "steps": [
     {
       "initial_stones": [
-        {"x": 2, "y": 4, "color": "black"},
-        {"x": 3, "y": 4, "color": "black"},
-        {"x": 5, "y": 4, "color": "black"},
-        {"x": 6, "y": 4, "color": "black"},
-        {"x": 3, "y": 3, "color": "white"},
-        {"x": 4, "y": 3, "color": "white"},
-        {"x": 5, "y": 3, "color": "white"},
-        {"x": 3, "y": 5, "color": "white"},
-        {"x": 5, "y": 5, "color": "white"}
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 2, "y": 1, "color": "black"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 0, "color": "white"},
+        {"x": 3, "y": 1, "color": "white"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 1, "y": 3, "color": "white"},
+        {"x": 0, "y": 3, "color": "white"}
       ],
       "correct_moves": [
-        {"x": 4, "y": 5, "is_correct": true, "explanation": "Köprü noktası oluşturuldu! Siyah gruplar bağlandı."},
-        {"x": 4, "y": 4, "is_correct": false, "explanation": "Bu nokta beyaz tarafından kesilebilir."},
-        {"x": 2, "y": 5, "is_correct": false, "explanation": "Bu nokta grubunuzu güçlendirmez."}
+        {"x": 1, "y": 1, "is_correct": true, "explanation": "Adım 1 doğru! Göz yapmaya başladınız. Köşede yaşam için ilk adım."},
+        {"x": 0, "y": 4, "is_correct": false, "explanation": "Yanlış! Bu hamle yaşam sağlamaz."}
       ],
       "opponent_response": [
-        {"x": 4, "y": 4, "color": "white"}
+        {"x": 0, "y": 4, "color": "white"}
       ],
-      "explanation": "Köprü noktasını kurun.",
-      "hints": ["İki siyah grubu birleştirecek noktayı düşünün"]
+      "explanation": "İlk adım: Göz yapmaya hazırlanın.",
+      "hints": ["Merkez noktayı düşünün"]
     },
     {
       "initial_stones": [
-        {"x": 2, "y": 4, "color": "black"},
-        {"x": 3, "y": 4, "color": "black"},
-        {"x": 5, "y": 4, "color": "black"},
-        {"x": 6, "y": 4, "color": "black"},
-        {"x": 3, "y": 3, "color": "white"},
-        {"x": 4, "y": 3, "color": "white"},
-        {"x": 5, "y": 3, "color": "white"},
-        {"x": 3, "y": 5, "color": "white"},
-        {"x": 5, "y": 5, "color": "white"},
-        {"x": 4, "y": 5, "color": "black"},
-        {"x": 4, "y": 4, "color": "white"}
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 2, "y": 1, "color": "black"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 0, "color": "white"},
+        {"x": 3, "y": 1, "color": "white"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 1, "y": 3, "color": "white"},
+        {"x": 0, "y": 3, "color": "white"},
+        {"x": 1, "y": 1, "color": "black"},
+        {"x": 0, "y": 4, "color": "white"}
       ],
       "correct_moves": [
-        {"x": 2, "y": 3, "is_correct": true, "explanation": "Harika! Grubunuzu güçlendirdiniz. Beyaz artık kesim yapamaz."},
-        {"x": 6, "y": 3, "is_correct": false, "explanation": "Bu nokta beyaz grubu için boş bir nokta kalır."},
-        {"x": 3, "y": 6, "is_correct": false, "explanation": "Bu nokta grubunuzu güçlendirmez."}
+        {"x": 2, "y": 4, "is_correct": true, "explanation": "Doğru! İkinci göz için yer açıyorsunuz."},
+        {"x": 1, "y": 4, "is_correct": false, "explanation": "Bu hamle beyaza şans verir."}
       ],
-      "explanation": "Bağlantıyı güçlendirin.",
-      "hints": ["Grubunuzun dış özgürlüklerini garantiye alın"]
+      "opponent_response": [
+        {"x": 1, "y": 4, "color": "white"}
+      ],
+      "explanation": "Adım 2: İkinci göz için alan oluşturun.",
+      "hints": ["Sağ üst köşeyi genişletin"]
+    },
+    {
+      "initial_stones": [
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 2, "y": 1, "color": "black"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 0, "color": "white"},
+        {"x": 3, "y": 1, "color": "white"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 1, "y": 3, "color": "white"},
+        {"x": 0, "y": 3, "color": "white"},
+        {"x": 1, "y": 1, "color": "black"},
+        {"x": 0, "y": 4, "color": "white"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 1, "y": 4, "color": "white"}
+      ],
+      "correct_moves": [
+        {"x": 2, "y": 5, "is_correct": true, "explanation": "Mükemmel! Yaşam için son hazırlık."},
+        {"x": 3, "y": 3, "is_correct": false, "explanation": "Bu hamle gereksiz."}
+      ],
+      "opponent_response": [
+        {"x": 3, "y": 3, "color": "white"}
+      ],
+      "explanation": "Adım 3: Yaşamı garantileyin.",
+      "hints": ["Üst tarafa genişleyin"]
+    },
+    {
+      "initial_stones": [
+        {"x": 0, "y": 0, "color": "black"},
+        {"x": 1, "y": 0, "color": "black"},
+        {"x": 2, "y": 0, "color": "black"},
+        {"x": 0, "y": 1, "color": "black"},
+        {"x": 2, "y": 1, "color": "black"},
+        {"x": 0, "y": 2, "color": "black"},
+        {"x": 1, "y": 2, "color": "black"},
+        {"x": 2, "y": 2, "color": "black"},
+        {"x": 3, "y": 0, "color": "white"},
+        {"x": 3, "y": 1, "color": "white"},
+        {"x": 3, "y": 2, "color": "white"},
+        {"x": 2, "y": 3, "color": "white"},
+        {"x": 1, "y": 3, "color": "white"},
+        {"x": 0, "y": 3, "color": "white"},
+        {"x": 1, "y": 1, "color": "black"},
+        {"x": 0, "y": 4, "color": "white"},
+        {"x": 2, "y": 4, "color": "black"},
+        {"x": 1, "y": 4, "color": "white"},
+        {"x": 2, "y": 5, "color": "black"},
+        {"x": 3, "y": 3, "color": "white"}
+      ],
+      "correct_moves": [
+        {"x": 3, "y": 4, "is_correct": true, "explanation": "Harika! Siyah grup artık canlı. İki göz tamamlandı!"}
+      ],
+      "explanation": "Son adım: Yaşamı tamamlayın.",
+      "hints": ["Son hamleyi yapın"]
     }
   ]
 }

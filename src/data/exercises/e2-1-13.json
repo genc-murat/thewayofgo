@@ -1,0 +1,27 @@
+{
+  "id": "e2-1-13",
+  "level": 2,
+  "module": 1,
+  "lesson": 1,
+  "type": "capture_stones",
+  "title": "Çift Merdiven",
+  "description": "İki beyaz taşı merdivenle yakalayın. Birlikte hareket ederler.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 4, "y": 3, "color": "black"},
+    {"x": 3, "y": 4, "color": "black"},
+    {"x": 3, "y": 5, "color": "black"},
+    {"x": 4, "y": 4, "color": "white"},
+    {"x": 4, "y": 5, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 4, "y": 6, "is_correct": true, "explanation": "Harika! İki beyaz taşı merdivenle yakaladınız. Birlikte kaçmaya çalıştılar ama başaramadılar!"}
+  ],
+  "hints": [
+    "İki taş bir zincir oluşturuyor.",
+    "Merdiven deseni aynı şekilde çalışır."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

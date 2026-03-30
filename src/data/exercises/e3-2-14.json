@@ -1,0 +1,26 @@
+{
+  "id": "e3-2-14",
+  "level": 3,
+  "module": 2,
+  "lesson": 2,
+  "type": "tesuji",
+  "title": "Sarmalama Tesujisi",
+  "description": "Beyaz taşı sarmalama (net) tesujisiyle yakalayın.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 4, "y": 3, "color": "black"},
+    {"x": 3, "y": 4, "color": "black"},
+    {"x": 4, "y": 4, "color": "white"},
+    {"x": 5, "y": 4, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 5, "y": 3, "is_correct": true, "explanation": "Doğru! Sarmalama tesujisi! Beyaz taşlar kaçamaz."}
+  ],
+  "hints": [
+    "Beyazı iki yönden sarın.",
+    "Şike (net) oluşturun."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

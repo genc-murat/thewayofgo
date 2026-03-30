@@ -1,0 +1,26 @@
+{
+  "id": "e4-1-14",
+  "level": 4,
+  "module": 1,
+  "lesson": 1,
+  "type": "opening",
+  "title": "Masuda Joseki",
+  "description": "Masuda joseki'sinin temel şeklini oynayın.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 10, "y": 2, "color": "white"},
+    {"x": 3, "y": 3, "color": "white"},
+    {"x": 5, "y": 3, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 2, "y": 5, "is_correct": true, "explanation": "Doğru! Masuda joseki'si. Modern açılış."},
+    {"x": 3, "y": 6, "is_correct": true, "explanation": "İyi! Bu da joseki'nin bir varyasyonu."}
+  ],
+  "hints": [
+    "Masuda joseki'sini düşünün.",
+    "Dördüncü çizgi önemli."
+  ],
+  "difficulty": 4,
+  "stars_required": 3
+}

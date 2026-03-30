@@ -1,0 +1,27 @@
+{
+  "id": "e4-1-16",
+  "level": 4,
+  "module": 1,
+  "lesson": 1,
+  "type": "opening",
+  "title": "Joseki Tamamlama",
+  "description": "Joseki'yi doğru şekilde tamamlayın.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 10, "y": 2, "color": "white"},
+    {"x": 3, "y": 3, "color": "white"},
+    {"x": 2, "y": 4, "color": "black"},
+    {"x": 4, "y": 2, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 3, "y": 5, "is_correct": true, "explanation": "Mükemmel! Joseki tamamlandı. Dengeli sonuç."},
+    {"x": 5, "y": 3, "is_correct": true, "explanation": "İyi! Bu da joseki'nin bir devamı."}
+  ],
+  "hints": [
+    "Joseki'nin son hamlesini düşünün.",
+    "Dengeli sonuç."
+  ],
+  "difficulty": 4,
+  "stars_required": 2
+}

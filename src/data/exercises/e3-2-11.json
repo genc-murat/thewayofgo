@@ -1,0 +1,28 @@
+{
+  "id": "e3-2-11",
+  "level": 3,
+  "module": 2,
+  "lesson": 2,
+  "type": "tesuji",
+  "title": "Kesme Tesujisi",
+  "description": "Beyaz taşları kesen tesujiyi bulun.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 4, "y": 4, "color": "black"},
+    {"x": 3, "y": 4, "color": "white"},
+    {"x": 4, "y": 3, "color": "white"},
+    {"x": 2, "y": 3, "color": "white"},
+    {"x": 5, "y": 4, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 3, "y": 2, "is_correct": true, "explanation": "Doğru! Kesme tesujisi! Beyaz taşlar ayrıldı."},
+    {"x": 4, "y": 2, "is_correct": false, "explanation": "Bu hamle kesmez. Beyaz bağlı kalır."}
+  ],
+  "hints": [
+    "Beyazın zayıf bağlantısını bulun.",
+    "Alt taraftan kesin."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

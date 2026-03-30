@@ -1,0 +1,27 @@
+{
+  "id": "e3-4-14",
+  "level": 3,
+  "module": 4,
+  "lesson": 1,
+  "type": "tesuji",
+  "title": "Gizli Tesuji",
+  "description": "Gizli tesujiyi bulun. İlk bakışta belli olmaz.",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 2, "y": 4, "color": "black"},
+    {"x": 1, "y": 3, "color": "white"},
+    {"x": 3, "y": 1, "color": "white"},
+    {"x": 4, "y": 3, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 2, "y": 3, "is_correct": true, "explanation": "Harika! Gizli tesuji! Beyaz taşlar yakalandı."}
+  ],
+  "hints": [
+    "Merkezdeki noktayı düşünün.",
+    "Beklenmedik hamle."
+  ],
+  "difficulty": 4,
+  "stars_required": 3
+}

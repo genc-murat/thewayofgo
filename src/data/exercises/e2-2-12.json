@@ -1,0 +1,29 @@
+{
+  "id": "e2-2-12",
+  "level": 2,
+  "module": 2,
+  "lesson": 2,
+  "type": "connect_groups",
+  "title": "Bağlantıyı Koru",
+  "description": "Beyaz bağlantıyı kesmeye çalışıyor. Siyah grupları nasıl bağlarsınız?",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 4, "y": 4, "color": "black"},
+    {"x": 3, "y": 4, "color": "white"},
+    {"x": 4, "y": 3, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 2, "y": 3, "is_correct": false, "explanation": "Bu hamle bağlantıyı sağlamaz."},
+    {"x": 2, "y": 4, "is_correct": false, "explanation": "Yanlış nokta."},
+    {"x": 3, "y": 2, "is_correct": false, "explanation": "Bağlantı hala zayıf."},
+    {"x": 5, "y": 4, "is_correct": false, "explanation": "Bu da işe yaramaz."},
+    {"x": 2, "y": 2, "is_correct": true, "explanation": "Doğru! Bu nokta hem bağlantıyı güçlendirir hem de beyazı tehdit eder."}
+  ],
+  "hints": [
+    "Köşe noktasını düşünün.",
+    "Hem savunma hem saldırı."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

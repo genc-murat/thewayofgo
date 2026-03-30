@@ -1,0 +1,27 @@
+{
+  "id": "e4-1-18",
+  "level": 4,
+  "module": 1,
+  "lesson": 1,
+  "type": "opening",
+  "title": "Joseki Değişimi",
+  "description": "Joseki değişimini doğru oynayın.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 10, "y": 2, "color": "white"},
+    {"x": 3, "y": 3, "color": "white"},
+    {"x": 2, "y": 4, "color": "black"},
+    {"x": 3, "y": 5, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 4, "y": 2, "is_correct": true, "explanation": "Doğru! Joseki değişimi tamamlandı."},
+    {"x": 5, "y": 2, "is_correct": true, "explanation": "İyi! Bu da geçerli."}
+  ],
+  "hints": [
+    "Joseki değişimini takip edin.",
+    "Dengeli sonuç."
+  ],
+  "difficulty": 4,
+  "stars_required": 2
+}

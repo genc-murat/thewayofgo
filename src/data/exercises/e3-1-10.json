@@ -1,0 +1,26 @@
+{
+  "id": "e3-1-10",
+  "level": 3,
+  "module": 1,
+  "lesson": 1,
+  "type": "opening",
+  "title": "Yüksek Çin",
+  "description": "Yüksek Çin açılışında doğru hamleyi yapın.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 2, "y": 3, "color": "black"},
+    {"x": 10, "y": 3, "color": "black"},
+    {"x": 2, "y": 9, "color": "black"},
+    {"x": 10, "y": 9, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 6, "y": 3, "is_correct": true, "explanation": "Doğru! Yüksek Çin açılışı. Dördüncü çizgide güçlü yapı."},
+    {"x": 2, "y": 6, "is_correct": true, "explanation": "İyi! Sol kenarda genişleme."}
+  ],
+  "hints": [
+    "Dördüncü çizgiyi takip edin.",
+    "Merkez etkisi önemli."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

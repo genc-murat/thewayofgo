@@ -1,0 +1,27 @@
+{
+  "id": "e2-1-11",
+  "level": 2,
+  "module": 1,
+  "lesson": 1,
+  "type": "capture_stones",
+  "title": "Merdiven Kırıcı",
+  "description": "Merdivenin çalışıp çalışmadığını kontrol edin. Beyaz taş merdivenle yakalanır mı?",
+  "board_size": 9,
+  "initial_stones": [
+    {"x": 3, "y": 3, "color": "black"},
+    {"x": 4, "y": 3, "color": "black"},
+    {"x": 3, "y": 4, "color": "black"},
+    {"x": 4, "y": 4, "color": "white"},
+    {"x": 6, "y": 5, "color": "white"}
+  ],
+  "correct_moves": [
+    {"x": 4, "y": 5, "is_correct": false, "explanation": "Dikkat! Merdiven çalışmaz çünkü (6,5)'te beyaz destek taşı var. Başka strateji deneyin."},
+    {"x": 5, "y": 4, "is_correct": true, "explanation": "Doğru! Merdiven çalışmıyor, bu yüzden farklı bir yakalama yöntemi deneyin."}
+  ],
+  "hints": [
+    "Merdiven yolunda beyaz taş var mı kontrol edin.",
+    "Bazen merdiven işe yaramaz."
+  ],
+  "difficulty": 3,
+  "stars_required": 2
+}

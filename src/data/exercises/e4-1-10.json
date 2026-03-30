@@ -1,0 +1,26 @@
+{
+  "id": "e4-1-10",
+  "level": 4,
+  "module": 1,
+  "lesson": 1,
+  "type": "opening",
+  "title": "Pincer Joseki",
+  "description": "Pincer (kıskaca alma) joseki'sini oynayın.",
+  "board_size": 13,
+  "initial_stones": [
+    {"x": 2, "y": 2, "color": "black"},
+    {"x": 10, "y": 2, "color": "white"},
+    {"x": 3, "y": 3, "color": "white"},
+    {"x": 5, "y": 2, "color": "black"}
+  ],
+  "correct_moves": [
+    {"x": 2, "y": 5, "is_correct": true, "explanation": "Doğru! Pincer joseki'si. Saldırgan ama dengeli."},
+    {"x": 3, "y": 5, "is_correct": true, "explanation": "İyi! Bu da joseki'nin bir varyasyonu."}
+  ],
+  "hints": [
+    "Beyaz taşa pincer yapın.",
+    "Üçüncü veya dördüncü çizgi."
+  ],
+  "difficulty": 4,
+  "stars_required": 2
+}
