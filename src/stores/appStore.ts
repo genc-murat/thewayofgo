@@ -321,7 +321,7 @@ export const useAppStore = create<AppState>((set, get) => ({
     const gameKomi = komi ?? useAppStore.getState().komi;
     const gameRuleSet = rule_set || useAppStore.getState().rule_set;
     const { timeControl, humanSLProfile } = useAppStore.getState();
-    set({ isLoading: true, error: null, isAiGame: true });
+    set({ isLoading: true, loadingMessage: 'Oyun kuruluyor...', error: null, isAiGame: true });
     try {
       await invoke('set_ai_difficulty', { level: difficulty });
       await invoke('set_ai_style', { style: aiStyle });
@@ -379,6 +379,7 @@ export const useAppStore = create<AppState>((set, get) => ({
         komi: gameKomi,
         rule_set: gameRuleSet,
         isLoading: false,
+        loadingMessage: null,
         currentView: 'play',
         blackTimeRemaining: initialTime,
         whiteTimeRemaining: initialTime,
@@ -389,7 +390,7 @@ export const useAppStore = create<AppState>((set, get) => ({
         clockActive: tc.kind !== 'none',
       });
     } catch (e) {
-      set({ error: String(e), isLoading: false });
+      set({ error: String(e), isLoading: false, loadingMessage: null });
     }
   },
 

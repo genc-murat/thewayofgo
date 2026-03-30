@@ -57,12 +57,12 @@ pub struct VariationResult {
 }
 
 pub struct KataGoEngine {
-    stdin_tx: mpsc::Sender<(String, Option<oneshot::Sender<String>>)>,
-    child: Arc<Mutex<Option<CommandChild>>>,
+    pub stdin_tx: mpsc::Sender<(String, Option<oneshot::Sender<String>>)>,
+    pub child: Arc<Mutex<Option<CommandChild>>>,
     pub status: Arc<Mutex<EngineStatus>>,
-    expecting_analyze: Arc<AtomicBool>,
-    analyze_info_lines: Arc<Mutex<String>>,
-    has_human_model: bool,
+    pub expecting_analyze: Arc<AtomicBool>,
+    pub analyze_info_lines: Arc<Mutex<String>>,
+    pub has_human_model: bool,
 }
 
 impl KataGoEngine {
@@ -88,6 +88,66 @@ impl KataGoEngine {
 
     pub async fn new(app_handle: &AppHandle) -> Result<Self, String> {
         Self::new_with_human_sl(app_handle, false).await
+    }
+
+    fn create_arc_from_engine(engine: &KataGoEngine) -> Result<Arc<KataGoEngine>, String> {
+        Ok(Arc::new(KataGoEngine {
+            stdin_tx: engine.stdin_tx.clone(),
+            child: Arc::clone(&engine.child),
+            status: Arc::clone(&engine.status),
+            expecting_analyze: Arc::clone(&engine.expecting_analyze),
+            analyze_info_lines: Arc::clone(&engine.analyze_info_lines),
+            has_human_model: engine.has_human_model,
+        }))
+    }
+
+    pub async fn try_get_or_init(
+        state: &Arc<tokio::sync::Mutex<Option<KataGoEngine>>>,
+        app_handle: &AppHandle,
+    ) -> Result<Arc<KataGoEngine>, String> {
+        // First, check if we have a healthy engine (without holding lock during init)
+        {
+            let guard = state.lock().await;
+            if let Some(ref engine) = *guard {
+                if engine.is_healthy() {
+                    return Self::create_arc_from_engine(engine);
+                }
+            }
+        }
+        
+        // Need to init - create engine outside the lock to avoid holding mutex during IO
+        let engine = Self::new(app_handle).await?;
+        let engine_arc = Self::create_arc_from_engine(&engine)?;
+        
+        // Now store in state (lock is held very briefly)
+        let mut guard = state.lock().await;
+        *guard = Some(engine);
+        
+        Ok(engine_arc)
+    }
+
+    pub async fn get_or_init_healthy(
+        state: &Arc<tokio::sync::Mutex<Option<KataGoEngine>>>,
+        app_handle: &AppHandle,
+    ) -> Result<Arc<KataGoEngine>, String> {
+        // Quick check for existing healthy engine
+        {
+            let guard = state.lock().await;
+            if let Some(ref engine) = *guard {
+                if engine.is_healthy() {
+                    return Self::create_arc_from_engine(engine);
+                }
+            }
+        }
+        
+        // No engine or unhealthy - init outside lock
+        let engine = Self::new(app_handle).await?;
+        let engine_arc = Self::create_arc_from_engine(&engine)?;
+        
+        let mut guard = state.lock().await;
+        *guard = Some(engine);
+        
+        Ok(engine_arc)
     }
 
     pub async fn new_with_human_sl(app_handle: &AppHandle, use_human_sl: bool) -> Result<Self, String> {

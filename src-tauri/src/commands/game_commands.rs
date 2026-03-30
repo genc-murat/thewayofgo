@@ -1,11 +1,44 @@
 use std::sync::{Arc, Mutex};
-use tauri::State;
-use tauri::Manager;
+use tauri::{State, AppHandle, Manager};
 
 use crate::ai::mcts::MCTSAi;
 use crate::ai::katago::KataGoEngine;
 use crate::engine::game::GoGame;
 use crate::engine::types::*;
+
+async fn ensure_katago_ready(
+    state: &State<'_, AppState>,
+    handle: &AppHandle,
+) -> Result<(), String> {
+    let mut katago_guard = state.katago.lock().await;
+    let needs_init = match katago_guard.as_ref() {
+        Some(engine) => !engine.is_healthy(),
+        None => true,
+    };
+    if needs_init {
+        let engine = KataGoEngine::new(handle).await?;
+        *katago_guard = Some(engine);
+    }
+    Ok(())
+}
+
+async fn get_katago_engine(
+    state: &State<'_, AppState>,
+    handle: &AppHandle,
+) -> Result<std::sync::Arc<KataGoEngine>, String> {
+    ensure_katago_ready(state, handle).await?;
+    let katago_guard = state.katago.lock().await;
+    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+    
+    Ok(std::sync::Arc::new(KataGoEngine {
+        stdin_tx: engine.stdin_tx.clone(),
+        child: std::sync::Arc::clone(&engine.child),
+        status: std::sync::Arc::clone(&engine.status),
+        expecting_analyze: std::sync::Arc::clone(&engine.expecting_analyze),
+        analyze_info_lines: std::sync::Arc::clone(&engine.analyze_info_lines),
+        has_human_model: engine.has_human_model,
+    }))
+}
 
 pub struct AppState {
     pub game: Arc<Mutex<Option<GoGame>>>,
@@ -184,21 +217,7 @@ pub async fn ai_get_move(state: State<'_, AppState>, handle: tauri::AppHandle) -
 }
 
 async fn try_katago_move(state: &State<'_, AppState>, handle: &tauri::AppHandle) -> Result<Option<Point>, String> {
-    // Ensure KataGo is initialized and healthy
-    {
-        let mut katago_guard = state.katago.lock().await;
-        let needs_init = match katago_guard.as_ref() {
-            Some(engine) => !engine.is_healthy(),
-            None => true,
-        };
-        if needs_init {
-            let engine = KataGoEngine::new(handle).await?;
-            *katago_guard = Some(engine);
-        }
-    }
-
-    let katago_guard = state.katago.lock().await;
-    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+    let engine = get_katago_engine(state, handle).await?;
 
     let (history, board_size, current_player) = {
         let game_guard = state.game.lock().map_err(|e| e.to_string())?;
@@ -245,20 +264,7 @@ async fn try_katago_move(state: &State<'_, AppState>, handle: &tauri::AppHandle)
 
 #[tauri::command]
 pub async fn set_katago_difficulty(state: State<'_, AppState>, handle: tauri::AppHandle, max_visits: u32) -> Result<(), String> {
-    {
-        let mut katago_guard = state.katago.lock().await;
-        let needs_init = match katago_guard.as_ref() {
-            Some(engine) => !engine.is_healthy(),
-            None => true,
-        };
-        if needs_init {
-            let engine = KataGoEngine::new(&handle).await?;
-            *katago_guard = Some(engine);
-        }
-    }
-
-    let katago_guard = state.katago.lock().await;
-    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+    let engine = get_katago_engine(&state, &handle).await?;
     engine.set_param("maxVisits", &max_visits.to_string()).await
 }
 
@@ -272,58 +278,19 @@ pub async fn set_katago_style(state: State<'_, AppState>, handle: tauri::AppHand
         _ => return Err(format!("Invalid AI style: {}", style)),
     };
 
-    {
-        let mut katago_guard = state.katago.lock().await;
-        let needs_init = match katago_guard.as_ref() {
-            Some(engine) => !engine.is_healthy(),
-            None => true,
-        };
-        if needs_init {
-            let engine = KataGoEngine::new(&handle).await?;
-            *katago_guard = Some(engine);
-        }
-    }
-
-    let katago_guard = state.katago.lock().await;
-    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+    let engine = get_katago_engine(&state, &handle).await?;
     engine.set_param("playoutDoublingAdvantage", pda_value).await
 }
 
 #[tauri::command]
 pub async fn set_katago_param(state: State<'_, AppState>, handle: tauri::AppHandle, param: String, value: String) -> Result<(), String> {
-    {
-        let mut katago_guard = state.katago.lock().await;
-        let needs_init = match katago_guard.as_ref() {
-            Some(engine) => !engine.is_healthy(),
-            None => true,
-        };
-        if needs_init {
-            let engine = KataGoEngine::new(&handle).await?;
-            *katago_guard = Some(engine);
-        }
-    }
-
-    let katago_guard = state.katago.lock().await;
-    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+    let engine = get_katago_engine(&state, &handle).await?;
     engine.set_param(&param, &value).await
 }
 
 #[tauri::command]
 pub async fn get_katago_params(state: State<'_, AppState>, handle: tauri::AppHandle) -> Result<String, String> {
-    {
-        let mut katago_guard = state.katago.lock().await;
-        let needs_init = match katago_guard.as_ref() {
-            Some(engine) => !engine.is_healthy(),
-            None => true,
-        };
-        if needs_init {
-            let engine = KataGoEngine::new(&handle).await?;
-            *katago_guard = Some(engine);
-        }
-    }
-
-    let katago_guard = state.katago.lock().await;
-    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+    let engine = get_katago_engine(&state, &handle).await?;
     engine.get_params().await
 }
 
@@ -338,20 +305,7 @@ pub async fn set_katago_rules(state: State<'_, AppState>, handle: tauri::AppHand
         _ => return Err(format!("Invalid rule set: {}", rules)),
     };
 
-    {
-        let mut katago_guard = state.katago.lock().await;
-        let needs_init = match katago_guard.as_ref() {
-            Some(engine) => !engine.is_healthy(),
-            None => true,
-        };
-        if needs_init {
-            let engine = KataGoEngine::new(&handle).await?;
-            *katago_guard = Some(engine);
-        }
-    }
-
-    let katago_guard = state.katago.lock().await;
-    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+    let engine = get_katago_engine(&state, &handle).await?;
     engine.set_rules(rules_cmd).await
 }
 
@@ -380,20 +334,7 @@ pub async fn get_human_sl_model_status(handle: tauri::AppHandle) -> Result<bool,
 
 #[tauri::command]
 pub async fn setup_time_control(state: State<'_, AppState>, handle: tauri::AppHandle, kind: String, main_time: Option<f64>, byoyomi_periods: Option<u32>, byoyomi_time: Option<f64>, fischer_increment: Option<f64>) -> Result<(), String> {
-    {
-        let mut katago_guard = state.katago.lock().await;
-        let needs_init = match katago_guard.as_ref() {
-            Some(engine) => !engine.is_healthy(),
-            None => true,
-        };
-        if needs_init {
-            let engine = KataGoEngine::new(&handle).await?;
-            *katago_guard = Some(engine);
-        }
-    }
-
-    let katago_guard = state.katago.lock().await;
-    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+    let engine = get_katago_engine(&state, &handle).await?;
 
     let cmd = match kind.as_str() {
         "none" => "kata-time_settings none".to_string(),
@@ -720,20 +661,7 @@ pub struct KataPositionAnalysis {
 
 #[tauri::command]
 pub async fn get_katago_analysis(state: State<'_, AppState>, handle: tauri::AppHandle) -> Result<KataPositionAnalysis, String> {
-    {
-        let mut katago_guard = state.katago.lock().await;
-        let needs_init = match katago_guard.as_ref() {
-            Some(engine) => !engine.is_healthy(),
-            None => true,
-        };
-        if needs_init {
-            let engine = KataGoEngine::new(&handle).await?;
-            *katago_guard = Some(engine);
-        }
-    }
-
-    let katago_guard = state.katago.lock().await;
-    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+    let engine = get_katago_engine(&state, &handle).await?;
 
     let (history, board_size, komi) = {
         let game_guard = state.game.lock().map_err(|e| e.to_string())?;
@@ -783,20 +711,7 @@ pub async fn get_katago_move_evaluation(
     x: u8,
     y: u8,
 ) -> Result<KataMoveEvaluation, String> {
-    {
-        let mut katago_guard = state.katago.lock().await;
-        let needs_init = match katago_guard.as_ref() {
-            Some(engine) => !engine.is_healthy(),
-            None => true,
-        };
-        if needs_init {
-            let engine = KataGoEngine::new(&handle).await?;
-            *katago_guard = Some(engine);
-        }
-    }
-
-    let katago_guard = state.katago.lock().await;
-    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+    let engine = get_katago_engine(&state, &handle).await?;
 
     let (history, board_size, komi, current_player) = {
         let game_guard = state.game.lock().map_err(|e| e.to_string())?;
@@ -856,20 +771,7 @@ pub async fn get_katago_exercise_hint(
     board_size: u8,
     _current_player: String,
 ) -> Result<KataHintResult, String> {
-    {
-        let mut katago_guard = state.katago.lock().await;
-        let needs_init = match katago_guard.as_ref() {
-            Some(engine) => !engine.is_healthy(),
-            None => true,
-        };
-        if needs_init {
-            let engine = KataGoEngine::new(&handle).await?;
-            *katago_guard = Some(engine);
-        }
-    }
-
-    let katago_guard = state.katago.lock().await;
-    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+    let engine = get_katago_engine(&state, &handle).await?;
 
     engine.clear_board().await?;
     engine.set_board_size(board_size).await?;
@@ -909,20 +811,7 @@ pub struct KataOwnershipResult {
 
 #[tauri::command]
 pub async fn get_katago_ownership(state: State<'_, AppState>, handle: tauri::AppHandle) -> Result<KataOwnershipResult, String> {
-    {
-        let mut katago_guard = state.katago.lock().await;
-        let needs_init = match katago_guard.as_ref() {
-            Some(engine) => !engine.is_healthy(),
-            None => true,
-        };
-        if needs_init {
-            let engine = KataGoEngine::new(&handle).await?;
-            *katago_guard = Some(engine);
-        }
-    }
-
-    let katago_guard = state.katago.lock().await;
-    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+    let engine = get_katago_engine(&state, &handle).await?;
 
     let (history, board_size, komi) = {
         let game_guard = state.game.lock().map_err(|e| e.to_string())?;
@@ -971,20 +860,7 @@ pub struct ScoreHistoryPoint {
 
 #[tauri::command]
 pub async fn get_game_score_history(state: State<'_, AppState>, handle: tauri::AppHandle) -> Result<Vec<ScoreHistoryPoint>, String> {
-    {
-        let mut katago_guard = state.katago.lock().await;
-        let needs_init = match katago_guard.as_ref() {
-            Some(engine) => !engine.is_healthy(),
-            None => true,
-        };
-        if needs_init {
-            let engine = KataGoEngine::new(&handle).await?;
-            *katago_guard = Some(engine);
-        }
-    }
-
-    let katago_guard = state.katago.lock().await;
-    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+    let engine = get_katago_engine(&state, &handle).await?;
 
     let (history, board_size, komi) = {
         let game_guard = state.game.lock().map_err(|e| e.to_string())?;
@@ -1043,20 +919,7 @@ pub struct VariationResult {
 
 #[tauri::command]
 pub async fn get_variation_sequence(state: State<'_, AppState>, handle: tauri::AppHandle) -> Result<VariationResult, String> {
-    {
-        let mut katago_guard = state.katago.lock().await;
-        let needs_init = match katago_guard.as_ref() {
-            Some(engine) => !engine.is_healthy(),
-            None => true,
-        };
-        if needs_init {
-            let engine = KataGoEngine::new(&handle).await?;
-            *katago_guard = Some(engine);
-        }
-    }
-
-    let katago_guard = state.katago.lock().await;
-    let engine = katago_guard.as_ref().ok_or("KataGo engine not initialized")?;
+    let engine = get_katago_engine(&state, &handle).await?;
 
     let (history, board_size, komi) = {
         let game_guard = state.game.lock().map_err(|e| e.to_string())?;
